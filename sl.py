@@ -2,7 +2,9 @@
 import os
 from re import finditer
 
-print('Code Size')
+from sourcelimit.Python import get_blocks
+
+print('Source Limit')
 
 
 def is_hidden(root, file):
@@ -18,12 +20,6 @@ def get_headers(code: str):
     return result
 
 
-def get_bodies(code: str):
-    lines = code.split('\n')
-    for line in lines:
-        print(line)
-
-
 def scan(path: str):
     for root, dirs, files in os.walk(path):
         for file in files:
@@ -33,7 +29,8 @@ def scan(path: str):
                 with open(os.path.join(root, file)) as f:
                     contents = f.read()
                 print(get_headers(contents))
-                get_bodies(contents)
+                blocks = get_blocks(contents)
+                print(blocks)
 
 
 scan('.')
