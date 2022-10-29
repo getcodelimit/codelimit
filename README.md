@@ -1,4 +1,4 @@
-# Code Size
+# Source Limit
 
 # Development
 
@@ -7,5 +7,5 @@
 Generate a self-contained binary like this:
 
 ```shell
-poetry run pyinstaller -F cs.py
+poetry run pyinstaller -F sl.py
 ```

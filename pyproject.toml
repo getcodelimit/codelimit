@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "codesize"
+name = "sourcelimit"
 version = "0.1.0"
 description = ""
 authors = ["Rob van der Leek <robvanderleek@gmail.com>"]
