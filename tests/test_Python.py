@@ -1,4 +1,4 @@
-from sourcelimit.Python import get_indentation, get_blocks
+from sourcelimit.Python import get_indentation, get_blocks, get_headers
 
 
 def test_get_indentation():
@@ -44,3 +44,40 @@ def test_get_blocks_single_multiline_block():
     assert result[0].start.column == 1
     assert result[0].end.line == 2
     assert result[0].end.column == 11
+
+
+def test_get_headers_no_headers():
+    result = get_headers('')
+
+    assert len(result) == 0
+
+
+def test_get_headers_single_header():
+    code = ''
+    code += 'def foo():\n'
+    code += '  pass\n'
+
+    result = get_headers(code)
+
+    assert len(result) == 1
+    assert result[0].start.line == 1
+    assert result[0].start.column == 1
+    assert result[0].end.line == 1
+    assert result[0].end.column == 3
+
+
+def test_get_headers_multi_header():
+    code = ''
+    code += 'def foo():\n'
+    code += '  pass\n'
+    code += '\n'
+    code += 'def bar():\n'
+    code += '  foo()\n'
+
+    result = get_headers(code)
+
+    assert len(result) == 2
+    assert result[1].start.line == 4
+    assert result[1].start.column == 1
+    assert result[1].end.line == 4
+    assert result[1].end.column == 3

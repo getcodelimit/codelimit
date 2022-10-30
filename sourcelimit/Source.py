@@ -1,14 +1,36 @@
-from sourcelimit.Position import Position
+from sourcelimit.Location import Location
+from sourcelimit.SourceRange import SourceRange
 
 
-def index_to_position(code: str, index: int) -> Position:
-    line = 1 + len([c for c in code[:index] if c == '\n'])
-    if code[index - 1] == '\n':
+def index_to_location(code: str, index: int) -> Location:
+    line = 1 + len([c for c in code[:index + 1] if c == '\n'])
+    if index > 0 and code[index] == '\n':
         line -= 1
-    column = 0
-    for i in range(index - 1, -1, -1):
-        c = code[i]
-        if c == '\n':
-            break
-        column += 1
-    return Position(line, column)
+    if index == 0:
+        column = 1
+    else:
+        column = 0
+        for i in range(index, -1, -1):
+            c = code[i]
+            if c == '\n':
+                break
+            column += 1
+    return Location(line, column)
+
+
+def location_to_index(code: str, position: Location) -> int:
+    result = 0
+    lines = code.split('\n')
+    for i in range(0, position.line - 1):
+        result += len(lines[i]) + 1
+    if position.column == 0:
+        result += 1
+    else:
+        result += position.column
+    return result
+
+
+def get_range(code: str, source_range: SourceRange) -> str:
+    start_index = location_to_index(code, source_range.start)
+    end_index = location_to_index(code, source_range.end)
+    return code[start_index:end_index]

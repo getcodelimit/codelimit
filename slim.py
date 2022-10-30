@@ -2,6 +2,7 @@
 import os
 
 from sourcelimit.Python import get_blocks, get_headers
+from sourcelimit.Source import get_range
 
 print('Source Limit')
 
@@ -17,14 +18,16 @@ def scan(path: str):
         for file in files:
             if is_hidden(root, file):
                 continue
-            if file.lower().endswith('.py'):
+            if file.lower().endswith('.py') and file == 'slim.py':
                 print(f'== {file}')
                 with open(os.path.join(root, file)) as f:
-                    contents = f.read()
+                    code = f.read()
                 print('==== Headers')
-                print(get_headers(contents))
+                for h in get_headers(code):
+                    print(h)
+                    print(get_range(code, h))
                 print('==== Blocks')
-                print(get_blocks(contents))
+                print(get_blocks(code))
 
 
 scan('.')

@@ -1,9 +1,9 @@
-from sourcelimit.Block import Block
-from sourcelimit.Position import Position
+from sourcelimit.Location import Location
+from sourcelimit.SourceRange import Block
 
 
 def test_str():
-    block = Block(Position(1, 1), Position(2, 10))
+    block = Block(Location(1, 1), Location(2, 10))
 
     assert str(block) == '[{line: 1, column: 1}, {line: 2, column: 10}]'
 
