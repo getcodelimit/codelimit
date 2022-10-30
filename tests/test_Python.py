@@ -81,3 +81,24 @@ def test_get_headers_multi_header():
     assert result[1].start.column == 1
     assert result[1].end.line == 4
     assert result[1].end.column == 3
+
+
+def test_get_blocks_multi_blocks():
+    code = ''
+    code += 'def foo():\n'
+    code += '  pass\n'
+    code += '\n'
+    code += 'def bar():\n'
+    code += '  foo()\n'
+
+    result = get_blocks(code)
+
+    assert len(result) == 4
+    assert result[0].start.line == 1
+    assert result[0].end.line == 1
+    assert result[1].start.line == 2
+    assert result[1].end.line == 2
+    assert result[2].start.line == 4
+    assert result[2].end.line == 4
+    assert result[3].start.line == 5
+    assert result[3].end.line == 5

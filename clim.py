@@ -2,7 +2,7 @@
 import os
 
 from codelimit.Python import get_blocks, get_headers
-from codelimit.Source import get_range
+from codelimit.Scope import build_scopes
 
 print('Code Limit')
 
@@ -18,16 +18,15 @@ def scan(path: str):
         for file in files:
             if is_hidden(root, file):
                 continue
-            if file.lower().endswith('.py') and file == 'clim.py':
+            if file.lower().endswith('.py'):
                 print(f'== {file}')
                 with open(os.path.join(root, file)) as f:
                     code = f.read()
-                print('==== Headers')
-                for h in get_headers(code):
-                    print(h)
-                    print(get_range(code, h))
-                print('==== Blocks')
-                print(get_blocks(code))
+                headers = get_headers(code)
+                blocks = get_blocks(code)
+                scopes = build_scopes(headers, blocks)
+                for scope in scopes:
+                    print(f'{file}#{scope.header.start.line}: {scope.block.end.line - scope.block.start.line + 1}')
 
 
 scan('.')

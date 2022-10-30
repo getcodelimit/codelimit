@@ -28,12 +28,13 @@ def get_blocks(code: str) -> list[Block]:
         line_nr += 1
         line_indentation = get_indentation(line)
         if line_indentation is None:
-            break
-        end = Location(line_nr, len(line))
-        if indentation is None:
+            continue
+        if start is None:
             start = Location(line_nr, line_indentation + 1)
         elif line_indentation != indentation:
             result.append(Block(start, end))
+            start = Location(line_nr, line_indentation + 1)
+        end = Location(line_nr, len(line))
         indentation = line_indentation
     if start and indentation is not None:
         result.append(Block(start, end))
