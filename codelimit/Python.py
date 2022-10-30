@@ -1,8 +1,8 @@
 from re import finditer
 
-from sourcelimit.Location import Location
-from sourcelimit.Source import index_to_location
-from sourcelimit.SourceRange import Block, Header
+from codelimit.Location import Location
+from codelimit.Source import index_to_location
+from codelimit.SourceRange import Block, Header
 
 
 def get_indentation(line: str):

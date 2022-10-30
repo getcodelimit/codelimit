@@ -1,5 +1,5 @@
-from sourcelimit.Location import Location
-from sourcelimit.Source import index_to_location, location_to_index
+from codelimit.Location import Location
+from codelimit.Source import index_to_location, location_to_index
 
 
 def test_index_to_location_single_line():

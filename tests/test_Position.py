@@ -1,4 +1,4 @@
-from sourcelimit.Location import Location
+from codelimit.Location import Location
 
 
 def test_str():

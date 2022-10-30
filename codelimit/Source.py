@@ -1,5 +1,5 @@
-from sourcelimit.Location import Location
-from sourcelimit.SourceRange import SourceRange
+from codelimit.Location import Location
+from codelimit.SourceRange import SourceRange
 
 
 def index_to_location(code: str, index: int) -> Location:

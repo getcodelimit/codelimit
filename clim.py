@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 import os
 
-from sourcelimit.Python import get_blocks, get_headers
-from sourcelimit.Source import get_range
+from codelimit.Python import get_blocks, get_headers
+from codelimit.Source import get_range
 
 print('Code Limit')
 

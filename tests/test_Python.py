@@ -1,4 +1,4 @@
-from sourcelimit.Python import get_indentation, get_blocks, get_headers
+from codelimit.Python import get_indentation, get_blocks, get_headers
 
 
 def test_get_indentation():

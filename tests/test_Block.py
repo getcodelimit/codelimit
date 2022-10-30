@@ -1,5 +1,5 @@
-from sourcelimit.Location import Location
-from sourcelimit.SourceRange import Block
+from codelimit.Location import Location
+from codelimit.SourceRange import Block
 
 
 def test_str():
