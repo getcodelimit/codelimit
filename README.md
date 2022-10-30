@@ -1,4 +1,4 @@
-# Source Limit
+# Code Limit
 
 # Development
 
@@ -7,5 +7,5 @@
 Generate a self-contained binary like this:
 
 ```shell
-poetry run pyinstaller -F slim.py
+poetry run pyinstaller -F clim.py
 ```

@@ -23,14 +23,11 @@ def location_to_index(code: str, position: Location) -> int:
     lines = code.split('\n')
     for i in range(0, position.line - 1):
         result += len(lines[i]) + 1
-    if position.column == 0:
-        result += 1
-    else:
-        result += position.column
+    result += max(0, position.column - 1)
     return result
 
 
 def get_range(code: str, source_range: SourceRange) -> str:
     start_index = location_to_index(code, source_range.start)
     end_index = location_to_index(code, source_range.end)
-    return code[start_index:end_index]
+    return code[start_index:end_index + 1]

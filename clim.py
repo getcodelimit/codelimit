@@ -4,7 +4,7 @@ import os
 from sourcelimit.Python import get_blocks, get_headers
 from sourcelimit.Source import get_range
 
-print('Source Limit')
+print('Code Limit')
 
 
 def is_hidden(root, file):
@@ -18,7 +18,7 @@ def scan(path: str):
         for file in files:
             if is_hidden(root, file):
                 continue
-            if file.lower().endswith('.py') and file == 'slim.py':
+            if file.lower().endswith('.py') and file == 'clim.py':
                 print(f'== {file}')
                 with open(os.path.join(root, file)) as f:
                     code = f.read()

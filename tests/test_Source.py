@@ -38,7 +38,7 @@ def test_location_to_index():
 
     result = location_to_index(code, Location(1, 5))
 
-    assert result == 5
+    assert result == 4
 
 
 def test_location_to_index_multiline():
@@ -48,7 +48,7 @@ def test_location_to_index_multiline():
 
     result = location_to_index(code, Location(2, 6))
 
-    assert result == 16
+    assert result == 15
 
 
 def test_location_to_index_location_is_newline():
@@ -58,4 +58,4 @@ def test_location_to_index_location_is_newline():
 
     result = location_to_index(code, Location(2, 0))
 
-    assert result == 11
+    assert result == 10
