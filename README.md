@@ -7,5 +7,5 @@
 Generate a self-contained binary like this:
 
 ```shell
-poetry run pyinstaller -F sl.py
+poetry run pyinstaller -F slim.py
 ```

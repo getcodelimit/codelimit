@@ -1,7 +1,7 @@
 from sourcelimit.Position import Position
 
 
-class Block:
+class Header:
     def __init__(self, start: Position, end: Position):
         self.start = start
         self.end = end
@@ -11,3 +11,4 @@ class Block:
 
     def __repr__(self):
         return self.__str__()
+

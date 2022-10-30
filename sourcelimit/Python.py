@@ -1,5 +1,9 @@
+from re import finditer
+
 from sourcelimit.Block import Block
+from sourcelimit.Header import Header
 from sourcelimit.Position import Position
+from sourcelimit.Source import index_to_position
 
 
 def get_indentation(line: str):
@@ -34,4 +38,14 @@ def get_blocks(code: str) -> list[Block]:
         indentation = line_indentation
     if start and indentation is not None:
         result.append(Block(start, end))
+    return result
+
+
+def get_headers(code: str) -> list[Header]:
+    result = []
+    for match in finditer(r'\b(def)\b', code):
+        start_index = match.span(1)[0]
+        end_index = match.span(1)[1]
+        header = Header(index_to_position(code, start_index), index_to_position(code, end_index))
+        result.append(header)
     return result
