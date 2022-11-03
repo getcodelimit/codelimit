@@ -19,7 +19,7 @@ class Report:
         self.total_lines_of_code += measurement.length
 
     def get_average(self):
-        return self.total_lines_of_code / len(self.measurements)
+        return ceil(self.total_lines_of_code / len(self.measurements))
 
     def ninetieth_percentile(self):
         self.measurements.sort(key=lambda m: m.length)
