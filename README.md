@@ -4,8 +4,8 @@
 
 ## Building the binary distribution
 
-Generate a self-contained binary like this:
+Generate a self-contained binary:
 
 ```shell
-poetry run pyinstaller -F clim.py
+./make-dist.sh
 ```
