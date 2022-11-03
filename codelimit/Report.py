@@ -23,7 +23,7 @@ class Report:
 
     def ninetieth_percentile(self):
         self.measurements.sort(key=lambda m: m.length)
-        lines_of_code_90_percent = floor(self.total_lines_of_code * 0.1)
+        lines_of_code_90_percent = floor(self.total_lines_of_code * 0.9)
         smallest_units_loc = 0
         for index, m in enumerate(self.measurements):
             smallest_units_loc += m.length
