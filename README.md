@@ -9,3 +9,4 @@ Generate a self-contained binary:
 ```shell
 ./make-dist.sh
 ```
+
