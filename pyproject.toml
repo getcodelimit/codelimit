@@ -6,7 +6,7 @@ authors = ["Rob van der Leek <robvanderleek@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = ">=3.10,<3.12"
+python = ">=3.9,<3.12"
 pytest = "^7.2.0"
 halo = "^0.0.31"
 
