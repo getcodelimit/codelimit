@@ -4,6 +4,8 @@
 
 [![codecov](https://codecov.io/gh/getcodelimit/codelimit/branch/main/graph/badge.svg?token=ZQBEAJVC2Y)](https://codecov.io/gh/getcodelimit/codelimit)
 
+# Usage
+
 # Development
 
 ## Building the binary distribution
