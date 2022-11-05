@@ -1,2 +1,2 @@
 #!/bin/sh
-poetry run pyinstaller -F clim.py
+poetry run pyinstaller -F clim

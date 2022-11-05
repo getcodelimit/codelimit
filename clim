@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+import plotext
+
 from codelimit.Scanner import scan
 from codelimit.version import version, release_date
 
@@ -9,4 +11,4 @@ report = scan('.')
 print(f'Total lines of code: {report.total_lines_of_code}')
 print(f'Average length (LOC): {report.get_average()}')
 print(f'90th percentile: {report.ninetieth_percentile()}')
-report.display()
+report.display_risk_category_plot()

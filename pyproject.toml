@@ -8,6 +8,7 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = ">=3.9,<3.12"
 halo = "^0.0.31"
+plotext = "^5.2.8"
 
 
 [tool.poetry.group.dev.dependencies]
