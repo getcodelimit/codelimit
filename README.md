@@ -1,5 +1,7 @@
 # Code Limit
 
+![Logo](docs/codelimit-logo-360x360.png)
+
 # Development
 
 ## Building the binary distribution
