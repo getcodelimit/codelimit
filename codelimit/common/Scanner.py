@@ -2,9 +2,9 @@ import os
 
 from halo import Halo
 
-from codelimit.Python import get_headers, get_blocks
-from codelimit.Report import Report, Measurement
-from codelimit.Scope import build_scopes
+from codelimit.languages.python.Python import get_headers, get_blocks
+from codelimit.common.Report import Report, Measurement
+from codelimit.common.Scope import build_scopes
 
 
 def is_hidden(root, file):

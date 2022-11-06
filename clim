@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
-import plotext
 
-from codelimit.Scanner import scan
+from codelimit.common.Scanner import scan
 from codelimit.version import version, release_date
 
 print('Code Limit')

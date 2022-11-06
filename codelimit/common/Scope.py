@@ -1,4 +1,4 @@
-from codelimit.SourceRange import Header, Block
+from codelimit.common.SourceRange import Header, Block
 
 
 class Scope:

@@ -1,4 +1,4 @@
-from codelimit.Location import Location
+from codelimit.common.Location import Location
 
 
 class SourceRange:
