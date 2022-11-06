@@ -10,6 +10,8 @@ class Report:
         self.measurements = measurements
 
     def get_average(self):
+        if len(self.measurements.all()) == 0:
+            return 0
         return ceil(self.measurements.total_loc() / len(self.measurements.all()))
 
     def ninetieth_percentile(self):
@@ -20,6 +22,7 @@ class Report:
             smallest_units_loc += m.length
             if smallest_units_loc > lines_of_code_90_percent:
                 return sorted_measurements[index].length
+        return 0
 
     def risk_categories(self):
         result = [0, 0, 0, 0]
@@ -40,7 +43,3 @@ class Report:
         plotext.title("Most Favored Pizzas in the World")
         plotext.simple_bar(labels, volume, color=[34, 226, 214, 196])
         plotext.show()
-
-    def display(self):
-        for m in self.measurements.all():
-            print(f'{m.filename}#{m.line}: {m.length}')
