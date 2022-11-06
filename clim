@@ -1,13 +1,17 @@
 #!/usr/bin/env python3
-
+from codelimit.common.Report import Report
 from codelimit.common.Scanner import scan
 from codelimit.version import version, release_date
 
 print('Code Limit')
 print(f'Version: {version}, released on: {release_date}')
 
-report = scan('.')
-print(f'Total lines of code: {report.total_lines_of_code}')
+measurements = scan('.')
+print(f'Total lines of code: {measurements.total_loc()}')
+report = Report(measurements)
 print(f'Average length (LOC): {report.get_average()}')
 print(f'90th percentile: {report.ninetieth_percentile()}')
 report.display_risk_category_plot()
+with open('clim.json', 'w') as outfile:
+    outfile.write(measurements.to_json(True))
+print('Output written to clim.json')

@@ -1,40 +1,29 @@
-from dataclasses import dataclass
 from math import floor, ceil
 
 import plotext
 
-
-@dataclass
-class Measurement:
-    filename: str
-    line: int
-    length: int
+from codelimit.common.Measurements import Measurements
 
 
 class Report:
-    def __init__(self):
-        self.measurements: list[Measurement] = []
-        self.total_lines_of_code = 0
-
-    def add_measurement(self, measurement: Measurement):
-        self.measurements.append(measurement)
-        self.total_lines_of_code += measurement.length
+    def __init__(self, measurements: Measurements):
+        self.measurements = measurements
 
     def get_average(self):
-        return ceil(self.total_lines_of_code / len(self.measurements))
+        return ceil(self.measurements.total_loc() / len(self.measurements.all()))
 
     def ninetieth_percentile(self):
-        self.measurements.sort(key=lambda m: m.length)
-        lines_of_code_90_percent = floor(self.total_lines_of_code * 0.9)
+        sorted_measurements = self.measurements.sorted_by_length()
+        lines_of_code_90_percent = floor(self.measurements.total_loc() * 0.9)
         smallest_units_loc = 0
-        for index, m in enumerate(self.measurements):
+        for index, m in enumerate(sorted_measurements):
             smallest_units_loc += m.length
             if smallest_units_loc > lines_of_code_90_percent:
-                return self.measurements[index].length
+                return sorted_measurements[index].length
 
     def risk_categories(self):
         result = [0, 0, 0, 0]
-        for m in self.measurements:
+        for m in self.measurements.all():
             if m.length <= 10:
                 result[0] += m.length
             elif m.length <= 20:
@@ -53,5 +42,5 @@ class Report:
         plotext.show()
 
     def display(self):
-        for m in self.measurements:
+        for m in self.measurements.all():
             print(f'{m.filename}#{m.line}: {m.length}')
