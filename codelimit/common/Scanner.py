@@ -1,4 +1,5 @@
 import os
+from os.path import relpath
 
 from halo import Halo
 
@@ -24,14 +25,16 @@ def scan(path: str) -> Measurements:
             if is_hidden(root, file):
                 continue
             if file.lower().endswith('.py'):
-                with open(os.path.join(root, file)) as f:
+                filepath = os.path.join(root, file)
+                with open(filepath) as f:
                     code = f.read()
                 headers = get_headers(code)
                 blocks = get_blocks(code)
                 scopes = build_scopes(headers, blocks)
                 for scope in scopes:
-                    length = scope.block.end.line - scope.block.start.line + 1
-                    measurement = Measurement(file, scope.header.start.line, length)
+                    length = scope.block.end.line - scope.header.start.line + 1
+                    rel_path = relpath(filepath, path)
+                    measurement = Measurement(rel_path, scope.header.start.line, length)
                     result.add(measurement)
                 scanned += 1
                 spinner.text = f'Scanned {scanned} file(s)'
