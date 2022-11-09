@@ -1,7 +1,7 @@
 from re import finditer
 
-from codelimit.common.Location import Location
-from codelimit.common.Source import index_to_location
+from codelimit.common.SourceLocation import SourceLocation
+from codelimit.common.SourceUtils import index_to_location
 from codelimit.common.SourceRange import Block, Header
 
 
@@ -30,11 +30,11 @@ def get_blocks(code: str) -> list[Block]:
         if line_indentation is None:
             continue
         if start is None:
-            start = Location(line_nr, line_indentation + 1)
+            start = SourceLocation(line_nr, line_indentation + 1)
         elif line_indentation != indentation:
             result.append(Block(start, end))
-            start = Location(line_nr, line_indentation + 1)
-        end = Location(line_nr, len(line))
+            start = SourceLocation(line_nr, line_indentation + 1)
+        end = SourceLocation(line_nr, len(line))
         indentation = line_indentation
     if start and indentation is not None:
         result.append(Block(start, end))

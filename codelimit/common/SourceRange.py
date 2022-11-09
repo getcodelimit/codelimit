@@ -1,8 +1,8 @@
-from codelimit.common.Location import Location
+from codelimit.common.SourceLocation import SourceLocation
 
 
 class SourceRange:
-    def __init__(self, start: Location, end: Location):
+    def __init__(self, start: SourceLocation, end: SourceLocation):
         self.start = start
         self.end = end
 

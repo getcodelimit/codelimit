@@ -1,7 +1,7 @@
-from codelimit.common.Location import Location
+from codelimit.common.SourceLocation import SourceLocation
 
 
 def test_str():
-    position = Location(1, 1)
+    position = SourceLocation(1, 1)
 
     assert str(position) == '{line: 1, column: 1}'
