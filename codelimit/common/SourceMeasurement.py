@@ -2,7 +2,6 @@ from dataclasses import dataclass
 
 
 @dataclass
-class Measurement:
-    filename: str
+class SourceMeasurement:
     line: int
     length: int

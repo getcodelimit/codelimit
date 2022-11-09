@@ -1,8 +1,8 @@
-from codelimit.common.Location import Location
+from codelimit.common.SourceLocation import SourceLocation
 from codelimit.common.SourceRange import SourceRange
 
 
-def index_to_location(code: str, index: int) -> Location:
+def index_to_location(code: str, index: int) -> SourceLocation:
     line = 1 + len([c for c in code[:index + 1] if c == '\n'])
     if index > 0 and code[index] == '\n':
         line -= 1
@@ -15,10 +15,10 @@ def index_to_location(code: str, index: int) -> Location:
             if c == '\n':
                 break
             column += 1
-    return Location(line, column)
+    return SourceLocation(line, column)
 
 
-def location_to_index(code: str, position: Location) -> int:
+def location_to_index(code: str, position: SourceLocation) -> int:
     result = 0
     lines = code.split('\n')
     for i in range(0, position.line - 1):

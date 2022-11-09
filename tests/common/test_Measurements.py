@@ -1,21 +1,32 @@
-from codelimit.common.Measurement import Measurement
-from codelimit.common.Measurements import Measurements
+from codelimit.common.SourceFile import SourceFile
+from codelimit.common.SourceMeasurement import SourceMeasurement
+from codelimit.common.Codebase import Codebase
 
 
 def test_to_json():
-    measurements = Measurements()
-    m = Measurement('foo.py', 10, 10)
-    measurements.add(m)
+    measurements = Codebase()
+    file = SourceFile('foo.py', [SourceMeasurement(10, 10)])
+    measurements.add(file)
 
-    assert measurements.to_json() == '[{"filename": "foo.py", "line": 10, "length": 10}]'
+    assert measurements.to_json() == '[{"path": "foo.py", "measurements": [{"line": 10, "length": 10}]}]'
 
 
 def test_to_json_multiple():
-    measurements = Measurements()
-    m = Measurement('foo.py', 10, 10)
-    measurements.add(m)
-    m = Measurement('bar.py', 20, 10)
-    measurements.add(m)
+    measurements = Codebase()
+    file = SourceFile('foo.py', [SourceMeasurement(10, 10)])
+    measurements.add(file)
+    file = SourceFile('bar.py', [SourceMeasurement(20, 10)])
+    measurements.add(file)
 
-    assert measurements.to_json() == '[{"filename": "foo.py", "line": 10, "length": 10}' + \
-           ', {"filename": "bar.py", "line": 20, "length": 10}]'
+    assert measurements.to_json() == '[{"path": "foo.py", "measurements": [{"line": 10, "length": 10}]}' + \
+           ', {"path": "bar.py", "measurements": [{"line": 20, "length": 10}]}]'
+
+
+def test_all():
+    measurements = Codebase()
+    file = SourceFile('foo.py', [SourceMeasurement(10, 10)])
+    measurements.add(file)
+    file = SourceFile('bar.py', [SourceMeasurement(20, 10), SourceMeasurement(30, 10)])
+    measurements.add(file)
+
+    assert len(measurements.all_measurements()) == 3

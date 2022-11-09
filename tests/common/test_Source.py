@@ -1,5 +1,5 @@
-from codelimit.common.Location import Location
-from codelimit.common.Source import index_to_location, location_to_index
+from codelimit.common.SourceLocation import SourceLocation
+from codelimit.common.SourceUtils import index_to_location, location_to_index
 
 
 def test_index_to_location_single_line():
@@ -36,7 +36,7 @@ def test_index_to_location_index_is_newline():
 def test_location_to_index():
     code = 'foo = bar'
 
-    result = location_to_index(code, Location(1, 5))
+    result = location_to_index(code, SourceLocation(1, 5))
 
     assert result == 4
 
@@ -46,7 +46,7 @@ def test_location_to_index_multiline():
     code += 'foo = bar\n'
     code += 'spam = eggs\n'
 
-    result = location_to_index(code, Location(2, 6))
+    result = location_to_index(code, SourceLocation(2, 6))
 
     assert result == 15
 
@@ -56,6 +56,6 @@ def test_location_to_index_location_is_newline():
     code += 'foo = bar\n'
     code += '\n'
 
-    result = location_to_index(code, Location(2, 0))
+    result = location_to_index(code, SourceLocation(2, 0))
 
     assert result == 10

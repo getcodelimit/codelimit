@@ -15,8 +15,8 @@ def test_scan_single_file():
     result = scan(tmp_root.name)
 
     assert result.total_loc() == 2
-    assert len(result.all()) == 1
-    assert result.all()[0].filename == 'foo.py'
+    assert len(result.all_measurements()) == 1
+    assert result.all_file_measurements()[0].path == 'foo.py'
 
 
 def test_scan_single_file_in_sub_folder():
@@ -31,5 +31,5 @@ def test_scan_single_file_in_sub_folder():
     result = scan(tmp_root.name)
 
     assert result.total_loc() == 2
-    assert len(result.all()) == 1
-    assert result.all()[0].filename == 'src/foo.py'
+    assert len(result.all_measurements()) == 1
+    assert result.all_file_measurements()[0].path == 'src/foo.py'
