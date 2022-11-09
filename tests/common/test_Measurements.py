@@ -1,6 +1,6 @@
+from codelimit.common.Codebase import Codebase
 from codelimit.common.SourceFile import SourceFile
 from codelimit.common.SourceMeasurement import SourceMeasurement
-from codelimit.common.Codebase import Codebase
 
 
 def test_to_json():
@@ -8,7 +8,7 @@ def test_to_json():
     file = SourceFile('foo.py', [SourceMeasurement(10, 10)])
     measurements.add(file)
 
-    assert measurements.to_json() == '[{"path": "foo.py", "measurements": [{"line": 10, "length": 10}]}]'
+    assert measurements.to_json() == '[{"path": "foo.py", "measurements": [{"start_line": 10, "value": 10}]}]'
 
 
 def test_to_json_multiple():
@@ -18,8 +18,8 @@ def test_to_json_multiple():
     file = SourceFile('bar.py', [SourceMeasurement(20, 10)])
     measurements.add(file)
 
-    assert measurements.to_json() == '[{"path": "foo.py", "measurements": [{"line": 10, "length": 10}]}' + \
-           ', {"path": "bar.py", "measurements": [{"line": 20, "length": 10}]}]'
+    assert measurements.to_json() == '[{"path": "foo.py", "measurements": [{"start_line": 10, "value": 10}]}' + \
+           ', {"path": "bar.py", "measurements": [{"start_line": 20, "value": 10}]}]'
 
 
 def test_all():

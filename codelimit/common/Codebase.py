@@ -22,13 +22,13 @@ class Codebase:
         return result
 
     def all_measurements_sorted_by_length(self):
-        return sorted(self.all_measurements(), key=lambda m: m.length)
+        return sorted(self.all_measurements(), key=lambda m: m.value)
 
     def total_loc(self) -> int:
         result = 0
         for file_measurements in self._file_measurements:
             for m in file_measurements.measurements:
-                result += m.length
+                result += m.value
         return result
 
     def to_json(self, pretty_print=False) -> str:

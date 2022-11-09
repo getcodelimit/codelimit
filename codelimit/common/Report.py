@@ -20,9 +20,9 @@ class Report:
         lines_of_code_90_percent = floor(self.measurements.total_loc() * 0.9)
         smallest_units_loc = 0
         for index, m in enumerate(sorted_measurements):
-            smallest_units_loc += m.length
+            smallest_units_loc += m.value
             if smallest_units_loc > lines_of_code_90_percent:
-                return sorted_measurements[index].length
+                return sorted_measurements[index].value
         return 0
 
     def risk_categories(self):
