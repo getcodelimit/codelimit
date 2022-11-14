@@ -6,9 +6,10 @@ from halo import Halo
 from codelimit.common.SourceFile import SourceFile
 from codelimit.common.SourceMeasurement import SourceMeasurement
 from codelimit.common.Codebase import Codebase
-from codelimit.common.Scope import build_scopes
+from codelimit.common.scope_utils import build_scopes
 from codelimit.common.utils import risk_categories
-from codelimit.languages.python.Python import get_headers, get_blocks
+from codelimit.languages.Language import Language
+from codelimit.languages.python.PythonLaguage import PythonLanguage
 
 
 def is_hidden(root, file):
@@ -18,6 +19,7 @@ def is_hidden(root, file):
 
 
 def scan(path: str) -> Codebase:
+    language: Language = PythonLanguage()
     result = Codebase()
     spinner = Halo(text='Scanning', spinner='dots')
     spinner.start()
@@ -26,12 +28,12 @@ def scan(path: str) -> Codebase:
         for file in files:
             if is_hidden(root, file):
                 continue
-            if file.lower().endswith('.py'):
-                filepath = os.path.join(root, file)
+            filepath = os.path.join(root, file)
+            if language.accept_file(filepath):
                 with open(filepath) as f:
                     code = f.read()
-                headers = get_headers(code)
-                blocks = get_blocks(code)
+                headers = language.get_scope_extractor().extract_headers(code)
+                blocks = language.get_scope_extractor().extract_blocks(code)
                 scopes = build_scopes(headers, blocks)
                 if scopes:
                     rel_path = relpath(filepath, path)

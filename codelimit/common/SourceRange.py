@@ -11,11 +11,3 @@ class SourceRange:
 
     def __repr__(self):
         return self.__str__()
-
-
-class Header(SourceRange):
-    pass
-
-
-class Block(SourceRange):
-    pass
