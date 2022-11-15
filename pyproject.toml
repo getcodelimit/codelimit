@@ -9,6 +9,7 @@ readme = "README.md"
 python = ">=3.9,<3.12"
 halo = "^0.0.31"
 plotext = "^5.2.8"
+pygments = "^2.13.0"
 
 
 [tool.poetry.group.dev.dependencies]

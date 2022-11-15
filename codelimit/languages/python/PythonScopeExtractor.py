@@ -1,23 +1,23 @@
-from re import finditer
-
 from codelimit.common.SourceLocation import SourceLocation
 from codelimit.common.SourceRange import SourceRange
+from codelimit.common.Token import Token
 from codelimit.common.source_utils import index_to_location
 from codelimit.languages.ScopeExtractor import ScopeExtractor
 
 
 class PythonScopeExtractor(ScopeExtractor):
 
-    def extract_headers(self, code: str) -> list[SourceRange]:
+    def extract_headers(self, code: str, tokens: list[Token]) -> list[SourceRange]:
         result = []
-        for match in finditer(r'\b(def)\b', code):
-            start_index = match.span(1)[0]
-            end_index = match.span(1)[1]
-            header = SourceRange(index_to_location(code, start_index), index_to_location(code, end_index - 1))
-            result.append(header)
+        for t in tokens:
+            if t.is_keyword() and t.value == 'def':
+                start_index = t.index
+                end_index = t.index + len(t.value)
+                header = SourceRange(index_to_location(code, start_index), index_to_location(code, end_index - 1))
+                result.append(header)
         return result
 
-    def extract_blocks(self, code: str) -> list[SourceRange]:
+    def extract_blocks(self, code: str, tokens: list[Token]) -> list[SourceRange]:
         result = []
         lines = code.split('\n')
         line_nr = 0

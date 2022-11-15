@@ -157,6 +157,17 @@ dev = ["pre-commit", "tox"]
 testing = ["pytest", "pytest-benchmark"]
 
 [[package]]
+name = "pygments"
+version = "2.13.0"
+description = "Pygments is a syntax highlighting package written in Python."
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.extras]
+plugins = ["importlib-metadata"]
+
+[[package]]
 name = "pyinstaller"
 version = "5.6.1"
 description = "PyInstaller bundles a Python application and all its dependencies into a single package."
@@ -289,7 +300,7 @@ python-versions = ">=3.7"
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.9,<3.12"
-content-hash = "fd56cbcb39ae12e4cf03ecc1d22147b4ede24e4994c7286782cf8097bbb8dd3c"
+content-hash = "36bf9bebda1f9b74b2127ba30fa63ca2f9ffd64145ceb55f4435eb42e98889d7"
 
 [metadata.files]
 altgraph = [
@@ -393,6 +404,10 @@ plotext = [
 pluggy = [
     {file = "pluggy-1.0.0-py2.py3-none-any.whl", hash = "sha256:74134bbf457f031a36d68416e1509f34bd5ccc019f0bcc952c7b909d06b37bd3"},
     {file = "pluggy-1.0.0.tar.gz", hash = "sha256:4224373bacce55f955a878bf9cfa763c1e360858e330072059e10bad68531159"},
+]
+pygments = [
+    {file = "Pygments-2.13.0-py3-none-any.whl", hash = "sha256:f643f331ab57ba3c9d89212ee4a2dabc6e94f117cf4eefde99a0574720d14c42"},
+    {file = "Pygments-2.13.0.tar.gz", hash = "sha256:56a8508ae95f98e2b9bdf93a6be5ae3f7d8af858b43e02c5a2ff083726be40c1"},
 ]
 pyinstaller = [
     {file = "pyinstaller-5.6.1-py3-none-macosx_10_13_universal2.whl", hash = "sha256:0465edb7a5b2bc74ac983d419fd980fd2e4c7d49f4c013edd4befb6ca70d3c2b"},

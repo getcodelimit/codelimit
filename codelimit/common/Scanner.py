@@ -3,9 +3,9 @@ from os.path import relpath
 
 from halo import Halo
 
+from codelimit.common.Codebase import Codebase
 from codelimit.common.SourceFile import SourceFile
 from codelimit.common.SourceMeasurement import SourceMeasurement
-from codelimit.common.Codebase import Codebase
 from codelimit.common.scope_utils import build_scopes
 from codelimit.common.utils import risk_categories
 from codelimit.languages.Language import Language
@@ -32,8 +32,9 @@ def scan(path: str) -> Codebase:
             if language.accept_file(filepath):
                 with open(filepath) as f:
                     code = f.read()
-                headers = language.get_scope_extractor().extract_headers(code)
-                blocks = language.get_scope_extractor().extract_blocks(code)
+                tokens = language.lex(code)
+                headers = language.get_scope_extractor().extract_headers(code, tokens)
+                blocks = language.get_scope_extractor().extract_blocks(code, tokens)
                 scopes = build_scopes(headers, blocks)
                 if scopes:
                     rel_path = relpath(filepath, path)
