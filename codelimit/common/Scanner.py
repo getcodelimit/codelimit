@@ -1,5 +1,6 @@
 import os
 from os.path import relpath
+from pathlib import Path
 
 from halo import Halo
 
@@ -12,22 +13,17 @@ from codelimit.languages.Language import Language
 from codelimit.languages.python.PythonLaguage import PythonLanguage
 
 
-def is_hidden(root, file):
-    if file.startswith('.'):
-        return True
-    return len([d for d in root.split(os.sep)[1:] if d.startswith('.')]) > 0
-
-
-def scan(path: str) -> Codebase:
+def scan(path: Path) -> Codebase:
+    print(path.absolute())
     language: Language = PythonLanguage()
     result = Codebase()
     spinner = Halo(text='Scanning', spinner='dots')
     spinner.start()
     scanned = 0
-    for root, dirs, files in os.walk(path):
+    for root, dirs, files in os.walk(path.absolute()):
+        files = [f for f in files if not f[0] == '.']
+        dirs[:] = [d for d in dirs if not d[0] == '.']
         for file in files:
-            if is_hidden(root, file):
-                continue
             filepath = os.path.join(root, file)
             if language.accept_file(filepath):
                 with open(filepath) as f:
