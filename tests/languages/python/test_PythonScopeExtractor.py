@@ -1,5 +1,6 @@
 from pygments.lexers import PythonLexer
 
+from codelimit.common.scope_utils import build_scopes
 from codelimit.languages.python.PythonLaguage import PythonLanguage
 from codelimit.languages.python.PythonScopeExtractor import _get_indentation, PythonScopeExtractor
 
@@ -131,3 +132,19 @@ def test_get_blocks_multi_blocks():
     assert result[2].end.line == 4
     assert result[3].start.line == 5
     assert result[3].end.line == 5
+
+
+def test_trailing_global_code():
+    code = ''
+    code += 'def foo():\n'
+    code += '  pass\n'
+    code += '\n'
+    code += 'bar = [\n'
+    code += '  "bar"\n'
+    code += ']\n'
+
+    result = build_scopes(PythonLanguage(), code)
+
+    assert len(result) == 1
+    assert len(result[0]) == 2
+

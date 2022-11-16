@@ -28,16 +28,13 @@ def scan(path: Path) -> Codebase:
             if language.accept_file(filepath):
                 with open(filepath) as f:
                     code = f.read()
-                tokens = language.lex(code)
-                headers = language.get_scope_extractor().extract_headers(code, tokens)
-                blocks = language.get_scope_extractor().extract_blocks(code, tokens)
-                scopes = build_scopes(headers, blocks)
+                scopes = build_scopes(language, code)
                 if scopes:
                     rel_path = relpath(filepath, path)
                     file_measurements = SourceFile(rel_path)
                     measurements = []
                     for scope in scopes:
-                        length = scope.block.end.line - scope.header.start.line + 1
+                        length = len(scope)
                         measurements.append(SourceMeasurement(scope.header.start.line, length))
                     file_measurements.measurements = measurements
                     file_measurements.risk_categories = risk_categories(measurements)

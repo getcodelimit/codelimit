@@ -7,7 +7,10 @@ class Scope:
         self.block = block
 
     def __str__(self):
-        return f'{{header: {self.header}, block: {self.block}}}'
+        return f'[{self.header.start}, {self.block.end}]'
 
     def __repr__(self):
         return self.__str__()
+
+    def __len__(self):
+        return self.block.end.line - self.header.start.line + 1
