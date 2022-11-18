@@ -1,5 +1,8 @@
+from typing import Callable
+
 from codelimit.common.SourceLocation import SourceLocation
-from codelimit.common.SourceRange import SourceRange
+from codelimit.common.Token import Token
+from codelimit.common.TokenRange import TokenRange
 
 
 def index_to_location(code: str, index: int) -> SourceLocation:
@@ -27,7 +30,11 @@ def location_to_index(code: str, position: SourceLocation) -> int:
     return result
 
 
-def get_range(code: str, source_range: SourceRange) -> str:
-    start_index = location_to_index(code, source_range.start)
-    end_index = location_to_index(code, source_range.end)
-    return code[start_index:end_index + 1]
+def get_range(code: str, source_range: TokenRange) -> str:
+    start_index = location_to_index(code, source_range.tokens[0].location)
+    end_index = location_to_index(code, source_range.tokens[-1].location)
+    return code[start_index:end_index + len(source_range.tokens[-1].value)]
+
+
+def filter_tokens(tokens: list[Token], predicate: Callable[[Token], bool]) -> list[Token]:
+    return [t for t in tokens if predicate(t)]

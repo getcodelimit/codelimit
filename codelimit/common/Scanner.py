@@ -9,7 +9,7 @@ from codelimit.common.SourceFile import SourceFile
 from codelimit.common.SourceMeasurement import SourceMeasurement
 from codelimit.common.scope_utils import build_scopes
 from codelimit.common.utils import risk_categories
-from codelimit.languages.Language import Language
+from codelimit.common.Language import Language
 from codelimit.languages.python.PythonLaguage import PythonLanguage
 
 
@@ -35,7 +35,7 @@ def scan(path: Path) -> Codebase:
                     measurements = []
                     for scope in scopes:
                         length = len(scope)
-                        measurements.append(SourceMeasurement(scope.header.start.line, length))
+                        measurements.append(SourceMeasurement(scope.header.tokens[0].location.line, length))
                     file_measurements.measurements = measurements
                     file_measurements.risk_categories = risk_categories(measurements)
                     result.add(file_measurements)

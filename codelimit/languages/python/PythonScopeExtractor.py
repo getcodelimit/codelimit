@@ -1,44 +1,65 @@
-from codelimit.common.SourceLocation import SourceLocation
-from codelimit.common.SourceRange import SourceRange
+from codelimit.common.ScopeExtractor import ScopeExtractor
 from codelimit.common.Token import Token
-from codelimit.common.source_utils import index_to_location
-from codelimit.languages.ScopeExtractor import ScopeExtractor
+from codelimit.common.TokenRange import TokenRange
 
 
 class PythonScopeExtractor(ScopeExtractor):
 
-    def extract_headers(self, code: str, tokens: list[Token]) -> list[SourceRange]:
+    def extract_headers(self, tokens: list[Token]) -> list[TokenRange]:
         result = []
         for t in tokens:
             if t.is_keyword() and t.value == 'def':
-                start_index = t.index
-                end_index = t.index + len(t.value)
-                header = SourceRange(index_to_location(code, start_index), index_to_location(code, end_index - 1))
+                header = TokenRange([t])
                 result.append(header)
         return result
 
-    def extract_blocks(self, code: str, tokens: list[Token]) -> list[SourceRange]:
+    def extract_blocks(self, tokens: list[Token]) -> list[TokenRange]:
+        lines = _get_token_lines(tokens)
         result = []
-        lines = code.split('\n')
-        line_nr = 0
         indentation = None
-        start = None
-        end = None
+        scope_tokens = []
         for line in lines:
-            line_nr += 1
-            line_indentation = _get_indentation(line)
-            if line_indentation is None:
-                continue
-            if start is None:
-                start = SourceLocation(line_nr, line_indentation + 1)
-            elif line_indentation != indentation:
-                result.append(SourceRange(start, end))
-                start = SourceLocation(line_nr, line_indentation + 1)
-            end = SourceLocation(line_nr, len(line))
-            indentation = line_indentation
-        if start and indentation is not None:
-            result.append(SourceRange(start, end))
+            token_indentation = line[0].location.column
+            if len(scope_tokens) == 0:
+                scope_tokens.extend(line)
+                indentation = token_indentation
+            else:
+                if token_indentation == indentation:
+                    scope_tokens.extend(line)
+                else:
+                    result.append(TokenRange(scope_tokens))
+                    indentation = token_indentation
+                    scope_tokens = line
+        if len(scope_tokens) > 0:
+            result.append(TokenRange(scope_tokens))
         return result
+
+
+def _get_token_lines(tokens: list[Token]) -> list[list[Token]]:
+    result = []
+    line = []
+    line_continuation = False
+    line_nr = 0
+    for t in tokens:
+        if len(line) == 0:
+            line.append(t)
+            line_nr = t.location.line
+        else:
+            if line_continuation:
+                line.append(t)
+                line_nr = t.location.line
+                line_continuation = False
+            if t.location.line == line_nr:
+                line.append(t)
+                if t.value.endswith("\\\n"):
+                    line_continuation = True
+            else:
+                result.append(line)
+                line = [t]
+                line_nr = t.location.line
+    if len(line) > 0:
+        result.append(line)
+    return result
 
 
 def _get_indentation(line: str):

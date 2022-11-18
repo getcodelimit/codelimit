@@ -1,9 +1,9 @@
-from codelimit.common.SourceLocation import SourceLocation
-from codelimit.common.SourceRange import SourceRange
+from codelimit.common.TokenRange import TokenRange
+from codelimit.languages.python.PythonLaguage import PythonLanguage
 
 
 def test_str():
-    block = SourceRange(SourceLocation(1, 1), SourceLocation(2, 10))
+    tokens = PythonLanguage().lex('print("hello world"')
+    block = TokenRange(tokens)
 
-    assert str(block) == '[{line: 1, column: 1}, {line: 2, column: 10}]'
-
+    assert str(block) == '[{line: 1, column: 1}, {line: 1, column: 19}]'
