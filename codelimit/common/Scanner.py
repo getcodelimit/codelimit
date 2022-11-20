@@ -44,7 +44,6 @@ class Scanner:
     def _scan_file(self, root, folder, file):
         filepath = os.path.join(folder, file)
         rel_path = relpath(filepath, root)
-        print('Parsing ' + file)
         with open(filepath) as f:
             code = f.read()
         scopes = build_scopes(self.language, code)
