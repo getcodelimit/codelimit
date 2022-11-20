@@ -1,5 +1,5 @@
 from codelimit.common.SourceLocation import SourceLocation
-from codelimit.common.source_utils import index_to_location, location_to_index
+from codelimit.common.source_utils import index_to_location, location_to_index, get_newline_indices
 
 
 def test_index_to_location_single_line():
@@ -59,3 +59,10 @@ def test_location_to_index_location_is_newline():
     result = location_to_index(code, SourceLocation(2, 0))
 
     assert result == 10
+
+
+def test_get_newline_indices():
+    assert get_newline_indices('') == []
+    assert get_newline_indices('\n') == [0]
+    assert get_newline_indices(' \n \n') == [1, 3]
+    assert get_newline_indices(' \n \n\nabcdef\n') == [1, 3, 4, 11]

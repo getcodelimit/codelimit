@@ -5,6 +5,14 @@ from codelimit.common.Token import Token
 from codelimit.common.TokenRange import TokenRange
 
 
+def get_newline_indices(code: str) -> list[int]:
+    result = []
+    for index, c in enumerate(code):
+        if c == '\n':
+            result.append(index)
+    return result
+
+
 def index_to_location(code: str, index: int) -> SourceLocation:
     line = 1 + len([c for c in code[:index + 1] if c == '\n'])
     if index > 0 and code[index] == '\n':
