@@ -3,7 +3,7 @@ from codelimit.common.TokenRange import TokenRange
 from codelimit.common.Language import Language
 
 
-def build_scopes(language: Language, code: str):
+def build_scopes(language: Language, code: str) -> list[Scope]:
     tokens = language.lex(code)
     scope_extractor = language.get_scope_extractor()
     headers = scope_extractor.extract_headers(tokens)
@@ -17,7 +17,7 @@ def _build_scopes_from_headers_and_blocks(headers: list[TokenRange], blocks: lis
     for header in headers[::-1]:
         scope_blocks = []
         for index, block in enumerate(reverse_blocks):
-            if block.tokens[0].location.line <= header.tokens[0].location.line:
+            if block.lt(header) or block.overlaps(header):
                 reverse_blocks = reverse_blocks[index:]
                 break
             if block.tokens[0].location.column > header.tokens[0].location.column:

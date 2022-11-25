@@ -51,6 +51,43 @@ def test_get_blocks_single_multiline_block():
     assert result[0].tokens[-1].location.column == 8
 
 
+def test_get_blocks_multi_blocks():
+    code = ''
+    code += 'def foo():\n'
+    code += '  pass\n'
+    code += '\n'
+    code += 'def bar():\n'
+    code += '  foo()\n'
+
+    tokens = PythonLanguage().lex(code)
+    result = PythonScopeExtractor().extract_blocks(tokens)
+
+    assert len(result) == 4
+    assert result[0].tokens[0].location.line == 1
+    assert result[0].tokens[-1].location.line == 1
+    assert result[1].tokens[0].location.line == 2
+    assert result[1].tokens[-1].location.line == 2
+    assert result[2].tokens[0].location.line == 4
+    assert result[2].tokens[-1].location.line == 4
+    assert result[3].tokens[0].location.line == 5
+    assert result[3].tokens[-1].location.line == 5
+
+
+def test_trailing_global_code():
+    code = ''
+    code += 'def foo():\n'
+    code += '  pass\n'
+    code += '\n'
+    code += 'bar = [\n'
+    code += '  "bar"\n'
+    code += ']\n'
+
+    result = build_scopes(PythonLanguage(), code)
+
+    assert len(result) == 1
+    assert len(result[0]) == 2
+
+
 def test_get_headers_no_headers():
     tokens = PythonLanguage().lex('')
     result = PythonScopeExtractor().extract_headers(tokens)
@@ -108,43 +145,6 @@ def test_get_headers_multi_header_with_comment():
     assert result[0].tokens[0].location.column == 1
     assert result[0].tokens[-1].location.line == 2
     assert result[0].tokens[-1].location.column == 1
-
-
-def test_get_blocks_multi_blocks():
-    code = ''
-    code += 'def foo():\n'
-    code += '  pass\n'
-    code += '\n'
-    code += 'def bar():\n'
-    code += '  foo()\n'
-
-    tokens = PythonLanguage().lex(code)
-    result = PythonScopeExtractor().extract_blocks(tokens)
-
-    assert len(result) == 4
-    assert result[0].tokens[0].location.line == 1
-    assert result[0].tokens[-1].location.line == 1
-    assert result[1].tokens[0].location.line == 2
-    assert result[1].tokens[-1].location.line == 2
-    assert result[2].tokens[0].location.line == 4
-    assert result[2].tokens[-1].location.line == 4
-    assert result[3].tokens[0].location.line == 5
-    assert result[3].tokens[-1].location.line == 5
-
-
-def test_trailing_global_code():
-    code = ''
-    code += 'def foo():\n'
-    code += '  pass\n'
-    code += '\n'
-    code += 'bar = [\n'
-    code += '  "bar"\n'
-    code += ']\n'
-
-    result = build_scopes(PythonLanguage(), code)
-
-    assert len(result) == 1
-    assert len(result[0]) == 2
 
 
 def test_do_not_count_comment_lines():

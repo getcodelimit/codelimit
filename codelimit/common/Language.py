@@ -32,7 +32,7 @@ class Language(ABC):
             newline_index = 0
             line_start = 0
             for t in lexer_tokens:
-                while t[0] > indices[newline_index] and newline_index < len(indices) - 1:
+                while newline_index < len(indices) and t[0] > indices[newline_index]:
                     line_start = indices[newline_index] + 1
                     newline_index += 1
                 tokens.append(Token(SourceLocation(newline_index + 1, t[0] - line_start + 1), t[1], t[2]))

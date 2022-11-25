@@ -1,3 +1,5 @@
+from typing import Union
+
 from codelimit.common.SourceMeasurement import SourceMeasurement
 
 
@@ -13,3 +15,15 @@ def risk_categories(measurements: list[SourceMeasurement]):
         else:
             result[3] += m.value
     return result
+
+
+def path_has_suffix(path: str, suffixes: Union[str, list[str]]):
+    dot_index = path.rfind('.')
+    if dot_index >= 0:
+        suffix = path[dot_index + 1:]
+        if type(suffixes) == list:
+            return suffix in suffixes
+        else:
+            return suffix == suffixes
+    else:
+        return False
