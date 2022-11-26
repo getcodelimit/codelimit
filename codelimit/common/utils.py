@@ -1,3 +1,5 @@
+import dataclasses
+import json
 from typing import Union
 
 from codelimit.common.SourceMeasurement import SourceMeasurement
@@ -27,3 +29,11 @@ def path_has_suffix(path: str, suffixes: Union[str, list[str]]):
             return suffix == suffixes
     else:
         return False
+
+
+class EnhancedJSONEncoder(json.JSONEncoder):
+    def default(self, o):
+        if dataclasses.is_dataclass(o):
+            return dataclasses.asdict(o)
+        else:
+            return o.__dict__

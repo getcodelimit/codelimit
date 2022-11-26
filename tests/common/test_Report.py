@@ -8,3 +8,13 @@ def test_empty_measurements_collection():
     assert report.get_average() == 0
     assert report.ninetieth_percentile() == 0
     assert report.risk_categories() == [0, 0, 0, 0]
+
+    json = ''
+    json += '{\n'
+    json += f'  "uuid": "{report.uuid}",\n'
+    json += '  "codebase": {\n'
+    json += '    "files": []\n'
+    json += '  }\n'
+    json += '}'
+
+    assert report.to_json(True) == json

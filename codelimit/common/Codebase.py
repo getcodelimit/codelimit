@@ -1,23 +1,23 @@
-import dataclasses
 import json
 
 from codelimit.common.SourceFile import SourceFile
 from codelimit.common.SourceMeasurement import SourceMeasurement
+from codelimit.common.utils import EnhancedJSONEncoder
 
 
 class Codebase:
     def __init__(self):
-        self._file_measurements = []
+        self.files: list[SourceFile] = []
 
-    def add(self, measurement: SourceFile):
-        self._file_measurements.append(measurement)
+    def add(self, file: SourceFile):
+        self.files.append(file)
 
     def all_file_measurements(self):
-        return self._file_measurements
+        return self.files
 
     def all_measurements(self) -> list[SourceMeasurement]:
         result = []
-        for f in self._file_measurements:
+        for f in self.files:
             result.extend(f.measurements)
         return result
 
@@ -26,20 +26,13 @@ class Codebase:
 
     def total_loc(self) -> int:
         result = 0
-        for file_measurements in self._file_measurements:
-            for m in file_measurements.measurements:
+        for file in self.files:
+            for m in file.measurements:
                 result += m.value
         return result
 
     def to_json(self, pretty_print=False) -> str:
-        class EnhancedJSONEncoder(json.JSONEncoder):
-            def default(self, o):
-                if dataclasses.is_dataclass(o):
-                    return dataclasses.asdict(o)
-                else:
-                    return o.__dict__
-
         if pretty_print:
-            return json.dumps(self._file_measurements, cls=EnhancedJSONEncoder, indent=2)
+            return json.dumps(self.files, cls=EnhancedJSONEncoder, indent=2)
         else:
-            return json.dumps(self._file_measurements, cls=EnhancedJSONEncoder)
+            return json.dumps(self.files, cls=EnhancedJSONEncoder)

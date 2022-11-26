@@ -51,11 +51,11 @@ class Scanner:
             code = f.read()
         scopes = build_scopes(language, code)
         if scopes:
-            file_measurements = SourceFile(rel_path)
+            source_file = SourceFile(rel_path)
             measurements = []
             for scope in scopes:
                 length = len(scope)
                 measurements.append(SourceMeasurement(scope.header.tokens[0].location.line, length))
-            file_measurements.measurements = measurements
-            file_measurements.risk_categories = risk_categories(measurements)
-            self.codebase.add(file_measurements)
+            source_file.measurements = measurements
+            source_file.risk_categories = risk_categories(measurements)
+            self.codebase.add(source_file)

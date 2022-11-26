@@ -13,14 +13,14 @@ def scan_path(path: Optional[Path] = typer.Argument(Path('.'))):
     print('Code Limit')
     print(f'Version: {version}, released on: {release_date}')
 
-    measurements = Scanner().scan(path)
-    print(f'Total lines of code: {measurements.total_loc()}')
-    report = Report(measurements)
+    codebase = Scanner().scan(path)
+    print(f'Total lines of code: {codebase.total_loc()}')
+    report = Report(codebase)
     print(f'Average length (LOC): {report.get_average()}')
     print(f'90th percentile: {report.ninetieth_percentile()}')
     report.display_risk_category_plot()
     with open('codelimit.json', 'w') as outfile:
-        outfile.write(measurements.to_json(True))
+        outfile.write(codebase.to_json(True))
     print('Output written to codelimit.json')
 
 
