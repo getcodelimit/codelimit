@@ -17,7 +17,7 @@ def test_scan_single_file():
 
     assert result.total_loc() == 2
     assert len(result.all_measurements()) == 1
-    assert result.all_file_measurements()[0].path == 'foo.py'
+    assert result.all_files()[0] == 'foo.py'
 
 
 def test_scan_single_file_in_sub_folder():
@@ -33,7 +33,7 @@ def test_scan_single_file_in_sub_folder():
 
     assert result.total_loc() == 2
     assert len(result.all_measurements()) == 1
-    assert result.all_file_measurements()[0].path == 'src/foo.py'
+    assert result.all_files()[0] == 'src/foo.py'
 
 
 def test_skip_hidden_files():
@@ -57,4 +57,4 @@ def test_skip_hidden_files():
 
     assert result.total_loc() == 2
     assert len(result.all_measurements()) == 1
-    assert result.all_file_measurements()[0].path == 'foo.py'
+    assert result.all_files()[0] == 'foo.py'

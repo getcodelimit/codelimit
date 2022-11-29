@@ -13,7 +13,10 @@ def test_empty_measurements_collection():
     json += '{\n'
     json += f'  "uuid": "{report.uuid}",\n'
     json += '  "codebase": {\n'
-    json += '    "files": []\n'
+    json += '    "tree": {\n'
+    json += '      ".": {}\n'
+    json += '    },\n'
+    json += '    "measurements": {}\n'
     json += '  }\n'
     json += '}'
 

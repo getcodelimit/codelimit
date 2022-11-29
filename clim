@@ -20,7 +20,7 @@ def scan_path(path: Optional[Path] = typer.Argument(Path('.'))):
     print(f'90th percentile: {report.ninetieth_percentile()}')
     report.display_risk_category_plot()
     with open('codelimit.json', 'w') as outfile:
-        outfile.write(codebase.to_json(True))
+        outfile.write(report.to_json(True))
     print('Output written to codelimit.json')
 
 

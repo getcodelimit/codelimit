@@ -5,10 +5,8 @@ from pathlib import Path
 from halo import Halo
 
 from codelimit.common.Codebase import Codebase
-from codelimit.common.SourceFile import SourceFile
 from codelimit.common.SourceMeasurement import SourceMeasurement
 from codelimit.common.scope_utils import build_scopes
-from codelimit.common.utils import risk_categories
 from codelimit.languages.c.CLanguage import CLanguage
 from codelimit.languages.python.PythonLaguage import PythonLanguage
 
@@ -51,11 +49,8 @@ class Scanner:
             code = f.read()
         scopes = build_scopes(language, code)
         if scopes:
-            source_file = SourceFile(rel_path)
             measurements = []
             for scope in scopes:
                 length = len(scope)
                 measurements.append(SourceMeasurement(scope.header.tokens[0].location.line, length))
-            source_file.measurements = measurements
-            source_file.risk_categories = risk_categories(measurements)
-            self.codebase.add(source_file)
+            self.codebase.add_file(rel_path, measurements)

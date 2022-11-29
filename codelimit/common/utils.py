@@ -1,5 +1,6 @@
 import dataclasses
 import json
+import os
 from typing import Union
 
 from codelimit.common.SourceMeasurement import SourceMeasurement
@@ -31,9 +32,29 @@ def path_has_suffix(path: str, suffixes: Union[str, list[str]]):
         return False
 
 
+def get_parent_folder(path: str) -> Union[str, None]:
+    parts = path.split(os.path.sep)
+    if len(parts) == 1:
+        return None
+    else:
+        return os.path.sep.join(parts[0:-1])
+
+
+def get_basename(path: str) -> str:
+    parts = path.split(os.path.sep)
+    return parts[-1]
+
+
 class EnhancedJSONEncoder(json.JSONEncoder):
     def default(self, o):
+        def include(value):
+            if value is None:
+                return False
+            if isinstance(value, list):
+                return len(value) > 0
+            return True
+
         if dataclasses.is_dataclass(o):
-            return dataclasses.asdict(o)
+            return dict((key, value) for key, value in dataclasses.asdict(o).items() if include(value))
         else:
-            return o.__dict__
+            return dict((key, value) for key, value in o.__dict__.items() if include(value))

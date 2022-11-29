@@ -1,5 +1,4 @@
 from codelimit.common.SourceMeasurement import SourceMeasurement
-from codelimit.common.utils import risk_categories
 
 
 class SourceFile:
@@ -9,6 +8,3 @@ class SourceFile:
             self.measurements = measurements
         else:
             self.measurements = []
-
-    def risk_categories(self):
-        return risk_categories(self.measurements)
