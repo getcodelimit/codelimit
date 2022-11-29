@@ -13,22 +13,19 @@ class Codebase:
     def add_file(self, path: str, measurements: list[SourceMeasurement]):
         self.measurements[path] = measurements
         parent_folder = get_parent_folder(path)
-        if not parent_folder:
-            folder = self.tree['.']
-            folder.add_file(get_basename(path))
-        else:
-            if parent_folder not in self.tree:
-                self.tree[parent_folder] = SourceFolder()
-            folder = self.tree[parent_folder]
-            folder.add_file(get_basename(path))
-            folder_name = get_basename(parent_folder)
-            parent_folder = get_parent_folder(parent_folder)
-            while parent_folder and parent_folder not in self.tree:
-                folder = SourceFolder()
-                self.tree[parent_folder] = folder
-                folder.add_folder(folder_name)
-                folder_name = get_basename(parent_folder)
-                parent_folder = get_parent_folder(parent_folder)
+        if parent_folder not in self.tree:
+            self.add_folder(parent_folder)
+        folder = self.tree[parent_folder]
+        folder.add_file(get_basename(path))
+
+    def add_folder(self, path: str):
+        if path == '.':
+            return
+        if path not in self.tree:
+            self.tree[path] = SourceFolder()
+            self.add_folder(get_parent_folder(path))
+        parent_folder = self.tree[get_parent_folder(path)]
+        parent_folder.add_folder(get_basename(path))
 
     def all_files(self) -> list[str]:
         return list(self.measurements.keys())

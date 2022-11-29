@@ -18,6 +18,14 @@ def test_codebase_entry_single_file():
         False) == '{"tree": {".": {"entries": [{"name": "foo.py"}]}}, "measurements": {"foo.py": []}}'
 
 
+def test_codebase_entry_single_folder_single_file():
+    codebase = Codebase()
+    codebase.add_file('foo/bar.py', [])
+
+    assert codebase.to_json(False) == '{"tree": {".": {"entries": [{"name": "foo"}]}, ' + \
+           '"foo": {"entries": [{"name": "bar.py"}]}}, "measurements": {"foo/bar.py": []}}'
+
+
 def test_codebase_entry_multple_files():
     folder = SourceFolder()
 

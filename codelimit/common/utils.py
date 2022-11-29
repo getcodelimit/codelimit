@@ -35,7 +35,7 @@ def path_has_suffix(path: str, suffixes: Union[str, list[str]]):
 def get_parent_folder(path: str) -> Union[str, None]:
     parts = path.split(os.path.sep)
     if len(parts) == 1:
-        return None
+        return '.'
     else:
         return os.path.sep.join(parts[0:-1])
 

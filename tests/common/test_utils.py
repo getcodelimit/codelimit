@@ -13,7 +13,7 @@ def test_path_has_suffix():
 def test_get_parent_folder():
     assert get_parent_folder('foo/bar.py') == 'foo'
     assert get_parent_folder('foo/bar/span/eggs.py') == 'foo/bar/span'
-    assert get_parent_folder('foo.py') is None
+    assert get_parent_folder('foo.py') == '.'
 
 
 def test_get_basename():
