@@ -1,8 +1,6 @@
-import json
-
 from codelimit.common.SourceFolder import SourceFolder
 from codelimit.common.SourceMeasurement import SourceMeasurement
-from codelimit.common.utils import EnhancedJSONEncoder, get_parent_folder, get_basename
+from codelimit.common.utils import get_parent_folder, get_basename
 
 
 class Codebase:
@@ -16,7 +14,7 @@ class Codebase:
         if parent_folder not in self.tree:
             self.add_folder(parent_folder)
         folder = self.tree[parent_folder]
-        folder.add_file(get_basename(path))
+        folder.add_file(get_basename(path), measurements)
 
     def add_folder(self, path: str):
         if path == '.':
@@ -44,9 +42,3 @@ class Codebase:
         for m in self.all_measurements():
             result += m.value
         return result
-
-    def to_json(self, pretty_print=False) -> str:
-        if pretty_print:
-            return json.dumps(self, cls=EnhancedJSONEncoder, indent=2)
-        else:
-            return json.dumps(self, cls=EnhancedJSONEncoder)

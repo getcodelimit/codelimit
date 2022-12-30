@@ -1,11 +1,10 @@
-import json
 from math import floor, ceil
 from uuid import uuid4
 
 import plotext
 
 from codelimit.common.Codebase import Codebase
-from codelimit.common.utils import risk_categories, EnhancedJSONEncoder
+from codelimit.common.utils import risk_categories
 
 
 class Report:
@@ -37,9 +36,3 @@ class Report:
         plotext.title("Most Favored Pizzas in the World")
         plotext.simple_bar(labels, volume, color=[34, 226, 214, 196])
         plotext.show()
-
-    def to_json(self, pretty_print=False) -> str:
-        if pretty_print:
-            return json.dumps(self, cls=EnhancedJSONEncoder, indent=2)
-        else:
-            return json.dumps(self, cls=EnhancedJSONEncoder)

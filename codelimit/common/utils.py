@@ -1,5 +1,3 @@
-import dataclasses
-import json
 import os
 from typing import Union
 
@@ -43,18 +41,3 @@ def get_parent_folder(path: str) -> Union[str, None]:
 def get_basename(path: str) -> str:
     parts = path.split(os.path.sep)
     return parts[-1]
-
-
-class EnhancedJSONEncoder(json.JSONEncoder):
-    def default(self, o):
-        def include(value):
-            if value is None:
-                return False
-            if isinstance(value, list):
-                return len(value) > 0
-            return True
-
-        if dataclasses.is_dataclass(o):
-            return dict((key, value) for key, value in dataclasses.asdict(o).items() if include(value))
-        else:
-            return dict((key, value) for key, value in o.__dict__.items() if include(value))
