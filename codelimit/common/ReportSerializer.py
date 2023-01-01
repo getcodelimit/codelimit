@@ -57,11 +57,20 @@ class ReportSerializer:
     def _tree_item_to_json(self, name: str, folder: SourceFolder) -> str:
         json = ''
         json += self._open(f'"{name}": {{')
+        json += self._collection(
+            [self._tree_item_entries_to_json(folder), self._tree_item_risk_categories_to_json(name)])
+        json += self._close('}')
+        return json
+
+    def _tree_item_entries_to_json(self, folder: SourceFolder):
+        json = ''
         json += self._open('"entries": [')
         json += self._collection([self._source_folder_entry_to_json(f) for f in folder.entries])
         json += self._close(']')
-        json += self._close('}')
         return json
+
+    def _tree_item_risk_categories_to_json(self, name: str):
+        return self._line(f'"profile": {self.tree[name].profile}')
 
     def _measurements_to_json(self):
         json = ''
@@ -79,10 +88,8 @@ class ReportSerializer:
 
     def _source_folder_entry_to_json(self, entry: SourceFolderEntry) -> str:
         json = f'{{"name": "{entry.name}"'
-        if entry.loc:
-            json += f', "loc": {entry.loc}'
-        if entry.risk_categories:
-            json += f', "risk_categories": {entry.risk_categories}'
+        if entry.profile:
+            json += f', "profile": {entry.profile}'
         json += '}'
         return self._line(json)
 

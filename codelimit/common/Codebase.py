@@ -1,29 +1,47 @@
 from codelimit.common.SourceFolder import SourceFolder
 from codelimit.common.SourceMeasurement import SourceMeasurement
-from codelimit.common.utils import get_parent_folder, get_basename
+from codelimit.common.utils import get_parent_folder, get_basename, merge_profiles
 
 
 class Codebase:
     def __init__(self):
-        self.tree = {'.': SourceFolder()}
+        self.tree = {'./': SourceFolder()}
         self.measurements = {}
 
     def add_file(self, path: str, measurements: list[SourceMeasurement]):
         self.measurements[path] = measurements
         parent_folder = get_parent_folder(path)
-        if parent_folder not in self.tree:
+        if f'{parent_folder}/' not in self.tree:
             self.add_folder(parent_folder)
-        folder = self.tree[parent_folder]
+        folder = self.tree[f'{parent_folder}/']
         folder.add_file(get_basename(path), measurements)
 
     def add_folder(self, path: str):
         if path == '.':
             return
-        if path not in self.tree:
-            self.tree[path] = SourceFolder()
+        if f'{path}/' not in self.tree:
+            self.tree[f'{path}/'] = SourceFolder()
             self.add_folder(get_parent_folder(path))
-        parent_folder = self.tree[get_parent_folder(path)]
-        parent_folder.add_folder(get_basename(path))
+            parent_folder = self.tree[f'{get_parent_folder(path)}/']
+            parent_folder.add_folder(get_basename(path))
+
+    def aggregate(self):
+        def aggregate_folder(path):
+            folder = self.tree[path]
+            for entry in folder.entries:
+                if entry.is_folder():
+                    if path == './':
+                        sub_folder = entry.name
+                    else:
+                        sub_folder = f'{path}{entry.name}'
+                    folder.profile = merge_profiles(folder.profile,
+                                                    aggregate_folder(sub_folder))
+
+                else:
+                    folder.profile = merge_profiles(folder.profile, entry.profile)
+            return folder.profile
+
+        aggregate_folder('./')
 
     def all_files(self) -> list[str]:
         return list(self.measurements.keys())

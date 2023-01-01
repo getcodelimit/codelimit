@@ -4,7 +4,7 @@ from uuid import uuid4
 import plotext
 
 from codelimit.common.Codebase import Codebase
-from codelimit.common.utils import risk_categories
+from codelimit.common.utils import make_profile
 
 
 class Report:
@@ -28,11 +28,11 @@ class Report:
         return 0
 
     def risk_categories(self):
-        return risk_categories(self.codebase.all_measurements())
+        return make_profile(self.codebase.all_measurements())
 
     def display_risk_category_plot(self):
         labels = ["1-15", "16-30", "31-60", '60+']
-        volume = risk_categories(self.codebase.all_measurements())
+        volume = make_profile(self.codebase.all_measurements())
         plotext.title("Most Favored Pizzas in the World")
         plotext.simple_bar(labels, volume, color=[34, 226, 214, 196])
         plotext.show()

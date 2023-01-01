@@ -15,6 +15,7 @@ def scan_path(path: Optional[Path] = typer.Argument(Path('.'))):
     print(f'Version: {version}, released on: {release_date}')
 
     codebase = Scanner().scan(path)
+    codebase.aggregate()
     print(f'Total lines of code: {codebase.total_loc()}')
     report = Report(codebase)
     print(f'Average length (LOC): {report.get_average()}')

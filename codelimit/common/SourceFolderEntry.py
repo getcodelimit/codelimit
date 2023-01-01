@@ -1,13 +1,17 @@
 from typing import Union
 
 from codelimit.common.SourceMeasurement import SourceMeasurement
-from codelimit.common.utils import risk_categories
+from codelimit.common.utils import make_profile
 
 
 class SourceFolderEntry:
     def __init__(self, name: str, measurements: list[SourceMeasurement] = None):
         self.name = name
-        loc = sum([m.value for m in measurements]) if measurements else None
-        self.loc: Union[int, None] = loc
-        rc = risk_categories(measurements) if measurements else None
-        self.risk_categories: Union[list[int], None] = rc
+        profile = make_profile(measurements) if measurements else None
+        self.profile: Union[list[int], None] = profile
+
+    def is_folder(self):
+        return self.name.endswith('/')
+
+    def is_file(self):
+        return not self.is_folder()

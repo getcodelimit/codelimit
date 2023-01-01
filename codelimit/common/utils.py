@@ -4,7 +4,7 @@ from typing import Union
 from codelimit.common.SourceMeasurement import SourceMeasurement
 
 
-def risk_categories(measurements: list[SourceMeasurement]):
+def make_profile(measurements: list[SourceMeasurement]):
     result = [0, 0, 0, 0]
     for m in measurements:
         if m.value <= 15:
@@ -16,6 +16,10 @@ def risk_categories(measurements: list[SourceMeasurement]):
         else:
             result[3] += m.value
     return result
+
+
+def merge_profiles(rc1: list[int], rc2: list[int]) -> list[int]:
+    return [rc1[0] + rc2[0], rc1[1] + rc2[1], rc1[2] + rc2[2], rc1[3] + rc2[3]]
 
 
 def path_has_suffix(path: str, suffixes: Union[str, list[str]]):
