@@ -12,7 +12,6 @@ plotext = "^5.2.8"
 pygments = "^2.13.0"
 typer = {extras = ["all"], version = "^0.7.0"}
 
-
 [tool.poetry.group.dev.dependencies]
 pyinstaller = "^5.6.1"
 pytest-cov = "^4.0.0"

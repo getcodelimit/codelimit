@@ -1,26 +1,17 @@
 from typing import Union
 
-from codelimit.common.SourceFile import SourceFile
-from codelimit.common.utils import risk_categories
+from codelimit.common.SourceMeasurement import SourceMeasurement
+from codelimit.common.utils import make_profile
 
 
 class SourceFolderEntry:
-    def __init__(self, name: str):
+    def __init__(self, name: str, measurements: list[SourceMeasurement] = None):
         self.name = name
-        self.loc: Union[int, None] = None
-        self.risk_categories: Union[list[int], None] = None
+        profile = make_profile(measurements) if measurements else None
+        self.profile: Union[list[int], None] = profile
 
-    def update(self, file: SourceFile):
-        file_loc = sum([m.value for m in file.measurements])
-        if self.loc:
-            self.loc += file_loc
-        else:
-            self.loc = file_loc
-        file_rc = risk_categories(file.measurements)
-        if self.risk_categories:
-            self.risk_categories[0] += file_rc[0]
-            self.risk_categories[1] += file_rc[1]
-            self.risk_categories[2] += file_rc[2]
-            self.risk_categories[3] += file_rc[3]
-        else:
-            self.risk_categories = file_rc
+    def is_folder(self):
+        return self.name.endswith('/')
+
+    def is_file(self):
+        return not self.is_folder()

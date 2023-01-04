@@ -5,6 +5,7 @@ from typing import Optional
 import typer
 
 from codelimit.common.Report import Report
+from codelimit.common.ReportSerializer import ReportSerializer
 from codelimit.common.Scanner import Scanner
 from codelimit.version import version, release_date
 
@@ -14,13 +15,14 @@ def scan_path(path: Optional[Path] = typer.Argument(Path('.'))):
     print(f'Version: {version}, released on: {release_date}')
 
     codebase = Scanner().scan(path)
+    codebase.aggregate()
     print(f'Total lines of code: {codebase.total_loc()}')
     report = Report(codebase)
     print(f'Average length (LOC): {report.get_average()}')
     print(f'90th percentile: {report.ninetieth_percentile()}')
     report.display_risk_category_plot()
     with open('codelimit.json', 'w') as outfile:
-        outfile.write(report.to_json(True))
+        outfile.write(ReportSerializer(report).to_json())
     print('Output written to codelimit.json')
 
 
