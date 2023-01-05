@@ -4,7 +4,7 @@ from codelimit.common.SourceFolderEntry import SourceFolderEntry
 from codelimit.common.SourceMeasurement import SourceMeasurement
 
 
-class ReportSerializer:
+class ReportWriter:
     def __init__(self, report: Report, pretty_print=True):
         self.report = report
         self.tree = report.codebase.tree

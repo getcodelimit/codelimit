@@ -6,7 +6,7 @@ from codelimit.common.utils import get_parent_folder, get_basename, merge_profil
 class Codebase:
     def __init__(self):
         self.tree = {'./': SourceFolder()}
-        self.measurements = {}
+        self.measurements: dict[str, list[SourceMeasurement]] = {}
 
     def add_file(self, path: str, measurements: list[SourceMeasurement]):
         self.measurements[path] = measurements

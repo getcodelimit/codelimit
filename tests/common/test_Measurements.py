@@ -1,6 +1,6 @@
 from codelimit.common.Codebase import Codebase
 from codelimit.common.Report import Report
-from codelimit.common.ReportSerializer import ReportSerializer
+from codelimit.common.ReportWriter import ReportWriter
 from codelimit.common.SourceMeasurement import SourceMeasurement
 
 
@@ -9,7 +9,7 @@ def test_to_json():
     codebase.add_file('foo.py', [SourceMeasurement(10, 10)])
     codebase.aggregate()
     report = Report(codebase)
-    serializer = ReportSerializer(report)
+    serializer = ReportWriter(report)
 
     expected = ''
     expected += '{\n'
@@ -40,7 +40,7 @@ def test_to_json_multiple():
     codebase.add_file('bar.py', [SourceMeasurement(20, 10)])
     codebase.aggregate()
     report = Report(codebase)
-    serializer = ReportSerializer(report, False)
+    serializer = ReportWriter(report, False)
 
     expected = '{"uuid": "' + report.uuid + '", "codebase": {"tree": {"./": {"entries": [{"name": "foo.py", "profile": [10, 0, 0, 0]}, ' + \
                '{"name": "bar.py", "profile": [10, 0, 0, 0]}], "profile": [20, 0, 0, 0]}}, ' + \
