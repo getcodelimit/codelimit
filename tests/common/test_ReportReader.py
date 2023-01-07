@@ -1,8 +1,8 @@
 from codelimit.common.Codebase import Codebase
+from codelimit.common.SourceMeasurement import SourceMeasurement
 from codelimit.common.report.Report import Report
 from codelimit.common.report.ReportReader import ReportReader
 from codelimit.common.report.ReportWriter import ReportWriter
-from codelimit.common.SourceMeasurement import SourceMeasurement
 
 
 def test_empty_report():
@@ -23,7 +23,7 @@ def test_empty_report():
 
 def test_single_file():
     codebase = Codebase()
-    codebase.add_file('foo.py', [SourceMeasurement(10, 20)])
+    codebase.add_file('foo.py', [SourceMeasurement('bar()', 10, 20)])
     report = Report(codebase)
 
     json = ReportWriter(report).to_json()
@@ -45,8 +45,8 @@ def test_single_file():
 
 def test_multiple_files():
     codebase = Codebase()
-    codebase.add_file('foo.py', [SourceMeasurement(10, 20)])
-    codebase.add_file('bar.py', [SourceMeasurement(10, 20), SourceMeasurement(20, 30)])
+    codebase.add_file('foo.py', [SourceMeasurement('spam()', 10, 20)])
+    codebase.add_file('bar.py', [SourceMeasurement('eggs()', 10, 20), SourceMeasurement('ham()', 20, 30)])
     report = Report(codebase)
 
     json = ReportWriter(report).to_json()
@@ -71,8 +71,8 @@ def test_multiple_files():
 
 def test_multiple_files_and_folders():
     codebase = Codebase()
-    codebase.add_file('foo.py', [SourceMeasurement(10, 20)])
-    codebase.add_file('bar/spam.py', [SourceMeasurement(10, 20), SourceMeasurement(20, 30)])
+    codebase.add_file('foo.py', [SourceMeasurement('bar()', 10, 20)])
+    codebase.add_file('bar/spam.py', [SourceMeasurement('spam()', 10, 20), SourceMeasurement('eggs()', 20, 30)])
     report = Report(codebase)
 
     json = ReportWriter(report).to_json()

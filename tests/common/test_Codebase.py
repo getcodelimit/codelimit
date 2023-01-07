@@ -65,9 +65,9 @@ def test_codebase_multiple_files_and_folders():
 def test_codebase_aggregate():
     codebase = Codebase()
     codebase.add_folder('foo')
-    codebase.add_file('foo/bar.py', [SourceMeasurement(1, 10)])
+    codebase.add_file('foo/bar.py', [SourceMeasurement('bar()', 1, 10)])
     codebase.add_folder('foo/spam')
-    codebase.add_file('foo/spam/bar.py', [SourceMeasurement(1, 20)])
+    codebase.add_file('foo/spam/bar.py', [SourceMeasurement('spam()', 1, 20)])
 
     codebase.aggregate()
 

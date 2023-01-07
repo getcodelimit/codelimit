@@ -4,10 +4,11 @@ from pathlib import Path
 import click
 from InquirerPy import inquirer
 
+from codelimit.common.Scanner import Scanner
 from codelimit.common.report.Report import Report
 from codelimit.common.report.ReportReader import ReportReader
+from codelimit.common.report.ReportUnit import format_report_unit
 from codelimit.common.report.ReportWriter import ReportWriter
-from codelimit.common.Scanner import Scanner
 from codelimit.version import version, release_date
 
 
@@ -41,7 +42,7 @@ def show(path: Path):
     with open(path, 'r') as file:
         json = file.read()
     report = ReportReader.from_json(json)
-    units = [unit.measurement.unit_name for unit in report.all_report_units_sorted_by_length_asc()]
+    units = [format_report_unit(unit) for unit in report.all_report_units_sorted_by_length_asc()]
     inquirer.select(message='Select unit', choices=units).execute()
 
 
