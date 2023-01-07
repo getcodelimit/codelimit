@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "sourcelimit"
+name = "codelimit"
 version = "0.1.0"
 description = ""
 authors = ["Rob van der Leek <robvanderleek@gmail.com>"]
@@ -15,6 +15,9 @@ typer = {extras = ["all"], version = "^0.7.0"}
 [tool.semantic_release]
 version_variable = "codelimit/version.py:version"
 branch = "main"
+upload_to_repository = false
+upload_to_release = false
+build_command = "poetry build"
 
 [tool.poetry.group.dev.dependencies]
 pyinstaller = "^5.6.1"
