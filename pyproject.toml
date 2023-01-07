@@ -14,6 +14,7 @@ typer = {extras = ["all"], version = "^0.7.0"}
 
 [tool.semantic_release]
 version_variable = "codelimit/version.py:version"
+branch = "main"
 
 [tool.poetry.group.dev.dependencies]
 pyinstaller = "^5.6.1"
