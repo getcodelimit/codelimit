@@ -1,7 +1,7 @@
 from json import loads
 
 from codelimit.common.Codebase import Codebase
-from codelimit.common.Report import Report
+from codelimit.common.report.Report import Report
 from codelimit.common.SourceMeasurement import SourceMeasurement
 
 
@@ -16,6 +16,6 @@ class ReportReader:
         for k, v in d['codebase']['measurements'].items():
             measurements: list[SourceMeasurement] = []
             for m in v:
-                measurements.append(SourceMeasurement(m['start_line'], m['value']))
+                measurements.append(SourceMeasurement(m['unit_name'], m['start_line'], m['value']))
             codebase.add_file(k, measurements)
         return report

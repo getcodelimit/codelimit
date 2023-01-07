@@ -1,7 +1,7 @@
 from codelimit.common.Codebase import Codebase
-from codelimit.common.Report import Report
-from codelimit.common.ReportReader import ReportReader
-from codelimit.common.ReportWriter import ReportWriter
+from codelimit.common.report.Report import Report
+from codelimit.common.report.ReportReader import ReportReader
+from codelimit.common.report.ReportWriter import ReportWriter
 from codelimit.common.SourceMeasurement import SourceMeasurement
 
 

@@ -52,8 +52,8 @@ class Codebase:
             result.extend(m)
         return result
 
-    def all_measurements_sorted_by_length(self):
-        return sorted(self.all_measurements(), key=lambda m: m.value)
+    def all_measurements_sorted_by_length_asc(self):
+        return sorted(self.all_measurements(), key=lambda m: m.value, reverse=True)
 
     def total_loc(self) -> int:
         result = 0

@@ -1,7 +1,7 @@
-from codelimit.common.Report import Report
 from codelimit.common.SourceFolder import SourceFolder
 from codelimit.common.SourceFolderEntry import SourceFolderEntry
 from codelimit.common.SourceMeasurement import SourceMeasurement
+from codelimit.common.report.Report import Report
 
 
 class ReportWriter:
@@ -86,13 +86,13 @@ class ReportWriter:
         json += self._close(']')
         return json
 
+    def _measurement_to_json(self, measurement: SourceMeasurement) -> str:
+        json = f'{{"unit_name": "{measurement.unit_name}", "start_line": {measurement.start_line}, "value": {measurement.value}}}'
+        return self._line(json)
+
     def _source_folder_entry_to_json(self, entry: SourceFolderEntry) -> str:
         json = f'{{"name": "{entry.name}"'
         if entry.profile:
             json += f', "profile": {entry.profile}'
         json += '}'
-        return self._line(json)
-
-    def _measurement_to_json(self, measurement: SourceMeasurement) -> str:
-        json = f'{{"start_line": {measurement.start_line}, "value": {measurement.value}}}'
         return self._line(json)

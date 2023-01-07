@@ -4,9 +4,9 @@ from pathlib import Path
 import click
 from InquirerPy import inquirer
 
-from codelimit.common.Report import Report
-from codelimit.common.ReportReader import ReportReader
-from codelimit.common.ReportWriter import ReportWriter
+from codelimit.common.report.Report import Report
+from codelimit.common.report.ReportReader import ReportReader
+from codelimit.common.report.ReportWriter import ReportWriter
 from codelimit.common.Scanner import Scanner
 from codelimit.version import version, release_date
 
@@ -41,8 +41,8 @@ def show(path: Path):
     with open(path, 'r') as file:
         json = file.read()
     report = ReportReader.from_json(json)
-    folders = [entry.name for entry in report.codebase.tree['./'].entries if entry.is_folder()]
-    inquirer.select(message='Select folder', choices=folders).execute()
+    units = [unit.measurement.unit_name for unit in report.all_report_units_sorted_by_length_asc()]
+    inquirer.select(message='Select unit', choices=units).execute()
 
 
 if __name__ == '__main__':
