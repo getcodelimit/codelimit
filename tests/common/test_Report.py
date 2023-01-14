@@ -1,6 +1,6 @@
 from codelimit.common.Codebase import Codebase
-from codelimit.common.Report import Report
-from codelimit.common.ReportSerializer import ReportSerializer
+from codelimit.common.report.Report import Report
+from codelimit.common.report.ReportWriter import ReportWriter
 
 
 def test_empty_measurements_collection():
@@ -10,7 +10,7 @@ def test_empty_measurements_collection():
     assert report.ninetieth_percentile() == 0
     assert report.risk_categories() == [0, 0, 0, 0]
 
-    serializer = ReportSerializer(report)
+    serializer = ReportWriter(report)
 
     json = ''
     json += '{\n'

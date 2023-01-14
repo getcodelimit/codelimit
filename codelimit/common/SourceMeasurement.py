@@ -1,7 +1,11 @@
 from dataclasses import dataclass
 
+from codelimit.common.SourceLocation import SourceLocation
+
 
 @dataclass
 class SourceMeasurement:
-    start_line: int
+    unit_name: str
+    start: SourceLocation
+    end: SourceLocation
     value: int

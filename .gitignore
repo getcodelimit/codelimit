@@ -1,6 +1,6 @@
 build/
 dist/
-clim.spec
+main.spec
 codelimit.json
 .coverage
 coverage.xml

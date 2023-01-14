@@ -7,6 +7,7 @@ from halo import Halo
 from codelimit.common.Codebase import Codebase
 from codelimit.common.SourceMeasurement import SourceMeasurement
 from codelimit.common.scope_utils import build_scopes
+from codelimit.common.source_utils import get_location_range
 from codelimit.languages.c.CLanguage import CLanguage
 from codelimit.languages.python.PythonLaguage import PythonLanguage
 
@@ -52,5 +53,9 @@ class Scanner:
             measurements = []
             for scope in scopes:
                 length = len(scope)
-                measurements.append(SourceMeasurement(scope.header.tokens[0].location.line, length))
+                unit_name = get_location_range(code, scope.header.tokens[0].location, scope.block.tokens[0].location)
+                unit_name = unit_name.strip().replace('\t', ' ').replace('\n', ' ')
+                start_location = scope.header.tokens[0].location
+                end_location = scope.block.tokens[-1].location
+                measurements.append(SourceMeasurement(unit_name, start_location, end_location, length))
             self.codebase.add_file(rel_path, measurements)

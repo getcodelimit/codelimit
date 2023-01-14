@@ -1,10 +1,10 @@
-from codelimit.common.Report import Report
 from codelimit.common.SourceFolder import SourceFolder
 from codelimit.common.SourceFolderEntry import SourceFolderEntry
 from codelimit.common.SourceMeasurement import SourceMeasurement
+from codelimit.common.report.Report import Report
 
 
-class ReportSerializer:
+class ReportWriter:
     def __init__(self, report: Report, pretty_print=True):
         self.report = report
         self.tree = report.codebase.tree
@@ -86,13 +86,17 @@ class ReportSerializer:
         json += self._close(']')
         return json
 
+    def _measurement_to_json(self, measurement: SourceMeasurement) -> str:
+        json = ''
+        json += f'{{"unit_name": "{measurement.unit_name}", '
+        json += f'"start": {{"line": {measurement.start.line}, "column": {measurement.start.column}}}, '
+        json += f'"end": {{"line": {measurement.end.line}, "column": {measurement.end.column}}}, '
+        json += f'"value": {measurement.value}}}'
+        return self._line(json)
+
     def _source_folder_entry_to_json(self, entry: SourceFolderEntry) -> str:
         json = f'{{"name": "{entry.name}"'
         if entry.profile:
             json += f', "profile": {entry.profile}'
         json += '}'
-        return self._line(json)
-
-    def _measurement_to_json(self, measurement: SourceMeasurement) -> str:
-        json = f'{{"start_line": {measurement.start_line}, "value": {measurement.value}}}'
         return self._line(json)

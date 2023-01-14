@@ -16,3 +16,9 @@ def get_balanced_symbol_token_indices(tokens: list[Token], start: str, end: str,
                 if nested or len(block_starts) == 0:
                     result.append((start_index, index))
     return result
+
+
+def sort_tokens(tokens: list[Token]) -> list[Token]:
+    result = sorted(tokens, key=lambda t: t.location.column)
+    result = sorted(result, key=lambda t: t.location.line)
+    return result

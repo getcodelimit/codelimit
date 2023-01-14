@@ -1,3 +1,4 @@
+from codelimit.common.source_utils import get_token_range
 from codelimit.common.token_utils import get_balanced_symbol_token_indices
 from codelimit.languages.c.CLanguage import CLanguage
 
@@ -26,3 +27,10 @@ def test_get_balanced_symbol_token_indices():
     assert result[0][1] == 10
     assert result[1][0] == 4
     assert result[1][1] == 11
+
+
+def test_get_token_range():
+    code = 'void foo() { while (1) { } }'
+    tokens = CLanguage().lex(code)
+
+    assert get_token_range(code, tokens[4], tokens[11]) == '{ while (1) { } }'

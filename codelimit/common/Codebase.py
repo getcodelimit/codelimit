@@ -6,7 +6,7 @@ from codelimit.common.utils import get_parent_folder, get_basename, merge_profil
 class Codebase:
     def __init__(self):
         self.tree = {'./': SourceFolder()}
-        self.measurements = {}
+        self.measurements: dict[str, list[SourceMeasurement]] = {}
 
     def add_file(self, path: str, measurements: list[SourceMeasurement]):
         self.measurements[path] = measurements
@@ -52,8 +52,8 @@ class Codebase:
             result.extend(m)
         return result
 
-    def all_measurements_sorted_by_length(self):
-        return sorted(self.all_measurements(), key=lambda m: m.value)
+    def all_measurements_sorted_by_length_asc(self):
+        return sorted(self.all_measurements(), key=lambda m: m.value, reverse=True)
 
     def total_loc(self) -> int:
         result = 0

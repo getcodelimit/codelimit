@@ -2,7 +2,6 @@ from typing import Callable
 
 from codelimit.common.SourceLocation import SourceLocation
 from codelimit.common.Token import Token
-from codelimit.common.TokenRange import TokenRange
 
 
 def get_newline_indices(code: str) -> list[int]:
@@ -38,10 +37,16 @@ def location_to_index(code: str, position: SourceLocation) -> int:
     return result
 
 
-def get_range(code: str, source_range: TokenRange) -> str:
-    start_index = location_to_index(code, source_range.tokens[0].location)
-    end_index = location_to_index(code, source_range.tokens[-1].location)
-    return code[start_index:end_index + len(source_range.tokens[-1].value)]
+def get_token_range(code: str, start: Token, end: Token) -> str:
+    start_index = location_to_index(code, start.location)
+    end_index = location_to_index(code, end.location)
+    return code[start_index:end_index + len(end.value)]
+
+
+def get_location_range(code: str, start: SourceLocation, end: SourceLocation) -> str:
+    start_index = location_to_index(code, start)
+    end_index = location_to_index(code, end)
+    return code[start_index:end_index]
 
 
 def filter_tokens(tokens: list[Token], predicate: Callable[[Token], bool]) -> list[Token]:
