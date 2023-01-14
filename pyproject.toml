@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "sourcelimit"
+name = "codelimit"
 version = "0.1.0"
 description = ""
 authors = ["Rob van der Leek <robvanderleek@gmail.com>"]
@@ -13,9 +13,17 @@ pygments = "^2.13.0"
 click = "^8.1.3"
 inquirerpy = "^0.3.4"
 
+[tool.semantic_release]
+version_variable = "codelimit/version.py:version"
+branch = "main"
+upload_to_repository = false
+upload_to_release = false
+build_command = "poetry build"
+
 [tool.poetry.group.dev.dependencies]
 pyinstaller = "^5.6.1"
 pytest-cov = "^4.0.0"
+python-semantic-release = "^7.32.2"
 
 [build-system]
 requires = ["poetry-core"]
