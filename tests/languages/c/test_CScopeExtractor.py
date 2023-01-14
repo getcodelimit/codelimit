@@ -71,11 +71,11 @@ def test_get_nested_blocks():
 
     assert len(result) == 3
     assert result[0].tokens[0].location.line == 1
-    assert result[0].tokens[0].location.column == 5
+    assert result[0].tokens[0].location.column == 1
     assert result[1].tokens[0].location.line == 1
     assert result[1].tokens[0].location.column == 3
     assert result[2].tokens[0].location.line == 1
-    assert result[2].tokens[0].location.column == 1
+    assert result[2].tokens[0].location.column == 5
 
 
 def test_get_headers_no_headers():
@@ -118,3 +118,37 @@ def test_build_scopes():
     assert len(scopes) == 2
     assert scopes[0].header.token_string() == 'bar ( )'
     assert scopes[1].header.token_string() == 'foo ( )'
+
+
+def test_build_scope_c_function():
+    code = ''
+    code += 'int nfs_register_sysctl(void)\n'
+    code += '{\n'
+    code += '    nfs_callback_sysctl_table = register_sysctl_table(nfs_cb_sysctl_root);\n'
+    code += '    if (nfs_callback_sysctl_table == NULL)\n'
+    code += '        return -ENOMEM;\n'
+    code += '    return 0;\n'
+    code += '}\n'
+
+    tokens = CLanguage().lex(code)
+    result = CScopeExtractor().extract_headers(tokens)
+
+    assert len(result) == 1
+    assert result[0].tokens[0].location.line == 1
+    assert result[0].tokens[0].location.column == 5
+    assert result[0].tokens[0].value == 'nfs_register_sysctl'
+    assert result[0].tokens[-1].location.line == 1
+    assert result[0].tokens[-1].location.column == 29
+    assert result[0].tokens[-1].value == ')'
+
+    result = CScopeExtractor().extract_blocks(tokens)
+
+    assert len(result) == 1
+    assert result[0].tokens[0].location.line == 2
+    assert result[0].tokens[0].location.column == 1
+    assert result[0].tokens[-1].location.line == 7
+    assert result[0].tokens[-1].location.column == 1
+
+    scopes = build_scopes(CLanguage(), code)
+
+    assert len(scopes) == 1

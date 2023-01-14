@@ -22,4 +22,7 @@ class CScopeExtractor(ScopeExtractor):
 
     def extract_blocks(self, tokens: list[Token]) -> list[TokenRange]:
         balanced_tokens = get_balanced_symbol_token_indices(tokens, '{', '}', True)
-        return [TokenRange(tokens[bt[0]:bt[1] + 1]) for bt in balanced_tokens]
+        blocks = [TokenRange(tokens[bt[0]:bt[1] + 1]) for bt in balanced_tokens]
+        sorted_by_line = sorted(blocks, key=lambda tr: tr.tokens[0].location.line)
+        sorted_by_columns = sorted(sorted_by_line, key=lambda tr: tr.tokens[0].location.column)
+        return sorted_by_columns

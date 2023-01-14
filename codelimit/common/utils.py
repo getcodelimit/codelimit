@@ -1,5 +1,5 @@
 import os
-from typing import Union
+from typing import Union, Any
 
 from codelimit.common.SourceMeasurement import SourceMeasurement
 
@@ -34,7 +34,7 @@ def path_has_suffix(path: str, suffixes: Union[str, list[str]]):
         return False
 
 
-def get_parent_folder(path: str) -> Union[str, None]:
+def get_parent_folder(path: str) -> str:
     parts = path.split(os.path.sep)
     if len(parts) == 1:
         return '.'
@@ -45,3 +45,7 @@ def get_parent_folder(path: str) -> Union[str, None]:
 def get_basename(path: str) -> str:
     parts = path.split(os.path.sep)
     return parts[-1]
+
+
+def delete_indices(iterable: list, indices: list[int]) -> list[Any]:
+    return [b for i, b in enumerate(iterable) if i not in indices]

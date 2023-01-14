@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import os.path
 from pathlib import Path
 
 import click
@@ -8,6 +9,7 @@ from codelimit.common.report.Browser import Browser
 from codelimit.common.report.Report import Report
 from codelimit.common.report.ReportReader import ReportReader
 from codelimit.common.report.ReportWriter import ReportWriter
+from codelimit.common.utils import get_parent_folder
 from codelimit.version import version, release_date
 
 
@@ -29,9 +31,10 @@ def scan(path: Path):
     print(f'Average length (LOC): {report.get_average()}')
     print(f'90th percentile: {report.ninetieth_percentile()}')
     report.display_risk_category_plot()
-    with open('codelimit.json', 'w') as outfile:
+    report_file = os.path.join(path, 'codelimit.json')
+    with open(report_file, 'w') as outfile:
         outfile.write(ReportWriter(report).to_json())
-    print('Output written to codelimit.json')
+    print(f'Output written to {report_file}')
 
 
 @cli.command()
@@ -41,7 +44,7 @@ def show(path: Path):
     with open(path, 'r') as file:
         json = file.read()
     report = ReportReader.from_json(json)
-    Browser(report).show()
+    Browser(report, Path(get_parent_folder(str(path)))).show()
 
 
 if __name__ == '__main__':
