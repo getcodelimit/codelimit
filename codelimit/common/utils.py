@@ -1,4 +1,5 @@
 import os
+import sys
 from typing import Union, Any
 
 from codelimit.common.SourceMeasurement import SourceMeasurement
@@ -49,3 +50,18 @@ def get_basename(path: str) -> str:
 
 def delete_indices(iterable: list, indices: list[int]) -> list[Any]:
     return [b for i, b in enumerate(iterable) if i not in indices]
+
+
+def clear_screen() -> None:
+    def isatty(stream) -> bool:
+        try:
+            return stream.isatty()
+        except Exception:
+            return False
+
+    if not isatty(sys.stdout):
+        return
+    if sys.platform.startswith("win"):
+        os.system("cls")
+    else:
+        sys.stdout.write("\033[2J\033[1;1H")
