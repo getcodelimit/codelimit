@@ -19,6 +19,13 @@ class TokenRange:
     def lt(self, other: TokenRange):
         return self.tokens[-1].location.lt(other.tokens[0].location)
 
+    def gt(self, other: TokenRange):
+        return other.lt(self)
+
+    def contains(self, other: TokenRange):
+        return self.tokens[0].location.lt(other.tokens[0].location) and self.tokens[-1].location.gt(
+            other.tokens[-1].location)
+
     def overlaps(self, other: TokenRange):
         start_overlap = self.tokens[0].location.le(other.tokens[0].location) and self.tokens[-1].location.ge(
             other.tokens[0].location)

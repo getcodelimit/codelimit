@@ -62,20 +62,17 @@ def test_get_blocks_multi_blocks():
     assert result[1].tokens[-1].location.line == 2
 
 
-def test_get_nested_blocks():
+def test_iteration_macro_is_not_a_function():
     code = ''
-    code += '{ { { int foo; } } }\n'
+    code += 'void foo() {\n'
+    code += '  for_each_entry(entry) {\n'
+    code += '    remove_entry(entry);\n'
+    code += '  }\n'
+    code += '}\n'
 
-    tokens = CLanguage().lex(code)
-    result = CScopeExtractor().extract_blocks(tokens)
+    result = build_scopes(CLanguage(), code)
 
-    assert len(result) == 3
-    assert result[0].tokens[0].location.line == 1
-    assert result[0].tokens[0].location.column == 1
-    assert result[1].tokens[0].location.line == 1
-    assert result[1].tokens[0].location.column == 3
-    assert result[2].tokens[0].location.line == 1
-    assert result[2].tokens[0].location.column == 5
+    assert len(result) == 1
 
 
 def test_get_headers_no_headers():
@@ -148,6 +145,21 @@ def test_build_scope_c_function():
     assert result[0].tokens[0].location.column == 1
     assert result[0].tokens[-1].location.line == 7
     assert result[0].tokens[-1].location.column == 1
+
+    scopes = build_scopes(CLanguage(), code)
+
+    assert len(scopes) == 1
+
+
+def test_nested_header_but_no_body_inside_parent():
+    code = ''
+    code += 'void foo() {\n'
+    code += '  hlist_for_each_entry_safe(entry, n, &bucket->hlist, hnode) {\n'
+    code += '    kref_put(&entry->ref, nfs4_xattr_free_entry_cb);\n'
+    code += '  }\n'
+    code += '}\n'
+    code += 'static struct bar = {\n'
+    code += '};\n'
 
     scopes = build_scopes(CLanguage(), code)
 

@@ -13,14 +13,26 @@ from codelimit.common.utils import get_parent_folder
 from codelimit.version import version, release_date
 
 
-@click.group()
-def cli():
+@click.command()
+@click.argument('path', type=click.Path(exists=True, file_okay=True, dir_okay=True, path_type=Path))
+@click.option('--scan', is_flag=True)
+def cli(path: Path, scan: bool):
+    if os.path.isdir(path):
+        if os.path.exists(os.path.join(path, 'codelimit.json')):
+            if scan:
+                scan_path(path)
+            show(Path(os.path.join(path, 'codelimit.json')))
+        else:
+            scan_path(path)
+    else:
+        if os.path.basename(path) == 'codelimit.json':
+            show(path)
+        else:
+            print('usage')
     pass
 
 
-@cli.command()
-@click.argument('path', type=click.Path(exists=True, file_okay=False, dir_okay=True, path_type=Path), default='.')
-def scan(path: Path):
+def scan_path(path: Path):
     print('Code Limit')
     print(f'Version: {version}, released on: {release_date}')
 
@@ -37,9 +49,6 @@ def scan(path: Path):
     print(f'Output written to {report_file}')
 
 
-@cli.command()
-@click.argument('path', type=click.Path(exists=True, file_okay=True, dir_okay=False, path_type=Path),
-                default='codelimit.json')
 def show(path: Path):
     with open(path, 'r') as file:
         json = file.read()

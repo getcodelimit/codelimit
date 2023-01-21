@@ -1,3 +1,5 @@
+from typing import Optional
+
 from codelimit.common.Language import Language
 from codelimit.common.Scope import Scope
 from codelimit.common.TokenRange import TokenRange
@@ -18,20 +20,32 @@ def _build_scopes_from_headers_and_blocks(headers: list[TokenRange], blocks: lis
     reverse_headers = headers[::-1]
     for header in reverse_headers:
         scope_blocks_indices = _find_scope_blocks_indices(header, blocks)
-        scope_tokens = []
-        for i in scope_blocks_indices:
-            scope_tokens.extend(blocks[i].tokens)
-        scope_tokens = sort_tokens(scope_tokens)
-        scope_block = TokenRange(scope_tokens)
-        result.append(Scope(header, scope_block))
-        blocks = delete_indices(blocks, scope_blocks_indices)
+        if len(scope_blocks_indices) > 0:
+            scope_tokens = []
+            for i in scope_blocks_indices:
+                scope_tokens.extend(blocks[i].tokens)
+            scope_tokens = sort_tokens(scope_tokens)
+            scope_block = TokenRange(scope_tokens)
+            result.append(Scope(header, scope_block))
+            blocks = delete_indices(blocks, scope_blocks_indices)
     result.reverse()
     return result
 
 
 def _find_scope_blocks_indices(header: TokenRange, blocks: list[TokenRange]) -> list[int]:
-    blocks_after_header = [i for i in range(len(blocks)) if header.lt(blocks[i])]
-    if len(blocks_after_header) > 0:
-        body_blocks = [i for i in blocks_after_header if blocks[blocks_after_header[0]].overlaps(blocks[i])]
-        return body_blocks
+    body_block = _get_closest_block(header, blocks)
+    if body_block:
+        if body_block.contains(header):
+            return [i for i in range(len(blocks)) if body_block.contains(blocks[i])]
+        else:
+            return [i for i in range(len(blocks)) if body_block.overlaps(blocks[i])]
     return []
+
+
+def _get_closest_block(header: TokenRange, blocks: list[TokenRange]) -> Optional[TokenRange]:
+    for block in blocks:
+        if block.contains(header):
+            return block
+        if block.gt(header):
+            return block
+    return None

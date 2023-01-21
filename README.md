@@ -6,7 +6,8 @@
 
 Build with:
 - [Pygments](https://pygments.org)
-- [Rich](https://github.com/Textualize/rich)
+- [Click](https://click.palletsprojects.com)
+- [InquirerPy](https://inquirerpy.readthedocs.io/)
 
 # Usage
 
