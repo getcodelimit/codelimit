@@ -42,6 +42,6 @@ class Report:
     def display_risk_category_plot(self):
         labels = ["1-15", "16-30", "31-60", '60+']
         volume = make_profile(self.codebase.all_measurements())
-        plotext.title("Most Favored Pizzas in the World")
-        plotext.simple_bar(labels, volume, color=[34, 226, 214, 196])
+        plotext.simple_stacked_bar([''], [[volume[0]], [volume[1]], [volume[2]], [volume[3]]], width=100, labels=labels,
+                                   colors=[34, 226, 214, 196]);
         plotext.show()
