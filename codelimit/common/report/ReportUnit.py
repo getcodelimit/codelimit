@@ -12,5 +12,13 @@ class ReportUnit:
 def format_report_unit(unit: ReportUnit) -> str:
     name = unit.measurement.unit_name
     length = unit.measurement.value
-    prefix = f'[{length:3}]' if length < 61 else '[60+]'
+    if length > 60:
+        circle = '🔴'
+    elif length > 30:
+        circle = '🟠'
+    elif length > 15:
+        circle = '🟡'
+    else:
+        circle = '🟢'
+    prefix = f'{circle} [{length:3}]' if length < 61 else '[60+]'
     return f'{prefix} {name}'

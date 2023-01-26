@@ -39,9 +39,22 @@ class Report:
     def risk_categories(self):
         return make_profile(self.codebase.all_measurements())
 
-    def display_risk_category_plot(self):
-        labels = ["1-15", "16-30", "31-60", '60+']
-        volume = make_profile(self.codebase.all_measurements())
-        plotext.simple_stacked_bar([''], [[volume[0]], [volume[1]], [volume[2]], [volume[3]]], width=100, labels=labels,
-                                   colors=[34, 226, 214, 196]);
-        plotext.show()
+    def risk_category_plot(self) -> str:
+        def get_labels(profile):
+            labels = ['1-15']
+            if profile[1] > 0:
+                labels.append('16-30')
+            if profile[2] > 0:
+                labels.append('31-60')
+            if profile[3] > 0:
+                labels.append('60+')
+            return labels
+
+        profile = make_profile(self.codebase.all_measurements())
+        plot_labels = get_labels(profile)
+        plotext.simple_stacked_bar([''], [[profile[0]], [profile[1]], [profile[2]], [profile[3]]], width=100, labels=plot_labels,
+                                   colors=[34, 226, 214, 196])
+        result = plotext.build()
+        total_loc = sum(profile)
+        result = result.replace(f'\x1b[1m\x1b[38;5;7m{total_loc}.0\x1b[0m\x1b[0m', '')
+        return result
