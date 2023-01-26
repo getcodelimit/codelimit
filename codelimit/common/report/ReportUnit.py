@@ -20,5 +20,5 @@ def format_report_unit(unit: ReportUnit) -> str:
         circle = '🟡'
     else:
         circle = '🟢'
-    prefix = f'{circle} [{length:3}]' if length < 61 else '[60+]'
+    prefix = f'{circle} [{length:3}]' if length < 61 else f'{circle} [60+]'
     return f'{prefix} {name}'
