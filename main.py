@@ -5,15 +5,15 @@ from pathlib import Path
 import click
 
 from codelimit.common.Scanner import Scanner
-from codelimit.common.report.RefactorList import RefactorList
 from codelimit.common.report.Report import Report
-from codelimit.common.report.ReportReader import ReportReader
 from codelimit.common.report.ReportWriter import ReportWriter
-from codelimit.common.utils import get_parent_folder
+from codelimit.common.tui.CodeLimitApp import CodeLimitApp
+
+app = CodeLimitApp()
 
 
 @click.command()
-@click.argument('path', type=click.Path(exists=True, file_okay=True, dir_okay=True, path_type=Path))
+@click.argument('path', type=click.Path(exists=True, file_okay=True, dir_okay=True, path_type=Path), default='.')
 @click.option('--scan', is_flag=True)
 def cli(path: Path, scan: bool):
     if os.path.isdir(path):
@@ -44,10 +44,7 @@ def scan_path(path: Path):
 
 
 def tui(path: Path):
-    with open(path, 'r') as file:
-        json = file.read()
-    report = ReportReader.from_json(json)
-    RefactorList(report, Path(get_parent_folder(str(path)))).show()
+    app.run()
     click.echo('Have a nice day! 🍀')
 
 

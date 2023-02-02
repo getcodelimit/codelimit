@@ -3,6 +3,7 @@ import tempfile
 from pathlib import Path
 
 from codelimit.common.Scanner import Scanner
+from codelimit.common.source_utils import get_location_range
 
 
 def test_scan_single_file():
@@ -18,6 +19,15 @@ def test_scan_single_file():
     assert result.total_loc() == 2
     assert len(result.all_measurements()) == 1
     assert result.all_files()[0] == 'foo.py'
+
+    m = result.all_measurements()[0]
+    snippet = get_location_range(code, m.start, m.end)
+
+    expe = ''
+    expe += 'def foo():\n'
+    expe += '  return "Hello world"'
+
+    assert snippet == expe
 
 
 def test_scan_single_file_in_sub_folder():
