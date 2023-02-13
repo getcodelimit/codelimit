@@ -1,13 +1,14 @@
 from typing import Any
 
 from textual.app import ComposeResult
+from textual.binding import Binding
 from textual.containers import Container
 from textual.screen import Screen
 from textual.widgets import TextLog, Footer
 
 
 class CodeScreen(Screen):
-    BINDINGS = [('escape', 'close', 'Close')]
+    BINDINGS = [('escape', 'close', 'Close'), Binding('left', 'close', 'Close', show=False)]
 
     def __init__(self):
         super().__init__()
