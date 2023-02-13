@@ -7,7 +7,7 @@ import click
 from codelimit.common.Scanner import Scanner
 from codelimit.common.report.Report import Report
 from codelimit.common.report.ReportWriter import ReportWriter
-from codelimit.common.tui.CodeLimitApp import CodeLimitApp
+from codelimit.tui.CodeLimitApp import CodeLimitApp
 
 app = CodeLimitApp()
 

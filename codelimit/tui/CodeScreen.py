@@ -2,7 +2,8 @@ from typing import Any
 
 from textual.app import ComposeResult
 from textual.binding import Binding
-from textual.containers import Container
+from textual.color import Color
+from textual.containers import Content
 from textual.screen import Screen
 from textual.widgets import TextLog, Footer
 
@@ -13,9 +14,10 @@ class CodeScreen(Screen):
     def __init__(self):
         super().__init__()
         self.text_log = TextLog()
+        self.text_log.styles.background = Color.parse('#272823')
 
     def compose(self) -> ComposeResult:
-        yield Container(self.text_log)
+        yield Content(self.text_log)
         yield Footer()
 
     def set_code(self, code: Any):
