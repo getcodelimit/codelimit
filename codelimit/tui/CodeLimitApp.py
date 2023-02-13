@@ -2,12 +2,13 @@ import os
 
 from rich.syntax import Syntax
 from textual.app import App, ComposeResult
-from textual.widgets import Header, Footer, ListView, ListItem, Label
+from textual.widgets import Footer, ListView, ListItem, Label
 
 from codelimit.common.report.ReportReader import ReportReader
 from codelimit.common.report.ReportUnit import format_report_unit
 from codelimit.common.source_utils import get_location_range
 from codelimit.tui.CodeScreen import CodeScreen
+from codelimit.tui.Header import Header
 
 
 class CodeLimitApp(App):
