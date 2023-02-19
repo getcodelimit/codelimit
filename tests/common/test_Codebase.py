@@ -21,7 +21,7 @@ def test_codebase_entry_single_file():
     writer = ReportWriter(report, False)
 
     assert writer.to_json() == \
-           '{"uuid": "' + report.uuid + '", "codebase": {"tree": {"./": {"entries": [{"name": "foo.py"}], ' + \
+           '{"uuid": "' + report.uuid + '", "codebase": {"tree": {"./": {"entries": ["foo.py"], ' + \
            '"profile": [0, 0, 0, 0]}}, "files": {"foo.py": {"checksum": "abcd1234", "profile": [0, 0, 0, 0], ' + \
            '"measurements": []}}}}'
 
@@ -33,7 +33,7 @@ def test_codebase_entry_single_folder_single_file():
     writer = ReportWriter(report, False)
 
     assert writer.to_json() == '{"uuid": "' + report.uuid + '", "codebase": {"tree": {"./": {"entries": ' + \
-           '[{"name": "foo/"}], "profile": [0, 0, 0, 0]}, "foo/": {"entries": [{"name": "bar.py"}], ' + \
+           '["foo/"], "profile": [0, 0, 0, 0]}, "foo/": {"entries": ["bar.py"], ' + \
            '"profile": [0, 0, 0, 0]}}, "files": {"foo/bar.py": {"checksum": "abcd1234", "profile": [0, 0, 0, 0], ' + \
            '"measurements": []}}}}'
 

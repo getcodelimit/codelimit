@@ -22,7 +22,7 @@ def test_to_json():
     expected += '    "tree": {\n'
     expected += '      "./": {\n'
     expected += '        "entries": [\n'
-    expected += '          {"name": "foo.py"}\n'
+    expected += '          "foo.py"\n'
     expected += '        ],\n'
     expected += '        "profile": [10, 0, 0, 0]\n'
     expected += '      }\n'
@@ -52,8 +52,8 @@ def test_to_json_multiple():
     report = Report(codebase)
     serializer = ReportWriter(report, False)
 
-    expected = '{"uuid": "' + report.uuid + '", "codebase": {"tree": {"./": {"entries": [{"name": "foo.py"}, ' + \
-               '{"name": "bar.py"}], "profile": [20, 0, 0, 0]}}, ' + \
+    expected = '{"uuid": "' + report.uuid + '", "codebase": {"tree": {"./": {"entries": ["foo.py", ' + \
+               '"bar.py"], "profile": [20, 0, 0, 0]}}, ' + \
                '"files": {"foo.py": {"checksum": "abcd1234", "profile": [10, 0, 0, 0], "measurements": ' + \
                '[{"unit_name": "bar()", "start": {"line": 10, "column": 1}, ' + \
                '"end": {"line": 20, "column": 1}, "value": 10}]}, "bar.py": {' + \

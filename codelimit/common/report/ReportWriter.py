@@ -110,4 +110,4 @@ class ReportWriter:
         return self._line(json)
 
     def _source_folder_entry_to_json(self, entry: CodebaseEntry) -> str:
-        return self._line(f'{{"name": "{entry.name}"}}')
+        return self._line(f'"{entry.name}"')
