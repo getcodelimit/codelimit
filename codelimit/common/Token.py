@@ -1,10 +1,10 @@
 from pygments.token import Keyword, Text, Whitespace, Comment, Punctuation, Name
 
-from codelimit.common.SourceLocation import SourceLocation
+from codelimit.common.Location import Location
 
 
 class Token:
-    def __init__(self, location: SourceLocation, type: any, value: str):
+    def __init__(self, location: Location, type: any, value: str):
         self.location = location
         self.type = type
         self.value = value

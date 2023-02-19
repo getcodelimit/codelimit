@@ -1,20 +1,21 @@
+from codelimit.common.SourceFileEntry import SourceFileEntry
 from codelimit.common.SourceFolder import SourceFolder
-from codelimit.common.SourceMeasurement import SourceMeasurement
+from codelimit.common.Measurement import Measurement
 from codelimit.common.utils import get_parent_folder, get_basename, merge_profiles
 
 
 class Codebase:
     def __init__(self):
         self.tree = {'./': SourceFolder()}
-        self.measurements: dict[str, list[SourceMeasurement]] = {}
+        self.measurements: dict[str, SourceFileEntry] = {}
 
-    def add_file(self, path: str, measurements: list[SourceMeasurement]):
-        self.measurements[path] = measurements
-        parent_folder = get_parent_folder(path)
+    def add_file(self, entry: SourceFileEntry):
+        self.measurements[entry.path] = entry
+        parent_folder = get_parent_folder(entry.path)
         if f'{parent_folder}/' not in self.tree:
             self.add_folder(parent_folder)
         folder = self.tree[f'{parent_folder}/']
-        folder.add_file(get_basename(path), measurements)
+        folder.add_file(entry)
 
     def add_folder(self, path: str):
         if path == '.':
@@ -38,7 +39,7 @@ class Codebase:
                                                     aggregate_folder(sub_folder))
 
                 else:
-                    folder.profile = merge_profiles(folder.profile, entry.profile)
+                    folder.profile = merge_profiles(folder.profile, entry.profile())
             return folder.profile
 
         aggregate_folder('./')
@@ -46,10 +47,10 @@ class Codebase:
     def all_files(self) -> list[str]:
         return list(self.measurements.keys())
 
-    def all_measurements(self) -> list[SourceMeasurement]:
+    def all_measurements(self) -> list[Measurement]:
         result = []
-        for m in self.measurements.values():
-            result.extend(m)
+        for entry in self.measurements.values():
+            result.extend(entry.measurements())
         return result
 
     def all_measurements_sorted_by_length_asc(self):

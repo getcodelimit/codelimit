@@ -1,6 +1,7 @@
+from codelimit.common.CodebseEntry import CodebaseEntry
+from codelimit.common.SourceFileEntry import SourceFileEntry
 from codelimit.common.SourceFolder import SourceFolder
-from codelimit.common.SourceFolderEntry import SourceFolderEntry
-from codelimit.common.SourceMeasurement import SourceMeasurement
+from codelimit.common.Measurement import Measurement
 from codelimit.common.report.Report import Report
 
 
@@ -8,7 +9,7 @@ class ReportWriter:
     def __init__(self, report: Report, pretty_print=True):
         self.report = report
         self.tree = report.codebase.tree
-        self.measurements = report.codebase.measurements
+        self.files = report.codebase.measurements
         self.pretty_print = pretty_print
         self.level = 0
 
@@ -58,7 +59,7 @@ class ReportWriter:
         json = ''
         json += self._open(f'"{name}": {{')
         json += self._collection(
-            [self._tree_item_entries_to_json(folder), self._tree_item_risk_categories_to_json(name)])
+            [self._tree_item_entries_to_json(folder), self._tree_item_profile_to_json(name)])
         json += self._close('}')
         return json
 
@@ -69,24 +70,38 @@ class ReportWriter:
         json += self._close(']')
         return json
 
-    def _tree_item_risk_categories_to_json(self, name: str):
+    def _tree_item_profile_to_json(self, name: str):
         return self._line(f'"profile": {self.tree[name].profile}')
 
     def _measurements_to_json(self):
         json = ''
-        json += self._open('"measurements": {')
-        json += self._collection([self._measurement_item_to_json(k, v) for k, v in self.measurements.items()])
+        json += self._open('"files": {')
+        json += self._collection([self._file_to_json(k, v) for k, v in self.files.items()])
         json += self._close('}')
         return json
 
-    def _measurement_item_to_json(self, name: str, measurements: list[SourceMeasurement]):
+    def _file_to_json(self, name: str, entry: SourceFileEntry):
         json = ''
-        json += self._open(f'"{name}": [')
-        json += self._collection([self._measurement_to_json(m) for m in measurements])
+        json += self._open(f'"{name}": {{')
+        json += self._collection([self._file_checksum_to_json(entry), self._file_profile_to_json(entry),
+                                  self._file_measurements_to_json(entry)])
+        json += self._close('}')
+        return json
+
+    def _file_checksum_to_json(self, entry: SourceFileEntry):
+        return self._line(f'"checksum": "{entry.checksum()}"')
+
+    def _file_profile_to_json(self, entry: SourceFileEntry):
+        return self._line(f'"profile": {entry.profile()}')
+
+    def _file_measurements_to_json(self, entry: SourceFileEntry):
+        json = ''
+        json += self._open('"measurements": [')
+        json += self._collection([self._measurement_to_json(m) for m in entry.measurements()])
         json += self._close(']')
         return json
 
-    def _measurement_to_json(self, measurement: SourceMeasurement) -> str:
+    def _measurement_to_json(self, measurement: Measurement) -> str:
         json = ''
         json += f'{{"unit_name": "{measurement.unit_name}", '
         json += f'"start": {{"line": {measurement.start.line}, "column": {measurement.start.column}}}, '
@@ -94,9 +109,5 @@ class ReportWriter:
         json += f'"value": {measurement.value}}}'
         return self._line(json)
 
-    def _source_folder_entry_to_json(self, entry: SourceFolderEntry) -> str:
-        json = f'{{"name": "{entry.name}"'
-        if entry.profile:
-            json += f', "profile": {entry.profile}'
-        json += '}'
-        return self._line(json)
+    def _source_folder_entry_to_json(self, entry: CodebaseEntry) -> str:
+        return self._line(f'{{"name": "{entry.name}"}}')

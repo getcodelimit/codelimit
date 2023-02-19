@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 
-class SourceLocation:
+class Location:
     def __init__(self, line: int, column: int):
         self.line = line
         self.column = column
@@ -12,14 +12,14 @@ class SourceLocation:
     def __repr__(self):
         return self.__str__()
 
-    def lt(self, other: SourceLocation):
+    def lt(self, other: Location):
         return self.line < other.line or (self.line == other.line and self.column < other.column)
 
-    def le(self, other: SourceLocation):
+    def le(self, other: Location):
         return self.line < other.line or (self.line == other.line and self.column <= other.column)
 
-    def gt(self, other: SourceLocation):
+    def gt(self, other: Location):
         return self.line > other.line or (self.line == other.line and self.column > other.column)
 
-    def ge(self, other: SourceLocation):
+    def ge(self, other: Location):
         return self.line > other.line or (self.line == other.line and self.column >= other.column)

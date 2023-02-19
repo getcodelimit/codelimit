@@ -30,13 +30,13 @@ class Report:
 
     def all_report_units_sorted_by_length_asc(self) -> list[ReportUnit]:
         result = []
-        for file, measurements in self.codebase.measurements.items():
-            for m in measurements:
+        for file, entry in self.codebase.measurements.items():
+            for m in entry.measurements():
                 result.append(ReportUnit(file, m))
         result = sorted(result, key=lambda unit: unit.measurement.value, reverse=True)
         return result
 
-    def risk_categories(self):
+    def quality_profile(self):
         return make_profile(self.codebase.all_measurements())
 
     def risk_category_plot(self) -> str:

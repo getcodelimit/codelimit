@@ -1,4 +1,7 @@
-from codelimit.common.utils import path_has_suffix, get_parent_folder, get_basename, delete_indices
+import os
+import tempfile
+
+from codelimit.common.utils import path_has_suffix, get_parent_folder, get_basename, delete_indices, calculate_checksum
 
 
 def test_path_has_suffix():
@@ -20,6 +23,18 @@ def test_get_basename():
     assert get_basename('foo/bar.py') == 'bar.py'
     assert get_basename('foo/bar/span/eggs.py') == 'eggs.py'
     assert get_basename('foo.py') == 'foo.py'
+
+
+def test_calculate_checksum():
+    tmp_root = tempfile.TemporaryDirectory()
+    file_path = os.path.join(tmp_root.name, 'foo.py')
+    with open(file_path, 'w') as pythonFile:
+        code = ''
+        code += 'def foo():\n'
+        code += '  return "Hello world"\n'
+        pythonFile.write(code)
+
+    assert calculate_checksum(file_path) == 'b3029c205e58fa4dfb6656d5e8f7a381'
 
 
 def test_delete_indices():

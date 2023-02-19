@@ -1,6 +1,7 @@
 from codelimit.common.Codebase import Codebase
-from codelimit.common.SourceLocation import SourceLocation
-from codelimit.common.SourceMeasurement import SourceMeasurement
+from codelimit.common.SourceFileEntry import SourceFileEntry
+from codelimit.common.Location import Location
+from codelimit.common.Measurement import Measurement
 from codelimit.common.report.Report import Report
 from codelimit.common.report.ReportReader import ReportReader
 from codelimit.common.report.ReportWriter import ReportWriter
@@ -24,7 +25,8 @@ def test_empty_report():
 
 def test_single_file():
     codebase = Codebase()
-    codebase.add_file('foo.py', [SourceMeasurement('bar()', SourceLocation(10, 1), SourceLocation(30, 1), 20)])
+    codebase.add_file(SourceFileEntry('foo.py', 'abcd1234',
+                                      [Measurement('bar()', Location(10, 1), Location(30, 1), 20)]))
     report = Report(codebase)
 
     json = ReportWriter(report).to_json()
@@ -39,16 +41,21 @@ def test_single_file():
     assert result_entries[0].is_file()
     assert result_entries[0].name == 'foo.py'
     assert len(result_measurements) == 1
-    assert len(result_measurements['foo.py']) == 1
-    assert result_measurements['foo.py'][0].start.line == 10
-    assert result_measurements['foo.py'][0].value == 20
+
+    foo_measurements = result_measurements['foo.py'].measurements()
+
+    assert len(foo_measurements) == 1
+    assert foo_measurements[0].start.line == 10
+    assert foo_measurements[0].value == 20
 
 
 def test_multiple_files():
     codebase = Codebase()
-    codebase.add_file('foo.py', [SourceMeasurement('spam()', SourceLocation(10, 1), SourceLocation(30, 1), 20)])
-    codebase.add_file('bar.py', [SourceMeasurement('eggs()', SourceLocation(10, 1), SourceLocation(30, 1), 20),
-                                 SourceMeasurement('ham()', SourceLocation(20, 1), SourceLocation(50, 1), 30)])
+    codebase.add_file(SourceFileEntry('foo.py', 'abcd1234',
+                                      [Measurement('spam()', Location(10, 1), Location(30, 1), 20)]))
+    codebase.add_file(SourceFileEntry('bar.py', 'efgh5678',
+                                      [Measurement('eggs()', Location(10, 1), Location(30, 1), 20),
+                                       Measurement('ham()', Location(20, 1), Location(50, 1), 30)]))
     report = Report(codebase)
 
     json = ReportWriter(report).to_json()
@@ -57,25 +64,30 @@ def test_multiple_files():
     assert result.uuid == report.uuid
 
     result_entries = result.codebase.tree['./'].entries
-    result_measurements = result.codebase.measurements
+    result_files = result.codebase.measurements
 
     assert len(result_entries) == 2
     assert result_entries[0].is_file()
     assert result_entries[0].name == 'foo.py'
     assert result_entries[1].is_file()
     assert result_entries[1].name == 'bar.py'
-    assert len(result_measurements) == 2
-    assert len(result_measurements['foo.py']) == 1
-    assert len(result_measurements['bar.py']) == 2
-    assert result_measurements['bar.py'][1].start.line == 20
-    assert result_measurements['bar.py'][1].value == 30
+    assert len(result_files) == 2
+    assert len(result_files['foo.py'].measurements()) == 1
+    assert len(result_files['bar.py'].measurements()) == 2
+
+    bar_measurements = result_files['bar.py'].measurements()
+
+    assert bar_measurements[1].start.line == 20
+    assert bar_measurements[1].value == 30
 
 
 def test_multiple_files_and_folders():
     codebase = Codebase()
-    codebase.add_file('foo.py', [SourceMeasurement('bar()', SourceLocation(10, 1), SourceLocation(30, 1), 20)])
-    codebase.add_file('bar/spam.py', [SourceMeasurement('spam()', SourceLocation(10, 1), SourceLocation(30, 1), 20),
-                                      SourceMeasurement('eggs()', SourceLocation(20, 1), SourceLocation(50, 1), 30)])
+    codebase.add_file(SourceFileEntry('foo.py', 'abcd1234',
+                                      [Measurement('bar()', Location(10, 1), Location(30, 1), 20)]))
+    codebase.add_file(SourceFileEntry('bar/spam.py', 'efgh5678',
+                                      [Measurement('spam()', Location(10, 1), Location(30, 1), 20),
+                                       Measurement('eggs()', Location(20, 1), Location(50, 1), 30)]))
     report = Report(codebase)
 
     json = ReportWriter(report).to_json()
@@ -88,8 +100,8 @@ def test_multiple_files_and_folders():
     assert len(result_entries) == 2
     assert result_entries[0].is_file()
     assert result_entries[0].name == 'foo.py'
-    assert result_entries[1].is_folder()
     assert result_entries[1].name == 'bar/'
+    assert result_entries[1].is_folder()
 
     result_entries = result.codebase.tree['bar/'].entries
 
@@ -97,10 +109,13 @@ def test_multiple_files_and_folders():
     assert result_entries[0].is_file()
     assert result_entries[0].name == 'spam.py'
 
-    result_measurements = result.codebase.measurements
+    result_files = result.codebase.measurements
 
-    assert len(result_measurements) == 2
-    assert len(result_measurements['foo.py']) == 1
-    assert len(result_measurements['bar/spam.py']) == 2
-    assert result_measurements['bar/spam.py'][1].start.line == 20
-    assert result_measurements['bar/spam.py'][1].value == 30
+    assert len(result_files) == 2
+    assert len(result_files['foo.py'].measurements()) == 1
+    assert len(result_files['bar/spam.py'].measurements()) == 2
+
+    bar_measurements = result_files['bar/spam.py'].measurements()
+
+    assert bar_measurements[1].start.line == 20
+    assert bar_measurements[1].value == 30

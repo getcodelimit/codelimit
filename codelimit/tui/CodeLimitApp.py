@@ -24,7 +24,7 @@ class CodeLimitApp(App):
             json = file.read()
         report = ReportReader.from_json(json)
         self.report = report
-        yield Header()
+        yield Header(self.report)
         yield Footer()
         list_view = ListView()
         for idx, unit in enumerate(self.report.all_report_units_sorted_by_length_asc()):

@@ -1,3 +1,4 @@
+import hashlib
 import os
 import sys
 from typing import Union, Any
@@ -5,11 +6,11 @@ from typing import Union, Any
 from InquirerPy.prompts import ListPrompt
 from InquirerPy.utils import color_print
 
-from codelimit.common.SourceMeasurement import SourceMeasurement
+from codelimit.common.Measurement import Measurement
 from codelimit.version import version, release_date
 
 
-def make_profile(measurements: list[SourceMeasurement]):
+def make_profile(measurements: list[Measurement]):
     result = [0, 0, 0, 0]
     for m in measurements:
         if m.value <= 15:
@@ -50,6 +51,12 @@ def get_parent_folder(path: str) -> str:
 def get_basename(path: str) -> str:
     parts = path.split(os.path.sep)
     return parts[-1]
+
+
+def calculate_checksum(path: str) -> str:
+    with open(path, 'rb') as file:
+        file_bytes = file.read()
+        return hashlib.md5(file_bytes).hexdigest()
 
 
 def delete_indices(iterable: list, indices: list[int]) -> list[Any]:

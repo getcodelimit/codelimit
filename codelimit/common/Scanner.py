@@ -5,10 +5,12 @@ from pathlib import Path
 from halo import Halo
 
 from codelimit.common.Codebase import Codebase
-from codelimit.common.SourceLocation import SourceLocation
-from codelimit.common.SourceMeasurement import SourceMeasurement
+from codelimit.common.SourceFileEntry import SourceFileEntry
+from codelimit.common.Location import Location
+from codelimit.common.Measurement import Measurement
 from codelimit.common.scope_utils import build_scopes
 from codelimit.common.source_utils import get_location_range
+from codelimit.common.utils import calculate_checksum
 from codelimit.languages.c.CLanguage import CLanguage
 from codelimit.languages.python.PythonLaguage import PythonLanguage
 
@@ -58,7 +60,8 @@ class Scanner:
                 unit_name = unit_name.strip().replace('\t', ' ').replace('\n', ' ')
                 start_location = scope.header.tokens[0].location
                 last_token = scope.block.tokens[-1]
-                end_location = SourceLocation(last_token.location.line,
-                                              last_token.location.column + len(last_token.value))
-                measurements.append(SourceMeasurement(unit_name, start_location, end_location, length))
-            self.codebase.add_file(rel_path, measurements)
+                end_location = Location(last_token.location.line,
+                                        last_token.location.column + len(last_token.value))
+                measurements.append(Measurement(unit_name, start_location, end_location, length))
+            checksum = calculate_checksum(filepath)
+            self.codebase.add_file(SourceFileEntry(rel_path, checksum, measurements))

@@ -1,6 +1,6 @@
 from typing import Callable
 
-from codelimit.common.SourceLocation import SourceLocation
+from codelimit.common.Location import Location
 from codelimit.common.Token import Token
 
 
@@ -12,7 +12,7 @@ def get_newline_indices(code: str) -> list[int]:
     return result
 
 
-def index_to_location(code: str, index: int) -> SourceLocation:
+def index_to_location(code: str, index: int) -> Location:
     line = 1 + len([c for c in code[:index + 1] if c == '\n'])
     if index > 0 and code[index] == '\n':
         line -= 1
@@ -25,10 +25,10 @@ def index_to_location(code: str, index: int) -> SourceLocation:
             if c == '\n':
                 break
             column += 1
-    return SourceLocation(line, column)
+    return Location(line, column)
 
 
-def location_to_index(code: str, position: SourceLocation) -> int:
+def location_to_index(code: str, position: Location) -> int:
     result = 0
     lines = code.split('\n')
     for i in range(0, position.line - 1):
@@ -43,7 +43,7 @@ def get_token_range(code: str, start: Token, end: Token) -> str:
     return code[start_index:end_index + len(end.value)]
 
 
-def get_location_range(code: str, start: SourceLocation, end: SourceLocation) -> str:
+def get_location_range(code: str, start: Location, end: Location) -> str:
     start_index = location_to_index(code, start)
     end_index = location_to_index(code, end)
     return code[start_index:end_index]

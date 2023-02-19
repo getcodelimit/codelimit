@@ -1,17 +1,12 @@
-from typing import Union
-
-from codelimit.common.SourceMeasurement import SourceMeasurement
-from codelimit.common.utils import make_profile
+from codelimit.common.CodebseEntry import CodebaseEntry
 
 
-class SourceFolderEntry:
-    def __init__(self, name: str, measurements: list[SourceMeasurement] = None):
-        self.name = name
-        profile = make_profile(measurements) if measurements else None
-        self.profile: Union[list[int], None] = profile
+class SourceFolderEntry(CodebaseEntry):
+    def __init__(self, path: str):
+        super().__init__(path)
 
     def is_folder(self):
-        return self.name.endswith('/')
+        return True
 
     def is_file(self):
-        return not self.is_folder()
+        return False

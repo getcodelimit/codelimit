@@ -1,12 +1,12 @@
 from pygments.token import Keyword
 
-from codelimit.common.SourceLocation import SourceLocation
+from codelimit.common.Location import Location
 from codelimit.common.Token import Token
 from codelimit.languages.c.CLanguage import CLanguage
 
 
 def test_to_string():
-    token = Token(SourceLocation(1, 1), Keyword, 'def')
+    token = Token(Location(1, 1), Keyword, 'def')
 
     assert str(token) == 'def'
 

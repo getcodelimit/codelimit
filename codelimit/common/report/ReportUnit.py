@@ -2,13 +2,13 @@ from dataclasses import dataclass
 
 from rich.text import Text
 
-from codelimit.common.SourceMeasurement import SourceMeasurement
+from codelimit.common.Measurement import Measurement
 
 
 @dataclass
 class ReportUnit:
     file: str
-    measurement: SourceMeasurement
+    measurement: Measurement
 
 
 def format_report_unit(unit: ReportUnit) -> Text:
