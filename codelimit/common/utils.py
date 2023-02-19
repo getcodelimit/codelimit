@@ -3,9 +3,6 @@ import os
 import sys
 from typing import Union, Any
 
-from InquirerPy.prompts import ListPrompt
-from InquirerPy.utils import color_print
-
 from codelimit.common.Measurement import Measurement
 from codelimit.version import version, release_date
 
@@ -79,17 +76,5 @@ def clear_screen() -> None:
 
 
 def header(content: str):
-    print_info(f'Code Limit (v. {version}, build date: {release_date})'.center(80))
+    print(f'Code Limit (v. {version}, build date: {release_date})'.center(80))
     print(content)
-    print_info()
-
-
-def register_shortcut(prompt: ListPrompt, key: str, command: str, enable=True):
-    @prompt.register_kb(key, filter=enable)
-    def _(event):
-        event.app.exit(result={'value': prompt.result_value, 'command': command})
-
-
-def print_info(o: any = '', color='white'):
-    msg = str(o)
-    color_print([(color, msg)])
