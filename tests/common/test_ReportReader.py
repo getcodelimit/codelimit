@@ -8,7 +8,7 @@ from codelimit.common.report.ReportWriter import ReportWriter
 
 
 def test_empty_report():
-    codebase = Codebase()
+    codebase = Codebase('/')
     report = Report(codebase)
 
     json = ReportWriter(report).to_json()
@@ -17,14 +17,14 @@ def test_empty_report():
     assert result.uuid == report.uuid
 
     result_entries = result.codebase.tree['./'].entries
-    result_measurements = result.codebase.measurements
+    result_measurements = result.codebase.files
 
     assert len(result_entries) == 0
     assert len(result_measurements) == 0
 
 
 def test_single_file():
-    codebase = Codebase()
+    codebase = Codebase('/')
     codebase.add_file(SourceFileEntry('foo.py', 'abcd1234',
                                       [Measurement('bar()', Location(10, 1), Location(30, 1), 20)]))
     report = Report(codebase)
@@ -35,7 +35,7 @@ def test_single_file():
     assert result.uuid == report.uuid
 
     result_entries = result.codebase.tree['./'].entries
-    result_measurements = result.codebase.measurements
+    result_measurements = result.codebase.files
 
     assert len(result_entries) == 1
     assert result_entries[0].is_file()
@@ -50,7 +50,7 @@ def test_single_file():
 
 
 def test_multiple_files():
-    codebase = Codebase()
+    codebase = Codebase('/')
     codebase.add_file(SourceFileEntry('foo.py', 'abcd1234',
                                       [Measurement('spam()', Location(10, 1), Location(30, 1), 20)]))
     codebase.add_file(SourceFileEntry('bar.py', 'efgh5678',
@@ -64,7 +64,7 @@ def test_multiple_files():
     assert result.uuid == report.uuid
 
     result_entries = result.codebase.tree['./'].entries
-    result_files = result.codebase.measurements
+    result_files = result.codebase.files
 
     assert len(result_entries) == 2
     assert result_entries[0].is_file()
@@ -82,7 +82,7 @@ def test_multiple_files():
 
 
 def test_multiple_files_and_folders():
-    codebase = Codebase()
+    codebase = Codebase('/')
     codebase.add_file(SourceFileEntry('foo.py', 'abcd1234',
                                       [Measurement('bar()', Location(10, 1), Location(30, 1), 20)]))
     codebase.add_file(SourceFileEntry('bar/spam.py', 'efgh5678',
@@ -109,7 +109,7 @@ def test_multiple_files_and_folders():
     assert result_entries[0].is_file()
     assert result_entries[0].name == 'spam.py'
 
-    result_files = result.codebase.measurements
+    result_files = result.codebase.files
 
     assert len(result_files) == 2
     assert len(result_files['foo.py'].measurements()) == 1

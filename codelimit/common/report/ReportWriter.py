@@ -1,7 +1,7 @@
 from codelimit.common.CodebseEntry import CodebaseEntry
+from codelimit.common.Measurement import Measurement
 from codelimit.common.SourceFileEntry import SourceFileEntry
 from codelimit.common.SourceFolder import SourceFolder
-from codelimit.common.Measurement import Measurement
 from codelimit.common.report.Report import Report
 
 
@@ -9,7 +9,7 @@ class ReportWriter:
     def __init__(self, report: Report, pretty_print=True):
         self.report = report
         self.tree = report.codebase.tree
-        self.files = report.codebase.measurements
+        self.files = report.codebase.files
         self.pretty_print = pretty_print
         self.level = 0
 
@@ -17,7 +17,9 @@ class ReportWriter:
         self.level = 0
         json = ''
         json += self._open('{')
-        json += self._collection([self._line(f'"uuid": "{self.report.uuid}"'), self._codebase_to_json()])
+        json += self._collection(
+            [self._line(f'"uuid": "{self.report.uuid}"'), self._line(f'"root": "{self.report.codebase.root}"'),
+             self._codebase_to_json()])
         json += self._close('}')
         return json
 

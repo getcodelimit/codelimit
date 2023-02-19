@@ -30,7 +30,7 @@ class Report:
 
     def all_report_units_sorted_by_length_asc(self) -> list[ReportUnit]:
         result = []
-        for file, entry in self.codebase.measurements.items():
+        for file, entry in self.codebase.files.items():
             for m in entry.measurements():
                 result.append(ReportUnit(file, m))
         result = sorted(result, key=lambda unit: unit.measurement.value, reverse=True)

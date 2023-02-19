@@ -12,7 +12,7 @@ class ReportReader:
     @staticmethod
     def from_json(json: str) -> Report:
         d = loads(json)
-        codebase = Codebase()
+        codebase = Codebase(d['root'])
         report = Report(codebase)
         report.uuid = d['uuid']
         for k, v in d['codebase']['files'].items():

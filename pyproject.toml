@@ -23,6 +23,7 @@ build_command = "poetry build"
 pyinstaller = "^5.6.1"
 pytest-cov = "^4.0.0"
 python-semantic-release = "^7.32.2"
+pytest = "7.1.1"
 
 [build-system]
 requires = ["poetry-core"]

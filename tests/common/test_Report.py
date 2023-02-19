@@ -7,7 +7,7 @@ from codelimit.common.report.ReportWriter import ReportWriter
 
 
 def test_empty_measurements_collection():
-    report = Report(Codebase())
+    report = Report(Codebase('/'))
 
     assert report.get_average() == 0
     assert report.ninetieth_percentile() == 0
@@ -18,6 +18,7 @@ def test_empty_measurements_collection():
     json = ''
     json += '{\n'
     json += f'  "uuid": "{report.uuid}",\n'
+    json += '  "root": "/",\n'
     json += '  "codebase": {\n'
     json += '    "tree": {\n'
     json += '      "./": {\n'
@@ -35,7 +36,7 @@ def test_empty_measurements_collection():
 
 
 def test_all_units():
-    codebase = Codebase()
+    codebase = Codebase('/')
     codebase.add_file(SourceFileEntry('foo.py', 'abcd1234',
                                       [Measurement('bar()', Location(10, 1), Location(30, 1), 20)]))
     report = Report(codebase)

@@ -7,7 +7,7 @@ from codelimit.common.report.ReportWriter import ReportWriter
 
 
 def test_to_json():
-    codebase = Codebase()
+    codebase = Codebase('/')
     codebase.add_file(
         SourceFileEntry('foo.py', 'abcd1234',
                         [Measurement('bar()', Location(10, 1), Location(20, 1), 10)]))
@@ -18,6 +18,7 @@ def test_to_json():
     expected = ''
     expected += '{\n'
     expected += '  "uuid": "' + report.uuid + '",\n'
+    expected += '  "root": "/",\n'
     expected += '  "codebase": {\n'
     expected += '    "tree": {\n'
     expected += '      "./": {\n'
@@ -43,7 +44,7 @@ def test_to_json():
 
 
 def test_to_json_multiple():
-    codebase = Codebase()
+    codebase = Codebase('/')
     codebase.add_file(SourceFileEntry('foo.py', 'abcd1234',
                                       [Measurement('bar()', Location(10, 1), Location(20, 1), 10)]))
     codebase.add_file(SourceFileEntry('bar.py', 'efgh5678',
@@ -52,7 +53,7 @@ def test_to_json_multiple():
     report = Report(codebase)
     serializer = ReportWriter(report, False)
 
-    expected = '{"uuid": "' + report.uuid + '", "codebase": {"tree": {"./": {"entries": ["foo.py", ' + \
+    expected = '{"uuid": "' + report.uuid + '", "root": "/", "codebase": {"tree": {"./": {"entries": ["foo.py", ' + \
                '"bar.py"], "profile": [20, 0, 0, 0]}}, ' + \
                '"files": {"foo.py": {"checksum": "abcd1234", "profile": [10, 0, 0, 0], "measurements": ' + \
                '[{"unit_name": "bar()", "start": {"line": 10, "column": 1}, ' + \
@@ -64,7 +65,7 @@ def test_to_json_multiple():
 
 
 def test_all():
-    codebase = Codebase()
+    codebase = Codebase('/')
     codebase.add_file(
         SourceFileEntry('foo.py', 'abcd1234',
                         [Measurement('bar()', Location(10, 1), Location(20, 1), 10)]))

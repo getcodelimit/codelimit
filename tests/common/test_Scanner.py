@@ -2,7 +2,7 @@ import os.path
 import tempfile
 from pathlib import Path
 
-from codelimit.common.Scanner import Scanner
+from codelimit.common.Scanner import scan
 from codelimit.common.source_utils import get_location_range
 
 
@@ -14,7 +14,7 @@ def test_scan_single_file():
         code += '  return "Hello world"\n'
         pythonFile.write(code)
 
-    result = Scanner().scan(Path(tmp_root.name))
+    result = scan(Path(tmp_root.name))
 
     assert result.total_loc() == 2
     assert len(result.all_measurements()) == 1
@@ -39,7 +39,7 @@ def test_scan_single_file_in_sub_folder():
         code += '  return "Hello world"\n'
         pythonFile.write(code)
 
-    result = Scanner().scan(Path(tmp_root.name))
+    result = scan(Path(tmp_root.name))
 
     assert result.total_loc() == 2
     assert len(result.all_measurements()) == 1
@@ -63,7 +63,7 @@ def test_skip_hidden_files():
     path_parts.append('..')
     path_parts.append(path_parts[-2])
     path = Path(str.join(os.path.sep, path_parts))
-    result = Scanner().scan(path)
+    result = scan(path)
 
     assert result.total_loc() == 2
     assert len(result.all_measurements()) == 1

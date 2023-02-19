@@ -20,7 +20,7 @@ class Header(Widget):
 
     def compose(self) -> ComposeResult:
         # yield Vertical(Static(Text.from_ansi(self.report.risk_category_plot())))
-        yield Vertical(QualityProfile(self.report.quality_profile()))
+        yield Vertical(Static(self.report.codebase.root), QualityProfile(self.report.quality_profile()))
 
 
 class HeaderLeft(Static):

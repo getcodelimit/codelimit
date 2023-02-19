@@ -5,12 +5,13 @@ from codelimit.common.utils import get_parent_folder, get_basename, merge_profil
 
 
 class Codebase:
-    def __init__(self):
+    def __init__(self, root: str):
+        self.root = root
         self.tree = {'./': SourceFolder()}
-        self.measurements: dict[str, SourceFileEntry] = {}
+        self.files: dict[str, SourceFileEntry] = {}
 
     def add_file(self, entry: SourceFileEntry):
-        self.measurements[entry.path] = entry
+        self.files[entry.path] = entry
         parent_folder = get_parent_folder(entry.path)
         if f'{parent_folder}/' not in self.tree:
             self.add_folder(parent_folder)
@@ -45,11 +46,11 @@ class Codebase:
         aggregate_folder('./')
 
     def all_files(self) -> list[str]:
-        return list(self.measurements.keys())
+        return list(self.files.keys())
 
     def all_measurements(self) -> list[Measurement]:
         result = []
-        for entry in self.measurements.values():
+        for entry in self.files.values():
             result.extend(entry.measurements())
         return result
 
