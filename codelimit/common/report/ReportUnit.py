@@ -17,7 +17,7 @@ def format_report_unit(unit: ReportUnit) -> Text:
     if length > 60:
         style = 'red'
     elif length > 30:
-        style = 'orange'
+        style = 'dark_orange'
     elif length > 15:
         style = 'yellow'
     else:

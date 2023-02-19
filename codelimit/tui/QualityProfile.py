@@ -24,7 +24,7 @@ class QualityProfile(Static):
         if medium > 0:
             parts.append((' ' * medium, Style(bgcolor='yellow')))
         if high > 0:
-            parts.append((' ' * high, Style(bgcolor='orange')))
+            parts.append((' ' * high, Style(bgcolor='dark_orange')))
         if very_high > 0:
             parts.append((' ' * very_high, Style(bgcolor='red')))
         return Text.assemble(*parts)

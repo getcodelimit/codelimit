@@ -1,3 +1,4 @@
+import os.path
 import webbrowser
 
 from textual.app import ComposeResult
@@ -6,6 +7,7 @@ from textual.widget import Widget
 from textual.widgets import Static
 
 from codelimit.common.report.Report import Report
+from codelimit.common.utils import get_basename
 from codelimit.tui.QualityProfile import QualityProfile
 from codelimit.version import version
 
@@ -20,7 +22,10 @@ class Header(Widget):
 
     def compose(self) -> ComposeResult:
         # yield Vertical(Static(Text.from_ansi(self.report.risk_category_plot())))
-        yield Vertical(Static(self.report.codebase.root), QualityProfile(self.report.quality_profile()))
+        root = self.report.codebase.root
+        title = Static(get_basename(root) + os.path.sep)
+        title.styles.content_align_horizontal = 'center'
+        yield Vertical(title, QualityProfile(self.report.quality_profile()))
 
 
 class HeaderLeft(Static):
