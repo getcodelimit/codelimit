@@ -1,4 +1,4 @@
-from codelimit.common.scope_utils import _find_scope_blocks_indices
+from codelimit.common.scope.scope_utils import _find_scope_blocks_indices
 from codelimit.languages.python.PythonLaguage import PythonLanguage
 from codelimit.languages.python.PythonScopeExtractor import PythonScopeExtractor
 
@@ -16,5 +16,5 @@ def test_find_scope_blocks_indices():
     headers = extractor.extract_headers(tokens)
     blocks = extractor.extract_blocks(tokens)
 
-    assert _find_scope_blocks_indices(headers[0], blocks) == [1]
-    assert _find_scope_blocks_indices(headers[1], blocks) == [3]
+    assert _find_scope_blocks_indices(headers[0].token_range, blocks) == [1]
+    assert _find_scope_blocks_indices(headers[1].token_range, blocks) == [3]

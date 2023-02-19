@@ -13,6 +13,9 @@ class TokenRange:
     def __repr__(self):
         return self.__str__()
 
+    def __getitem__(self, item):
+        return self.tokens.__getitem__(item)
+
     def token_string(self):
         return ' '.join([t.value for t in self.tokens])
 

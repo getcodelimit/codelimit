@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 
 from pygments.lexer import Lexer
 
-from codelimit.common.ScopeExtractor import ScopeExtractor
+from codelimit.common.scope.ScopeExtractor import ScopeExtractor
 from codelimit.common.Location import Location
 from codelimit.common.Token import Token
 from codelimit.common.source_utils import filter_tokens, get_newline_indices

@@ -1,7 +1,8 @@
 from typing import Optional
 
 from codelimit.common.Language import Language
-from codelimit.common.Scope import Scope
+from codelimit.common.scope.Header import Header
+from codelimit.common.scope.Scope import Scope
 from codelimit.common.TokenRange import TokenRange
 from codelimit.common.token_utils import sort_tokens
 from codelimit.common.utils import delete_indices
@@ -15,11 +16,11 @@ def build_scopes(language: Language, code: str) -> list[Scope]:
     return _build_scopes_from_headers_and_blocks(headers, blocks)
 
 
-def _build_scopes_from_headers_and_blocks(headers: list[TokenRange], blocks: list[TokenRange]) -> list[Scope]:
+def _build_scopes_from_headers_and_blocks(headers: list[Header], blocks: list[TokenRange]) -> list[Scope]:
     result: list[Scope] = []
     reverse_headers = headers[::-1]
     for header in reverse_headers:
-        scope_blocks_indices = _find_scope_blocks_indices(header, blocks)
+        scope_blocks_indices = _find_scope_blocks_indices(header.token_range, blocks)
         if len(scope_blocks_indices) > 0:
             scope_tokens = []
             for i in scope_blocks_indices:

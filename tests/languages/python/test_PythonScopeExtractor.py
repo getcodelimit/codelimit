@@ -1,4 +1,4 @@
-from codelimit.common.scope_utils import build_scopes
+from codelimit.common.scope.scope_utils import build_scopes
 from codelimit.languages.python.PythonLaguage import PythonLanguage
 from codelimit.languages.python.PythonScopeExtractor import _get_indentation, PythonScopeExtractor, _get_token_lines
 
@@ -104,10 +104,11 @@ def test_get_headers_single_header():
     result = PythonScopeExtractor().extract_headers(tokens)
 
     assert len(result) == 1
-    assert result[0].tokens[0].location.line == 1
-    assert result[0].tokens[0].location.column == 1
-    assert result[0].tokens[-1].location.line == 1
-    assert result[0].tokens[-1].location.column == 1
+    assert result[0].token_range[0].location.line == 1
+    assert result[0].token_range[0].location.column == 1
+    assert result[0].token_range[-1].location.line == 1
+    assert result[0].token_range[-1].location.column == 5
+    assert result[0].name == 'foo'
 
 
 def test_get_headers_multi_header():
@@ -122,10 +123,10 @@ def test_get_headers_multi_header():
     result = PythonScopeExtractor().extract_headers(tokens)
 
     assert len(result) == 2
-    assert result[1].tokens[0].location.line == 4
-    assert result[1].tokens[0].location.column == 1
-    assert result[1].tokens[-1].location.line == 4
-    assert result[1].tokens[-1].location.column == 1
+    assert result[1].token_range[0].location.line == 4
+    assert result[1].token_range[0].location.column == 1
+    assert result[1].token_range[-1].location.line == 4
+    assert result[1].token_range[-1].location.column == 5
 
 
 def test_get_headers_multi_header_with_comment():
@@ -141,10 +142,11 @@ def test_get_headers_multi_header_with_comment():
     result = PythonScopeExtractor().extract_headers(tokens)
 
     assert len(result) == 2
-    assert result[0].tokens[0].location.line == 2
-    assert result[0].tokens[0].location.column == 1
-    assert result[0].tokens[-1].location.line == 2
-    assert result[0].tokens[-1].location.column == 1
+    assert result[0].token_range[0].location.line == 2
+    assert result[0].token_range[0].location.column == 1
+    assert result[0].token_range[-1].location.line == 2
+    assert result[0].token_range[-1].location.column == 5
+    assert result[1].name == 'bar'
 
 
 def test_do_not_count_comment_lines():

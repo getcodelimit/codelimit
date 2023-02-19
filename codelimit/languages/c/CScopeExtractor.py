@@ -1,11 +1,12 @@
-from codelimit.common.ScopeExtractor import ScopeExtractor
 from codelimit.common.Token import Token
 from codelimit.common.TokenRange import TokenRange
+from codelimit.common.scope.Header import Header
+from codelimit.common.scope.ScopeExtractor import ScopeExtractor
 from codelimit.common.token_utils import get_balanced_symbol_token_indices
 
 
 class CScopeExtractor(ScopeExtractor):
-    def extract_headers(self, tokens: list[Token]) -> list[TokenRange]:
+    def extract_headers(self, tokens: list[Token]) -> list[Header]:
         result = []
         balanced_tokens = get_balanced_symbol_token_indices(tokens, '(', ')')
 
@@ -17,7 +18,7 @@ class CScopeExtractor(ScopeExtractor):
 
         for bt in balanced_tokens:
             if has_name_prefix(bt[0]) and has_curly_suffix(bt[1]):
-                result.append(TokenRange(tokens[bt[0] - 1:bt[1] + 1]))
+                result.append(Header(tokens[bt[0] - 1].value, TokenRange(tokens[bt[0] - 1:bt[1] + 1])))
         return result
 
     def extract_blocks(self, tokens: list[Token]) -> list[TokenRange]:

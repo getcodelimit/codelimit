@@ -1,4 +1,4 @@
-from codelimit.common.scope_utils import build_scopes
+from codelimit.common.scope.scope_utils import build_scopes
 from codelimit.languages.c.CLanguage import CLanguage
 from codelimit.languages.c.CScopeExtractor import CScopeExtractor
 
@@ -92,12 +92,13 @@ def test_get_headers_single_header():
     result = CScopeExtractor().extract_headers(tokens)
 
     assert len(result) == 1
-    assert result[0].tokens[0].location.line == 1
-    assert result[0].tokens[0].location.column == 5
-    assert result[0].tokens[0].value == 'main'
-    assert result[0].tokens[-1].location.line == 1
-    assert result[0].tokens[-1].location.column == 30
-    assert result[0].tokens[-1].value == ')'
+    assert result[0].token_range[0].location.line == 1
+    assert result[0].token_range[0].location.column == 5
+    assert result[0].token_range[0].value == 'main'
+    assert result[0].token_range[-1].location.line == 1
+    assert result[0].token_range[-1].location.column == 30
+    assert result[0].token_range[-1].value == ')'
+    assert result[0].name == 'main'
 
 
 def test_build_scopes():
@@ -113,8 +114,8 @@ def test_build_scopes():
     scopes = build_scopes(CLanguage(), code)
 
     assert len(scopes) == 2
-    assert scopes[0].header.token_string() == 'bar ( )'
-    assert scopes[1].header.token_string() == 'foo ( )'
+    assert scopes[0].header.token_range.token_string() == 'bar ( )'
+    assert scopes[1].header.token_range.token_string() == 'foo ( )'
 
 
 def test_build_scope_c_function():
@@ -131,12 +132,12 @@ def test_build_scope_c_function():
     result = CScopeExtractor().extract_headers(tokens)
 
     assert len(result) == 1
-    assert result[0].tokens[0].location.line == 1
-    assert result[0].tokens[0].location.column == 5
-    assert result[0].tokens[0].value == 'nfs_register_sysctl'
-    assert result[0].tokens[-1].location.line == 1
-    assert result[0].tokens[-1].location.column == 29
-    assert result[0].tokens[-1].value == ')'
+    assert result[0].token_range[0].location.line == 1
+    assert result[0].token_range[0].location.column == 5
+    assert result[0].token_range[0].value == 'nfs_register_sysctl'
+    assert result[0].token_range[-1].location.line == 1
+    assert result[0].token_range[-1].location.column == 29
+    assert result[0].token_range[-1].value == ')'
 
     result = CScopeExtractor().extract_blocks(tokens)
 

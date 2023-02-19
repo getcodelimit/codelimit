@@ -2,7 +2,7 @@ from pygments.lexer import Lexer
 from pygments.lexers import CLexer
 
 from codelimit.common.Language import Language
-from codelimit.common.ScopeExtractor import ScopeExtractor
+from codelimit.common.scope.ScopeExtractor import ScopeExtractor
 from codelimit.common.utils import path_has_suffix
 from codelimit.languages.c.CScopeExtractor import CScopeExtractor
 

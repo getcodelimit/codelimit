@@ -27,7 +27,7 @@ class CodeLimitApp(App):
         yield Header(self.report)
         yield Footer()
         list_view = ListView()
-        for idx, unit in enumerate(self.report.all_report_units_sorted_by_length_asc()):
+        for idx, unit in enumerate(self.report.all_report_units_sorted_by_length_asc()[:100]):
             list_view.append(ListItem(Label(format_report_unit(unit)), name=f'{idx}'))
         yield list_view
         self.set_focus(list_view)
