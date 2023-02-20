@@ -23,6 +23,7 @@ class CodeScreen(Screen):
     def set_code(self, code: Any):
         self.text_log.clear()
         self.text_log.write(code)
+        self.text_log.scroll_home(animate=False)
 
     def action_close(self):
         self.app.pop_screen()

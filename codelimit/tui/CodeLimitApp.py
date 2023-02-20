@@ -36,7 +36,7 @@ class CodeLimitApp(App):
     def on_list_view_selected(self, event: ListView.Selected):
         idx = int(event.item.name)
         unit = self.report.all_report_units_sorted_by_length_asc()[idx]
-        file_path = os.path.join('', unit.file)
+        file_path = os.path.join(self.report.codebase.root, unit.file)
         with open(file_path) as file:
             code = file.read()
         snippet = get_location_range(code, unit.measurement.start, unit.measurement.end)
