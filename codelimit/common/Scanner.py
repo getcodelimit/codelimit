@@ -12,8 +12,9 @@ from codelimit.common.scope.scope_utils import build_scopes
 from codelimit.common.utils import calculate_checksum
 from codelimit.languages.c.CLanguage import CLanguage
 from codelimit.languages.python.PythonLaguage import PythonLanguage
+from codelimit.languages.typescript.TypeScriptLanguage import TypeScriptLanguage
 
-languages = [PythonLanguage(), CLanguage()]
+languages = [PythonLanguage(), CLanguage(), TypeScriptLanguage()]
 
 
 def scan(path: Path) -> Codebase:
