@@ -12,7 +12,7 @@ from codelimit.tui.QualityProfile import QualityProfile
 from codelimit.version import version
 
 
-class Header(Widget):
+class CodeLimitAppHeader(Widget):
     def __init__(self, report: Report):
         super().__init__()
         self.report = report

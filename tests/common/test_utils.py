@@ -1,16 +1,16 @@
 import os
 import tempfile
 
-from codelimit.common.utils import path_has_suffix, get_parent_folder, get_basename, delete_indices, calculate_checksum
+from codelimit.common.utils import path_has_extension, get_parent_folder, get_basename, delete_indices, calculate_checksum
 
 
-def test_path_has_suffix():
-    assert path_has_suffix('foo.c', ['c'])
-    assert path_has_suffix('foo.c', 'c')
-    assert path_has_suffix('foo.c', ['h']) is False
-    assert path_has_suffix('foo.c', 'h') is False
-    assert path_has_suffix('foo.', ['c']) is False
-    assert path_has_suffix('foo', ['c']) is False
+def test_path_has_extension():
+    assert path_has_extension('foo.c', ['c'])
+    assert path_has_extension('foo.c', 'c')
+    assert path_has_extension('foo.c', ['h']) is False
+    assert path_has_extension('foo.c', 'h') is False
+    assert path_has_extension('foo.', ['c']) is False
+    assert path_has_extension('foo', ['c']) is False
 
 
 def test_get_parent_folder():

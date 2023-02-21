@@ -14,9 +14,9 @@ class QualityProfile(Static):
 
     def render(self) -> RenderableType:
         total = sum(self.profile)
-        very_high = ceil((self.profile[3] / total) / 2)
-        high = ceil((self.profile[2] / total) / 2)
-        medium = ceil((self.profile[1] / total) / 2)
+        very_high = ceil(((self.profile[3] / total) * 100) / 2)
+        high = ceil(((self.profile[2] / total) * 100) / 2)
+        medium = ceil(((self.profile[1] / total) * 100) / 2)
         low = 50 - very_high - high - medium
         parts = []
         if low > 0:

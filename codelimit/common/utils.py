@@ -25,7 +25,7 @@ def merge_profiles(rc1: list[int], rc2: list[int]) -> list[int]:
     return [rc1[0] + rc2[0], rc1[1] + rc2[1], rc1[2] + rc2[2], rc1[3] + rc2[3]]
 
 
-def path_has_suffix(path: str, suffixes: Union[str, list[str]]):
+def path_has_extension(path: str, suffixes: Union[str, list[str]]):
     dot_index = path.rfind('.')
     if dot_index >= 0:
         suffix = path[dot_index + 1:]

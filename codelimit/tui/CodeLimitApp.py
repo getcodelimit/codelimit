@@ -4,27 +4,24 @@ from rich.syntax import Syntax
 from textual.app import App, ComposeResult
 from textual.widgets import Footer, ListView, ListItem, Label
 
-from codelimit.common.report.ReportReader import ReportReader
+from codelimit.common.report.Report import Report
 from codelimit.common.report.ReportUnit import format_report_unit
 from codelimit.common.source_utils import get_location_range
+from codelimit.common.utils import get_basename
+from codelimit.tui.CodeLimitAppHeader import CodeLimitAppHeader
 from codelimit.tui.CodeScreen import CodeScreen
-from codelimit.tui.Header import Header
 
 
 class CodeLimitApp(App):
     BINDINGS = [('q', 'quit', 'Quit')]
 
-    def __init__(self):
+    def __init__(self, report: Report):
         super().__init__()
-        self.report = None
+        self.report = report
         self.code_screen = CodeScreen()
 
     def compose(self) -> ComposeResult:
-        with open('codelimit.json', 'r') as file:
-            json = file.read()
-        report = ReportReader.from_json(json)
-        self.report = report
-        yield Header(self.report)
+        yield CodeLimitAppHeader(self.report)
         yield Footer()
         list_view = ListView()
         for idx, unit in enumerate(self.report.all_report_units_sorted_by_length_asc()[:100]):
@@ -41,7 +38,7 @@ class CodeLimitApp(App):
             code = file.read()
         snippet = get_location_range(code, unit.measurement.start, unit.measurement.end)
         rich_snippet = Syntax(snippet, 'python', line_numbers=True)
-        self.code_screen.set_code(rich_snippet)
+        self.code_screen.set_code_snippet(get_basename(unit.file), rich_snippet)
         self.push_screen('code_screen')
 
     def action_quit(self) -> None:
