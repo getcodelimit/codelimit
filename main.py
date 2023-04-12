@@ -3,6 +3,8 @@ import os.path
 import sys
 from pathlib import Path
 
+import requests
+
 from codelimit.common.Scanner import scan
 from codelimit.common.report.Report import Report
 from codelimit.common.report.ReportReader import ReportReader
@@ -11,6 +13,14 @@ from codelimit.tui.CodeLimitApp import CodeLimitApp
 
 if __name__ == '__main__':
     if len(sys.argv) > 1:
+        if sys.argv[1] == '--upload':
+            with open('codelimit.json', 'r') as file:
+                contents = file.read()
+            data = f'{{"repository": "getcodelimit/codelimit", "branch": "main", "report": {contents}}}'
+            headers = {'Content-Type': 'application/json'}
+            requests.post('https://codelimit-web.vercel.app/api/upload', data=data, headers=headers)
+            print('Report uploaded')
+            sys.exit()
         path = Path(sys.argv[1])
         if not os.path.exists(path):
             print(f'{sys.argv[1]} is not a valid path!')

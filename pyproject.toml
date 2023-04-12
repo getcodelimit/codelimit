@@ -11,6 +11,7 @@ halo = "^0.0.31"
 plotext = "^5.2.8"
 pygments = "^2.13.0"
 textual = {extras = ["dev"], version = "^0.10.1"}
+requests = "^2.28.2"
 
 [tool.semantic_release]
 version_variable = "codelimit/version.py:version"
