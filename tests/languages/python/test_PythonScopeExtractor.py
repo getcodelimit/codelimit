@@ -162,6 +162,20 @@ def test_do_not_count_comment_lines():
     assert len(result[0]) == 2
 
 
+def test_header_type_hints():
+    code = ''
+    code += 'def foo(\n'
+    code += '  bar: str\n'
+    code += ') -> FooBar:\n'
+    code += '  pass\n'
+
+    tokens = PythonLanguage().lex(code)
+    result = PythonScopeExtractor().extract_headers(tokens)
+
+    assert len(result) == 1
+    assert result[0].token_range.token_string() == 'def foo ( bar : str )'
+
+
 def test_line_continuation():
     code = ''
     code += 'def say_hello():\n'

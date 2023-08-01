@@ -2,15 +2,16 @@ from codelimit.common.Token import Token
 from codelimit.common.TokenRange import TokenRange
 from codelimit.common.scope.Header import Header
 from codelimit.common.scope.ScopeExtractor import ScopeExtractor
+from codelimit.common.token_matching.TokenMatching import match, KeywordPredicate, NamePredicate
 
 
 class PythonScopeExtractor(ScopeExtractor):
 
     def extract_headers(self, tokens: list[Token]) -> list[Header]:
         result = []
-        for t1, t2 in zip(tokens, tokens[1:]):
-            if t1.is_keyword() and t1.value == 'def' and t2.is_name():
-                result.append(Header(t2.value, TokenRange([t1, t2])))
+        matches = match(tokens, [KeywordPredicate('def'), NamePredicate()])
+        for m in matches:
+            result.append(Header(m.tokens[1].value, m))
         return result
 
     def extract_blocks(self, tokens: list[Token]) -> list[TokenRange]:
