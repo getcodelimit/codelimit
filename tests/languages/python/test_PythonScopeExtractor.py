@@ -107,7 +107,7 @@ def test_get_headers_single_header():
     assert result[0].token_range[0].location.line == 1
     assert result[0].token_range[0].location.column == 1
     assert result[0].token_range[-1].location.line == 1
-    assert result[0].token_range[-1].location.column == 5
+    assert result[0].token_range[-1].location.column == 9
     assert result[0].name == 'foo'
 
 
@@ -126,7 +126,7 @@ def test_get_headers_multi_header():
     assert result[1].token_range[0].location.line == 4
     assert result[1].token_range[0].location.column == 1
     assert result[1].token_range[-1].location.line == 4
-    assert result[1].token_range[-1].location.column == 5
+    assert result[1].token_range[-1].location.column == 8
 
 
 def test_get_headers_multi_header_with_comment():
@@ -145,7 +145,7 @@ def test_get_headers_multi_header_with_comment():
     assert result[0].token_range[0].location.line == 2
     assert result[0].token_range[0].location.column == 1
     assert result[0].token_range[-1].location.line == 2
-    assert result[0].token_range[-1].location.column == 5
+    assert result[0].token_range[-1].location.column == 9
     assert result[1].name == 'bar'
 
 

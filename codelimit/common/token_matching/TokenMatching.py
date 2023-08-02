@@ -6,6 +6,8 @@ from codelimit.common.TokenRange import TokenRange
 
 
 class TokenPredicate(ABC):
+    def __init__(self):
+        self.satisfied = False
 
     @abstractmethod
     def accept(self, token: Token) -> bool:
@@ -14,16 +16,53 @@ class TokenPredicate(ABC):
 
 class KeywordPredicate(TokenPredicate):
     def __init__(self, keyword: str):
+        super().__init__()
         self.keyword = keyword
 
     def accept(self, token: Token) -> bool:
-        return token.is_keyword() and token.value == self.keyword
+        if token.is_keyword() and token.value == self.keyword:
+            self.satisfied = True
+            return True
+        return False
 
 
 class NamePredicate(TokenPredicate):
 
     def accept(self, token: Token) -> bool:
-        return token.is_name()
+        if token.is_name():
+            self.satisfied = True
+            return True
+        return False
+
+
+class SymbolPredicate(TokenPredicate):
+    def __init__(self, symbol: str):
+        super().__init__()
+        self.symbol = symbol
+
+    def accept(self, token: Token) -> bool:
+        if token.is_symbol(self.symbol):
+            self.satisfied = True
+            return True
+        return False
+
+
+class BalancedPredicate(TokenPredicate):
+    def __init__(self, left: TokenPredicate, right: TokenPredicate):
+        super().__init__()
+        self.left = left
+        self.right = right
+        self.active = False
+
+    def accept(self, token: Token) -> bool:
+        if self.active:
+            if self.right.accept(token):
+                self.satisfied = True
+            return True
+        if self.left.accept(token):
+            self.active = True
+            return True
+        return False
 
 
 def match(tokens: list[Token], pattern: Union[TokenPredicate, list[TokenPredicate]]) -> list[TokenRange]:
@@ -34,13 +73,17 @@ def match(tokens: list[Token], pattern: Union[TokenPredicate, list[TokenPredicat
     match_index = -1
     for token_index in range(len(tokens)):
         token = tokens[token_index]
-        if pattern[pattern_index].accept(token):
+        predicate = pattern[pattern_index]
+        if predicate.accept(token):
             if match_index < 0:
                 match_index = token_index
-            if pattern_index < len(pattern) - 1:
-                pattern_index += 1
-            else:
-                result.append(TokenRange(tokens[match_index:token_index + 1]))
+            if predicate.satisfied:
+                if pattern_index < len(pattern) - 1:
+                    pattern_index += 1
+                else:
+                    result.append(TokenRange(tokens[match_index:token_index + 1]))
+                    pattern_index = 0
+                    match_index = -1
         else:
             pattern_index = 0
             match_index = -1
