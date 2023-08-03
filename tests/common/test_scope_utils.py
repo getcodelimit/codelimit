@@ -14,7 +14,7 @@ def test_find_scope_blocks_indices():
     tokens = PythonLanguage().lex(code)
     extractor = PythonScopeExtractor()
     headers = extractor.extract_headers(tokens)
-    blocks = extractor.extract_blocks(tokens)
+    blocks = extractor.extract_blocks(tokens, headers)
 
-    assert _find_scope_blocks_indices(headers[0].token_range, blocks) == [1]
-    assert _find_scope_blocks_indices(headers[1].token_range, blocks) == [3]
+    assert _find_scope_blocks_indices(headers[0].token_range, blocks) == [0]
+    assert _find_scope_blocks_indices(headers[1].token_range, blocks) == [1]

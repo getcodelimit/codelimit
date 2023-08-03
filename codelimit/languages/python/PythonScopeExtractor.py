@@ -4,6 +4,7 @@ from codelimit.common.scope.Header import Header
 from codelimit.common.scope.ScopeExtractor import ScopeExtractor
 from codelimit.common.token_matching.TokenMatching import match, KeywordPredicate, NamePredicate, BalancedPredicate, \
     SymbolPredicate
+from codelimit.common.utils import delete_indices
 
 
 class PythonScopeExtractor(ScopeExtractor):
@@ -16,26 +17,30 @@ class PythonScopeExtractor(ScopeExtractor):
             result.append(Header(m.tokens[1].value, m))
         return result
 
-    def extract_blocks(self, tokens: list[Token]) -> list[TokenRange]:
+    def extract_blocks(self, tokens: list[Token], headers: list[Header]) -> list[TokenRange]:
         lines = _get_token_lines(tokens)
         result = []
-        indentation = None
-        scope_tokens = []
-        for line in lines:
-            token_indentation = line[0].location.column
-            if len(scope_tokens) == 0:
-                scope_tokens.extend(line)
-                indentation = token_indentation
-            else:
-                if token_indentation == indentation:
-                    scope_tokens.extend(line)
+        reverse_headers = headers[::-1]
+        for header in reverse_headers:
+            header_line_nr = header.token_range.tokens[-1].location.line
+            header_indentation = header.token_range.tokens[0].location.column
+            block_line_indices = []
+            for idx, line in enumerate(lines[::-1]):
+                line_index = (len(lines) - 1) - idx
+                line_nr = line[0].location.line
+                line_indentation = line[0].location.column
+                if line_nr <= header_line_nr:
+                    break
+                elif line_indentation > header_indentation:
+                    block_line_indices.append(line_index)
                 else:
-                    result.append(TokenRange(scope_tokens))
-                    indentation = token_indentation
-                    scope_tokens = line
-        if len(scope_tokens) > 0:
+                    block_line_indices = []
+            scope_tokens = []
+            for index in block_line_indices[::-1]:
+                scope_tokens.extend(lines[index])
             result.append(TokenRange(scope_tokens))
-        return result
+            lines = delete_indices(lines, block_line_indices)
+        return result[::-1]
 
 
 def _get_token_lines(tokens: list[Token]) -> list[list[Token]]:
