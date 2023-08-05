@@ -35,11 +35,12 @@ class PythonScopeExtractor(ScopeExtractor):
                     block_line_indices.append(line_index)
                 else:
                     block_line_indices = []
-            scope_tokens = []
-            for index in block_line_indices[::-1]:
-                scope_tokens.extend(lines[index])
-            result.append(TokenRange(scope_tokens))
-            lines = delete_indices(lines, block_line_indices)
+            if len(block_line_indices) > 0:
+                scope_tokens = []
+                for index in block_line_indices[::-1]:
+                    scope_tokens.extend(lines[index])
+                result.append(TokenRange(scope_tokens))
+                lines = delete_indices(lines, block_line_indices)
         return result[::-1]
 
 

@@ -134,7 +134,7 @@ def test_get_headers_multi_header():
     assert result[1].token_range[0].location.line == 4
     assert result[1].token_range[0].location.column == 1
     assert result[1].token_range[-1].location.line == 4
-    assert result[1].token_range[-1].location.column == 8
+    assert result[1].token_range[-1].location.column == 9
 
 
 def test_get_headers_multi_header_with_comment():
@@ -184,6 +184,25 @@ def test_header_type_hints():
     assert result[0].token_range.token_string() == 'def foo ( bar : str )'
 
 
+def test_two_functions():
+    code = ''
+    code += 'def bar(\n'
+    code += '    bar: Bar\n'
+    code += ') -> JSONResponse:\n'
+    code += '    bar = foo\n'
+    code += '\n'
+    code += 'def foo(\n'
+    code += '    foo: Foo\n'
+    code += ') -> None:\n'
+    code += '    foo = bar\n'
+
+    result = build_scopes(PythonLanguage(), code)
+
+    assert len(result) == 2
+    assert len(result[0]) == 4
+    assert len(result[1]) == 4
+
+
 def test_function_with_type_hints():
     code = ''
     code += 'def foo(\n'
@@ -212,7 +231,7 @@ def test_line_continuation():
 
 
 def test_if_statement():
-    code = '';
+    code = ''
     code += 'def foo():\n'
     code += '  assert foo\n'
     code += '  if bar:\n'

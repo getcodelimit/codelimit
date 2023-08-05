@@ -9,6 +9,9 @@ class TokenPredicate(ABC):
     def __init__(self):
         self.satisfied = False
 
+    def reset(self):
+        self.satisfied = False
+
     @abstractmethod
     def accept(self, token: Token) -> bool:
         pass
@@ -54,6 +57,12 @@ class BalancedPredicate(TokenPredicate):
         self.right = right
         self.active = False
 
+    def reset(self):
+        super().reset()
+        self.left.reset()
+        self.right.reset()
+        self.active = False
+
     def accept(self, token: Token) -> bool:
         if self.active:
             if self.right.accept(token):
@@ -69,6 +78,7 @@ def match(tokens: list[Token], pattern: Union[TokenPredicate, list[TokenPredicat
     result = []
     if not isinstance(pattern, list):
         pattern = [pattern]
+    [p.reset() for p in pattern]
     pattern_index = 0
     match_index = -1
     for token_index in range(len(tokens)):
@@ -82,9 +92,11 @@ def match(tokens: list[Token], pattern: Union[TokenPredicate, list[TokenPredicat
                     pattern_index += 1
                 else:
                     result.append(TokenRange(tokens[match_index:token_index + 1]))
+                    [p.reset() for p in pattern]
                     pattern_index = 0
                     match_index = -1
         else:
+            [p.reset() for p in pattern]
             pattern_index = 0
             match_index = -1
     return result
