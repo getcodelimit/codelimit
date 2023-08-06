@@ -12,5 +12,5 @@ class ScopeExtractor(ABC):
         pass
 
     @abstractmethod
-    def extract_blocks(self, tokens: list[Token]) -> list[TokenRange]:
+    def extract_blocks(self, tokens: list[Token], headers: list[Header]) -> list[TokenRange]:
         pass

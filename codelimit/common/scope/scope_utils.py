@@ -12,7 +12,7 @@ def build_scopes(language: Language, code: str) -> list[Scope]:
     tokens = language.lex(code)
     scope_extractor = language.get_scope_extractor()
     headers = scope_extractor.extract_headers(tokens)
-    blocks = scope_extractor.extract_blocks(tokens)
+    blocks = scope_extractor.extract_blocks(tokens, headers)
     return _build_scopes_from_headers_and_blocks(headers, blocks)
 
 

@@ -3,11 +3,13 @@ from codelimit.languages.c.CLanguage import CLanguage
 from codelimit.languages.c.CScopeExtractor import CScopeExtractor
 
 
-def test_get_blocks_no_block():
+def test_get_blocks_no_headers_no_blocks():
     code = ''
 
     tokens = CLanguage().lex(code)
-    result = CScopeExtractor().extract_blocks(tokens)
+    scope_extractor = CScopeExtractor()
+    headers = scope_extractor.extract_headers(tokens)
+    result = scope_extractor.extract_blocks(tokens, headers)
 
     assert len(result) == 0
 
@@ -21,7 +23,9 @@ def test_get_blocks_single_block():
     code += '}\n'
 
     tokens = CLanguage().lex(code)
-    result = CScopeExtractor().extract_blocks(tokens)
+    scope_extractor = CScopeExtractor()
+    headers = scope_extractor.extract_headers(tokens)
+    result = scope_extractor.extract_blocks(tokens, headers)
 
     assert len(result) == 1
     assert result[0].tokens[0].location.line == 2
@@ -38,7 +42,9 @@ def test_get_blocks_single_multiline_block():
     code += '}'
 
     tokens = CLanguage().lex(code)
-    result = CScopeExtractor().extract_blocks(tokens)
+    scope_extractor = CScopeExtractor()
+    headers = scope_extractor.extract_headers(tokens)
+    result = CScopeExtractor().extract_blocks(tokens, headers)
 
     assert len(result) == 1
     assert result[0].tokens[0].location.line == 1
@@ -53,7 +59,9 @@ def test_get_blocks_multi_blocks():
     code += '{ char bar; }\n'
 
     tokens = CLanguage().lex(code)
-    result = CScopeExtractor().extract_blocks(tokens)
+    scope_extractor = CScopeExtractor()
+    headers = scope_extractor.extract_headers(tokens)
+    result = scope_extractor.extract_blocks(tokens, headers)
 
     assert len(result) == 2
     assert result[0].tokens[0].location.line == 1
@@ -139,7 +147,7 @@ def test_build_scope_c_function():
     assert result[0].token_range[-1].location.column == 29
     assert result[0].token_range[-1].value == ')'
 
-    result = CScopeExtractor().extract_blocks(tokens)
+    result = CScopeExtractor().extract_blocks(tokens, result)
 
     assert len(result) == 1
     assert result[0].tokens[0].location.line == 2

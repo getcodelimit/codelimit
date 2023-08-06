@@ -14,41 +14,48 @@ def test_get_indentation():
     assert _get_indentation('\t') is None
 
 
-def test_get_blocks_no_block():
+def test_get_blocks_no_headers_no_blocks():
     code = ''
 
     tokens = PythonLanguage().lex(code)
-    result = PythonScopeExtractor().extract_blocks(tokens)
+    result = PythonScopeExtractor().extract_blocks(tokens, [])
 
     assert len(result) == 0
 
 
-def test_get_blocks_single_block():
-    code = 'foo = bar'
+def test_get_blocks_single_header_single_block():
+    code = ''
+    code += 'def foo():\n'
+    code += '  foo = bar\n'
 
     tokens = PythonLanguage().lex(code)
-    result = PythonScopeExtractor().extract_blocks(tokens)
+    scope_extractor = PythonScopeExtractor()
+    headers = scope_extractor.extract_headers(tokens)
+    result = scope_extractor.extract_blocks(tokens, headers)
 
     assert len(result) == 1
-    assert result[0].tokens[0].location.line == 1
-    assert result[0].tokens[0].location.column == 1
-    assert result[0].tokens[-1].location.line == 1
-    assert result[0].tokens[-1].location.column == 7
+    assert result[0].tokens[0].location.line == 2
+    assert result[0].tokens[0].location.column == 3
+    assert result[0].tokens[-1].location.line == 2
+    assert result[0].tokens[-1].location.column == 9
 
 
 def test_get_blocks_single_multiline_block():
     code = ''
-    code += 'foo = bar\n'
-    code += 'spam = eggs\n'
+    code += 'def foo():\n'
+    code += '  foo = bar\n'
+    code += '  spam = eggs\n'
 
     tokens = PythonLanguage().lex(code)
-    result = PythonScopeExtractor().extract_blocks(tokens)
+    scope_extractor = PythonScopeExtractor()
+    headers = scope_extractor.extract_headers(tokens)
+    result = scope_extractor.extract_blocks(tokens, headers)
 
     assert len(result) == 1
-    assert result[0].tokens[0].location.line == 1
-    assert result[0].tokens[0].location.column == 1
-    assert result[0].tokens[-1].location.line == 2
-    assert result[0].tokens[-1].location.column == 8
+    assert result[0].tokens[0].location.line == 2
+    assert result[0].tokens[0].location.column == 3
+    assert result[0].tokens[-1].location.line == 3
+    assert result[0].tokens[-1].location.column == 10
 
 
 def test_get_blocks_multi_blocks():
@@ -60,17 +67,18 @@ def test_get_blocks_multi_blocks():
     code += '  foo()\n'
 
     tokens = PythonLanguage().lex(code)
-    result = PythonScopeExtractor().extract_blocks(tokens)
+    scope_extractor = PythonScopeExtractor()
+    headers = scope_extractor.extract_headers(tokens)
+    result = scope_extractor.extract_blocks(tokens, headers)
 
-    assert len(result) == 4
-    assert result[0].tokens[0].location.line == 1
-    assert result[0].tokens[-1].location.line == 1
-    assert result[1].tokens[0].location.line == 2
-    assert result[1].tokens[-1].location.line == 2
-    assert result[2].tokens[0].location.line == 4
-    assert result[2].tokens[-1].location.line == 4
-    assert result[3].tokens[0].location.line == 5
-    assert result[3].tokens[-1].location.line == 5
+    assert len(result) == 2
+
+    print(result)
+
+    assert result[0].tokens[0].location.line == 2
+    assert result[0].tokens[-1].location.line == 2
+    assert result[1].tokens[0].location.line == 5
+    assert result[1].tokens[-1].location.line == 5
 
 
 def test_trailing_global_code():
@@ -107,7 +115,7 @@ def test_get_headers_single_header():
     assert result[0].token_range[0].location.line == 1
     assert result[0].token_range[0].location.column == 1
     assert result[0].token_range[-1].location.line == 1
-    assert result[0].token_range[-1].location.column == 5
+    assert result[0].token_range[-1].location.column == 9
     assert result[0].name == 'foo'
 
 
@@ -126,7 +134,7 @@ def test_get_headers_multi_header():
     assert result[1].token_range[0].location.line == 4
     assert result[1].token_range[0].location.column == 1
     assert result[1].token_range[-1].location.line == 4
-    assert result[1].token_range[-1].location.column == 5
+    assert result[1].token_range[-1].location.column == 9
 
 
 def test_get_headers_multi_header_with_comment():
@@ -145,7 +153,7 @@ def test_get_headers_multi_header_with_comment():
     assert result[0].token_range[0].location.line == 2
     assert result[0].token_range[0].location.column == 1
     assert result[0].token_range[-1].location.line == 2
-    assert result[0].token_range[-1].location.column == 5
+    assert result[0].token_range[-1].location.column == 9
     assert result[1].name == 'bar'
 
 
@@ -162,6 +170,53 @@ def test_do_not_count_comment_lines():
     assert len(result[0]) == 2
 
 
+def test_header_type_hints():
+    code = ''
+    code += 'def foo(\n'
+    code += '  bar: str\n'
+    code += ') -> FooBar:\n'
+    code += '  pass\n'
+
+    tokens = PythonLanguage().lex(code)
+    result = PythonScopeExtractor().extract_headers(tokens)
+
+    assert len(result) == 1
+    assert result[0].token_range.token_string() == 'def foo ( bar : str )'
+
+
+def test_two_functions():
+    code = ''
+    code += 'def bar(\n'
+    code += '    bar: Bar\n'
+    code += ') -> JSONResponse:\n'
+    code += '    bar = foo\n'
+    code += '\n'
+    code += 'def foo(\n'
+    code += '    foo: Foo\n'
+    code += ') -> None:\n'
+    code += '    foo = bar\n'
+
+    result = build_scopes(PythonLanguage(), code)
+
+    assert len(result) == 2
+    assert len(result[0]) == 4
+    assert len(result[1]) == 4
+
+
+def test_function_with_type_hints():
+    code = ''
+    code += 'def foo(\n'
+    code += '  bar: Bar\n'
+    code += ') -> Foo:\n'
+    code += '  bar = foor\n'
+    code += '  foo = bar\n'
+
+    result = build_scopes(PythonLanguage(), code)
+
+    assert len(result) == 1
+    assert len(result[0]) == 5
+
+
 def test_line_continuation():
     code = ''
     code += 'def say_hello():\n'
@@ -173,6 +228,21 @@ def test_line_continuation():
 
     assert len(result) == 1
     assert len(result[0]) == 4
+
+
+def test_if_statement():
+    code = ''
+    code += 'def foo():\n'
+    code += '  assert foo\n'
+    code += '  if bar:\n'
+    code += '    foo = bar\n'
+    code += '  else:\n'
+    code += '    bar = foo\n'
+
+    result = build_scopes(PythonLanguage(), code)
+
+    assert len(result) == 1
+    assert len(result[0]) == 6
 
 
 def test_get_token_lines():
