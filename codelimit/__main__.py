@@ -1,19 +1,14 @@
-""" CodeLimit Command-Line Interface
-"""
-
 from pathlib import Path
 
 import requests
 import typer
-
 from rich.progress import Progress, SpinnerColumn, TextColumn
 
-from .common.Scanner import scan
-from .common.report.Report import Report
-from .common.report.ReportReader import ReportReader
-from .common.report.ReportWriter import ReportWriter
-from .tui.CodeLimitApp import CodeLimitApp
-
+from codelimit.common.Scanner import scan
+from codelimit.common.report.Report import Report
+from codelimit.common.report.ReportReader import ReportReader
+from codelimit.common.report.ReportWriter import ReportWriter
+from codelimit.tui.CodeLimitApp import CodeLimitApp
 
 cli = typer.Typer()
 
@@ -22,28 +17,26 @@ _CODELIMIT_UPLOAD_URL: str = "https://codelimit-web.vercel.app/api/upload"
 
 @cli.callback(invoke_without_command=True)
 def callback(
-    ctx: typer.Context,
-    path: Path,
-    report_path: Path = typer.Option(
-        None,
-        "--report",
-        "-r",
-        help="JSON report for a code base",
-    ),
-    upload: bool = typer.Option(False, "--upload", help="Upload a report"),
-    url: str = typer.Option(
-        _CODELIMIT_UPLOAD_URL,
-        "--url",
-        "-u",
-        help="Upload JSON report to this URL.",
-    ),
+        ctx: typer.Context,
+        path: Path,
+        report_path: Path = typer.Option(
+            None,
+            "--report",
+            "-r",
+            help="JSON report for a code base",
+        ),
+        upload: bool = typer.Option(False, "--upload", help="Upload a report"),
+        url: str = typer.Option(
+            _CODELIMIT_UPLOAD_URL,
+            "--url",
+            "-u",
+            help="Upload JSON report to this URL.",
+        ),
 ) -> None:
-    """CodeLimit code refactorization visualizer
-
-    More stuff goes here.
+    """CodeLimit: Your refactoring alarm
     """
 
-    report_path = report_path or Path(f"{path.name}-codelimit.json").resolve()
+    report_path = report_path or path.joinpath('codelimit.json').resolve()
 
     if upload:
         try:
@@ -66,8 +59,6 @@ def callback(
 
 
 def upload_report(path: Path, url: str) -> None:
-    """Upload a CodeLimit JSON Report"""
-
     data_template = (
         '{{"repository": "getcodelimit/codelimit", "branch": "main", "report":{}}}'
     )
@@ -76,9 +67,9 @@ def upload_report(path: Path, url: str) -> None:
         raise FileNotFoundError(str(path))
 
     with Progress(
-        SpinnerColumn(),
-        TextColumn("[progress.description]{task.description}"),
-        transient=True,
+            SpinnerColumn(),
+            TextColumn("[progress.description]{task.description}"),
+            transient=True,
     ) as progress:
         progress.add_task(description=f"Uploading {path.name} to {url}", total=None)
         result = requests.post(
