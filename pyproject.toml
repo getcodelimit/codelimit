@@ -17,6 +17,10 @@ textual = {extras = ["dev"], version = "^0.10.1"}
 requests = "^2.28.2"
 typer = "^0.9.0"
 
+[tool.poe.tasks.bundle]
+help = "Create a binary executable using pyinstaller"
+cmd = "poetry run pyinstaller --workpath .build --specpath dist -n codelimit -F codelimit/__main__.py"
+
 [tool.semantic_release]
 version_variable = "codelimit/version.py:version"
 branch = "main"
@@ -28,6 +32,7 @@ build_command = "poetry build"
 pyinstaller = "^5.6.1"
 pytest-cov = "^4.0.0"
 pytest = "^7.2.1"
+poethepoet = "^0.21.1"
 
 [build-system]
 requires = ["poetry-core"]
