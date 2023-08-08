@@ -2,6 +2,8 @@ repos:
 -   repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.4.0
     hooks:
-    -   id: trailing-whitespace
+    - id: trailing-whitespace
 # -   repo: https://github.com/getcodelimit/codelimit
-#     entry: codelimit
+#     rev: bbdc410a38bdaf0943e523f65fa2c508a96c4999
+#     hooks:
+#     - id: codelimit

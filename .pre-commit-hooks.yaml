@@ -3,3 +3,4 @@
   description: "CodeLimit: Your Refactoring Alarm"
   entry: codelimit
   language: python
+  types: [file, python]
