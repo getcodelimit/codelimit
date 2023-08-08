@@ -1,0 +1,5 @@
+- id: codelimit
+  name: codelimit
+  description: "CodeLimit: Your Refactoring Alarm"
+  entry: codelimit
+  language: python
