@@ -23,7 +23,7 @@ poetry run codelimit
 For example, to check a codebase at `~/projects/fastapi` run:
 
 ```shell
-poetry run ~/projects/fastapi
+poetry run codelimit ~/projects/fastapi
 ```
 
 # Development
