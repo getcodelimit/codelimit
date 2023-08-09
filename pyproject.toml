@@ -24,19 +24,7 @@ branch = "main"
 upload_to_repository = false
 upload_to_release = false
 build_command = "poetry build"
-
-[tool.semantic_release.commit_parser_options]
-allowed_tags = [
-    ":bug:",
-    ":arrow_up:",
-    ":zap:",
-    ":memo:",
-    ":lock:",
-    ":sparkles:",
-    ":boom:"
-]
-minor_tags = [":sparkles:"]
-patch_tags = [":bug:"]
+commit_parser = "emoji"
 
 [tool.poetry.group.dev.dependencies]
 pyinstaller = "^5.6.1"
