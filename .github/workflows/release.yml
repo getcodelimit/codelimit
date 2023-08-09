@@ -1,21 +1,18 @@
-name: Semantic Release
-
+name: Release
 on:
   push:
     branches:
       - main
-
 jobs:
   release:
     runs-on: ubuntu-latest
     concurrency: release
-
     steps:
-    - uses: actions/checkout@v2
+    - name: 'Checkout sources'
+      uses: actions/checkout@v3
       with:
         fetch-depth: 0
-
-    - name: Python Semantic Release
+    - name: 'Python Semantic Release'
       uses: relekang/python-semantic-release@master
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
