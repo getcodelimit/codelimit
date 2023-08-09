@@ -12,6 +12,11 @@ repos:
     hooks:
     - id: ruff
       args: [ --fix, --exit-non-zero-on-fix ]
+-   repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.4.1
+    hooks:
+    - id: mypy
+      args: [ --ignore-missing-imports ]
 -   repo: https://github.com/getcodelimit/codelimit
     rev: v0.2.1
     hooks:

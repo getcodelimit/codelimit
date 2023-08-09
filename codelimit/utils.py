@@ -1,6 +1,6 @@
 from pathlib import Path
 
-import requests
+import requests  # type: ignore
 import typer
 from rich.progress import Progress, SpinnerColumn, TextColumn
 
@@ -10,7 +10,7 @@ def upload_report(path: Path, url: str) -> None:
         '{{"repository": "getcodelimit/codelimit", "branch": "main", "report":{}}}'
     )
 
-    if not path.exist():
+    if not path.exists():
         raise FileNotFoundError(str(path))
 
     with Progress(

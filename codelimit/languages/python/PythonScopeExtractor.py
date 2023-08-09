@@ -58,7 +58,7 @@ class PythonScopeExtractor(ScopeExtractor):
 
 def _get_token_lines(tokens: list[Token]) -> list[list[Token]]:
     result = []
-    line = []
+    line: list[Token] = []
     line_continuation = False
     line_nr = 0
     for t in tokens:

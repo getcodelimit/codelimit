@@ -1,28 +1,32 @@
+from typing import Any
+
 from pygments.token import Keyword, Text, Whitespace, Comment, Punctuation, Name
 
 from codelimit.common.Location import Location
 
 
 class Token:
-    def __init__(self, location: Location, type: any, value: str):
+    def __init__(self, location: Location, token_type: Any, value: str):
         self.location = location
-        self.type = type
+        self.token_type = token_type
         self.value = value
 
     def is_keyword(self):
-        return self.type in Keyword
+        return self.token_type in Keyword
 
     def is_whitespace(self):
-        return (self.type == Text or self.type == Whitespace) and self.value.isspace()
+        return (
+            self.token_type == Text or self.token_type == Whitespace
+        ) and self.value.isspace()
 
     def is_comment(self):
-        return self.type in Comment
+        return self.token_type in Comment
 
     def is_symbol(self, symbol: str):
-        return self.type in Punctuation and self.value == symbol
+        return self.token_type in Punctuation and self.value == symbol
 
     def is_name(self):
-        return self.type in Name
+        return self.token_type in Name
 
     def __str__(self):
         return self.value
