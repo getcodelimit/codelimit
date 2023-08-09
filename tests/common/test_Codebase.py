@@ -25,8 +25,8 @@ def test_codebase_entry_single_file():
         == '{"uuid": "'
         + report.uuid
         + '", "root": "/", "codebase": {"tree": {"./": {"entries": ["foo.py"], '
-        + '"profile": [0, 0, 0, 0]}}, "files": {"foo.py": {"checksum": "abcd1234", "profile": [0, 0, 0, 0], '
-        + '"measurements": []}}}}'
+        + '"profile": [0, 0, 0, 0]}}, "files": {"foo.py": {"checksum": '
+        '"abcd1234", "profile": [0, 0, 0, 0], ' + '"measurements": []}}}}'
     )
 
 
@@ -42,8 +42,8 @@ def test_codebase_entry_single_folder_single_file():
         + report.uuid
         + '", "root": "/", "codebase": {"tree": {"./": {"entries": '
         + '["foo/"], "profile": [0, 0, 0, 0]}, "foo/": {"entries": ["bar.py"], '
-        + '"profile": [0, 0, 0, 0]}}, "files": {"foo/bar.py": {"checksum": "abcd1234", "profile": [0, 0, 0, 0], '
-        + '"measurements": []}}}}'
+        + '"profile": [0, 0, 0, 0]}}, "files": {"foo/bar.py": {"checksum": '
+        '"abcd1234", "profile": [0, 0, 0, 0], ' + '"measurements": []}}}}'
     )
 
 

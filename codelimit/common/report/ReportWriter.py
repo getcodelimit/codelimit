@@ -127,8 +127,14 @@ class ReportWriter:
     def _measurement_to_json(self, measurement: Measurement) -> str:
         json = ""
         json += f'{{"unit_name": "{measurement.unit_name}", '
-        json += f'"start": {{"line": {measurement.start.line}, "column": {measurement.start.column}}}, '
-        json += f'"end": {{"line": {measurement.end.line}, "column": {measurement.end.column}}}, '
+        json += (
+            f'"start": {{"line": {measurement.start.line}, "column": '
+            f"{measurement.start.column}}}, "
+        )
+        json += (
+            f'"end": {{"line": {measurement.end.line}, "'
+            f'column": {measurement.end.column}}}, '
+        )
         json += f'"value": {measurement.value}}}'
         return self._line(json)
 

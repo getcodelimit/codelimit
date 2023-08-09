@@ -37,7 +37,10 @@ def test_to_json():
     expected += '        "checksum": "abcd1234",\n'
     expected += '        "profile": [10, 0, 0, 0],\n'
     expected += '        "measurements": [\n'
-    expected += '          {"unit_name": "bar()", "start": {"line": 10, "column": 1}, "end": {"line": 20, "column": 1}, "value": 10}\n'
+    expected += (
+        '          {"unit_name": "bar()", "start": {"line": 10, "column": 1}, '
+        '"end": {"line": 20, "column": 1}, "value": 10}\n'
+    )
     expected += "        ]\n"
     expected += "      }\n"
     expected += "    }\n"
@@ -72,7 +75,8 @@ def test_to_json_multiple():
         + report.uuid
         + '", "root": "/", "codebase": {"tree": {"./": {"entries": ["foo.py", '
         + '"bar.py"], "profile": [20, 0, 0, 0]}}, '
-        + '"files": {"foo.py": {"checksum": "abcd1234", "profile": [10, 0, 0, 0], "measurements": '
+        + '"files": {"foo.py": {"checksum": "abcd1234", "profile": [10, 0, 0, 0], '
+        '"measurements": '
         + '[{"unit_name": "bar()", "start": {"line": 10, "column": 1}, '
         + '"end": {"line": 20, "column": 1}, "value": 10}]}, "bar.py": {'
         + '"checksum": "efgh5678", "profile": [10, 0, 0, 0], "measurements": '
