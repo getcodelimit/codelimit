@@ -3,7 +3,7 @@ repos:
     rev: v4.4.0
     hooks:
     - id: trailing-whitespace
-# -   repo: https://github.com/getcodelimit/codelimit
-    # rev: 8ca98dfaf3f8a2ccd1f5f856de85cb1d04d374a5
-    # hooks:
-    # - id: codelimit
+-   repo: https://github.com/getcodelimit/codelimit
+    rev: v0.2.1
+    hooks:
+    - id: codelimit
