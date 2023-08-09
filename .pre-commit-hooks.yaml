@@ -1,6 +1,7 @@
 - id: codelimit
   name: codelimit
   description: "CodeLimit: Your Refactoring Alarm"
-  entry: codelimit
+  verbose: true
+  entry: hook
   language: python
   types: [file, python]

@@ -1,23 +1,24 @@
 from pathlib import Path
+from typing import List
 
-import requests
 import typer
-from rich.progress import Progress, SpinnerColumn, TextColumn
 
-from codelimit.common.Scanner import scan
+from codelimit.common.Scanner import scan, scan_file
 from codelimit.common.report.Report import Report
 from codelimit.common.report.ReportReader import ReportReader
+from codelimit.common.report.ReportUnit import ReportUnit, format_report_unit
 from codelimit.common.report.ReportWriter import ReportWriter
+from codelimit.languages.python.PythonLaguage import PythonLanguage
 from codelimit.tui.CodeLimitApp import CodeLimitApp
+from codelimit.utils import upload_report
+from rich import print
 
 cli = typer.Typer()
-
-_CODELIMIT_UPLOAD_URL: str = "https://codelimit-web.vercel.app/api/upload"
+pre_commit_hook = typer.Typer()
 
 
 @cli.callback(invoke_without_command=True)
-def callback(
-        ctx: typer.Context,
+def cli_callback(
         path: Path,
         report_path: Path = typer.Option(
             None,
@@ -27,7 +28,7 @@ def callback(
         ),
         upload: bool = typer.Option(False, "--upload", help="Upload a report"),
         url: str = typer.Option(
-            _CODELIMIT_UPLOAD_URL,
+            "https://codelimit-web.vercel.app/api/upload",
             "--url",
             "-u",
             help="Upload JSON report to this URL.",
@@ -58,31 +59,26 @@ def callback(
     app.run()
 
 
-def upload_report(path: Path, url: str) -> None:
-    data_template = (
-        '{{"repository": "getcodelimit/codelimit", "branch": "main", "report":{}}}'
-    )
-
-    if not path.exist():
-        raise FileNotFoundError(str(path))
-
-    with Progress(
-            SpinnerColumn(),
-            TextColumn("[progress.description]{task.description}"),
-            transient=True,
-    ) as progress:
-        progress.add_task(description=f"Uploading {path.name} to {url}", total=None)
-        result = requests.post(
-            url,
-            data=data_template.format(path.read_text()),
-            headers={"Content-Type": "application/json"},
-        )
-
-    if result.ok:
-        typer.secho("Uploaded", fg="green")
-    else:
-        typer.secho(f"Upload unsuccessful: {result.status_code}", fg="red")
-        raise typer.Exit(exit_code=1)
+@pre_commit_hook.callback(invoke_without_command=True)
+def pre_commit_hook_callback(paths: List[Path]):
+    exit_code = 0
+    language = PythonLanguage()
+    for path in paths:
+        measurements = scan_file(language, str(path))
+        medium_risk = sorted([m for m in measurements if 30 < m.value <= 60], key=lambda measurement: measurement.value,
+                             reverse=True)
+        high_risk = sorted([m for m in measurements if m.value > 60], key=lambda measurement: measurement.value,
+                           reverse=True)
+        if medium_risk:
+            print(f'🔔 {path}')
+            for m in medium_risk:
+                print(format_report_unit(ReportUnit(str(path), m)))
+        if high_risk:
+            print(f'🚨 {path}')
+            for m in high_risk:
+                print(format_report_unit(ReportUnit(str(path), m)))
+            exit_code = 1
+    raise typer.Exit(code=exit_code)
 
 
 if __name__ == "__main__":

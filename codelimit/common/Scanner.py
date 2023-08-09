@@ -5,6 +5,7 @@ from pathlib import Path
 from halo import Halo
 
 from codelimit.common.Codebase import Codebase
+from codelimit.common.Language import Language
 from codelimit.common.Location import Location
 from codelimit.common.Measurement import Measurement
 from codelimit.common.SourceFileEntry import SourceFileEntry
@@ -32,19 +33,26 @@ def _scan_folder(codebase: Codebase, folder: Path):
             for language in languages:
                 file_path = os.path.join(root, file)
                 if language.accept_file(file_path):
-                    _scan_file(codebase, language, folder, file_path)
+                    _add_file(codebase, language, folder, file_path)
                     scanned += 1
                     spinner.text = f'Scanned {scanned} file(s)'
     spinner.succeed()
 
 
-def _scan_file(codebase: Codebase, language, root: Path, path):
-    rel_path = relpath(path, root)
+def _add_file(codebase: Codebase, language, root: Path, path: str):
+    measurements = scan_file(language, path)
+    if measurements:
+        checksum = calculate_checksum(path)
+        rel_path = relpath(path, root)
+        codebase.add_file(SourceFileEntry(rel_path, checksum, measurements))
+
+
+def scan_file(language: Language, path: str) -> list[Measurement]:
     with open(path) as f:
         code = f.read()
     scopes = build_scopes(language, code)
+    measurements: list[Measurement] = []
     if scopes:
-        measurements = []
         for scope in scopes:
             length = len(scope)
             start_location = scope.header.token_range[0].location
@@ -52,5 +60,4 @@ def _scan_file(codebase: Codebase, language, root: Path, path):
             end_location = Location(last_token.location.line,
                                     last_token.location.column + len(last_token.value))
             measurements.append(Measurement(scope.header.name, start_location, end_location, length))
-        checksum = calculate_checksum(path)
-        codebase.add_file(SourceFileEntry(rel_path, checksum, measurements))
+    return measurements
