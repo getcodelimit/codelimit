@@ -9,7 +9,7 @@ from textual.widgets import Static
 class QualityProfile(Static):
     def __init__(self, profile: list[int]):
         super().__init__()
-        self.styles.content_align_horizontal = 'center'
+        self.styles.content_align_horizontal = "center"
         self.profile = profile
 
     def render(self) -> RenderableType:
@@ -20,11 +20,11 @@ class QualityProfile(Static):
         low = 50 - very_high - high - medium
         parts = []
         if low > 0:
-            parts.append((' ' * low, Style(bgcolor='green')))
+            parts.append((" " * low, Style(bgcolor="green")))
         if medium > 0:
-            parts.append((' ' * medium, Style(bgcolor='yellow')))
+            parts.append((" " * medium, Style(bgcolor="yellow")))
         if high > 0:
-            parts.append((' ' * high, Style(bgcolor='dark_orange')))
+            parts.append((" " * high, Style(bgcolor="dark_orange")))
         if very_high > 0:
-            parts.append((' ' * very_high, Style(bgcolor='red')))
+            parts.append((" " * very_high, Style(bgcolor="red")))
         return Text.assemble(*parts)

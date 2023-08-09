@@ -7,19 +7,27 @@ class Location:
         self.column = column
 
     def __str__(self):
-        return f'{{line: {self.line}, column: {self.column}}}'
+        return f"{{line: {self.line}, column: {self.column}}}"
 
     def __repr__(self):
         return self.__str__()
 
     def lt(self, other: Location):
-        return self.line < other.line or (self.line == other.line and self.column < other.column)
+        return self.line < other.line or (
+            self.line == other.line and self.column < other.column
+        )
 
     def le(self, other: Location):
-        return self.line < other.line or (self.line == other.line and self.column <= other.column)
+        return self.line < other.line or (
+            self.line == other.line and self.column <= other.column
+        )
 
     def gt(self, other: Location):
-        return self.line > other.line or (self.line == other.line and self.column > other.column)
+        return self.line > other.line or (
+            self.line == other.line and self.column > other.column
+        )
 
     def ge(self, other: Location):
-        return self.line > other.line or (self.line == other.line and self.column >= other.column)
+        return self.line > other.line or (
+            self.line == other.line and self.column >= other.column
+        )

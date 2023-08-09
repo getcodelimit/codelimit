@@ -9,9 +9,8 @@ from codelimit.languages.c.CScopeExtractor import CScopeExtractor
 
 
 class CLanguage(Language):
-
     def get_file_extension(self) -> Union[str, list[str]]:
-        return ["c", 'h']
+        return ["c", "h"]
 
     def get_lexer(self) -> Lexer:
         return CLexer()

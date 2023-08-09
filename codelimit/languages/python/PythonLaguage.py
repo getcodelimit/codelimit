@@ -9,9 +9,8 @@ from codelimit.languages.python.PythonScopeExtractor import PythonScopeExtractor
 
 
 class PythonLanguage(Language):
-
     def get_file_extension(self) -> Union[str, list[str]]:
-        return 'py'
+        return "py"
 
     def get_lexer(self) -> Lexer:
         return PythonLexer()

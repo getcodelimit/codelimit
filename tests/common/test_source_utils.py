@@ -1,9 +1,14 @@
 from codelimit.common.Location import Location
-from codelimit.common.source_utils import index_to_location, location_to_index, get_newline_indices, get_location_range
+from codelimit.common.source_utils import (
+    index_to_location,
+    location_to_index,
+    get_newline_indices,
+    get_location_range,
+)
 
 
 def test_index_to_location_single_line():
-    code = 'foo = bar'
+    code = "foo = bar"
 
     result = index_to_location(code, 5)
 
@@ -12,9 +17,9 @@ def test_index_to_location_single_line():
 
 
 def test_index_to_location_multiline():
-    code = ''
-    code += 'foo = bar\n'
-    code += 'spam = eggs\n'
+    code = ""
+    code += "foo = bar\n"
+    code += "spam = eggs\n"
 
     result = index_to_location(code, 16)
 
@@ -23,9 +28,9 @@ def test_index_to_location_multiline():
 
 
 def test_index_to_location_index_is_newline():
-    code = ''
-    code += 'foo = bar\n'
-    code += '\n'
+    code = ""
+    code += "foo = bar\n"
+    code += "\n"
 
     result = index_to_location(code, 10)
 
@@ -34,7 +39,7 @@ def test_index_to_location_index_is_newline():
 
 
 def test_location_to_index():
-    code = 'foo = bar'
+    code = "foo = bar"
 
     result = location_to_index(code, Location(1, 5))
 
@@ -42,9 +47,9 @@ def test_location_to_index():
 
 
 def test_location_to_index_multiline():
-    code = ''
-    code += 'foo = bar\n'
-    code += 'spam = eggs\n'
+    code = ""
+    code += "foo = bar\n"
+    code += "spam = eggs\n"
 
     result = location_to_index(code, Location(2, 6))
 
@@ -52,9 +57,9 @@ def test_location_to_index_multiline():
 
 
 def test_location_to_index_location_is_newline():
-    code = ''
-    code += 'foo = bar\n'
-    code += '\n'
+    code = ""
+    code += "foo = bar\n"
+    code += "\n"
 
     result = location_to_index(code, Location(2, 0))
 
@@ -62,27 +67,27 @@ def test_location_to_index_location_is_newline():
 
 
 def test_get_newline_indices():
-    assert get_newline_indices('') == []
-    assert get_newline_indices('\n') == [0]
-    assert get_newline_indices(' \n \n') == [1, 3]
-    assert get_newline_indices(' \n \n\nabcdef\n') == [1, 3, 4, 11]
+    assert get_newline_indices("") == []
+    assert get_newline_indices("\n") == [0]
+    assert get_newline_indices(" \n \n") == [1, 3]
+    assert get_newline_indices(" \n \n\nabcdef\n") == [1, 3, 4, 11]
 
 
 def test_get_location_range():
-    code = ''
-    code += 'def foo():\n'
-    code += '  pass\n'
-    code += '\n'
-    code += 'def bar():\n'
-    code += '  i = 123\n'
-    code += '  return i\n'
-    code += '\n'
+    code = ""
+    code += "def foo():\n"
+    code += "  pass\n"
+    code += "\n"
+    code += "def bar():\n"
+    code += "  i = 123\n"
+    code += "  return i\n"
+    code += "\n"
 
     result = get_location_range(code, Location(4, 1), Location(6, 12))
 
-    expe = ''
-    expe += 'def bar():\n'
-    expe += '  i = 123\n'
-    expe += '  return i\n'
+    expe = ""
+    expe += "def bar():\n"
+    expe += "  i = 123\n"
+    expe += "  return i\n"
 
     assert result == expe

@@ -11,12 +11,15 @@ from codelimit.tui.CodeScreenHeader import CodeScreenHeader
 
 
 class CodeScreen(Screen):
-    BINDINGS = [Binding('escape', 'close', 'Close', show=False), Binding('left', 'close', 'Close')]
+    BINDINGS = [
+        Binding("escape", "close", "Close", show=False),
+        Binding("left", "close", "Close"),
+    ]
 
     def __init__(self):
         super().__init__()
         self.text_log = TextLog()
-        self.text_log.styles.background = Color.parse('#272823')
+        self.text_log.styles.background = Color.parse("#272823")
         self.header = CodeScreenHeader()
 
     def compose(self) -> ComposeResult:

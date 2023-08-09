@@ -9,7 +9,9 @@ class Scope:
         self.block = block
 
     def __str__(self):
-        return f'[{self.header.token_range[0].location}, {self.block.tokens[-1].location}]'
+        return (
+            f"[{self.header.token_range[0].location}, {self.block.tokens[-1].location}]"
+        )
 
     def __repr__(self):
         return self.__str__()

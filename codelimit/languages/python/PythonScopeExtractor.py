@@ -2,22 +2,34 @@ from codelimit.common.Token import Token
 from codelimit.common.TokenRange import TokenRange
 from codelimit.common.scope.Header import Header
 from codelimit.common.scope.ScopeExtractor import ScopeExtractor
-from codelimit.common.token_matching.TokenMatching import match, KeywordPredicate, NamePredicate, BalancedPredicate, \
-    SymbolPredicate
+from codelimit.common.token_matching.TokenMatching import (
+    match,
+    KeywordPredicate,
+    NamePredicate,
+    BalancedPredicate,
+    SymbolPredicate,
+)
 from codelimit.common.utils import delete_indices
 
 
 class PythonScopeExtractor(ScopeExtractor):
-
     def extract_headers(self, tokens: list[Token]) -> list[Header]:
         result = []
-        matches = match(tokens, [KeywordPredicate('def'), NamePredicate(),
-                                 BalancedPredicate(SymbolPredicate('('), SymbolPredicate(')'))])
+        matches = match(
+            tokens,
+            [
+                KeywordPredicate("def"),
+                NamePredicate(),
+                BalancedPredicate(SymbolPredicate("("), SymbolPredicate(")")),
+            ],
+        )
         for m in matches:
             result.append(Header(m.tokens[1].value, m))
         return result
 
-    def extract_blocks(self, tokens: list[Token], headers: list[Header]) -> list[TokenRange]:
+    def extract_blocks(
+        self, tokens: list[Token], headers: list[Header]
+    ) -> list[TokenRange]:
         lines = _get_token_lines(tokens)
         result = []
         reverse_headers = headers[::-1]
@@ -74,9 +86,9 @@ def _get_token_lines(tokens: list[Token]) -> list[list[Token]]:
 def _get_indentation(line: str):
     result = 0
     for c in line:
-        if c == ' ':
+        if c == " ":
             result += 1
-        elif c == '\t':
+        elif c == "\t":
             result += 4
         else:
             return result

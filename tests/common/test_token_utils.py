@@ -4,9 +4,9 @@ from codelimit.languages.c.CLanguage import CLanguage
 
 
 def test_get_balanced_symbol_token_indices():
-    tokens = CLanguage().lex('void foo() { while (1) { } }')
+    tokens = CLanguage().lex("void foo() { while (1) { } }")
 
-    result = get_balanced_symbol_token_indices(tokens, '(', ')')
+    result = get_balanced_symbol_token_indices(tokens, "(", ")")
 
     assert len(result) == 2
     assert result[0][0] == 2
@@ -14,13 +14,13 @@ def test_get_balanced_symbol_token_indices():
     assert result[1][0] == 6
     assert result[1][1] == 8
 
-    result = get_balanced_symbol_token_indices(tokens, '{', '}')
+    result = get_balanced_symbol_token_indices(tokens, "{", "}")
 
     assert len(result) == 1
     assert result[0][0] == 4
     assert result[0][1] == 11
 
-    result = get_balanced_symbol_token_indices(tokens, '{', '}', True)
+    result = get_balanced_symbol_token_indices(tokens, "{", "}", True)
 
     assert len(result) == 2
     assert result[0][0] == 9
@@ -30,7 +30,7 @@ def test_get_balanced_symbol_token_indices():
 
 
 def test_get_token_range():
-    code = 'void foo() { while (1) { } }'
+    code = "void foo() { while (1) { } }"
     tokens = CLanguage().lex(code)
 
-    assert get_token_range(code, tokens[4], tokens[11]) == '{ while (1) { } }'
+    assert get_token_range(code, tokens[4], tokens[11]) == "{ while (1) { } }"

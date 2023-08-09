@@ -8,7 +8,7 @@ class CodebaseEntry(ABC):
         self.path = path
         self.name = get_basename(path)
         if self.is_folder():
-            self.name += '/'
+            self.name += "/"
 
     @abstractmethod
     def is_folder(self):

@@ -30,7 +30,6 @@ class KeywordPredicate(TokenPredicate):
 
 
 class NamePredicate(TokenPredicate):
-
     def accept(self, token: Token) -> bool:
         if token.is_name():
             self.satisfied = True
@@ -74,7 +73,9 @@ class BalancedPredicate(TokenPredicate):
         return False
 
 
-def match(tokens: list[Token], pattern: Union[TokenPredicate, list[TokenPredicate]]) -> list[TokenRange]:
+def match(
+    tokens: list[Token], pattern: Union[TokenPredicate, list[TokenPredicate]]
+) -> list[TokenRange]:
     result = []
     if not isinstance(pattern, list):
         pattern = [pattern]
@@ -91,7 +92,7 @@ def match(tokens: list[Token], pattern: Union[TokenPredicate, list[TokenPredicat
                 if pattern_index < len(pattern) - 1:
                     pattern_index += 1
                 else:
-                    result.append(TokenRange(tokens[match_index:token_index + 1]))
+                    result.append(TokenRange(tokens[match_index : token_index + 1]))
                     [p.reset() for p in pattern]
                     pattern_index = 0
                     match_index = -1

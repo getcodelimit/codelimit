@@ -12,14 +12,13 @@ from codelimit.common.utils import path_has_extension, get_basename
 
 
 class Language(ABC):
-
     def accept_file(self, path: str) -> bool:
-        ignore_folders = ['tests', 'node_modules', 'venv']
+        ignore_folders = ["tests", "node_modules", "venv"]
         parts = path.split(os.path.sep)
         for part in parts:
             if part in ignore_folders:
                 return False
-        if get_basename(path).startswith('test'):
+        if get_basename(path).startswith("test"):
             return False
         return path_has_extension(path.lower(), self.get_file_extension())
 
@@ -49,7 +48,11 @@ class Language(ABC):
                 while newline_index < len(indices) and t[0] > indices[newline_index]:
                     line_start = indices[newline_index] + 1
                     newline_index += 1
-                tokens.append(Token(Location(newline_index + 1, t[0] - line_start + 1), t[1], t[2]))
+                tokens.append(
+                    Token(
+                        Location(newline_index + 1, t[0] - line_start + 1), t[1], t[2]
+                    )
+                )
 
         def predicate(token: Token):
             if token.is_whitespace() or token.is_comment():

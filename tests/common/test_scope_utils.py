@@ -4,12 +4,12 @@ from codelimit.languages.python.PythonScopeExtractor import PythonScopeExtractor
 
 
 def test_find_scope_blocks_indices():
-    code = ''
-    code += 'def foo():\n'
-    code += '  pass\n'
-    code += '\n'
-    code += 'def bar():\n'
-    code += '  foo()\n'
+    code = ""
+    code += "def foo():\n"
+    code += "  pass\n"
+    code += "\n"
+    code += "def bar():\n"
+    code += "  foo()\n"
 
     tokens = PythonLanguage().lex(code)
     extractor = PythonScopeExtractor()

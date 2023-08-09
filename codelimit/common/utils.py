@@ -26,9 +26,9 @@ def merge_profiles(rc1: list[int], rc2: list[int]) -> list[int]:
 
 
 def path_has_extension(path: str, suffixes: Union[str, list[str]]):
-    dot_index = path.rfind('.')
+    dot_index = path.rfind(".")
     if dot_index >= 0:
-        suffix = path[dot_index + 1:]
+        suffix = path[dot_index + 1 :]
         if type(suffixes) == list:
             return suffix in suffixes
         else:
@@ -40,7 +40,7 @@ def path_has_extension(path: str, suffixes: Union[str, list[str]]):
 def get_parent_folder(path: str) -> str:
     parts = path.split(os.path.sep)
     if len(parts) == 1:
-        return '.'
+        return "."
     else:
         return os.path.sep.join(parts[0:-1])
 
@@ -51,7 +51,7 @@ def get_basename(path: str) -> str:
 
 
 def calculate_checksum(path: str) -> str:
-    with open(path, 'rb') as file:
+    with open(path, "rb") as file:
         file_bytes = file.read()
         return hashlib.md5(file_bytes).hexdigest()
 
@@ -76,5 +76,5 @@ def clear_screen() -> None:
 
 
 def header(content: str):
-    print(f'Code Limit (v. {version}, build date: {release_date})'.center(80))
+    print(f"Code Limit (v. {version}, build date: {release_date})".center(80))
     print(content)

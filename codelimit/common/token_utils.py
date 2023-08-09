@@ -3,8 +3,9 @@ from typing import Tuple
 from codelimit.common.Token import Token
 
 
-def get_balanced_symbol_token_indices(tokens: list[Token], start: str, end: str, nested=False) -> list[
-    Tuple[int, int]]:
+def get_balanced_symbol_token_indices(
+    tokens: list[Token], start: str, end: str, nested=False
+) -> list[Tuple[int, int]]:
     result = []
     block_starts = []
     for index, t in enumerate(tokens):

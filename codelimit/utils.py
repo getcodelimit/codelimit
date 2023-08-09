@@ -14,9 +14,9 @@ def upload_report(path: Path, url: str) -> None:
         raise FileNotFoundError(str(path))
 
     with Progress(
-            SpinnerColumn(),
-            TextColumn("[progress.description]{task.description}"),
-            transient=True,
+        SpinnerColumn(),
+        TextColumn("[progress.description]{task.description}"),
+        transient=True,
     ) as progress:
         progress.add_task(description=f"Uploading {path.name} to {url}", total=None)
         result = requests.post(

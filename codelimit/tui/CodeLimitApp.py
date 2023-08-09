@@ -13,7 +13,7 @@ from codelimit.tui.CodeScreen import CodeScreen
 
 
 class CodeLimitApp(App):
-    BINDINGS = [('q', 'quit', 'Quit')]
+    BINDINGS = [("q", "quit", "Quit")]
 
     def __init__(self, report: Report):
         super().__init__()
@@ -24,11 +24,13 @@ class CodeLimitApp(App):
         yield CodeLimitAppHeader(self.report)
         yield Footer()
         list_view = ListView()
-        for idx, unit in enumerate(self.report.all_report_units_sorted_by_length_asc()[:100]):
-            list_view.append(ListItem(Label(format_report_unit(unit)), name=f'{idx}'))
+        for idx, unit in enumerate(
+            self.report.all_report_units_sorted_by_length_asc()[:100]
+        ):
+            list_view.append(ListItem(Label(format_report_unit(unit)), name=f"{idx}"))
         yield list_view
         self.set_focus(list_view)
-        self.install_screen(self.code_screen, 'code_screen')
+        self.install_screen(self.code_screen, "code_screen")
 
     def on_list_view_selected(self, event: ListView.Selected):
         idx = int(event.item.name)
@@ -37,9 +39,9 @@ class CodeLimitApp(App):
         with open(file_path) as file:
             code = file.read()
         snippet = get_location_range(code, unit.measurement.start, unit.measurement.end)
-        rich_snippet = Syntax(snippet, 'python', line_numbers=True)
+        rich_snippet = Syntax(snippet, "python", line_numbers=True)
         self.code_screen.set_code_snippet(get_basename(unit.file), rich_snippet)
-        self.push_screen('code_screen')
+        self.push_screen("code_screen")
 
     def action_quit(self) -> None:
         self.exit()

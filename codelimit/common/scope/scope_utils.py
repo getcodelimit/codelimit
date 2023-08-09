@@ -16,7 +16,9 @@ def build_scopes(language: Language, code: str) -> list[Scope]:
     return _build_scopes_from_headers_and_blocks(headers, blocks)
 
 
-def _build_scopes_from_headers_and_blocks(headers: list[Header], blocks: list[TokenRange]) -> list[Scope]:
+def _build_scopes_from_headers_and_blocks(
+    headers: list[Header], blocks: list[TokenRange]
+) -> list[Scope]:
     result: list[Scope] = []
     reverse_headers = headers[::-1]
     for header in reverse_headers:
@@ -33,7 +35,9 @@ def _build_scopes_from_headers_and_blocks(headers: list[Header], blocks: list[To
     return result
 
 
-def _find_scope_blocks_indices(header: TokenRange, blocks: list[TokenRange]) -> list[int]:
+def _find_scope_blocks_indices(
+    header: TokenRange, blocks: list[TokenRange]
+) -> list[int]:
     body_block = _get_closest_block(header, blocks)
     if body_block:
         if body_block.contains(header):
@@ -43,7 +47,9 @@ def _find_scope_blocks_indices(header: TokenRange, blocks: list[TokenRange]) -> 
     return []
 
 
-def _get_closest_block(header: TokenRange, blocks: list[TokenRange]) -> Optional[TokenRange]:
+def _get_closest_block(
+    header: TokenRange, blocks: list[TokenRange]
+) -> Optional[TokenRange]:
     for block in blocks:
         if block.contains(header):
             return block

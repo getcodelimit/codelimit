@@ -14,4 +14,4 @@ class SourceFolder:
         self.entries.append(entry)
 
     def add_folder(self, name: str):
-        self.entries.append(SourceFolderEntry(f'{name}'))
+        self.entries.append(SourceFolderEntry(f"{name}"))

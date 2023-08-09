@@ -19,25 +19,24 @@ pre_commit_hook = typer.Typer()
 
 @cli.callback(invoke_without_command=True)
 def cli_callback(
-        path: Path,
-        report_path: Path = typer.Option(
-            None,
-            "--report",
-            "-r",
-            help="JSON report for a code base",
-        ),
-        upload: bool = typer.Option(False, "--upload", help="Upload a report"),
-        url: str = typer.Option(
-            "https://codelimit-web.vercel.app/api/upload",
-            "--url",
-            "-u",
-            help="Upload JSON report to this URL.",
-        ),
+    path: Path,
+    report_path: Path = typer.Option(
+        None,
+        "--report",
+        "-r",
+        help="JSON report for a code base",
+    ),
+    upload: bool = typer.Option(False, "--upload", help="Upload a report"),
+    url: str = typer.Option(
+        "https://codelimit-web.vercel.app/api/upload",
+        "--url",
+        "-u",
+        help="Upload JSON report to this URL.",
+    ),
 ) -> None:
-    """CodeLimit: Your refactoring alarm
-    """
+    """CodeLimit: Your refactoring alarm"""
 
-    report_path = report_path or path.joinpath('codelimit.json').resolve()
+    report_path = report_path or path.joinpath("codelimit.json").resolve()
 
     if upload:
         try:
@@ -65,16 +64,22 @@ def pre_commit_hook_callback(paths: List[Path]):
     language = PythonLanguage()
     for path in paths:
         measurements = scan_file(language, str(path))
-        medium_risk = sorted([m for m in measurements if 30 < m.value <= 60], key=lambda measurement: measurement.value,
-                             reverse=True)
-        high_risk = sorted([m for m in measurements if m.value > 60], key=lambda measurement: measurement.value,
-                           reverse=True)
+        medium_risk = sorted(
+            [m for m in measurements if 30 < m.value <= 60],
+            key=lambda measurement: measurement.value,
+            reverse=True,
+        )
+        high_risk = sorted(
+            [m for m in measurements if m.value > 60],
+            key=lambda measurement: measurement.value,
+            reverse=True,
+        )
         if medium_risk:
-            print(f'🔔 {path}')
+            print(f"🔔 {path}")
             for m in medium_risk:
                 print(format_report_unit(ReportUnit(str(path), m)))
         if high_risk:
-            print(f'🚨 {path}')
+            print(f"🚨 {path}")
             for m in high_risk:
                 print(format_report_unit(ReportUnit(str(path), m)))
             exit_code = 1
