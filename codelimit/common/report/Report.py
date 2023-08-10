@@ -39,6 +39,21 @@ class Report:
     def quality_profile(self):
         return make_profile(self.codebase.all_measurements())
 
+    def summary(self) -> str:
+        medium_risk = len(
+            [m for m in self.codebase.all_measurements() if 30 < m.value <= 60]
+        )
+        high_risk = len([m for m in self.codebase.all_measurements() if m.value > 60])
+        if high_risk > 0:
+            return f"Refactoring necessary: 🚨 Unmaintainable functions: {high_risk}"
+        elif medium_risk > 0:
+            return (
+                f"Refactoring necessary: 🔔 Hard to maintain functions: "
+                f"{medium_risk}"
+            )
+        else:
+            return "Refactoring not necessary, happy coding!"
+
     def risk_category_plot(self) -> str:
         def get_labels(profile):
             labels = ["1-15"]

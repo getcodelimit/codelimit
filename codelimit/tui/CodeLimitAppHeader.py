@@ -21,11 +21,12 @@ class CodeLimitAppHeader(Widget):
         self.styles.height = 3
 
     def compose(self) -> ComposeResult:
-        # yield Vertical(Static(Text.from_ansi(self.report.risk_category_plot())))
         root = self.report.codebase.root
         title = Static(get_basename(root) + os.path.sep)
         title.styles.content_align_horizontal = "center"
-        yield Vertical(title, QualityProfile(self.report.quality_profile()))
+        message = Static(self.report.summary())
+        message.styles.content_align_horizontal = "center"
+        yield Vertical(title, QualityProfile(self.report.quality_profile()), message)
 
 
 class HeaderLeft(Static):

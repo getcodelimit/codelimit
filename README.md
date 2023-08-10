@@ -2,7 +2,7 @@
 
 Your Refactoring Alarm
 
-![Logo](docs/codelimit-logo-96x96.png)
+![Logo](https://raw.githubusercontent.com/getcodelimit/codelimit/main/docs/codelimit-logo-96x96.png)
 
 [![CI](https://github.com/getcodelimit/codelimit/actions/workflows/ci.yml/badge.svg)](https://github.com/getcodelimit/codelimit/actions/workflows/ci.yml)
 [![codecov](https://codecov.io/gh/getcodelimit/codelimit/branch/main/graph/badge.svg?token=ZQBEAJVC2Y)](https://codecov.io/gh/getcodelimit/codelimit)
@@ -26,23 +26,22 @@ it alarms you during development when it's time to refactor:
 ```
 
 CodeLimit is intended to be used alongside formatting, linters and other hooks
-that improve the consistency and quality of your code, such as Black, Ruff and
-MyPy. As an example see the
+that improve the consistency and quality of your code (such as Black, Ruff and
+MyPy.) As an example pre-commit configuration see the
 [`pre-commit-config.yaml`](https://github.com/getcodelimit/codelimit/blob/main/.pre-commit-config.yaml)
 from CodeLimit itself.
 
-When running as a hook, CodeLimit warns about functions that *should* be
-refactored and fails for functions that *need* to be refactord.
+When running as a hook, CodeLimit *warns* about functions that *should* be
+refactored and *fails* for functions that *need* to be refactord.
 
 To show your project uses CodeLimit place this badge in the README markdown:
-
 ```
 ![Checked with CodeLimit](https://img.shields.io/badge/CodeLimit-checked-E5832F.svg)](https://github.com/getcodelimit/codelimit)
 ```
 
 ## Standalone
 
-![Screenshot](docs/screenshot.png)
+![Screenshot](https://github.com/getcodelimit/codelimit/blob/main/docs/screenshot.png)
 
 To install the standalone version of CodeLimit for your default Python
 installation run:
