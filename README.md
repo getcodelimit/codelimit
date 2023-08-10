@@ -86,3 +86,4 @@ Generate a self-contained binary:
 ```shell
 poetry run poe bundle
 ```
+
