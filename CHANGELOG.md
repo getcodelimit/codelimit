@@ -2,6 +2,13 @@
 
 
 
+## v0.3.1 (2023-08-10)
+
+### :bug:
+
+* :bug: Update release flow ([`960e05f`](https://github.com/getcodelimit/codelimit/commit/960e05fa14505a1027a8caa3aa925d585b172bed))
+
+
 ## v0.3.0 (2023-08-10)
 
 ### :bug:
