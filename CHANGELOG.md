@@ -2,9 +2,58 @@
 
 
 
+## v0.3.0 (2023-08-10)
+
+### :bug:
+
+* :bug: ([`7822143`](https://github.com/getcodelimit/codelimit/commit/7822143c9fa9d9de6881ec10be1bc72db6679193))
+
+* :bug: Trigger release ([`c02f85c`](https://github.com/getcodelimit/codelimit/commit/c02f85cc343857ae36715a7b5626fc26fda987c5))
+
+### :sparkles:
+
+* :sparkles: Trigger release ([`3871cae`](https://github.com/getcodelimit/codelimit/commit/3871caed163fdd2079a8acc05258d6895abe6353))
+
+### Other
+
+* Fix workflow ([`122e9c4`](https://github.com/getcodelimit/codelimit/commit/122e9c42bfb271b811ec6a550c50f8ed6d57816c))
+
+* Trigger release ([`1b16dbb`](https://github.com/getcodelimit/codelimit/commit/1b16dbb9fc39ad81477a8e346814171efeb9f62a))
+
+* :memo: Update ([`cab2855`](https://github.com/getcodelimit/codelimit/commit/cab28559d5dd48296823870c993620c6754db445))
+
+* Show summary above refactoring list ([`8c8cd3b`](https://github.com/getcodelimit/codelimit/commit/8c8cd3bf5aae66366cfe07aa6b8f426f0491f3a6))
+
+* Update ([`c14deca`](https://github.com/getcodelimit/codelimit/commit/c14deca93a4d75e137b9bb2915d16c0ef2c0fb1f))
+
+* Update ([`0b7ee53`](https://github.com/getcodelimit/codelimit/commit/0b7ee539a786c6e0fffeeb493f6cb1d4a48fde37))
+
+* Deploy to PyPi ([`f319649`](https://github.com/getcodelimit/codelimit/commit/f319649fb46813edac4cddf658f082fe6988a9ed))
+
+* Add badges ([`6ef9caa`](https://github.com/getcodelimit/codelimit/commit/6ef9caa4b53a185b7da315c6125713ef1f5e1ffb))
+
+* Remove requests types ([`6dd57c6`](https://github.com/getcodelimit/codelimit/commit/6dd57c6e187b00945137f50c2932f87810ba3f7c))
+
+* Add mypy pre-commit hook ([`3d67623`](https://github.com/getcodelimit/codelimit/commit/3d676237325cd23d93c783e07b83206f9be4aeaf))
+
+* Add ruff to pre-commit config ([`057dcd7`](https://github.com/getcodelimit/codelimit/commit/057dcd7b26ebd025804c72eb897389d3a5a30a54))
+
+* Use Black code formatter ([`e35c6b2`](https://github.com/getcodelimit/codelimit/commit/e35c6b2bfb0b70deaa846b69955134cd5bae27c4))
+
+* Exchange build-dist.sh shell script for a pyproject-based task executor. (#13) ([`b763e00`](https://github.com/getcodelimit/codelimit/commit/b763e0045f8827292bf4f608440c477c56a5ba08))
+
+* Merge branch &#39;main&#39; of github.com:getcodelimit/codelimit ([`ceac22d`](https://github.com/getcodelimit/codelimit/commit/ceac22d900634697104b46809e41928fd77055b2))
+
+* Enable CodeLimit on CodeLimit ([`9e4ea2c`](https://github.com/getcodelimit/codelimit/commit/9e4ea2ca9dece1fbd37c05f37ada5f73527487ff))
+
+
 ## v0.2.1 (2023-08-09)
 
-### Fix
+### :bug:
+
+* :bug: No build during release ([`8c74c77`](https://github.com/getcodelimit/codelimit/commit/8c74c7706d534b60d1f42552c8f8885ec3e46f55))
+
+* :bug: Fix semantic release ([`3115c94`](https://github.com/getcodelimit/codelimit/commit/3115c945186ac26a2419a8be187158a2b3c3b0a9))
 
 * :bug: fix semantic release ([`477fa24`](https://github.com/getcodelimit/codelimit/commit/477fa24db384d074f10afb71f42e3cef868c7e09))
 
@@ -21,10 +70,6 @@
 * Reset predicates ([`121f76e`](https://github.com/getcodelimit/codelimit/commit/121f76eaf4c6f55459bdf4878c037d47ae241eaf))
 
 ### Other
-
-* :bug: No build during release ([`8c74c77`](https://github.com/getcodelimit/codelimit/commit/8c74c7706d534b60d1f42552c8f8885ec3e46f55))
-
-* :bug: Fix semantic release ([`3115c94`](https://github.com/getcodelimit/codelimit/commit/3115c945186ac26a2419a8be187158a2b3c3b0a9))
 
 * Implemented basic pre-commit hook (#14) ([`6cb2925`](https://github.com/getcodelimit/codelimit/commit/6cb2925be94c3cb2afa1bad1d2982a9cdf3179cc))
 
@@ -94,7 +139,7 @@
 
 ## v0.2.0 (2023-01-14)
 
-### Feat
+### :sparkles:
 
 * feat: :sparkles: Issue 7 add basic repository browser (#8)
 
@@ -117,7 +162,7 @@
 
 ## v0.1.0 (2023-01-07)
 
-### Feat
+### :sparkles:
 
 * feat: :sparkles: WIP (#6)
 
