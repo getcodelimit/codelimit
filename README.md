@@ -4,8 +4,6 @@ Your Refactoring Alarm
 
 ![Logo](docs/codelimit-logo-96x96.png)
 
-![Screenshot](docs/screenshot.png)
-
 [![CI](https://github.com/getcodelimit/codelimit/actions/workflows/ci.yml/badge.svg)](https://github.com/getcodelimit/codelimit/actions/workflows/ci.yml)
 [![codecov](https://codecov.io/gh/getcodelimit/codelimit/branch/main/graph/badge.svg?token=ZQBEAJVC2Y)](https://codecov.io/gh/getcodelimit/codelimit)
 [![Checked with mypy](https://www.mypy-lang.org/static/mypy_badge.svg)](https://mypy-lang.org/)
@@ -40,6 +38,17 @@ To show your project uses CodeLimit place this badge in the README markdown:
 
 ```
 ![Checked with CodeLimit](https://img.shields.io/badge/CodeLimit-checked-E5832F.svg)](https://github.com/getcodelimit/codelimit)
+```
+
+## Standalone
+
+![Screenshot](docs/screenshot.png)
+
+To install the standalone version of CodeLimit for your default Python
+installation run:
+
+```shell
+python -m pip install codelimit
 ```
 
 # Development
