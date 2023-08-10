@@ -33,6 +33,10 @@ jobs:
       uses: relekang/python-semantic-release@master
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
+    - name: 'Update checkout'
+      run: |
+        git pull
+      if: steps.release.outputs.released == 'true'
     - name: 'Publish to PyPI'
       uses: pypa/gh-action-pypi-publish@release/v1
       if: steps.release.outputs.released == 'true'
