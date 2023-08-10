@@ -11,10 +11,38 @@ Your Refactoring Alarm
 [![Checked with mypy](https://www.mypy-lang.org/static/mypy_badge.svg)](https://mypy-lang.org/)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Linting: Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/charliermarsh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
+[![Checked with CodeLimit](https://img.shields.io/badge/CodeLimit-checked-E5832F.svg)](https://github.com/getcodelimit/codelimit)
 
-# Usage
+# Quickstart
 
-## Running
+## Installation
+
+CodeLimit can be installed as a [pre-commmit](https://pre-commit.com/) hook so
+it alarms you during development when it's time to refactor:
+
+```yaml
+-   repo: https://github.com/getcodelimit/codelimit
+    rev: v0.2.1
+    hooks:
+    - id: codelimit
+```
+
+CodeLimit is intended to be used alongside formatting, linters and other hooks
+that improve the consistency and quality of your code, such as Black, Ruff and
+MyPy. As an example see the
+[`pre-commit-config.yaml`](https://github.com/getcodelimit/codelimit/blob/main/.pre-commit-config.yaml)
+from CodeLimit itself.
+
+When running as a hook, CodeLimit warns about functions that *should* be
+refactored and fails for functions that *need* to be refactord.
+
+To show your project uses CodeLimit place this badge in the README markdown:
+
+```
+![Checked with CodeLimit](https://img.shields.io/badge/CodeLimit-checked-E5832F.svg)](https://github.com/getcodelimit/codelimit)
+```
+
+# Development
 
 After installing depencies with `poetry install`, CodeLimit can be run from the
 repository root like this:
@@ -28,8 +56,6 @@ For example, to check a codebase at `~/projects/fastapi` run:
 ```shell
 poetry run codelimit ~/projects/fastapi
 ```
-
-# Development
 
 ## Using the Textal debug console
 
@@ -50,5 +76,5 @@ poetry run textual run --dev main.py
 Generate a self-contained binary:
 
 ```shell
-./build-dist.sh
+poetry run poe bundle
 ```
