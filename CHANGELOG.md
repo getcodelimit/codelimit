@@ -2,6 +2,17 @@
 
 
 
+## v0.4.0 (2023-08-11)
+
+### :lipstick:
+
+* :lipstick: Show relative path in code screen ([`7c17a5d`](https://github.com/getcodelimit/codelimit/commit/7c17a5de37fbb1d548ba3e69570dc052fc3f9965))
+
+### Other
+
+* :pencil: Updated readme ([`917d27d`](https://github.com/getcodelimit/codelimit/commit/917d27d14cf71b179cf4f28bb2dc9a02ddaa812b))
+
+
 ## v0.3.1 (2023-08-10)
 
 ### :bug:
