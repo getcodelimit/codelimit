@@ -7,7 +7,6 @@ from textual.widgets import Footer, ListView, ListItem, Label
 from codelimit.common.report.Report import Report
 from codelimit.common.report.ReportUnit import format_report_unit
 from codelimit.common.source_utils import get_location_range
-from codelimit.common.utils import get_basename
 from codelimit.tui.CodeLimitAppHeader import CodeLimitAppHeader
 from codelimit.tui.CodeScreen import CodeScreen
 
@@ -40,7 +39,7 @@ class CodeLimitApp(App):
             code = file.read()
         snippet = get_location_range(code, unit.measurement.start, unit.measurement.end)
         rich_snippet = Syntax(snippet, "python", line_numbers=True)
-        self.code_screen.set_code_snippet(get_basename(unit.file), rich_snippet)
+        self.code_screen.set_code_snippet(unit.file, rich_snippet)
         self.push_screen("code_screen")
 
     def action_quit(self) -> None:
