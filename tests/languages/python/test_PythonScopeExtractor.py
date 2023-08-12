@@ -174,6 +174,24 @@ def test_do_not_count_comment_lines():
     assert len(result[0]) == 2
 
 
+def test_header_with_defaults():
+    code = ""
+    code += "def foo(\n"
+    code += "  bar: str = SomeClass(\n"
+    code += "    'Hello'\n"
+    code += "  ),\n"
+    code += "  foo: str = SomeClass(\n"
+    code += "    'World'\n"
+    code += "  )\n"
+    code += "):\n"
+    code += "  pass\n"
+
+    result = build_scopes(PythonLanguage(), code)
+
+    assert len(result) == 1
+    assert len(result[0]) == 9
+
+
 def test_header_type_hints():
     code = ""
     code += "def foo(\n"

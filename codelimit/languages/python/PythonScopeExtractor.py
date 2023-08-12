@@ -2,11 +2,11 @@ from codelimit.common.Token import Token
 from codelimit.common.TokenRange import TokenRange
 from codelimit.common.scope.Header import Header
 from codelimit.common.scope.ScopeExtractor import ScopeExtractor
+from codelimit.common.token_matching.BalancedPredicate import BalancedPredicate
 from codelimit.common.token_matching.TokenMatching import (
     match,
     KeywordPredicate,
     NamePredicate,
-    BalancedPredicate,
     SymbolPredicate,
 )
 from codelimit.common.utils import delete_indices

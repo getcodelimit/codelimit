@@ -49,30 +49,6 @@ class SymbolPredicate(TokenPredicate):
         return False
 
 
-class BalancedPredicate(TokenPredicate):
-    def __init__(self, left: TokenPredicate, right: TokenPredicate):
-        super().__init__()
-        self.left = left
-        self.right = right
-        self.active = False
-
-    def reset(self):
-        super().reset()
-        self.left.reset()
-        self.right.reset()
-        self.active = False
-
-    def accept(self, token: Token) -> bool:
-        if self.active:
-            if self.right.accept(token):
-                self.satisfied = True
-            return True
-        if self.left.accept(token):
-            self.active = True
-            return True
-        return False
-
-
 def match(
     tokens: list[Token], pattern: Union[TokenPredicate, list[TokenPredicate]]
 ) -> list[TokenRange]:
