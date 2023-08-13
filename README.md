@@ -41,6 +41,8 @@ To show your project uses CodeLimit place this badge in the README markdown:
 
 ## Standalone
 
+CodeLimit can also run as a standalone program:
+
 ![Screenshot](https://github.com/getcodelimit/codelimit/blob/main/docs/screenshot.png)
 
 To install the standalone version of CodeLimit for your default Python
@@ -48,6 +50,41 @@ installation run:
 
 ```shell
 python -m pip install codelimit
+```
+
+Run CodeLimit without arguments to see the usage page:
+
+```shell
+$ codelimit
+
+ Usage: codelimit [OPTIONS] COMMAND [ARGS]...
+
+ CodeLimit: Your refactoring alarm
+
+╭─ Options ────────────────────────────────────────────────────────────────────╮
+│ --help          Show this message and exit.                                  │
+╰──────────────────────────────────────────────────────────────────────────────╯
+╭─ Commands ───────────────────────────────────────────────────────────────────╮
+│ check                 Check file(s)                                          │
+│ scan                  Scan a codebase                                        │
+╰──────────────────────────────────────────────────────────────────────────────╯
+```
+
+## Scanning a codebase
+
+To scan a complete codebase and launch the TUI, run:
+
+```shell
+codelimit scan path/to/codebase
+```
+
+## Checking files
+
+To check a single file or list of files for functions that need refactoring,
+run:
+
+```shell
+codelimit check a.py b.py c.py
 ```
 
 # Development
