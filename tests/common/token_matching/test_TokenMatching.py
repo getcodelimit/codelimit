@@ -3,7 +3,7 @@ from codelimit.common.token_matching.TokenMatching import (
     KeywordPredicate,
     NamePredicate,
 )
-from codelimit.languages.python.PythonLaguage import PythonLanguage
+from codelimit.languages.python.PythonLanguage import PythonLanguage
 
 
 def test_match_keyword():

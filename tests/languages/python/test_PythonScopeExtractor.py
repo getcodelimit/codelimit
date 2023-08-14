@@ -1,5 +1,5 @@
 from codelimit.common.scope.scope_utils import build_scopes
-from codelimit.languages.python.PythonLaguage import PythonLanguage
+from codelimit.languages.python.PythonLanguage import PythonLanguage
 from codelimit.languages.python.PythonScopeExtractor import (
     _get_indentation,
     PythonScopeExtractor,
@@ -230,7 +230,7 @@ def test_function_with_type_hints():
     code += "def foo(\n"
     code += "  bar: Bar\n"
     code += ") -> Foo:\n"
-    code += "  bar = foor\n"
+    code += "  bar = foo\n"
     code += "  foo = bar\n"
 
     result = build_scopes(PythonLanguage(), code)
