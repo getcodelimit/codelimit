@@ -1,4 +1,4 @@
-from codelimit.languages.python.PythonLaguage import PythonLanguage
+from codelimit.languages.python.PythonLanguage import PythonLanguage
 
 
 def test_accept_file():

@@ -8,7 +8,7 @@ from codelimit.common.report.Report import Report
 from codelimit.common.report.ReportReader import ReportReader
 from codelimit.common.report.ReportUnit import ReportUnit, format_report_unit
 from codelimit.common.report.ReportWriter import ReportWriter
-from codelimit.languages.python.PythonLaguage import PythonLanguage
+from codelimit.languages.python.PythonLanguage import PythonLanguage
 from codelimit.tui.CodeLimitApp import CodeLimitApp
 from codelimit.utils import upload_report
 from rich import print

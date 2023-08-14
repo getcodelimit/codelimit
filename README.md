@@ -52,7 +52,7 @@ python -m pip install codelimit
 
 # Development
 
-After installing depencies with `poetry install`, CodeLimit can be run from the
+After installing dependencies with `poetry install`, CodeLimit can be run from the
 repository root like this:
 
 ```shell
