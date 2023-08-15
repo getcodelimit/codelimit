@@ -1,36 +1,54 @@
+import os
 from pathlib import Path
 from typing import List, Annotated
 
 import typer
 
+from codelimit.common.CheckResult import CheckResult
+from codelimit.common.Scanner import scan_codebase
+from codelimit.common.report.Report import Report
 from codelimit.common.report.ReportReader import ReportReader
 from codelimit.common.report.ReportWriter import ReportWriter
 from codelimit.tui.CodeLimitApp import CodeLimitApp
-from codelimit.utils import upload_report, generate_report, check_files
+from codelimit.utils import upload_report, check_file
 
 cli = typer.Typer(no_args_is_help=True, add_completion=False)
 
 
-@cli.command(help="Scan a codebase")
-def scan(
-    path: Annotated[
-        Path, typer.Argument(file_okay=False, exists=True, help="Codebase root")
-    ]
+@cli.command(help="Check file(s)")
+def check(
+    paths: Annotated[List[Path], typer.Argument(exists=True, help="Codebase root")]
 ):
+    check_result = CheckResult()
+    for path in paths:
+        if path.is_file():
+            check_result.add(path, check_file(path))
+        elif path.is_dir():
+            for root, dirs, files in os.walk(path.absolute()):
+                files = [f for f in files if not f[0] == "."]
+                dirs[:] = [d for d in dirs if not d[0] == "."]
+                for file in files:
+                    file_path = Path(os.path.join(root, file))
+                    check_result.add(file_path, check_file(file_path))
+    if len(check_result):
+        check_result.report()
+        raise typer.Exit(code=1)
+    else:
+        raise typer.Exit(code=0)
+
+
+@cli.command(help="Scan a codebase")
+def scan(path: Annotated[Path, typer.Argument()] = Path(".")):
     report_path = path.joinpath("codelimit.json").resolve()
     if not report_path.exists():
-        report = generate_report(path)
+        codebase = scan_codebase(path)
+        codebase.aggregate()
+        report = Report(codebase)
         report_path.write_text(ReportWriter(report).to_json())
     else:
         report = ReportReader.from_json(report_path.read_text())
     app = CodeLimitApp(report)
     app.run()
-
-
-@cli.command(help="Check file(s)")
-def check(paths: List[Path]):
-    exit_code = check_files(paths)
-    raise typer.Exit(code=exit_code)
 
 
 @cli.command(help="Upload report to CodeLimit server", hidden=True)
@@ -53,7 +71,7 @@ def upload(
 
 @cli.callback()
 def main():
-    """CodeLimit: Your refactoring alarm"""
+    """CodeLimit: Your refactoring alarm."""
 
 
 if __name__ == "__main__":

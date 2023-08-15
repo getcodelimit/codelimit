@@ -2,6 +2,6 @@
   name: codelimit
   description: "CodeLimit: Your Refactoring Alarm"
   verbose: true
-  entry: hook
+  entry: codelimit check
   language: python
   types: [file, python]

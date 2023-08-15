@@ -1,47 +1,25 @@
 from pathlib import Path
-from typing import List
 
 import requests  # type: ignore
 import typer
 from rich.progress import Progress, SpinnerColumn, TextColumn
 
-from codelimit.common.Scanner import scan, scan_file
-from codelimit.common.report.Report import Report
-from codelimit.common.report.ReportUnit import format_report_unit, ReportUnit
-from codelimit.languages.python.PythonLaguage import PythonLanguage
+from codelimit.common.Measurement import Measurement
+from codelimit.common.Scanner import languages, scan_file
 
 
-def generate_report(path: Path) -> Report:
-    codebase = scan(path)
-    codebase.aggregate()
-    return Report(codebase)
-
-
-def check_files(paths: List[Path]):
-    exit_code = 0
-    language = PythonLanguage()
-    for path in paths:
-        measurements = scan_file(language, str(path))
-        medium_risk = sorted(
-            [m for m in measurements if 30 < m.value <= 60],
-            key=lambda measurement: measurement.value,
-            reverse=True,
-        )
-        high_risk = sorted(
-            [m for m in measurements if m.value > 60],
-            key=lambda measurement: measurement.value,
-            reverse=True,
-        )
-        if high_risk:
-            print(f"🚨 {path}")
-            for m in high_risk:
-                print(format_report_unit(ReportUnit(str(path), m)))
-            exit_code = 1
-        if medium_risk:
-            print(f"🔔 {path}")
-            for m in medium_risk:
-                print(format_report_unit(ReportUnit(str(path), m)))
-    return exit_code
+def check_file(path: Path) -> list[Measurement]:
+    result = []
+    for language in languages:
+        if language.accept_file(str(path.absolute())):
+            measurements = scan_file(language, str(path))
+            risks = sorted(
+                [m for m in measurements if m.value > 30],
+                key=lambda measurement: measurement.value,
+                reverse=True,
+            )
+            result.extend(risks)
+    return result
 
 
 def upload_report(path: Path, url: str) -> None:
