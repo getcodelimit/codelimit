@@ -18,7 +18,7 @@ languages = [
 ]  # , CLanguage(), JavaScriptLanguage(), TypeScriptLanguage()]
 
 
-def scan(path: Path) -> Codebase:
+def scan_codebase(path: Path) -> Codebase:
     codebase = Codebase(str(path.absolute()))
     _scan_folder(codebase, path)
     return codebase

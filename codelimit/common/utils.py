@@ -3,6 +3,8 @@ import os
 import sys
 from typing import Union, Any
 
+from rich.text import Text
+
 from codelimit.common.Measurement import Measurement
 from codelimit.version import version, release_date
 
@@ -78,3 +80,17 @@ def clear_screen() -> None:
 def header(content: str):
     print(f"Code Limit (v. {version}, build date: {release_date})".center(80))
     print(content)
+
+
+def format_unit(name: str, length: int) -> Text:
+    if length > 60:
+        style = "red"
+    elif length > 30:
+        style = "dark_orange"
+    elif length > 15:
+        style = "yellow"
+    else:
+        style = "green"
+    length_text = f"{length:3}" if length < 61 else "60+"
+    styled_text = Text(length_text, style=style)
+    return Text.assemble("[", styled_text, "] ", name)

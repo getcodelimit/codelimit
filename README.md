@@ -13,7 +13,7 @@ Your Refactoring Alarm
 
 # Quickstart
 
-## Installation
+## Pre-commit hook
 
 CodeLimit can be installed as a [pre-commit](https://pre-commit.com/) hook so
 it alarms you during development when it's time to refactor:
@@ -26,8 +26,11 @@ it alarms you during development when it's time to refactor:
 ```
 
 CodeLimit is intended to be used alongside formatting, linters and other hooks
-that improve the consistency and quality of your code (such as Black, Ruff and
-MyPy.) As an example pre-commit configuration see the
+that improve the consistency and quality of your code (such as
+[Black](https://github.com/psf/black),
+[Ruff](https://github.com/astral-sh/ruff) and
+[MyPy](https://github.com/python/mypy).) As an example pre-commit configuration
+see the
 [`pre-commit-config.yaml`](https://github.com/getcodelimit/codelimit/blob/main/.pre-commit-config.yaml)
 from CodeLimit itself.
 
@@ -41,13 +44,48 @@ To show your project uses CodeLimit place this badge in the README markdown:
 
 ## Standalone
 
-![Screenshot](https://github.com/getcodelimit/codelimit/blob/main/docs/screenshot.png)
-
-To install the standalone version of CodeLimit for your default Python
-installation run:
+CodeLimit can also run as a standalone program. To install the standalone
+version of CodeLimit for your default Python installation run:
 
 ```shell
 python -m pip install codelimit
+```
+
+Run CodeLimit without arguments to see the usage page:
+
+```shell
+$ codelimit
+
+ Usage: codelimit [OPTIONS] COMMAND [ARGS]...
+
+ CodeLimit: Your refactoring alarm
+
+╭─ Options ────────────────────────────────────────────────────────────────────╮
+│ --help          Show this message and exit.                                  │
+╰──────────────────────────────────────────────────────────────────────────────╯
+╭─ Commands ───────────────────────────────────────────────────────────────────╮
+│ check                 Check file(s)                                          │
+│ scan                  Scan a codebase                                        │
+╰──────────────────────────────────────────────────────────────────────────────╯
+```
+
+## Scanning a codebase
+
+To scan a complete codebase and launch the TUI, run:
+
+```shell
+codelimit scan path/to/codebase
+```
+
+![Screenshot](https://github.com/getcodelimit/codelimit/blob/main/docs/screenshot.png)
+
+## Checking files
+
+To check a single file or list of files for functions that need refactoring,
+run:
+
+```shell
+codelimit check a.py b.py c.py
 ```
 
 # Development

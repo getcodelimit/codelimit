@@ -4,6 +4,23 @@ import requests  # type: ignore
 import typer
 from rich.progress import Progress, SpinnerColumn, TextColumn
 
+from codelimit.common.Measurement import Measurement
+from codelimit.common.Scanner import languages, scan_file
+
+
+def check_file(path: Path) -> list[Measurement]:
+    result = []
+    for language in languages:
+        if language.accept_file(str(path.absolute())):
+            measurements = scan_file(language, str(path))
+            risks = sorted(
+                [m for m in measurements if m.value > 30],
+                key=lambda measurement: measurement.value,
+                reverse=True,
+            )
+            result.extend(risks)
+    return result
+
 
 def upload_report(path: Path, url: str) -> None:
     data_template = (
