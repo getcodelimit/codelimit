@@ -2,6 +2,23 @@
 
 
 
+## v0.5.0 (2023-08-16)
+
+### :bug:
+
+* :bug: Fix for Python headers with nested braces ([`0e95d33`](https://github.com/getcodelimit/codelimit/commit/0e95d33a207f43d40943da32a22a66a7a9759d48))
+
+### :sparkles:
+
+* :sparkles: Issue 15 invoking without tui (#16) ([`5dda87d`](https://github.com/getcodelimit/codelimit/commit/5dda87d4bef6a21069eb0c85a624651d9aff3e02))
+
+### Other
+
+* Fix &#34;PythonLanguage&#34; typo (#17) ([`167f154`](https://github.com/getcodelimit/codelimit/commit/167f154f688777c51d55823aefa5a76c47f490a2))
+
+* :green_heart: Trigger workflow manually ([`5344210`](https://github.com/getcodelimit/codelimit/commit/5344210cfcdeb96110976b59a557de353155a75e))
+
+
 ## v0.4.0 (2023-08-11)
 
 ### :lipstick:
