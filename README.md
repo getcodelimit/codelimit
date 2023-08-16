@@ -1,6 +1,6 @@
 # CodeLimit
 
-Your Refactoring Alarm
+Your Refactoring Alarm ⏰
 
 ![Logo](https://raw.githubusercontent.com/getcodelimit/codelimit/main/docs/codelimit-logo-96x96.png)
 
