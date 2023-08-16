@@ -11,7 +11,7 @@ from codelimit.common.Measurement import Measurement
 from codelimit.common.SourceFileEntry import SourceFileEntry
 from codelimit.common.scope.scope_utils import build_scopes
 from codelimit.common.utils import calculate_checksum
-from codelimit.languages.python.PythonLaguage import PythonLanguage
+from codelimit.languages.python.PythonLanguage import PythonLanguage
 
 languages = [
     PythonLanguage()

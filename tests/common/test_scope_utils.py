@@ -1,5 +1,5 @@
 from codelimit.common.scope.scope_utils import _find_scope_blocks_indices
-from codelimit.languages.python.PythonLaguage import PythonLanguage
+from codelimit.languages.python.PythonLanguage import PythonLanguage
 from codelimit.languages.python.PythonScopeExtractor import PythonScopeExtractor
 
 

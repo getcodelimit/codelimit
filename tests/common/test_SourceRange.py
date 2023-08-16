@@ -1,5 +1,5 @@
 from codelimit.common.TokenRange import TokenRange
-from codelimit.languages.python.PythonLaguage import PythonLanguage
+from codelimit.languages.python.PythonLanguage import PythonLanguage
 
 
 def test_str():
