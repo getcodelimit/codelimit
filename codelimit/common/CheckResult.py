@@ -27,6 +27,7 @@ class CheckResult:
 
     def report(self):
         cwd_path = Path(os.getcwd())
+        stdout = Console()
         for file, measurements in self.file_list:
             for m in measurements:
                 text = Text()
@@ -41,7 +42,7 @@ class CheckResult:
                 text.append(":", style=Style(color="cyan"))
                 text.append(" ")
                 text.append(format_unit(m.unit_name, m.value))
-                Console().print(text, soft_wrap=True)
+                stdout.print(text, soft_wrap=True)
         if self.hard_to_maintain > 0 or self.unmaintainable > 0:
             rich.print(
                 f"{len(self.file_list)} files checked, "
@@ -51,6 +52,5 @@ class CheckResult:
         else:
             rich.print(
                 f"{len(self.file_list)} files checked, :sparkles: Refactoring not "
-                f"necessary, "
-                f"happy coding! :sparkles:"
+                f"necessary :sparkles:, happy coding!"
             )

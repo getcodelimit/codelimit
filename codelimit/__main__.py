@@ -17,7 +17,10 @@ cli = typer.Typer(no_args_is_help=True, add_completion=False)
 
 @cli.command(help="Check file(s)")
 def check(
-    paths: Annotated[List[Path], typer.Argument(exists=True, help="Codebase root")]
+    paths: Annotated[List[Path], typer.Argument(exists=True, help="Codebase root")],
+    quiet: Annotated[
+        bool, typer.Option("--quiet", help="Not output when successful")
+    ] = False,
 ):
     check_result = CheckResult()
     for path in paths:
@@ -30,11 +33,14 @@ def check(
                 for file in files:
                     file_path = Path(os.path.join(root, file))
                     check_result.add(file_path, check_file(file_path))
-    if len(check_result):
+    exit_code = 1 if check_result.unmaintainable > 0 else 0
+    if (
+        not quiet
+        or check_result.hard_to_maintain > 0
+        or check_result.unmaintainable > 0
+    ):
         check_result.report()
-        raise typer.Exit(code=1)
-    else:
-        raise typer.Exit(code=0)
+    raise typer.Exit(code=exit_code)
 
 
 @cli.command(help="Scan a codebase")
