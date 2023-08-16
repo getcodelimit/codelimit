@@ -20,7 +20,7 @@ it alarms you during development when it's time to refactor:
 
 ```yaml
 -   repo: https://github.com/getcodelimit/codelimit
-    rev: v0.3.0
+    rev: v0.5.0
     hooks:
     - id: codelimit
 ```
