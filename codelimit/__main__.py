@@ -17,7 +17,7 @@ cli = typer.Typer(no_args_is_help=True, add_completion=False)
 
 @cli.command(help="Check file(s)")
 def check(
-    paths: Annotated[List[Path], typer.Argument(exists=True, help="Codebase root")],
+    paths: Annotated[List[Path], typer.Argument(exists=True)],
     quiet: Annotated[
         bool, typer.Option("--quiet", help="Not output when successful")
     ] = False,
@@ -44,12 +44,21 @@ def check(
 
 
 @cli.command(help="Scan a codebase")
-def scan(path: Annotated[Path, typer.Argument()] = Path(".")):
-    report_path = path.joinpath("codelimit.json").resolve()
+def scan(
+    path: Annotated[
+        Path, typer.Argument(exists=True, file_okay=False, help="Codebase root")
+    ]
+):
+    cache_dir = path.joinpath(".codelimit_cache").resolve()
+    report_path = cache_dir.joinpath("codelimit.json").resolve()
     if not report_path.exists():
         codebase = scan_codebase(path)
         codebase.aggregate()
         report = Report(codebase)
+        if not cache_dir.exists():
+            cache_dir.mkdir()
+            cache_dir_tag = cache_dir.joinpath("CACHEDIR.TAG").resolve()
+            cache_dir_tag.write_text("Signature: 8a477f597d28d172789f06886806bc55")
         report_path.write_text(ReportWriter(report).to_json())
     else:
         report = ReportReader.from_json(report_path.read_text())
