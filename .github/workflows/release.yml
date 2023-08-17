@@ -23,8 +23,6 @@ jobs:
       uses: snok/install-poetry@v1
     - name: 'Install dependencies'
       run: poetry install --no-interaction --no-root
-    - name: 'Build distribution'
-      run: poetry build
     - name: 'Python Semantic Release'
       id: release
       uses: relekang/python-semantic-release@master
@@ -34,6 +32,8 @@ jobs:
       run: |
         git pull
       if: steps.release.outputs.released == 'true'
+    - name: 'Build distribution'
+      run: poetry build
     - name: 'Publish to PyPI'
       uses: pypa/gh-action-pypi-publish@release/v1
       if: steps.release.outputs.released == 'true'
