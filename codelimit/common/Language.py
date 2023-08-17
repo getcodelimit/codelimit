@@ -4,6 +4,7 @@ from typing import Union
 
 from pygments.lexer import Lexer
 
+from codelimit.common.Configuration import default_excludes
 from codelimit.common.Location import Location
 from codelimit.common.Token import Token
 from codelimit.common.scope.ScopeExtractor import ScopeExtractor
@@ -13,10 +14,9 @@ from codelimit.common.utils import path_has_extension, get_basename
 
 class Language(ABC):
     def accept_file(self, path: str) -> bool:
-        ignore_folders = ["tests", "node_modules", "venv"]
         parts = path.split(os.path.sep)
         for part in parts:
-            if part in ignore_folders:
+            if part in default_excludes:
                 return False
         if get_basename(path).startswith("test"):
             return False
