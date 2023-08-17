@@ -2,6 +2,27 @@
 
 
 
+## v0.6.0 (2023-08-17)
+
+### :sparkles:
+
+* :sparkles: Default exclude list ([`fb7d18c`](https://github.com/getcodelimit/codelimit/commit/fb7d18cc160edc59875043a992e44778932fade8))
+
+* :sparkles: Put cache file in cache dir ([`b6750e5`](https://github.com/getcodelimit/codelimit/commit/b6750e5c1891c0f48ea6ff465c5996b17bbd5296))
+
+### Other
+
+* :rocket: Add post release flow ([`0a633cb`](https://github.com/getcodelimit/codelimit/commit/0a633cb0116df71054dfb10dcfd9ea33648050c0))
+
+* :pencil: Add Homebrew install ([`581c76d`](https://github.com/getcodelimit/codelimit/commit/581c76dd27378598a048a74890097e03c9b35900))
+
+* :construction_worker: Build correct package for PyPi ([`4d6e14d`](https://github.com/getcodelimit/codelimit/commit/4d6e14dc0bbbb21f1662338eb37ca5f1b241780c))
+
+* Update README.md ([`a401cc1`](https://github.com/getcodelimit/codelimit/commit/a401cc186cd33829ef056c2140ded7966e3f23da))
+
+* :rocket: Bump version ([`0273d2c`](https://github.com/getcodelimit/codelimit/commit/0273d2ce7d0e965306dedf04d64f7b51ec8f30d6))
+
+
 ## v0.5.0 (2023-08-16)
 
 ### :bug:
