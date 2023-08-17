@@ -44,12 +44,30 @@ To show your project uses CodeLimit place this badge in the README markdown:
 
 ## Standalone
 
-CodeLimit can also run as a standalone program. To install the standalone
-version of CodeLimit for your default Python installation run:
+CodeLimit can also run as a standalone program.
+
+### PyPi install
+
+To install the standalone version of CodeLimit for your default Python
+installation run:
 
 ```shell
 python -m pip install codelimit
 ```
+
+### Homebrew install
+
+For macOS there is a Homebrew tap available:
+
+```shell
+brew tap getcodelimit/codelimit
+brew install codelimit
+```
+
+The homebrew install takes some time as there are not bottled versions
+available yet.
+
+## Running
 
 Run CodeLimit without arguments to see the usage page:
 
