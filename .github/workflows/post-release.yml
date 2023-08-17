@@ -1,0 +1,25 @@
+name: 'Update files after release'
+on:
+  release:
+    types: [published]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout sources'
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: 'Update files'
+        uses: MathieuSoysal/file-updater-for-release@v1.0.1
+        with:
+          files: README.md
+          prefix: 'rev: '
+          with-checkout: false
+      - name: 'Commit GitHub Action distribution'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add README.md
+          git commit -m 'Update files' || true
