@@ -93,6 +93,9 @@ jobs:
       run: poetry install --no-interaction --no-root
     - name: 'Build codelimit with pyinstaller for ${{matrix.TARGET}}'
       run: ${{matrix.CMD_BUILD}}
+    - run: |
+        ls -l
+        ls -l dist
     - name: 'Release'
       uses: softprops/action-gh-release@v1
       with:
