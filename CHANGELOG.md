@@ -2,6 +2,25 @@
 
 
 
+## v0.6.1 (2023-08-20)
+
+### :bug:
+
+* :bug: Fix release flow ([`cbace33`](https://github.com/getcodelimit/codelimit/commit/cbace332f27a5eea48088d27f329e12944375ff6))
+
+* :bug: Fix release flow ([`692bdd9`](https://github.com/getcodelimit/codelimit/commit/692bdd9deb4f457b4a4edd7bc8eb76f1b5dad640))
+
+### Other
+
+* :pencil2: Fix release flow ([`483d424`](https://github.com/getcodelimit/codelimit/commit/483d4246e3ed80f03e3d2dcd2d469a7bb7c6976c))
+
+* :construction_worker: Update release flow ([`aa995ce`](https://github.com/getcodelimit/codelimit/commit/aa995cecc2e9325559a12d74138cd31e001d9bef))
+
+* :pencil: Update version ([`3c89d83`](https://github.com/getcodelimit/codelimit/commit/3c89d83dee93e476603a116cf0a5b29b3f8258e5))
+
+* :rocket: Updated release flow ([`b47923a`](https://github.com/getcodelimit/codelimit/commit/b47923a96095661e082d4410a8621a95081aee8c))
+
+
 ## v0.6.0 (2023-08-17)
 
 ### :sparkles:
