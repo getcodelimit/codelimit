@@ -19,7 +19,7 @@ typer = "^0.9.0"
 
 [tool.poe.tasks.bundle]
 help = "Create a binary executable using pyinstaller"
-cmd = "pyinstaller --workpath .build --specpath dist -n codelimit -F codelimit/__main__.py"
+cmd = "pyinstaller --workpath .build --specpath dist -n codelimit codelimit/__main__.py"
 
 [tool.semantic_release]
 branch = "main"
