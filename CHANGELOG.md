@@ -2,6 +2,13 @@
 
 
 
+## v0.6.2 (2023-08-20)
+
+### :bug:
+
+* :bug: Fix build ([`78ec19f`](https://github.com/getcodelimit/codelimit/commit/78ec19fe539a8df679526a4f50e3c45f1b3953e4))
+
+
 ## v0.6.1 (2023-08-20)
 
 ### :bug:
