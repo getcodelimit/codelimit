@@ -71,7 +71,7 @@ jobs:
           - os: windows-latest
             TARGET: windows
             CMD_BUILD: poetry run pyinstaller --onefile -c -n codelimit codelimit/__main__.py
-            OUT_FILE_NAME: dist\codelimit.exe
+            OUT_FILE_NAME: dist/codelimit.exe
           - os: ubuntu-latest
             TARGET: linux
             CMD_BUILD: |
@@ -93,9 +93,6 @@ jobs:
       run: poetry install --no-interaction --no-root
     - name: 'Build codelimit with pyinstaller for ${{matrix.TARGET}}'
       run: ${{matrix.CMD_BUILD}}
-    - run: |
-        ls -l
-        ls -l dist
     - name: 'Release'
       uses: softprops/action-gh-release@v1
       with:
