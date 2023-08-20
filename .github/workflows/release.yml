@@ -50,7 +50,7 @@ jobs:
         git config --local user.name "GitHub Action"
         git add README.md
         git commit -m 'Update files' || true
-  release-binaries:
+  release_binaries:
     name: 'Release binaries'
     needs: release
     defaults:
