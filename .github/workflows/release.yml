@@ -43,7 +43,7 @@ jobs:
       uses: MathieuSoysal/file-updater-for-release@v1.0.1
       with:
         files: README.md
-        prefix: 'rev: '
+        prefix: 'rev: v'
         with-checkout: false
         version: ${{ steps.release.outputs.version }}
     - name: 'Commit GitHub Action distribution'
@@ -96,6 +96,6 @@ jobs:
     - name: 'Release'
       uses: softprops/action-gh-release@v1
       with:
-        tag_name: ${{ needs.release.outputs.version }}
+        tag_name: ${{ format('v{0}', needs.release.outputs.version) }}
         files: |
           ${{ matrix.OUT_FILE_NAME }}
