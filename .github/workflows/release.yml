@@ -63,19 +63,19 @@ jobs:
           - os: macos-latest
             TARGET: macos
             CMD_BUILD: |
-              poetry run pyinstaller -F codelimit/__main__.py
-              mv dist/clim dist/clim-macos
-            OUT_FILE_NAME: dist/clim-macos
+              poetry run pyinstaller -n codelimit -F codelimit/__main__.py
+              mv dist/codelimit dist/codelimit-macos
+            OUT_FILE_NAME: dist/codelimet-macos
           - os: windows-latest
             TARGET: windows
-            CMD_BUILD: poetry run pyinstaller -F -c -n clim codelimit/__main__.py
-            OUT_FILE_NAME: dist\clim.exe
+            CMD_BUILD: poetry run pyinstaller -F -c -n codelimit codelimit/__main__.py
+            OUT_FILE_NAME: dist\codelimit.exe
           - os: ubuntu-latest
             TARGET: linux
             CMD_BUILD: |
-              poetry run pyinstaller -F codelimit/__main__.py
-              mv dist/clim dist/clim-linux
-            OUT_FILE_NAME: dist/clim-linux
+              poetry run pyinstaller -n codelimit -F codelimit/__main__.py
+              mv dist/codelimit dist/codelimit-linux
+            OUT_FILE_NAME: dist/codelimit-linux
     steps:
     - name: 'Checkout sources'
       uses: actions/checkout@v3
