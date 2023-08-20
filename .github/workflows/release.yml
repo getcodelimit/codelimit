@@ -63,17 +63,17 @@ jobs:
           - os: macos-latest
             TARGET: macos
             CMD_BUILD: |
-              poetry run pyinstaller -F clim
+              poetry run pyinstaller -F codelimit/__main__.py
               mv dist/clim dist/clim-macos
             OUT_FILE_NAME: dist/clim-macos
           - os: windows-latest
             TARGET: windows
-            CMD_BUILD: poetry run pyinstaller -F -c -n clim clim
+            CMD_BUILD: poetry run pyinstaller -F -c -n clim codelimit/__main__.py
             OUT_FILE_NAME: dist\clim.exe
           - os: ubuntu-latest
             TARGET: linux
             CMD_BUILD: |
-              poetry run pyinstaller -F clim
+              poetry run pyinstaller -F codelimit/__main__.py
               mv dist/clim dist/clim-linux
             OUT_FILE_NAME: dist/clim-linux
     steps:
