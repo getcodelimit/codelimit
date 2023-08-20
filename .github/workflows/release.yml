@@ -43,7 +43,7 @@ jobs:
       uses: MathieuSoysal/file-updater-for-release@v1.0.1
       with:
         files: README.md
-        prefix: 'rev: v'
+        prefix: 'rev: '
         with-checkout: false
         version: ${{ steps.release.outputs.version }}
     - name: 'Commit GitHub Action distribution'
