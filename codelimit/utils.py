@@ -4,12 +4,11 @@ import requests  # type: ignore
 import typer
 from rich.progress import Progress, SpinnerColumn, TextColumn
 
-from codelimit.common.Measurement import Measurement
-from codelimit.common.Scanner import languages, scan_file
+from codelimit.common.CheckResult import CheckResult
+from codelimit.common.Scanner import scan_file, languages
 
 
-def check_file(path: Path) -> list[Measurement]:
-    result = []
+def check_file(path: Path, check_result: CheckResult):
     for language in languages:
         if language.accept_file(str(path.absolute())):
             measurements = scan_file(language, str(path))
@@ -18,8 +17,7 @@ def check_file(path: Path) -> list[Measurement]:
                 key=lambda measurement: measurement.value,
                 reverse=True,
             )
-            result.extend(risks)
-    return result
+            check_result.add(path, risks)
 
 
 def upload_report(path: Path, url: str) -> None:
@@ -46,4 +44,4 @@ def upload_report(path: Path, url: str) -> None:
         typer.secho("Uploaded", fg="green")
     else:
         typer.secho(f"Upload unsuccessful: {result.status_code}", fg="red")
-        raise typer.Exit(exit_code=1)
+        raise typer.Exit(code=1)

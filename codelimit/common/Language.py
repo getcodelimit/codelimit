@@ -1,25 +1,17 @@
-import os
 from abc import ABC, abstractmethod
 from typing import Union
 
 from pygments.lexer import Lexer
 
-from codelimit.common.Configuration import default_excludes
 from codelimit.common.Location import Location
 from codelimit.common.Token import Token
 from codelimit.common.scope.ScopeExtractor import ScopeExtractor
 from codelimit.common.source_utils import filter_tokens, get_newline_indices
-from codelimit.common.utils import path_has_extension, get_basename
+from codelimit.common.utils import path_has_extension
 
 
 class Language(ABC):
     def accept_file(self, path: str) -> bool:
-        parts = path.split(os.path.sep)
-        for part in parts:
-            if part in default_excludes:
-                return False
-        if get_basename(path).startswith("test"):
-            return False
         return path_has_extension(path.lower(), self.get_file_extension())
 
     @abstractmethod

@@ -6,7 +6,7 @@ from textual.widgets import Footer, ListView, ListItem, Label
 
 from codelimit.common.report.Report import Report
 from codelimit.common.source_utils import get_location_range
-from codelimit.common.utils import format_unit
+from codelimit.common.utils import format_unit, get_basename
 from codelimit.tui.CodeLimitAppHeader import CodeLimitAppHeader
 from codelimit.tui.CodeScreen import CodeScreen
 
@@ -29,7 +29,10 @@ class CodeLimitApp(App):
             list_view.append(
                 ListItem(
                     Label(
-                        format_unit(unit.measurement.unit_name, unit.measurement.value)
+                        format_unit(
+                            f"{get_basename(unit.file)}:{unit.measurement.unit_name}",
+                            unit.measurement.value,
+                        )
                     ),
                     name=f"{idx}",
                 )

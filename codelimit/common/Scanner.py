@@ -5,6 +5,7 @@ from pathlib import Path
 from halo import Halo
 
 from codelimit.common.Codebase import Codebase
+from codelimit.common.Configuration import default_excludes
 from codelimit.common.Language import Language
 from codelimit.common.Location import Location
 from codelimit.common.Measurement import Measurement
@@ -32,6 +33,9 @@ def _scan_folder(codebase: Codebase, folder: Path):
         files = [f for f in files if not f[0] == "."]
         dirs[:] = [d for d in dirs if not d[0] == "."]
         for file in files:
+            rel_path = Path(os.path.join(root, file)).relative_to(folder.absolute())
+            if is_excluded(rel_path):
+                continue
             for language in languages:
                 file_path = os.path.join(root, file)
                 if language.accept_file(file_path):
@@ -67,3 +71,10 @@ def scan_file(language: Language, path: str) -> list[Measurement]:
                 Measurement(scope.header.name, start_location, end_location, length)
             )
     return measurements
+
+
+def is_excluded(path: Path):
+    for part in path.parts[:-1]:
+        if part in default_excludes:
+            return True
+    return False

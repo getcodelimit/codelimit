@@ -5,7 +5,7 @@ from typing import List, Annotated
 import typer
 
 from codelimit.common.CheckResult import CheckResult
-from codelimit.common.Scanner import scan_codebase
+from codelimit.common.Scanner import scan_codebase, is_excluded
 from codelimit.common.report.Report import Report
 from codelimit.common.report.ReportReader import ReportReader
 from codelimit.common.report.ReportWriter import ReportWriter
@@ -25,14 +25,17 @@ def check(
     check_result = CheckResult()
     for path in paths:
         if path.is_file():
-            check_result.add(path, check_file(path))
+            check_file(path, check_result)
         elif path.is_dir():
             for root, dirs, files in os.walk(path.absolute()):
                 files = [f for f in files if not f[0] == "."]
                 dirs[:] = [d for d in dirs if not d[0] == "."]
                 for file in files:
-                    file_path = Path(os.path.join(root, file))
-                    check_result.add(file_path, check_file(file_path))
+                    abs_path = Path(os.path.join(root, file))
+                    rel_path = abs_path.relative_to(path.absolute())
+                    if is_excluded(rel_path):
+                        continue
+                    check_file(abs_path, check_result)
     exit_code = 1 if check_result.unmaintainable > 0 else 0
     if (
         not quiet
