@@ -4,12 +4,12 @@ Your Refactoring Alarm ⏰
 
 ![Logo](https://raw.githubusercontent.com/getcodelimit/codelimit/main/docs/codelimit-logo-96x96.png)
 
-[![CI](https://github.com/getcodelimit/codelimit/actions/workflows/ci.yml/badge.svg)](https://github.com/getcodelimit/codelimit/actions/workflows/ci.yml)
+[![main](https://github.com/getcodelimit/codelimit/actions/workflows/main.yml/badge.svg)](https://github.com/getcodelimit/codelimit/actions/workflows/main.yml)
 [![codecov](https://codecov.io/gh/getcodelimit/codelimit/branch/main/graph/badge.svg?token=ZQBEAJVC2Y)](https://codecov.io/gh/getcodelimit/codelimit)
 [![Checked with mypy](https://www.mypy-lang.org/static/mypy_badge.svg)](https://mypy-lang.org/)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Linting: Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/charliermarsh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
-[![Checked with CodeLimit](https://img.shields.io/badge/CodeLimit-checked-green.svg)](https://github.com/getcodelimit/codelimit)
+[![Checked with Code Limit](https://img.shields.io/badge/CodeLimit-checked-green.svg)](https://github.com/getcodelimit/codelimit)
 
 # Quickstart
 

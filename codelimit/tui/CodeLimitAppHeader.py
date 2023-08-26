@@ -17,6 +17,7 @@ class CodeLimitAppHeader(Widget):
         self.styles.dock = "top"
         self.styles.width = "100%"
         self.styles.height = 3
+        self.styles.background = "#0e1116"
 
     def compose(self) -> ComposeResult:
         root = self.report.codebase.root

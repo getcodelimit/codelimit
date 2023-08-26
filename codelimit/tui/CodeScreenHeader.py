@@ -11,10 +11,10 @@ class CodeScreenHeader(Widget):
         self.styles.height = 1
 
     def compose(self) -> ComposeResult:
-        label = Label("-")
+        label = Label("-", id="fileLabel")
         label.styles.width = "100%"
         label.styles.content_align_horizontal = "center"
         yield label
 
     def set_title(self, title: str):
-        self.query_one(Label).update(title)
+        self.query_one("#fileLabel", Label).update(title)
