@@ -4,10 +4,15 @@ from textual.widgets import Label
 
 
 class CodeScreenHeader(Widget):
+    DEFAULT_CSS = """
+    #fileLabel {
+        background: #020409;
+        dock: top;
+    }
+    """
+
     def __init__(self):
         super().__init__()
-        self.styles.dock = "top"
-        self.styles.width = "100%"
         self.styles.height = 1
 
     def compose(self) -> ComposeResult:

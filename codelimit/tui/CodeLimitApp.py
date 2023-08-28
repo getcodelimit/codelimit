@@ -16,7 +16,7 @@ class CodeLimitApp(App):
     BINDINGS = [("q", "quit", "Quit")]
     CSS = """
     ListItem {
-        background: #0e1116;
+        background: #020409;
     }
     ListView:focus > ListItem.--highlight {
         background: $accent;

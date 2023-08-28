@@ -11,8 +11,7 @@ from codelimit.tui.CodeScreenHeader import CodeScreenHeader
 
 class CodeScreen(Screen):
     BINDINGS = [
-        Binding("escape", "close", "Close", show=False),
-        Binding("left", "close", "Close"),
+        Binding("escape", "close", "Close"),
     ]
 
     def __init__(self):
@@ -29,7 +28,6 @@ class CodeScreen(Screen):
     def set_code_snippet(self, title: str, code: Any):
         self.text_log.clear()
         self.text_log.write(code, scroll_end=False)
-        # self.text_log.scroll_home(animate=False)
         self.header.set_title(title)
 
     def action_close(self):
