@@ -1,8 +1,6 @@
 # Code Limit
 
-Your Refactoring Alarm ⏰
-
-![Logo](https://raw.githubusercontent.com/getcodelimit/codelimit/main/docs/codelimit-logo-96x96.png)
+Your Refactoring Alarm 🔔
 
 [![main](https://github.com/getcodelimit/codelimit/actions/workflows/main.yml/badge.svg)](https://github.com/getcodelimit/codelimit/actions/workflows/main.yml)
 [![codecov](https://codecov.io/gh/getcodelimit/codelimit/branch/main/graph/badge.svg?token=ZQBEAJVC2Y)](https://codecov.io/gh/getcodelimit/codelimit)
@@ -79,7 +77,7 @@ Code Limit is available on
 brew install codelimit
 ```
 
-### Pipx
+### Pipx install
 
 To install the standalone version of Code Limit in an isolated Python
 environment using [pipx](https://pypa.github.io/pipx) run:
@@ -125,7 +123,7 @@ To scan a complete codebase and launch the TUI, run:
 codelimit scan path/to/codebase
 ```
 
-![Screenshot](https://github.com/getcodelimit/codelimit/blob/main/docs/screenshot.png)
+![Screenshot](https://raw.githubusercontent.com/getcodelimit/codelimit/main/docs/screenshot.png)
 
 ## Checking files
 
