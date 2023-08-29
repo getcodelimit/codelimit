@@ -11,12 +11,18 @@ from codelimit.tui.QualityProfile import QualityProfile
 
 
 class CodeLimitAppHeader(Widget):
+    DEFAULT_CSS = """
+    Vertical {
+        background: #020409;
+        border-bottom: solid #31363c;
+        dock: top;
+    }
+    """
+
     def __init__(self, report: Report):
         super().__init__()
         self.report = report
-        self.styles.dock = "top"
-        self.styles.width = "100%"
-        self.styles.height = 3
+        self.styles.height = 4
 
     def compose(self) -> ComposeResult:
         root = self.report.codebase.root

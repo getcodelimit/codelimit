@@ -1,4 +1,4 @@
-name: 'CI'
+name: 'main'
 on:
   push:
     branches: main
@@ -22,3 +22,5 @@ jobs:
         run: poetry run pytest --cov --cov-report=xml
       - name: 'Upload coverage reports to Codecov'
         uses: codecov/codecov-action@v3
+      - name: 'Run Code Limit'
+        uses: getcodelimit/codelimit-action@main

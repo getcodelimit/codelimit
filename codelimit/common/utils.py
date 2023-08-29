@@ -3,6 +3,7 @@ import os
 import sys
 from typing import Union, Any
 
+from rich.style import Style
 from rich.text import Text
 
 from codelimit.common.Measurement import Measurement
@@ -82,15 +83,19 @@ def header(content: str):
     print(content)
 
 
-def format_unit(name: str, length: int) -> Text:
+def format_unit(name: str, length: int, file: Union[str, None] = None) -> Text:
     if length > 60:
-        style = "red"
+        color = "red"
     elif length > 30:
-        style = "dark_orange"
+        color = "dark_orange"
     elif length > 15:
-        style = "yellow"
+        color = "yellow"
     else:
-        style = "green"
-    length_text = f"{length:3}" if length < 61 else "60+"
-    styled_text = Text(length_text, style=style)
-    return Text.assemble("[", styled_text, "] ", name)
+        color = "green"
+    result = Text()
+    result.append(f"{length:3}" if length < 61 else "60+")
+    result.append(Text(" | ", style=Style(color=color)))
+    if file:
+        result.append(Text(f"{file}:", style=Style(dim=True)))
+    result.append(name)
+    return result
