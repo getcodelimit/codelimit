@@ -54,19 +54,20 @@ def scan(
 ):
     cache_dir = path.joinpath(".codelimit_cache").resolve()
     report_path = cache_dir.joinpath("codelimit.json").resolve()
-    if not report_path.exists():
-        codebase = scan_codebase(path)
-        codebase.aggregate()
-        report = Report(codebase)
-        if not cache_dir.exists():
-            cache_dir.mkdir()
-            cache_dir_tag = cache_dir.joinpath("CACHEDIR.TAG").resolve()
-            cache_dir_tag.write_text("Signature: 8a477f597d28d172789f06886806bc55")
-            cache_dir_gitignore = cache_dir.joinpath(".gitignore").resolve()
-            cache_dir_gitignore.write_text("# Created by codelimit automatically.")
-        report_path.write_text(ReportWriter(report).to_json())
+    if report_path.exists():
+        cached_report = ReportReader.from_json(report_path.read_text())
     else:
-        report = ReportReader.from_json(report_path.read_text())
+        cached_report = None
+    codebase = scan_codebase(path, cached_report)
+    codebase.aggregate()
+    report = Report(codebase)
+    if not cache_dir.exists():
+        cache_dir.mkdir()
+        cache_dir_tag = cache_dir.joinpath("CACHEDIR.TAG").resolve()
+        cache_dir_tag.write_text("Signature: 8a477f597d28d172789f06886806bc55")
+        cache_dir_gitignore = cache_dir.joinpath(".gitignore").resolve()
+        cache_dir_gitignore.write_text("# Created by codelimit automatically.")
+    report_path.write_text(ReportWriter(report).to_json())
     app = CodeLimitApp(report)
     app.run()
 

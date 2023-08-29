@@ -38,8 +38,9 @@ class CodeLimitApp(App):
             list_item = ListItem(
                 Label(
                     format_unit(
-                        f"{get_basename(unit.file)}:{unit.measurement.unit_name}",
+                        unit.measurement.unit_name,
                         unit.measurement.value,
+                        get_basename(unit.file),
                     )
                 ),
                 name=f"{idx}",
