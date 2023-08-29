@@ -1,4 +1,4 @@
-# CodeLimit
+# Code Limit
 
 Your Refactoring Alarm ⏰
 
@@ -15,7 +15,7 @@ Your Refactoring Alarm ⏰
 
 ## Pre-commit hook
 
-CodeLimit can be installed as a [pre-commit](https://pre-commit.com/) hook so
+Code Limit can be installed as a [pre-commit](https://pre-commit.com/) hook so
 it alarms you during development when it's time to refactor:
 
 ```yaml
@@ -25,58 +25,88 @@ it alarms you during development when it's time to refactor:
     - id: codelimit
 ```
 
-CodeLimit is intended to be used alongside formatting, linters and other hooks
+Code Limit is intended to be used alongside formatting, linters and other hooks
 that improve the consistency and quality of your code (such as
 [Black](https://github.com/psf/black),
 [Ruff](https://github.com/astral-sh/ruff) and
 [MyPy](https://github.com/python/mypy).) As an example pre-commit configuration
 see the
 [`pre-commit-config.yaml`](https://github.com/getcodelimit/codelimit/blob/main/.pre-commit-config.yaml)
-from CodeLimit itself.
+from Code Limit itself.
 
-When running as a hook, CodeLimit *warns* about functions that *should* be
+When running as a hook, Code Limit *warns* about functions that *should* be
 refactored and *fails* for functions that *need* to be refactord.
 
-To show your project uses CodeLimit place this badge in the README markdown:
+To show your project uses Code Limit place this badge in the README markdown:
 ```
-![Checked with CodeLimit](https://img.shields.io/badge/CodeLimit-checked-green.svg)](https://github.com/getcodelimit/codelimit)
+![Checked with Code Limit](https://img.shields.io/badge/CodeLimit-checked-green.svg)](https://github.com/getcodelimit/codelimit)
+```
+
+## GitHub Actions
+
+Code Limit is available as a GitHub Action
+
+To run Code Limit on every push and before every merge to `main`, append it to
+your GH Actions workflow:
+
+```yaml
+name: 'main'
+on:
+  push:
+    branches: main
+  pull_request:
+    branches: main
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v2
+      - name: 'Run Code Limit'
+        uses: getcodelimit/codelimit-action@main
 ```
 
 ## Standalone
 
-CodeLimit can also run as a standalone program.
+Code Limit can also run as a standalone program.
+
+### Homebrew install
+
+Code Limit is available on
+[Homebrew](https://formulae.brew.sh/formula/codelimit):
+
+```shell
+brew install codelimit
+```
+
+### Pipx
+
+To install the standalone version of Code Limit in an isolated Python
+environment using [pipx](https://pypa.github.io/pipx) run:
+
+```
+pipx install codelimit
+```
 
 ### PyPi install
 
-To install the standalone version of CodeLimit for your default Python
+To install the standalone version of Code Limit for your default Python
 installation run:
 
 ```shell
 python -m pip install codelimit
 ```
 
-### Homebrew install
-
-For macOS there is a Homebrew tap available:
-
-```shell
-brew tap getcodelimit/codelimit
-brew install codelimit
-```
-
-The homebrew install takes some time as there are not bottled versions
-available yet.
-
 ## Running
 
-Run CodeLimit without arguments to see the usage page:
+Run Code Limit without arguments to see the usage page:
 
 ```shell
 $ codelimit
 
  Usage: codelimit [OPTIONS] COMMAND [ARGS]...
 
- CodeLimit: Your refactoring alarm
+ Code Limit: Your refactoring alarm
 
 ╭─ Options ────────────────────────────────────────────────────────────────────╮
 │ --help          Show this message and exit.                                  │
@@ -108,7 +138,7 @@ codelimit check a.py b.py c.py
 
 # Development
 
-After installing dependencies with `poetry install`, CodeLimit can be run from the
+After installing dependencies with `poetry install`, Code Limit can be run from the
 repository root like this:
 
 ```shell
