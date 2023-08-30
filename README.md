@@ -9,6 +9,21 @@ Your Refactoring Alarm 🔔
 [![Linting: Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/charliermarsh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 [![Checked with Code Limit](https://img.shields.io/badge/CodeLimit-checked-green.svg)](https://github.com/getcodelimit/codelimit)
 
+# Introduction
+
+Code Limit is a tool for developers with one goal: it tells the developer when
+it’s time to refactor.
+
+Code Limit measures the lines of code for each function in your codebase and
+assigns each function to a category:
+
+| Lines of code | Category |
+| ---| --- |
+| 1 - 15 | Easy code |
+| 16 - 30 | Verbose code |
+| 31-60 | Hard-to-maintain code |
+| > 60 | Unmaintainable code |
+
 # Quickstart
 
 ## Pre-commit hook
