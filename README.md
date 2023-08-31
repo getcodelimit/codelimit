@@ -11,8 +11,8 @@ Your Refactoring Alarm 🔔
 
 # Introduction
 
-Code Limit is a tool for developers with one goal: it tells the developer when
-it’s time to refactor.
+Code Limit is a tool for developers with one goal: _it tells the developer when
+it’s time to refactor_.
 
 Code Limit measures the lines of code for each function in your codebase and
 assigns each function to a category:
@@ -21,8 +21,15 @@ assigns each function to a category:
 | ---| --- |
 | 1 - 15 | Easy code |
 | 16 - 30 | Verbose code |
-| 31-60 | Hard-to-maintain code |
-| > 60 | Unmaintainable code |
+| 31-60 | Hard-to-maintain code ⚠️  |
+| > 60 | Unmaintainable code 🔔 |
+
+As the table above shows, functions with more than 60 lines of code (comments
+and empty lines are not counted) are _unmaintainable_, and _need_ to be
+refactored. Functions with more than 30 lines of code run a risk of turning
+into larger functions over time, you should keep an eye on them and refactor if
+possible. Functions in the first two categories is fine and most likely doesn't
+need refactoring.
 
 # Quickstart
 
