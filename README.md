@@ -2,12 +2,16 @@
 
 Your Refactoring Alarm 🔔
 
+<div align="center">
+
 [![main](https://github.com/getcodelimit/codelimit/actions/workflows/main.yml/badge.svg)](https://github.com/getcodelimit/codelimit/actions/workflows/main.yml)
 [![codecov](https://codecov.io/gh/getcodelimit/codelimit/branch/main/graph/badge.svg?token=ZQBEAJVC2Y)](https://codecov.io/gh/getcodelimit/codelimit)
 [![Checked with mypy](https://www.mypy-lang.org/static/mypy_badge.svg)](https://mypy-lang.org/)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Linting: Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/charliermarsh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 [![Checked with Code Limit](https://img.shields.io/badge/CodeLimit-checked-green.svg)](https://github.com/getcodelimit/codelimit)
+
+</div>
 
 # Introduction
 
@@ -17,6 +21,8 @@ it’s time to refactor_.
 Code Limit measures the lines of code for each function in your codebase and
 assigns each function to a category:
 
+<div align="center">
+
 | Lines of code | Category |
 | ---| --- |
 | 1 - 15 | Easy code |
@@ -24,12 +30,14 @@ assigns each function to a category:
 | 31-60 | Hard-to-maintain code ⚠️  |
 | > 60 | Unmaintainable code 🔔 |
 
+</div>
+
 As the table above shows, functions with more than 60 lines of code (comments
 and empty lines are not counted) are _unmaintainable_, and _need_ to be
 refactored. Functions with more than 30 lines of code run a risk of turning
 into larger functions over time, you should keep an eye on them and refactor if
-possible. Functions in the first two categories is fine and most likely doesn't
-need refactoring.
+possible. Functions in the first two categories are fine and most likely
+doesn't need refactoring.
 
 # Quickstart
 
