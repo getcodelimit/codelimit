@@ -36,9 +36,9 @@ assigns each function to a category:
 As the table above shows, functions with more than 60 lines of code (comments
 and empty lines are not counted) are _unmaintainable_, and _need_ to be
 refactored. Functions with more than 30 lines of code run a risk of turning
-into larger functions over time, you should keep an eye on them and refactor if
-possible. Functions in the first two categories are fine and most likely
-doesn't need refactoring.
+into unmaintainable functions over time, you should keep an eye on them and
+refactor if possible. Functions in the first two categories are fine and don't
+need refactoring.
 
 Function length is just one code metric, but it is a very important code
 metric. Short functions are easy to understand, easy to test, easy to re-use.
@@ -47,17 +47,17 @@ is much easier to prevent and fix if your functions are short.
 
 Function length is a simple code metric, so simple you can count it by hand.
 Because it's such a simple metric, it's also a (fairly) non-controversial
-metric. Developers typically agree longer functions are harder to maintain.
-Also, there's always a refactoring possible to make functions smaller.
+metric. Most developers agree longer functions are harder to maintain. Also,
+there's always a refactoring possible to make functions smaller.
 
-Because function length is such a simple metric many code quality tools measure
-it. But these tools measure a lot more metrics, sometimes so much other metrics
-that developers are overwhemled and loose focus on the most important metric:
-function lenght.
+Because function length is such a simple code metric, many code quality tools
+measure it. But these tools measure a lot more metrics, sometimes so much
+metrics that developers are overwhemled and loose focus on the most important
+metric: function length.
 
 Code Limit measures one metric: function length. Code Limit tries to be the
 best developer tool for measuring function length. By notifying developers when
-it's time to refactor, Code Limit helps to keep function length under control.
+it's time to refactor, Code Limit prevents unmaintainable code.
 
 Let's keep your software maintainable and prevent it from becoming legacy
 code. Start using Code Limit today!
