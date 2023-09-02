@@ -9,6 +9,7 @@ Your Refactoring Alarm 🔔
 [![Checked with mypy](https://www.mypy-lang.org/static/mypy_badge.svg)](https://mypy-lang.org/)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Linting: Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/charliermarsh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
+[![Gitmoji](https://img.shields.io/badge/gitmoji-%20😜%20😍-FFDD67.svg)](https://gitmoji.dev)
 [![Checked with Code Limit](https://img.shields.io/badge/CodeLimit-checked-green.svg)](https://github.com/getcodelimit/codelimit)
 
 </div>
@@ -38,6 +39,28 @@ refactored. Functions with more than 30 lines of code run a risk of turning
 into larger functions over time, you should keep an eye on them and refactor if
 possible. Functions in the first two categories are fine and most likely
 doesn't need refactoring.
+
+Function length is just one code metric, but it is a very important code
+metric. Short functions are easy to understand, easy to test, easy to re-use.
+For example, code duplication is another important code metric but duplication
+is much easier to prevent and fix if your functions are short.
+
+Function length is a simple code metric, so simple you can count it by hand.
+Because it's such a simple metric, it's also a (fairly) non-controversial
+metric. Developers typically agree longer functions are harder to maintain.
+Also, there's always a refactoring possible to make functions smaller.
+
+Because function length is such a simple metric many code quality tools measure
+it. But these tools measure a lot more metrics, sometimes so much other metrics
+that developers are overwhemled and loose focus on the most important metric:
+function lenght.
+
+Code Limit measures one metric: function length. Code Limit tries to be the
+best developer tool for measuring function length. By notifying developers when
+it's time to refactor, Code Limit helps to keep function length under control.
+
+Let's keep your software maintainable and prevent it from becoming legacy
+code. Start using Code Limit today!
 
 # Quickstart
 
