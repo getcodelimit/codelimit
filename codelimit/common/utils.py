@@ -93,7 +93,7 @@ def format_unit(name: str, length: int, file: Union[str, None] = None) -> Text:
     else:
         color = "green"
     result = Text()
-    result.append(f"{length:3}" if length < 61 else "60+")
+    result.append(f"{length:3}" if length < 1000 else str(length))
     result.append(Text(" | ", style=Style(color=color)))
     if file:
         result.append(Text(f"{file}:", style=Style(dim=True)))
