@@ -25,7 +25,7 @@ assigns each function to a category:
 <div align="center">
 
 | Easy code | Verbose code | Hard-to-maintain code | Unmaintainable code |
-| ---| --- |
+| ---| --- | --- | --- |
 | ![](docs/easy.png) | ![](docs/verbose.png) | ![](docs/hard-to-maintain.png) | ![](docs/unmaintainable.png) |
 
 </div>
