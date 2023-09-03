@@ -24,7 +24,7 @@ assigns each function to a category:
 
 <div align="center">
 
-| Easy | Verbose | Hard-to-maintain ⚠️  | Unmaintainable 🚨 |
+| Easy | Verbose | Hard-to-maintain 🔔 | Unmaintainable 🚨 |
 | :---: | :---: | :---: | :---: |
 | 1 - 15 lines of code | 16 - 30 lines of code | 31 - 60 lines of code | 60+ lines of code |
 | ![](https://raw.githubusercontent.com/getcodelimit/codelimit/main/docs/easy.png) | ![](https://raw.githubusercontent.com/getcodelimit/codelimit/main/docs/verbose.png) | ![](https://raw.githubusercontent.com/getcodelimit/codelimit/main/docs/hard-to-maintain.png) | ![](https://raw.githubusercontent.com/getcodelimit/codelimit/main/docs/unmaintainable.png) |
@@ -53,24 +53,23 @@ measure it. But these tools measure a lot more metrics, sometimes so much
 metrics that developers are overwhemled and loose focus on the most important
 metric: function length.
 
-Code Limit measures one metric: function length. Code Limit tries to be the
-best developer tool for measuring function length. By notifying developers when
-it's time to refactor, Code Limit prevents unmaintainable code.
+Code Limit measures only one metric but it tries to be the best developer tool
+for measuring function length. By notifying developers when it's time to
+refactor, Code Limit prevents unmaintainable code.
 
-Let's keep your software maintainable and prevent it from becoming legacy
-code. Start using Code Limit today!
+Let's keep your software maintainable and start using Code Limit today!
 
 # Quickstart
 
 Depending on your development workflow, Code Limit can run as:
 
-- Pre-commit hook
-- GitHub
+- [#pre-commit-hook](Pre-commit hook)
+- [#github-action](GitHub Action)
 - Standalone
-  - Homebrew
-  - Pipx
-  - PyPi
-  - Platform binary
+  - [#homebrew-install](Homebrew)
+  - [#pipx-install](Pipx)
+  - [#pypi-install](PyPi)
+  - [#platform-binaries](Platform binary)
 
 ## Pre-commit hook
 
