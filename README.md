@@ -24,8 +24,9 @@ assigns each function to a category:
 
 <div align="center">
 
-| Easy code | Verbose code | Hard-to-maintain code | Unmaintainable code |
-| ---| --- | --- | --- |
+| Easy | Verbose | Hard-to-maintain | Unmaintainable |
+| :---: | :---: | :---: | :---: |
+| 1 - 15 lines of code | 16 - 30 lines of code | 31 - 60 lines of code | 60+ lines of code |
 | ![](docs/easy.png) | ![](docs/verbose.png) | ![](docs/hard-to-maintain.png) | ![](docs/unmaintainable.png) |
 
 </div>
