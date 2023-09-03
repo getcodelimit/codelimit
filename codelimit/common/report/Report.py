@@ -45,10 +45,10 @@ class Report:
         )
         high_risk = len([m for m in self.codebase.all_measurements() if m.value > 60])
         if high_risk > 0:
-            return f"⏰ Refactoring necessary, unmaintainable functions: {high_risk}"
+            return f"🚨 Refactoring necessary, unmaintainable functions: {high_risk}"
         elif medium_risk > 0:
             return (
-                f"⚠️ Don't forget to refactor, hard-to-maintain functions: "
+                f"🔔 Don't forget to refactor, hard-to-maintain functions: "
                 f"{medium_risk}"
             )
         else:
