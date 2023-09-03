@@ -53,9 +53,9 @@ measure it. But these tools measure a lot more metrics, sometimes so much
 metrics that developers are overwhemled and loose focus on the most important
 metric: function length.
 
-Code Limit measures only one metric but it tries to be the best developer tool
-for measuring function length. By notifying developers when it's time to
-refactor, Code Limit prevents unmaintainable code.
+Code Limit measures only function length but it tries to be the best developer
+tool for measuring it. By notifying developers when it's time to refactor, Code
+Limit prevents unmaintainable code.
 
 Let's keep your software maintainable and start using Code Limit today!
 
