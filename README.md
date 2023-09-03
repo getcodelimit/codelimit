@@ -63,13 +63,13 @@ Let's keep your software maintainable and start using Code Limit today!
 
 Depending on your development workflow, Code Limit can run as:
 
-- [#pre-commit-hook](Pre-commit hook)
-- [#github-action](GitHub Action)
+- [Pre-commit hook](#pre-commit-hook)
+- [GitHub Action](#github-action)
 - Standalone
-  - [#homebrew-install](Homebrew)
-  - [#pipx-install](Pipx)
-  - [#pypi-install](PyPi)
-  - [#platform-binaries](Platform binary)
+  - [Homebrew](#homebrew-install)
+  - [Pipx](#pipx-install)
+  - [Pypi](#pypi-install)
+  - [Platform binary](#platform-binaries)
 
 ## Pre-commit hook
 
