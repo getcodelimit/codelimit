@@ -24,10 +24,10 @@ assigns each function to a category:
 
 <div align="center">
 
-| Easy | Verbose | Hard-to-maintain | Unmaintainable |
+| Easy | Verbose | Hard-to-maintain ⚠️  | Unmaintainable 🔔 |
 | :---: | :---: | :---: | :---: |
 | 1 - 15 lines of code | 16 - 30 lines of code | 31 - 60 lines of code | 60+ lines of code |
-| ![](docs/easy.png) | ![](docs/verbose.png) | ![](docs/hard-to-maintain.png) | ![](docs/unmaintainable.png) |
+| ![](https://raw.githubusercontent.com/getcodelimit/codelimit/main/docs/easy.png) | ![](https://raw.githubusercontent.com/getcodelimit/codelimit/main/docs/verbose.png) | ![](https://raw.githubusercontent.com/getcodelimit/codelimit/main/docs/hard-to-maintain.png) | ![](https://raw.githubusercontent.com/getcodelimit/codelimit/main/docs/unmaintainable.png) |
 
 </div>
 
@@ -62,6 +62,16 @@ code. Start using Code Limit today!
 
 # Quickstart
 
+Depending on your development workflow, Code Limit can run as:
+
+- Pre-commit hook
+- GitHub
+- Standalone
+  - Homebrew
+  - Pipx
+  - PyPi
+  - Platform binary
+
 ## Pre-commit hook
 
 Code Limit can be installed as a [pre-commit](https://pre-commit.com/) hook so
@@ -91,12 +101,12 @@ To show your project uses Code Limit place this badge in the README markdown:
 ![Checked with Code Limit](https://img.shields.io/badge/CodeLimit-checked-green.svg)](https://github.com/getcodelimit/codelimit)
 ```
 
-## GitHub Actions
+## GitHub Action
 
 Code Limit is available as a GitHub Action
 
 To run Code Limit on every push and before every merge to `main`, append it to
-your GH Actions workflow:
+your GH Action workflow:
 
 ```yaml
 name: 'main'
@@ -146,7 +156,13 @@ installation run:
 python -m pip install codelimit
 ```
 
-## Running
+### Platform binaries
+
+Binaries for different platforms (macOS, Linux, Windows) are available on the
+[latest release
+page](https://github.com/getcodelimit/codelimit/releases/latest).
+
+# Standalone usage
 
 Run Code Limit without arguments to see the usage page:
 
