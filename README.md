@@ -24,7 +24,7 @@ assigns each function to a category:
 
 <div align="center">
 
-| Easy | Verbose | Hard-to-maintain ⚠️  | Unmaintainable 🔔 |
+| Easy | Verbose | Hard-to-maintain ⚠️  | Unmaintainable 🚨 |
 | :---: | :---: | :---: | :---: |
 | 1 - 15 lines of code | 16 - 30 lines of code | 31 - 60 lines of code | 60+ lines of code |
 | ![](https://raw.githubusercontent.com/getcodelimit/codelimit/main/docs/easy.png) | ![](https://raw.githubusercontent.com/getcodelimit/codelimit/main/docs/verbose.png) | ![](https://raw.githubusercontent.com/getcodelimit/codelimit/main/docs/hard-to-maintain.png) | ![](https://raw.githubusercontent.com/getcodelimit/codelimit/main/docs/unmaintainable.png) |
