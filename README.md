@@ -24,12 +24,9 @@ assigns each function to a category:
 
 <div align="center">
 
-| Lines of code | Category |
+| Easy code | Verbose code |
 | ---| --- |
-| 1 - 15 | Easy code |
-| 16 - 30 | Verbose code |
-| 31-60 | Hard-to-maintain code ⚠️  |
-| > 60 | Unmaintainable code 🔔 |
+| ![](docs/easy.png) | ![](docs/verbose.png) |
 
 </div>
 
