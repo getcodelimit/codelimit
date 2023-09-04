@@ -66,7 +66,7 @@ def scan(
         cache_dir_tag = cache_dir.joinpath("CACHEDIR.TAG").resolve()
         cache_dir_tag.write_text("Signature: 8a477f597d28d172789f06886806bc55")
         cache_dir_gitignore = cache_dir.joinpath(".gitignore").resolve()
-        cache_dir_gitignore.write_text("# Created by codelimit automatically.")
+        cache_dir_gitignore.write_text("# Created by codelimit automatically.\n*\n")
     report_path.write_text(ReportWriter(report).to_json())
     app = CodeLimitApp(report)
     app.run()
