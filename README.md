@@ -9,7 +9,6 @@ Your Refactoring Alarm 🔔
 [![Checked with mypy](https://www.mypy-lang.org/static/mypy_badge.svg)](https://mypy-lang.org/)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Linting: Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/charliermarsh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
-[![Gitmoji](https://img.shields.io/badge/gitmoji-%20😜%20😍-FFDD67.svg)](https://gitmoji.dev)
 [![Checked with Code Limit](https://img.shields.io/badge/CodeLimit-checked-green.svg)](https://github.com/getcodelimit/codelimit)
 
 </div>
@@ -189,7 +188,7 @@ To scan a complete codebase and launch the TUI, run:
 codelimit scan path/to/codebase
 ```
 
-![Screenshot](https://raw.githubusercontent.com/getcodelimit/codelimit/main/docs/screenshot.png)
+![Screenshot](https://raw.githubusercontent.com/getcodelimit/codelimit/main/docs/assets/screenshot.png)
 
 ## Checking files
 
