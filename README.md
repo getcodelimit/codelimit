@@ -27,7 +27,7 @@ assigns each function to a category:
 | Easy | Verbose | Hard-to-maintain 🔔 | Unmaintainable 🚨 |
 | :---: | :---: | :---: | :---: |
 | 1 - 15 lines of code | 16 - 30 lines of code | 31 - 60 lines of code | 60+ lines of code |
-| ![](https://raw.githubusercontent.com/getcodelimit/codelimit/main/docs/easy.png) | ![](https://raw.githubusercontent.com/getcodelimit/codelimit/main/docs/verbose.png) | ![](https://raw.githubusercontent.com/getcodelimit/codelimit/main/docs/hard-to-maintain.png) | ![](https://raw.githubusercontent.com/getcodelimit/codelimit/main/docs/unmaintainable.png) |
+| ![](https://raw.githubusercontent.com/getcodelimit/codelimit/main/docs/assets/easy.png) | ![](https://raw.githubusercontent.com/getcodelimit/codelimit/main/docs/assets/verbose.png) | ![](https://raw.githubusercontent.com/getcodelimit/codelimit/main/docs/assets/hard-to-maintain.png) | ![](https://raw.githubusercontent.com/getcodelimit/codelimit/main/docs/assets/unmaintainable.png) |
 
 </div>
 
@@ -235,4 +235,18 @@ Generate a self-contained binary:
 
 ```shell
 poetry run poe bundle
+```
+
+## Static documentation
+
+Generating the static documentation:
+
+```shell
+poetry run mkdocs build
+```
+
+See the output:
+
+```shell
+poetry run mkdocs serve
 ```
