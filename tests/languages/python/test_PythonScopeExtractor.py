@@ -225,6 +225,45 @@ def test_two_functions():
     assert len(result[1]) == 4
 
 
+def test_skip_function_with_nocl_comment_in_header():
+    code = ""
+    code += "def bar(\n"
+    code += "    bar: Bar\n"
+    code += ") -> JSONResponse: # nocl\n"
+    code += "    bar = foo\n"
+    code += "\n"
+    code += "def foo(\n"
+    code += "    foo: Foo\n"
+    code += ") -> None:\n"
+    code += "    foo = bar\n"
+    code += "    bar = foo\n"
+
+    result = build_scopes(PythonLanguage(), code)
+
+    assert len(result) == 1
+    assert len(result[0]) == 5
+
+
+def test_skip_function_with_nocl_comment_before_header():
+    code = ""
+    code += "def bar(\n"
+    code += "    bar: Bar\n"
+    code += ") -> JSONResponse:\n"
+    code += "    bar = foo\n"
+    code += "\n"
+    code += "# NOCL\n"
+    code += "def foo(\n"
+    code += "    foo: Foo\n"
+    code += ") -> None:\n"
+    code += "    foo = bar\n"
+    code += "    bar = foo\n"
+
+    result = build_scopes(PythonLanguage(), code)
+
+    assert len(result) == 1
+    assert len(result[0]) == 4
+
+
 def test_function_with_type_hints():
     code = ""
     code += "def foo(\n"
