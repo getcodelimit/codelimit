@@ -5,10 +5,10 @@ Depending on your development workflow, Code Limit can run as:
 - [Pre-commit hook](#pre-commit-hook)
 - [GitHub Action](#github-action)
 - Standalone
-  - [Homebrew](#homebrew-install)
-  - [Pipx](#pipx-install)
-  - [Pypi](#pypi-install)
-  - [Platform binary](#platform-binaries)
+    - [Homebrew](#homebrew-install)
+    - [Pipx](#pipx-install)
+    - [Pypi](#pypi-install)
+    - [Platform binary](#platform-binaries)
 
 ## Pre-commit hook
 

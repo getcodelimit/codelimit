@@ -21,4 +21,7 @@ plugins:
 nav:
     - 'index.md'
     - 'quickstart.md'
+    - 'usage.md'
+    - 'configuration.md'
     - 'faq.md'
+    - 'development.md'

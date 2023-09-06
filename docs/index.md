@@ -23,6 +23,13 @@ metric. Short functions are easy to understand, easy to test, easy to re-use.
 For example, code duplication is another important code metric but duplication
 is much easier to prevent and fix if your functions are short.
 
+<figure markdown>
+    <div align="center">
+        <img src="assets/unmaintainable-code.jpg" width="500"/>
+    <figcaption>Unmaintainable code. Looks easy; should be done in half an hour I reckon</figcaption>
+    </div>
+</figure>
+
 Function length is a simple code metric, so simple you can count it by hand.
 Because it's such a simple metric, it's also a (fairly) non-controversial
 metric. Most developers agree longer functions are harder to maintain. Also,
