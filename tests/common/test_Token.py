@@ -3,6 +3,7 @@ from pygments.token import Keyword
 from codelimit.common.Location import Location
 from codelimit.common.Token import Token
 from codelimit.languages.c.CLanguage import CLanguage
+from codelimit.languages.python.PythonLanguage import PythonLanguage
 
 
 def test_to_string():
@@ -17,3 +18,13 @@ def test_is_token_type():
     assert tokens[0].is_keyword()
     assert tokens[1].is_name()
     assert tokens[2].is_symbol("(")
+
+
+def test_keep_comment_token():
+    code = ""
+    code += "def foo(): # nocl\n"
+    code += "  pass\n"
+
+    tokens = PythonLanguage().lex(code, False)
+
+    assert tokens[5].is_comment()

@@ -1,4 +1,5 @@
 site_name: Code Limit Documentation
+repo_url: https://github.com/getcodelimit/codelimit
 theme:
   name: material
   palette:
@@ -16,9 +17,13 @@ theme:
   # favicon: assets/logo-24x32.png
   features:
     - toc.integrate
+    - navigation.footer
 plugins:
   - search
 nav:
     - 'index.md'
     - 'quickstart.md'
+    - 'usage.md'
+    - 'configuration.md'
     - 'faq.md'
+    - 'development.md'

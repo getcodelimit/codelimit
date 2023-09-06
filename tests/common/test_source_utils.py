@@ -4,7 +4,9 @@ from codelimit.common.source_utils import (
     location_to_index,
     get_newline_indices,
     get_location_range,
+    filter_nocl_comment_tokens,
 )
+from codelimit.languages.python.PythonLanguage import PythonLanguage
 
 
 def test_index_to_location_single_line():
@@ -91,3 +93,24 @@ def test_get_location_range():
     expe += "  return i\n"
 
     assert result == expe
+
+
+def test_filter_nocl_comments():
+    code = ""
+    code += "def foo():\n"
+    code += "  pass\n"
+    tokens = PythonLanguage().lex(code, False)
+
+    result = filter_nocl_comment_tokens(tokens)
+
+    assert len(result) == 0
+
+    code = ""
+    code += "def foo(): # nocl\n"
+    code += "  pass\n"
+    tokens = PythonLanguage().lex(code, False)
+
+    result = filter_nocl_comment_tokens(tokens)
+
+    assert len(result) == 1
+    assert result[0].location.line == 1

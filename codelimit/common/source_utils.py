@@ -1,5 +1,3 @@
-from typing import Callable
-
 from codelimit.common.Location import Location
 from codelimit.common.Token import Token
 
@@ -50,6 +48,25 @@ def get_location_range(code: str, start: Location, end: Location) -> str:
 
 
 def filter_tokens(
-    tokens: list[Token], predicate: Callable[[Token], bool]
+    tokens: list[Token], keep_whitespace=False, keep_comments=False, keep_others=True
 ) -> list[Token]:
+    def predicate(token: Token):
+        if token.is_whitespace():
+            return keep_whitespace
+        elif token.is_comment():
+            return keep_comments
+        else:
+            return keep_others
+
+    return [t for t in tokens if predicate(t)]
+
+
+def filter_nocl_comment_tokens(tokens: list[Token]):
+    def predicate(token: Token):
+        if token.is_comment():
+            value = token.value.lower()
+            return value.startswith("#nocl") or value.startswith("# nocl")
+        else:
+            return False
+
     return [t for t in tokens if predicate(t)]
