@@ -20,14 +20,6 @@ it’s time to refactor_.
 
 Keep your code maintainable and start using Code Limit today!
 
-To show your project uses Code Limit place this badge in the README markdown:
-
-[![Checked with Code Limit](https://img.shields.io/badge/CodeLimit-checked-green.svg)](https://github.com/getcodelimit/codelimit)
-
-```
-![Checked with Code Limit](https://img.shields.io/badge/CodeLimit-checked-green.svg)](https://github.com/getcodelimit/codelimit)
-```
-
 # Quickstart
 
 Depending on your development workflow, Code Limit can run in many different
@@ -41,8 +33,31 @@ Code Limit can run as a standalone program to check and inspect a codebase, see
 the [Standalone Usage documentation](https://codelimit-docs.vercel.app/usage/)
 to get started.
 
+# Configuration
+
+
+
 # Development
 
 See the [Development
 documentation](https://codelimit-docs.vercel.app/development) if you want to
 extend or contribute to Code Limit.
+
+# Feedback, suggestions and bug reports
+
+If you have suggestions for how Code Limit could be improved, or want to report
+a bug, [open an issue](https://github.com/getcodelimit/codelimit/issues)! All
+and any contributions are appreciated.
+
+To show your project uses Code Limit place this badge in the README markdown:
+
+[![Checked with Code Limit](https://img.shields.io/badge/CodeLimit-checked-green.svg)](https://github.com/getcodelimit/codelimit)
+
+```
+![Checked with Code Limit](https://img.shields.io/badge/CodeLimit-checked-green.svg)](https://github.com/getcodelimit/codelimit)
+```
+
+# License
+
+[ISC](LICENSE) © 2022 Rob van der Leek <robvanderleek@gmail.com>
+(https://twitter.com/robvanderleek)

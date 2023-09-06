@@ -26,7 +26,7 @@ is much easier to prevent and fix if your functions are short.
 <figure markdown>
     <div align="center">
         <img src="assets/unmaintainable-code.jpg" width="500"/>
-    <figcaption>Unmaintainable code. Looks easy; should be done in half an hour I reckon</figcaption>
+    <figcaption>Unmaintainable code. Looks easy; should be done in half an hour I reckon <a href="https://twitter.com/KenScambler/status/477322711039893504">[source]</a></figcaption>
     </div>
 </figure>
 
