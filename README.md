@@ -35,7 +35,10 @@ to get started.
 
 # Configuration
 
-
+Code Limit aims to be zero-configuration. However, sometimes the exception
+proves the rule. Check out the [Configuration
+documentation](https://codelimit-docs.vercel.app/configuration/) for all
+configuration options.
 
 # Development
 
