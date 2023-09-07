@@ -1,12 +1,12 @@
 # Configuration
 
-## Ignoring functions
+## Excluding functions
 
 Functions can be excluded from analysis by putting a `# nocl` comment on the
-line above the start of the funtion, or any line of the function header.
+line above the start of the function, or at any line of the function header.
 
 For example, to ignore a function with a `# nocl` comment above the start of
-the funtions:
+the function:
 
 ```python
 # nocl

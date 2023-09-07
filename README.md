@@ -18,7 +18,8 @@ Your Refactoring Alarm 🔔
 Code Limit is a tool for developers with one goal: _it tells the developer when
 it’s time to refactor_.
 
-Keep your code maintainable and start using Code Limit today!
+Check out the [documentation](https://codelimit-docs.vercel.app) and start
+using Code Limit today to keep your code maintainable.
 
 # Quickstart
 

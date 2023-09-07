@@ -34,14 +34,13 @@ from Code Limit itself.
 When running as a hook, Code Limit *warns* about functions that *should* be
 refactored and *fails* for functions that *need* to be refactord.
 
-To show your project uses Code Limit place this badge in the README markdown:
-```
-![Checked with Code Limit](https://img.shields.io/badge/CodeLimit-checked-green.svg)](https://github.com/getcodelimit/codelimit)
-```
-
 ## GitHub Action
 
 Code Limit is available as a GitHub Action
+
+When running as a GitHub Action, Code Limit only checks modified files and
+*warns* about functions that *should* be refactored and *fails* for functions
+that *need* to be refactored.
 
 To run Code Limit on every push and before every merge to `main`, append it to
 your GH Action workflow:
