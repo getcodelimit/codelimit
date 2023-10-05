@@ -1,10 +1,11 @@
 import os
 from pathlib import Path
-from typing import List, Annotated
+from typing import List, Annotated, Optional
 
 import typer
 
 from codelimit.common.CheckResult import CheckResult
+from codelimit.common.Configuration import Configuration
 from codelimit.common.Scanner import scan_codebase, is_excluded
 from codelimit.common.report.Report import Report
 from codelimit.common.report.ReportReader import ReportReader
@@ -91,8 +92,19 @@ def upload(
 
 
 @cli.callback()
-def main():
+def main(
+    exclude: Annotated[
+        Optional[list[str]], typer.Option(help="Glob patterns for exclusion")
+    ] = None,
+    extend_exclude: Annotated[
+        Optional[list[str]], typer.Option(help="Glob patterns for exclusion")
+    ] = None,
+):
     """CodeLimit: Your refactoring alarm."""
+    if exclude:
+        Configuration.excludes = exclude
+    if extend_exclude:
+        Configuration.excludes.extend(extend_exclude)
 
 
 if __name__ == "__main__":

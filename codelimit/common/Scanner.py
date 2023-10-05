@@ -1,3 +1,4 @@
+import fnmatch
 import os
 from os.path import relpath
 from pathlib import Path
@@ -6,7 +7,7 @@ from typing import Union
 from halo import Halo
 
 from codelimit.common.Codebase import Codebase
-from codelimit.common.Configuration import default_excludes
+from codelimit.common.Configuration import Configuration
 from codelimit.common.Language import Language
 from codelimit.common.Location import Location
 from codelimit.common.Measurement import Measurement
@@ -96,7 +97,13 @@ def scan_file(language: Language, path: str) -> list[Measurement]:
 
 
 def is_excluded(path: Path):
-    for part in path.parts[:-1]:
-        if part in default_excludes:
-            return True
+    for exclude in Configuration.excludes:
+        exclude_parts = exclude.split(os.sep)
+        if len(exclude_parts) == 1:
+            for part in path.parts:
+                if fnmatch.fnmatch(part, exclude):
+                    return True
+        else:
+            if fnmatch.fnmatch(str(path), exclude):
+                return True
     return False
