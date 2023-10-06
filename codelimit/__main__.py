@@ -95,16 +95,11 @@ def upload(
 def main(
     exclude: Annotated[
         Optional[list[str]], typer.Option(help="Glob patterns for exclusion")
-    ] = None,
-    extend_exclude: Annotated[
-        Optional[list[str]], typer.Option(help="Glob patterns for exclusion")
-    ] = None,
+    ] = None
 ):
     """CodeLimit: Your refactoring alarm."""
     if exclude:
-        Configuration.excludes = exclude
-    if extend_exclude:
-        Configuration.excludes.extend(extend_exclude)
+        Configuration.excludes.extend(exclude)
 
 
 if __name__ == "__main__":
