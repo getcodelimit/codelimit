@@ -2,7 +2,8 @@ import os.path
 import tempfile
 from pathlib import Path
 
-from codelimit.common.Scanner import scan_codebase
+from codelimit.common.Configuration import Configuration
+from codelimit.common.Scanner import scan_codebase, is_excluded
 from codelimit.common.source_utils import get_location_range
 
 
@@ -68,3 +69,18 @@ def test_skip_hidden_files():
     assert result.total_loc() == 2
     assert len(result.all_measurements()) == 1
     assert result.all_files()[0] == "foo.py"
+
+
+def test_is_excluded():
+    assert is_excluded(Path("venv/foo/bar.py"))
+    assert not is_excluded(Path("foo/bar.py"))
+
+    Configuration.excludes = ["output"]
+
+    assert is_excluded(Path("output/foo/bar.py"))
+    assert not is_excluded(Path("venv/foo/bar.py"))
+    assert not is_excluded(Path("foo/bar.py"))
+
+    Configuration.excludes = ["foo/bar/*"]
+
+    assert is_excluded(Path("foo/bar/foobar.py"))
