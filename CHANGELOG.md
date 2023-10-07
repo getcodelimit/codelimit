@@ -2,6 +2,87 @@
 
 
 
+## v0.7.0 (2023-10-07)
+
+### :bug:
+
+* :bug: Fix gitignore ([`9b0e662`](https://github.com/getcodelimit/codelimit/commit/9b0e662d613ed7b6da3e9bc30340a19ec2bf0214))
+
+### :children_crossing:
+
+* :children_crossing: Show actual length (#23) ([`35e376a`](https://github.com/getcodelimit/codelimit/commit/35e376a5d2a5c0df2a6578d8b7075521da5b2b35))
+
+### :sparkles:
+
+* :sparkles: Add a environment / config variable to ignore certain certain function patterns (#25) ([`733ea15`](https://github.com/getcodelimit/codelimit/commit/733ea153909533c9017decfd5cb674020b9e0d1e))
+
+* :sparkles: Filter functions with # nocl comments (#24) ([`0ae0dbb`](https://github.com/getcodelimit/codelimit/commit/0ae0dbb730486e4b2c3bc92435819105f3f3a2bf))
+
+* :sparkles: Show file, normalized usage of default exclusions ([`ab67eab`](https://github.com/getcodelimit/codelimit/commit/ab67eab4c74e5d28cab046f631fab270c598f626))
+
+### Other
+
+* Update ([`14bd83c`](https://github.com/getcodelimit/codelimit/commit/14bd83c6b40cb36326d01fdefb6de71af0528927))
+
+* Add configuration ([`137e7ed`](https://github.com/getcodelimit/codelimit/commit/137e7ed81926785d0b4bb2245142f5cccf953084))
+
+* Fix readme ([`ec553dc`](https://github.com/getcodelimit/codelimit/commit/ec553dce6803afbedef61049f3fb973f9644ca4f))
+
+* Integrated documentation ([`11faf0b`](https://github.com/getcodelimit/codelimit/commit/11faf0bdb045090fee26d6a7e4e26e2b413b0577))
+
+* :pencil: Update ([`917dbea`](https://github.com/getcodelimit/codelimit/commit/917dbeac68dfacfe95e9ad1de8ffaa11e49c53d3))
+
+* :pencil: Finalizing ([`0190b8c`](https://github.com/getcodelimit/codelimit/commit/0190b8c66f62ca3981fd501109eaef6a471dd5ef))
+
+* :pencil: Finalizing ([`3536319`](https://github.com/getcodelimit/codelimit/commit/35363193055f4bf3ac2257ed9238d5dd440cd6fa))
+
+* :pencil: Test ([`4319bec`](https://github.com/getcodelimit/codelimit/commit/4319bec1e2c3787ca849ac5e7c0ee2f4eb2d0905))
+
+* :pencil: Update ([`9db643a`](https://github.com/getcodelimit/codelimit/commit/9db643af73802fecf3d5c2b1c078971aa1a072fe))
+
+* :pencil: Update ([`59b8331`](https://github.com/getcodelimit/codelimit/commit/59b8331f537bc2b3066c62cbd8ee287f1489cf6e))
+
+* :pencil: Update ([`59f3ac2`](https://github.com/getcodelimit/codelimit/commit/59f3ac2d1cc416fdc78a317f45e7bcda857f572d))
+
+* :pencil: Update ([`c6b146f`](https://github.com/getcodelimit/codelimit/commit/c6b146fb573990a3ba3ab0b71dc47a3cc0c93f89))
+
+* :pencil: Update ([`ea085e8`](https://github.com/getcodelimit/codelimit/commit/ea085e81d6faf46a07c7ffc0c582fe3d965f91bc))
+
+* :pencil: Update ([`0572330`](https://github.com/getcodelimit/codelimit/commit/0572330c2de02c789b0f253eb4a98a63eafc83ef))
+
+* :pencil: Update ([`2cd9e2d`](https://github.com/getcodelimit/codelimit/commit/2cd9e2d5de618eb52ad62f152209c0eb39b2642a))
+
+* :pencil: Update ([`1c41fa7`](https://github.com/getcodelimit/codelimit/commit/1c41fa757f556d7a819e2c350b701b55c4c370b7))
+
+* :pencil: Update ([`e9eef4b`](https://github.com/getcodelimit/codelimit/commit/e9eef4b5bc4ab98a17d1fa0bf63175f52c18f207))
+
+* :pencil: Update ([`dc1b19f`](https://github.com/getcodelimit/codelimit/commit/dc1b19fe98ae73c445e75fd97789803d6c819b43))
+
+* :pencil: Update ([`32fabc6`](https://github.com/getcodelimit/codelimit/commit/32fabc6492b2994a16f3797435b65603368d6e21))
+
+* :pencil: Update ([`c8c47a4`](https://github.com/getcodelimit/codelimit/commit/c8c47a4573c72bdca41da15ed9c72dd243a83581))
+
+* 💄 Update tui (#19) ([`f122089`](https://github.com/getcodelimit/codelimit/commit/f122089a806d8dd78abf80de0a03cdd6a7afe2b0))
+
+* Update files ([`e13bf0a`](https://github.com/getcodelimit/codelimit/commit/e13bf0ad8fab74f95b7e24ee729a9273c9a65b5a))
+
+* :pencil2: Fix version ([`4be6ae9`](https://github.com/getcodelimit/codelimit/commit/4be6ae9c2f7ba82909de69e41a4f2c077bd24d7e))
+
+* :pencil2: Fix version ([`a74c8a9`](https://github.com/getcodelimit/codelimit/commit/a74c8a905db263f1a118faee5b24dff1aad6c845))
+
+* :pencil2: Fix tag ([`8f84ee5`](https://github.com/getcodelimit/codelimit/commit/8f84ee53e8d885390c4004deea128e68005a6894))
+
+* :pencil2: Eat. My. Shorts. ([`a78e9bb`](https://github.com/getcodelimit/codelimit/commit/a78e9bb41d3102f4da655a43eb8db96058650c36))
+
+* :pencil2: Show directory contents ([`cac37fc`](https://github.com/getcodelimit/codelimit/commit/cac37fc5d8de204cd453a3dc244d6412804b1fe3))
+
+* :pencil2: Fix release flow ([`d26ba3b`](https://github.com/getcodelimit/codelimit/commit/d26ba3bc3a941020722499482634ba3786337c67))
+
+* :pencil2: Fix release flow ([`04e0a79`](https://github.com/getcodelimit/codelimit/commit/04e0a79f3d8dce4c9852e3064a86edaff4c17f8c))
+
+* :pencil2: Fix release flow ([`779da8a`](https://github.com/getcodelimit/codelimit/commit/779da8a22c45a077d08969d7af409a7254bfc1b6))
+
+
 ## v0.6.2 (2023-08-20)
 
 ### :bug:
