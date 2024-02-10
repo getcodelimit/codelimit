@@ -55,10 +55,10 @@ and any contributions are appreciated.
 
 To show your project uses Code Limit place this badge in the README markdown:
 
-[![Checked with Code Limit](https://img.shields.io/badge/CodeLimit-checked-green.svg)](https://github.com/getcodelimit/codelimit)
+[![Checked with Code Limit](https://img.shields.io/badge/Code%20Limit-checked-green.svg)](https://github.com/getcodelimit/codelimit)
 
 ```
-![Checked with Code Limit](https://img.shields.io/badge/CodeLimit-checked-green.svg)](https://github.com/getcodelimit/codelimit)
+![Checked with Code Limit](https://img.shields.io/badge/Code%20Limit-checked-green.svg)](https://github.com/getcodelimit/codelimit)
 ```
 
 # License

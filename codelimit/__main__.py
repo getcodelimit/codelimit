@@ -11,7 +11,7 @@ from codelimit.common.report.Report import Report
 from codelimit.common.report.ReportReader import ReportReader
 from codelimit.common.report.ReportWriter import ReportWriter
 from codelimit.tui.CodeLimitApp import CodeLimitApp
-from codelimit.utils import upload_report, check_file
+from codelimit.utils import upload_report, check_file, read_cached_report
 
 cli = typer.Typer(no_args_is_help=True, add_completion=False)
 
@@ -73,9 +73,16 @@ def scan(
     app.run()
 
 
-@cli.command(help="Upload report to CodeLimit server", hidden=True)
+@cli.command(help="Upload report to Code Limit")
 def upload(
-    report_path: Path = typer.Argument(help="JSON report for a code base"),
+    report_file: Path = typer.Option(
+        None,
+        "--report",
+        exists=True,
+        dir_okay=False,
+        file_okay=True,
+        help="JSON report file",
+    ),
     url: str = typer.Option(
         "https://codelimit-web.vercel.app/api/upload",
         "--url",
@@ -83,8 +90,17 @@ def upload(
         help="Upload JSON report to this URL.",
     ),
 ):
+    if report_file:
+        report = ReportReader.from_json(report_file.read_text())
+    else:
+        cached_report = read_cached_report(Path("."))
+        if not cached_report:
+            typer.secho("No cached report found in current folder", fg="red")
+            raise typer.Exit(code=1)
+        else:
+            report = cached_report
     try:
-        upload_report(report_path, url)
+        upload_report(report, url)
         raise typer.Exit(code=0)
     except FileNotFoundError as error:
         typer.secho(f"File not found: {error}", fg="red")

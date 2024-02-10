@@ -1,4 +1,5 @@
 from pathlib import Path
+from typing import Optional
 
 import requests  # type: ignore
 import typer
@@ -6,6 +7,9 @@ from rich.progress import Progress, SpinnerColumn, TextColumn
 
 from codelimit.common.CheckResult import CheckResult
 from codelimit.common.Scanner import scan_file, languages
+from codelimit.common.report.Report import Report
+from codelimit.common.report.ReportReader import ReportReader
+from codelimit.common.report.ReportWriter import ReportWriter
 
 
 def check_file(path: Path, check_result: CheckResult):
@@ -20,28 +24,34 @@ def check_file(path: Path, check_result: CheckResult):
             check_result.add(path, risks)
 
 
-def upload_report(path: Path, url: str) -> None:
+def read_cached_report(path: Path) -> Optional[Report]:
+    cache_dir = path.joinpath(".codelimit_cache").resolve()
+    report_path = cache_dir.joinpath("codelimit.json").resolve()
+    if report_path.exists():
+        return ReportReader.from_json(report_path.read_text())
+    else:
+        return None
+
+
+def upload_report(report: Report, url: str) -> None:
     data_template = (
         '{{"repository": "getcodelimit/codelimit", "branch": "main", "report":{}}}'
     )
-
-    if not path.exists():
-        raise FileNotFoundError(str(path))
-
     with Progress(
         SpinnerColumn(),
         TextColumn("[progress.description]{task.description}"),
         transient=True,
     ) as progress:
-        progress.add_task(description=f"Uploading {path.name} to {url}", total=None)
+        progress.add_task(description=f"Uploading report to {url}", total=None)
         result = requests.post(
             url,
-            data=data_template.format(path.read_text()),
+            data=data_template.format(
+                ReportWriter(report, pretty_print=False).to_json()
+            ),
             headers={"Content-Type": "application/json"},
         )
-
     if result.ok:
-        typer.secho("Uploaded", fg="green")
+        typer.secho("Upload successful!", fg="green")
     else:
         typer.secho(f"Upload unsuccessful: {result.status_code}", fg="red")
         raise typer.Exit(code=1)
