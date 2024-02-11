@@ -33,7 +33,7 @@ def read_cached_report(path: Path) -> Optional[Report]:
         return None
 
 
-def upload_report(report: Report, url: str) -> None:
+def upload_report(report: Report, url: str, token: str) -> None:
     data_template = (
         '{{"repository": "getcodelimit/codelimit", "branch": "main", "report":{}}}'
     )
@@ -48,7 +48,10 @@ def upload_report(report: Report, url: str) -> None:
             data=data_template.format(
                 ReportWriter(report, pretty_print=False).to_json()
             ),
-            headers={"Content-Type": "application/json"},
+            headers={
+                "Content-Type": "application/json",
+                "Authorization": f"User-bearer {token}",
+            },
         )
     if result.ok:
         typer.secho("Upload successful!", fg="green")

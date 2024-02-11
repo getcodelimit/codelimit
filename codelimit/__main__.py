@@ -10,10 +10,17 @@ from codelimit.common.Scanner import scan_codebase, is_excluded
 from codelimit.common.report.Report import Report
 from codelimit.common.report.ReportReader import ReportReader
 from codelimit.common.report.ReportWriter import ReportWriter
+from codelimit.github_auth import get_github_token
 from codelimit.tui.CodeLimitApp import CodeLimitApp
 from codelimit.utils import upload_report, check_file, read_cached_report
 
 cli = typer.Typer(no_args_is_help=True, add_completion=False)
+
+
+@cli.command(help="Login")
+def login():
+    get_github_token()
+    print("Logged in")
 
 
 @cli.command(help="Check file(s)")
@@ -99,8 +106,12 @@ def upload(
             raise typer.Exit(code=1)
         else:
             report = cached_report
+    token = get_github_token()
+    if not token:
+        typer.secho("Invalid or no credentials, please login", fg="red")
+        raise typer.Exit(code=1)
     try:
-        upload_report(report, url)
+        upload_report(report, url, token["access_token"])
         raise typer.Exit(code=0)
     except FileNotFoundError as error:
         typer.secho(f"File not found: {error}", fg="red")
