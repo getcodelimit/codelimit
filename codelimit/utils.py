@@ -56,5 +56,10 @@ def upload_report(report: Report, url: str, token: str) -> None:
     if result.ok:
         typer.secho("Upload successful!", fg="green")
     else:
-        typer.secho(f"Upload unsuccessful: {result.status_code}", fg="red")
+        error_message = "Upload unsuccessful: "
+        if result.text:
+            error_message += result.text
+        else:
+            error_message += result.status_code
+        typer.secho(error_message, fg="red")
         raise typer.Exit(code=1)

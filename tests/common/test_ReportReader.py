@@ -1,7 +1,7 @@
 from codelimit.common.Codebase import Codebase
-from codelimit.common.SourceFileEntry import SourceFileEntry
 from codelimit.common.Location import Location
 from codelimit.common.Measurement import Measurement
+from codelimit.common.SourceFileEntry import SourceFileEntry
 from codelimit.common.report.Report import Report
 from codelimit.common.report.ReportReader import ReportReader
 from codelimit.common.report.ReportWriter import ReportWriter
@@ -52,6 +52,24 @@ def test_single_file():
     assert len(foo_measurements) == 1
     assert foo_measurements[0].start.line == 10
     assert foo_measurements[0].value == 20
+
+
+def test_profile():
+    codebase = Codebase("/")
+    codebase.add_file(
+        SourceFileEntry(
+            "foo.py",
+            "abcd1234",
+            [Measurement("bar()", Location(10, 1), Location(30, 1), 20)],
+        )
+    )
+    codebase.aggregate()
+    report = Report(codebase)
+
+    json = ReportWriter(report).to_json()
+    result = ReportReader.from_json(json)
+
+    assert result.codebase.tree["./"].profile == [0, 20, 0, 0]
 
 
 def test_multiple_files():

@@ -25,4 +25,5 @@ class ReportReader:
                     )
                 )
             codebase.add_file(SourceFileEntry(k, v["checksum"], measurements))
+        codebase.aggregate()
         return report
