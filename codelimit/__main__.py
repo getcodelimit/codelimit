@@ -91,7 +91,7 @@ def upload(
         help="JSON report file",
     ),
     url: str = typer.Option(
-        "https://codelimit-web.vercel.app/api/upload",
+        "https://codelimit.vercel.app/api/upload",
         "--url",
         "-u",
         help="Upload JSON report to this URL.",
