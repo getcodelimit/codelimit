@@ -3,6 +3,7 @@ import webbrowser
 from os.path import expanduser
 from pathlib import Path
 from typing import Union
+from rich import print
 
 import requests  # type: ignore
 import yaml  # type: ignore
@@ -15,38 +16,42 @@ cached_token: Union[dict, None] = None
 
 def get_github_token():
     global cached_token
-    if cached_token is None or not _token_is_valid(cached_token):
-        cached_token = _device_flow_login()
+    if cached_token is None:
+        cached_token = _read_github_token()
     return cached_token
 
 
-def _token_is_valid(token: dict):
-    return True
-
-
-def _device_flow_login() -> Union[dict, None]:
+def _read_github_token():
     result = None
     yml_path = Path(f"{SETTINGS_PATH}/github.yml")
-    config = {}
     if yml_path.exists():
         config = yaml.safe_load(open(yml_path))
         if "access_token" in config:
-            result = {"access_token": config["access_token"]}
-        if "refresh_token" in config:
-            result = _refresh_access_token(CLIENT_ID, config["refresh_token"])
-    if not result:
-        json = _device_flow_authentication(CLIENT_ID)
-        device_code = json["device_code"]
-        interval = json["interval"]
-        result = _poll_for_token(CLIENT_ID, device_code, interval)
-    if result:
-        Path(SETTINGS_PATH).mkdir(exist_ok=True)
-        if "refresh_token" in result:
-            config["refresh_token"] = result["refresh_token"]
-        else:
-            config["access_token"] = result["access_token"]
-        yaml.dump(config, open(yml_path, "w"))
+            result = config["access_token"]
     return result
+
+
+def _write_github_token(token: str):
+    yml_path = Path(f"{SETTINGS_PATH}/github.yml")
+    Path(SETTINGS_PATH).mkdir(exist_ok=True)
+    config = {"access_token": token}
+    yaml.dump(config, open(yml_path, "w"))
+
+
+def device_flow_login() -> Union[dict, None]:
+    json = _device_flow_authentication(CLIENT_ID)
+    device_code = json["device_code"]
+    interval = json["interval"]
+    result = _poll_for_token(CLIENT_ID, device_code, interval)
+    if result:
+        _write_github_token(result["access_token"])
+    return result
+
+
+def device_flow_logout():
+    yml_path = Path(f"{SETTINGS_PATH}/github.yml")
+    if yml_path.exists():
+        yml_path.unlink()
 
 
 def _device_flow_authentication(client_id: str):
@@ -59,8 +64,8 @@ def _device_flow_authentication(client_id: str):
     user_code = json["user_code"]
     browser_url = json["verification_uri"]
     print("Device authentication required.")
-    print(f"Enter this code: {user_code}")
-    print(f"If browser does not open go to this page: {browser_url}")
+    print(f"Enter this code: [cyan]{user_code}[/cyan]")
+    print(f"If browser does not open, go to this page: {browser_url}")
     webbrowser.open(browser_url)
     return json
 

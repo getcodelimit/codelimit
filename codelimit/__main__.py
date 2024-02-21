@@ -1,9 +1,11 @@
 import os
 from pathlib import Path
 from typing import List, Annotated, Optional
+from rich import print
 
 import typer
 
+from codelimit.commands import github
 from codelimit.common.CheckResult import CheckResult
 from codelimit.common.Configuration import Configuration
 from codelimit.common.Scanner import scan_codebase, is_excluded
@@ -15,12 +17,7 @@ from codelimit.tui.CodeLimitApp import CodeLimitApp
 from codelimit.utils import upload_report, check_file, read_cached_report
 
 cli = typer.Typer(no_args_is_help=True, add_completion=False)
-
-
-@cli.command(help="Login")
-def login():
-    get_github_token()
-    print("Logged in")
+cli.add_typer(github.app, name="github", help="GitHub commands")
 
 
 @cli.command(help="Check file(s)")
@@ -90,10 +87,10 @@ def upload(
         file_okay=True,
         help="JSON report file",
     ),
+    token: str = typer.Option(None, "--token", help="GitHub access token"),
     url: str = typer.Option(
         "https://codelimit.vercel.app/api/upload",
         "--url",
-        "-u",
         help="Upload JSON report to this URL.",
     ),
 ):
@@ -102,16 +99,17 @@ def upload(
     else:
         cached_report = read_cached_report(Path("."))
         if not cached_report:
-            typer.secho("No cached report found in current folder", fg="red")
+            print("[red]No cached report found in current folder[/red]")
             raise typer.Exit(code=1)
         else:
             report = cached_report
-    token = get_github_token()
     if not token:
-        typer.secho("Invalid or no credentials, please login", fg="red")
-        raise typer.Exit(code=1)
+        token = get_github_token()
+        if not token:
+            print("[red]Invalid or no credentials, please login or supply token[/red]")
+            raise typer.Exit(code=1)
     try:
-        upload_report(report, url, token["access_token"])
+        upload_report(report, url, token)
         raise typer.Exit(code=0)
     except FileNotFoundError as error:
         typer.secho(f"File not found: {error}", fg="red")
