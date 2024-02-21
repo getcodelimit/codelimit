@@ -2,6 +2,27 @@
 
 
 
+## v0.8.0 (2024-02-21)
+
+### :sparkles:
+
+* :sparkles: Support Python 3.12 (#27) ([`4e78e42`](https://github.com/getcodelimit/codelimit/commit/4e78e42e1096299548e61c3e0c149721bb5ca8ca))
+
+### Other
+
+* Add GitHub login/logout ([`5141aa5`](https://github.com/getcodelimit/codelimit/commit/5141aa5e6a6c7a314c30081f752ff82eac3917f1))
+
+* Fixed upload endpoint ([`38f1a98`](https://github.com/getcodelimit/codelimit/commit/38f1a988e805400964760095eefb0beca493e35b))
+
+* Add badge ([`2f33fdc`](https://github.com/getcodelimit/codelimit/commit/2f33fdcfbb399e84ce05441418be75a3f3f185e9))
+
+* Update logo ([`9765ffd`](https://github.com/getcodelimit/codelimit/commit/9765ffd0c75a46f37a2faa0eae79c48381648a45))
+
+* Add login command ([`e0a8a2b`](https://github.com/getcodelimit/codelimit/commit/e0a8a2be385577f88b3af07a6e642c825afc8e49))
+
+* Fix upload command ([`624b79f`](https://github.com/getcodelimit/codelimit/commit/624b79f75bcb372e07469556a75379d4a832d1bb))
+
+
 ## v0.7.0 (2023-10-07)
 
 ### :bug:
