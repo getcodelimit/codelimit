@@ -1,4 +1,5 @@
 import os
+import sys
 from pathlib import Path
 from typing import List, Annotated, Optional
 from rich import print
@@ -73,8 +74,9 @@ def scan(
         cache_dir_gitignore = cache_dir.joinpath(".gitignore").resolve()
         cache_dir_gitignore.write_text("# Created by codelimit automatically.\n*\n")
     report_path.write_text(ReportWriter(report).to_json())
-    app = CodeLimitApp(report)
-    app.run()
+    if sys.stdout.isatty():
+        app = CodeLimitApp(report)
+        app.run()
 
 
 @cli.command(help="Upload report to Code Limit")
