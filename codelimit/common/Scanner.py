@@ -15,11 +15,13 @@ from codelimit.common.SourceFileEntry import SourceFileEntry
 from codelimit.common.report.Report import Report
 from codelimit.common.scope.scope_utils import build_scopes
 from codelimit.common.utils import calculate_checksum
+from codelimit.languages.c.CLanguage import CLanguage
 from codelimit.languages.python.PythonLanguage import PythonLanguage
 
 languages = [
-    PythonLanguage()
-]  # , CLanguage(), JavaScriptLanguage(), TypeScriptLanguage()]
+    PythonLanguage(),
+    CLanguage(),
+]  # JavaScriptLanguage(), TypeScriptLanguage()]
 
 
 def scan_codebase(path: Path, cached_report: Union[Report, None] = None) -> Codebase:

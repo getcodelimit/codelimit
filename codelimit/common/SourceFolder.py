@@ -13,5 +13,5 @@ class SourceFolder:
     def add_file(self, entry: SourceFileEntry):
         self.entries.append(entry)
 
-    def add_folder(self, name: str):
-        self.entries.append(SourceFolderEntry(f"{name}"))
+    def add_folder(self, path: str):
+        self.entries.append(SourceFolderEntry(path))

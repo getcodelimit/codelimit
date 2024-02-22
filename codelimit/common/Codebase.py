@@ -1,13 +1,13 @@
 from codelimit.common.SourceFileEntry import SourceFileEntry
 from codelimit.common.SourceFolder import SourceFolder
 from codelimit.common.Measurement import Measurement
-from codelimit.common.utils import get_parent_folder, get_basename, merge_profiles
+from codelimit.common.utils import get_parent_folder, merge_profiles
 
 
 class Codebase:
     def __init__(self, root: str):
         self.root = root
-        self.tree = {"./": SourceFolder()}
+        self.tree: dict[str, SourceFolder] = {"./": SourceFolder()}
         self.files: dict[str, SourceFileEntry] = {}
 
     def add_file(self, entry: SourceFileEntry):
@@ -25,7 +25,7 @@ class Codebase:
             self.tree[f"{path}/"] = SourceFolder()
             self.add_folder(get_parent_folder(path))
             parent_folder = self.tree[f"{get_parent_folder(path)}/"]
-            parent_folder.add_folder(get_basename(path))
+            parent_folder.add_folder(path)
 
     def aggregate(self):
         def aggregate_folder(path):
