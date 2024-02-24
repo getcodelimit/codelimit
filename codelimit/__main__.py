@@ -2,9 +2,9 @@ import os
 import sys
 from pathlib import Path
 from typing import List, Annotated, Optional
-from rich import print
 
 import typer
+from rich import print
 
 from codelimit.commands import github
 from codelimit.common.CheckResult import CheckResult
@@ -81,6 +81,10 @@ def scan(
 
 @cli.command(help="Upload report to Code Limit")
 def upload(
+    repository: Annotated[
+        str, typer.Argument(envvar="GITHUB_REPOSITORY", help="GitHub repository")
+    ],
+    branch: Annotated[str, typer.Argument(envvar="GITHUB_REF", help="GitHub branch")],
     report_file: Path = typer.Option(
         None,
         "--report",
@@ -111,7 +115,7 @@ def upload(
             print("[red]Invalid or no credentials, please login or supply token[/red]")
             raise typer.Exit(code=1)
     try:
-        upload_report(report, url, token)
+        upload_report(report, repository, branch, url, token)
         raise typer.Exit(code=0)
     except FileNotFoundError as error:
         typer.secho(f"File not found: {error}", fg="red")

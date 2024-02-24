@@ -33,9 +33,11 @@ def read_cached_report(path: Path) -> Optional[Report]:
         return None
 
 
-def upload_report(report: Report, url: str, token: str) -> None:
+def upload_report(
+    report: Report, repository: str, branch: str, url: str, token: str
+) -> None:
     data_template = (
-        '{{"repository": "getcodelimit/codelimit", "branch": "main", "report":{}}}'
+        f'{{{{"repository": "{repository}", "branch": "{branch}", "report":{{}}}}}}'
     )
     with Progress(
         SpinnerColumn(),
@@ -60,6 +62,6 @@ def upload_report(report: Report, url: str, token: str) -> None:
         if result.text:
             error_message += result.text
         else:
-            error_message += result.status_code
+            error_message += str(result.status_code)
         typer.secho(error_message, fg="red")
         raise typer.Exit(code=1)
