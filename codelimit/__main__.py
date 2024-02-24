@@ -82,9 +82,15 @@ def scan(
 @cli.command(help="Upload report to Code Limit")
 def upload(
     repository: Annotated[
-        str, typer.Argument(envvar="GITHUB_REPOSITORY", help="GitHub repository")
+        str,
+        typer.Argument(
+            envvar="GITHUB_REPOSITORY", show_default=False, help="GitHub repository"
+        ),
     ],
-    branch: Annotated[str, typer.Argument(envvar="GITHUB_REF", help="GitHub branch")],
+    branch: Annotated[
+        str,
+        typer.Argument(envvar="GITHUB_REF", show_default=False, help="GitHub branch"),
+    ],
     report_file: Path = typer.Option(
         None,
         "--report",
