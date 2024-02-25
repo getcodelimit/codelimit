@@ -52,7 +52,7 @@ def upload_report(
             ),
             headers={
                 "Content-Type": "application/json",
-                "Authorization": f"User-bearer {token}",
+                "Authorization": f"Bearer {token}",
             },
         )
     if result.ok:

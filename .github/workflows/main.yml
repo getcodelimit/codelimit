@@ -25,9 +25,7 @@ jobs:
       - name: 'Run Code Limit'
         uses: getcodelimit/codelimit-action@main
         with:
-          upload: true
           token: ${{ secrets.GITHUB_TOKEN }}
+          upload: true
       - name: 'Upload coverage reports to Codecov'
         uses: codecov/codecov-action@v3
-      - name: 'Run Code Limit'
-        uses: getcodelimit/codelimit-action@main
