@@ -2,13 +2,44 @@
 
 
 
+## v0.8.1 (2024-02-29)
+
+### Build
+
+* build: update py3.12 constraint (#28)
+
+Signed-off-by: Rui Chen &lt;rui@chenrui.dev&gt; ([`95ba321`](https://github.com/getcodelimit/codelimit/commit/95ba3213e55bc04f6633c490c721c6909a5e0aa8))
+
+### Fix
+
+* fix: Update semantic versioning config ([`380ada1`](https://github.com/getcodelimit/codelimit/commit/380ada1004a0dd31b69933e55847630da9fadb52))
+
+* fix: Update semantic versioning config ([`bed104b`](https://github.com/getcodelimit/codelimit/commit/bed104bdd73692f09b20041a1db1b8ca707d94ec))
+
+* fix: Update docs ([`dada84e`](https://github.com/getcodelimit/codelimit/commit/dada84e755af7066ed8433d35958f1366c94b952))
+
+* fix: Trigger patch release ([`6424204`](https://github.com/getcodelimit/codelimit/commit/6424204becd846d8ba18421d5cb1f1c8bcb11964))
+
+* fix: Do not show defaults ([`1af54de`](https://github.com/getcodelimit/codelimit/commit/1af54de57f49a2a0ac8e5753894e2f0c870ad0e7))
+
+### Unknown
+
+* Fix workflow ([`32a8315`](https://github.com/getcodelimit/codelimit/commit/32a8315c9656503bdc4fd29411b0fc3b96eda3dc))
+
+* deps: add pyyaml dep (#30)
+
+Signed-off-by: Rui Chen &lt;rui@chenrui.dev&gt; ([`d13be41`](https://github.com/getcodelimit/codelimit/commit/d13be41767091b388354c52988161e4f834c9017))
+
+* Remove hardcoded values ([`3d6869d`](https://github.com/getcodelimit/codelimit/commit/3d6869dbc672665c2f8a6559f46c685be6d3b2bb))
+
+* Do not show TUI in GH Actions ([`50894b5`](https://github.com/getcodelimit/codelimit/commit/50894b5f11a213555e7ac149dd0fdac5b5dad4b2))
+
+* Upload report ([`0f45f71`](https://github.com/getcodelimit/codelimit/commit/0f45f715ae9a32433f5fc7a2c00bee0b4c2ae6b7))
+
+
 ## v0.8.0 (2024-02-21)
 
-### :sparkles:
-
-* :sparkles: Support Python 3.12 (#27) ([`4e78e42`](https://github.com/getcodelimit/codelimit/commit/4e78e42e1096299548e61c3e0c149721bb5ca8ca))
-
-### Other
+### Unknown
 
 * Add GitHub login/logout ([`5141aa5`](https://github.com/getcodelimit/codelimit/commit/5141aa5e6a6c7a314c30081f752ff82eac3917f1))
 
@@ -22,34 +53,28 @@
 
 * Fix upload command ([`624b79f`](https://github.com/getcodelimit/codelimit/commit/624b79f75bcb372e07469556a75379d4a832d1bb))
 
+* :sparkles: Support Python 3.12 (#27) ([`4e78e42`](https://github.com/getcodelimit/codelimit/commit/4e78e42e1096299548e61c3e0c149721bb5ca8ca))
+
 
 ## v0.7.0 (2023-10-07)
 
-### :bug:
-
-* :bug: Fix gitignore ([`9b0e662`](https://github.com/getcodelimit/codelimit/commit/9b0e662d613ed7b6da3e9bc30340a19ec2bf0214))
-
-### :children_crossing:
-
-* :children_crossing: Show actual length (#23) ([`35e376a`](https://github.com/getcodelimit/codelimit/commit/35e376a5d2a5c0df2a6578d8b7075521da5b2b35))
-
-### :sparkles:
+### Unknown
 
 * :sparkles: Add a environment / config variable to ignore certain certain function patterns (#25) ([`733ea15`](https://github.com/getcodelimit/codelimit/commit/733ea153909533c9017decfd5cb674020b9e0d1e))
-
-* :sparkles: Filter functions with # nocl comments (#24) ([`0ae0dbb`](https://github.com/getcodelimit/codelimit/commit/0ae0dbb730486e4b2c3bc92435819105f3f3a2bf))
-
-* :sparkles: Show file, normalized usage of default exclusions ([`ab67eab`](https://github.com/getcodelimit/codelimit/commit/ab67eab4c74e5d28cab046f631fab270c598f626))
-
-### Other
 
 * Update ([`14bd83c`](https://github.com/getcodelimit/codelimit/commit/14bd83c6b40cb36326d01fdefb6de71af0528927))
 
 * Add configuration ([`137e7ed`](https://github.com/getcodelimit/codelimit/commit/137e7ed81926785d0b4bb2245142f5cccf953084))
 
+* :sparkles: Filter functions with # nocl comments (#24) ([`0ae0dbb`](https://github.com/getcodelimit/codelimit/commit/0ae0dbb730486e4b2c3bc92435819105f3f3a2bf))
+
 * Fix readme ([`ec553dc`](https://github.com/getcodelimit/codelimit/commit/ec553dce6803afbedef61049f3fb973f9644ca4f))
 
 * Integrated documentation ([`11faf0b`](https://github.com/getcodelimit/codelimit/commit/11faf0bdb045090fee26d6a7e4e26e2b413b0577))
+
+* :bug: Fix gitignore ([`9b0e662`](https://github.com/getcodelimit/codelimit/commit/9b0e662d613ed7b6da3e9bc30340a19ec2bf0214))
+
+* :children_crossing: Show actual length (#23) ([`35e376a`](https://github.com/getcodelimit/codelimit/commit/35e376a5d2a5c0df2a6578d8b7075521da5b2b35))
 
 * :pencil: Update ([`917dbea`](https://github.com/getcodelimit/codelimit/commit/917dbeac68dfacfe95e9ad1de8ffaa11e49c53d3))
 
@@ -85,6 +110,8 @@
 
 * 💄 Update tui (#19) ([`f122089`](https://github.com/getcodelimit/codelimit/commit/f122089a806d8dd78abf80de0a03cdd6a7afe2b0))
 
+* :sparkles: Show file, normalized usage of default exclusions ([`ab67eab`](https://github.com/getcodelimit/codelimit/commit/ab67eab4c74e5d28cab046f631fab270c598f626))
+
 * Update files ([`e13bf0a`](https://github.com/getcodelimit/codelimit/commit/e13bf0ad8fab74f95b7e24ee729a9273c9a65b5a))
 
 * :pencil2: Fix version ([`4be6ae9`](https://github.com/getcodelimit/codelimit/commit/4be6ae9c2f7ba82909de69e41a4f2c077bd24d7e))
@@ -106,22 +133,20 @@
 
 ## v0.6.2 (2023-08-20)
 
-### :bug:
+### Unknown
 
 * :bug: Fix build ([`78ec19f`](https://github.com/getcodelimit/codelimit/commit/78ec19fe539a8df679526a4f50e3c45f1b3953e4))
 
 
 ## v0.6.1 (2023-08-20)
 
-### :bug:
+### Unknown
+
+* :pencil2: Fix release flow ([`483d424`](https://github.com/getcodelimit/codelimit/commit/483d4246e3ed80f03e3d2dcd2d469a7bb7c6976c))
 
 * :bug: Fix release flow ([`cbace33`](https://github.com/getcodelimit/codelimit/commit/cbace332f27a5eea48088d27f329e12944375ff6))
 
 * :bug: Fix release flow ([`692bdd9`](https://github.com/getcodelimit/codelimit/commit/692bdd9deb4f457b4a4edd7bc8eb76f1b5dad640))
-
-### Other
-
-* :pencil2: Fix release flow ([`483d424`](https://github.com/getcodelimit/codelimit/commit/483d4246e3ed80f03e3d2dcd2d469a7bb7c6976c))
 
 * :construction_worker: Update release flow ([`aa995ce`](https://github.com/getcodelimit/codelimit/commit/aa995cecc2e9325559a12d74138cd31e001d9bef))
 
@@ -132,15 +157,13 @@
 
 ## v0.6.0 (2023-08-17)
 
-### :sparkles:
+### Unknown
+
+* :rocket: Add post release flow ([`0a633cb`](https://github.com/getcodelimit/codelimit/commit/0a633cb0116df71054dfb10dcfd9ea33648050c0))
 
 * :sparkles: Default exclude list ([`fb7d18c`](https://github.com/getcodelimit/codelimit/commit/fb7d18cc160edc59875043a992e44778932fade8))
 
 * :sparkles: Put cache file in cache dir ([`b6750e5`](https://github.com/getcodelimit/codelimit/commit/b6750e5c1891c0f48ea6ff465c5996b17bbd5296))
-
-### Other
-
-* :rocket: Add post release flow ([`0a633cb`](https://github.com/getcodelimit/codelimit/commit/0a633cb0116df71054dfb10dcfd9ea33648050c0))
 
 * :pencil: Add Homebrew install ([`581c76d`](https://github.com/getcodelimit/codelimit/commit/581c76dd27378598a048a74890097e03c9b35900))
 
@@ -153,56 +176,46 @@
 
 ## v0.5.0 (2023-08-16)
 
-### :bug:
-
-* :bug: Fix for Python headers with nested braces ([`0e95d33`](https://github.com/getcodelimit/codelimit/commit/0e95d33a207f43d40943da32a22a66a7a9759d48))
-
-### :sparkles:
+### Unknown
 
 * :sparkles: Issue 15 invoking without tui (#16) ([`5dda87d`](https://github.com/getcodelimit/codelimit/commit/5dda87d4bef6a21069eb0c85a624651d9aff3e02))
 
-### Other
-
 * Fix &#34;PythonLanguage&#34; typo (#17) ([`167f154`](https://github.com/getcodelimit/codelimit/commit/167f154f688777c51d55823aefa5a76c47f490a2))
+
+* :bug: Fix for Python headers with nested braces ([`0e95d33`](https://github.com/getcodelimit/codelimit/commit/0e95d33a207f43d40943da32a22a66a7a9759d48))
 
 * :green_heart: Trigger workflow manually ([`5344210`](https://github.com/getcodelimit/codelimit/commit/5344210cfcdeb96110976b59a557de353155a75e))
 
 
 ## v0.4.0 (2023-08-11)
 
-### :lipstick:
+### Unknown
 
 * :lipstick: Show relative path in code screen ([`7c17a5d`](https://github.com/getcodelimit/codelimit/commit/7c17a5de37fbb1d548ba3e69570dc052fc3f9965))
-
-### Other
 
 * :pencil: Updated readme ([`917d27d`](https://github.com/getcodelimit/codelimit/commit/917d27d14cf71b179cf4f28bb2dc9a02ddaa812b))
 
 
 ## v0.3.1 (2023-08-10)
 
-### :bug:
+### Unknown
 
 * :bug: Update release flow ([`960e05f`](https://github.com/getcodelimit/codelimit/commit/960e05fa14505a1027a8caa3aa925d585b172bed))
 
 
 ## v0.3.0 (2023-08-10)
 
-### :bug:
+### Unknown
+
+* Fix workflow ([`122e9c4`](https://github.com/getcodelimit/codelimit/commit/122e9c42bfb271b811ec6a550c50f8ed6d57816c))
+
+* Trigger release ([`1b16dbb`](https://github.com/getcodelimit/codelimit/commit/1b16dbb9fc39ad81477a8e346814171efeb9f62a))
 
 * :bug: ([`7822143`](https://github.com/getcodelimit/codelimit/commit/7822143c9fa9d9de6881ec10be1bc72db6679193))
 
 * :bug: Trigger release ([`c02f85c`](https://github.com/getcodelimit/codelimit/commit/c02f85cc343857ae36715a7b5626fc26fda987c5))
 
-### :sparkles:
-
 * :sparkles: Trigger release ([`3871cae`](https://github.com/getcodelimit/codelimit/commit/3871caed163fdd2079a8acc05258d6895abe6353))
-
-### Other
-
-* Fix workflow ([`122e9c4`](https://github.com/getcodelimit/codelimit/commit/122e9c42bfb271b811ec6a550c50f8ed6d57816c))
-
-* Trigger release ([`1b16dbb`](https://github.com/getcodelimit/codelimit/commit/1b16dbb9fc39ad81477a8e346814171efeb9f62a))
 
 * :memo: Update ([`cab2855`](https://github.com/getcodelimit/codelimit/commit/cab28559d5dd48296823870c993620c6754db445))
 
@@ -233,27 +246,17 @@
 
 ## v0.2.1 (2023-08-09)
 
-### :bug:
+### Fix
+
+* fix: :bug: Fix readme ([`ea4bfa2`](https://github.com/getcodelimit/codelimit/commit/ea4bfa203ce58121384f1985b66de730043547c0))
+
+### Unknown
 
 * :bug: No build during release ([`8c74c77`](https://github.com/getcodelimit/codelimit/commit/8c74c7706d534b60d1f42552c8f8885ec3e46f55))
 
 * :bug: Fix semantic release ([`3115c94`](https://github.com/getcodelimit/codelimit/commit/3115c945186ac26a2419a8be187158a2b3c3b0a9))
 
 * :bug: fix semantic release ([`477fa24`](https://github.com/getcodelimit/codelimit/commit/477fa24db384d074f10afb71f42e3cef868c7e09))
-
-* fix: :bug: Fix readme ([`ea4bfa2`](https://github.com/getcodelimit/codelimit/commit/ea4bfa203ce58121384f1985b66de730043547c0))
-
-* :bug: Issue 9 fix python header extraction (#10)
-
-* Hello :wave: Token Matching
-
-* First steps in token matching
-
-* Fixing Python scope building
-
-* Reset predicates ([`121f76e`](https://github.com/getcodelimit/codelimit/commit/121f76eaf4c6f55459bdf4878c037d47ae241eaf))
-
-### Other
 
 * Implemented basic pre-commit hook (#14) ([`6cb2925`](https://github.com/getcodelimit/codelimit/commit/6cb2925be94c3cb2afa1bad1d2982a9cdf3179cc))
 
@@ -273,6 +276,16 @@
 - Added typer CLI support
 
 * Forgot to commit poetry.lock ([`c1eee06`](https://github.com/getcodelimit/codelimit/commit/c1eee062df0573f79c25c3861715467298391913))
+
+* :bug: Issue 9 fix python header extraction (#10)
+
+* Hello :wave: Token Matching
+
+* First steps in token matching
+
+* Fixing Python scope building
+
+* Reset predicates ([`121f76e`](https://github.com/getcodelimit/codelimit/commit/121f76eaf4c6f55459bdf4878c037d47ae241eaf))
 
 * POC report upload ([`42b4ad0`](https://github.com/getcodelimit/codelimit/commit/42b4ad03fc2fbd3fd3898f19f364ab9a61731f2d))
 
@@ -323,7 +336,7 @@
 
 ## v0.2.0 (2023-01-14)
 
-### :sparkles:
+### Feature
 
 * feat: :sparkles: Issue 7 add basic repository browser (#8)
 
@@ -339,14 +352,14 @@
 
 * Very basic report browser ([`9645be2`](https://github.com/getcodelimit/codelimit/commit/9645be2e378f15fcfa38e26c8db98e02568a66e3))
 
-### Other
+### Unknown
 
 * Do not use setup tools ([`223a964`](https://github.com/getcodelimit/codelimit/commit/223a964e9ff5508bf52477406a2e21a42586ecb3))
 
 
 ## v0.1.0 (2023-01-07)
 
-### :sparkles:
+### Feature
 
 * feat: :sparkles: WIP (#6)
 
@@ -354,7 +367,7 @@
 
 * Hello profiles 👋 ([`e792b24`](https://github.com/getcodelimit/codelimit/commit/e792b24a1b79058cc9c09e655eefe04ad3b1c6da))
 
-### Other
+### Unknown
 
 * Change to main ([`2f8e803`](https://github.com/getcodelimit/codelimit/commit/2f8e80333ec0b0cfdd23d6dcfd756762307e62b3))
 
