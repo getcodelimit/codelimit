@@ -31,33 +31,6 @@ version_variables = [ "codelimit/version.py:version" ]
 upload_to_repository = false
 upload_to_release = false
 
-[tool.semantic_release.commit_parser_options]
-major_tags = [":boom:"]
-minor_tags = [
-    ":sparkles:",
-    ":children_crossing:",
-    ":lipstick:",
-    ":iphone:",
-    ":egg:",
-    ":chart_with_upwards_trend:",
-]
-patch_tags = [
-    ":ambulance:",
-    ":lock:",
-    ":bug:",
-    ":zap:",
-    ":goal_net:",
-    ":alien:",
-    ":wheelchair:",
-    ":speech_balloon:",
-    ":mag:",
-    ":apple:",
-    ":penguin:",
-    ":checkered_flag:",
-    ":robot:",
-    ":green_apple:",
-]
-
 [tool.poetry.group.dev.dependencies]
 pyinstaller = "^5.6.1"
 pytest-cov = "^4.0.0"
