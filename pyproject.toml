@@ -25,7 +25,6 @@ cmd = "pyinstaller --workpath .build --specpath dist -n codelimit codelimit/__ma
 
 [tool.semantic_release]
 branch = "main"
-commit_parser = "emoji"
 version_toml = [ "pyproject.toml:tool.poetry.version" ]
 version_variables = [ "codelimit/version.py:version" ]
 upload_to_repository = false
