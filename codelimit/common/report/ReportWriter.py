@@ -102,6 +102,8 @@ class ReportWriter:
         json += self._collection(
             [
                 self._file_checksum_to_json(entry),
+                self._file_language_to_json(entry),
+                self._file_loc_to_json(entry),
                 self._file_profile_to_json(entry),
                 self._file_measurements_to_json(entry),
             ]
@@ -111,6 +113,12 @@ class ReportWriter:
 
     def _file_checksum_to_json(self, entry: SourceFileEntry):
         return self._line(f'"checksum": "{entry.checksum()}"')
+
+    def _file_language_to_json(self, entry: SourceFileEntry):
+        return self._line(f'"language": "{entry.language}"')
+
+    def _file_loc_to_json(self, entry: SourceFileEntry):
+        return self._line(f'"loc": {entry.loc}')
 
     def _file_profile_to_json(self, entry: SourceFileEntry):
         return self._line(f'"profile": {entry.profile()}')

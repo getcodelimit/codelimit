@@ -3,19 +3,28 @@ from typing import Optional
 
 import requests  # type: ignore
 import typer
+from pygments.lexers import get_lexer_for_filename
 from rich.progress import Progress, SpinnerColumn, TextColumn
 
 from codelimit.common.CheckResult import CheckResult
 from codelimit.common.Scanner import scan_file, languages
+from codelimit.common.lexer_utils import lex
 from codelimit.common.report.Report import Report
 from codelimit.common.report.ReportReader import ReportReader
 from codelimit.common.report.ReportWriter import ReportWriter
+from codelimit.common.utils import load_scope_extractor_by_name
 
 
 def check_file(path: Path, check_result: CheckResult):
-    for language in languages:
-        if language.accept_file(str(path.absolute())):
-            measurements = scan_file(language, str(path))
+    lexer = get_lexer_for_filename(path)
+    language = lexer.__class__.name
+    if language in languages:
+        with open(path) as f:
+            code = f.read()
+        tokens = lex(lexer, code, False)
+        scope_extractor = load_scope_extractor_by_name(lexer.__class__.name)
+        if scope_extractor:
+            measurements = scan_file(tokens, scope_extractor)
             risks = sorted(
                 [m for m in measurements if m.value > 30],
                 key=lambda measurement: measurement.value,

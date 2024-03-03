@@ -1,6 +1,8 @@
-from codelimit.common.scope.scope_utils import build_scopes
-from codelimit.languages.python.PythonLanguage import PythonLanguage
-from codelimit.languages.python.PythonScopeExtractor import (
+from pygments.lexers import PythonLexer
+
+from codelimit.common.lexer_utils import lex
+from codelimit.common.scope.scope_extractor_utils import build_scopes
+from codelimit.languages.PythonScopeExtractor import (
     _get_indentation,
     PythonScopeExtractor,
     _get_token_lines,
@@ -21,7 +23,7 @@ def test_get_indentation():
 def test_get_blocks_no_headers_no_blocks():
     code = ""
 
-    tokens = PythonLanguage().lex(code)
+    tokens = lex(PythonLexer(), code)
     result = PythonScopeExtractor().extract_blocks(tokens, [])
 
     assert len(result) == 0
@@ -32,7 +34,7 @@ def test_get_blocks_single_header_single_block():
     code += "def foo():\n"
     code += "  foo = bar\n"
 
-    tokens = PythonLanguage().lex(code)
+    tokens = lex(PythonLexer(), code)
     scope_extractor = PythonScopeExtractor()
     headers = scope_extractor.extract_headers(tokens)
     result = scope_extractor.extract_blocks(tokens, headers)
@@ -50,7 +52,7 @@ def test_get_blocks_single_multiline_block():
     code += "  foo = bar\n"
     code += "  spam = eggs\n"
 
-    tokens = PythonLanguage().lex(code)
+    tokens = lex(PythonLexer(), code)
     scope_extractor = PythonScopeExtractor()
     headers = scope_extractor.extract_headers(tokens)
     result = scope_extractor.extract_blocks(tokens, headers)
@@ -70,7 +72,7 @@ def test_get_blocks_multi_blocks():
     code += "def bar():\n"
     code += "  foo()\n"
 
-    tokens = PythonLanguage().lex(code)
+    tokens = lex(PythonLexer(), code)
     scope_extractor = PythonScopeExtractor()
     headers = scope_extractor.extract_headers(tokens)
     result = scope_extractor.extract_blocks(tokens, headers)
@@ -93,15 +95,16 @@ def test_trailing_global_code():
     code += "bar = [\n"
     code += '  "bar"\n'
     code += "]\n"
+    tokens = lex(PythonLexer(), code)
 
-    result = build_scopes(PythonLanguage(), code)
+    result = build_scopes(tokens, PythonScopeExtractor())
 
     assert len(result) == 1
     assert len(result[0]) == 2
 
 
 def test_get_headers_no_headers():
-    tokens = PythonLanguage().lex("")
+    tokens = lex(PythonLexer(), "")
     result = PythonScopeExtractor().extract_headers(tokens)
 
     assert len(result) == 0
@@ -111,8 +114,8 @@ def test_get_headers_single_header():
     code = ""
     code += "def foo():\n"
     code += "  pass\n"
+    tokens = lex(PythonLexer(), code)
 
-    tokens = PythonLanguage().lex(code)
     result = PythonScopeExtractor().extract_headers(tokens)
 
     assert len(result) == 1
@@ -130,8 +133,8 @@ def test_get_headers_multi_header():
     code += "\n"
     code += "def bar():\n"
     code += "  foo()\n"
+    tokens = lex(PythonLexer(), code)
 
-    tokens = PythonLanguage().lex(code)
     result = PythonScopeExtractor().extract_headers(tokens)
 
     assert len(result) == 2
@@ -149,8 +152,8 @@ def test_get_headers_multi_header_with_comment():
     code += "\n"
     code += "def bar():\n"
     code += "  foo()\n"
+    tokens = lex(PythonLexer(), code)
 
-    tokens = PythonLanguage().lex(code)
     result = PythonScopeExtractor().extract_headers(tokens)
 
     assert len(result) == 2
@@ -167,8 +170,9 @@ def test_do_not_count_comment_lines():
     code += "# This is a comment\n"
     code += "  pass\n"
     code += "  # This is also a comment\n"
+    tokens = lex(PythonLexer(), code)
 
-    result = build_scopes(PythonLanguage(), code)
+    result = build_scopes(tokens, PythonScopeExtractor())
 
     assert len(result) == 1
     assert len(result[0]) == 2
@@ -185,8 +189,9 @@ def test_header_with_defaults():
     code += "  )\n"
     code += "):\n"
     code += "  pass\n"
+    tokens = lex(PythonLexer(), code)
 
-    result = build_scopes(PythonLanguage(), code)
+    result = build_scopes(tokens, PythonScopeExtractor())
 
     assert len(result) == 1
     assert len(result[0]) == 9
@@ -198,8 +203,8 @@ def test_header_type_hints():
     code += "  bar: str\n"
     code += ") -> FooBar:\n"
     code += "  pass\n"
+    tokens = lex(PythonLexer(), code)
 
-    tokens = PythonLanguage().lex(code)
     result = PythonScopeExtractor().extract_headers(tokens)
 
     assert len(result) == 1
@@ -217,8 +222,9 @@ def test_two_functions():
     code += "    foo: Foo\n"
     code += ") -> None:\n"
     code += "    foo = bar\n"
+    tokens = lex(PythonLexer(), code)
 
-    result = build_scopes(PythonLanguage(), code)
+    result = build_scopes(tokens, PythonScopeExtractor())
 
     assert len(result) == 2
     assert len(result[0]) == 4
@@ -237,8 +243,9 @@ def test_skip_function_with_nocl_comment_in_header():
     code += ") -> None:\n"
     code += "    foo = bar\n"
     code += "    bar = foo\n"
+    tokens = lex(PythonLexer(), code, False)
 
-    result = build_scopes(PythonLanguage(), code)
+    result = build_scopes(tokens, PythonScopeExtractor())
 
     assert len(result) == 1
     assert len(result[0]) == 5
@@ -257,8 +264,9 @@ def test_skip_function_with_nocl_comment_before_header():
     code += ") -> None:\n"
     code += "    foo = bar\n"
     code += "    bar = foo\n"
+    tokens = lex(PythonLexer(), code, False)
 
-    result = build_scopes(PythonLanguage(), code)
+    result = build_scopes(tokens, PythonScopeExtractor())
 
     assert len(result) == 1
     assert len(result[0]) == 4
@@ -271,8 +279,9 @@ def test_function_with_type_hints():
     code += ") -> Foo:\n"
     code += "  bar = foo\n"
     code += "  foo = bar\n"
+    tokens = lex(PythonLexer(), code)
 
-    result = build_scopes(PythonLanguage(), code)
+    result = build_scopes(tokens, PythonScopeExtractor())
 
     assert len(result) == 1
     assert len(result[0]) == 5
@@ -284,8 +293,9 @@ def test_line_continuation():
     code += "  print(\\\n"
     code += '"Hello " +\\\n'
     code += '"world")\n'
+    tokens = lex(PythonLexer(), code)
 
-    result = build_scopes(PythonLanguage(), code)
+    result = build_scopes(tokens, PythonScopeExtractor())
 
     assert len(result) == 1
     assert len(result[0]) == 4
@@ -299,8 +309,9 @@ def test_if_statement():
     code += "    foo = bar\n"
     code += "  else:\n"
     code += "    bar = foo\n"
+    tokens = lex(PythonLexer(), code)
 
-    result = build_scopes(PythonLanguage(), code)
+    result = build_scopes(tokens, PythonScopeExtractor())
 
     assert len(result) == 1
     assert len(result[0]) == 6
@@ -310,8 +321,9 @@ def test_get_token_lines():
     code = ""
     code += "def foo():\n"
     code += "  pass\n"
+    tokens = lex(PythonLexer(), code)
 
-    result = _get_token_lines(PythonLanguage().lex(code))
+    result = _get_token_lines(tokens)
 
     assert len(result) == 2
     assert str(result[0]) == "[def, foo, (, ), :]"

@@ -1,4 +1,7 @@
+from pygments.lexers import PythonLexer
+
 from codelimit.common.Location import Location
+from codelimit.common.lexer_utils import lex
 from codelimit.common.source_utils import (
     index_to_location,
     location_to_index,
@@ -6,7 +9,6 @@ from codelimit.common.source_utils import (
     get_location_range,
     filter_nocl_comment_tokens,
 )
-from codelimit.languages.python.PythonLanguage import PythonLanguage
 
 
 def test_index_to_location_single_line():
@@ -99,7 +101,7 @@ def test_filter_nocl_comments():
     code = ""
     code += "def foo():\n"
     code += "  pass\n"
-    tokens = PythonLanguage().lex(code, False)
+    tokens = lex(PythonLexer(), code, False)
 
     result = filter_nocl_comment_tokens(tokens)
 
@@ -108,7 +110,7 @@ def test_filter_nocl_comments():
     code = ""
     code += "def foo(): # nocl\n"
     code += "  pass\n"
-    tokens = PythonLanguage().lex(code, False)
+    tokens = lex(PythonLexer(), code, False)
 
     result = filter_nocl_comment_tokens(tokens)
 

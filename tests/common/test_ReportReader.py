@@ -29,6 +29,8 @@ def test_single_file():
         SourceFileEntry(
             "foo.py",
             "abcd1234",
+            "Python",
+            20,
             [Measurement("bar()", Location(10, 1), Location(30, 1), 20)],
         )
     )
@@ -60,6 +62,8 @@ def test_profile():
         SourceFileEntry(
             "foo.py",
             "abcd1234",
+            "Python",
+            20,
             [Measurement("bar()", Location(10, 1), Location(30, 1), 20)],
         )
     )
@@ -78,6 +82,8 @@ def test_multiple_files():
         SourceFileEntry(
             "foo.py",
             "abcd1234",
+            "Python",
+            20,
             [Measurement("spam()", Location(10, 1), Location(30, 1), 20)],
         )
     )
@@ -85,6 +91,8 @@ def test_multiple_files():
         SourceFileEntry(
             "bar.py",
             "efgh5678",
+            "Python",
+            20,
             [
                 Measurement("eggs()", Location(10, 1), Location(30, 1), 20),
                 Measurement("ham()", Location(20, 1), Location(50, 1), 30),
@@ -122,6 +130,8 @@ def test_multiple_files_and_folders():
         SourceFileEntry(
             "foo.py",
             "abcd1234",
+            "Python",
+            20,
             [Measurement("bar()", Location(10, 1), Location(30, 1), 20)],
         )
     )
@@ -129,6 +139,8 @@ def test_multiple_files_and_folders():
         SourceFileEntry(
             "bar/spam.py",
             "efgh5678",
+            "Python",
+            20,
             [
                 Measurement("spam()", Location(10, 1), Location(30, 1), 20),
                 Measurement("eggs()", Location(20, 1), Location(50, 1), 30),

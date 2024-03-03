@@ -1,5 +1,4 @@
 import os
-import sys
 from pathlib import Path
 from typing import List, Annotated, Optional
 
@@ -14,7 +13,6 @@ from codelimit.common.report.Report import Report
 from codelimit.common.report.ReportReader import ReportReader
 from codelimit.common.report.ReportWriter import ReportWriter
 from codelimit.github_auth import get_github_token
-from codelimit.tui.CodeLimitApp import CodeLimitApp
 from codelimit.utils import upload_report, check_file, read_cached_report
 
 cli = typer.Typer(no_args_is_help=True, add_completion=False)
@@ -74,9 +72,9 @@ def scan(
         cache_dir_gitignore = cache_dir.joinpath(".gitignore").resolve()
         cache_dir_gitignore.write_text("# Created by codelimit automatically.\n*\n")
     report_path.write_text(ReportWriter(report).to_json())
-    if sys.stdout.isatty():
-        app = CodeLimitApp(report)
-        app.run()
+    # if sys.stdout.isatty():
+    #     app = CodeLimitApp(report)
+    #     app.run()
 
 
 @cli.command(help="Upload report to Code Limit")

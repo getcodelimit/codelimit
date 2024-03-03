@@ -1,10 +1,12 @@
+from pygments.lexers import CLexer
+
+from codelimit.common.lexer_utils import lex
 from codelimit.common.source_utils import get_token_range
 from codelimit.common.token_utils import get_balanced_symbol_token_indices
-from codelimit.languages.c.CLanguage import CLanguage
 
 
 def test_get_balanced_symbol_token_indices():
-    tokens = CLanguage().lex("void foo() { while (1) { } }")
+    tokens = lex(CLexer(), "void foo() { while (1) { } }")
 
     result = get_balanced_symbol_token_indices(tokens, "(", ")")
 
@@ -31,6 +33,6 @@ def test_get_balanced_symbol_token_indices():
 
 def test_get_token_range():
     code = "void foo() { while (1) { } }"
-    tokens = CLanguage().lex(code)
+    tokens = lex(CLexer(), code)
 
     assert get_token_range(code, tokens[4], tokens[11]) == "{ while (1) { } }"

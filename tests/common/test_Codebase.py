@@ -16,7 +16,7 @@ def test_codebase_empty():
 
 def test_codebase_entry_single_file():
     codebase = Codebase("/")
-    codebase.add_file(SourceFileEntry("foo.py", "abcd1234", []))
+    codebase.add_file(SourceFileEntry("foo.py", "abcd1234", "Python", 20, []))
     report = Report(codebase)
     writer = ReportWriter(report, False)
 
@@ -26,13 +26,14 @@ def test_codebase_entry_single_file():
         + report.uuid
         + '", "root": "/", "codebase": {"tree": {"./": {"entries": ["foo.py"], '
         + '"profile": [0, 0, 0, 0]}}, "files": {"foo.py": {"checksum": '
-        '"abcd1234", "profile": [0, 0, 0, 0], ' + '"measurements": []}}}}'
+        + '"abcd1234", "language": "Python", "loc": 20, "profile": [0, 0, 0, 0], '
+        + '"measurements": []}}}}'
     )
 
 
 def test_codebase_entry_single_folder_single_file():
     codebase = Codebase("/")
-    codebase.add_file(SourceFileEntry("foo/bar.py", "abcd1234", []))
+    codebase.add_file(SourceFileEntry("foo/bar.py", "abcd1234", "Python", 20, []))
     report = Report(codebase)
     writer = ReportWriter(report, False)
 
@@ -43,14 +44,15 @@ def test_codebase_entry_single_folder_single_file():
         + '", "root": "/", "codebase": {"tree": {"./": {"entries": '
         + '["foo/"], "profile": [0, 0, 0, 0]}, "foo/": {"entries": ["bar.py"], '
         + '"profile": [0, 0, 0, 0]}}, "files": {"foo/bar.py": {"checksum": '
-        '"abcd1234", "profile": [0, 0, 0, 0], ' + '"measurements": []}}}}'
+        + '"abcd1234", "language": "Python", "loc": 20, "profile": [0, 0, 0, 0], '
+        + '"measurements": []}}}}'
     )
 
 
 def test_codebase_multiple_files():
     codebase = Codebase("/")
-    codebase.add_file(SourceFileEntry("foo.py", "abcd1234", []))
-    codebase.add_file(SourceFileEntry("bar.py", "efgh5678", []))
+    codebase.add_file(SourceFileEntry("foo.py", "abcd1234", "Python", 20, []))
+    codebase.add_file(SourceFileEntry("bar.py", "efgh5678", "Python", 20, []))
 
     assert len(codebase.tree["./"].entries) == 2
 
@@ -68,9 +70,9 @@ def test_codebase_multiple_folders():
 def test_codebase_multiple_files_and_folders():
     codebase = Codebase("/")
     codebase.add_folder("foo")
-    codebase.add_file(SourceFileEntry("foo/bar.py", "abcd1234", []))
+    codebase.add_file(SourceFileEntry("foo/bar.py", "abcd1234", "Python", 20, []))
     codebase.add_folder("foo/spam")
-    codebase.add_file(SourceFileEntry("foo/spam/bar.py", "efgh5678", []))
+    codebase.add_file(SourceFileEntry("foo/spam/bar.py", "efgh5678", "Python", 20, []))
 
     assert len(codebase.tree["./"].entries) == 1
     assert len(codebase.tree["foo/"].entries) == 2
@@ -84,6 +86,8 @@ def test_codebase_aggregate():
         SourceFileEntry(
             "foo/bar.py",
             "abcd1234",
+            "Python",
+            20,
             [Measurement("bar()", Location(1, 1), Location(10, 1), 10)],
         )
     )
@@ -92,6 +96,8 @@ def test_codebase_aggregate():
         SourceFileEntry(
             "foo/spam/bar.py",
             "efgh5678",
+            "Python",
+            20,
             [Measurement("spam()", Location(1, 1), Location(10, 1), 20)],
         )
     )

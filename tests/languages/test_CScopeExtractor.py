@@ -1,12 +1,14 @@
-from codelimit.common.scope.scope_utils import build_scopes
-from codelimit.languages.c.CLanguage import CLanguage
-from codelimit.languages.c.CScopeExtractor import CScopeExtractor
+from pygments.lexers import CLexer
+
+from codelimit.common.lexer_utils import lex
+from codelimit.common.scope.scope_extractor_utils import build_scopes
+from codelimit.languages.CScopeExtractor import CScopeExtractor
 
 
 def test_get_blocks_no_headers_no_blocks():
     code = ""
 
-    tokens = CLanguage().lex(code)
+    tokens = lex(CLexer(), code)
     scope_extractor = CScopeExtractor()
     headers = scope_extractor.extract_headers(tokens)
     result = scope_extractor.extract_blocks(tokens, headers)
@@ -22,7 +24,7 @@ def test_get_blocks_single_block():
     code += "return 0;\n"
     code += "}\n"
 
-    tokens = CLanguage().lex(code)
+    tokens = lex(CLexer(), code)
     scope_extractor = CScopeExtractor()
     headers = scope_extractor.extract_headers(tokens)
     result = scope_extractor.extract_blocks(tokens, headers)
@@ -41,7 +43,7 @@ def test_get_blocks_single_multiline_block():
     code += "  spam = 1;\n"
     code += "}"
 
-    tokens = CLanguage().lex(code)
+    tokens = lex(CLexer(), code)
     scope_extractor = CScopeExtractor()
     headers = scope_extractor.extract_headers(tokens)
     result = CScopeExtractor().extract_blocks(tokens, headers)
@@ -58,7 +60,7 @@ def test_get_blocks_multi_blocks():
     code += "{ int foo; }\n"
     code += "{ char bar; }\n"
 
-    tokens = CLanguage().lex(code)
+    tokens = lex(CLexer(), code)
     scope_extractor = CScopeExtractor()
     headers = scope_extractor.extract_headers(tokens)
     result = scope_extractor.extract_blocks(tokens, headers)
@@ -77,14 +79,15 @@ def test_iteration_macro_is_not_a_function():
     code += "    remove_entry(entry);\n"
     code += "  }\n"
     code += "}\n"
+    tokens = lex(CLexer(), code)
 
-    result = build_scopes(CLanguage(), code)
+    result = build_scopes(tokens, CScopeExtractor())
 
     assert len(result) == 1
 
 
 def test_get_headers_no_headers():
-    tokens = CLanguage().lex("")
+    tokens = lex(CLexer(), "")
     result = CScopeExtractor().extract_headers(tokens)
 
     assert len(result) == 0
@@ -96,7 +99,7 @@ def test_get_headers_single_header():
     code += "  return 0;\n"
     code += "}\n"
 
-    tokens = CLanguage().lex(code)
+    tokens = lex(CLexer(), code)
     result = CScopeExtractor().extract_headers(tokens)
 
     assert len(result) == 1
@@ -118,8 +121,9 @@ def test_build_scopes():
     code += "void foo() {\n"
     code += "  printf(bar());\n"
     code += "}\n"
+    tokens = lex(CLexer(), code)
 
-    scopes = build_scopes(CLanguage(), code)
+    scopes = build_scopes(tokens, CScopeExtractor())
 
     assert len(scopes) == 2
     assert scopes[0].header.token_range.token_string() == "bar ( )"
@@ -138,7 +142,7 @@ def test_build_scope_c_function():
     code += "    return 0;\n"
     code += "}\n"
 
-    tokens = CLanguage().lex(code)
+    tokens = lex(CLexer(), code)
     result = CScopeExtractor().extract_headers(tokens)
 
     assert len(result) == 1
@@ -157,7 +161,8 @@ def test_build_scope_c_function():
     assert result[0].tokens[-1].location.line == 7
     assert result[0].tokens[-1].location.column == 1
 
-    scopes = build_scopes(CLanguage(), code)
+    tokens = lex(CLexer(), code)
+    scopes = build_scopes(tokens, CScopeExtractor())
 
     assert len(scopes) == 1
 
@@ -171,7 +176,8 @@ def test_nested_header_but_no_body_inside_parent():
     code += "}\n"
     code += "static struct bar = {\n"
     code += "};\n"
+    tokens = lex(CLexer(), code)
 
-    scopes = build_scopes(CLanguage(), code)
+    scopes = build_scopes(tokens, CScopeExtractor())
 
     assert len(scopes) == 1

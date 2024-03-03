@@ -2,11 +2,12 @@ import hashlib
 import os
 import sys
 from typing import Union, Any
-
+import importlib
 from rich.style import Style
 from rich.text import Text
 
 from codelimit.common.Measurement import Measurement
+from codelimit.common.scope.ScopeExtractor import ScopeExtractor
 from codelimit.version import version, release_date
 
 
@@ -99,3 +100,9 @@ def format_unit(name: str, length: int, file: Union[str, None] = None) -> Text:
         result.append(Text(f"{file}:", style=Style(dim=True)))
     result.append(name)
     return result
+
+
+def load_scope_extractor_by_name(language: str) -> ScopeExtractor | None:
+    module = importlib.import_module(f"codelimit.languages.{language}ScopeExtractor")
+    scope_extractor_class = getattr(module, f"{language}ScopeExtractor")
+    return scope_extractor_class()

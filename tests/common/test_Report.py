@@ -41,6 +41,8 @@ def test_all_units():
         SourceFileEntry(
             "foo.py",
             "abcd1234",
+            "Python",
+            20,
             [Measurement("bar()", Location(10, 1), Location(30, 1), 20)],
         )
     )

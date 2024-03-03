@@ -1,14 +1,16 @@
+from pygments.lexers import PythonLexer
+
+from codelimit.common.lexer_utils import lex
 from codelimit.common.token_matching.TokenMatching import (
     match,
     KeywordPredicate,
     NamePredicate,
 )
-from codelimit.languages.python.PythonLanguage import PythonLanguage
 
 
 def test_match_keyword():
     code = "def foo(): pass\ndef bar(): pass\n"
-    tokens = PythonLanguage().lex(code)
+    tokens = lex(PythonLexer(), code)
 
     result = match(tokens, KeywordPredicate("def"))
 
@@ -19,7 +21,7 @@ def test_match_keyword():
 
 def test_match_name():
     code = "def foo(): pass\ndef bar(): pass\n"
-    tokens = PythonLanguage().lex(code)
+    tokens = lex(PythonLexer(), code)
 
     result = match(tokens, NamePredicate())
 
@@ -30,7 +32,7 @@ def test_match_name():
 
 def test_match_function_header():
     code = "def foo(): pass\ndef bar(): pass\n"
-    tokens = PythonLanguage().lex(code)
+    tokens = lex(PythonLexer(), code)
 
     result = match(tokens, [KeywordPredicate("def"), NamePredicate()])
 

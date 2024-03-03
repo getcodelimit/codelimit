@@ -12,6 +12,8 @@ def test_to_json():
         SourceFileEntry(
             "foo.py",
             "abcd1234",
+            "Python",
+            20,
             [Measurement("bar()", Location(10, 1), Location(20, 1), 10)],
         )
     )
@@ -35,6 +37,8 @@ def test_to_json():
     expected += '    "files": {\n'
     expected += '      "foo.py": {\n'
     expected += '        "checksum": "abcd1234",\n'
+    expected += '        "language": "Python",\n'
+    expected += '        "loc": 20,\n'
     expected += '        "profile": [10, 0, 0, 0],\n'
     expected += '        "measurements": [\n'
     expected += (
@@ -56,6 +60,8 @@ def test_to_json_multiple():
         SourceFileEntry(
             "foo.py",
             "abcd1234",
+            "Python",
+            20,
             [Measurement("bar()", Location(10, 1), Location(20, 1), 10)],
         )
     )
@@ -63,6 +69,8 @@ def test_to_json_multiple():
         SourceFileEntry(
             "bar.py",
             "efgh5678",
+            "Python",
+            20,
             [Measurement("foo()", Location(20, 1), Location(30, 1), 10)],
         )
     )
@@ -75,11 +83,12 @@ def test_to_json_multiple():
         + report.uuid
         + '", "root": "/", "codebase": {"tree": {"./": {"entries": ["foo.py", '
         + '"bar.py"], "profile": [20, 0, 0, 0]}}, '
-        + '"files": {"foo.py": {"checksum": "abcd1234", "profile": [10, 0, 0, 0], '
-        '"measurements": '
+        + '"files": {"foo.py": {"checksum": "abcd1234", "language": "Python", '
+        + '"loc": 20, "profile": [10, 0, 0, 0], "measurements": '
         + '[{"unit_name": "bar()", "start": {"line": 10, "column": 1}, '
         + '"end": {"line": 20, "column": 1}, "value": 10}]}, "bar.py": {'
-        + '"checksum": "efgh5678", "profile": [10, 0, 0, 0], "measurements": '
+        + '"checksum": "efgh5678", "language": "Python", "loc": 20, "profile": '
+        + '[10, 0, 0, 0], "measurements": '
         + '[{"unit_name": "foo()", "start": {"line": 20, "column": 1}, '
         + '"end": {"line": 30, "column": 1}, "value": 10}]}}}}'
     )
@@ -92,6 +101,8 @@ def test_all():
         SourceFileEntry(
             "foo.py",
             "abcd1234",
+            "Python",
+            20,
             [Measurement("bar()", Location(10, 1), Location(20, 1), 10)],
         )
     )
@@ -99,6 +110,8 @@ def test_all():
         SourceFileEntry(
             "bar.py",
             "efgh5678",
+            "Python",
+            20,
             [
                 Measurement("foo()", Location(20, 1), Location(30, 1), 10),
                 Measurement("spam()", Location(30, 1), Location(40, 1), 10),

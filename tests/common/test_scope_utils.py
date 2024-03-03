@@ -1,6 +1,8 @@
-from codelimit.common.scope.scope_utils import _find_scope_blocks_indices
-from codelimit.languages.python.PythonLanguage import PythonLanguage
-from codelimit.languages.python.PythonScopeExtractor import PythonScopeExtractor
+from pygments.lexers import PythonLexer
+
+from codelimit.common.lexer_utils import lex
+from codelimit.common.scope.scope_extractor_utils import _find_scope_blocks_indices
+from codelimit.languages.PythonScopeExtractor import PythonScopeExtractor
 
 
 def test_find_scope_blocks_indices():
@@ -11,7 +13,7 @@ def test_find_scope_blocks_indices():
     code += "def bar():\n"
     code += "  foo()\n"
 
-    tokens = PythonLanguage().lex(code)
+    tokens = lex(PythonLexer(), code)
     extractor = PythonScopeExtractor()
     headers = extractor.extract_headers(tokens)
     blocks = extractor.extract_blocks(tokens, headers)

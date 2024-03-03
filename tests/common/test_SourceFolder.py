@@ -5,8 +5,8 @@ from codelimit.common.SourceFolder import SourceFolder
 def test_codebase_entry_multiple_files():
     folder = SourceFolder()
 
-    folder.add_file(SourceFileEntry("foo.py", "abcd1234", []))
-    folder.add_file(SourceFileEntry("bar.py", "efgh5678", []))
+    folder.add_file(SourceFileEntry("foo.py", "abcd1234", "Python", 0, []))
+    folder.add_file(SourceFileEntry("bar.py", "efgh5678", "Python", 0, []))
 
     assert folder.entries and len(folder.entries) == 2
 

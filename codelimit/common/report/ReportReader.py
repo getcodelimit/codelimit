@@ -24,6 +24,8 @@ class ReportReader:
                         m["unit_name"], start_location, end_location, m["value"]
                     )
                 )
-            codebase.add_file(SourceFileEntry(k, v["checksum"], measurements))
+            codebase.add_file(
+                SourceFileEntry(k, v["checksum"], v["language"], v["loc"], measurements)
+            )
         codebase.aggregate()
         return report

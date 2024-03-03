@@ -1,22 +1,20 @@
 from typing import Optional
 
-from codelimit.common.Language import Language
 from codelimit.common.Token import Token
+from codelimit.common.TokenRange import TokenRange
 from codelimit.common.scope.Header import Header
 from codelimit.common.scope.Scope import Scope
-from codelimit.common.TokenRange import TokenRange
+from codelimit.common.scope.ScopeExtractor import ScopeExtractor
 from codelimit.common.source_utils import filter_tokens, filter_nocl_comment_tokens
 from codelimit.common.token_utils import sort_tokens
 from codelimit.common.utils import delete_indices
 
 
-def build_scopes(language: Language, code: str) -> list[Scope]:
-    all_tokens = language.lex(code, False)
-    tokens = filter_tokens(all_tokens)
-    nocl_comment_tokens = filter_nocl_comment_tokens(all_tokens)
-    scope_extractor = language.get_scope_extractor()
-    headers = scope_extractor.extract_headers(tokens)
-    blocks = scope_extractor.extract_blocks(tokens, headers)
+def build_scopes(tokens: list[Token], scope_extractor: ScopeExtractor) -> list[Scope]:
+    code_tokens = filter_tokens(tokens)
+    nocl_comment_tokens = filter_nocl_comment_tokens(tokens)
+    headers = scope_extractor.extract_headers(code_tokens)
+    blocks = scope_extractor.extract_blocks(code_tokens, headers)
     scopes = _build_scopes_from_headers_and_blocks(headers, blocks)
     return _filter_nocl_scopes(scopes, nocl_comment_tokens)
 
