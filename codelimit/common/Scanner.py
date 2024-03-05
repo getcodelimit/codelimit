@@ -22,10 +22,7 @@ from codelimit.common.scope.ScopeExtractor import ScopeExtractor
 from codelimit.common.scope.scope_extractor_utils import build_scopes
 from codelimit.common.source_utils import filter_tokens
 from codelimit.common.utils import calculate_checksum, load_scope_extractor_by_name
-
-languages = ["JavaScript", "Python"]
-
-ignored = ["CSS", "HTML", "JSON", "Markdown", "Text only", "TOML", "XML", "YAML"]
+from codelimit.languages import languages, ignored
 
 
 def scan_codebase(path: Path, cached_report: Union[Report, None] = None) -> Codebase:
@@ -37,6 +34,10 @@ def scan_codebase(path: Path, cached_report: Union[Report, None] = None) -> Code
 def _scan_folder(
     codebase: Codebase, folder: Path, cached_report: Union[Report, None] = None
 ):
+    # table = Table('Language', 'Files', 'LOC', box=box.SIMPLE)
+    # live = Live(table)
+    # table.add_row("Python", "1", "20")
+    # live.start()
     spinner = Halo(text="Scanning", spinner="dots")
     spinner.start()
     scanned = 0
@@ -54,6 +55,7 @@ def _scan_folder(
                     file_path = os.path.join(root, file)
                     _add_file(codebase, lexer, folder, file_path, cached_report)
                     scanned += 1
+                    # live.update(table, refresh=True)
                     spinner.text = f"Scanned {scanned} file(s)"
                 elif language in ignored:
                     pass

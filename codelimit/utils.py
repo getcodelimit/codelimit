@@ -7,7 +7,8 @@ from pygments.lexers import get_lexer_for_filename
 from rich.progress import Progress, SpinnerColumn, TextColumn
 
 from codelimit.common.CheckResult import CheckResult
-from codelimit.common.Scanner import scan_file, languages
+from codelimit.common.Scanner import scan_file
+from codelimit.languages import languages
 from codelimit.common.lexer_utils import lex
 from codelimit.common.report.Report import Report
 from codelimit.common.report.ReportReader import ReportReader
