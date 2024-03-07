@@ -10,7 +10,6 @@ codelimit = "codelimit.__main__:cli"
 
 [tool.poetry.dependencies]
 python = ">=3.9,<3.13"
-halo = "^0.0.31"
 plotext = "^5.2.8"
 pygments = "^2.13.0"
 textual = "^0.34.0"

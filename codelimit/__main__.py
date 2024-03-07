@@ -1,3 +1,4 @@
+import importlib.metadata
 import os
 from pathlib import Path
 from typing import List, Annotated, Optional
@@ -23,7 +24,7 @@ cli.add_typer(github.app, name="github", help="GitHub commands")
 def check(
     paths: Annotated[List[Path], typer.Argument(exists=True)],
     quiet: Annotated[
-        bool, typer.Option("--quiet", help="Not output when successful")
+        bool, typer.Option("--quiet", help="No output when successful")
     ] = False,
 ):
     check_result = CheckResult()
@@ -126,11 +127,24 @@ def upload(
     raise typer.Exit(code=1) from None
 
 
+def _version_callback(show: bool):
+    if show:
+        version = importlib.metadata.version("codelimit")
+        print(f"Code Limit version: {version}")
+        raise typer.Exit()
+
+
 @cli.callback()
 def main(
     exclude: Annotated[
         Optional[list[str]], typer.Option(help="Glob patterns for exclusion")
-    ] = None
+    ] = None,
+    version: Annotated[
+        Optional[bool],
+        typer.Option(
+            "--version", "-V", help="Show version", callback=_version_callback
+        ),
+    ] = None,
 ):
     """CodeLimit: Your refactoring alarm."""
     if exclude:

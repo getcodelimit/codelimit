@@ -25,6 +25,20 @@ def make_profile(measurements: list[Measurement]):
     return result
 
 
+def make_count_profile(measurements: list[Measurement]):
+    result = [0, 0, 0, 0]
+    for m in measurements:
+        if m.value <= 15:
+            result[0] += 1
+        elif m.value <= 30:
+            result[1] += 1
+        elif m.value <= 60:
+            result[2] += 1
+        else:
+            result[3] += 1
+    return result
+
+
 def merge_profiles(rc1: list[int], rc2: list[int]) -> list[int]:
     return [rc1[0] + rc2[0], rc1[1] + rc2[1], rc1[2] + rc2[2], rc1[3] + rc2[3]]
 

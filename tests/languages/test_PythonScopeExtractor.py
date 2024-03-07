@@ -1,4 +1,4 @@
-from pygments.lexers import PythonLexer
+from pygments.lexers.python import PythonLexer
 
 from codelimit.common.lexer_utils import lex
 from codelimit.common.scope.scope_extractor_utils import build_scopes

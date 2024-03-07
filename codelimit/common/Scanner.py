@@ -1,13 +1,16 @@
 import fnmatch
+import locale
 import os
 from os.path import relpath
 from pathlib import Path
-from typing import Union
+from typing import Union, Callable
 
-from halo import Halo
 from pygments.lexer import Lexer
 from pygments.lexers import get_lexer_for_filename
 from pygments.util import ClassNotFound
+from rich import box
+from rich.live import Live
+from rich.table import Table
 
 from codelimit.common.Codebase import Codebase
 from codelimit.common.Configuration import Configuration
@@ -21,26 +24,75 @@ from codelimit.common.scope.Scope import count_lines
 from codelimit.common.scope.ScopeExtractor import ScopeExtractor
 from codelimit.common.scope.scope_extractor_utils import build_scopes
 from codelimit.common.source_utils import filter_tokens
-from codelimit.common.utils import calculate_checksum, load_scope_extractor_by_name
+from codelimit.common.utils import (
+    calculate_checksum,
+    load_scope_extractor_by_name,
+    make_count_profile,
+)
 from codelimit.languages import languages, ignored
+
+locale.setlocale(locale.LC_ALL, "")
 
 
 def scan_codebase(path: Path, cached_report: Union[Report, None] = None) -> Codebase:
     codebase = Codebase(str(path.absolute()))
-    _scan_folder(codebase, path, cached_report)
+
+    with Live() as live:
+        languages = {}
+
+        def add_file_entry(entry: SourceFileEntry):
+            profile = make_count_profile(entry.measurements())
+            if entry.language not in languages:
+                languages[entry.language] = {
+                    "files": 1,
+                    "loc": entry.loc,
+                    "functions": len(entry.measurements()),
+                    "hard-to-maintain": profile[2],
+                    "unmaintainable": profile[2],
+                }
+            else:
+                language_entry = languages[entry.language]
+                language_entry["files"] += 1
+                language_entry["loc"] += entry.loc
+                language_entry["functions"] += len(entry.measurements())
+                language_entry["hard-to-maintain"] += profile[2]
+                language_entry["unmaintainable"] += profile[3]
+                table = Table(
+                    "Language",
+                    "Files",
+                    "Lines of Code",
+                    "Functions",
+                    "⚠️",
+                    "🚨",
+                    expand=True,
+                    box=box.SIMPLE,
+                )
+                for language, counts in languages.items():
+                    files = counts["files"]
+                    loc = counts["loc"]
+                    functions = counts["functions"]
+                    hard_to_maintain = counts["hard-to-maintain"]
+                    unmaintainable = counts["unmaintainable"]
+                    table.add_row(
+                        language,
+                        f"{files:n}",
+                        f"{loc:n}",
+                        f"{functions:n}",
+                        f"{hard_to_maintain:n}",
+                        f"{unmaintainable:n}",
+                    )
+                live.update(table)
+
+        _scan_folder(codebase, path, cached_report, add_file_entry)
     return codebase
 
 
 def _scan_folder(
-    codebase: Codebase, folder: Path, cached_report: Union[Report, None] = None
+    codebase: Codebase,
+    folder: Path,
+    cached_report: Union[Report, None] = None,
+    add_file_entry: Union[Callable[[SourceFileEntry], None], None] = None,
 ):
-    # table = Table('Language', 'Files', 'LOC', box=box.SIMPLE)
-    # live = Live(table)
-    # table.add_row("Python", "1", "20")
-    # live.start()
-    spinner = Halo(text="Scanning", spinner="dots")
-    spinner.start()
-    scanned = 0
     for root, dirs, files in os.walk(folder.absolute()):
         files = [f for f in files if not f[0] == "."]
         dirs[:] = [d for d in dirs if not d[0] == "."]
@@ -53,17 +105,17 @@ def _scan_folder(
                 language = lexer.__class__.name
                 if language in languages:
                     file_path = os.path.join(root, file)
-                    _add_file(codebase, lexer, folder, file_path, cached_report)
-                    scanned += 1
-                    # live.update(table, refresh=True)
-                    spinner.text = f"Scanned {scanned} file(s)"
+                    file_entry = _add_file(
+                        codebase, lexer, folder, file_path, cached_report
+                    )
+                    if add_file_entry:
+                        add_file_entry(file_entry)
                 elif language in ignored:
                     pass
                 else:
                     print(f"Unclassified: {language}")
             except ClassNotFound:
                 pass
-    spinner.succeed()
 
 
 def _add_file(
@@ -72,7 +124,7 @@ def _add_file(
     root: Path,
     path: str,
     cached_report: Union[Report, None] = None,
-):
+) -> SourceFileEntry:
     checksum = calculate_checksum(path)
     rel_path = relpath(path, root)
     cached_entry = None
@@ -83,15 +135,15 @@ def _add_file(
         except KeyError:
             pass
     if cached_entry and cached_entry.checksum() == checksum:
-        codebase.add_file(
-            SourceFileEntry(
-                rel_path,
-                checksum,
-                cached_entry.language,
-                cached_entry.loc,
-                cached_entry.measurements(),
-            )
+        entry = SourceFileEntry(
+            rel_path,
+            checksum,
+            cached_entry.language,
+            cached_entry.loc,
+            cached_entry.measurements(),
         )
+        codebase.add_file(entry)
+        return entry
     else:
         with open(path) as f:
             code = f.read()
@@ -103,11 +155,11 @@ def _add_file(
             measurements = scan_file(all_tokens, scope_extractor)
         else:
             measurements = []
-        codebase.add_file(
-            SourceFileEntry(
-                rel_path, checksum, lexer.__class__.name, file_loc, measurements
-            )
+        entry = SourceFileEntry(
+            rel_path, checksum, lexer.__class__.name, file_loc, measurements
         )
+        codebase.add_file(entry)
+        return entry
 
 
 def scan_file(

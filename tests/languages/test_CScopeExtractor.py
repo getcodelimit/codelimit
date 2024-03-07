@@ -1,4 +1,4 @@
-from pygments.lexers import CLexer
+from pygments.lexers.c_cpp import CLexer
 
 from codelimit.common.lexer_utils import lex
 from codelimit.common.scope.scope_extractor_utils import build_scopes
