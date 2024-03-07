@@ -59,10 +59,7 @@ def scan(
 ):
     cache_dir = path.joinpath(".codelimit_cache").resolve()
     report_path = cache_dir.joinpath("codelimit.json").resolve()
-    if report_path.exists():
-        cached_report = ReportReader.from_json(report_path.read_text())
-    else:
-        cached_report = None
+    cached_report = _read_cached_report(report_path)
     codebase = scan_codebase(path, cached_report)
     codebase.aggregate()
     report = Report(codebase)
@@ -76,6 +73,14 @@ def scan(
     # if sys.stdout.isatty():
     #     app = CodeLimitApp(report)
     #     app.run()
+
+
+def _read_cached_report(report_path: Path) -> Optional[Report]:
+    if report_path.exists():
+        cached_report = ReportReader.from_json(report_path.read_text())
+        if cached_report and cached_report.version == Report.VERSION:
+            return cached_report
+    return None
 
 
 @cli.command(help="Upload report to Code Limit")
@@ -107,6 +112,9 @@ def upload(
 ):
     if report_file:
         report = ReportReader.from_json(report_file.read_text())
+        if not report:
+            print("[red]Could not read report file[/red]")
+            raise typer.Exit(code=1)
     else:
         cached_report = read_cached_report(Path("."))
         if not cached_report:

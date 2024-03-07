@@ -19,6 +19,7 @@ class ReportWriter:
         json += self._open("{")
         json += self._collection(
             [
+                self._line(f'"version": "{self.report.version}"'),
                 self._line(f'"uuid": "{self.report.uuid}"'),
                 self._line(f'"root": "{self.report.codebase.root}"'),
                 self._codebase_to_json(),

@@ -17,6 +17,7 @@ def test_empty_measurements_collection():
 
     json = ""
     json += "{\n"
+    json += f'  "version": "{report.version}",\n'
     json += f'  "uuid": "{report.uuid}",\n'
     json += '  "root": "/",\n'
     json += '  "codebase": {\n'

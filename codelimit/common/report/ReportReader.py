@@ -1,18 +1,22 @@
 from json import loads
+from typing import Optional
 
 from codelimit.common.Codebase import Codebase
-from codelimit.common.SourceFileEntry import SourceFileEntry
 from codelimit.common.Location import Location
-from codelimit.common.report.Report import Report
 from codelimit.common.Measurement import Measurement
+from codelimit.common.SourceFileEntry import SourceFileEntry
+from codelimit.common.report.Report import Report
 
 
 class ReportReader:
     @staticmethod
-    def from_json(json: str) -> Report:
+    def from_json(json: str) -> Optional[Report]:
         d = loads(json)
         codebase = Codebase(d["root"])
         report = Report(codebase)
+        report.version = d["version"] if "version" in d else None
+        if report.version != Report.VERSION:
+            return None
         report.uuid = d["uuid"]
         for k, v in d["codebase"]["files"].items():
             measurements: list[Measurement] = []

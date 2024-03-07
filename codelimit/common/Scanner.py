@@ -57,16 +57,13 @@ def scan_codebase(path: Path, cached_report: Union[Report, None] = None) -> Code
                 language_entry["functions"] += len(entry.measurements())
                 language_entry["hard-to-maintain"] += profile[2]
                 language_entry["unmaintainable"] += profile[3]
-                table = Table(
-                    "Language",
-                    "Files",
-                    "Lines of Code",
-                    "Functions",
-                    "⚠️",
-                    "🚨",
-                    expand=True,
-                    box=box.SIMPLE,
-                )
+                table = Table(title="Path here...", expand=True, box=box.SIMPLE)
+                table.add_column("Language")
+                table.add_column("Files")
+                table.add_column("Lines of Code")
+                table.add_column("Functions")
+                table.add_column("\u26A0", style="dark_orange")
+                table.add_column("\u2716", style="red")
                 for language, counts in languages.items():
                     files = counts["files"]
                     loc = counts["loc"]

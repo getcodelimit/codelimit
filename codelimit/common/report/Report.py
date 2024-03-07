@@ -9,7 +9,10 @@ from codelimit.common.utils import make_profile
 
 
 class Report:
+    VERSION = "1.0"
+
     def __init__(self, codebase: Codebase):
+        self.version = self.VERSION
         self.uuid = str(uuid4())
         self.codebase = codebase
 

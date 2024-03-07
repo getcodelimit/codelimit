@@ -23,6 +23,7 @@ def test_to_json():
 
     expected = ""
     expected += "{\n"
+    expected += '  "version": "' + report.version + '",\n'
     expected += '  "uuid": "' + report.uuid + '",\n'
     expected += '  "root": "/",\n'
     expected += '  "codebase": {\n'
@@ -79,9 +80,8 @@ def test_to_json_multiple():
     serializer = ReportWriter(report, False)
 
     expected = (
-        '{"uuid": "'
-        + report.uuid
-        + '", "root": "/", "codebase": {"tree": {"./": {"entries": ["foo.py", '
+        f'{{"version": "{report.version}", "uuid": "{report.uuid}", '
+        + '"root": "/", "codebase": {"tree": {"./": {"entries": ["foo.py", '
         + '"bar.py"], "profile": [20, 0, 0, 0]}}, '
         + '"files": {"foo.py": {"checksum": "abcd1234", "language": "Python", '
         + '"loc": 20, "profile": [10, 0, 0, 0], "measurements": '

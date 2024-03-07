@@ -16,6 +16,7 @@ ignored = [
     "Makefile",
     "Markdown",
     "Nginx configuration file",
+    "Protocol Buffer",
     "reStructuredText",
     "Text only",
     "TOML",
