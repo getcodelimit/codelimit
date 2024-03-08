@@ -8,14 +8,13 @@ from typing import Union, Callable
 from pygments.lexer import Lexer
 from pygments.lexers import get_lexer_for_filename
 from pygments.util import ClassNotFound
-from rich import box
 from rich.live import Live
-from rich.table import Table
 
 from codelimit.common.Codebase import Codebase
 from codelimit.common.Configuration import Configuration
 from codelimit.common.Location import Location
 from codelimit.common.Measurement import Measurement
+from codelimit.common.ScanResultTable import ScanResultTable
 from codelimit.common.SourceFileEntry import SourceFileEntry
 from codelimit.common.Token import Token
 from codelimit.common.lexer_utils import lex
@@ -57,28 +56,8 @@ def scan_codebase(path: Path, cached_report: Union[Report, None] = None) -> Code
                 language_entry["functions"] += len(entry.measurements())
                 language_entry["hard-to-maintain"] += profile[2]
                 language_entry["unmaintainable"] += profile[3]
-                table = Table(title="Path here...", expand=True, box=box.SIMPLE)
-                table.add_column("Language")
-                table.add_column("Files")
-                table.add_column("Lines of Code")
-                table.add_column("Functions")
-                table.add_column("\u26A0", style="dark_orange")
-                table.add_column("\u2716", style="red")
-                for language, counts in languages.items():
-                    files = counts["files"]
-                    loc = counts["loc"]
-                    functions = counts["functions"]
-                    hard_to_maintain = counts["hard-to-maintain"]
-                    unmaintainable = counts["unmaintainable"]
-                    table.add_row(
-                        language,
-                        f"{files:n}",
-                        f"{loc:n}",
-                        f"{functions:n}",
-                        f"{hard_to_maintain:n}",
-                        f"{unmaintainable:n}",
-                    )
-                live.update(table)
+            table = ScanResultTable(languages)
+            live.update(table)
 
         _scan_folder(codebase, path, cached_report, add_file_entry)
     return codebase
