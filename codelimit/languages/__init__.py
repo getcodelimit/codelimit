@@ -1,4 +1,4 @@
-languages = ["C", "JavaScript", "Python", "TypeScript"]
+languages = ["C", "Java", "JavaScript", "Python", "TypeScript"]
 ignored = [
     "ASCII armored",
     "ASN.1",

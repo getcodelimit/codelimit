@@ -14,7 +14,6 @@ from codelimit.common.utils import delete_indices
 
 class PythonScopeExtractor(ScopeExtractor):
     def extract_headers(self, tokens: list[Token]) -> list[Header]:
-        result = []
         matches = match(
             tokens,
             [
@@ -23,12 +22,10 @@ class PythonScopeExtractor(ScopeExtractor):
                 BalancedPredicate(SymbolPredicate("("), SymbolPredicate(")")),
             ],
         )
-        for m in matches:
-            result.append(Header(m.tokens[1].value, m))
-        return result
+        return [Header(m.tokens[1].value, m) for m in matches]
 
     def extract_blocks(
-        self, tokens: list[Token], headers: list[Header]
+            self, tokens: list[Token], headers: list[Header]
     ) -> list[TokenRange]:
         lines = _get_token_lines(tokens)
         result = []
