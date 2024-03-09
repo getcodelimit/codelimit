@@ -1,0 +1,25 @@
+name: 'code-style'
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  format:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout sources'
+        uses: actions/checkout@v2
+      - name: 'Format code with black'
+        run: |
+          pip install black
+          black .
+      - name: 'Lint code with Ruff'
+        run: |
+          pip install ruff
+          ruff check .
+          ruff fix .
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: 'style fixes by ruff'

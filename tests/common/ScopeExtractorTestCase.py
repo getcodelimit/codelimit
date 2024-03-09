@@ -18,3 +18,7 @@ class ScopeExtractorTestCase(unittest.TestCase):
     @abstractmethod
     def test_single_scope(self):
         pass
+
+    @abstractmethod
+    def test_multiple_scopes(self):
+        pass

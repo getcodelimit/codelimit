@@ -56,7 +56,7 @@ def scan_codebase(path: Path, cached_report: Union[Report, None] = None) -> Code
                 language_entry["functions"] += len(entry.measurements())
                 language_entry["hard-to-maintain"] += profile[2]
                 language_entry["unmaintainable"] += profile[3]
-            table = ScanResultTable(languages)
+            table = ScanResultTable(path, languages)
             live.update(table)
 
         _scan_folder(codebase, path, cached_report, add_file_entry)

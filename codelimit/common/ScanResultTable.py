@@ -1,18 +1,20 @@
+from pathlib import Path
+
 from rich import box
 from rich.table import Table
 from rich.text import Text
 
 
 class ScanResultTable(Table):
-    def __init__(self, languages: dict):
-        super().__init__(title="Path here...", expand=True, box=box.SIMPLE)
+    def __init__(self, path: Path, languages: dict):
+        super().__init__(title=f'Code Limit scan result for: {path.absolute().name}', expand=True, box=box.SIMPLE)
         self.languages = languages
         self.add_column("Language")
-        self.add_column("Files")
-        self.add_column("Lines of Code")
-        self.add_column("Functions")
-        self.add_column("\u26A0")
-        self.add_column("\u2716")
+        self.add_column("Files", justify="right")
+        self.add_column("Lines of Code", justify="right")
+        self.add_column("Functions", justify="right")
+        self.add_column("\u26A0", justify="right")
+        self.add_column("\u2716", justify="right")
         self._populate()
 
     def _populate(self):
