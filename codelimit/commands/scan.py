@@ -21,9 +21,6 @@ def scan_command(path: Path):
         cache_dir_gitignore = cache_dir.joinpath(".gitignore").resolve()
         cache_dir_gitignore.write_text("# Created by codelimit automatically.\n*\n")
     report_path.write_text(ReportWriter(report).to_json())
-    # if sys.stdout.isatty():
-    #     app = CodeLimitApp(report)
-    #     app.run()
 
 
 def _read_cached_report(report_path: Path) -> Optional[Report]:
