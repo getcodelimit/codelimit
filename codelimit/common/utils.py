@@ -66,7 +66,7 @@ def render_quality_profile(profile: list[int]) -> Text:
 def path_has_extension(path: str, suffixes: Union[str, list[str]]):
     dot_index = path.rfind(".")
     if dot_index >= 0:
-        suffix = path[dot_index + 1:]
+        suffix = path[dot_index + 1 :]
         if isinstance(suffixes, list):
             return suffix in suffixes
         else:
@@ -130,13 +130,13 @@ def format_measurement(path: str, measurement: Measurement) -> Text:
     result.append(str(measurement.value))
     result.append(" ")
     if measurement.value > 60:
-        result.append('\u2716', style=Style(color="red"))
+        result.append("\u2716", style=Style(color="red"))
     elif measurement.value > 30:
-        result.append('\u26A0', style=Style(color="dark_orange"))
+        result.append("\u26A0", style=Style(color="dark_orange"))
     elif measurement.value > 15:
-        result.append('\u2713', style=Style(color="yellow"))
+        result.append("\u2713", style=Style(color="yellow"))
     else:
-        result.append('\u2713', style=Style(color="green"))
+        result.append("\u2713", style=Style(color="green"))
     result.append(" ")
     result.append(measurement.unit_name)
     return result

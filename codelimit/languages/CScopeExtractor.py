@@ -2,7 +2,10 @@ from codelimit.common.Token import Token
 from codelimit.common.TokenRange import TokenRange
 from codelimit.common.scope.Header import Header
 from codelimit.common.scope.ScopeExtractor import ScopeExtractor
-from codelimit.common.scope.scope_extractor_utils import has_name_prefix, has_curly_suffix
+from codelimit.common.scope.scope_extractor_utils import (
+    has_name_prefix,
+    has_curly_suffix,
+)
 from codelimit.common.token_utils import get_balanced_symbol_token_indices
 
 

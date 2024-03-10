@@ -25,7 +25,7 @@ class PythonScopeExtractor(ScopeExtractor):
         return [Header(m.tokens[1].value, m) for m in matches]
 
     def extract_blocks(
-            self, tokens: list[Token], headers: list[Header]
+        self, tokens: list[Token], headers: list[Header]
     ) -> list[TokenRange]:
         lines = _get_token_lines(tokens)
         result = []

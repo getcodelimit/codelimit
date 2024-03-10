@@ -7,7 +7,9 @@ from codelimit.github_auth import get_github_token
 from codelimit.utils import read_cached_report, upload_report
 
 
-def upload_command(repository: str, branch: str, report_file: Path, token: str, url: str):
+def upload_command(
+    repository: str, branch: str, report_file: Path, token: str, url: str
+):
     if report_file:
         report = ReportReader.from_json(report_file.read_text())
         if not report:

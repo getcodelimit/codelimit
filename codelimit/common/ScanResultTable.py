@@ -7,7 +7,11 @@ from rich.text import Text
 
 class ScanResultTable(Table):
     def __init__(self, path: Path, languages: dict):
-        super().__init__(title=f'Code Limit scan result for: {path.absolute().name}', expand=True, box=box.SIMPLE)
+        super().__init__(
+            title=f"Code Limit scan result for: {path.absolute().name}",
+            expand=True,
+            box=box.SIMPLE,
+        )
         self.languages = languages
         self.add_column("Language")
         self.add_column("Files", justify="right")

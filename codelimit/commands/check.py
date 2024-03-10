@@ -28,9 +28,9 @@ def check_command(paths: list[Path], quiet: bool):
                     check_file(abs_path, check_result)
     exit_code = 1 if check_result.unmaintainable > 0 else 0
     if (
-            not quiet
-            or check_result.hard_to_maintain > 0
-            or check_result.unmaintainable > 0
+        not quiet
+        or check_result.hard_to_maintain > 0
+        or check_result.unmaintainable > 0
     ):
         check_result.report()
     raise typer.Exit(code=exit_code)

@@ -11,7 +11,7 @@ class JavaScopeExtractorTestCase(ScopeExtractorTestCase):
         code = ""
         code += "public class T {\n"
         code += "  public static void main(String[] args) {\n"
-        code += "    System.out.println(\"Hello world!\");\n"
+        code += '    System.out.println("Hello world!");\n'
         code += "  }\n"
         code += "}\n"
 
@@ -26,7 +26,7 @@ class JavaScopeExtractorTestCase(ScopeExtractorTestCase):
         code = ""
         code += "public class T {\n"
         code += "  public static void main(String[] args) {\n"
-        code += "    System.out.println(\"Hello world!\");\n"
+        code += '    System.out.println("Hello world!");\n'
         code += "  }\n"
         code += "}\n"
 
@@ -57,7 +57,7 @@ class JavaScopeExtractorTestCase(ScopeExtractorTestCase):
         code = ""
         code += "public class T {\n"
         code += "  public static void main(String[] args) {\n"
-        code += "    System.out.println(\"Hello world!\");\n"
+        code += '    System.out.println("Hello world!");\n'
         code += "  }\n"
         code += "}\n"
 
@@ -65,7 +65,7 @@ class JavaScopeExtractorTestCase(ScopeExtractorTestCase):
         result = build_scopes(tokens, JavaScopeExtractor())
 
         assert len(result) == 1
-        assert result[0].header.name == 'main'
+        assert result[0].header.name == "main"
 
     def test_multiple_scopes(self):
         code = ""
@@ -82,5 +82,5 @@ class JavaScopeExtractorTestCase(ScopeExtractorTestCase):
         result = build_scopes(tokens, JavaScopeExtractor())
 
         assert len(result) == 2
-        assert result[0].header.name == 'one'
-        assert result[1].header.name == 'two'
+        assert result[0].header.name == "one"
+        assert result[1].header.name == "two"
