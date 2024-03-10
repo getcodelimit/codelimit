@@ -1,8 +1,10 @@
 import hashlib
+import importlib
 import os
 import sys
+from math import ceil
 from typing import Union, Any
-import importlib
+
 from rich.style import Style
 from rich.text import Text
 
@@ -43,10 +45,28 @@ def merge_profiles(rc1: list[int], rc2: list[int]) -> list[int]:
     return [rc1[0] + rc2[0], rc1[1] + rc2[1], rc1[2] + rc2[2], rc1[3] + rc2[3]]
 
 
+def render_quality_profile(profile: list[int]) -> Text:
+    total = sum(profile)
+    very_high = ceil(((profile[3] / total) * 100) / 2) if total > 0 else 0
+    high = ceil(((profile[2] / total) * 100) / 2) if total > 0 else 0
+    medium = ceil(((profile[1] / total) * 100) / 2) if total > 0 else 0
+    low = 50 - very_high - high - medium
+    parts = []
+    if low > 0:
+        parts.append(("|" * low, Style(color="green")))
+    if medium > 0:
+        parts.append(("|" * medium, Style(color="yellow")))
+    if high > 0:
+        parts.append(("|" * high, Style(color="dark_orange")))
+    if very_high > 0:
+        parts.append(("|" * very_high, Style(color="red")))
+    return Text.assemble(*parts)
+
+
 def path_has_extension(path: str, suffixes: Union[str, list[str]]):
     dot_index = path.rfind(".")
     if dot_index >= 0:
-        suffix = path[dot_index + 1 :]
+        suffix = path[dot_index + 1:]
         if type(suffixes) == list:
             return suffix in suffixes
         else:
@@ -96,6 +116,30 @@ def clear_screen() -> None:
 def header(content: str):
     print(f"Code Limit (v. {version}, build date: {release_date})".center(80))
     print(content)
+
+
+def format_measurement(path: str, measurement: Measurement) -> Text:
+    result = Text()
+    result.append(path, style="bold")
+    result.append(":", style=Style(color="cyan"))
+    result.append(str(measurement.start.line))
+    result.append(":", style=Style(color="cyan"))
+    result.append(str(measurement.start.column))
+    result.append(":", style=Style(color="cyan"))
+    result.append(" ")
+    result.append(str(measurement.value))
+    result.append(" ")
+    if measurement.value > 60:
+        result.append('\u2716', style=Style(color="red"))
+    elif measurement.value > 30:
+        result.append('\u26A0', style=Style(color="dark_orange"))
+    elif measurement.value > 15:
+        result.append('\u2713', style=Style(color="yellow"))
+    else:
+        result.append('\u2713', style=Style(color="green"))
+    result.append(" ")
+    result.append(measurement.unit_name)
+    return result
 
 
 def format_unit(name: str, length: int, file: Union[str, None] = None) -> Text:

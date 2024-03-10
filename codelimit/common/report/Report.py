@@ -31,11 +31,12 @@ class Report:
                 return sorted_measurements[index].value
         return 0
 
-    def all_report_units_sorted_by_length_asc(self) -> list[ReportUnit]:
+    def all_report_units_sorted_by_length_asc(self, threshold=0) -> list[ReportUnit]:
         result = []
         for file, entry in self.codebase.files.items():
             for m in entry.measurements():
-                result.append(ReportUnit(file, m))
+                if m.value > threshold:
+                    result.append(ReportUnit(file, m))
         result = sorted(result, key=lambda unit: unit.measurement.value, reverse=True)
         return result
 
