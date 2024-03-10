@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  format:
+  code_style:
     runs-on: ubuntu-latest
     steps:
       - name: 'Checkout sources'
