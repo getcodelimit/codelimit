@@ -5,6 +5,7 @@ from os.path import relpath
 from pathlib import Path
 from typing import Union, Callable
 
+from pathspec import PathSpec
 from pygments.lexer import Lexer
 from pygments.lexers import get_lexer_for_filename
 from pygments.util import ClassNotFound
@@ -35,14 +36,13 @@ locale.setlocale(locale.LC_ALL, "")
 
 def scan_codebase(path: Path, cached_report: Union[Report, None] = None) -> Codebase:
     codebase = Codebase(str(path.absolute()))
-
     with Live() as live:
-        languages = {}
+        languages_totals = {}
 
         def add_file_entry(entry: SourceFileEntry):
             profile = make_count_profile(entry.measurements())
-            if entry.language not in languages:
-                languages[entry.language] = {
+            if entry.language not in languages_totals:
+                languages_totals[entry.language] = {
                     "files": 1,
                     "loc": entry.loc,
                     "functions": len(entry.measurements()),
@@ -50,13 +50,13 @@ def scan_codebase(path: Path, cached_report: Union[Report, None] = None) -> Code
                     "unmaintainable": profile[2],
                 }
             else:
-                language_entry = languages[entry.language]
+                language_entry = languages_totals[entry.language]
                 language_entry["files"] += 1
                 language_entry["loc"] += entry.loc
                 language_entry["functions"] += len(entry.measurements())
                 language_entry["hard-to-maintain"] += profile[2]
                 language_entry["unmaintainable"] += profile[3]
-            table = ScanResultTable(path, languages)
+            table = ScanResultTable(path, languages_totals)
             live.update(table)
 
         _scan_folder(codebase, path, cached_report, add_file_entry)
@@ -64,17 +64,18 @@ def scan_codebase(path: Path, cached_report: Union[Report, None] = None) -> Code
 
 
 def _scan_folder(
-    codebase: Codebase,
-    folder: Path,
-    cached_report: Union[Report, None] = None,
-    add_file_entry: Union[Callable[[SourceFileEntry], None], None] = None,
+        codebase: Codebase,
+        folder: Path,
+        cached_report: Union[Report, None] = None,
+        add_file_entry: Union[Callable[[SourceFileEntry], None], None] = None,
 ):
+    gitignore = _read_gitignore(folder)
     for root, dirs, files in os.walk(folder.absolute()):
         files = [f for f in files if not f[0] == "."]
         dirs[:] = [d for d in dirs if not d[0] == "."]
         for file in files:
             rel_path = Path(os.path.join(root, file)).relative_to(folder.absolute())
-            if is_excluded(rel_path):
+            if is_excluded(rel_path) or (gitignore is not None and is_excluded_by_gitignore(rel_path, gitignore)):
                 continue
             try:
                 lexer = get_lexer_for_filename(rel_path)
@@ -95,11 +96,11 @@ def _scan_folder(
 
 
 def _add_file(
-    codebase: Codebase,
-    lexer: Lexer,
-    root: Path,
-    path: str,
-    cached_report: Union[Report, None] = None,
+        codebase: Codebase,
+        lexer: Lexer,
+        root: Path,
+        path: str,
+        cached_report: Union[Report, None] = None,
 ) -> SourceFileEntry:
     checksum = calculate_checksum(path)
     rel_path = relpath(path, root)
@@ -139,7 +140,7 @@ def _add_file(
 
 
 def scan_file(
-    tokens: list[Token], scope_extractor: ScopeExtractor
+        tokens: list[Token], scope_extractor: ScopeExtractor
 ) -> list[Measurement]:
     scopes = build_scopes(tokens, scope_extractor)
     measurements: list[Measurement] = []
@@ -169,3 +170,14 @@ def is_excluded(path: Path):
             if fnmatch.fnmatch(str(path), exclude):
                 return True
     return False
+
+
+def _read_gitignore(path: Path) -> PathSpec | None:
+    gitignore_path = path.joinpath(".gitignore")
+    if gitignore_path.exists():
+        return PathSpec.from_lines("gitignore", gitignore_path.read_text().splitlines())
+    return None
+
+
+def is_excluded_by_gitignore(path: Path, gitignore: PathSpec):
+    return gitignore.match_file(path)

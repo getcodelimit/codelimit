@@ -16,6 +16,7 @@ typer = "^0.9.0"
 aiohttp = "^3.9.0"
 pyyaml = "^6.0.1"
 rich = "^13.7.1"
+pathspec = "^0.12.1"
 
 [tool.poe.tasks.bundle]
 help = "Create a binary executable using pyinstaller"
