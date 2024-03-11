@@ -37,7 +37,7 @@ locale.setlocale(locale.LC_ALL, "")
 
 def scan_codebase(path: Path, cached_report: Union[Report, None] = None) -> Codebase:
     codebase = Codebase(str(path.absolute()))
-    print(f'  [bold]Directory[/bold]: {path.name}')
+    print(f"  [bold]Directory[/bold]: {path.name}")
     with Live() as live:
         languages_totals = {}
 

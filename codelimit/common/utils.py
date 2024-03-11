@@ -161,9 +161,11 @@ def format_unit(name: str, length: int, file: Union[str, None] = None) -> Text:
 
 
 def load_scope_extractor_by_name(language: str) -> ScopeExtractor | None:
-    language = language.replace('+', 'p')
+    language = language.replace("+", "p")
     try:
-        module = importlib.import_module(f"codelimit.languages.{language}ScopeExtractor")
+        module = importlib.import_module(
+            f"codelimit.languages.{language}ScopeExtractor"
+        )
         scope_extractor_class = getattr(module, f"{language}ScopeExtractor")
         return scope_extractor_class()
     except ModuleNotFoundError:
