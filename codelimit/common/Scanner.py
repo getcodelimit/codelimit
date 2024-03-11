@@ -64,10 +64,10 @@ def scan_codebase(path: Path, cached_report: Union[Report, None] = None) -> Code
 
 
 def _scan_folder(
-        codebase: Codebase,
-        folder: Path,
-        cached_report: Union[Report, None] = None,
-        add_file_entry: Union[Callable[[SourceFileEntry], None], None] = None,
+    codebase: Codebase,
+    folder: Path,
+    cached_report: Union[Report, None] = None,
+    add_file_entry: Union[Callable[[SourceFileEntry], None], None] = None,
 ):
     gitignore = _read_gitignore(folder)
     for root, dirs, files in os.walk(folder.absolute()):
@@ -75,7 +75,9 @@ def _scan_folder(
         dirs[:] = [d for d in dirs if not d[0] == "."]
         for file in files:
             rel_path = Path(os.path.join(root, file)).relative_to(folder.absolute())
-            if is_excluded(rel_path) or (gitignore is not None and is_excluded_by_gitignore(rel_path, gitignore)):
+            if is_excluded(rel_path) or (
+                gitignore is not None and is_excluded_by_gitignore(rel_path, gitignore)
+            ):
                 continue
             try:
                 lexer = get_lexer_for_filename(rel_path)
@@ -96,11 +98,11 @@ def _scan_folder(
 
 
 def _add_file(
-        codebase: Codebase,
-        lexer: Lexer,
-        root: Path,
-        path: str,
-        cached_report: Union[Report, None] = None,
+    codebase: Codebase,
+    lexer: Lexer,
+    root: Path,
+    path: str,
+    cached_report: Union[Report, None] = None,
 ) -> SourceFileEntry:
     checksum = calculate_checksum(path)
     rel_path = relpath(path, root)
@@ -140,7 +142,7 @@ def _add_file(
 
 
 def scan_file(
-        tokens: list[Token], scope_extractor: ScopeExtractor
+    tokens: list[Token], scope_extractor: ScopeExtractor
 ) -> list[Measurement]:
     scopes = build_scopes(tokens, scope_extractor)
     measurements: list[Measurement] = []
