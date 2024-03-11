@@ -1,14 +1,11 @@
-from pathlib import Path
-
 from rich import box
 from rich.table import Table
 from rich.text import Text
 
 
 class ScanResultTable(Table):
-    def __init__(self, path: Path, languages: dict):
+    def __init__(self, languages: dict):
         super().__init__(
-            title=f"Code Limit scan result for: {path.absolute().name}",
             expand=True,
             box=box.SIMPLE,
         )

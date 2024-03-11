@@ -10,6 +10,7 @@ from pygments.lexer import Lexer
 from pygments.lexers import get_lexer_for_filename
 from pygments.util import ClassNotFound
 from rich.live import Live
+from rich import print
 
 from codelimit.common.Codebase import Codebase
 from codelimit.common.Configuration import Configuration
@@ -36,6 +37,7 @@ locale.setlocale(locale.LC_ALL, "")
 
 def scan_codebase(path: Path, cached_report: Union[Report, None] = None) -> Codebase:
     codebase = Codebase(str(path.absolute()))
+    print(f'  [bold]Directory[/bold]: {path.name}')
     with Live() as live:
         languages_totals = {}
 
@@ -56,7 +58,7 @@ def scan_codebase(path: Path, cached_report: Union[Report, None] = None) -> Code
                 language_entry["functions"] += len(entry.measurements())
                 language_entry["hard-to-maintain"] += profile[2]
                 language_entry["unmaintainable"] += profile[3]
-            table = ScanResultTable(path, languages_totals)
+            table = ScanResultTable(languages_totals)
             live.update(table)
 
         _scan_folder(codebase, path, cached_report, add_file_entry)
@@ -82,8 +84,9 @@ def _scan_folder(
             try:
                 lexer = get_lexer_for_filename(rel_path)
                 language = lexer.__class__.name
+                file_path = os.path.join(root, file)
                 if language in languages:
-                    file_path = os.path.join(root, file)
+                    print(f"Scanning: {language} ({file_path})")
                     file_entry = _add_file(
                         codebase, lexer, folder, file_path, cached_report
                     )
@@ -92,7 +95,7 @@ def _scan_folder(
                 elif language in ignored:
                     pass
                 else:
-                    print(f"Unclassified: {language}")
+                    print(f"Unclassified: {language} ({file_path})")
             except ClassNotFound:
                 pass
 

@@ -1,4 +1,4 @@
-languages = ["C", "Java", "JavaScript", "Python", "TypeScript"]
+languages = ["C", "C++", "Java", "JavaScript", "Python", "TypeScript"]
 ignored = [
     "ASCII armored",
     "ASN.1",
@@ -6,7 +6,9 @@ ignored = [
     "Bash",
     "Batchfile",
     "BC",
+    "CMake",
     "CSS",
+    "Diff",
     "Docker",
     "Graphviz",
     "HTML",
@@ -20,6 +22,7 @@ ignored = [
     "reStructuredText",
     "Text only",
     "TOML",
+    "VimL",
     "XML",
     "YAML",
 ]
