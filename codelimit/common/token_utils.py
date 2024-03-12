@@ -4,7 +4,7 @@ from codelimit.common.Token import Token
 
 
 def get_balanced_symbol_token_indices(
-        tokens: list[Token], start: str, end: str, extract_nested=False
+    tokens: list[Token], start: str, end: str, extract_nested=False
 ) -> list[Tuple[int, int]]:
     result = []
     block_starts = []

@@ -3,7 +3,8 @@ from codelimit.common.scope.Header import Header
 from codelimit.common.scope.ScopeExtractor import ScopeExtractor
 from codelimit.common.scope.scope_extractor_utils import (
     has_curly_suffix,
-    has_name_prefix, get_balanced_blocks,
+    has_name_prefix,
+    get_balanced_blocks,
 )
 from codelimit.common.token_utils import get_balanced_symbol_token_indices
 
@@ -20,7 +21,7 @@ class JavaScopeExtractor(ScopeExtractor):
                 result.append(
                     Header(
                         tokens[bt[0] - 1].value,
-                        TokenRange(tokens[bt[0] - 1: bt[1] + 1]),
+                        TokenRange(tokens[bt[0] - 1 : bt[1] + 1]),
                     )
                 )
         return result
