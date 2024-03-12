@@ -62,6 +62,8 @@ def scan_codebase(path: Path, cached_report: Union[Report, None] = None) -> Code
             live.update(table)
 
         _scan_folder(codebase, path, cached_report, add_file_entry)
+    total_loc = sum([entry['loc'] for entry in languages_totals.values()])
+    print(f"  [bold]Total lines of code[/bold]: {total_loc:n}")
     return codebase
 
 
