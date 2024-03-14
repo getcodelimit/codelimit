@@ -8,7 +8,7 @@ from codelimit.common.CheckResult import CheckResult
 from codelimit.common.Scanner import is_excluded, scan_file
 from codelimit.common.lexer_utils import lex
 from codelimit.common.utils import load_scope_extractor_by_name
-from codelimit.languages import languages
+from codelimit.languages import Language
 
 
 def check_command(paths: list[Path], quiet: bool):
@@ -28,9 +28,9 @@ def check_command(paths: list[Path], quiet: bool):
                     check_file(abs_path, check_result)
     exit_code = 1 if check_result.unmaintainable > 0 else 0
     if (
-        not quiet
-        or check_result.hard_to_maintain > 0
-        or check_result.unmaintainable > 0
+            not quiet
+            or check_result.hard_to_maintain > 0
+            or check_result.unmaintainable > 0
     ):
         check_result.report()
     raise typer.Exit(code=exit_code)
@@ -39,7 +39,7 @@ def check_command(paths: list[Path], quiet: bool):
 def check_file(path: Path, check_result: CheckResult):
     lexer = get_lexer_for_filename(path)
     language = lexer.__class__.name
-    if language in languages:
+    if language in Language:
         with open(path) as f:
             code = f.read()
         tokens = lex(lexer, code, False)

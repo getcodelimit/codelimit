@@ -1,4 +1,15 @@
-languages = ["C", "C++", "Java", "JavaScript", "Python", "TypeScript"]
+from enum import Enum
+
+
+class Language(Enum):
+    C = "C"
+    Cpp = "C++"
+    Java = "Java"
+    JavaScript = "JavaScript"
+    Python = "Python"
+    TypeScript = "TypeScript"
+
+
 ignored = [
     "ASCII armored",
     "ASN.1",

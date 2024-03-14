@@ -9,8 +9,8 @@ from pathspec import PathSpec
 from pygments.lexer import Lexer
 from pygments.lexers import get_lexer_for_filename
 from pygments.util import ClassNotFound
-from rich.live import Live
 from rich import print
+from rich.live import Live
 
 from codelimit.common.Codebase import Codebase
 from codelimit.common.Configuration import Configuration
@@ -30,7 +30,7 @@ from codelimit.common.utils import (
     load_scope_extractor_by_name,
     make_count_profile,
 )
-from codelimit.languages import languages, ignored
+from codelimit.languages import ignored, Language
 
 locale.setlocale(locale.LC_ALL, "")
 
@@ -87,7 +87,7 @@ def _scan_folder(
                 lexer = get_lexer_for_filename(rel_path)
                 language = lexer.__class__.name
                 file_path = os.path.join(root, file)
-                if language in languages:
+                if language in Language:
                     print(f"Scanning: {language} ({file_path})")
                     file_entry = _add_file(
                         codebase, lexer, folder, file_path, cached_report
