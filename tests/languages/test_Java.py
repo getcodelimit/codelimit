@@ -1,4 +1,4 @@
-from codelimit.languages import Language
+from codelimit.languages import LanguageName
 from tests.common.ScopeExtractorTestCase import assert_units
 
 
@@ -11,7 +11,7 @@ def test_simple_main_function():
         }
     """
 
-    assert_units(code, Language.Java, {"main": 3})
+    assert_units(code, LanguageName.Java, {"main": 3})
 
 
 def test_two_functions():
@@ -26,4 +26,4 @@ def test_two_functions():
         }
     """
 
-    assert_units(code, Language.Java, {"one": 3, 'two': 3})
+    assert_units(code, LanguageName.Java, {"one": 3, 'two': 3})

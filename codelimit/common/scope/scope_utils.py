@@ -1,28 +1,29 @@
 from typing import Optional
 
+from codelimit.common.Language import Language
 from codelimit.common.Token import Token
 from codelimit.common.TokenRange import TokenRange
 from codelimit.common.scope.Header import Header
 from codelimit.common.scope.Scope import Scope
-from codelimit.common.scope.ScopeExtractor import ScopeExtractor
 from codelimit.common.source_utils import filter_tokens, filter_nocl_comment_tokens
+from codelimit.common.token_matching.TokenMatching import match, TokenPredicate
 from codelimit.common.token_utils import sort_tokens, get_balanced_symbol_token_indices
 from codelimit.common.utils import delete_indices
 
 
-def build_scopes(tokens: list[Token], scope_extractor: ScopeExtractor) -> list[Scope]:
+def build_scopes(tokens: list[Token], language: Language) -> list[Scope]:
     code_tokens = filter_tokens(tokens)
     nocl_comment_tokens = filter_nocl_comment_tokens(tokens)
-    headers = scope_extractor.extract_headers(code_tokens)
-    blocks = scope_extractor.extract_blocks(code_tokens, headers)
+    headers = language.extract_headers(code_tokens)
+    blocks = language.extract_blocks(code_tokens, headers)
     scopes = _build_scopes_from_headers_and_blocks(
-        headers, blocks, scope_extractor.allow_nested_scopes
+        headers, blocks, language.allow_nested_scopes
     )
     return _filter_nocl_scopes(scopes, nocl_comment_tokens)
 
 
 def _build_scopes_from_headers_and_blocks(
-    headers: list[Header], blocks: list[TokenRange], allow_nested=False
+        headers: list[Header], blocks: list[TokenRange], allow_nested=False
 ) -> list[Scope]:
     result: list[Scope] = []
     reverse_headers = headers[::-1]
@@ -43,7 +44,7 @@ def _build_scopes_from_headers_and_blocks(
 
 
 def _find_scope_blocks_indices(
-    header: TokenRange, blocks: list[TokenRange], allow_nested=False
+        header: TokenRange, blocks: list[TokenRange], allow_nested=False
 ) -> list[int]:
     body_block = _get_closest_block(header, blocks, allow_nested)
     if body_block:
@@ -55,7 +56,7 @@ def _find_scope_blocks_indices(
 
 
 def _get_closest_block(
-    header: TokenRange, blocks: list[TokenRange], allow_nested=False
+        header: TokenRange, blocks: list[TokenRange], allow_nested=False
 ) -> Optional[TokenRange]:
     for block in blocks:
         if not allow_nested and block.contains(header):
@@ -66,7 +67,7 @@ def _get_closest_block(
 
 
 def _filter_nocl_scopes(
-    scopes: list[Scope], nocl_comment_tokens: list[Token]
+        scopes: list[Scope], nocl_comment_tokens: list[Token]
 ) -> list[Scope]:
     nocl_comment_lines = [t.location.line for t in nocl_comment_tokens]
 
@@ -92,10 +93,20 @@ def has_curly_suffix(tokens: list[Token], index):
     return index < len(tokens) - 1 and tokens[index + 1].is_symbol("{")
 
 
-def get_balanced_blocks(
-    tokens: list[Token], open: str, close: str, extract_nested=False
+def get_headers(tokens: list[Token], pattern: list[TokenPredicate]):
+    matches = match(tokens, pattern)
+    result = []
+    for m in matches:
+        name_token = next(t for t in m.tokens if t.is_name())
+        if name_token:
+            result.append(Header(name_token.value, m))
+    return result
+
+
+def get_blocks(
+        tokens: list[Token], open: str, close: str, extract_nested=False
 ) -> list[TokenRange]:
     balanced_tokens = get_balanced_symbol_token_indices(
         tokens, open, close, extract_nested
     )
-    return [TokenRange(tokens[bt[0] : bt[1] + 1]) for bt in balanced_tokens]
+    return [TokenRange(tokens[bt[0]: bt[1] + 1]) for bt in balanced_tokens]

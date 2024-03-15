@@ -1,8 +1,8 @@
 from pygments.lexers import PythonLexer
 
 from codelimit.common.lexer_utils import lex
-from codelimit.common.scope.scope_extractor_utils import _find_scope_blocks_indices
-from codelimit.languages.PythonScopeExtractor import PythonScopeExtractor
+from codelimit.common.scope.scope_utils import _find_scope_blocks_indices
+from codelimit.languages.Python import Python
 
 
 def test_find_scope_blocks_indices():
@@ -14,7 +14,7 @@ def test_find_scope_blocks_indices():
     code += "  foo()\n"
 
     tokens = lex(PythonLexer(), code)
-    extractor = PythonScopeExtractor()
+    extractor = Python()
     headers = extractor.extract_headers(tokens)
     blocks = extractor.extract_blocks(tokens, headers)
 

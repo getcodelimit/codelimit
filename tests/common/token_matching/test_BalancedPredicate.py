@@ -2,12 +2,12 @@ from pygments.token import Punctuation
 
 from codelimit.common.Location import Location
 from codelimit.common.Token import Token
-from codelimit.common.token_matching.BalancedPredicate import BalancedPredicate
-from codelimit.common.token_matching.TokenMatching import SymbolPredicate
+from codelimit.common.token_matching.predicates.Balanced import Balanced
+from codelimit.common.token_matching.predicates.Symbol import Symbol
 
 
 def test_simple():
-    predicate = BalancedPredicate(SymbolPredicate("("), SymbolPredicate(")"))
+    predicate = Balanced(Symbol("("), Symbol(")"))
 
     assert not predicate.accept(Token(Location(1, 1), Punctuation, "["))
     assert predicate.accept(Token(Location(1, 1), Punctuation, "("))
@@ -17,8 +17,15 @@ def test_simple():
     assert not predicate.accept(Token(Location(1, 1), Punctuation, "]"))
 
 
+def test_construct_with_string():
+    predicate = Balanced("(", ")")
+
+    assert predicate.accept(Token(Location(1, 1), Punctuation, "("))
+    assert predicate.accept(Token(Location(1, 1), Punctuation, ")"))
+
+
 def test_nested():
-    predicate = BalancedPredicate(SymbolPredicate("("), SymbolPredicate(")"))
+    predicate = Balanced(Symbol("("), Symbol(")"))
 
     assert predicate.accept(Token(Location(1, 1), Punctuation, "("))
     assert predicate.accept(Token(Location(1, 1), Punctuation, "("))
@@ -30,7 +37,7 @@ def test_nested():
 
 
 def test_unbalanced():
-    predicate = BalancedPredicate(SymbolPredicate("("), SymbolPredicate(")"))
+    predicate = Balanced(Symbol("("), Symbol(")"))
 
     assert predicate.accept(Token(Location(1, 1), Punctuation, "("))
     assert predicate.accept(Token(Location(1, 1), Punctuation, ")"))

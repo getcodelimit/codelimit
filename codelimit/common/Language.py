@@ -5,7 +5,7 @@ from codelimit.common.TokenRange import TokenRange
 from codelimit.common.scope.Header import Header
 
 
-class ScopeExtractor(ABC):
+class Language(ABC):
     def __init__(self, allow_nested_scopes=False):
         self.allow_nested_scopes = allow_nested_scopes
 

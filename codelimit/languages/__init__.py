@@ -1,7 +1,7 @@
 from enum import Enum
 
 
-class Language(Enum):
+class LanguageName(Enum):
     C = "C"
     Cpp = "C++"
     Java = "Java"

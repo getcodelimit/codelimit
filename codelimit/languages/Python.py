@@ -1,31 +1,20 @@
+from codelimit.common.Language import Language
 from codelimit.common.Token import Token
 from codelimit.common.TokenRange import TokenRange
 from codelimit.common.scope.Header import Header
-from codelimit.common.scope.ScopeExtractor import ScopeExtractor
-from codelimit.common.token_matching.BalancedPredicate import BalancedPredicate
-from codelimit.common.token_matching.TokenMatching import (
-    match,
-    KeywordPredicate,
-    NamePredicate,
-    SymbolPredicate,
-)
+from codelimit.common.scope.scope_utils import get_headers
+from codelimit.common.token_matching.predicates.Balanced import Balanced
+from codelimit.common.token_matching.predicates.Keyword import Keyword
+from codelimit.common.token_matching.predicates.Name import Name
 from codelimit.common.utils import delete_indices
 
 
-class PythonScopeExtractor(ScopeExtractor):
+class Python(Language):
     def extract_headers(self, tokens: list[Token]) -> list[Header]:
-        matches = match(
-            tokens,
-            [
-                KeywordPredicate("def"),
-                NamePredicate(),
-                BalancedPredicate(SymbolPredicate("("), SymbolPredicate(")")),
-            ],
-        )
-        return [Header(m.tokens[1].value, m) for m in matches]
+        return get_headers(tokens, [Keyword("def"), Name(), Balanced("(", ")")])
 
     def extract_blocks(
-        self, tokens: list[Token], headers: list[Header]
+            self, tokens: list[Token], headers: list[Header]
     ) -> list[TokenRange]:
         lines = _get_token_lines(tokens)
         result = []

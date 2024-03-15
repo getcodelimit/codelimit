@@ -9,7 +9,7 @@ from rich.style import Style
 from rich.text import Text
 
 from codelimit.common.Measurement import Measurement
-from codelimit.common.scope.ScopeExtractor import ScopeExtractor
+from codelimit.common.Language import Language
 from codelimit.version import version, release_date
 
 
@@ -160,13 +160,13 @@ def format_unit(name: str, length: int, file: Union[str, None] = None) -> Text:
     return result
 
 
-def load_scope_extractor_by_name(language: str) -> ScopeExtractor | None:
-    language = language.replace("+", "p")
+def load_language_by_name(name: str) -> Language | None:
+    name = name.replace("+", "p")
     try:
         module = importlib.import_module(
-            f"codelimit.languages.{language}ScopeExtractor"
+            f"codelimit.languages.{name}"
         )
-        scope_extractor_class = getattr(module, f"{language}ScopeExtractor")
-        return scope_extractor_class()
+        language_class = getattr(module, f"{name}")
+        return language_class()
     except ModuleNotFoundError:
         return None

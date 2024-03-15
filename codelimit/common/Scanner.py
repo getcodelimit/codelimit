@@ -22,15 +22,14 @@ from codelimit.common.Token import Token
 from codelimit.common.lexer_utils import lex
 from codelimit.common.report.Report import Report
 from codelimit.common.scope.Scope import count_lines
-from codelimit.common.scope.ScopeExtractor import ScopeExtractor
-from codelimit.common.scope.scope_extractor_utils import build_scopes
+from codelimit.common.Language import Language
+from codelimit.common.scope.scope_utils import build_scopes
 from codelimit.common.source_utils import filter_tokens
 from codelimit.common.utils import (
     calculate_checksum,
-    load_scope_extractor_by_name,
-    make_count_profile,
+    make_count_profile, load_language_by_name,
 )
-from codelimit.languages import ignored, Language
+from codelimit.languages import ignored, LanguageName
 
 locale.setlocale(locale.LC_ALL, "")
 
@@ -87,8 +86,7 @@ def _scan_folder(
                 lexer = get_lexer_for_filename(rel_path)
                 language = lexer.__class__.name
                 file_path = os.path.join(root, file)
-                if language in Language:
-                    print(f"Scanning: {language} ({file_path})")
+                if language in LanguageName:
                     file_entry = _add_file(
                         codebase, lexer, folder, file_path, cached_report
                     )
@@ -134,9 +132,10 @@ def _add_file(
         all_tokens = lex(lexer, code, False)
         code_tokens = filter_tokens(all_tokens)
         file_loc = count_lines(code_tokens)
-        scope_extractor = load_scope_extractor_by_name(lexer.__class__.name)
-        if scope_extractor:
-            measurements = scan_file(all_tokens, scope_extractor)
+        language_name = lexer.__class__.name
+        language = load_language_by_name(language_name)
+        if language:
+            measurements = scan_file(all_tokens, language)
         else:
             measurements = []
         entry = SourceFileEntry(
@@ -147,9 +146,9 @@ def _add_file(
 
 
 def scan_file(
-    tokens: list[Token], scope_extractor: ScopeExtractor
+    tokens: list[Token], language: Language
 ) -> list[Measurement]:
-    scopes = build_scopes(tokens, scope_extractor)
+    scopes = build_scopes(tokens, language)
     measurements: list[Measurement] = []
     if scopes:
         for scope in scopes:

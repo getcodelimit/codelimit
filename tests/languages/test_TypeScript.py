@@ -4,9 +4,9 @@ from tests.common.ScopeExtractorTestCase import assert_units
 
 def test_simple_function():
     code = """
-    function foo() {
-        return 'bar';
+    function foo(s: string): string {
+        return `${s}bar`;
     }
     """
 
-    assert_units(code, LanguageName.JavaScript, {"foo": 3})
+    assert_units(code, LanguageName.TypeScript, {"foo": 3})

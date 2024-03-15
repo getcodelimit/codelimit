@@ -7,8 +7,8 @@ from pygments.lexers import get_lexer_for_filename
 from codelimit.common.CheckResult import CheckResult
 from codelimit.common.Scanner import is_excluded, scan_file
 from codelimit.common.lexer_utils import lex
-from codelimit.common.utils import load_scope_extractor_by_name
-from codelimit.languages import Language
+from codelimit.common.utils import load_language_by_name
+from codelimit.languages import LanguageName
 
 
 def check_command(paths: list[Path], quiet: bool):
@@ -39,13 +39,13 @@ def check_command(paths: list[Path], quiet: bool):
 def check_file(path: Path, check_result: CheckResult):
     lexer = get_lexer_for_filename(path)
     language = lexer.__class__.name
-    if language in Language:
+    if language in LanguageName:
         with open(path) as f:
             code = f.read()
         tokens = lex(lexer, code, False)
-        scope_extractor = load_scope_extractor_by_name(lexer.__class__.name)
-        if scope_extractor:
-            measurements = scan_file(tokens, scope_extractor)
+        language = load_language_by_name(lexer.__class__.name)
+        if language:
+            measurements = scan_file(tokens, language)
             risks = sorted(
                 [m for m in measurements if m.value > 30],
                 key=lambda measurement: measurement.value,
