@@ -64,7 +64,7 @@ def test_iteration_macro_is_not_a_function():
         }
     """
 
-    assert_units(code, LanguageName.C, {'foo': 5})
+    assert_units(code, LanguageName.C, {"foo": 5})
 
 
 def test_formatting():
@@ -78,7 +78,7 @@ def test_formatting():
         }
     """
 
-    assert_units(code, LanguageName.C, {'nfs_register_sysctl': 7})
+    assert_units(code, LanguageName.C, {"nfs_register_sysctl": 7})
 
 
 def test_nested_header_but_no_body_inside_parent():
@@ -92,4 +92,4 @@ def test_nested_header_but_no_body_inside_parent():
         };
     """
 
-    assert_units(code, LanguageName.C, {'foo': 5})
+    assert_units(code, LanguageName.C, {"foo": 5})

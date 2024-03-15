@@ -163,9 +163,7 @@ def format_unit(name: str, length: int, file: Union[str, None] = None) -> Text:
 def load_language_by_name(name: str) -> Language | None:
     name = name.replace("+", "p")
     try:
-        module = importlib.import_module(
-            f"codelimit.languages.{name}"
-        )
+        module = importlib.import_module(f"codelimit.languages.{name}")
         language_class = getattr(module, f"{name}")
         return language_class()
     except ModuleNotFoundError:

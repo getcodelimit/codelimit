@@ -23,7 +23,7 @@ def build_scopes(tokens: list[Token], language: Language) -> list[Scope]:
 
 
 def _build_scopes_from_headers_and_blocks(
-        headers: list[Header], blocks: list[TokenRange], allow_nested=False
+    headers: list[Header], blocks: list[TokenRange], allow_nested=False
 ) -> list[Scope]:
     result: list[Scope] = []
     reverse_headers = headers[::-1]
@@ -44,7 +44,7 @@ def _build_scopes_from_headers_and_blocks(
 
 
 def _find_scope_blocks_indices(
-        header: TokenRange, blocks: list[TokenRange], allow_nested=False
+    header: TokenRange, blocks: list[TokenRange], allow_nested=False
 ) -> list[int]:
     body_block = _get_closest_block(header, blocks, allow_nested)
     if body_block:
@@ -56,7 +56,7 @@ def _find_scope_blocks_indices(
 
 
 def _get_closest_block(
-        header: TokenRange, blocks: list[TokenRange], allow_nested=False
+    header: TokenRange, blocks: list[TokenRange], allow_nested=False
 ) -> Optional[TokenRange]:
     for block in blocks:
         if not allow_nested and block.contains(header):
@@ -67,7 +67,7 @@ def _get_closest_block(
 
 
 def _filter_nocl_scopes(
-        scopes: list[Scope], nocl_comment_tokens: list[Token]
+    scopes: list[Scope], nocl_comment_tokens: list[Token]
 ) -> list[Scope]:
     nocl_comment_lines = [t.location.line for t in nocl_comment_tokens]
 
@@ -104,9 +104,9 @@ def get_headers(tokens: list[Token], pattern: list[TokenPredicate]):
 
 
 def get_blocks(
-        tokens: list[Token], open: str, close: str, extract_nested=False
+    tokens: list[Token], open: str, close: str, extract_nested=False
 ) -> list[TokenRange]:
     balanced_tokens = get_balanced_symbol_token_indices(
         tokens, open, close, extract_nested
     )
-    return [TokenRange(tokens[bt[0]: bt[1] + 1]) for bt in balanced_tokens]
+    return [TokenRange(tokens[bt[0] : bt[1] + 1]) for bt in balanced_tokens]

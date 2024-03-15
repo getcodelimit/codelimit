@@ -1,6 +1,14 @@
 from typing import Any
 
-from pygments.token import Keyword, Text, Whitespace, Comment, Punctuation, Operator, Name
+from pygments.token import (
+    Keyword,
+    Text,
+    Whitespace,
+    Comment,
+    Punctuation,
+    Operator,
+    Name,
+)
 
 from codelimit.common.Location import Location
 

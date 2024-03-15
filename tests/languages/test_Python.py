@@ -91,7 +91,7 @@ def test_trailing_global_code():
     ]
     """
 
-    assert_units(code, LanguageName.Python, {'foo': 2})
+    assert_units(code, LanguageName.Python, {"foo": 2})
 
 
 def test_get_headers_multi_header_with_comment():
@@ -104,7 +104,7 @@ def test_get_headers_multi_header_with_comment():
         foo()
     """
 
-    assert_units(code, LanguageName.Python, {'foo': 2, 'bar': 2})
+    assert_units(code, LanguageName.Python, {"foo": 2, "bar": 2})
 
 
 def test_do_not_count_comment_lines():

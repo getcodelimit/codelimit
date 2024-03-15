@@ -12,9 +12,11 @@ from codelimit.common.token_matching.predicates.Or import Or
 
 class TypeScript(Language):
     def extract_headers(self, tokens: list[Token]) -> list[Header]:
-        return get_headers(tokens, [Name(), Balanced("(", ")"), Lookahead(Or("{", Operator(":")))])
+        return get_headers(
+            tokens, [Name(), Balanced("(", ")"), Lookahead(Or("{", Operator(":")))]
+        )
 
     def extract_blocks(
-            self, tokens: list[Token], headers: list[Header]
+        self, tokens: list[Token], headers: list[Header]
     ) -> list[TokenRange]:
         return get_blocks(tokens, "{", "}")

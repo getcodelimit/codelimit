@@ -26,4 +26,4 @@ def test_two_functions():
         }
     """
 
-    assert_units(code, LanguageName.Java, {"one": 3, 'two': 3})
+    assert_units(code, LanguageName.Java, {"one": 3, "two": 3})

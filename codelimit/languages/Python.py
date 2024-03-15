@@ -14,7 +14,7 @@ class Python(Language):
         return get_headers(tokens, [Keyword("def"), Name(), Balanced("(", ")")])
 
     def extract_blocks(
-            self, tokens: list[Token], headers: list[Header]
+        self, tokens: list[Token], headers: list[Header]
     ) -> list[TokenRange]:
         lines = _get_token_lines(tokens)
         result = []

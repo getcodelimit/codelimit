@@ -7,7 +7,7 @@ from codelimit.common.token_matching.predicates.TokenPredicate import TokenPredi
 
 
 def match(
-        tokens: list[Token], pattern: Union[TokenPredicate, list[TokenPredicate]]
+    tokens: list[Token], pattern: Union[TokenPredicate, list[TokenPredicate]]
 ) -> list[TokenRange]:
     result = []
     if not isinstance(pattern, list):

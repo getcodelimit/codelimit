@@ -9,7 +9,7 @@ from codelimit.languages import LanguageName
 
 
 def assert_units(code: str, language_name: LanguageName, units: dict[str, int]):
-    code = dedent(code).strip('\n')
+    code = dedent(code).strip("\n")
     lexer = get_lexer_by_name(language_name.value)
     tokens = lex(lexer, code, False)
     language = load_language_by_name(language_name.value)

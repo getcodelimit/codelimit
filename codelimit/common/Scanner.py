@@ -27,7 +27,8 @@ from codelimit.common.scope.scope_utils import build_scopes
 from codelimit.common.source_utils import filter_tokens
 from codelimit.common.utils import (
     calculate_checksum,
-    make_count_profile, load_language_by_name,
+    make_count_profile,
+    load_language_by_name,
 )
 from codelimit.languages import ignored, LanguageName
 
@@ -145,9 +146,7 @@ def _add_file(
         return entry
 
 
-def scan_file(
-    tokens: list[Token], language: Language
-) -> list[Measurement]:
+def scan_file(tokens: list[Token], language: Language) -> list[Measurement]:
     scopes = build_scopes(tokens, language)
     measurements: list[Measurement] = []
     if scopes:

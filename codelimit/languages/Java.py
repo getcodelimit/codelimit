@@ -1,16 +1,12 @@
-from codelimit.common.TokenRange import TokenRange
-from codelimit.common.scope.Header import Header
 from codelimit.common.Language import Language
 from codelimit.common.scope.scope_utils import (
-    has_curly_suffix,
-    has_name_prefix,
-    get_blocks, get_headers,
+    get_blocks,
+    get_headers,
 )
 from codelimit.common.token_matching.predicates.Balanced import Balanced
 from codelimit.common.token_matching.predicates.Lookahead import Lookahead
 from codelimit.common.token_matching.predicates.Name import Name
 from codelimit.common.token_matching.predicates.Symbol import Symbol
-from codelimit.common.token_utils import get_balanced_symbol_token_indices
 
 
 class Java(Language):
