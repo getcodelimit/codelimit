@@ -14,7 +14,7 @@ def test_simple_main_function():
     }
     """
 
-    assert_units(code, LanguageName.Cpp, {'main': 4})
+    assert_units(code, LanguageName.Cpp, {"main": 4})
 
 
 def test_simple_class_function():
@@ -37,7 +37,7 @@ def test_simple_class_function():
     }
     """
 
-    assert_units(code, LanguageName.Cpp, {'sayHello': 3, 'main': 5})
+    assert_units(code, LanguageName.Cpp, {"sayHello": 3, "main": 5})
 
 
 def test_function():
@@ -50,4 +50,4 @@ def test_function():
     }
     """
 
-    assert_units(code, LanguageName.Cpp, {'makeInscribedOctagon': 5})
+    assert_units(code, LanguageName.Cpp, {"makeInscribedOctagon": 5})
