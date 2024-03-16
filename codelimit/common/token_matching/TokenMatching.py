@@ -38,4 +38,5 @@ def match(
             pattern_index = 0
             match_index = -1
             matched_tokens = []
+
     return result

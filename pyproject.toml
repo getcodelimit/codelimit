@@ -18,6 +18,9 @@ pyyaml = "^6.0.1"
 rich = "^13.7.1"
 pathspec = "^0.12.1"
 
+[tool.pytest.ini_options]
+addopts = "--tb=short"
+
 [tool.poe.tasks.bundle]
 help = "Create a binary executable using pyinstaller"
 cmd = "pyinstaller --workpath .build --specpath dist -n codelimit codelimit/__main__.py"

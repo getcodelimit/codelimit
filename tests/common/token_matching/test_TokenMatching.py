@@ -49,3 +49,12 @@ def test_lookahead():
     assert len(result) == 2
     assert result[0].token_string() == "def"
     assert result[1].token_string() == "def"
+
+
+def test_reset_pattern():
+    code = "foo bar()"
+    tokens = lex(PythonLexer(), code)
+
+    result = match(tokens, [Keyword("def"), Lookahead(Name())])
+
+    assert len(result) == 1
