@@ -74,9 +74,6 @@ def _scan_folder(
         add_file_entry: Union[Callable[[SourceFileEntry], None], None] = None,
 ):
     gitignore = _read_gitignore(folder)
-    # spinner = Halo(text="Scanning", spinner="dots")
-    # spinner.start()
-    scanned = 0
     for root, dirs, files in os.walk(folder.absolute()):
         files = [f for f in files if not f[0] == "."]
         dirs[:] = [d for d in dirs if not d[0] == "."]

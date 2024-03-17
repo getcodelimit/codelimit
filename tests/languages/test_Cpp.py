@@ -51,3 +51,24 @@ def test_function():
     """
 
     assert_units(code, LanguageName.Cpp, {"makeInscribedOctagon": 5})
+
+
+def test_namespace():
+    code = """
+    #include <iostream>
+
+    using namespace std;
+    
+    namespace Test {
+    
+    class Main {
+        public:
+            void sayHello() {
+                cout << "hello world!" << endl;
+            }
+    };
+    
+    }
+    """
+
+    assert_units(code, LanguageName.Cpp, {"sayHello": 3})
