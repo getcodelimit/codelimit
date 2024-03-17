@@ -5,7 +5,7 @@ from codelimit.common.TokenRange import TokenRange
 
 
 def get_balanced_symbol_token_indices(
-        tokens: list[Token], start: str, end: str, extract_nested=False
+    tokens: list[Token], start: str, end: str, extract_nested=False
 ) -> list[Tuple[int, int]]:
     result = []
     block_starts = []
@@ -27,4 +27,7 @@ def sort_tokens(tokens: list[Token]) -> list[Token]:
 
 
 def sort_token_ranges(token_ranges: list[TokenRange]) -> list[TokenRange]:
-    return sorted(token_ranges, key=lambda tr: (tr.tokens[0].location.line, tr.tokens[0].location.column))
+    return sorted(
+        token_ranges,
+        key=lambda tr: (tr.tokens[0].location.line, tr.tokens[0].location.column),
+    )

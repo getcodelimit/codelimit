@@ -56,6 +56,6 @@ def test_reset_pattern():
     code = "foo bar()"
     tokens = lex(PythonLexer(), code)
 
-    result = Matcher([Name(), Balanced('(', ')')]).match(tokens)
+    result = Matcher([Name(), Balanced("(", ")")]).match(tokens)
 
     assert len(result) == 1
