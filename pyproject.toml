@@ -37,7 +37,7 @@ pyinstaller = "^5.6.1"
 pytest-cov = "^4.0.0"
 pytest = "^7.2.1"
 poethepoet = "^0.21.1"
-mkdocs-material = "^9.2.8"
+mkdocs-material = "^9.5.10"
 
 [build-system]
 requires = ["poetry-core"]

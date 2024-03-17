@@ -14,6 +14,7 @@ from rich.live import Live
 
 from codelimit.common.Codebase import Codebase
 from codelimit.common.Configuration import Configuration
+from codelimit.common.Language import Language
 from codelimit.common.Location import Location
 from codelimit.common.Measurement import Measurement
 from codelimit.common.ScanResultTable import ScanResultTable
@@ -22,7 +23,6 @@ from codelimit.common.Token import Token
 from codelimit.common.lexer_utils import lex
 from codelimit.common.report.Report import Report
 from codelimit.common.scope.Scope import count_lines
-from codelimit.common.Language import Language
 from codelimit.common.scope.scope_utils import build_scopes
 from codelimit.common.source_utils import filter_tokens
 from codelimit.common.utils import (
@@ -68,19 +68,22 @@ def scan_codebase(path: Path, cached_report: Union[Report, None] = None) -> Code
 
 
 def _scan_folder(
-    codebase: Codebase,
-    folder: Path,
-    cached_report: Union[Report, None] = None,
-    add_file_entry: Union[Callable[[SourceFileEntry], None], None] = None,
+        codebase: Codebase,
+        folder: Path,
+        cached_report: Union[Report, None] = None,
+        add_file_entry: Union[Callable[[SourceFileEntry], None], None] = None,
 ):
     gitignore = _read_gitignore(folder)
+    # spinner = Halo(text="Scanning", spinner="dots")
+    # spinner.start()
+    scanned = 0
     for root, dirs, files in os.walk(folder.absolute()):
         files = [f for f in files if not f[0] == "."]
         dirs[:] = [d for d in dirs if not d[0] == "."]
         for file in files:
             rel_path = Path(os.path.join(root, file)).relative_to(folder.absolute())
             if is_excluded(rel_path) or (
-                gitignore is not None and is_excluded_by_gitignore(rel_path, gitignore)
+                    gitignore is not None and is_excluded_by_gitignore(rel_path, gitignore)
             ):
                 continue
             try:
@@ -102,11 +105,11 @@ def _scan_folder(
 
 
 def _add_file(
-    codebase: Codebase,
-    lexer: Lexer,
-    root: Path,
-    path: str,
-    cached_report: Union[Report, None] = None,
+        codebase: Codebase,
+        lexer: Lexer,
+        root: Path,
+        path: str,
+        cached_report: Union[Report, None] = None,
 ) -> SourceFileEntry:
     checksum = calculate_checksum(path)
     rel_path = relpath(path, root)

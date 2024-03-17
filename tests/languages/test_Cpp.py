@@ -1,5 +1,5 @@
 from codelimit.languages import LanguageName
-from tests.common.ScopeExtractorTestCase import assert_units
+from tests.conftest import assert_units
 
 
 def test_simple_main_function():

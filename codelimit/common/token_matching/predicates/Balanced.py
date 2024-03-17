@@ -1,5 +1,5 @@
 from codelimit.common.Token import Token
-from codelimit.common.token_matching.TokenMatching import TokenPredicate
+from codelimit.common.token_matching.Matcher import TokenPredicate
 from codelimit.common.token_matching.predicates.Symbol import Symbol
 
 

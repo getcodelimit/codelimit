@@ -3,7 +3,7 @@ from pygments.lexers.python import PythonLexer
 from codelimit.common.lexer_utils import lex
 from codelimit.languages import LanguageName
 from codelimit.languages.Python import _get_indentation, _get_token_lines
-from tests.common.ScopeExtractorTestCase import assert_units
+from tests.conftest import assert_units
 
 
 def test_simple_function():

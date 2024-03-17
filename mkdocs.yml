@@ -10,6 +10,7 @@ theme:
       name: Switch to light mode
   - scheme: default
     primary: black
+    accent: indigo
     toggle:
       icon: material/lightbulb-outline
       name: Switch to dark mode
