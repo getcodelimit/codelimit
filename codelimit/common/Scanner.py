@@ -1,5 +1,5 @@
 import fnmatch
-import importlib.metadata
+from importlib import metadata
 import locale
 import os
 from datetime import datetime
@@ -70,7 +70,10 @@ def scan_codebase(path: Path, cached_report: Union[Report, None] = None) -> Code
 
 
 def print_header(cached_report, path):
-    version = importlib.metadata.version("codelimit")
+    try:
+        version = metadata.version("codelimit")
+    except metadata.PackageNotFoundError:
+        version = "dev"
     print(f"  [bold]Code Limit[/bold]: {version}")
     print(
         f"  [bold]Scan date[/bold]: {datetime.now().isoformat(sep=' ', timespec='seconds')}"
