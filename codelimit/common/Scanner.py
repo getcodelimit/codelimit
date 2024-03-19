@@ -72,10 +72,12 @@ def scan_codebase(path: Path, cached_report: Union[Report, None] = None) -> Code
 def print_header(cached_report, path):
     version = importlib.metadata.version("codelimit")
     print(f"  [bold]Code Limit[/bold]: {version}")
-    print(f"  [bold]Scan date[/bold]: {datetime.now().isoformat(sep=' ', timespec='seconds')}")
+    print(
+        f"  [bold]Scan date[/bold]: {datetime.now().isoformat(sep=' ', timespec='seconds')}"
+    )
     print(f"  [bold]Scan root[/bold]: {path.absolute()}")
     if cached_report:
-        print(f"  [bold]Found cached report, only analyzing changed files[/bold]")
+        print("  [bold]Found cached report, only analyzing changed files[/bold]")
 
 
 def print_footer(languages_totals):
