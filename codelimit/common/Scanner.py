@@ -1,6 +1,8 @@
 import fnmatch
+import importlib.metadata
 import locale
 import os
+from datetime import datetime
 from os.path import relpath
 from pathlib import Path
 from typing import Union, Callable
@@ -37,7 +39,7 @@ locale.setlocale(locale.LC_ALL, "")
 
 def scan_codebase(path: Path, cached_report: Union[Report, None] = None) -> Codebase:
     codebase = Codebase(str(path.absolute()))
-    print(f"  [bold]Directory[/bold]: {path.name}")
+    print_header(cached_report, path)
     with Live() as live:
         languages_totals = {}
 
@@ -62,9 +64,27 @@ def scan_codebase(path: Path, cached_report: Union[Report, None] = None) -> Code
             live.update(table)
 
         _scan_folder(codebase, path, cached_report, add_file_entry)
+    if len(languages_totals.keys()) > 1:
+        print_footer(languages_totals)
+    return codebase
+
+
+def print_header(cached_report, path):
+    version = importlib.metadata.version("codelimit")
+    print(f"  [bold]Code Limit[/bold]: {version}")
+    print(f"  [bold]Scan date[/bold]: {datetime.now().isoformat(sep=' ', timespec='seconds')}")
+    print(f"  [bold]Scan root[/bold]: {path.absolute()}")
+    if cached_report:
+        print(f"  [bold]Found cached report, only analyzing changed files[/bold]")
+
+
+def print_footer(languages_totals):
     total_loc = sum([entry["loc"] for entry in languages_totals.values()])
     print(f"  [bold]Total lines of code[/bold]: {total_loc:n}")
-    return codebase
+    total_files = sum([entry["files"] for entry in languages_totals.values()])
+    print(f"  [bold]Total files[/bold]: {total_files:n}")
+    total_functions = sum([entry["functions"] for entry in languages_totals.values()])
+    print(f"  [bold]Total functions[/bold]: {total_functions:n}")
 
 
 def _scan_folder(

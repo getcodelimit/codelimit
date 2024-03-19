@@ -42,16 +42,15 @@ class Report:
         return make_profile(self.codebase.all_measurements())
 
     def summary(self) -> str:
-        medium_risk = len(
+        result = ''
+        hard_to_maintain = len(
             [m for m in self.codebase.all_measurements() if 30 < m.value <= 60]
         )
-        high_risk = len([m for m in self.codebase.all_measurements() if m.value > 60])
-        if high_risk > 0:
-            return f"🚨 Refactoring necessary, unmaintainable functions: {high_risk}"
-        elif medium_risk > 0:
-            return (
-                f"🔔 Don't forget to refactor, hard-to-maintain functions: "
-                f"{medium_risk}"
-            )
-        else:
-            return "Refactoring not necessary, happy coding!"
+        unmaintainable = len([m for m in self.codebase.all_measurements() if m.value > 60])
+        if hard_to_maintain > 0:
+            result += f"[dark_orange]\u26A0[/dark_orange] {hard_to_maintain} functions are hard-to-maintain.\n"
+        if unmaintainable > 0:
+            result += f"[red]\u2716[/red] {unmaintainable} functions need refactoring.\n"
+        if hard_to_maintain == 0 and unmaintainable == 0:
+            result += ":sparkles: Refactoring not necessary :sparkles:, happy coding!\n"
+        return result
