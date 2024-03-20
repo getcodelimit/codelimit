@@ -8,9 +8,8 @@ from typing import Union, Any
 from rich.style import Style
 from rich.text import Text
 
-from codelimit.common.Measurement import Measurement
 from codelimit.common.Language import Language
-from codelimit.version import version, release_date
+from codelimit.common.Measurement import Measurement
 
 
 def make_profile(measurements: list[Measurement]):
@@ -66,7 +65,7 @@ def render_quality_profile(profile: list[int]) -> Text:
 def path_has_extension(path: str, suffixes: Union[str, list[str]]):
     dot_index = path.rfind(".")
     if dot_index >= 0:
-        suffix = path[dot_index + 1 :]
+        suffix = path[dot_index + 1:]
         if isinstance(suffixes, list):
             return suffix in suffixes
         else:
@@ -111,11 +110,6 @@ def clear_screen() -> None:
         os.system("cls")
     else:
         sys.stdout.write("\033[2J\033[1;1H")
-
-
-def header(content: str):
-    print(f"Code Limit (v. {version}, build date: {release_date})".center(80))
-    print(content)
 
 
 def format_measurement(path: str, measurement: Measurement) -> Text:

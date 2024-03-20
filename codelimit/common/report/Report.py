@@ -4,10 +4,11 @@ from uuid import uuid4
 from codelimit.common.Codebase import Codebase
 from codelimit.common.report.ReportUnit import ReportUnit
 from codelimit.common.utils import make_profile
+from codelimit.version import version
 
 
 class Report:
-    VERSION = "1.0"
+    VERSION = version
 
     def __init__(self, codebase: Codebase):
         self.version = self.VERSION

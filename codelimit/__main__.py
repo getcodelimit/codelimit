@@ -13,6 +13,7 @@ from codelimit.commands.report import report_command
 from codelimit.commands.scan import scan_command
 from codelimit.commands.upload import upload_command
 from codelimit.common.Configuration import Configuration
+from codelimit.version import version
 
 
 class OrderCommands(TyperGroup):
@@ -85,7 +86,6 @@ def upload(
 
 def _version_callback(show: bool):
     if show:
-        version = importlib.metadata.version("codelimit")
         print(f"Code Limit version: {version}")
         raise typer.Exit()
 
