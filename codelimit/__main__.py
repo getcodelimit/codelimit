@@ -1,4 +1,3 @@
-import importlib.metadata
 from pathlib import Path
 from typing import List, Annotated, Optional
 
