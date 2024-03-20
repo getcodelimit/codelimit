@@ -78,7 +78,7 @@ def print_header(cached_report, path):
     print(
         f"  [bold]Scan date[/bold]: {datetime.now().isoformat(sep=' ', timespec='seconds')}"
     )
-    print(f"  [bold]Scan root[/bold]: {path.absolute()}")
+    print(f"  [bold]Scan root[/bold]: {path.resolve().absolute()}")
     if cached_report:
         print("  [bold]Found cached report, only analyzing changed files[/bold]")
 
