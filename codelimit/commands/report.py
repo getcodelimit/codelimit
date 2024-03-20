@@ -28,6 +28,10 @@ def report_command(path: Path, full: bool):
         report_units = units[0:100]
     for unit in report_units:
         file_path = unit.file if root is None else root.joinpath(unit.file)
-        stdout.print(format_measurement(str(file_path), unit.measurement), soft_wrap=True)
+        stdout.print(
+            format_measurement(str(file_path), unit.measurement), soft_wrap=True
+        )
     if not full and len(units) > 100:
-        print(f"[bold]{len(units) - 100} more rows, use --full option to get all rows[/bold]")
+        print(
+            f"[bold]{len(units) - 100} more rows, use --full option to get all rows[/bold]"
+        )
