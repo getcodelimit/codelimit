@@ -1,4 +1,4 @@
-name: 'main'
+name: 'analyze'
 on:
   push:
     branches:
@@ -7,7 +7,7 @@ on:
     branches:
       - main
 jobs:
-  ci:
+  analyze:
     runs-on: self-hosted
     steps:
       - name: 'Checkout sources'
