@@ -10,7 +10,7 @@ from codelimit.common.utils import format_measurement
 
 
 class CheckResult:
-    def __init__(self):
+    def __init__(self) -> None:
         self.file_list: list[tuple[Path, list[Measurement]]] = []
         self.hard_to_maintain = 0
         self.unmaintainable = 0

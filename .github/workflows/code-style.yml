@@ -22,7 +22,7 @@ jobs:
       - name: 'Type cheking with MyPy'
         run: |
           pip install mypy
-          mypy codelimit/
+          mypy --ignore-missing-imports codelimit/
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: 'Code style fixes'

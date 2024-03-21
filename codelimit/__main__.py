@@ -3,7 +3,7 @@ from typing import List, Annotated, Optional
 
 import typer
 from rich import print
-from typer import Context
+from click import Context
 from typer.core import TyperGroup
 
 from codelimit.commands import github
