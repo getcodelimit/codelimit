@@ -4,14 +4,18 @@ from codelimit.common.Token import Token
 from codelimit.common.TokenRange import TokenRange
 from codelimit.common.token_matching.predicates.Lookahead import Lookahead
 from codelimit.common.token_matching.predicates.TokenPredicate import TokenPredicate
+from codelimit.common.token_matching.predicates.Value import Value
 
 
 class Matcher:
-    def __init__(self, pattern: Union[TokenPredicate, list[TokenPredicate]]):
+    def __init__(self, pattern: Union[TokenPredicate | str, list[TokenPredicate | str]]):
         if not isinstance(pattern, list):
-            self._pattern = [pattern]
+            if isinstance(pattern, TokenPredicate):
+                self._pattern = [pattern]
+            else:
+                self._pattern = [Value(pattern)]
         else:
-            self._pattern = pattern
+            self._pattern = [item if isinstance(item, TokenPredicate) else Value(item) for item in pattern]
         self._matches: list[TokenRange] = []
         self._reset()
 

@@ -3,8 +3,8 @@ from pygments.lexers import PythonLexer
 from codelimit.common.lexer_utils import lex
 from codelimit.common.token_matching.Matcher import Matcher
 from codelimit.common.token_matching.predicates.Balanced import Balanced
-from codelimit.common.token_matching.predicates.Lookahead import Lookahead
 from codelimit.common.token_matching.predicates.Keyword import Keyword
+from codelimit.common.token_matching.predicates.Lookahead import Lookahead
 from codelimit.common.token_matching.predicates.Name import Name
 
 
@@ -57,5 +57,14 @@ def test_reset_pattern():
     tokens = lex(PythonLexer(), code)
 
     result = Matcher([Name(), Balanced("(", ")")]).match(tokens)
+
+    assert len(result) == 1
+
+
+def test_string_pattern():
+    code = "def bar()"
+    tokens = lex(PythonLexer(), code)
+
+    result = Matcher(["def", Name()]).match(tokens)
 
     assert len(result) == 1
