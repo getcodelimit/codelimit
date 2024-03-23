@@ -5,7 +5,6 @@ from codelimit.common.Scanner import scan_codebase
 from codelimit.common.report.Report import Report
 from codelimit.common.report.ReportReader import ReportReader
 from codelimit.common.report.ReportWriter import ReportWriter
-from rich import print
 
 
 def scan_command(path: Path):

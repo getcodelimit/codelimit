@@ -86,21 +86,29 @@ def print_footer(languages_totals):
     print(f"  [bold]Total files[/bold]: {total_files:n}")
     total_functions = sum([entry["functions"] for entry in languages_totals.values()])
     print(f"  [bold]Total functions[/bold]: {total_functions:n}")
-    total_hard_to_maintain = sum([entry["hard-to-maintain"] for entry in languages_totals.values()])
+    total_hard_to_maintain = sum(
+        [entry["hard-to-maintain"] for entry in languages_totals.values()]
+    )
     if total_hard_to_maintain > 0:
-        print(f"  [dark_orange]\u26A0[/dark_orange] {total_hard_to_maintain} functions are hard-to-maintain.")
-    total_unmaintainable = sum([entry["unmaintainable"] for entry in languages_totals.values()])
+        print(
+            f"  [dark_orange]\u26A0[/dark_orange] {total_hard_to_maintain} functions are hard-to-maintain."
+        )
+    total_unmaintainable = sum(
+        [entry["unmaintainable"] for entry in languages_totals.values()]
+    )
     if total_unmaintainable > 0:
         print(f"  [red]\u2716[/red] {total_unmaintainable} functions need refactoring.")
     if total_hard_to_maintain == 0 and total_unmaintainable == 0:
-        print("  [bold]Refactoring not necessary, :sparkles: happy coding! :sparkles:[/bold]")
+        print(
+            "  [bold]Refactoring not necessary, :sparkles: happy coding! :sparkles:[/bold]"
+        )
 
 
 def _scan_folder(
-        codebase: Codebase,
-        folder: Path,
-        cached_report: Union[Report, None] = None,
-        add_file_entry: Union[Callable[[SourceFileEntry], None], None] = None,
+    codebase: Codebase,
+    folder: Path,
+    cached_report: Union[Report, None] = None,
+    add_file_entry: Union[Callable[[SourceFileEntry], None], None] = None,
 ):
     gitignore = _read_gitignore(folder)
     for root, dirs, files in os.walk(folder.absolute()):
@@ -109,7 +117,7 @@ def _scan_folder(
         for file in files:
             rel_path = Path(os.path.join(root, file)).relative_to(folder.absolute())
             if is_excluded(rel_path) or (
-                    gitignore is not None and is_excluded_by_gitignore(rel_path, gitignore)
+                gitignore is not None and is_excluded_by_gitignore(rel_path, gitignore)
             ):
                 continue
             try:
@@ -131,11 +139,11 @@ def _scan_folder(
 
 
 def _add_file(
-        codebase: Codebase,
-        lexer: Lexer,
-        root: Path,
-        path: str,
-        cached_report: Union[Report, None] = None,
+    codebase: Codebase,
+    lexer: Lexer,
+    root: Path,
+    path: str,
+    cached_report: Union[Report, None] = None,
 ) -> SourceFileEntry:
     checksum = calculate_checksum(path)
     rel_path = relpath(path, root)

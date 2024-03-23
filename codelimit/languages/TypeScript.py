@@ -37,6 +37,6 @@ class TypeScript(Language):
         return functions + arrow_functions
 
     def extract_blocks(
-            self, tokens: list[Token], headers: list[Header]
+        self, tokens: list[Token], headers: list[Header]
     ) -> list[TokenRange]:
         return get_blocks(tokens, "{", "}")

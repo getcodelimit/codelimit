@@ -23,7 +23,9 @@ def report_command(path: Path, full: bool):
     stdout = Console()
     units = report.all_report_units_sorted_by_length_asc(30)
     if len(units) == 0:
-        print("[bold]Refactoring not necessary, :sparkles: happy coding! :sparkles:[/bold]")
+        print(
+            "[bold]Refactoring not necessary, :sparkles: happy coding! :sparkles:[/bold]"
+        )
         return
     if full:
         report_units = units
