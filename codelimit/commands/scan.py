@@ -15,7 +15,6 @@ def scan_command(path: Path):
     codebase = scan_codebase(path, cached_report)
     codebase.aggregate()
     report = Report(codebase)
-    print(report.summary())
     if not cache_dir.exists():
         cache_dir.mkdir()
         cache_dir_tag = cache_dir.joinpath("CACHEDIR.TAG").resolve()

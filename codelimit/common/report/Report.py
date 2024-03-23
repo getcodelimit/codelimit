@@ -41,21 +41,3 @@ class Report:
 
     def quality_profile(self):
         return make_profile(self.codebase.all_measurements())
-
-    def summary(self) -> str:
-        result = ""
-        hard_to_maintain = len(
-            [m for m in self.codebase.all_measurements() if 30 < m.value <= 60]
-        )
-        unmaintainable = len(
-            [m for m in self.codebase.all_measurements() if m.value > 60]
-        )
-        if hard_to_maintain > 0:
-            result += f"[dark_orange]\u26A0[/dark_orange] {hard_to_maintain} functions are hard-to-maintain.\n"
-        if unmaintainable > 0:
-            result += (
-                f"[red]\u2716[/red] {unmaintainable} functions need refactoring.\n"
-            )
-        if hard_to_maintain == 0 and unmaintainable == 0:
-            result += ":sparkles: Refactoring not necessary :sparkles:, happy coding!\n"
-        return result
