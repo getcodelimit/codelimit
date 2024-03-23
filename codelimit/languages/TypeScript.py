@@ -14,14 +14,29 @@ from codelimit.common.token_matching.predicates.Or import Or
 class TypeScript(Language):
     def extract_headers(self, tokens: list[Token]) -> list[Header]:
         functions = get_headers(
-            tokens, [Optional("function"), Name(), Balanced("(", ")"), Lookahead(Or("{", Operator(":")))]
+            tokens,
+            [
+                Optional("function"),
+                Name(),
+                Balanced("(", ")"),
+                Lookahead(Or("{", Operator(":"))),
+            ],
         )
         arrow_functions = get_headers(
-            tokens, [Optional("const"), Name(), "=", Optional("async"), Balanced("(", ")"), '=>', Lookahead("{")]
+            tokens,
+            [
+                Optional("const"),
+                Name(),
+                "=",
+                Optional("async"),
+                Balanced("(", ")"),
+                "=>",
+                Lookahead("{"),
+            ],
         )
         return functions + arrow_functions
 
     def extract_blocks(
-            self, tokens: list[Token], headers: list[Header]
+        self, tokens: list[Token], headers: list[Header]
     ) -> list[TokenRange]:
         return get_blocks(tokens, "{", "}")

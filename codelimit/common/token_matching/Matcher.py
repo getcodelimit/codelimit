@@ -15,7 +15,10 @@ class Matcher:
             else:
                 self._pattern = [Value(pattern)]
         else:
-            self._pattern = [item if isinstance(item, TokenPredicate) else Value(item) for item in pattern]
+            self._pattern = [
+                item if isinstance(item, TokenPredicate) else Value(item)
+                for item in pattern
+            ]
         self._matches: list[TokenRange] = []
         self._reset()
 
