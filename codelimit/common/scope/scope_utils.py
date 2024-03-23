@@ -129,7 +129,7 @@ def has_curly_suffix(tokens: list[Token], index):
     return index < len(tokens) - 1 and tokens[index + 1].is_symbol("{")
 
 
-def get_headers(tokens: list[Token], pattern: list[TokenPredicate]):
+def get_headers(tokens: list[Token], pattern: list[TokenPredicate | str]):
     matches = Matcher(pattern).match(tokens)
     result = []
     for m in matches:

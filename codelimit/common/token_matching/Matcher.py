@@ -8,7 +8,7 @@ from codelimit.common.token_matching.predicates.Value import Value
 
 
 class Matcher:
-    def __init__(self, pattern: Union[TokenPredicate | str, list[TokenPredicate | str]]):
+    def __init__(self, pattern: Union[TokenPredicate, str, list[TokenPredicate | str]]):
         if not isinstance(pattern, list):
             if isinstance(pattern, TokenPredicate):
                 self._pattern = [pattern]
