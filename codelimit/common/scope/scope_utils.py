@@ -28,7 +28,7 @@ def build_scopes(tokens: list[Token], language: Language) -> list[Scope]:
 
 
 def fold_scopes(scopes: list[Scope]) -> list[Scope]:
-    result = []
+    result: list[Scope] = []
     for scope in scopes:
         if len(result) == 0:
             result.append(scope)
@@ -42,7 +42,7 @@ def fold_scopes(scopes: list[Scope]) -> list[Scope]:
 
 
 def filter_scopes_nested_functions(scopes: list[Scope]) -> list[Scope]:
-    result = []
+    result: list[Scope] = []
     for scope in scopes:
         if len(result) == 0:
             result.append(scope)
