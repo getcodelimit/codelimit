@@ -38,7 +38,9 @@ def test_children():
     tokens = lex(JavascriptLexer(), code)
 
     outer_scope = Scope(Header("foo", TokenRange(tokens[0:4])), TokenRange(tokens[4:]))
-    inner_scope = Scope(Header("bar", TokenRange(tokens[5:9])), TokenRange(tokens[9:11]))
+    inner_scope = Scope(
+        Header("bar", TokenRange(tokens[5:9])), TokenRange(tokens[9:11])
+    )
 
     outer_scope.children.append(inner_scope)
 
@@ -57,7 +59,9 @@ def test_contains():
     tokens = lex(JavascriptLexer(), code)
 
     outer_scope = Scope(Header("foo", TokenRange(tokens[0:4])), TokenRange(tokens[4:]))
-    inner_scope = Scope(Header("bar", TokenRange(tokens[5:9])), TokenRange(tokens[9:11]))
+    inner_scope = Scope(
+        Header("bar", TokenRange(tokens[5:9])), TokenRange(tokens[9:11])
+    )
 
     assert outer_scope.contains(inner_scope)
     assert not inner_scope.contains(outer_scope)

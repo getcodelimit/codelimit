@@ -26,11 +26,16 @@ class Scope:
         children_tokens = []
         for child in self.children:
             children_tokens.extend(child.tokens())
-        return [t for t in self.header.token_range.tokens + self.block.tokens if t not in children_tokens]
+        return [
+            t
+            for t in self.header.token_range.tokens + self.block.tokens
+            if t not in children_tokens
+        ]
 
     def contains(self, other: Scope) -> bool:
-        return self.header.token_range[0].location.lt(other.header.token_range[0].location) and self.block.tokens[
-            -1].location.gt(other.block.tokens[-1].location)
+        return self.header.token_range[0].location.lt(
+            other.header.token_range[0].location
+        ) and self.block.tokens[-1].location.gt(other.block.tokens[-1].location)
 
 
 def count_lines(tokens: list[Token]):

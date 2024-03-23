@@ -38,9 +38,15 @@ def test_fold_scopes():
 
     tokens = lex(JavascriptLexer(), code)
 
-    outer_scope = Scope(Header("foo", TokenRange(tokens[0:4])), TokenRange(tokens[4:16]))
-    inner_scope = Scope(Header("bar", TokenRange(tokens[5:9])), TokenRange(tokens[9:11]))
-    next_scope = Scope(Header("foobar", TokenRange(tokens[16:20])), TokenRange(tokens[20:]))
+    outer_scope = Scope(
+        Header("foo", TokenRange(tokens[0:4])), TokenRange(tokens[4:16])
+    )
+    inner_scope = Scope(
+        Header("bar", TokenRange(tokens[5:9])), TokenRange(tokens[9:11])
+    )
+    next_scope = Scope(
+        Header("foobar", TokenRange(tokens[16:20])), TokenRange(tokens[20:])
+    )
 
     result = fold_scopes([outer_scope, inner_scope, next_scope])
 

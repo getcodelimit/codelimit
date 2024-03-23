@@ -9,7 +9,8 @@ from codelimit.common.source_utils import filter_tokens, filter_nocl_comment_tok
 from codelimit.common.token_matching.Matcher import TokenPredicate, Matcher
 from codelimit.common.token_utils import (
     sort_tokens,
-    sort_token_ranges, get_balanced_symbol_token_indices,
+    sort_token_ranges,
+    get_balanced_symbol_token_indices,
 )
 from codelimit.common.utils import delete_indices
 
@@ -55,7 +56,9 @@ def filter_scopes_nested_functions(scopes: list[Scope]) -> list[Scope]:
     return result
 
 
-def _build_scopes_from_headers_and_blocks(headers: list[Header], blocks: list[TokenRange]) -> list[Scope]:
+def _build_scopes_from_headers_and_blocks(
+    headers: list[Header], blocks: list[TokenRange]
+) -> list[Scope]:
     result: list[Scope] = []
     reverse_headers = headers[::-1]
     for header in reverse_headers:
@@ -72,7 +75,9 @@ def _build_scopes_from_headers_and_blocks(headers: list[Header], blocks: list[To
     return result
 
 
-def _find_scope_blocks_indices(header: TokenRange, blocks: list[TokenRange]) -> list[int]:
+def _find_scope_blocks_indices(
+    header: TokenRange, blocks: list[TokenRange]
+) -> list[int]:
     body_block = _get_nearest_block(header, blocks)
     if body_block:
         if body_block.contains(header):
@@ -82,7 +87,9 @@ def _find_scope_blocks_indices(header: TokenRange, blocks: list[TokenRange]) -> 
     return []
 
 
-def _get_nearest_block(header: TokenRange, blocks: list[TokenRange]) -> Optional[TokenRange]:
+def _get_nearest_block(
+    header: TokenRange, blocks: list[TokenRange]
+) -> Optional[TokenRange]:
     reverse_blocks = blocks[::-1]
     result = None
     for block in reverse_blocks:
@@ -96,7 +103,7 @@ def _get_nearest_block(header: TokenRange, blocks: list[TokenRange]) -> Optional
 
 
 def _filter_nocl_scopes(
-        scopes: list[Scope], nocl_comment_tokens: list[Token]
+    scopes: list[Scope], nocl_comment_tokens: list[Token]
 ) -> list[Scope]:
     nocl_comment_lines = [t.location.line for t in nocl_comment_tokens]
 
@@ -133,10 +140,10 @@ def get_headers(tokens: list[Token], pattern: list[TokenPredicate]):
 
 
 def get_blocks(
-        tokens: list[Token], open: str, close: str, extract_nested=True
+    tokens: list[Token], open: str, close: str, extract_nested=True
 ) -> list[TokenRange]:
     balanced_tokens = get_balanced_symbol_token_indices(
         tokens, open, close, extract_nested
     )
-    token_ranges = [TokenRange(tokens[bt[0]: bt[1] + 1]) for bt in balanced_tokens]
+    token_ranges = [TokenRange(tokens[bt[0] : bt[1] + 1]) for bt in balanced_tokens]
     return sort_token_ranges(token_ranges)
