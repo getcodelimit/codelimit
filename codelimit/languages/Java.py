@@ -10,11 +10,8 @@ from codelimit.common.token_matching.predicates.Symbol import Symbol
 
 
 class Java(Language):
-    def __init__(self):
-        super().__init__(True)
-
     def extract_headers(self, tokens: list) -> list:
         return get_headers(tokens, [Name(), Balanced("(", ")"), Lookahead(Symbol("{"))])
 
     def extract_blocks(self, tokens: list, headers: list) -> list:
-        return get_blocks(tokens, "{", "}", True)
+        return get_blocks(tokens, "{", "}")

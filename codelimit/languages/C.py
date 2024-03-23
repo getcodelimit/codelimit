@@ -13,10 +13,13 @@ from codelimit.common.token_matching.predicates.Symbol import Symbol
 
 
 class C(Language):
+    def __init__(self):
+        super().__init__(False)
+
     def extract_headers(self, tokens: list[Token]) -> list[Header]:
         return get_headers(tokens, [Name(), Balanced("(", ")"), Lookahead(Symbol("{"))])
 
     def extract_blocks(
-        self, tokens: list[Token], headers: list[Header]
+            self, tokens: list[Token], headers: list[Header]
     ) -> list[TokenRange]:
         return get_blocks(tokens, "{", "}")

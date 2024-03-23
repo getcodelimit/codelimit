@@ -6,8 +6,8 @@ from codelimit.common.scope.Header import Header
 
 
 class Language(ABC):
-    def __init__(self, allow_nested_scopes=False):
-        self.allow_nested_scopes = allow_nested_scopes
+    def __init__(self, allow_nested_functions=True):
+        self.allow_nested_functions = allow_nested_functions
 
     @abstractmethod
     def extract_headers(self, tokens: list[Token]) -> list[Header]:
@@ -15,6 +15,6 @@ class Language(ABC):
 
     @abstractmethod
     def extract_blocks(
-        self, tokens: list[Token], headers: list[Header]
+            self, tokens: list[Token], headers: list[Header]
     ) -> list[TokenRange]:
         pass

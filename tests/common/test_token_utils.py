@@ -5,7 +5,7 @@ from codelimit.common.lexer_utils import lex
 from codelimit.common.source_utils import get_token_range
 from codelimit.common.token_utils import (
     get_balanced_symbol_token_indices,
-    sort_token_ranges,
+    sort_token_ranges, get_balanced_symbol_token_ranges,
 )
 
 
@@ -33,6 +33,16 @@ def test_get_balanced_symbol_token_indices():
     assert result[0][1] == 10
     assert result[1][0] == 4
     assert result[1][1] == 11
+
+
+def test_get_balanced_symbol_token_ranges():
+    tokens = lex(CLexer(), "void foo() { while (1) { } }")
+
+    result = get_balanced_symbol_token_ranges(tokens, "{", "}")
+
+    assert len(result) == 2
+    assert result[0].token_string() == "{ }"
+    assert result[1].token_string() == "{ while ( 1 ) }"
 
 
 def test_get_token_range():

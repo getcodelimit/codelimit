@@ -19,8 +19,17 @@ def extract_units(code: str, language_name: LanguageName) -> list[Scope]:
     return build_scopes(tokens, language)
 
 
+def _unfold_scopes(scopes: list[Scope]) -> list[Scope]:
+    result = []
+    for scope in scopes:
+        result.append(scope)
+        result.extend(_unfold_scopes(scope.children))
+    return result
+
+
 def assert_units(code: str, language_name: LanguageName, units: dict[str, int]):
     scopes = extract_units(code, language_name)
+    scopes = _unfold_scopes(scopes)
     assert len(scopes) == len(units)
     for idx, scope in enumerate(scopes):
         assert scope.header.name in units

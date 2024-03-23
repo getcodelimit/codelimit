@@ -29,3 +29,16 @@ def test_keep_comment_token():
     tokens = lex(PythonLexer(), code, False)
 
     assert tokens[5].is_comment()
+
+
+def test_equality():
+    token1 = Token(Location(1, 1), Keyword, "def")
+    token2 = Token(Location(1, 1), Keyword, "def")
+
+    assert token1 == token2
+
+    token3 = Token(Location(1, 2), Keyword, "def")
+    token4 = Token(Location(1, 1), Keyword, "func")
+
+    assert token1 != token3
+    assert token1 != token4

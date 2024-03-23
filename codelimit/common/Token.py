@@ -24,7 +24,7 @@ class Token:
 
     def is_whitespace(self):
         return (
-            self.token_type == Text or self.token_type == Whitespace
+                self.token_type == Text or self.token_type == Whitespace
         ) and self.value.isspace()
 
     def is_comment(self):
@@ -44,3 +44,10 @@ class Token:
 
     def __repr__(self):
         return str(self)
+
+    def __eq__(self, other):
+        if not isinstance(other, Token):
+            return NotImplemented
+
+        return self.location == other.location and str(self.token_type) == str(
+            other.token_type) and self.value == other.value
