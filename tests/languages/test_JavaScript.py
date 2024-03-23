@@ -28,4 +28,8 @@ def test_nested_functions():
     sayHelloWorld();
     """
 
-    assert_units(code, LanguageName.JavaScript, {"sayHelloWorld": 4, "sayHello": 3, "sayWorld": 3})
+    assert_units(
+        code,
+        LanguageName.JavaScript,
+        {"sayHelloWorld": 4, "sayHello": 3, "sayWorld": 3},
+    )

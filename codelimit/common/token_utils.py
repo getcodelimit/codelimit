@@ -5,7 +5,7 @@ from codelimit.common.TokenRange import TokenRange
 
 
 def get_balanced_symbol_token_indices(
-        tokens: list[Token], start: str, end: str, extract_nested=False
+    tokens: list[Token], start: str, end: str, extract_nested=False
 ) -> list[Tuple[int, int]]:
     result = []
     block_starts = []
@@ -20,7 +20,9 @@ def get_balanced_symbol_token_indices(
     return result
 
 
-def get_balanced_symbol_token_ranges(tokens: list[Token], start: str, end: str) -> list[TokenRange]:
+def get_balanced_symbol_token_ranges(
+    tokens: list[Token], start: str, end: str
+) -> list[TokenRange]:
     result = []
     token_lists = []
     for index, t in enumerate(tokens):
