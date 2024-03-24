@@ -19,6 +19,7 @@ from codelimit.common.Language import Language
 from codelimit.common.Location import Location
 from codelimit.common.Measurement import Measurement
 from codelimit.common.ScanResultTable import ScanResultTable
+from codelimit.common.ScanTotals import ScanTotals
 from codelimit.common.SourceFileEntry import SourceFileEntry
 from codelimit.common.Token import Token
 from codelimit.common.lexer_utils import lex
@@ -28,10 +29,9 @@ from codelimit.common.scope.scope_utils import build_scopes
 from codelimit.common.source_utils import filter_tokens
 from codelimit.common.utils import (
     calculate_checksum,
-    make_count_profile,
     load_language_by_name,
 )
-from codelimit.languages import ignored, LanguageName
+from codelimit.languages import LanguageName
 from codelimit.version import version
 
 locale.setlocale(locale.LC_ALL, "")
@@ -40,32 +40,16 @@ locale.setlocale(locale.LC_ALL, "")
 def scan_codebase(path: Path, cached_report: Union[Report, None] = None) -> Codebase:
     codebase = Codebase(str(path.resolve().absolute()))
     print_header(cached_report, path)
-    with Live() as live:
-        languages_totals = {}
-
+    scan_totals = ScanTotals()
+    with Live(refresh_per_second=2) as live:
         def add_file_entry(entry: SourceFileEntry):
-            profile = make_count_profile(entry.measurements())
-            if entry.language not in languages_totals:
-                languages_totals[entry.language] = {
-                    "files": 1,
-                    "loc": entry.loc,
-                    "functions": len(entry.measurements()),
-                    "hard-to-maintain": profile[2],
-                    "unmaintainable": profile[2],
-                }
-            else:
-                language_entry = languages_totals[entry.language]
-                language_entry["files"] += 1
-                language_entry["loc"] += entry.loc
-                language_entry["functions"] += len(entry.measurements())
-                language_entry["hard-to-maintain"] += profile[2]
-                language_entry["unmaintainable"] += profile[3]
-            table = ScanResultTable(languages_totals)
+            scan_totals.add(entry)
+            table = ScanResultTable(scan_totals)
             live.update(table)
 
         _scan_folder(codebase, path, cached_report, add_file_entry)
-    if len(languages_totals.keys()) > 1:
-        print_footer(languages_totals)
+    if len(scan_totals.languages()) > 1:
+        print_footer(scan_totals)
     return codebase
 
 
@@ -79,23 +63,16 @@ def print_header(cached_report, path):
         print("  [bold]Found cached report, only analyzing changed files[/bold]")
 
 
-def print_footer(languages_totals):
-    total_loc = sum([entry["loc"] for entry in languages_totals.values()])
-    print(f"  [bold]Total lines of code[/bold]: {total_loc:n}")
-    total_files = sum([entry["files"] for entry in languages_totals.values()])
-    print(f"  [bold]Total files[/bold]: {total_files:n}")
-    total_functions = sum([entry["functions"] for entry in languages_totals.values()])
-    print(f"  [bold]Total functions[/bold]: {total_functions:n}")
-    total_hard_to_maintain = sum(
-        [entry["hard-to-maintain"] for entry in languages_totals.values()]
-    )
+def print_footer(scan_totals: ScanTotals):
+    print(f"  [bold]Total lines of code[/bold]: {scan_totals.total_loc():n}")
+    print(f"  [bold]Total files[/bold]: {scan_totals.total_files():n}")
+    print(f"  [bold]Total functions[/bold]: {scan_totals.total_functions():n}")
+    total_hard_to_maintain = scan_totals.total_hard_to_maintain()
     if total_hard_to_maintain > 0:
         print(
             f"  [dark_orange]\u26A0[/dark_orange] {total_hard_to_maintain} functions are hard-to-maintain."
         )
-    total_unmaintainable = sum(
-        [entry["unmaintainable"] for entry in languages_totals.values()]
-    )
+    total_unmaintainable = scan_totals.total_unmaintainable()
     if total_unmaintainable > 0:
         print(f"  [red]\u2716[/red] {total_unmaintainable} functions need refactoring.")
     if total_hard_to_maintain == 0 and total_unmaintainable == 0:
@@ -105,10 +82,10 @@ def print_footer(languages_totals):
 
 
 def _scan_folder(
-    codebase: Codebase,
-    folder: Path,
-    cached_report: Union[Report, None] = None,
-    add_file_entry: Union[Callable[[SourceFileEntry], None], None] = None,
+        codebase: Codebase,
+        folder: Path,
+        cached_report: Union[Report, None] = None,
+        add_file_entry: Union[Callable[[SourceFileEntry], None], None] = None,
 ):
     gitignore = _read_gitignore(folder)
     for root, dirs, files in os.walk(folder.absolute()):
@@ -117,7 +94,7 @@ def _scan_folder(
         for file in files:
             rel_path = Path(os.path.join(root, file)).relative_to(folder.absolute())
             if is_excluded(rel_path) or (
-                gitignore is not None and is_excluded_by_gitignore(rel_path, gitignore)
+                    gitignore is not None and is_excluded_by_gitignore(rel_path, gitignore)
             ):
                 continue
             try:
@@ -130,20 +107,16 @@ def _scan_folder(
                     )
                     if add_file_entry:
                         add_file_entry(file_entry)
-                elif language in ignored:
-                    pass
-                else:
-                    print(f"Unclassified: {language} ({file_path})")
             except ClassNotFound:
                 pass
 
 
 def _add_file(
-    codebase: Codebase,
-    lexer: Lexer,
-    root: Path,
-    path: str,
-    cached_report: Union[Report, None] = None,
+        codebase: Codebase,
+        lexer: Lexer,
+        root: Path,
+        path: str,
+        cached_report: Union[Report, None] = None,
 ) -> SourceFileEntry:
     checksum = calculate_checksum(path)
     rel_path = relpath(path, root)
