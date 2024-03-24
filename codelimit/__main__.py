@@ -25,29 +25,29 @@ cli.add_typer(app.app, name="app", help="Code Limit GitHub App commands")
 
 @cli.command(help="Check file(s)")
 def check(
-        paths: Annotated[List[Path], typer.Argument(exists=True)],
-        quiet: Annotated[
-            bool, typer.Option("--quiet", help="No output when successful")
-        ] = False,
+    paths: Annotated[List[Path], typer.Argument(exists=True)],
+    quiet: Annotated[
+        bool, typer.Option("--quiet", help="No output when successful")
+    ] = False,
 ):
     check_command(paths, quiet)
 
 
 @cli.command(help="Scan a codebase")
 def scan(
-        path: Annotated[
-            Path, typer.Argument(exists=True, file_okay=False, help="Codebase root")
-        ]
+    path: Annotated[
+        Path, typer.Argument(exists=True, file_okay=False, help="Codebase root")
+    ]
 ):
     scan_command(path)
 
 
 @cli.command(help="Show report for codebase")
 def report(
-        path: Annotated[
-            Path, typer.Argument(exists=True, file_okay=False, help="Codebase root")
-        ],
-        full: Annotated[bool, typer.Option("--full", help="Show full report")] = False,
+    path: Annotated[
+        Path, typer.Argument(exists=True, file_okay=False, help="Codebase root")
+    ],
+    full: Annotated[bool, typer.Option("--full", help="Show full report")] = False,
 ):
     report_command(path, full)
 
@@ -60,18 +60,18 @@ def _version_callback(show: bool):
 
 @cli.callback()
 def main(
-        verbose: Annotated[
-            Optional[bool], typer.Option("--verbose", "-v", help="Verbose output")
-        ] = False,
-        exclude: Annotated[
-            Optional[list[str]], typer.Option(help="Glob patterns for exclusion")
-        ] = None,
-        version: Annotated[
-            Optional[bool],
-            typer.Option(
-                "--version", "-V", help="Show version", callback=_version_callback
-            ),
-        ] = None,
+    verbose: Annotated[
+        Optional[bool], typer.Option("--verbose", "-v", help="Verbose output")
+    ] = False,
+    exclude: Annotated[
+        Optional[list[str]], typer.Option(help="Glob patterns for exclusion")
+    ] = None,
+    version: Annotated[
+        Optional[bool],
+        typer.Option(
+            "--version", "-V", help="Show version", callback=_version_callback
+        ),
+    ] = None,
 ):
     """CodeLimit: Your refactoring alarm."""
     if verbose:
