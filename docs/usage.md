@@ -31,10 +31,10 @@ To scan a complete codebase and launch the TUI, run:
 codelimit scan path/to/codebase
 ```
 
-<div id="usage.cast" style="z-index: 1; position: relative;"></div>
+<div id="scan.cast" style="z-index: 1; position: relative;"></div>
 <script>
   window.onload = function(){
-    AsciinemaPlayer.create('/assets/usage.cast', document.getElementById('usage.cast'));
+    AsciinemaPlayer.create('/assets/scan.cast', document.getElementById('scan.cast'));
 }
 </script>
 
