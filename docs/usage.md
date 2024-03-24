@@ -7,14 +7,19 @@ $ codelimit
 
  Usage: codelimit [OPTIONS] COMMAND [ARGS]...
 
- Code Limit: Your refactoring alarm
+ CodeLimit: Your refactoring alarm.
 
 ╭─ Options ────────────────────────────────────────────────────────────────────╮
-│ --help          Show this message and exit.                                  │
+│ --verbose  -v            Verbose output                                      │
+│ --exclude          TEXT  Glob patterns for exclusion [default: None]         │
+│ --version  -V            Show version                                        │
+│ --help                   Show this message and exit.                         │
 ╰──────────────────────────────────────────────────────────────────────────────╯
 ╭─ Commands ───────────────────────────────────────────────────────────────────╮
-│ check                 Check file(s)                                          │
-│ scan                  Scan a codebase                                        │
+│ check          Check file(s)                                                 │
+│ scan           Scan a codebase                                               │
+│ report         Show report for codebase                                      │
+│ app            Code Limit GitHub App commands                                │
 ╰──────────────────────────────────────────────────────────────────────────────╯
 ```
 
@@ -26,7 +31,12 @@ To scan a complete codebase and launch the TUI, run:
 codelimit scan path/to/codebase
 ```
 
-![Screenshot](https://raw.githubusercontent.com/getcodelimit/codelimit/main/docs/assets/screenshot.png)
+<div id="usage.cast" style="z-index: 1; position: relative;"></div>
+<script>
+  window.onload = function(){
+    AsciinemaPlayer.create('/assets/usage.cast', document.getElementById('usage.cast'));
+}
+</script>
 
 ## Checking files
 

@@ -38,6 +38,7 @@ pytest-cov = "^4.0.0"
 pytest = "^7.2.1"
 poethepoet = "^0.21.1"
 mkdocs-material = "^9.5.10"
+mkdocs-glightbox = "^0.3.7"
 
 [build-system]
 requires = ["poetry-core"]
