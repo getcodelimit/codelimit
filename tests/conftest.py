@@ -4,7 +4,7 @@ from pygments.lexers import get_lexer_by_name
 
 from codelimit.common.lexer_utils import lex
 from codelimit.common.scope.Scope import Scope
-from codelimit.common.scope.scope_utils import build_scopes
+from codelimit.common.scope.scope_utils import build_scopes, unfold_scopes
 from codelimit.common.utils import load_language_by_name
 from codelimit.languages import LanguageName
 
@@ -19,18 +19,18 @@ def extract_units(code: str, language_name: LanguageName) -> list[Scope]:
     return build_scopes(tokens, language)
 
 
-def _unfold_scopes(scopes: list[Scope]) -> list[Scope]:
-    result = []
-    for scope in scopes:
-        result.append(scope)
-        result.extend(_unfold_scopes(scope.children))
-    return result
-
-
 def assert_units(code: str, language_name: LanguageName, units: dict[str, int]):
     scopes = extract_units(code, language_name)
-    scopes = _unfold_scopes(scopes)
+    scopes = unfold_scopes(scopes)
     assert len(scopes) == len(units)
     for idx, scope in enumerate(scopes):
         assert scope.header.name in units
         assert len(scope) == units[scope.header.name]
+
+
+def print_units(code: str, language_name: LanguageName):
+    scopes = extract_units(code, language_name)
+    scopes = unfold_scopes(scopes)
+    print()
+    for scope in scopes:
+        print(f"{scope.header.name}: {len(scope)}")

@@ -25,7 +25,7 @@ from codelimit.common.Token import Token
 from codelimit.common.lexer_utils import lex
 from codelimit.common.report.Report import Report
 from codelimit.common.scope.Scope import count_lines
-from codelimit.common.scope.scope_utils import build_scopes
+from codelimit.common.scope.scope_utils import build_scopes, unfold_scopes
 from codelimit.common.source_utils import filter_tokens
 from codelimit.common.utils import (
     calculate_checksum,
@@ -158,6 +158,7 @@ def _add_file(
 
 def scan_file(tokens: list[Token], language: Language) -> list[Measurement]:
     scopes = build_scopes(tokens, language)
+    scopes = unfold_scopes(scopes)
     measurements: list[Measurement] = []
     if scopes:
         for scope in scopes:

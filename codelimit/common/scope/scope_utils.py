@@ -42,6 +42,14 @@ def fold_scopes(scopes: list[Scope]) -> list[Scope]:
     return result
 
 
+def unfold_scopes(scopes: list[Scope]) -> list[Scope]:
+    result = []
+    for scope in scopes:
+        result.append(scope)
+        result.extend(unfold_scopes(scope.children))
+    return result
+
+
 def filter_scopes_nested_functions(scopes: list[Scope]) -> list[Scope]:
     result: list[Scope] = []
     for scope in scopes:
@@ -57,7 +65,7 @@ def filter_scopes_nested_functions(scopes: list[Scope]) -> list[Scope]:
 
 
 def _build_scopes_from_headers_and_blocks(
-    headers: list[Header], blocks: list[TokenRange]
+        headers: list[Header], blocks: list[TokenRange]
 ) -> list[Scope]:
     result: list[Scope] = []
     reverse_headers = headers[::-1]
@@ -76,7 +84,7 @@ def _build_scopes_from_headers_and_blocks(
 
 
 def _find_scope_blocks_indices(
-    header: TokenRange, blocks: list[TokenRange]
+        header: TokenRange, blocks: list[TokenRange]
 ) -> list[int]:
     body_block = _get_nearest_block(header, blocks)
     if body_block:
@@ -88,13 +96,13 @@ def _find_scope_blocks_indices(
 
 
 def _get_nearest_block(
-    header: TokenRange, blocks: list[TokenRange]
+        header: TokenRange, blocks: list[TokenRange]
 ) -> Optional[TokenRange]:
     reverse_blocks = blocks[::-1]
     result = None
     for block in reverse_blocks:
         if block.contains(header):
-            return block
+            return block if not result else result
         elif block.gt(header):
             result = block
         elif block.lt(header):
@@ -103,7 +111,7 @@ def _get_nearest_block(
 
 
 def _filter_nocl_scopes(
-    scopes: list[Scope], nocl_comment_tokens: list[Token]
+        scopes: list[Scope], nocl_comment_tokens: list[Token]
 ) -> list[Scope]:
     nocl_comment_lines = [t.location.line for t in nocl_comment_tokens]
 
@@ -140,10 +148,10 @@ def get_headers(tokens: list[Token], pattern: list[TokenPredicate | str]):
 
 
 def get_blocks(
-    tokens: list[Token], open: str, close: str, extract_nested=True
+        tokens: list[Token], open: str, close: str, extract_nested=True
 ) -> list[TokenRange]:
     balanced_tokens = get_balanced_symbol_token_indices(
         tokens, open, close, extract_nested
     )
-    token_ranges = [TokenRange(tokens[bt[0] : bt[1] + 1]) for bt in balanced_tokens]
+    token_ranges = [TokenRange(tokens[bt[0]: bt[1] + 1]) for bt in balanced_tokens]
     return sort_token_ranges(token_ranges)
