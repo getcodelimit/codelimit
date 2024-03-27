@@ -10,6 +10,7 @@ theme:
       name: Switch to light mode
   - scheme: default
     primary: black
+    accent: indigo
     toggle:
       icon: material/lightbulb-outline
       name: Switch to dark mode
@@ -18,8 +19,19 @@ theme:
   features:
     - toc.integrate
     - navigation.footer
+    - content.code.copy
+extra_css:
+  - stylesheets/asciinema-player.css
+extra_javascript:
+  - javascripts/asciinema-player.min.js
 plugins:
+  - glightbox:
+      draggable: false
+      background: none
+      shadow: false
   - search
+markdown_extensions:
+  - attr_list
 nav:
     - 'index.md'
     - 'quickstart.md'

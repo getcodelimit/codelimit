@@ -1,6 +1,14 @@
 from typing import Any
 
-from pygments.token import Keyword, Text, Whitespace, Comment, Punctuation, Name
+from pygments.token import (
+    Keyword,
+    Text,
+    Whitespace,
+    Comment,
+    Punctuation,
+    Operator,
+    Name,
+)
 
 from codelimit.common.Location import Location
 
@@ -25,6 +33,9 @@ class Token:
     def is_symbol(self, symbol: str):
         return self.token_type in Punctuation and self.value == symbol
 
+    def is_operator(self, symbol: str):
+        return self.token_type in Operator and self.value == symbol
+
     def is_name(self):
         return self.token_type in Name
 
@@ -33,3 +44,13 @@ class Token:
 
     def __repr__(self):
         return str(self)
+
+    def __eq__(self, other):
+        if not isinstance(other, Token):
+            return NotImplemented
+
+        return (
+            self.location == other.location
+            and str(self.token_type) == str(other.token_type)
+            and self.value == other.value
+        )

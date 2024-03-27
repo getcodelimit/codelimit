@@ -6,10 +6,10 @@ it’s time to refactor_.
 Code Limit measures the lines of code for each function in your codebase and
 assigns each function to a category:
 
-| Easy | Verbose | Hard-to-maintain 🔔 | Unmaintainable 🚨 |
+| Easy | Verbose | Hard-to-maintain <span style="color: #e5832f;">&#x26A0;</span> | Unmaintainable <span style="color: #ff0000;">&#x2716;</span> |
 | :---: | :---: | :---: | :---: |
 | 1 - 15 lines of code | 16 - 30 lines of code | 31 - 60 lines of code | 60+ lines of code |
-| ![](https://raw.githubusercontent.com/getcodelimit/codelimit/main/docs/assets/easy.png) | ![](https://raw.githubusercontent.com/getcodelimit/codelimit/main/docs/assets/verbose.png) | ![](https://raw.githubusercontent.com/getcodelimit/codelimit/main/docs/assets/hard-to-maintain.png) | ![](https://raw.githubusercontent.com/getcodelimit/codelimit/main/docs/assets/unmaintainable.png) |
+| ![](assets/easy.png){: style="height:136px;width:230px"} | ![](assets/verbose.png){: style="height:189px;width:230px"} | ![](assets/hard-to-maintain.png){: style="height:294px;width:230px"} | ![](assets/unmaintainable.png){: style="height:564px;width:230px"} |
 
 As the table above shows, functions with more than 60 lines of code (comments
 and empty lines are not counted) are _unmaintainable_, and _need_ to be

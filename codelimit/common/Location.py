@@ -31,3 +31,10 @@ class Location:
         return self.line > other.line or (
             self.line == other.line and self.column >= other.column
         )
+
+    def __eq__(self, other):
+        if not isinstance(other, Location):
+            # don't attempt to compare against unrelated types
+            return NotImplemented
+
+        return self.line == other.line and self.column == other.column

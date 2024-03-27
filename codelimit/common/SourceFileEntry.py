@@ -4,11 +4,20 @@ from codelimit.common.utils import make_profile
 
 
 class SourceFileEntry(CodebaseEntry):
-    def __init__(self, path: str, checksum: str, measurements: list[Measurement]):
+    def __init__(
+        self,
+        path: str,
+        checksum: str,
+        language: str,
+        loc: int,
+        measurements: list[Measurement],
+    ):
         super().__init__(path)
         profile = make_profile(measurements)
-        self._profile: list[int] = profile
         self._checksum = checksum
+        self.language = language
+        self.loc = loc
+        self._profile: list[int] = profile
         self._measurements = measurements
 
     def is_folder(self):

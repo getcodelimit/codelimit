@@ -27,3 +27,5 @@ class Configuration:
         "test",
         "tests",
     ]
+
+    verbose = False

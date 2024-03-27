@@ -1,15 +1,17 @@
 from math import floor, ceil
 from uuid import uuid4
 
-import plotext
-
 from codelimit.common.Codebase import Codebase
 from codelimit.common.report.ReportUnit import ReportUnit
 from codelimit.common.utils import make_profile
+from codelimit.version import version
 
 
 class Report:
+    VERSION = version
+
     def __init__(self, codebase: Codebase):
+        self.version = self.VERSION
         self.uuid = str(uuid4())
         self.codebase = codebase
 
@@ -28,53 +30,14 @@ class Report:
                 return sorted_measurements[index].value
         return 0
 
-    def all_report_units_sorted_by_length_asc(self) -> list[ReportUnit]:
+    def all_report_units_sorted_by_length_asc(self, threshold=0) -> list[ReportUnit]:
         result = []
         for file, entry in self.codebase.files.items():
             for m in entry.measurements():
-                result.append(ReportUnit(file, m))
+                if m.value > threshold:
+                    result.append(ReportUnit(file, m))
         result = sorted(result, key=lambda unit: unit.measurement.value, reverse=True)
         return result
 
     def quality_profile(self):
         return make_profile(self.codebase.all_measurements())
-
-    def summary(self) -> str:
-        medium_risk = len(
-            [m for m in self.codebase.all_measurements() if 30 < m.value <= 60]
-        )
-        high_risk = len([m for m in self.codebase.all_measurements() if m.value > 60])
-        if high_risk > 0:
-            return f"🚨 Refactoring necessary, unmaintainable functions: {high_risk}"
-        elif medium_risk > 0:
-            return (
-                f"🔔 Don't forget to refactor, hard-to-maintain functions: "
-                f"{medium_risk}"
-            )
-        else:
-            return "Refactoring not necessary, happy coding!"
-
-    def risk_category_plot(self) -> str:
-        def get_labels(profile):
-            labels = ["1-15"]
-            if profile[1] > 0:
-                labels.append("16-30")
-            if profile[2] > 0:
-                labels.append("31-60")
-            if profile[3] > 0:
-                labels.append("60+")
-            return labels
-
-        profile = make_profile(self.codebase.all_measurements())
-        plot_labels = get_labels(profile)
-        plotext.simple_stacked_bar(
-            [""],
-            [[profile[0]], [profile[1]], [profile[2]], [profile[3]]],
-            width=100,
-            labels=plot_labels,
-            colors=[34, 226, 214, 196],
-        )
-        result = plotext.build()
-        total_loc = sum(profile)
-        result = result.replace(f"\x1b[1m\x1b[38;5;7m{total_loc}.0\x1b[0m\x1b[0m", "")
-        return result

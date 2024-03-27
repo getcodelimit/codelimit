@@ -23,12 +23,59 @@ def test_empty_report():
     assert len(result_measurements) == 0
 
 
+def test_from_json():
+    json = ""
+    json += "{"
+    json += f'  "version": "{Report.VERSION}",'
+    json += '  "uuid": "abcdefgh",'
+    json += '  "root": "/tmp",'
+    json += '  "codebase": {'
+    json += '    "tree": {'
+    json += '       "./": {'
+    json += '         "entries": [],'
+    json += '         "profile": [0, 0, 0, 0]'
+    json += "       }"
+    json += "    },"
+    json += '    "files": {}'
+    json += "  }"
+    json += "}"
+
+    result = ReportReader.from_json(json)
+
+    assert result.version == Report.VERSION
+    assert result.uuid == "abcdefgh"
+    assert result.codebase.root == "/tmp"
+
+
+def test_no_version():
+    json = ""
+    json += "{"
+    json += '  "uuid": "a417ac45-973e-44f8-aa98-f6a29844caf1",'
+    json += '  "root": "/",'
+    json += '  "codebase": {'
+    json += '    "tree": {'
+    json += '       "./": {'
+    json += '         "entries": [],'
+    json += '         "profile": [0, 0, 0, 0]'
+    json += "       }"
+    json += "    },"
+    json += '    "files": {}'
+    json += "  }"
+    json += "}"
+
+    result = ReportReader.from_json(json)
+
+    assert result is None
+
+
 def test_single_file():
     codebase = Codebase("/")
     codebase.add_file(
         SourceFileEntry(
             "foo.py",
             "abcd1234",
+            "Python",
+            20,
             [Measurement("bar()", Location(10, 1), Location(30, 1), 20)],
         )
     )
@@ -60,6 +107,8 @@ def test_profile():
         SourceFileEntry(
             "foo.py",
             "abcd1234",
+            "Python",
+            20,
             [Measurement("bar()", Location(10, 1), Location(30, 1), 20)],
         )
     )
@@ -78,6 +127,8 @@ def test_multiple_files():
         SourceFileEntry(
             "foo.py",
             "abcd1234",
+            "Python",
+            20,
             [Measurement("spam()", Location(10, 1), Location(30, 1), 20)],
         )
     )
@@ -85,6 +136,8 @@ def test_multiple_files():
         SourceFileEntry(
             "bar.py",
             "efgh5678",
+            "Python",
+            20,
             [
                 Measurement("eggs()", Location(10, 1), Location(30, 1), 20),
                 Measurement("ham()", Location(20, 1), Location(50, 1), 30),
@@ -122,6 +175,8 @@ def test_multiple_files_and_folders():
         SourceFileEntry(
             "foo.py",
             "abcd1234",
+            "Python",
+            20,
             [Measurement("bar()", Location(10, 1), Location(30, 1), 20)],
         )
     )
@@ -129,6 +184,8 @@ def test_multiple_files_and_folders():
         SourceFileEntry(
             "bar/spam.py",
             "efgh5678",
+            "Python",
+            20,
             [
                 Measurement("spam()", Location(10, 1), Location(30, 1), 20),
                 Measurement("eggs()", Location(20, 1), Location(50, 1), 30),
