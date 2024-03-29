@@ -1,9 +1,14 @@
+from textwrap import dedent
+
 from codelimit.common.gsm import ZeroOrMore
+from codelimit.common.gsm.Expression import expression_to_nfa, nfa_to_dfa
 from codelimit.common.gsm.OneOrMore import OneOrMore
 from codelimit.common.gsm.Optional import Optional
+from codelimit.common.gsm.State import State
 from codelimit.common.gsm.Union import Union
 from codelimit.common.gsm.ZeroOrMore import ZeroOrMore
-from codelimit.common.gsm.matcher import match, render
+from codelimit.common.gsm.matcher import match
+from codelimit.common.gsm.utils import to_dot
 
 
 def test_single_atom():
@@ -15,6 +20,35 @@ def test_sequence():
     assert match(['a', 'b'], ['a', 'b'])
     assert not match(['a', 'b'], ['a', 'b', 'c'])
 
+
+def test_to_string():
+    State._id = 1
+
+    expr = ['a', 'b']
+    nfa = expression_to_nfa(expr)
+
+    assert str(nfa) == 'Automata(start=State(1), accepting=State(4))'
+
+def test_to_dot():
+    State._id = 1
+    expr = ['a', 'b']
+    nfa = expression_to_nfa(expr)
+    result = to_dot(nfa)
+
+    expected = """
+    digraph {
+    rankdir="LR"
+    start [label = "start", style = "invis"]
+    1 [label="1"]
+    3 [label="3"]
+    4 [label="4" peripheries=2]
+    3 -> 4 [label="b"]
+    1 -> 3 [label="a"]
+    start -> 1 [label = "start"]
+    }
+    """
+
+    assert result.strip() == dedent(expected).strip()
 
 def test_union():
     assert match([Union('a', 'b')], ['a'])
@@ -72,3 +106,9 @@ def test_optional():
     assert match([Optional('b')], [])
     assert match([Optional('b')], ['b'])
     assert not match([Optional('b')], ['b', 'b'])
+
+
+def test_me():
+    expr = [Union(OneOrMore('a'), OneOrMore('b'))]
+    nfa = expression_to_nfa(expr)
+    dfa = nfa_to_dfa(nfa)

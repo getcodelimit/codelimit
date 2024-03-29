@@ -1,5 +1,5 @@
 from codelimit.common.gsm.Expression import expression_to_nfa
-from codelimit.common.gsm.NFA import NFA
+from codelimit.common.gsm.Automata import Automata
 from codelimit.common.gsm.Operator import Operator
 from codelimit.common.gsm.State import State
 
@@ -9,7 +9,7 @@ class Union(Operator):
         self.left = left if isinstance(left, list) else [left]
         self.right = right if isinstance(right, list) else [right]
 
-    def apply(self, stack: list[NFA]):
+    def apply(self, stack: list[Automata]):
         start = State()
         nfa1 = expression_to_nfa(self.left)
         nfa2 = expression_to_nfa(self.right)
@@ -17,4 +17,4 @@ class Union(Operator):
         accepting = State()
         nfa1.accepting.epsilon_transitions = [accepting]
         nfa2.accepting.epsilon_transitions = [accepting]
-        stack.append(NFA(start, accepting))
+        stack.append(Automata(start, accepting))

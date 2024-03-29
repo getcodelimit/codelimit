@@ -1,28 +1,20 @@
 import subprocess
 import tempfile
 
-from codelimit.common.gsm.Expression import expression_to_nfa
+from codelimit.common.gsm.Automata import Automata
+from codelimit.common.gsm.Expression import expression_to_nfa, epsilon_closure
 from codelimit.common.gsm.Operator import Operator
-from codelimit.common.gsm.State import State
 from codelimit.common.gsm.utils import to_dot
-
-
-def _follow_epsilon_transitions(state: State) -> set[State]:
-    result = {state}
-    if state.epsilon_transitions:
-        for s in state.epsilon_transitions:
-            result.update(_follow_epsilon_transitions(s))
-    return result
 
 
 def match(expression: list[Operator | str], text: list):
     nfa = expression_to_nfa(expression)
-    active_states = _follow_epsilon_transitions(nfa.start)
+    active_states = epsilon_closure(nfa.start)
     next_states = set()
     for char in text:
         for active_state in active_states:
             if active_state.transition and char == active_state.transition[0]:
-                next_states.update(_follow_epsilon_transitions(active_state.transition[1]))
+                next_states.update(epsilon_closure(active_state.transition[1]))
         if not next_states:
             return False
         active_states = next_states
@@ -31,7 +23,10 @@ def match(expression: list[Operator | str], text: list):
 
 
 def render(expression: list[Operator | str]):
-    nfa = expression_to_nfa(expression)
+    render_nfa(expression_to_nfa(expression))
+
+
+def render_nfa(nfa: Automata):
     dot = to_dot(nfa)
     with tempfile.NamedTemporaryFile(mode='w') as f:
         f.write(dot)
