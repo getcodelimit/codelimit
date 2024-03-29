@@ -8,7 +8,7 @@ class State:
         self.id = State._id
         State._id += 1
         self.transition: tuple[str, State] | list[tuple[str, State]] | None = None
-        self.epsilon_transitions: list[State] | None = None
+        self.epsilon_transitions: list[State] = []
 
     def assign(self, state: State):
         self.id = state.id
@@ -27,9 +27,8 @@ class State:
                     parts.append(f'{t[0]} -> {t[1]}')
             else:
                 parts.append(f'{self.transition[0]} -> {self.transition[1]}')
-        if self.epsilon_transitions:
-            for t in self.epsilon_transitions:
-                parts.append(f'epsilon -> {t}')
+        for t in self.epsilon_transitions:
+            parts.append(f'epsilon -> {t}')
         result += ', '.join(parts)
         result += ')'
         return result

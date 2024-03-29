@@ -23,9 +23,8 @@ def epsilon_closure(states: State | Iterable[State]) -> set[State]:
         states: set[State] = {states}
     for state in states:
         result.add(state)
-        if state.epsilon_transitions:
-            for s in state.epsilon_transitions:
-                result.update(epsilon_closure(s))
+        for s in state.epsilon_transitions:
+            result.update(epsilon_closure(s))
     return result
 
 

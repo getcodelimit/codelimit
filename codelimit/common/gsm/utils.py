@@ -24,10 +24,9 @@ def state_to_dot(nfa: Automata, state: State, dot="", visited=None):
             target = state.transition[1]
             dot = state_to_dot(nfa, target, dot, visited)
             dot += f'{state.id} -> {target.id} [label="{char}"]\n'
-    if state.epsilon_transitions:
-        for target in state.epsilon_transitions:
-            dot = state_to_dot(nfa, target, dot, visited)
-            dot += f'{state.id} -> {target.id} [label="ε"]\n'
+    for target in state.epsilon_transitions:
+        dot = state_to_dot(nfa, target, dot, visited)
+        dot += f'{state.id} -> {target.id} [label="ε"]\n'
     return dot
 
 
@@ -53,10 +52,9 @@ def state_transistions_to_dot(nfa: Automata, state: State, dot="", visited=None)
             target = state.transition[1]
             dot = state_to_dot(nfa, target, dot, visited)
             dot += f'{state.id} -> {target.id} [label="{char}"]\n'
-    if state.epsilon_transitions:
-        for target in state.epsilon_transitions:
-            dot = state_to_dot(nfa, target, dot, visited)
-            dot += f'{state.id} -> {target.id} [label="ε"]\n'
+    for target in state.epsilon_transitions:
+        dot = state_to_dot(nfa, target, dot, visited)
+        dot += f'{state.id} -> {target.id} [label="ε"]\n'
     return dot
 
 
