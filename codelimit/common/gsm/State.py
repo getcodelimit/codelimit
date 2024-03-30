@@ -7,7 +7,7 @@ class State:
     def __init__(self):
         self.id = State._id
         State._id += 1
-        self.transition: tuple[str, State] | list[tuple[str, State]] | None = None
+        self.transition: list[tuple[str, State]] = []
         self.epsilon_transitions: list[State] = []
 
     def assign(self, state: State):
@@ -21,14 +21,10 @@ class State:
     def __repr__(self):
         result = 'State('
         parts = [f'{self.id}']
-        if self.transition:
-            if isinstance(self.transition, list):
-                for t in self.transition:
-                    parts.append(f'{t[0]} -> {t[1]}')
-            else:
-                parts.append(f'{self.transition[0]} -> {self.transition[1]}')
-        for t in self.epsilon_transitions:
-            parts.append(f'epsilon -> {t}')
+        for t in self.transition:
+            parts.append(f'{t[0]} -> {t[1]}')
+        for e in self.epsilon_transitions:
+            parts.append(f'epsilon -> {e}')
         result += ', '.join(parts)
         result += ')'
         return result

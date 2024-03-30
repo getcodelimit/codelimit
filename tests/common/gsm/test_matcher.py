@@ -7,16 +7,22 @@ from codelimit.common.gsm.Optional import Optional
 from codelimit.common.gsm.State import State
 from codelimit.common.gsm.Union import Union
 from codelimit.common.gsm.ZeroOrMore import ZeroOrMore
-from codelimit.common.gsm.matcher import match
+from codelimit.common.gsm.matcher import match, nfa_match
 from codelimit.common.gsm.utils import to_dot
 
 
 def test_single_atom():
+    assert nfa_match(['a'], ['a'])
+    assert not nfa_match(['b'], ['a'])
+
     assert match(['a'], ['a'])
     assert not match(['b'], ['a'])
 
 
 def test_sequence():
+    assert nfa_match(['a', 'b'], ['a', 'b'])
+    assert not nfa_match(['a', 'b'], ['a', 'b', 'c'])
+
     assert match(['a', 'b'], ['a', 'b'])
     assert not match(['a', 'b'], ['a', 'b', 'c'])
 
@@ -28,6 +34,7 @@ def test_to_string():
     nfa = expression_to_nfa(expr)
 
     assert str(nfa) == 'Automata(start=State(1), accepting=State(4))'
+
 
 def test_to_dot():
     State._id = 1
@@ -42,15 +49,17 @@ def test_to_dot():
     1 [label="1"]
     3 [label="3"]
     4 [label="4" peripheries=2]
-    3 -> 4 [label="b"]
-    1 -> 3 [label="a"]
     start -> 1 [label = "start"]
+    1 -> 3 [label="a"]
+    3 -> 4 [label="b"]
     }
     """
 
     assert result.strip() == dedent(expected).strip()
 
+
 def test_union():
+    assert nfa_match([Union('a', 'b')], ['a'])
     assert match([Union('a', 'b')], ['a'])
 
     expr = ['a', Union('a', 'b')]
@@ -63,8 +72,11 @@ def test_union():
 
     expr = ['a', Union(Union('a', 'b'), 'c')]
 
+    assert nfa_match(expr, ['a', 'a'])
     assert match(expr, ['a', 'a'])
+    assert nfa_match(expr, ['a', 'b'])
     assert match(expr, ['a', 'b'])
+    assert nfa_match(expr, ['a', 'c'])
     assert match(expr, ['a', 'c'])
 
 
@@ -83,6 +95,7 @@ def test_zero_or_more():
 def test_dragon_book_example():
     expr = [ZeroOrMore(Union('a', 'b')), 'a', 'b', 'b']
 
+    assert nfa_match(expr, ['a', 'b', 'b'])
     assert match(expr, ['a', 'b', 'b'])
 
 
@@ -108,7 +121,9 @@ def test_optional():
     assert not match([Optional('b')], ['b', 'b'])
 
 
-def test_me():
+def test_nfa_to_dfa():
     expr = [Union(OneOrMore('a'), OneOrMore('b'))]
     nfa = expression_to_nfa(expr)
     dfa = nfa_to_dfa(nfa)
+
+    assert dfa is not None

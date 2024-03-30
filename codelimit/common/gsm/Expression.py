@@ -31,16 +31,17 @@ def epsilon_closure(states: State | Iterable[State]) -> set[State]:
 def move(states: set[State], symbol: str) -> set[State]:
     result = set()
     for state in states:
-        if state.transition and state.transition[0] == symbol:
-            result.add(state.transition[1])
+        for transition in state.transition:
+            if transition[0] == symbol:
+                result.add(transition[1])
     return result
 
 
 def state_set_transitions(states: set[State]) -> set[str]:
     result = set()
     for state in states:
-        if state.transition:
-            result.add(state.transition[0])
+        for transition in state.transition:
+            result.add(transition[0])
     return result
 
 
@@ -71,8 +72,6 @@ def nfa_to_dfa(nfa: Automata) -> Automata:
             else:
                 new_state = State()
                 states[state_set_id(new_states)] = new_state
-            if state.transition is None:
-                state.transition = []
             state.transition.append((atom, new_state))
             stack.append((new_state, new_states))
     return Automata(start, accepting_states)

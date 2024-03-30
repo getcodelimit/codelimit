@@ -10,5 +10,5 @@ class Atom(Operator):
     def apply(self, stack: list[Automata]):
         start = State()
         accepting = State()
-        start.transition = (self.item, accepting)
+        start.transition.append((self.item, accepting))
         stack.append(Automata(start, accepting))
