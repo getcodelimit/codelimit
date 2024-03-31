@@ -7,7 +7,7 @@ from codelimit.common.gsm.Optional import Optional
 from codelimit.common.gsm.State import State
 from codelimit.common.gsm.Union import Union
 from codelimit.common.gsm.ZeroOrMore import ZeroOrMore
-from codelimit.common.gsm.matcher import match, nfa_match
+from codelimit.common.gsm.matcher import match, nfa_match, render_nfa, render_dfa, find_all
 from codelimit.common.gsm.utils import to_dot
 
 
@@ -99,6 +99,12 @@ def test_dragon_book_example():
     assert match(expr, ['a', 'b', 'b'])
 
 
+def test_thesis_example():
+    expr = [Optional('c'), OneOrMore('a')]
+
+    assert match(expr, ['c', 'a', 'a'])
+
+
 def test_one_or_more():
     expr = [OneOrMore(Union('a', 'b'))]
 
@@ -127,3 +133,14 @@ def test_nfa_to_dfa():
     dfa = nfa_to_dfa(nfa)
 
     assert dfa is not None
+
+
+def test_find_all():
+    expr = [OneOrMore('a')]
+    text = ['a', 'a', 'b', 'b', 'a', 'b', 'b']
+
+    matches = find_all(expr, text)
+
+    assert len(matches) == 2
+    assert matches[0].start == 0
+    assert matches[1].start == 4

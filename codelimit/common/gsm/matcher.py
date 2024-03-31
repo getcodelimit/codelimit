@@ -4,23 +4,53 @@ import tempfile
 from codelimit.common.gsm.Automata import Automata
 from codelimit.common.gsm.Expression import expression_to_nfa, epsilon_closure, nfa_to_dfa
 from codelimit.common.gsm.Operator import Operator
+from codelimit.common.gsm.Pattern import Pattern
 from codelimit.common.gsm.utils import to_dot
 
 
-def match(expression: list[Operator | str], text: list):
+def match(expression: list[Operator | str], text: list) -> Pattern | None:
     nfa = expression_to_nfa(expression)
     dfa = nfa_to_dfa(nfa)
-    state = dfa.start
+    pattern = Pattern(dfa.start)
     for char in text:
         next_state = None
-        for transition in state.transition:
+        for transition in pattern.state.transition:
             if transition[0] == char:
+                pattern.tokens.append(char)
                 next_state = transition[1]
         if not next_state:
-            return False
+            return None
         else:
-            state = next_state
-    return state in dfa.accepting
+            pattern.state = next_state
+    if pattern.state in dfa.accepting:
+        return pattern
+    else:
+        return None
+
+
+def find_all(expression: list[Operator | str], text: list) -> list[Pattern]:
+    nfa = expression_to_nfa(expression)
+    dfa = nfa_to_dfa(nfa)
+    matches = []
+    active_patterns = []
+    last_match_idx = -1
+    for idx, char in enumerate(text):
+        active_patterns.append(Pattern(idx, dfa.start))
+        next_state_patterns = []
+        for pattern in active_patterns:
+            if pattern.start <= last_match_idx:
+                continue
+            for transition in pattern.state.transition:
+                if transition[0] == char:
+                    pattern.tokens.append(char)
+                    pattern.state = transition[1]
+                    next_state_patterns.append(pattern)
+                else:
+                    if pattern.state in dfa.accepting:
+                        matches.append(pattern)
+                        last_match_idx = idx
+        active_patterns = next_state_patterns
+    return matches
 
 
 def nfa_match(expression: list[Operator | str], text: list):
