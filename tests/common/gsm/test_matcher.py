@@ -1,13 +1,12 @@
 from textwrap import dedent
 
-from codelimit.common.gsm import ZeroOrMore
 from codelimit.common.gsm.Expression import expression_to_nfa, nfa_to_dfa
 from codelimit.common.gsm.OneOrMore import OneOrMore
 from codelimit.common.gsm.Optional import Optional
 from codelimit.common.gsm.State import State
 from codelimit.common.gsm.Union import Union
 from codelimit.common.gsm.ZeroOrMore import ZeroOrMore
-from codelimit.common.gsm.matcher import match, nfa_match, render_nfa, render_dfa, find_all
+from codelimit.common.gsm.matcher import match, nfa_match, find_all
 from codelimit.common.gsm.utils import to_dot
 
 

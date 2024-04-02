@@ -18,16 +18,16 @@ class ScanTotals:
         return sorted(self._languages_totals.values(), key=lambda x: x.loc, reverse=True)
 
     def total_loc(self) -> int:
-        return sum([l.loc for l in self._languages_totals.values()])
+        return sum([language.loc for language in self._languages_totals.values()])
 
     def total_files(self) -> int:
-        return sum([l.files for l in self._languages_totals.values()])
+        return sum([language.files for language in self._languages_totals.values()])
 
     def total_functions(self) -> int:
-        return sum([l.functions for l in self._languages_totals.values()])
+        return sum([language.functions for language in self._languages_totals.values()])
 
     def total_hard_to_maintain(self) -> int:
-        return sum([l.hard_to_maintain for l in self._languages_totals.values()])
+        return sum([language.hard_to_maintain for language in self._languages_totals.values()])
 
     def total_unmaintainable(self) -> int:
-        return sum([l.unmaintainable for l in self._languages_totals.values()])
+        return sum([language.unmaintainable for language in self._languages_totals.values()])
