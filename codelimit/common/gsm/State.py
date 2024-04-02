@@ -4,7 +4,7 @@ from __future__ import annotations
 class State:
     _id = 1
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.id = State._id
         State._id += 1
         self.transition: list[tuple[str, State]] = []

@@ -33,7 +33,7 @@ def test_to_string():
     expr = ['a', 'b']
     nfa = expression_to_nfa(expr)
 
-    assert str(nfa) == 'Automata(start=State(1), accepting=State(4))'
+    assert str(nfa) == 'NFA(start=State(1), accepting=State(4))'
 
 
 def test_to_dot():

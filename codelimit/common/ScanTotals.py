@@ -3,7 +3,7 @@ from codelimit.common.SourceFileEntry import SourceFileEntry
 
 
 class ScanTotals:
-    def __init__(self):
+    def __init__(self) -> None:
         self._languages_totals: dict[str, LanguageTotals] = {}
 
     def add(self, entry: SourceFileEntry):

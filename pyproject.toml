@@ -25,6 +25,9 @@ addopts = "--tb=short"
 help = "Create a binary executable using pyinstaller"
 cmd = "pyinstaller --workpath .build --specpath dist -n codelimit codelimit/__main__.py"
 
+[tool.mypy]
+ignore_missing_imports = true
+
 [tool.semantic_release]
 branch = "main"
 version_toml = [ "pyproject.toml:tool.poetry.version" ]

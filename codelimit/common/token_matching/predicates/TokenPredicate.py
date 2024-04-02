@@ -1,9 +1,10 @@
-from abc import ABC, abstractmethod
+from abc import abstractmethod
 
 from codelimit.common.Token import Token
+from codelimit.common.gsm.Predicate import Predicate
 
 
-class TokenPredicate(ABC):
+class TokenPredicate(Predicate[Token]):
     def __init__(self):
         self.satisfied = False
 

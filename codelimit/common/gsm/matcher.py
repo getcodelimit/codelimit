@@ -1,17 +1,19 @@
-import subprocess
-import tempfile
+import copy
+from typing import TypeVar
 
-from codelimit.common.gsm.Automata import Automata
 from codelimit.common.gsm.Expression import expression_to_nfa, epsilon_closure, nfa_to_dfa
 from codelimit.common.gsm.Operator import Operator
 from codelimit.common.gsm.Pattern import Pattern
-from codelimit.common.gsm.utils import to_dot
+from codelimit.common.gsm.Predicate import Predicate
+from codelimit.common.gsm.utils import render_automata
+
+T = TypeVar('T')
 
 
-def match(expression: list[Operator | str], text: list) -> Pattern | None:
+def match(expression: Operator | Predicate[T] | T | list[Operator | Predicate[T] | T], text: list) -> Pattern | None:
     nfa = expression_to_nfa(expression)
     dfa = nfa_to_dfa(nfa)
-    pattern = Pattern(dfa.start)
+    pattern = Pattern(0, dfa)
     for char in text:
         next_state = None
         for transition in pattern.state.transition:
@@ -35,7 +37,8 @@ def find_all(expression: list[Operator | str], text: list) -> list[Pattern]:
     active_patterns = []
     last_match_idx = -1
     for idx, char in enumerate(text):
-        active_patterns.append(Pattern(idx, dfa.start))
+        dfa_copy = copy.deepcopy(dfa)
+        active_patterns.append(Pattern(idx, dfa_copy))
         next_state_patterns = []
         for pattern in active_patterns:
             if pattern.start <= last_match_idx:
@@ -46,7 +49,7 @@ def find_all(expression: list[Operator | str], text: list) -> list[Pattern]:
                     pattern.state = transition[1]
                     next_state_patterns.append(pattern)
                 else:
-                    if pattern.state in dfa.accepting:
+                    if pattern.is_accepting():
                         matches.append(pattern)
                         last_match_idx = idx
         active_patterns = next_state_patterns
@@ -75,12 +78,3 @@ def render_nfa(expression: list[Operator | str]):
 
 def render_dfa(expression: list[Operator | str]):
     render_automata(nfa_to_dfa(expression_to_nfa(expression)))
-
-
-def render_automata(automata: Automata):
-    dot = to_dot(automata)
-    with tempfile.NamedTemporaryFile(mode='w') as f:
-        f.write(dot)
-        f.flush()
-        subprocess.run(['dot', '-Tpdf', f'-o{f.name}.pdf', f.name])
-        subprocess.run(['open', f'{f.name}.pdf'])
