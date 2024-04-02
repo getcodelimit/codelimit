@@ -11,7 +11,9 @@ from codelimit.common.token_matching.predicates.Or import Or
 
 class Java(Language):
     def extract_headers(self, tokens: list) -> list:
-        return get_headers(tokens, [Name(), Balanced("(", ")"), Lookahead(Or("{", "throws"))])
+        return get_headers(
+            tokens, [Name(), Balanced("(", ")"), Lookahead(Or("{", "throws"))]
+        )
 
     def extract_blocks(self, tokens: list, headers: list) -> list:
         return get_blocks(tokens, "{", "}")

@@ -8,19 +8,31 @@ from codelimit.common.gsm.Operator import Operator
 from codelimit.common.gsm.Predicate import Predicate
 from codelimit.common.gsm.State import State
 
-T = TypeVar('T')
+T = TypeVar("T")
 
 Expression: TypeAlias = Operator | Predicate[T] | T | list[Operator | Predicate[T] | T]
 
 
 def expression_to_nfa(expression: Expression[T]) -> NFA:
     if isinstance(expression, list):
-        op_expression = [Atom(item) if not isinstance(item, Operator) or isinstance(item, Predicate) else
-                         item for item in expression]
+        op_expression = [
+            (
+                Atom(item)
+                if not isinstance(item, Operator) or isinstance(item, Predicate)
+                else item
+            )
+            for item in expression
+        ]
 
     else:
-        op_expression = [Atom(expression) if not isinstance(expression, Operator) or
-                                             isinstance(expression, Predicate) else expression]
+        op_expression = [
+            (
+                Atom(expression)
+                if not isinstance(expression, Operator)
+                or isinstance(expression, Predicate)
+                else expression
+            )
+        ]
     nfa_stack: list[NFA] = []
     for item in op_expression:
         item.apply(nfa_stack)

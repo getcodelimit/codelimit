@@ -11,4 +11,4 @@ class DFA(Automata):
         return state in self.accepting
 
     def __str__(self):
-        return f'DFA(start={self.start}, accepting={self.accepting})'
+        return f"DFA(start={self.start}, accepting={self.accepting})"

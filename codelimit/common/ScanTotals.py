@@ -15,7 +15,9 @@ class ScanTotals:
         return self._languages_totals.keys()
 
     def languages_totals(self) -> list[LanguageTotals]:
-        return sorted(self._languages_totals.values(), key=lambda x: x.loc, reverse=True)
+        return sorted(
+            self._languages_totals.values(), key=lambda x: x.loc, reverse=True
+        )
 
     def total_loc(self) -> int:
         return sum([language.loc for language in self._languages_totals.values()])
@@ -27,7 +29,11 @@ class ScanTotals:
         return sum([language.functions for language in self._languages_totals.values()])
 
     def total_hard_to_maintain(self) -> int:
-        return sum([language.hard_to_maintain for language in self._languages_totals.values()])
+        return sum(
+            [language.hard_to_maintain for language in self._languages_totals.values()]
+        )
 
     def total_unmaintainable(self) -> int:
-        return sum([language.unmaintainable for language in self._languages_totals.values()])
+        return sum(
+            [language.unmaintainable for language in self._languages_totals.values()]
+        )

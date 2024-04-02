@@ -78,9 +78,12 @@ def test_optional():
     code += "function bar() {}\n"
     tokens = lex(JavascriptLexer(), code)
 
-    result = Matcher([Optional("function"), Name(), Balanced("(", ")"), Lookahead("{")]).match(tokens)
+    result = Matcher(
+        [Optional("function"), Name(), Balanced("(", ")"), Lookahead("{")]
+    ).match(tokens)
 
     assert len(result) == 2
+
 
 def test_ignore_incomplete_match():
     code = ""
@@ -89,6 +92,6 @@ def test_ignore_incomplete_match():
     code += "  pass\n"
     tokens = lex(PythonLexer(), code)
 
-    result = Matcher(["def", Name(), Balanced('(', ')')]).match(tokens)
+    result = Matcher(["def", Name(), Balanced("(", ")")]).match(tokens)
 
     assert len(result) == 1

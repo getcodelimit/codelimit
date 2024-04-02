@@ -42,11 +42,11 @@ def state_transitions_to_dot(automata: Automata, state: State, dot="", visited=N
 
 def render_automata(automata: Automata):
     dot = to_dot(automata)
-    with tempfile.NamedTemporaryFile(mode='w') as f:
+    with tempfile.NamedTemporaryFile(mode="w") as f:
         f.write(dot)
         f.flush()
-        subprocess.run(['dot', '-Tpdf', f'-o{f.name}.pdf', f.name])
-        subprocess.run(['open', f'{f.name}.pdf'])
+        subprocess.run(["dot", "-Tpdf", f"-o{f.name}.pdf", f.name])
+        subprocess.run(["open", f"{f.name}.pdf"])
 
 
 def to_dot(automata: Automata):

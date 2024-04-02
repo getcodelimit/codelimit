@@ -3,7 +3,7 @@ from typing import TypeVar
 from codelimit.common.Token import Token
 from codelimit.common.token_matching.predicates.TokenPredicate import TokenPredicate
 
-T = TypeVar('T')
+T = TypeVar("T")
 
 
 class Value(TokenPredicate):

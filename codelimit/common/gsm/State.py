@@ -16,15 +16,15 @@ class State:
         self.epsilon_transitions = state.epsilon_transitions
 
     def __str__(self):
-        return f'State({self.id})'
+        return f"State({self.id})"
 
     def __repr__(self):
-        result = 'State('
-        parts = [f'{self.id}']
+        result = "State("
+        parts = [f"{self.id}"]
         for t in self.transition:
-            parts.append(f'{t[0]} -> {t[1]}')
+            parts.append(f"{t[0]} -> {t[1]}")
         for e in self.epsilon_transitions:
-            parts.append(f'epsilon -> {e}')
-        result += ', '.join(parts)
-        result += ')'
+            parts.append(f"epsilon -> {e}")
+        result += ", ".join(parts)
+        result += ")"
         return result

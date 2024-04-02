@@ -1,16 +1,23 @@
 import copy
 from typing import TypeVar
 
-from codelimit.common.gsm.Expression import expression_to_nfa, epsilon_closure, nfa_to_dfa
+from codelimit.common.gsm.Expression import (
+    expression_to_nfa,
+    epsilon_closure,
+    nfa_to_dfa,
+)
 from codelimit.common.gsm.Operator import Operator
 from codelimit.common.gsm.Pattern import Pattern
 from codelimit.common.gsm.Predicate import Predicate
 from codelimit.common.gsm.utils import render_automata
 
-T = TypeVar('T')
+T = TypeVar("T")
 
 
-def match(expression: Operator | Predicate[T] | T | list[Operator | Predicate[T] | T], text: list) -> Pattern | None:
+def match(
+    expression: Operator | Predicate[T] | T | list[Operator | Predicate[T] | T],
+    text: list,
+) -> Pattern | None:
     nfa = expression_to_nfa(expression)
     dfa = nfa_to_dfa(nfa)
     pattern = Pattern(0, dfa)

@@ -11,33 +11,33 @@ from codelimit.common.gsm.utils import to_dot
 
 
 def test_single_atom():
-    assert nfa_match(['a'], ['a'])
-    assert not nfa_match(['b'], ['a'])
+    assert nfa_match(["a"], ["a"])
+    assert not nfa_match(["b"], ["a"])
 
-    assert match(['a'], ['a'])
-    assert not match(['b'], ['a'])
+    assert match(["a"], ["a"])
+    assert not match(["b"], ["a"])
 
 
 def test_sequence():
-    assert nfa_match(['a', 'b'], ['a', 'b'])
-    assert not nfa_match(['a', 'b'], ['a', 'b', 'c'])
+    assert nfa_match(["a", "b"], ["a", "b"])
+    assert not nfa_match(["a", "b"], ["a", "b", "c"])
 
-    assert match(['a', 'b'], ['a', 'b'])
-    assert not match(['a', 'b'], ['a', 'b', 'c'])
+    assert match(["a", "b"], ["a", "b"])
+    assert not match(["a", "b"], ["a", "b", "c"])
 
 
 def test_to_string():
     State._id = 1
 
-    expr = ['a', 'b']
+    expr = ["a", "b"]
     nfa = expression_to_nfa(expr)
 
-    assert str(nfa) == 'NFA(start=State(1), accepting=State(4))'
+    assert str(nfa) == "NFA(start=State(1), accepting=State(4))"
 
 
 def test_to_dot():
     State._id = 1
-    expr = ['a', 'b']
+    expr = ["a", "b"]
     nfa = expression_to_nfa(expr)
     result = to_dot(nfa)
 
@@ -58,76 +58,76 @@ def test_to_dot():
 
 
 def test_union():
-    assert nfa_match([Union('a', 'b')], ['a'])
-    assert match([Union('a', 'b')], ['a'])
+    assert nfa_match([Union("a", "b")], ["a"])
+    assert match([Union("a", "b")], ["a"])
 
-    expr = ['a', Union('a', 'b')]
-    text = ['a', 'a']
+    expr = ["a", Union("a", "b")]
+    text = ["a", "a"]
 
     assert match(expr, text)
 
-    text = ['a', 'b']
+    text = ["a", "b"]
     assert match(expr, text)
 
-    expr = ['a', Union(Union('a', 'b'), 'c')]
+    expr = ["a", Union(Union("a", "b"), "c")]
 
-    assert nfa_match(expr, ['a', 'a'])
-    assert match(expr, ['a', 'a'])
-    assert nfa_match(expr, ['a', 'b'])
-    assert match(expr, ['a', 'b'])
-    assert nfa_match(expr, ['a', 'c'])
-    assert match(expr, ['a', 'c'])
+    assert nfa_match(expr, ["a", "a"])
+    assert match(expr, ["a", "a"])
+    assert nfa_match(expr, ["a", "b"])
+    assert match(expr, ["a", "b"])
+    assert nfa_match(expr, ["a", "c"])
+    assert match(expr, ["a", "c"])
 
 
 def test_zero_or_more():
-    expr = [ZeroOrMore(Union('a', 'b'))]
+    expr = [ZeroOrMore(Union("a", "b"))]
 
     assert match(expr, [])
-    assert match(expr, ['a'])
-    assert match(expr, ['a', 'a'])
-    assert match(expr, ['b'])
-    assert match(expr, ['b', 'b'])
-    assert not match(expr, ['c'])
-    assert not match(expr, ['a', 'c'])
+    assert match(expr, ["a"])
+    assert match(expr, ["a", "a"])
+    assert match(expr, ["b"])
+    assert match(expr, ["b", "b"])
+    assert not match(expr, ["c"])
+    assert not match(expr, ["a", "c"])
 
 
 def test_dragon_book_example():
-    expr = [ZeroOrMore(Union('a', 'b')), 'a', 'b', 'b']
+    expr = [ZeroOrMore(Union("a", "b")), "a", "b", "b"]
 
-    assert nfa_match(expr, ['a', 'b', 'b'])
-    assert match(expr, ['a', 'b', 'b'])
+    assert nfa_match(expr, ["a", "b", "b"])
+    assert match(expr, ["a", "b", "b"])
 
 
 def test_thesis_example():
-    expr = [Optional('c'), OneOrMore('a')]
+    expr = [Optional("c"), OneOrMore("a")]
 
-    assert match(expr, ['c', 'a', 'a'])
+    assert match(expr, ["c", "a", "a"])
 
 
 def test_one_or_more():
-    expr = [OneOrMore(Union('a', 'b'))]
+    expr = [OneOrMore(Union("a", "b"))]
 
     assert not match(expr, [])
-    assert match(expr, ['a'])
-    assert match(expr, ['a', 'a'])
-    assert match(expr, ['b'])
-    assert match(expr, ['b', 'b'])
-    assert not match(expr, ['c'])
-    assert not match(expr, ['a', 'c'])
+    assert match(expr, ["a"])
+    assert match(expr, ["a", "a"])
+    assert match(expr, ["b"])
+    assert match(expr, ["b", "b"])
+    assert not match(expr, ["c"])
+    assert not match(expr, ["a", "c"])
 
 
 def test_optional():
-    expr = ['a', Optional('b')]
+    expr = ["a", Optional("b")]
 
-    assert match(expr, ['a'])
-    assert match(expr, ['a', 'b'])
-    assert match([Optional('b')], [])
-    assert match([Optional('b')], ['b'])
-    assert not match([Optional('b')], ['b', 'b'])
+    assert match(expr, ["a"])
+    assert match(expr, ["a", "b"])
+    assert match([Optional("b")], [])
+    assert match([Optional("b")], ["b"])
+    assert not match([Optional("b")], ["b", "b"])
 
 
 def test_nfa_to_dfa():
-    expr = [Union(OneOrMore('a'), OneOrMore('b'))]
+    expr = [Union(OneOrMore("a"), OneOrMore("b"))]
     nfa = expression_to_nfa(expr)
     dfa = nfa_to_dfa(nfa)
 
@@ -135,8 +135,8 @@ def test_nfa_to_dfa():
 
 
 def test_find_all():
-    expr = [OneOrMore('a')]
-    text = ['a', 'a', 'b', 'b', 'a', 'b', 'b']
+    expr = [OneOrMore("a")]
+    text = ["a", "a", "b", "b", "a", "b", "b"]
 
     matches = find_all(expr, text)
 

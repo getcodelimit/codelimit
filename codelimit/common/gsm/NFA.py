@@ -11,4 +11,4 @@ class NFA(Automata):
         return state == self.accepting
 
     def __str__(self):
-        return f'NFA(start={self.start}, accepting={self.accepting})'
+        return f"NFA(start={self.start}, accepting={self.accepting})"
