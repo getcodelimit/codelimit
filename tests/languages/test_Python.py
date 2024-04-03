@@ -1,4 +1,4 @@
-from pygments.lexers.python import PythonLexer
+from pygments.lexers import PythonLexer
 
 from codelimit.common.lexer_utils import lex
 from codelimit.languages import LanguageName

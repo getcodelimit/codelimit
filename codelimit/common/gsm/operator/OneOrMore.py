@@ -1,10 +1,10 @@
 from codelimit.common.gsm.Expression import expression_to_nfa, Expression
-from codelimit.common.gsm.NFA import NFA
-from codelimit.common.gsm.Operator import Operator
-from codelimit.common.gsm.State import State
+from codelimit.common.gsm.automata.NFA import NFA
+from codelimit.common.gsm.operator.Operator import Operator
+from codelimit.common.gsm.automata.State import State
 
 
-class Optional(Operator):
+class OneOrMore(Operator):
     def __init__(self, expression: Expression):
         self.expression = expression if isinstance(expression, list) else [expression]
 
@@ -12,6 +12,6 @@ class Optional(Operator):
         start = State()
         nfa = expression_to_nfa(self.expression)
         accepting = State()
-        start.epsilon_transitions = [nfa.start, accepting]
-        nfa.accepting.epsilon_transitions = [accepting]
+        start.epsilon_transitions = [nfa.start]
+        nfa.accepting.epsilon_transitions = [nfa.start, accepting]
         stack.append(NFA(start, accepting))

@@ -1,7 +1,7 @@
 from abc import abstractmethod
 
 from codelimit.common.Token import Token
-from codelimit.common.gsm.Predicate import Predicate
+from codelimit.common.gsm.predicate.Predicate import Predicate
 
 
 class TokenPredicate(Predicate[Token]):

@@ -1,6 +1,6 @@
 from codelimit.common.Token import Token
-from codelimit.common.token_matching.Matcher import TokenPredicate
-from codelimit.common.token_matching.predicates.Value import Value
+from codelimit.common.token_matching.TokenMatcher import TokenPredicate
+from codelimit.common.token_matching.predicate.Value import Value
 
 
 class Balanced(TokenPredicate):

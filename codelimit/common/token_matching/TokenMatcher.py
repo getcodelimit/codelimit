@@ -2,12 +2,11 @@ from typing import Union
 
 from codelimit.common.Token import Token
 from codelimit.common.TokenRange import TokenRange
-from codelimit.common.token_matching.predicates.Lookahead import Lookahead
-from codelimit.common.token_matching.predicates.TokenPredicate import TokenPredicate
-from codelimit.common.token_matching.predicates.Value import Value
+from codelimit.common.token_matching.predicate.TokenPredicate import TokenPredicate
+from codelimit.common.token_matching.predicate.Value import Value
 
 
-class Matcher:
+class TokenMatcher:
     def __init__(self, pattern: Union[TokenPredicate, str, list[TokenPredicate | str]]):
         if not isinstance(pattern, list):
             if isinstance(pattern, TokenPredicate):
@@ -44,8 +43,7 @@ class Matcher:
 
     def _consume_token(self, token: Token):
         predicate = self._pattern[self._pattern_index]
-        if not isinstance(predicate, Lookahead):
-            self._matched_tokens.append(token)
+        self._matched_tokens.append(token)
         if predicate.satisfied:
             if self._pattern_index < len(self._pattern) - 1:
                 self._pattern_index += 1

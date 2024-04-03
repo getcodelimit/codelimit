@@ -1,12 +1,12 @@
 from typing import Iterable, TypeVar, TypeAlias
 
-from codelimit.common.gsm.Atom import Atom
-from codelimit.common.gsm.Concat import Concat
-from codelimit.common.gsm.DFA import DFA
-from codelimit.common.gsm.NFA import NFA
-from codelimit.common.gsm.Operator import Operator
-from codelimit.common.gsm.Predicate import Predicate
-from codelimit.common.gsm.State import State
+from codelimit.common.gsm.operator.Atom import Atom
+from codelimit.common.gsm.operator.Concat import Concat
+from codelimit.common.gsm.automata.DFA import DFA
+from codelimit.common.gsm.automata.NFA import NFA
+from codelimit.common.gsm.operator.Operator import Operator
+from codelimit.common.gsm.predicate.Predicate import Predicate
+from codelimit.common.gsm.automata.State import State
 
 T = TypeVar("T")
 
@@ -17,20 +17,14 @@ def expression_to_nfa(expression: Expression[T]) -> NFA:
     if isinstance(expression, list):
         op_expression = [
             (
-                Atom(item)
-                if not isinstance(item, Operator) or isinstance(item, Predicate)
-                else item
+                item if isinstance(item, Operator) else Atom(item)
             )
             for item in expression
         ]
-
     else:
         op_expression = [
             (
-                Atom(expression)
-                if not isinstance(expression, Operator)
-                or isinstance(expression, Predicate)
-                else expression
+                expression if isinstance(expression, Operator) else Atom(expression)
             )
         ]
     nfa_stack: list[NFA] = []

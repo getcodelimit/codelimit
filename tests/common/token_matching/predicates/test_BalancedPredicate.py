@@ -2,8 +2,8 @@ from pygments.token import Punctuation
 
 from codelimit.common.Location import Location
 from codelimit.common.Token import Token
-from codelimit.common.token_matching.predicates.Balanced import Balanced
-from codelimit.common.token_matching.predicates.Symbol import Symbol
+from codelimit.common.token_matching.predicate.Balanced import Balanced
+from codelimit.common.token_matching.predicate.Symbol import Symbol
 
 
 def test_simple():

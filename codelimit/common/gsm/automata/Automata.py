@@ -1,6 +1,6 @@
 from abc import abstractmethod, ABC
 
-from codelimit.common.gsm.State import State
+from codelimit.common.gsm.automata.State import State
 
 
 class Automata(ABC):

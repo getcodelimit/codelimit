@@ -1,4 +1,4 @@
-from codelimit.common.gsm.Automata import Automata
+from codelimit.common.gsm.automata.Automata import Automata
 
 
 class Pattern:

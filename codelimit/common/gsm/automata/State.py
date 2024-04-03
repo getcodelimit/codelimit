@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from codelimit.common.gsm.predicate.Predicate import Predicate
+
 
 class State:
     _id = 1
@@ -7,7 +9,7 @@ class State:
     def __init__(self) -> None:
         self.id = State._id
         State._id += 1
-        self.transition: list[tuple[str, State]] = []
+        self.transition: list[tuple[Predicate, State]] = []
         self.epsilon_transitions: list[State] = []
 
     def assign(self, state: State):

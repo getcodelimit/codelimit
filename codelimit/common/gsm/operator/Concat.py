@@ -1,5 +1,5 @@
-from codelimit.common.gsm.NFA import NFA
-from codelimit.common.gsm.Operator import Operator
+from codelimit.common.gsm.automata.NFA import NFA
+from codelimit.common.gsm.operator.Operator import Operator
 
 
 class Concat(Operator):

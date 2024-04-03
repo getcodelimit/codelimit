@@ -1,8 +1,8 @@
 import subprocess
 import tempfile
 
-from codelimit.common.gsm.Automata import Automata
-from codelimit.common.gsm.State import State
+from codelimit.common.gsm.automata.Automata import Automata
+from codelimit.common.gsm.automata.State import State
 
 
 def state_to_dot(automata: Automata, state: State, dot="", visited=None):

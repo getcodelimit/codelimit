@@ -1,5 +1,5 @@
-from codelimit.common.gsm.Automata import Automata
-from codelimit.common.gsm.State import State
+from codelimit.common.gsm.automata.Automata import Automata
+from codelimit.common.gsm.automata.State import State
 
 
 class DFA(Automata):

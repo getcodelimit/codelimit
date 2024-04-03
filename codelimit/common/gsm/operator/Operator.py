@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-from codelimit.common.gsm.NFA import NFA
+from codelimit.common.gsm.automata.NFA import NFA
 
 
 class Operator(ABC):

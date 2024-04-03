@@ -1,7 +1,7 @@
 from codelimit.common.gsm.Expression import expression_to_nfa, Expression
-from codelimit.common.gsm.NFA import NFA
-from codelimit.common.gsm.Operator import Operator
-from codelimit.common.gsm.State import State
+from codelimit.common.gsm.automata.NFA import NFA
+from codelimit.common.gsm.operator.Operator import Operator
+from codelimit.common.gsm.automata.State import State
 
 
 class Union(Operator):
