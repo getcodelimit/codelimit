@@ -12,3 +12,11 @@ class Value(TokenPredicate):
             self.satisfied = True
             return True
         return False
+
+    def __eq__(self, other: object) -> bool:
+        if not isinstance(other, Value):
+            return False
+        return self.value == other.value
+
+    def __hash__(self):
+        return hash(self.value)

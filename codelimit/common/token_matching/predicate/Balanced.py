@@ -29,3 +29,11 @@ class Balanced(TokenPredicate):
             return True
         else:
             return self.depth > 0
+
+    def __eq__(self, other: object) -> bool:
+        if not isinstance(other, Balanced):
+            return False
+        return self.left == other.left and self.right == other.right and self.depth == other.depth
+
+    def __hash__(self):
+        return hash((self.left, self.right, self.depth))

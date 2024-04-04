@@ -12,3 +12,11 @@ class Keyword(TokenPredicate):
             self.satisfied = True
             return True
         return False
+
+    def __eq__(self, other: object) -> bool:
+        if not isinstance(other, Keyword):
+            return False
+        return self.keyword == other.keyword
+
+    def __hash__(self):
+        return hash(self.keyword)

@@ -8,3 +8,9 @@ class Name(TokenPredicate):
             self.satisfied = True
             return True
         return False
+
+    def __eq__(self, other: object) -> bool:
+        return isinstance(other, Name)
+
+    def __hash__(self):
+        return hash("Name")

@@ -12,3 +12,11 @@ class Symbol(TokenPredicate):
             self.satisfied = True
             return True
         return False
+
+    def __eq__(self, other: object) -> bool:
+        if not isinstance(other, Symbol):
+            return False
+        return self.symbol == other.symbol
+
+    def __hash__(self):
+        return hash(self.symbol)

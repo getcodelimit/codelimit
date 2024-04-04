@@ -1,13 +1,13 @@
 from textwrap import dedent
 
 from codelimit.common.gsm.Expression import expression_to_nfa, nfa_to_dfa
+from codelimit.common.gsm.automata.State import State
+from codelimit.common.gsm.matcher import match, nfa_match, find_all
 from codelimit.common.gsm.operator.OneOrMore import OneOrMore
 from codelimit.common.gsm.operator.Optional import Optional
-from codelimit.common.gsm.predicate.Predicate import Predicate
-from codelimit.common.gsm.automata.State import State
 from codelimit.common.gsm.operator.Union import Union
 from codelimit.common.gsm.operator.ZeroOrMore import ZeroOrMore
-from codelimit.common.gsm.matcher import match, nfa_match, find_all
+from codelimit.common.gsm.predicate.Predicate import Predicate
 from codelimit.common.gsm.utils import to_dot
 
 
@@ -165,6 +165,14 @@ class CharacterRange(Predicate[str]):
 
     def __str__(self):
         return f"[{chr(self.start)}{chr(self.end)}]"
+
+    def __eq__(self, other: object) -> bool:
+        if not isinstance(other, CharacterRange):
+            return False
+        return self.start == other.start and self.end == other.end
+
+    def __hash__(self):
+        return hash((self.start, self.end))
 
 
 def test_predicate():

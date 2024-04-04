@@ -46,7 +46,7 @@ def epsilon_closure(states: State | Iterable[State]) -> set[State]:
     return result
 
 
-def move(states: set[State], symbol: str) -> set[State]:
+def move(states: set[State], symbol: Predicate) -> set[State]:
     result = set()
     for state in states:
         for transition in state.transition:
@@ -55,7 +55,7 @@ def move(states: set[State], symbol: str) -> set[State]:
     return result
 
 
-def state_set_transitions(states: set[State]) -> set[str]:
+def state_set_transitions(states: set[State]) -> set[Predicate]:
     result = set()
     for state in states:
         for transition in state.transition:
@@ -83,13 +83,13 @@ def nfa_to_dfa(nfa: NFA) -> DFA:
         if nfa.accepting in T:
             accepting_states.append(state)
         transitions = state_set_transitions(T)
-        for atom in transitions:
-            new_states = epsilon_closure(move(T, atom))
+        for predicate in transitions:
+            new_states = epsilon_closure(move(T, predicate))
             if state_set_id(new_states) in states:
                 new_state = states[state_set_id(new_states)]
             else:
                 new_state = State()
                 states[state_set_id(new_states)] = new_state
-            state.transition.append((atom, new_state))
+            state.transition.append((predicate, new_state))
             stack.append((new_state, new_states))
     return DFA(start, accepting_states)
