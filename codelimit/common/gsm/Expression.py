@@ -10,7 +10,7 @@ from codelimit.common.gsm.automata.State import State
 
 T = TypeVar("T")
 
-Expression: TypeAlias = Operator | Predicate[T] | T | list[Operator | Predicate[T] | T]
+Expression: TypeAlias = Operator | Predicate | T | list[Operator | Predicate | T]
 
 
 def expression_to_nfa(expression: Expression[T]) -> NFA:

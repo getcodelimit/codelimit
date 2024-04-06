@@ -4,11 +4,10 @@ from codelimit.common.Language import Language
 from codelimit.common.Token import Token
 from codelimit.common.TokenRange import TokenRange
 from codelimit.common.gsm.Expression import Expression
-from codelimit.common.gsm.matcher import find_all
+from codelimit.common.gsm.matcher import find_all, starts_with
 from codelimit.common.scope.Header import Header
 from codelimit.common.scope.Scope import Scope
 from codelimit.common.source_utils import filter_tokens, filter_nocl_comment_tokens
-from codelimit.common.token_matching.TokenMatcher import TokenPredicate, TokenMatcher
 from codelimit.common.token_utils import (
     sort_tokens,
     sort_token_ranges,
@@ -139,8 +138,11 @@ def has_curly_suffix(tokens: list[Token], index):
     return index < len(tokens) - 1 and tokens[index + 1].is_symbol("{")
 
 
-def get_headers(tokens: list[Token], expression: Expression) -> list[Header]:
+def get_headers(tokens: list[Token], expression: Expression, followed_by: Expression = None) -> list[Header]:
+    # expression = replace_string_literal_with_predicate(expression)
     patterns = find_all(expression, tokens)
+    if followed_by:
+        patterns = [p for p in patterns if starts_with(followed_by, tokens[p.end:])]
     result = []
     for pattern in patterns:
         name_token = next(t for t in pattern.tokens if t.is_name())

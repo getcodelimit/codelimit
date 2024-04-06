@@ -2,7 +2,7 @@ from textwrap import dedent
 
 from codelimit.common.gsm.Expression import expression_to_nfa, nfa_to_dfa
 from codelimit.common.gsm.automata.State import State
-from codelimit.common.gsm.matcher import match, nfa_match, find_all
+from codelimit.common.gsm.matcher import match, nfa_match, find_all, starts_with
 from codelimit.common.gsm.operator.OneOrMore import OneOrMore
 from codelimit.common.gsm.operator.Optional import Optional
 from codelimit.common.gsm.operator.Union import Union
@@ -143,7 +143,9 @@ def test_find_all():
 
     assert len(matches) == 2
     assert matches[0].start == 0
+    assert matches[0].end == 2
     assert matches[1].start == 4
+    assert matches[1].end == 5
 
 
 def test_single_item():
@@ -188,3 +190,28 @@ def test_predicate():
     matches = find_all(expr, text)
 
     assert len(matches) == 2
+
+
+def test_starts_with():
+    expr = [ZeroOrMore("a"), "b"]
+    text = ["a", "a", "b", "b", "a", "b", "b"]
+
+    pattern = starts_with(expr, text)
+
+    assert pattern is not None
+    assert pattern.start == 0
+    assert pattern.end == 3
+
+    text = ["a", "a", "b"]
+
+    pattern = starts_with(expr, text)
+
+    assert pattern is not None
+    assert pattern.start == 0
+    assert pattern.end == 3
+
+    text = ["a", "a"]
+
+    pattern = starts_with(expr, text)
+
+    assert pattern is None

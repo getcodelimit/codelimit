@@ -1,6 +1,5 @@
 from codelimit.common.Token import Token
-from codelimit.common.token_matching.TokenMatcher import TokenPredicate
-
+from codelimit.common.token_matching.predicate.TokenPredicate import TokenPredicate
 
 class Keyword(TokenPredicate):
     def __init__(self, keyword: str):

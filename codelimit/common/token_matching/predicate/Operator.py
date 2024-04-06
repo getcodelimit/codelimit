@@ -1,5 +1,5 @@
 from codelimit.common.Token import Token
-from codelimit.common.token_matching.TokenMatcher import TokenPredicate
+from codelimit.common.token_matching.predicate.TokenPredicate import TokenPredicate
 
 
 class Operator(TokenPredicate):

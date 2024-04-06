@@ -1,13 +1,13 @@
 from codelimit.common.Token import Token
-from codelimit.common.token_matching.TokenMatcher import TokenPredicate
-from codelimit.common.token_matching.predicate.Value import Value
+from codelimit.common.token_matching.predicate.TokenPredicate import TokenPredicate
+from codelimit.common.token_matching.predicate.TokenValue import TokenValue
 
 
 class Balanced(TokenPredicate):
     def __init__(self, left: str | TokenPredicate, right: str | TokenPredicate):
         super().__init__()
-        self.left = left if isinstance(left, TokenPredicate) else Value(left)
-        self.right = right if isinstance(right, TokenPredicate) else Value(right)
+        self.left = left if isinstance(left, TokenPredicate) else TokenValue(left)
+        self.right = right if isinstance(right, TokenPredicate) else TokenValue(right)
         self.depth = 0
 
     def reset(self):

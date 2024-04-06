@@ -2,7 +2,7 @@ from codelimit.common.Token import Token
 from codelimit.common.token_matching.predicate.TokenPredicate import TokenPredicate
 
 
-class Value(TokenPredicate):
+class TokenValue(TokenPredicate):
     def __init__(self, value: str):
         super().__init__()
         self.value = value
@@ -14,7 +14,7 @@ class Value(TokenPredicate):
         return False
 
     def __eq__(self, other: object) -> bool:
-        if not isinstance(other, Value):
+        if not isinstance(other, TokenValue):
             return False
         return self.value == other.value
 

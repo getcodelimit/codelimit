@@ -10,6 +10,9 @@ from rich.text import Text
 
 from codelimit.common.Language import Language
 from codelimit.common.Measurement import Measurement
+from codelimit.common.gsm.Expression import Expression
+from codelimit.common.gsm.operator.Operator import Operator
+from codelimit.common.token_matching.predicate.TokenValue import TokenValue
 
 
 def make_profile(measurements: list[Measurement]):
@@ -65,7 +68,7 @@ def render_quality_profile(profile: list[int]) -> Text:
 def path_has_extension(path: str, suffixes: Union[str, list[str]]):
     dot_index = path.rfind(".")
     if dot_index >= 0:
-        suffix = path[dot_index + 1 :]
+        suffix = path[dot_index + 1:]
         if isinstance(suffixes, list):
             return suffix in suffixes
         else:
@@ -162,3 +165,21 @@ def load_language_by_name(name: str) -> Language | None:
         return language_class()
     except ModuleNotFoundError:
         return None
+
+
+def replace_string_literal_with_predicate(expression: Expression) -> Expression:
+    if isinstance(expression, list):
+        return [
+            (
+                TokenValue(item) if type(item) is str else replace_string_literal_with_predicate(item) if isinstance(
+                    item, Operator) else item
+            )
+            for item in expression
+        ]
+    else:
+        return [
+            (
+                TokenValue(expression) if type(expression) is str else replace_string_literal_with_predicate(
+                    expression) if isinstance(expression, Operator) else expression
+            )
+        ]

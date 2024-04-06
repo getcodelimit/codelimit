@@ -33,6 +33,27 @@ def match(expression: Expression, sequence: list) -> Pattern | None:
         return None
 
 
+def starts_with(expression: Expression, sequence: list) -> Pattern | None:
+    nfa = expression_to_nfa(expression)
+    dfa = nfa_to_dfa(nfa)
+    pattern = Pattern(0, dfa)
+    for idx, item in enumerate(sequence):
+        next_state = None
+        for transition in pattern.state.transition:
+            if transition[0].accept(item):
+                pattern.tokens.append(item)
+                next_state = transition[1]
+        if not next_state:
+            break
+        else:
+            pattern.state = next_state
+    if pattern.state in dfa.accepting:
+        pattern.end = len(pattern.tokens)
+        return pattern
+    else:
+        return None
+
+
 def find_all(expression: Expression, sequence: list) -> list[Pattern]:
     nfa = expression_to_nfa(expression)
     dfa = nfa_to_dfa(nfa)
@@ -47,6 +68,7 @@ def find_all(expression: Expression, sequence: list) -> list[Pattern]:
             if pattern.start < last_match_idx:
                 continue
             if len(pattern.state.transition) == 0 and pattern.is_accepting():
+                pattern.end = idx
                 matches.append(pattern)
                 last_match_idx = idx
                 continue
@@ -55,13 +77,16 @@ def find_all(expression: Expression, sequence: list) -> list[Pattern]:
                     pattern.tokens.append(item)
                     pattern.state = transition[1]
                     next_state_patterns.append(pattern)
-                else:
-                    if pattern.is_accepting():
-                        matches.append(pattern)
-                        last_match_idx = idx
+                    break
+            else:
+                if pattern.is_accepting():
+                    pattern.end = idx
+                    matches.append(pattern)
+                    last_match_idx = idx
         active_patterns = next_state_patterns
     for pattern in active_patterns:
         if pattern.is_accepting():
+            pattern.end = len(sequence)
             matches.append(pattern)
     return matches
 

@@ -1,17 +1,19 @@
 from pygments.lexers import PythonLexer
 
+from codelimit.common.gsm.matcher import find_all
+from codelimit.common.gsm.operator.OneOrMore import OneOrMore
 from codelimit.common.lexer_utils import lex
-from codelimit.common.token_matching.TokenMatcher import TokenMatcher
 from codelimit.common.token_matching.predicate.Balanced import Balanced
 from codelimit.common.token_matching.predicate.Keyword import Keyword
 from codelimit.common.token_matching.predicate.Name import Name
+from codelimit.common.token_matching.predicate.TokenValue import TokenValue
 
 
 def test_match_keyword():
     code = "def foo(): pass\ndef bar(): pass\n"
     tokens = lex(PythonLexer(), code)
 
-    result = TokenMatcher(Keyword("def")).match(tokens)
+    result = find_all(Keyword("def"), tokens)
 
     assert len(result) == 2
     assert result[0].token_string() == "def"
@@ -22,7 +24,7 @@ def test_match_name():
     code = "def foo(): pass\ndef bar(): pass\n"
     tokens = lex(PythonLexer(), code)
 
-    result = TokenMatcher(Name()).match(tokens)
+    result = find_all(Name(), tokens)
 
     assert len(result) == 2
     assert result[0].token_string() == "foo"
@@ -33,7 +35,7 @@ def test_match_function_header():
     code = "def foo(): pass\ndef bar(): pass\n"
     tokens = lex(PythonLexer(), code)
 
-    result = TokenMatcher([Keyword("def"), Name()]).match(tokens)
+    result = find_all([Keyword("def"), Name()], tokens)
 
     assert len(result) == 2
     assert result[0].token_string() == "def foo"
@@ -44,7 +46,7 @@ def test_reset_pattern():
     code = "foo bar()"
     tokens = lex(PythonLexer(), code)
 
-    result = TokenMatcher([Name(), Balanced("(", ")")]).match(tokens)
+    result = find_all([Name(), Balanced("(", ")")], tokens)
 
     assert len(result) == 1
 
@@ -53,7 +55,7 @@ def test_string_pattern():
     code = "def bar()"
     tokens = lex(PythonLexer(), code)
 
-    result = TokenMatcher(["def", Name()]).match(tokens)
+    result = find_all([TokenValue("def"), Name()], tokens)
 
     assert len(result) == 1
 
@@ -65,6 +67,6 @@ def test_ignore_incomplete_match():
     code += "  pass\n"
     tokens = lex(PythonLexer(), code)
 
-    result = TokenMatcher(["def", Name(), Balanced("(", ")")]).match(tokens)
+    result = find_all([Keyword("def"), Name(), OneOrMore(Balanced("(", ")"))], tokens)
 
     assert len(result) == 1
