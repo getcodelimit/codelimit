@@ -22,7 +22,7 @@ def report_command(path: Path, full: bool):
     if not report:
         print("[red]No cached report found in current folder[/red]")
         raise typer.Exit(code=1)
-    stdout = Console()
+
     units = report.all_report_units_sorted_by_length_asc(30)
     if len(units) == 0:
         print(
@@ -33,6 +33,11 @@ def report_command(path: Path, full: bool):
         report_units = units
     else:
         report_units = units[0:REPORT_LENGTH]
+    print_functions(root, units, report_units, full)
+
+
+def print_functions(root, units, report_units, full):
+    stdout = Console()
     for unit in report_units:
         file_path = unit.file if root is None else root.joinpath(unit.file)
         stdout.print(

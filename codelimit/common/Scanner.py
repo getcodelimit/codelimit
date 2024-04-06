@@ -42,7 +42,6 @@ def scan_codebase(path: Path, cached_report: Union[Report, None] = None) -> Code
     print_header(cached_report, path)
     scan_totals = ScanTotals()
     with Live(refresh_per_second=2) as live:
-
         def add_file_entry(entry: SourceFileEntry):
             scan_totals.add(entry)
             table = ScanResultTable(scan_totals)
@@ -83,10 +82,10 @@ def print_footer(scan_totals: ScanTotals):
 
 
 def _scan_folder(
-    codebase: Codebase,
-    folder: Path,
-    cached_report: Union[Report, None] = None,
-    add_file_entry: Union[Callable[[SourceFileEntry], None], None] = None,
+        codebase: Codebase,
+        folder: Path,
+        cached_report: Union[Report, None] = None,
+        add_file_entry: Union[Callable[[SourceFileEntry], None], None] = None,
 ):
     gitignore = _read_gitignore(folder)
     for root, dirs, files in os.walk(folder.absolute()):
@@ -95,7 +94,7 @@ def _scan_folder(
         for file in files:
             rel_path = Path(os.path.join(root, file)).relative_to(folder.absolute())
             if is_excluded(rel_path) or (
-                gitignore is not None and is_excluded_by_gitignore(rel_path, gitignore)
+                    gitignore is not None and is_excluded_by_gitignore(rel_path, gitignore)
             ):
                 continue
             try:
@@ -103,7 +102,7 @@ def _scan_folder(
                 language = lexer.__class__.name
                 file_path = os.path.join(root, file)
                 if language in LanguageName:
-                    file_entry = _add_file(
+                    file_entry = _scan_file(
                         codebase, lexer, folder, file_path, cached_report
                     )
                     if add_file_entry:
@@ -112,12 +111,12 @@ def _scan_folder(
                 pass
 
 
-def _add_file(
-    codebase: Codebase,
-    lexer: Lexer,
-    root: Path,
-    path: str,
-    cached_report: Union[Report, None] = None,
+def _scan_file(
+        codebase: Codebase,
+        lexer: Lexer,
+        root: Path,
+        path: str,
+        cached_report: Union[Report, None] = None,
 ) -> SourceFileEntry:
     checksum = calculate_checksum(path)
     rel_path = relpath(path, root)
@@ -136,25 +135,28 @@ def _add_file(
             cached_entry.loc,
             cached_entry.measurements(),
         )
-        codebase.add_file(entry)
-        return entry
     else:
-        with open(path) as f:
-            code = f.read()
-        all_tokens = lex(lexer, code, False)
-        code_tokens = filter_tokens(all_tokens)
-        file_loc = count_lines(code_tokens)
-        language_name = lexer.__class__.name
-        language = load_language_by_name(language_name)
-        if language:
-            measurements = scan_file(all_tokens, language)
-        else:
-            measurements = []
-        entry = SourceFileEntry(
-            rel_path, checksum, lexer.__class__.name, file_loc, measurements
-        )
-        codebase.add_file(entry)
-        return entry
+        entry = _analyze_file(path, rel_path, checksum, lexer)
+    codebase.add_file(entry)
+    return entry
+
+
+def _analyze_file(path, rel_path, checksum, lexer):
+    with open(path) as f:
+        code = f.read()
+    all_tokens = lex(lexer, code, False)
+    code_tokens = filter_tokens(all_tokens)
+    file_loc = count_lines(code_tokens)
+    language_name = lexer.__class__.name
+    language = load_language_by_name(language_name)
+    if language:
+        measurements = scan_file(all_tokens, language)
+    else:
+        measurements = []
+    entry = SourceFileEntry(
+        rel_path, checksum, lexer.__class__.name, file_loc, measurements
+    )
+    return entry
 
 
 def scan_file(tokens: list[Token], language: Language) -> list[Measurement]:
