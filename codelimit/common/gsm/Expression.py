@@ -16,16 +16,11 @@ Expression: TypeAlias = Operator | Predicate | T | list[Operator | Predicate | T
 def expression_to_nfa(expression: Expression[T]) -> NFA:
     if isinstance(expression, list):
         op_expression = [
-            (
-                item if isinstance(item, Operator) else Atom(item)
-            )
-            for item in expression
+            (item if isinstance(item, Operator) else Atom(item)) for item in expression
         ]
     else:
         op_expression = [
-            (
-                expression if isinstance(expression, Operator) else Atom(expression)
-            )
+            (expression if isinstance(expression, Operator) else Atom(expression))
         ]
     nfa_stack: list[NFA] = []
     for item in op_expression:

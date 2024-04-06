@@ -66,7 +66,7 @@ def filter_scopes_nested_functions(scopes: list[Scope]) -> list[Scope]:
 
 
 def _build_scopes_from_headers_and_blocks(
-        headers: list[Header], blocks: list[TokenRange]
+    headers: list[Header], blocks: list[TokenRange]
 ) -> list[Scope]:
     result: list[Scope] = []
     reverse_headers = headers[::-1]
@@ -85,7 +85,7 @@ def _build_scopes_from_headers_and_blocks(
 
 
 def _find_scope_blocks_indices(
-        header: TokenRange, blocks: list[TokenRange]
+    header: TokenRange, blocks: list[TokenRange]
 ) -> list[int]:
     body_block = _get_nearest_block(header, blocks)
     if body_block:
@@ -97,7 +97,7 @@ def _find_scope_blocks_indices(
 
 
 def _get_nearest_block(
-        header: TokenRange, blocks: list[TokenRange]
+    header: TokenRange, blocks: list[TokenRange]
 ) -> Optional[TokenRange]:
     reverse_blocks = blocks[::-1]
     result = None
@@ -112,7 +112,7 @@ def _get_nearest_block(
 
 
 def _filter_nocl_scopes(
-        scopes: list[Scope], nocl_comment_tokens: list[Token]
+    scopes: list[Scope], nocl_comment_tokens: list[Token]
 ) -> list[Scope]:
     nocl_comment_lines = [t.location.line for t in nocl_comment_tokens]
 
@@ -138,11 +138,13 @@ def has_curly_suffix(tokens: list[Token], index):
     return index < len(tokens) - 1 and tokens[index + 1].is_symbol("{")
 
 
-def get_headers(tokens: list[Token], expression: Expression, followed_by: Expression = None) -> list[Header]:
+def get_headers(
+    tokens: list[Token], expression: Expression, followed_by: Expression = None
+) -> list[Header]:
     # expression = replace_string_literal_with_predicate(expression)
     patterns = find_all(expression, tokens)
     if followed_by:
-        patterns = [p for p in patterns if starts_with(followed_by, tokens[p.end:])]
+        patterns = [p for p in patterns if starts_with(followed_by, tokens[p.end :])]
     result = []
     for pattern in patterns:
         name_token = next(t for t in pattern.tokens if t.is_name())
@@ -152,10 +154,10 @@ def get_headers(tokens: list[Token], expression: Expression, followed_by: Expres
 
 
 def get_blocks(
-        tokens: list[Token], open: str, close: str, extract_nested=True
+    tokens: list[Token], open: str, close: str, extract_nested=True
 ) -> list[TokenRange]:
     balanced_tokens = get_balanced_symbol_token_indices(
         tokens, open, close, extract_nested
     )
-    token_ranges = [TokenRange(tokens[bt[0]: bt[1] + 1]) for bt in balanced_tokens]
+    token_ranges = [TokenRange(tokens[bt[0] : bt[1] + 1]) for bt in balanced_tokens]
     return sort_token_ranges(token_ranges)

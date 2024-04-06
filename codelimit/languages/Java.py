@@ -12,7 +12,8 @@ from codelimit.common.token_matching.predicate.Name import Name
 class Java(Language):
     def extract_headers(self, tokens: list) -> list:
         return get_headers(
-            tokens, [Name(), OneOrMore(Balanced("(", ")"))], Choice("{", "throws"))
+            tokens, [Name(), OneOrMore(Balanced("(", ")"))], Choice("{", "throws")
+        )
 
     def extract_blocks(self, tokens: list, headers: list) -> list:
         return get_blocks(tokens, "{", "}")

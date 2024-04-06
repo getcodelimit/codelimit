@@ -18,15 +18,11 @@ class JavaScript(Language):
     def extract_headers(self, tokens: list[Token]) -> list[Header]:
         return get_headers(
             tokens,
-            [
-                Optional(Keyword("function")),
-                Name(),
-                OneOrMore(Balanced("(", ")"))
-            ],
-            Symbol("{")
+            [Optional(Keyword("function")), Name(), OneOrMore(Balanced("(", ")"))],
+            Symbol("{"),
         )
 
     def extract_blocks(
-            self, tokens: list[Token], headers: list[Header]
+        self, tokens: list[Token], headers: list[Header]
     ) -> list[TokenRange]:
         return get_blocks(tokens, "{", "}")

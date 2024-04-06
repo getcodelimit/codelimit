@@ -4,7 +4,8 @@ from typing import TypeVar
 from codelimit.common.gsm.Expression import (
     expression_to_nfa,
     epsilon_closure,
-    nfa_to_dfa, Expression,
+    nfa_to_dfa,
+    Expression,
 )
 from codelimit.common.gsm.operator.Operator import Operator
 from codelimit.common.gsm.Pattern import Pattern

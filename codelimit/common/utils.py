@@ -68,7 +68,7 @@ def render_quality_profile(profile: list[int]) -> Text:
 def path_has_extension(path: str, suffixes: Union[str, list[str]]):
     dot_index = path.rfind(".")
     if dot_index >= 0:
-        suffix = path[dot_index + 1:]
+        suffix = path[dot_index + 1 :]
         if isinstance(suffixes, list):
             return suffix in suffixes
         else:
@@ -171,16 +171,25 @@ def replace_string_literal_with_predicate(expression: Expression) -> Expression:
     if isinstance(expression, list):
         return [
             (
-                TokenValue(item) if isinstance(item, str) else replace_string_literal_with_predicate(
-                    item) if isinstance(
-                    item, Operator) else item
+                TokenValue(item)
+                if isinstance(item, str)
+                else (
+                    replace_string_literal_with_predicate(item)
+                    if isinstance(item, Operator)
+                    else item
+                )
             )
             for item in expression
         ]
     else:
         return [
             (
-                TokenValue(expression) if isinstance(expression, str) else replace_string_literal_with_predicate(
-                    expression) if isinstance(expression, Operator) else expression
+                TokenValue(expression)
+                if isinstance(expression, str)
+                else (
+                    replace_string_literal_with_predicate(expression)
+                    if isinstance(expression, Operator)
+                    else expression
+                )
             )
         ]

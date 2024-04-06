@@ -17,11 +17,7 @@ class TypeScript(Language):
     def extract_headers(self, tokens: list[Token]) -> list[Header]:
         functions = get_headers(
             tokens,
-            [
-                Optional("function"),
-                Name(),
-                OneOrMore(Balanced("(", ")"))
-            ],
+            [Optional("function"), Name(), OneOrMore(Balanced("(", ")"))],
             Choice("{", Operator(":")),
         )
         arrow_functions = get_headers(
@@ -32,9 +28,9 @@ class TypeScript(Language):
                 Operator("="),
                 Optional(Keyword("async")),
                 OneOrMore(Balanced("(", ")")),
-                Symbol("=>")
+                Symbol("=>"),
             ],
-            Symbol("{")
+            Symbol("{"),
         )
         return functions + arrow_functions
 
