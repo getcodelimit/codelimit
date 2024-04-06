@@ -28,29 +28,22 @@ def logout():
 
 @app.command(help="Upload report to Code Limit GitHub App")
 def upload(
-    repository: Annotated[
-        str,
-        typer.Argument(
-            envvar="GITHUB_REPOSITORY", show_default=False, help="GitHub repository"
+        repository: Annotated[str, typer.Argument(show_default=False, help="GitHub repository")],
+        branch: Annotated[str, typer.Argument(show_default=False, help="GitHub branch")],
+        report_file: Path = typer.Option(
+            None,
+            "--report",
+            show_default=False,
+            exists=True,
+            dir_okay=False,
+            file_okay=True,
+            help="JSON report file",
         ),
-    ],
-    branch: Annotated[
-        str,
-        typer.Argument(envvar="GITHUB_REF", show_default=False, help="GitHub branch"),
-    ],
-    report_file: Path = typer.Option(
-        None,
-        "--report",
-        exists=True,
-        dir_okay=False,
-        file_okay=True,
-        help="JSON report file",
-    ),
-    token: str = typer.Option(None, "--token", help="GitHub access token"),
-    url: str = typer.Option(
-        "https://codelimit.vercel.app/api/upload",
-        "--url",
-        help="Upload JSON report to this URL.",
-    ),
+        token: str = typer.Option(None, "--token", show_default=False, help="GitHub access token"),
+        url: str = typer.Option(
+            "https://codelimit.vercel.app/api/upload",
+            "--url",
+            help="Upload JSON report to this URL.",
+        ),
 ):
     upload_command(repository, branch, report_file, token, url)
