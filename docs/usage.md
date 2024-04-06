@@ -25,16 +25,25 @@ $ codelimit
 
 ## Scanning a codebase
 
-To scan a complete codebase and launch the TUI, run:
+To scan a complete codebase run:
 
 ```shell
 codelimit scan path/to/codebase
 ```
 
 <div id="scan.cast" style="z-index: 1; position: relative;"></div>
+
+## Viewing a report
+
+To view the report with hard-to-maintain and unmaintainable functions of a
+codebase that was scanned before run:
+
+<div id="report.cast" style="z-index: 1; position: relative;"></div>
+
 <script>
   window.onload = function(){
     AsciinemaPlayer.create('/assets/scan.cast', document.getElementById('scan.cast'));
+    AsciinemaPlayer.create('/assets/report.cast', document.getElementById('report.cast'));
 }
 </script>
 

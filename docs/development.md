@@ -48,3 +48,11 @@ See the output:
 ```shell
 poetry run mkdocs serve
 ```
+
+Terminal sessions in the documentation are recorded with the [Asciinema
+CLI](https://docs.asciinema.org/getting-started/) and stored in the `assets`
+folder:
+
+```shell
+asciinema rec scan.cast
+```
