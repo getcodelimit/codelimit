@@ -17,6 +17,7 @@ def test_empty_measurements_collection():
 
     json = ""
     json += "{\n"
+    json += f'  "version": "{report.version}",\n'
     json += f'  "uuid": "{report.uuid}",\n'
     json += '  "root": "/",\n'
     json += '  "codebase": {\n'
@@ -41,6 +42,8 @@ def test_all_units():
         SourceFileEntry(
             "foo.py",
             "abcd1234",
+            "Python",
+            20,
             [Measurement("bar()", Location(10, 1), Location(30, 1), 20)],
         )
     )

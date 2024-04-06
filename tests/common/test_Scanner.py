@@ -2,8 +2,14 @@ import os.path
 import tempfile
 from pathlib import Path
 
+from pathspec import PathSpec
+
 from codelimit.common.Configuration import Configuration
-from codelimit.common.Scanner import scan_codebase, is_excluded
+from codelimit.common.Scanner import (
+    scan_codebase,
+    is_excluded,
+    is_excluded_by_gitignore,
+)
 from codelimit.common.source_utils import get_location_range
 
 
@@ -84,3 +90,18 @@ def test_is_excluded():
     Configuration.excludes = ["foo/bar/*"]
 
     assert is_excluded(Path("foo/bar/foobar.py"))
+
+
+def test_is_excluded_by_gitignore():
+    Configuration.excludes = ["site/"]
+    gitignore = PathSpec.from_lines("gitwildmatch", ["site/"])
+
+    assert is_excluded_by_gitignore(
+        Path("site/assets/javascripts/lunr/wordcut.js"), gitignore
+    )
+
+    gitignore = PathSpec.from_lines("gitwildmatch", ["!site/"])
+
+    assert not is_excluded_by_gitignore(
+        Path("site/assets/javascripts/lunr/wordcut.js"), gitignore
+    )

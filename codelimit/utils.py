@@ -5,23 +5,9 @@ import requests  # type: ignore
 import typer
 from rich.progress import Progress, SpinnerColumn, TextColumn
 
-from codelimit.common.CheckResult import CheckResult
-from codelimit.common.Scanner import scan_file, languages
 from codelimit.common.report.Report import Report
 from codelimit.common.report.ReportReader import ReportReader
 from codelimit.common.report.ReportWriter import ReportWriter
-
-
-def check_file(path: Path, check_result: CheckResult):
-    for language in languages:
-        if language.accept_file(str(path.absolute())):
-            measurements = scan_file(language, str(path))
-            risks = sorted(
-                [m for m in measurements if m.value > 30],
-                key=lambda measurement: measurement.value,
-                reverse=True,
-            )
-            check_result.add(path, risks)
 
 
 def read_cached_report(path: Path) -> Optional[Report]:

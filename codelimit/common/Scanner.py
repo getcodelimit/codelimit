@@ -1,62 +1,124 @@
 import fnmatch
+import locale
 import os
+from datetime import datetime
 from os.path import relpath
 from pathlib import Path
-from typing import Union
+from typing import Union, Callable
 
-from halo import Halo
+from pathspec import PathSpec
+from pygments.lexer import Lexer
+from pygments.lexers import get_lexer_for_filename
+from pygments.util import ClassNotFound
+from rich import print
+from rich.live import Live
 
 from codelimit.common.Codebase import Codebase
 from codelimit.common.Configuration import Configuration
 from codelimit.common.Language import Language
 from codelimit.common.Location import Location
 from codelimit.common.Measurement import Measurement
+from codelimit.common.ScanResultTable import ScanResultTable
+from codelimit.common.ScanTotals import ScanTotals
 from codelimit.common.SourceFileEntry import SourceFileEntry
+from codelimit.common.Token import Token
+from codelimit.common.lexer_utils import lex
 from codelimit.common.report.Report import Report
-from codelimit.common.scope.scope_utils import build_scopes
-from codelimit.common.utils import calculate_checksum
-from codelimit.languages.python.PythonLanguage import PythonLanguage
+from codelimit.common.scope.Scope import count_lines
+from codelimit.common.scope.scope_utils import build_scopes, unfold_scopes
+from codelimit.common.source_utils import filter_tokens
+from codelimit.common.utils import (
+    calculate_checksum,
+    load_language_by_name,
+)
+from codelimit.languages import LanguageName
+from codelimit.version import version
 
-languages = [
-    PythonLanguage()
-]  # , CLanguage(), JavaScriptLanguage(), TypeScriptLanguage()]
+locale.setlocale(locale.LC_ALL, "")
 
 
 def scan_codebase(path: Path, cached_report: Union[Report, None] = None) -> Codebase:
-    codebase = Codebase(str(path.absolute()))
-    _scan_folder(codebase, path, cached_report)
+    codebase = Codebase(str(path.resolve().absolute()))
+    print_header(cached_report, path)
+    scan_totals = ScanTotals()
+    with Live(refresh_per_second=2) as live:
+
+        def add_file_entry(entry: SourceFileEntry):
+            scan_totals.add(entry)
+            table = ScanResultTable(scan_totals)
+            live.update(table)
+
+        _scan_folder(codebase, path, cached_report, add_file_entry)
+    if len(scan_totals.languages()) > 1:
+        print_footer(scan_totals)
     return codebase
 
 
+def print_header(cached_report, path):
+    print(f"  [bold]Code Limit[/bold]: {version}")
+    print(
+        f"  [bold]Scan date[/bold]: {datetime.now().isoformat(sep=' ', timespec='seconds')}"
+    )
+    print(f"  [bold]Scan root[/bold]: {path.resolve().absolute()}")
+    if cached_report:
+        print("  [bold]Found cached report, only analyzing changed files[/bold]")
+
+
+def print_footer(scan_totals: ScanTotals):
+    print(f"  [bold]Total lines of code[/bold]: {scan_totals.total_loc():n}")
+    print(f"  [bold]Total files[/bold]: {scan_totals.total_files():n}")
+    print(f"  [bold]Total functions[/bold]: {scan_totals.total_functions():n}")
+    total_hard_to_maintain = scan_totals.total_hard_to_maintain()
+    if total_hard_to_maintain > 0:
+        print(
+            f"  [dark_orange]\u26A0[/dark_orange] {total_hard_to_maintain} functions are hard-to-maintain."
+        )
+    total_unmaintainable = scan_totals.total_unmaintainable()
+    if total_unmaintainable > 0:
+        print(f"  [red]\u2716[/red] {total_unmaintainable} functions need refactoring.")
+    if total_hard_to_maintain == 0 and total_unmaintainable == 0:
+        print(
+            "  [bold]Refactoring not necessary, :sparkles: happy coding! :sparkles:[/bold]"
+        )
+
+
 def _scan_folder(
-    codebase: Codebase, folder: Path, cached_report: Union[Report, None] = None
+    codebase: Codebase,
+    folder: Path,
+    cached_report: Union[Report, None] = None,
+    add_file_entry: Union[Callable[[SourceFileEntry], None], None] = None,
 ):
-    spinner = Halo(text="Scanning", spinner="dots")
-    spinner.start()
-    scanned = 0
+    gitignore = _read_gitignore(folder)
     for root, dirs, files in os.walk(folder.absolute()):
         files = [f for f in files if not f[0] == "."]
         dirs[:] = [d for d in dirs if not d[0] == "."]
         for file in files:
             rel_path = Path(os.path.join(root, file)).relative_to(folder.absolute())
-            if is_excluded(rel_path):
+            if is_excluded(rel_path) or (
+                gitignore is not None and is_excluded_by_gitignore(rel_path, gitignore)
+            ):
                 continue
-            for language in languages:
+            try:
+                lexer = get_lexer_for_filename(rel_path)
+                language = lexer.__class__.name
                 file_path = os.path.join(root, file)
-                if language.accept_file(file_path):
-                    _add_file(codebase, language, folder, file_path, cached_report)
-                    scanned += 1
-                    spinner.text = f"Scanned {scanned} file(s)"
-    spinner.succeed()
+                if language in LanguageName:
+                    file_entry = _add_file(
+                        codebase, lexer, folder, file_path, cached_report
+                    )
+                    if add_file_entry:
+                        add_file_entry(file_entry)
+            except ClassNotFound:
+                pass
 
 
 def _add_file(
     codebase: Codebase,
-    language,
+    lexer: Lexer,
     root: Path,
     path: str,
     cached_report: Union[Report, None] = None,
-):
+) -> SourceFileEntry:
     checksum = calculate_checksum(path)
     rel_path = relpath(path, root)
     cached_entry = None
@@ -67,19 +129,37 @@ def _add_file(
         except KeyError:
             pass
     if cached_entry and cached_entry.checksum() == checksum:
-        codebase.add_file(
-            SourceFileEntry(rel_path, checksum, cached_entry.measurements())
+        entry = SourceFileEntry(
+            rel_path,
+            checksum,
+            cached_entry.language,
+            cached_entry.loc,
+            cached_entry.measurements(),
         )
+        codebase.add_file(entry)
+        return entry
     else:
-        measurements = scan_file(language, path)
-        if measurements:
-            codebase.add_file(SourceFileEntry(rel_path, checksum, measurements))
+        with open(path) as f:
+            code = f.read()
+        all_tokens = lex(lexer, code, False)
+        code_tokens = filter_tokens(all_tokens)
+        file_loc = count_lines(code_tokens)
+        language_name = lexer.__class__.name
+        language = load_language_by_name(language_name)
+        if language:
+            measurements = scan_file(all_tokens, language)
+        else:
+            measurements = []
+        entry = SourceFileEntry(
+            rel_path, checksum, lexer.__class__.name, file_loc, measurements
+        )
+        codebase.add_file(entry)
+        return entry
 
 
-def scan_file(language: Language, path: str) -> list[Measurement]:
-    with open(path) as f:
-        code = f.read()
-    scopes = build_scopes(language, code)
+def scan_file(tokens: list[Token], language: Language) -> list[Measurement]:
+    scopes = build_scopes(tokens, language)
+    scopes = unfold_scopes(scopes)
     measurements: list[Measurement] = []
     if scopes:
         for scope in scopes:
@@ -107,3 +187,14 @@ def is_excluded(path: Path):
             if fnmatch.fnmatch(str(path), exclude):
                 return True
     return False
+
+
+def _read_gitignore(path: Path) -> PathSpec | None:
+    gitignore_path = path.joinpath(".gitignore")
+    if gitignore_path.exists():
+        return PathSpec.from_lines("gitignore", gitignore_path.read_text().splitlines())
+    return None
+
+
+def is_excluded_by_gitignore(path: Path, gitignore: PathSpec):
+    return gitignore.match_file(path)

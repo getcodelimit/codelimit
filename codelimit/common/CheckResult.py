@@ -4,15 +4,13 @@ from pathlib import Path
 
 import rich
 from rich.console import Console
-from rich.style import Style
-from rich.text import Text
 
 from codelimit.common.Measurement import Measurement
-from codelimit.common.utils import format_unit
+from codelimit.common.utils import format_measurement
 
 
 class CheckResult:
-    def __init__(self):
+    def __init__(self) -> None:
         self.file_list: list[tuple[Path, list[Measurement]]] = []
         self.hard_to_maintain = 0
         self.unmaintainable = 0
@@ -30,19 +28,11 @@ class CheckResult:
         stdout = Console()
         for file, measurements in self.file_list:
             for m in measurements:
-                text = Text()
                 if cwd_path in file.parents:
-                    text.append(relpath(file, cwd_path), style=Style(bold=True))
+                    file_path = str(relpath(file, cwd_path))
                 else:
-                    text.append(str(file), style="bold")
-                text.append(":", style=Style(color="cyan"))
-                text.append(str(m.start.line))
-                text.append(":", style=Style(color="cyan"))
-                text.append(str(m.start.column))
-                text.append(":", style=Style(color="cyan"))
-                text.append(" ")
-                text.append(format_unit(m.unit_name, m.value))
-                stdout.print(text, soft_wrap=True)
+                    file_path = str(file)
+                stdout.print(format_measurement(file_path, m), soft_wrap=True)
         if self.hard_to_maintain > 0 or self.unmaintainable > 0:
             rich.print(
                 f"{len(self.file_list)} files checked, "

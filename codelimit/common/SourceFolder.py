@@ -6,7 +6,7 @@ from codelimit.common.SourceFolderEntry import SourceFolderEntry
 
 
 class SourceFolder:
-    def __init__(self):
+    def __init__(self) -> None:
         self.entries: list[CodebaseEntry] = []
         self.profile = [0, 0, 0, 0]
 

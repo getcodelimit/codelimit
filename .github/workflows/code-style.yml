@@ -1,0 +1,28 @@
+name: 'code-style'
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  code_style:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout sources'
+        uses: actions/checkout@v2
+      - name: 'Lint code with Ruff'
+        run: |
+          pip install ruff
+          ruff check --fix .
+      - name: 'Type cheking with MyPy'
+        run: |
+          pip install mypy
+          mypy --ignore-missing-imports codelimit/
+      - name: 'Format code with black'
+        run: |
+          pip install black
+          black .
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: 'Code style fixes'

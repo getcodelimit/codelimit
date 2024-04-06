@@ -19,6 +19,7 @@ class ReportWriter:
         json += self._open("{")
         json += self._collection(
             [
+                self._line(f'"version": "{self.report.version}"'),
                 self._line(f'"uuid": "{self.report.uuid}"'),
                 self._line(f'"root": "{self.report.codebase.root}"'),
                 self._codebase_to_json(),
@@ -102,6 +103,8 @@ class ReportWriter:
         json += self._collection(
             [
                 self._file_checksum_to_json(entry),
+                self._file_language_to_json(entry),
+                self._file_loc_to_json(entry),
                 self._file_profile_to_json(entry),
                 self._file_measurements_to_json(entry),
             ]
@@ -111,6 +114,12 @@ class ReportWriter:
 
     def _file_checksum_to_json(self, entry: SourceFileEntry):
         return self._line(f'"checksum": "{entry.checksum()}"')
+
+    def _file_language_to_json(self, entry: SourceFileEntry):
+        return self._line(f'"language": "{entry.language}"')
+
+    def _file_loc_to_json(self, entry: SourceFileEntry):
+        return self._line(f'"loc": {entry.loc}')
 
     def _file_profile_to_json(self, entry: SourceFileEntry):
         return self._line(f'"profile": {entry.profile()}')
