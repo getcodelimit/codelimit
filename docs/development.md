@@ -1,7 +1,7 @@
 # Development
 
-After installing dependencies with `poetry install`, Code Limit can be run from the
-repository root like this:
+After installing dependencies with `poetry install`, Code Limit can be run from
+the repository root like this:
 
 ```shell
 poetry run codelimit
@@ -10,21 +10,21 @@ poetry run codelimit
 For example, to check a codebase at `~/projects/fastapi` run:
 
 ```shell
-poetry run codelimit ~/projects/fastapi
+poetry run codelimit scan ~/projects/fastapi
 ```
 
-## Using the Textal debug console
+## Local installation using pipx
 
-Open a terminal and start the Textual debug console:
+To install the `main` branch locally run:
 
 ```shell
-poetry run textual console
+pipx install git+https://github.com/getcodelimit/codelimit.git
 ```
 
-Next, open another terminal and start Code Limit in development mode:
+Or to install another branch locally run:
 
 ```shell
-poetry run textual run --dev main.py
+pip install git+https://github.com/getcodelimit/codelimit.git@issue-123
 ```
 
 ## Building the binary distribution
