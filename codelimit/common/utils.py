@@ -171,7 +171,8 @@ def replace_string_literal_with_predicate(expression: Expression) -> Expression:
     if isinstance(expression, list):
         return [
             (
-                TokenValue(item) if type(item) is str else replace_string_literal_with_predicate(item) if isinstance(
+                TokenValue(item) if isinstance(item, str) else replace_string_literal_with_predicate(
+                    item) if isinstance(
                     item, Operator) else item
             )
             for item in expression
@@ -179,7 +180,7 @@ def replace_string_literal_with_predicate(expression: Expression) -> Expression:
     else:
         return [
             (
-                TokenValue(expression) if type(expression) is str else replace_string_literal_with_predicate(
+                TokenValue(expression) if isinstance(expression, str) else replace_string_literal_with_predicate(
                     expression) if isinstance(expression, Operator) else expression
             )
         ]
