@@ -22,6 +22,10 @@ jobs:
         run: poetry install --no-interaction --no-root
       - name: 'Run unit-tests with coverage'
         run: poetry run pytest --cov --cov-report=xml
+      - name: 'Build and run codelimit binary'
+        run: |
+          poetry run pyinstaller -n codelimit -F codelimit/__main__.py
+          ./dist/codelimit scan codelimit/
       - name: 'Run Code Limit'
         uses: getcodelimit/codelimit-action@main
         with:
