@@ -13,6 +13,7 @@ from pygments.util import ClassNotFound
 from rich import print
 from rich.live import Live
 
+from codelimit import languages
 from codelimit.common.Codebase import Codebase
 from codelimit.common.Configuration import Configuration
 from codelimit.common.Language import Language
@@ -31,7 +32,6 @@ from codelimit.common.utils import (
     calculate_checksum,
     load_language_by_name,
 )
-from codelimit.languages import LanguageName
 from codelimit.version import version
 
 locale.setlocale(locale.LC_ALL, "")
@@ -99,9 +99,9 @@ def _scan_folder(
                 continue
             try:
                 lexer = get_lexer_for_filename(rel_path)
-                language = lexer.__class__.name
+                lexer_name = lexer.__class__.name
                 file_path = os.path.join(root, file)
-                if language in LanguageName:
+                if lexer_name in languages.language_names:
                     file_entry = _scan_file(
                         codebase, lexer, folder, file_path, cached_report
                     )

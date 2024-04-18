@@ -8,3 +8,6 @@ class LanguageName(Enum):
     JavaScript = "JavaScript"
     Python = "Python"
     TypeScript = "TypeScript"
+
+
+language_names = [entry.name for entry in LanguageName]
