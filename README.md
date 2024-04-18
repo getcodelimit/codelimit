@@ -63,5 +63,5 @@ To show your project uses Code Limit place this badge in the README markdown:
 
 ## License
 
-[ISC](LICENSE) © 2022 Rob van der Leek <robvanderleek@gmail.com>
+[GPL-3.0-or-later](LICENSE) © 2022 Rob van der Leek <robvanderleek@gmail.com>
 (https://twitter.com/robvanderleek)

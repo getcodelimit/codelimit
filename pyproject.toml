@@ -3,6 +3,7 @@ name = "codelimit"
 version = "0.9.0"
 description = ""
 authors = ["Rob van der Leek <robvanderleek@gmail.com>"]
+license = "GPL-3.0-or-later"
 readme = "README.md"
 
 [tool.poetry.scripts]
