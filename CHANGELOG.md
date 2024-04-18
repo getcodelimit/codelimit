@@ -2,6 +2,29 @@
 
 
 
+## v0.9.1 (2024-04-18)
+
+### Chore
+
+* chore: use GPL-3.0-or-later and update lic ref (#33)
+
+Signed-off-by: Rui Chen &lt;rui@chenrui.dev&gt; ([`765ed43`](https://github.com/getcodelimit/codelimit/commit/765ed436c540c4f474d476a576c19af43927c60d))
+
+### Fix
+
+* fix: Quote Python version ([`86ad99e`](https://github.com/getcodelimit/codelimit/commit/86ad99ea994ec3bff1b141f5ad6cd3e8b45a2ea3))
+
+* fix: Update lock file ([`bdb58ba`](https://github.com/getcodelimit/codelimit/commit/bdb58ba35c231b1342865a2bf6adb8c38741b929))
+
+* fix: Drop Python 3.9 support ([`b3a84df`](https://github.com/getcodelimit/codelimit/commit/b3a84df165344d0f48b769030548ca2315e3e567))
+
+* fix: Fix check for lexer name in languages ([`7716939`](https://github.com/getcodelimit/codelimit/commit/771693957d6c3cb7a510ac0ae1ed60d5d5611b04))
+
+### Unknown
+
+* Test binary build and run ([`9ca276a`](https://github.com/getcodelimit/codelimit/commit/9ca276a88a1d57fbb09d3c43e53cc1427c1a5aae))
+
+
 ## v0.9.0 (2024-04-18)
 
 ### Feature
