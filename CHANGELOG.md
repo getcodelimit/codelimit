@@ -2,6 +2,23 @@
 
 
 
+## v0.9.0 (2024-04-18)
+
+### Feature
+
+* feat: ✨ Multi-language support (#32)
+
+Co-authored-by: robvanderleek &lt;robvanderleek@users.noreply.github.com&gt; ([`96aba04`](https://github.com/getcodelimit/codelimit/commit/96aba04f58a3216444c1cd78654797a58accecbf))
+
+### Unknown
+
+* Update docs ([`3fa8b39`](https://github.com/getcodelimit/codelimit/commit/3fa8b39555b477d9a3304bbc1196873bc5f65332))
+
+* Do not use env vars ([`f7c93ae`](https://github.com/getcodelimit/codelimit/commit/f7c93ae7b5f1a871774267167d3126ba8f98f97d))
+
+* Refactored code ([`bb74a71`](https://github.com/getcodelimit/codelimit/commit/bb74a71561eb4f22732eaf14b8d1976fea758b59))
+
+
 ## v0.8.1 (2024-02-29)
 
 ### Build
