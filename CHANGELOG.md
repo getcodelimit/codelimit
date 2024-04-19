@@ -2,6 +2,13 @@
 
 
 
+## v0.9.2 (2024-04-19)
+
+### Fix
+
+* fix: Another fix check for lexer name in languages ([`2cedaee`](https://github.com/getcodelimit/codelimit/commit/2cedaee9e8f5b734f08fe41c4863802bd5de6746))
+
+
 ## v0.9.1 (2024-04-18)
 
 ### Chore
