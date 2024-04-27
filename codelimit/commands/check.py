@@ -3,6 +3,7 @@ from pathlib import Path
 
 import typer
 from pygments.lexers import get_lexer_for_filename
+from pygments.util import ClassNotFound
 
 from codelimit.common.CheckResult import CheckResult
 from codelimit.common.Scanner import is_excluded, scan_file
@@ -37,7 +38,10 @@ def check_command(paths: list[Path], quiet: bool):
 
 
 def check_file(path: Path, check_result: CheckResult):
-    lexer = get_lexer_for_filename(path)
+    try:
+        lexer = get_lexer_for_filename(path)
+    except ClassNotFound:
+        return
     lexer_name = lexer.__class__.name
     if lexer_name in language_names:
         with open(path) as f:

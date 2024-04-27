@@ -37,6 +37,16 @@ def test_scan_single_file():
     assert snippet == expe
 
 
+def test_scan_unsupported_file():
+    tmp_root = tempfile.TemporaryDirectory()
+    with open(os.path.join(tmp_root.name, "foo.not-supported"), "w") as pythonFile:
+        pythonFile.write('')
+
+    result = scan_codebase(Path(tmp_root.name))
+
+    assert len(result.all_files()) == 0
+
+
 def test_scan_single_file_in_sub_folder():
     tmp_root = tempfile.TemporaryDirectory()
     os.mkdir(os.path.join(tmp_root.name, "src"))
