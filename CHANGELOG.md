@@ -2,6 +2,15 @@
 
 
 
+## v0.9.3 (2024-04-27)
+
+### Fix
+
+* fix: Do not fail check on unsupported files ([`043f06a`](https://github.com/getcodelimit/codelimit/commit/043f06a1026566248851ea6a135da5b039bc5a49))
+
+* fix: Always show refactoring candidates ([`83e1e13`](https://github.com/getcodelimit/codelimit/commit/83e1e13ec146a2d87e0ea1e0abac6b5a1dc92cf8))
+
+
 ## v0.9.2 (2024-04-19)
 
 ### Fix
