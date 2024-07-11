@@ -8,7 +8,7 @@
   <em>Your Refactoring Alarm 🔔</em>
 </p>
 
-<p align="center">
+<div align="center">
 
 [![main](https://github.com/getcodelimit/codelimit/actions/workflows/main.yml/badge.svg)](https://github.com/getcodelimit/codelimit/actions/workflows/main.yml)
 [![codecov](https://codecov.io/gh/getcodelimit/codelimit/branch/main/graph/badge.svg?token=ZQBEAJVC2Y)](https://codecov.io/gh/getcodelimit/codelimit)
@@ -17,7 +17,7 @@
 [![Linting: Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/charliermarsh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 [![Checked with Code Limit](https://codelimit.vercel.app/api/badge/getcodelimit/codelimit)](https://github.com/getcodelimit/codelimit)
 
-</p>
+</div>
 
 ## Introduction
 
