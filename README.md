@@ -1,17 +1,21 @@
 # Code Limit
 
-Your Refactoring Alarm 🔔
+<p align="center">
+  <img src="docs/assets/logo.png"/>
+</p>
 
-<div align="center">
+<p align="center">
+  <em>Your Refactoring Alarm 🔔</em>
+</p>
 
+<p align="center">
 [![main](https://github.com/getcodelimit/codelimit/actions/workflows/main.yml/badge.svg)](https://github.com/getcodelimit/codelimit/actions/workflows/main.yml)
 [![codecov](https://codecov.io/gh/getcodelimit/codelimit/branch/main/graph/badge.svg?token=ZQBEAJVC2Y)](https://codecov.io/gh/getcodelimit/codelimit)
 [![Checked with mypy](https://www.mypy-lang.org/static/mypy_badge.svg)](https://mypy-lang.org/)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Linting: Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/charliermarsh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 [![Checked with Code Limit](https://codelimit.vercel.app/api/badge/getcodelimit/codelimit)](https://github.com/getcodelimit/codelimit)
-
-</div>
+</p>
 
 ## Introduction
 

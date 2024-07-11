@@ -15,7 +15,7 @@ theme:
       icon: material/lightbulb-outline
       name: Switch to dark mode
   logo: assets/logo.png
-  # favicon: assets/logo-24x32.png
+  favicon: assets/favicon.png
   features:
     - toc.integrate
     - navigation.footer
