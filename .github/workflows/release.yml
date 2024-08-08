@@ -71,17 +71,21 @@ jobs:
           - os: macos-latest
             TARGET: macos
             CMD_BUILD: |
-              poetry run pyinstaller -n codelimit -F codelimit/__main__.py
+              poetry run pyinstaller --collect-submodules codelimit.languages \
+                -n codelimit -F codelimit/__main__.py
               mv dist/codelimit dist/codelimit-macos
             OUT_FILE_NAME: dist/codelimit-macos
           - os: windows-latest
             TARGET: windows
-            CMD_BUILD: poetry run pyinstaller --onefile -c -n codelimit codelimit/__main__.py
+            CMD_BUILD: |
+              poetry run pyinstaller --collect-submodules codelimit.languages \
+                -n codelimit --onefile -c codelimit/__main__.py
             OUT_FILE_NAME: dist/codelimit.exe
           - os: ubuntu-latest
             TARGET: linux
             CMD_BUILD: |
-              poetry run pyinstaller -n codelimit -F codelimit/__main__.py
+              poetry run pyinstaller --collect-submodules codelimit.languages \
+                -n codelimit -F codelimit/__main__.py
               mv dist/codelimit dist/codelimit-linux
             OUT_FILE_NAME: dist/codelimit-linux
     steps:
