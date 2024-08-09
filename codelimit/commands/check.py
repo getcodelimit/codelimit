@@ -8,8 +8,7 @@ from pygments.util import ClassNotFound
 from codelimit.common.CheckResult import CheckResult
 from codelimit.common.Scanner import is_excluded, scan_file
 from codelimit.common.lexer_utils import lex
-from codelimit.common.utils import load_language_by_name
-from codelimit.languages import language_names
+from codelimit.languages import Languages
 
 
 def check_command(paths: list[Path], quiet: bool):
@@ -43,11 +42,11 @@ def check_file(path: Path, check_result: CheckResult):
     except ClassNotFound:
         return
     lexer_name = lexer.__class__.name
-    if lexer_name in language_names:
+    if lexer_name in Languages.by_name.keys():
         with open(path) as f:
             code = f.read()
         tokens = lex(lexer, code, False)
-        lexer_name = load_language_by_name(lexer.__class__.name)
+        lexer_name = Languages.by_name[lexer.__class__.name]
         if lexer_name:
             measurements = scan_file(tokens, lexer_name)
             risks = sorted(

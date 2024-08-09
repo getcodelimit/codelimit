@@ -1,13 +1,24 @@
-from enum import Enum
+from codelimit.languages.C import C
+from codelimit.languages.Cpp import Cpp
+from codelimit.languages.Java import Java
+from codelimit.languages.JavaScript import JavaScript
+from codelimit.languages.Python import Python
+from codelimit.languages.TypeScript import TypeScript
 
 
-class LanguageName(Enum):
-    C = "C"
-    Cpp = "C++"
-    Java = "Java"
-    JavaScript = "JavaScript"
-    Python = "Python"
-    TypeScript = "TypeScript"
+class Languages:
+    C = C()
+    Cpp = Cpp()
+    Java = Java()
+    JavaScript = JavaScript()
+    Python = Python()
+    TypeScript = TypeScript()
 
-
-language_names = [entry.name for entry in LanguageName]
+    by_name = {
+        C.name: C,
+        Cpp.name: Cpp,
+        Java.name: Java,
+        JavaScript.name: JavaScript,
+        Python.name: Python,
+        TypeScript.name: TypeScript,
+    }

@@ -1,4 +1,4 @@
-from codelimit.languages import LanguageName
+from codelimit.languages import Languages
 from tests.conftest import assert_units, print_units
 
 
@@ -11,7 +11,7 @@ def test_simple_main_function():
         }
     """
 
-    assert_units(code, LanguageName.Java, {"main": 3})
+    assert_units(code, Languages.Java, {"main": 3})
 
 
 def test_function_with_throws():
@@ -23,7 +23,7 @@ def test_function_with_throws():
         }
     """
 
-    assert_units(code, LanguageName.Java, {"foo": 3})
+    assert_units(code, Languages.Java, {"foo": 3})
 
 
 def test_two_functions():
@@ -38,7 +38,7 @@ def test_two_functions():
         }
     """
 
-    assert_units(code, LanguageName.Java, {"one": 3, "two": 3})
+    assert_units(code, Languages.Java, {"one": 3, "two": 3})
 
 
 def test_nested_class():
@@ -55,7 +55,7 @@ def test_nested_class():
     }
     """
 
-    assert_units(code, LanguageName.Java, {"Foo": 3, "foobar": 3})
+    assert_units(code, Languages.Java, {"Foo": 3, "foobar": 3})
 
 
 def test_anonymous_class():
@@ -75,5 +75,5 @@ def test_anonymous_class():
     }
     """
 
-    print_units(code, LanguageName.Java)
-    assert_units(code, LanguageName.Java, {"Foo": 6, "preVisitDirectory": 6})
+    print_units(code, Languages.Java)
+    assert_units(code, Languages.Java, {"Foo": 6, "preVisitDirectory": 6})

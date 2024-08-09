@@ -13,7 +13,6 @@ from pygments.util import ClassNotFound
 from rich import print
 from rich.live import Live
 
-from codelimit import languages
 from codelimit.common.Codebase import Codebase
 from codelimit.common.Configuration import Configuration
 from codelimit.common.Language import Language
@@ -30,8 +29,8 @@ from codelimit.common.scope.scope_utils import build_scopes, unfold_scopes
 from codelimit.common.source_utils import filter_tokens
 from codelimit.common.utils import (
     calculate_checksum,
-    load_language_by_name,
 )
+from codelimit.languages import Languages
 from codelimit.version import version
 
 locale.setlocale(locale.LC_ALL, "")
@@ -105,7 +104,8 @@ def _scan_folder(
                 lexer = get_lexer_for_filename(rel_path)
                 lexer_name = lexer.__class__.name
                 file_path = os.path.join(root, file)
-                if lexer_name in languages.language_names:
+                languages = Languages.by_name.keys()
+                if lexer_name in languages:
                     file_entry = _scan_file(
                         codebase, lexer, folder, file_path, cached_report
                     )
@@ -152,7 +152,7 @@ def _analyze_file(path, rel_path, checksum, lexer):
     code_tokens = filter_tokens(all_tokens)
     file_loc = count_lines(code_tokens)
     language_name = lexer.__class__.name
-    language = load_language_by_name(language_name)
+    language = Languages.by_name[language_name]
     if language:
         measurements = scan_file(all_tokens, language)
     else:

@@ -1,4 +1,4 @@
-from codelimit.languages import LanguageName
+from codelimit.languages import Languages
 from tests.conftest import assert_units
 
 
@@ -9,7 +9,7 @@ def test_simple_function():
     }
     """
 
-    assert_units(code, LanguageName.JavaScript, {"foo": 3})
+    assert_units(code, Languages.JavaScript, {"foo": 3})
 
 
 def test_nested_functions():
@@ -30,6 +30,6 @@ def test_nested_functions():
 
     assert_units(
         code,
-        LanguageName.JavaScript,
+        Languages.JavaScript,
         {"sayHelloWorld": 4, "sayHello": 3, "sayWorld": 3},
     )

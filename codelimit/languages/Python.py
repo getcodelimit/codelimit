@@ -11,13 +11,16 @@ from codelimit.common.utils import delete_indices
 
 
 class Python(Language):
+    def __init__(self):
+        super().__init__('Python')
+
     def extract_headers(self, tokens: list[Token]) -> list[Header]:
         return get_headers(
             tokens, [Keyword("def"), Name(), OneOrMore(Balanced("(", ")"))]
         )
 
     def extract_blocks(
-        self, tokens: list[Token], headers: list[Header]
+            self, tokens: list[Token], headers: list[Header]
     ) -> list[TokenRange]:
         lines = _get_token_lines(tokens)
         result = []

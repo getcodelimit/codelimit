@@ -1,5 +1,4 @@
 import hashlib
-import importlib
 import os
 import sys
 from math import ceil
@@ -8,7 +7,6 @@ from typing import Union, Any
 from rich.style import Style
 from rich.text import Text
 
-from codelimit.common.Language import Language
 from codelimit.common.Measurement import Measurement
 from codelimit.common.gsm.Expression import Expression
 from codelimit.common.gsm.operator.Operator import Operator
@@ -68,7 +66,7 @@ def render_quality_profile(profile: list[int]) -> Text:
 def path_has_extension(path: str, suffixes: Union[str, list[str]]):
     dot_index = path.rfind(".")
     if dot_index >= 0:
-        suffix = path[dot_index + 1 :]
+        suffix = path[dot_index + 1:]
         if isinstance(suffixes, list):
             return suffix in suffixes
         else:
@@ -155,16 +153,6 @@ def format_unit(name: str, length: int, file: Union[str, None] = None) -> Text:
         result.append(Text(f"{file}:", style=Style(dim=True)))
     result.append(name)
     return result
-
-
-def load_language_by_name(name: str) -> Language | None:
-    name = name.replace("+", "p")
-    try:
-        module = importlib.import_module(f"codelimit.languages.{name}")
-        language_class = getattr(module, f"{name}")
-        return language_class()
-    except ModuleNotFoundError:
-        return None
 
 
 def replace_string_literal_with_predicate(expression: Expression) -> Expression:
