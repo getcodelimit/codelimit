@@ -24,11 +24,11 @@ jobs:
         run: poetry run pytest --cov --cov-report=xml
       - name: 'Run codelimit'
         run: |
-          poetry run codelimit scan codelimit/
+          poetry run codelimit scan .
       - name: 'Build and run codelimit binary'
         run: |
           poetry run pyinstaller -n codelimit -F codelimit/__main__.py
-          ./dist/codelimit scan codelimit/
+          ./dist/codelimit scan .
       - name: 'Run Code Limit action'
         uses: getcodelimit/codelimit-action@main
         with:

@@ -10,12 +10,13 @@ class ScanResultTable(Table):
         super().__init__(
             expand=True,
             box=box.SIMPLE,
+            show_footer=len(scan_totals.languages()) > 1
         )
         self.scan_totals = scan_totals
         self.add_column("Language")
-        self.add_column("Files", justify="right")
-        self.add_column("Lines of Code", justify="right")
-        self.add_column("Functions", justify="right")
+        self.add_column("Files", f'{scan_totals.total_files():n}', justify="right")
+        self.add_column("Lines of Code", f'{scan_totals.total_loc():n}', justify="right")
+        self.add_column("Functions", f'{scan_totals.total_functions():n}', justify="right")
         self.add_column("\u26A0", justify="right")
         self.add_column("\u2716", justify="right")
         self._populate()

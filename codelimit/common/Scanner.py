@@ -48,8 +48,6 @@ def scan_codebase(path: Path, cached_report: Union[Report, None] = None) -> Code
 
         _scan_folder(codebase, path, cached_report, add_file_entry)
         live.stop()
-    if len(scan_totals.languages()) > 1:
-        print_totals(scan_totals)
     print_refactor_candidates(scan_totals)
     return codebase
 
@@ -62,12 +60,6 @@ def print_header(cached_report, path):
     print(f"  [bold]Scan root[/bold]: {path.resolve().absolute()}")
     if cached_report:
         print("  [bold]Found cached report, only analyzing changed files[/bold]")
-
-
-def print_totals(scan_totals: ScanTotals):
-    print(f"  [bold]Total lines of code[/bold]: {scan_totals.total_loc():n}")
-    print(f"  [bold]Total files[/bold]: {scan_totals.total_files():n}")
-    print(f"  [bold]Total functions[/bold]: {scan_totals.total_functions():n}")
 
 
 def print_refactor_candidates(scan_totals: ScanTotals):
