@@ -1,5 +1,21 @@
 # CHANGELOG
 
+## v0.9.5 (2024-08-10)
+
+### Fix
+
+* fix: Release workflow ([`5ce902f`](https://github.com/getcodelimit/codelimit/commit/5ce902f0c21b0698766175caf3f5fe18deec3187))
+
+* fix: Fix for PyInstaller bundling ([`ab43a4c`](https://github.com/getcodelimit/codelimit/commit/ab43a4c66bd401921a9c456df047b491d4170bbb))
+
+### Unknown
+
+* Fix emoji ([`bb738f3`](https://github.com/getcodelimit/codelimit/commit/bb738f3dafc4632d6524da2c2f0b62ca3107b19c))
+
+* Add footer with totals to table ([`fc4c774`](https://github.com/getcodelimit/codelimit/commit/fc4c77499b8777bcfff305d8a2d66c9bbda4f0db))
+
+* Flush live display ([`ba7beff`](https://github.com/getcodelimit/codelimit/commit/ba7beffdcd0fad6f4503188725ed82e6540ad3be))
+
 ## v0.9.4 (2024-08-08)
 
 ### Fix
