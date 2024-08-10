@@ -47,6 +47,7 @@ def scan_codebase(path: Path, cached_report: Union[Report, None] = None) -> Code
             live.update(table)
 
         _scan_folder(codebase, path, cached_report, add_file_entry)
+        live.stop()
     if len(scan_totals.languages()) > 1:
         print_totals(scan_totals)
     print_refactor_candidates(scan_totals)
