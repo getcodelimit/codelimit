@@ -17,8 +17,8 @@ class ScanResultTable(Table):
         self.add_column("Files", f'{scan_totals.total_files():n}', justify="right")
         self.add_column("Lines of Code", f'{scan_totals.total_loc():n}', justify="right")
         self.add_column("Functions", f'{scan_totals.total_functions():n}', justify="right")
-        self.add_column("\u26A0", justify="right")
-        self.add_column("\u2716", justify="right")
+        self.add_column("\u26A0", f'{scan_totals.total_hard_to_maintain():n}', justify="right")
+        self.add_column("\u2716", f'{scan_totals.total_unmaintainable():n}', justify="right")
         self._populate()
 
     def _populate(self):
