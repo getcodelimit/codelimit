@@ -48,6 +48,8 @@ def scan_codebase(path: Path, cached_report: Union[Report, None] = None) -> Code
 
         _scan_folder(codebase, path, cached_report, add_file_entry)
         live.stop()
+        live.refresh()
+    print()
     print_refactor_candidates(scan_totals)
     return codebase
 
@@ -73,7 +75,7 @@ def print_refactor_candidates(scan_totals: ScanTotals):
         print(f"  [red]\u2716[/red] {total_unmaintainable} functions need refactoring.")
     if total_hard_to_maintain == 0 and total_unmaintainable == 0:
         print(
-            "  [bold]Refactoring not necessary, :sparkles: happy coding! :sparkles:[/bold]"
+            "  [bold]Refactoring not necessary, :glowing_star: happy coding! :glowing_star:[/bold]"
         )
 
 
