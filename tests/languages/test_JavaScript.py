@@ -12,6 +12,16 @@ def test_simple_function():
     assert_units(code, Languages.JavaScript, {"foo": 3})
 
 
+def test_arrow_function():
+    code = """
+    const sayHello = async () => {
+        console.log('Hello world!');
+    }
+    """
+
+    assert_units(code, Languages.JavaScript, {"sayHello": 3})
+
+
 def test_nested_functions():
     code = """
     function sayHelloWorld() {
