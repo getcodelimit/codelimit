@@ -40,9 +40,9 @@ def api_post_report(report, branch, repository, url, token):
         f'{{{{"repository": "{repository}", "branch": "{branch}", "report":{{}}}}}}'
     )
     with Progress(
-            SpinnerColumn(),
-            TextColumn("[progress.description]{task.description}"),
-            transient=True,
+        SpinnerColumn(),
+        TextColumn("[progress.description]{task.description}"),
+        transient=True,
     ) as progress:
         progress.add_task(description=f"Uploading report to {url}", total=None)
         result = requests.post(
