@@ -40,7 +40,7 @@ def test_scan_single_file():
 def test_scan_unsupported_file():
     tmp_root = tempfile.TemporaryDirectory()
     with open(os.path.join(tmp_root.name, "foo.not-supported"), "w") as pythonFile:
-        pythonFile.write('')
+        pythonFile.write("")
 
     result = scan_codebase(Path(tmp_root.name))
 

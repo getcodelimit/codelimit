@@ -17,6 +17,6 @@ class Language(ABC):
 
     @abstractmethod
     def extract_blocks(
-            self, tokens: list[Token], headers: list[Header]
+        self, tokens: list[Token], headers: list[Header]
     ) -> list[TokenRange]:
         pass
