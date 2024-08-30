@@ -11,7 +11,7 @@ from codelimit.common.token_matching.predicate.Name import Name
 
 class Java(Language):
     def __init__(self):
-        super().__init__('Java')
+        super().__init__("Java")
 
     def extract_headers(self, tokens: list) -> list:
         return get_headers(

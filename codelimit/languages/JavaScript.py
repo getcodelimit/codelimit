@@ -16,7 +16,7 @@ from codelimit.common.token_matching.predicate.Symbol import Symbol
 
 class JavaScript(Language):
     def __init__(self):
-        super().__init__('JavaScript')
+        super().__init__("JavaScript")
 
     def extract_headers(self, tokens: list[Token]) -> list[Header]:
         return get_headers(
@@ -26,6 +26,6 @@ class JavaScript(Language):
         )
 
     def extract_blocks(
-            self, tokens: list[Token], headers: list[Header]
+        self, tokens: list[Token], headers: list[Header]
     ) -> list[TokenRange]:
         return get_blocks(tokens, "{", "}")

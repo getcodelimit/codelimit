@@ -6,10 +6,10 @@ from codelimit.common.CheckResult import CheckResult
 
 
 def test_check_file():
-    code = ''
-    code += 'def foo():\n'
+    code = ""
+    code += "def foo():\n"
     code += '    print("Hello, world!")\n'
-    tmp = tempfile.NamedTemporaryFile(suffix='.py')
+    tmp = tempfile.NamedTemporaryFile(suffix=".py")
     tmp.write(code.encode())
     check_result = CheckResult()
 
@@ -19,8 +19,8 @@ def test_check_file():
 
 
 def test_check_unsupported_file():
-    tmp = tempfile.NamedTemporaryFile(suffix='.gitignore')
-    tmp.write(''.encode())
+    tmp = tempfile.NamedTemporaryFile(suffix=".gitignore")
+    tmp.write("".encode())
     check_result = CheckResult()
 
     check_file(Path(tmp.name), check_result)
