@@ -37,7 +37,7 @@ def check(
 def scan(
     path: Annotated[
         Path, typer.Argument(exists=True, file_okay=False, help="Codebase root")
-    ]
+    ] = '.'
 ):
     scan_command(path)
 
@@ -46,7 +46,7 @@ def scan(
 def report(
     path: Annotated[
         Path, typer.Argument(exists=True, file_okay=False, help="Codebase root")
-    ],
+    ] = '.',
     full: Annotated[bool, typer.Option("--full", help="Show full report")] = False,
 ):
     report_command(path, full)
