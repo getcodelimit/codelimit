@@ -11,6 +11,7 @@ from codelimit.common.scope.scope_utils import (
 from codelimit.common.token_matching.predicate.Balanced import Balanced
 from codelimit.common.token_matching.predicate.Keyword import Keyword
 from codelimit.common.token_matching.predicate.Name import Name
+from codelimit.common.token_matching.predicate.Operator import Operator
 from codelimit.common.token_matching.predicate.Symbol import Symbol
 
 
@@ -19,11 +20,24 @@ class JavaScript(Language):
         super().__init__("JavaScript")
 
     def extract_headers(self, tokens: list[Token]) -> list[Header]:
-        return get_headers(
+        functions = get_headers(
             tokens,
             [Optional(Keyword("function")), Name(), OneOrMore(Balanced("(", ")"))],
             Symbol("{"),
         )
+        arrow_functions = get_headers(
+            tokens,
+            [
+                Optional(Keyword("const")),
+                Name(),
+                Operator("="),
+                Optional(Keyword("async")),
+                OneOrMore(Balanced("(", ")")),
+                Symbol("=>"),
+            ],
+            Symbol("{"),
+        )
+        return functions + arrow_functions
 
     def extract_blocks(
         self, tokens: list[Token], headers: list[Header]
