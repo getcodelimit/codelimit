@@ -113,6 +113,26 @@ def clear_screen() -> None:
         sys.stdout.write("\033[2J\033[1;1H")
 
 
+def get_style_for_measurement(value: int) -> Style:
+    if value > 60:
+        return Style(color="red")
+    elif value > 30:
+        return Style(color="dark_orange")
+    elif value > 15:
+        return Style(color="yellow")
+    else:
+        return Style(color="green")
+
+
+def get_emoji_for_measurement(value: int) -> str:
+    if value > 60:
+        return "\u2716"
+    elif value > 30:
+        return "\u26A0"
+    else:
+        return "\u2713"
+
+
 def format_measurement(path: str, measurement: Measurement) -> Text:
     result = Text()
     result.append(path, style="bold")
@@ -122,16 +142,14 @@ def format_measurement(path: str, measurement: Measurement) -> Text:
     result.append(str(measurement.start.column))
     result.append(":", style=Style(color="cyan"))
     result.append(" ")
-    result.append(str(measurement.value))
+    result.append(
+        str(measurement.value), style=get_style_for_measurement(measurement.value)
+    )
     result.append(" ")
-    if measurement.value > 60:
-        result.append("\u2716", style=Style(color="red"))
-    elif measurement.value > 30:
-        result.append("\u26A0", style=Style(color="dark_orange"))
-    elif measurement.value > 15:
-        result.append("\u2713", style=Style(color="yellow"))
-    else:
-        result.append("\u2713", style=Style(color="green"))
+    result.append(
+        get_emoji_for_measurement(measurement.value),
+        style=get_style_for_measurement(measurement.value),
+    )
     result.append(" ")
     result.append(measurement.unit_name)
     return result
