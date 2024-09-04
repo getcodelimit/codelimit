@@ -1,12 +1,16 @@
 # Code Limit
 
-<p align="center">
-  <img src="docs/assets/logo.png"/>
-</p>
+<div align="center">
 
-<p align="center">
-  <em>Your Refactoring Alarm 🔔</em>
-</p>
+![Logo](docs/assets/logo.png)]
+
+</div>
+
+<div align="center">
+
+  *Your Refactoring Alarm 🔔*
+
+</div>
 
 <div align="center">
 
