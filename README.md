@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![Logo](docs/assets/logo.png)]
+![Logo](docs/assets/logo.png)
 
 </div>
 
