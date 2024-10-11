@@ -10,7 +10,7 @@ readme = "README.md"
 codelimit = "codelimit.__main__:cli"
 
 [tool.poetry.dependencies]
-python = ">=3.10,<3.13"
+python = ">=3.10,<3.14"
 pygments = "^2.13.0"
 requests = "^2.28.2"
 typer = "^0.9.0"
@@ -37,7 +37,7 @@ upload_to_repository = false
 upload_to_release = false
 
 [tool.poetry.group.dev.dependencies]
-pyinstaller = "^5.6.1"
+pyinstaller = {version = "^6.0", python = ">=3.8,<3.14"}
 pytest-cov = "^4.0.0"
 pytest = "^7.2.1"
 poethepoet = "^0.21.1"
