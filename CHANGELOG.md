@@ -1,8 +1,42 @@
 # CHANGELOG
 
+
+## v0.10.0 (2024-10-16)
+
+### Chores
+
+* chore: support py3.13 (#40)
+
+Signed-off-by: Rui Chen <rui@chenrui.dev> ([`b8d0a8e`](https://github.com/getcodelimit/codelimit/commit/b8d0a8e8d2b93055defcc56c7ad57f515f81c1ff))
+
+### Features
+
+* feat: ✨ Fix analyze code workflow (#42) ([`d80e66c`](https://github.com/getcodelimit/codelimit/commit/d80e66c7b371e3407a0067e087a13f93b875d3a0))
+
+* feat: ✨ Colorize output (#39)
+
+Co-authored-by: robvanderleek <robvanderleek@users.noreply.github.com> ([`5c07214`](https://github.com/getcodelimit/codelimit/commit/5c0721464ff87322ed3a7ef2b68a767e97b570bf))
+
+* feat: ✨ Support JS arrow notation (#35)
+
+Co-authored-by: robvanderleek <robvanderleek@users.noreply.github.com> ([`a568145`](https://github.com/getcodelimit/codelimit/commit/a568145a565b5b75c61194d74ee9640c146ff365))
+
+* feat: ✨ Default path to "." (#37)
+
+Co-authored-by: robvanderleek <robvanderleek@users.noreply.github.com> ([`9c0ced6`](https://github.com/getcodelimit/codelimit/commit/9c0ced6b87ef8571d21e9f0917a0ba96e959639f))
+
+### Unknown
+
+* Markdown ([`33eb791`](https://github.com/getcodelimit/codelimit/commit/33eb791c156751b274f1a3615a55591b6bc6927c))
+
+* Markdown ([`9baadc7`](https://github.com/getcodelimit/codelimit/commit/9baadc7f7f32d8d1d6a6da118254e2b24419c298))
+
+* Update versions ([`414e7b0`](https://github.com/getcodelimit/codelimit/commit/414e7b0eb4f282874978da84f6439ddcc51e0ab0))
+
+
 ## v0.9.5 (2024-08-10)
 
-### Fix
+### Fixes
 
 * fix: Release workflow ([`5ce902f`](https://github.com/getcodelimit/codelimit/commit/5ce902f0c21b0698766175caf3f5fe18deec3187))
 
@@ -16,9 +50,10 @@
 
 * Flush live display ([`ba7beff`](https://github.com/getcodelimit/codelimit/commit/ba7beffdcd0fad6f4503188725ed82e6540ad3be))
 
+
 ## v0.9.4 (2024-08-08)
 
-### Fix
+### Fixes
 
 * fix: Bundle all files ([`30ca142`](https://github.com/getcodelimit/codelimit/commit/30ca1427d371d468305ee9c95e083d795271f682))
 
@@ -30,29 +65,32 @@
 
 * Update docs ([`515cb07`](https://github.com/getcodelimit/codelimit/commit/515cb0787f8e5a01686b38ac936ad8b7ea424cfb))
 
+
 ## v0.9.3 (2024-04-27)
 
-### Fix
+### Fixes
 
 * fix: Do not fail check on unsupported files ([`043f06a`](https://github.com/getcodelimit/codelimit/commit/043f06a1026566248851ea6a135da5b039bc5a49))
 
 * fix: Always show refactoring candidates ([`83e1e13`](https://github.com/getcodelimit/codelimit/commit/83e1e13ec146a2d87e0ea1e0abac6b5a1dc92cf8))
 
+
 ## v0.9.2 (2024-04-19)
 
-### Fix
+### Fixes
 
 * fix: Another fix check for lexer name in languages ([`2cedaee`](https://github.com/getcodelimit/codelimit/commit/2cedaee9e8f5b734f08fe41c4863802bd5de6746))
 
+
 ## v0.9.1 (2024-04-18)
 
-### Chore
+### Chores
 
 * chore: use GPL-3.0-or-later and update lic ref (#33)
 
-Signed-off-by: Rui Chen &lt;rui@chenrui.dev&gt; ([`765ed43`](https://github.com/getcodelimit/codelimit/commit/765ed436c540c4f474d476a576c19af43927c60d))
+Signed-off-by: Rui Chen <rui@chenrui.dev> ([`765ed43`](https://github.com/getcodelimit/codelimit/commit/765ed436c540c4f474d476a576c19af43927c60d))
 
-### Fix
+### Fixes
 
 * fix: Quote Python version ([`86ad99e`](https://github.com/getcodelimit/codelimit/commit/86ad99ea994ec3bff1b141f5ad6cd3e8b45a2ea3))
 
@@ -66,13 +104,14 @@ Signed-off-by: Rui Chen &lt;rui@chenrui.dev&gt; ([`765ed43`](https://github.com/
 
 * Test binary build and run ([`9ca276a`](https://github.com/getcodelimit/codelimit/commit/9ca276a88a1d57fbb09d3c43e53cc1427c1a5aae))
 
+
 ## v0.9.0 (2024-04-18)
 
-### Feature
+### Features
 
 * feat: ✨ Multi-language support (#32)
 
-Co-authored-by: robvanderleek &lt;robvanderleek@users.noreply.github.com&gt; ([`96aba04`](https://github.com/getcodelimit/codelimit/commit/96aba04f58a3216444c1cd78654797a58accecbf))
+Co-authored-by: robvanderleek <robvanderleek@users.noreply.github.com> ([`96aba04`](https://github.com/getcodelimit/codelimit/commit/96aba04f58a3216444c1cd78654797a58accecbf))
 
 ### Unknown
 
@@ -82,15 +121,16 @@ Co-authored-by: robvanderleek &lt;robvanderleek@users.noreply.github.com&gt; ([`
 
 * Refactored code ([`bb74a71`](https://github.com/getcodelimit/codelimit/commit/bb74a71561eb4f22732eaf14b8d1976fea758b59))
 
+
 ## v0.8.1 (2024-02-29)
 
-### Build
+### Build System
 
 * build: update py3.12 constraint (#28)
 
-Signed-off-by: Rui Chen &lt;rui@chenrui.dev&gt; ([`95ba321`](https://github.com/getcodelimit/codelimit/commit/95ba3213e55bc04f6633c490c721c6909a5e0aa8))
+Signed-off-by: Rui Chen <rui@chenrui.dev> ([`95ba321`](https://github.com/getcodelimit/codelimit/commit/95ba3213e55bc04f6633c490c721c6909a5e0aa8))
 
-### Fix
+### Fixes
 
 * fix: Update semantic versioning config ([`380ada1`](https://github.com/getcodelimit/codelimit/commit/380ada1004a0dd31b69933e55847630da9fadb52))
 
@@ -108,13 +148,14 @@ Signed-off-by: Rui Chen &lt;rui@chenrui.dev&gt; ([`95ba321`](https://github.com/
 
 * deps: add pyyaml dep (#30)
 
-Signed-off-by: Rui Chen &lt;rui@chenrui.dev&gt; ([`d13be41`](https://github.com/getcodelimit/codelimit/commit/d13be41767091b388354c52988161e4f834c9017))
+Signed-off-by: Rui Chen <rui@chenrui.dev> ([`d13be41`](https://github.com/getcodelimit/codelimit/commit/d13be41767091b388354c52988161e4f834c9017))
 
 * Remove hardcoded values ([`3d6869d`](https://github.com/getcodelimit/codelimit/commit/3d6869dbc672665c2f8a6559f46c685be6d3b2bb))
 
 * Do not show TUI in GH Actions ([`50894b5`](https://github.com/getcodelimit/codelimit/commit/50894b5f11a213555e7ac149dd0fdac5b5dad4b2))
 
 * Upload report ([`0f45f71`](https://github.com/getcodelimit/codelimit/commit/0f45f715ae9a32433f5fc7a2c00bee0b4c2ae6b7))
+
 
 ## v0.8.0 (2024-02-21)
 
@@ -133,6 +174,7 @@ Signed-off-by: Rui Chen &lt;rui@chenrui.dev&gt; ([`d13be41`](https://github.com/
 * Fix upload command ([`624b79f`](https://github.com/getcodelimit/codelimit/commit/624b79f75bcb372e07469556a75379d4a832d1bb))
 
 * :sparkles: Support Python 3.12 (#27) ([`4e78e42`](https://github.com/getcodelimit/codelimit/commit/4e78e42e1096299548e61c3e0c149721bb5ca8ca))
+
 
 ## v0.7.0 (2023-10-07)
 
@@ -208,11 +250,13 @@ Signed-off-by: Rui Chen &lt;rui@chenrui.dev&gt; ([`d13be41`](https://github.com/
 
 * :pencil2: Fix release flow ([`779da8a`](https://github.com/getcodelimit/codelimit/commit/779da8a22c45a077d08969d7af409a7254bfc1b6))
 
+
 ## v0.6.2 (2023-08-20)
 
 ### Unknown
 
 * :bug: Fix build ([`78ec19f`](https://github.com/getcodelimit/codelimit/commit/78ec19fe539a8df679526a4f50e3c45f1b3953e4))
+
 
 ## v0.6.1 (2023-08-20)
 
@@ -229,6 +273,7 @@ Signed-off-by: Rui Chen &lt;rui@chenrui.dev&gt; ([`d13be41`](https://github.com/
 * :pencil: Update version ([`3c89d83`](https://github.com/getcodelimit/codelimit/commit/3c89d83dee93e476603a116cf0a5b29b3f8258e5))
 
 * :rocket: Updated release flow ([`b47923a`](https://github.com/getcodelimit/codelimit/commit/b47923a96095661e082d4410a8621a95081aee8c))
+
 
 ## v0.6.0 (2023-08-17)
 
@@ -248,17 +293,19 @@ Signed-off-by: Rui Chen &lt;rui@chenrui.dev&gt; ([`d13be41`](https://github.com/
 
 * :rocket: Bump version ([`0273d2c`](https://github.com/getcodelimit/codelimit/commit/0273d2ce7d0e965306dedf04d64f7b51ec8f30d6))
 
+
 ## v0.5.0 (2023-08-16)
 
 ### Unknown
 
 * :sparkles: Issue 15 invoking without tui (#16) ([`5dda87d`](https://github.com/getcodelimit/codelimit/commit/5dda87d4bef6a21069eb0c85a624651d9aff3e02))
 
-* Fix &#34;PythonLanguage&#34; typo (#17) ([`167f154`](https://github.com/getcodelimit/codelimit/commit/167f154f688777c51d55823aefa5a76c47f490a2))
+* Fix "PythonLanguage" typo (#17) ([`167f154`](https://github.com/getcodelimit/codelimit/commit/167f154f688777c51d55823aefa5a76c47f490a2))
 
 * :bug: Fix for Python headers with nested braces ([`0e95d33`](https://github.com/getcodelimit/codelimit/commit/0e95d33a207f43d40943da32a22a66a7a9759d48))
 
 * :green_heart: Trigger workflow manually ([`5344210`](https://github.com/getcodelimit/codelimit/commit/5344210cfcdeb96110976b59a557de353155a75e))
+
 
 ## v0.4.0 (2023-08-11)
 
@@ -268,11 +315,13 @@ Signed-off-by: Rui Chen &lt;rui@chenrui.dev&gt; ([`d13be41`](https://github.com/
 
 * :pencil: Updated readme ([`917d27d`](https://github.com/getcodelimit/codelimit/commit/917d27d14cf71b179cf4f28bb2dc9a02ddaa812b))
 
+
 ## v0.3.1 (2023-08-10)
 
 ### Unknown
 
 * :bug: Update release flow ([`960e05f`](https://github.com/getcodelimit/codelimit/commit/960e05fa14505a1027a8caa3aa925d585b172bed))
+
 
 ## v0.3.0 (2023-08-10)
 
@@ -310,11 +359,12 @@ Signed-off-by: Rui Chen &lt;rui@chenrui.dev&gt; ([`d13be41`](https://github.com/
 
 * Exchange build-dist.sh shell script for a pyproject-based task executor. (#13) ([`b763e00`](https://github.com/getcodelimit/codelimit/commit/b763e0045f8827292bf4f608440c477c56a5ba08))
 
-* Merge branch &#39;main&#39; of github.com:getcodelimit/codelimit ([`ceac22d`](https://github.com/getcodelimit/codelimit/commit/ceac22d900634697104b46809e41928fd77055b2))
+* Merge branch 'main' of github.com:getcodelimit/codelimit ([`ceac22d`](https://github.com/getcodelimit/codelimit/commit/ceac22d900634697104b46809e41928fd77055b2))
+
 
 ## v0.2.1 (2023-08-09)
 
-### Fix
+### Fixes
 
 * fix: :bug: Fix readme ([`ea4bfa2`](https://github.com/getcodelimit/codelimit/commit/ea4bfa203ce58121384f1985b66de730043547c0))
 
@@ -403,9 +453,10 @@ Signed-off-by: Rui Chen &lt;rui@chenrui.dev&gt; ([`d13be41`](https://github.com/
 
 * Clear screen ([`f0e8a91`](https://github.com/getcodelimit/codelimit/commit/f0e8a91dc7869d06cb1f299a21eb082e2361d94b))
 
+
 ## v0.2.0 (2023-01-14)
 
-### Feature
+### Features
 
 * feat: :sparkles: Issue 7 add basic repository browser (#8)
 
@@ -425,9 +476,10 @@ Signed-off-by: Rui Chen &lt;rui@chenrui.dev&gt; ([`d13be41`](https://github.com/
 
 * Do not use setup tools ([`223a964`](https://github.com/getcodelimit/codelimit/commit/223a964e9ff5508bf52477406a2e21a42586ecb3))
 
+
 ## v0.1.0 (2023-01-07)
 
-### Feature
+### Features
 
 * feat: :sparkles: WIP (#6)
 
