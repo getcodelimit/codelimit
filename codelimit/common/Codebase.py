@@ -1,3 +1,4 @@
+from codelimit.common.LanguageTotals import LanguageTotals
 from codelimit.common.SourceFileEntry import SourceFileEntry
 from codelimit.common.SourceFolder import SourceFolder
 from codelimit.common.Measurement import Measurement
@@ -9,9 +10,13 @@ class Codebase:
         self.root = root
         self.tree = {"./": SourceFolder()}
         self.files: dict[str, SourceFileEntry] = {}
+        self.totals: dict[str, LanguageTotals] = {}
 
     def add_file(self, entry: SourceFileEntry):
         self.files[entry.path] = entry
+        if entry.language not in self.totals:
+            self.totals[entry.language] = LanguageTotals(entry.language)
+        self.totals[entry.language].add(entry)
         parent_folder = get_parent_folder(entry.path)
         if f"{parent_folder}/" not in self.tree:
             self.add_folder(parent_folder)

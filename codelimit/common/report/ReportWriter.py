@@ -1,4 +1,5 @@
 from codelimit.common.CodebseEntry import CodebaseEntry
+from codelimit.common.LanguageTotals import LanguageTotals
 from codelimit.common.Measurement import Measurement
 from codelimit.common.SourceFileEntry import SourceFileEntry
 from codelimit.common.SourceFolder import SourceFolder
@@ -8,6 +9,7 @@ from codelimit.common.report.Report import Report
 class ReportWriter:
     def __init__(self, report: Report, pretty_print=True):
         self.report = report
+        self.totals = report.codebase.totals
         self.tree = report.codebase.tree
         self.files = report.codebase.files
         self.pretty_print = pretty_print
@@ -51,9 +53,48 @@ class ReportWriter:
     def _codebase_to_json(self):
         json = ""
         json += self._open('"codebase": {')
-        json += self._collection([self._tree_to_json(), self._measurements_to_json()])
+        json += self._collection([self._totals_to_json(), self._tree_to_json(), self._measurements_to_json()])
         json += self._close("}")
         return json
+
+    def _totals_to_json(self):
+        json = ""
+        json += self._open('"totals": {')
+        json += self._collection(
+            [self._totals_item_to_json(k, v) for k, v in self.totals.items()]
+        )
+        json += self._close("}")
+        return json
+
+    def _totals_item_to_json(self, name: str, language_totals: LanguageTotals) -> str:
+        json = ""
+        json += self._open(f'"{name}": {{')
+        json += self._collection(
+            [
+                self._totals_files_to_json(language_totals),
+                self._totals_lines_of_code_to_json(language_totals),
+                self._totals_functions_to_json(language_totals),
+                self._totals_hard_to_maintain_to_json(language_totals),
+                self._totals_unmaintainable_to_json(language_totals)
+            ]
+        )
+        json += self._close("}")
+        return json
+
+    def _totals_files_to_json(self, language_totals: LanguageTotals):
+        return self._line(f'"files": {language_totals.files}')
+
+    def _totals_lines_of_code_to_json(self, language_totals: LanguageTotals):
+        return self._line(f'"lines_of_code": {language_totals.loc}')
+
+    def _totals_functions_to_json(self, language_totals: LanguageTotals):
+        return self._line(f'"functions": {language_totals.functions}')
+
+    def _totals_hard_to_maintain_to_json(self, language_totals: LanguageTotals):
+        return self._line(f'"hard_to_maintain": {language_totals.hard_to_maintain}')
+
+    def _totals_unmaintainable_to_json(self, language_totals: LanguageTotals):
+        return self._line(f'"unmaintainable": {language_totals.unmaintainable}')
 
     def _tree_to_json(self):
         json = ""
