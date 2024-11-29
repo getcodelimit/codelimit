@@ -8,7 +8,7 @@ from typer.core import TyperGroup
 
 from codelimit.commands import app
 from codelimit.commands.check import check_command
-from codelimit.commands.report import report_command
+from codelimit.commands.report import report_command, ReportFormat
 from codelimit.commands.scan import scan_command
 from codelimit.common.Configuration import Configuration
 from codelimit.version import version
@@ -49,8 +49,9 @@ def report(
         ] = Path("."),
         full: Annotated[bool, typer.Option("--full", help="Show full report")] = False,
         totals: Annotated[bool, typer.Option("--totals", help="Only show totals")] = False,
+        fmt: Annotated[ReportFormat, typer.Option("--format", help="Output format")] = ReportFormat.text
 ):
-    report_command(path, full, totals)
+    report_command(path, full, totals, fmt)
 
 
 def _version_callback(show: bool):
