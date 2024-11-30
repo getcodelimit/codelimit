@@ -7,6 +7,7 @@ from rich.console import Console
 
 from codelimit.common.ScanResultTable import ScanResultTable
 from codelimit.common.ScanTotals import ScanTotals
+from codelimit.common.report import ReportUnit
 from codelimit.common.report.Report import Report
 from codelimit.common.utils import format_measurement
 from codelimit.utils import read_cached_report
@@ -24,11 +25,11 @@ def report_command(path: Path, full: bool, totals: bool, fmt: ReportFormat):
     if totals:
         scan_totals = ScanTotals(report.codebase.totals)
         if fmt == ReportFormat.markdown:
-            _report_totals_markdown(scan_totals)
+            print(_report_totals_markdown(scan_totals))
         else:
             _report_totals_text(scan_totals)
     else:
-        _report_units(report, path, full)
+        _report_units(report, path, full, fmt)
 
 
 def _report_totals_text(scan_totals: ScanTotals):
@@ -36,23 +37,30 @@ def _report_totals_text(scan_totals: ScanTotals):
     print(table)
 
 
-def _report_totals_markdown(st: ScanTotals):
-    print('| **Language** | **Files** | **Lines of Code** | **Functions** | ⚠ | ✖ |')
-    print('| --- | ---: | ---: | ---: | ---: | ---: |')
+def _report_totals_markdown(st: ScanTotals) -> str:
+    result = ''
+    result += '| **Language** | **Files** | **Lines of Code** | **Functions** | ⚠ | ✖ |\n'
+    result += '| --- | ---: | ---: | ---: | ---: | ---: |\n'
     for lt in st.languages_totals():
-        print(
-            f'| {lt.language} | {lt.files} | {lt.loc} | {lt.functions} | {lt.hard_to_maintain} | {lt.unmaintainable} |'
+        result += (
+            f'| {lt.language} | '
+            f'{lt.files} | '
+            f'{lt.loc} | '
+            f'{lt.functions} | '
+            f'{lt.hard_to_maintain} | '
+            f'{lt.unmaintainable} |\n'
         )
-    print(
+    result += (
         f'| | '
         f'**{st.total_files()}** | '
         f'**{st.total_loc()}** | '
         f'**{st.total_functions()}** | '
         f'**{st.total_hard_to_maintain()}** | '
         f'**{st.total_unmaintainable()}** |')
+    return result
 
 
-def _report_units(report: Report, path: Path, full: bool):
+def _report_units(report: Report, path: Path, full: bool, fmt):
     units = report.all_report_units_sorted_by_length_asc(30)
     if len(units) == 0:
         print(
@@ -64,7 +72,10 @@ def _report_units(report: Report, path: Path, full: bool):
     else:
         report_units = units[0:REPORT_LENGTH]
     root = get_root(path)
-    _print_functions(root, units, report_units, full)
+    if fmt == ReportFormat.markdown:
+        _print_functions_markdown(root, report_units)
+    else:
+        _print_functions_text(root, units, report_units, full)
 
 
 def get_root(path: Path) -> Path | None:
@@ -85,7 +96,7 @@ def read_report(path: Path) -> Report:
     return report
 
 
-def _print_functions(root, units, report_units, full):
+def _print_functions_text(root, units, report_units, full):
     stdout = Console()
     for unit in report_units:
         file_path = unit.file if root is None else root.joinpath(unit.file)
@@ -96,3 +107,16 @@ def _print_functions(root, units, report_units, full):
         print(
             f"[bold]{len(units) - REPORT_LENGTH} more rows, use --full option to get all rows[/bold]"
         )
+
+
+def _print_functions_markdown(root: str | None, report_units: list[ReportUnit]) -> str:
+    result = ''
+    result += '| **File** | **Line** | **Column** | **Length** | **Function** |\n'
+    result += '| --- | ---: | ---: | ---: | --- |\n'
+    for unit in report_units:
+        file_path = unit.file if root is None else root.joinpath(unit.file)
+        result += (
+            f'| {str(file_path)} | {unit.measurement.start.line} | {unit.measurement.start.column} | '
+            f'{unit.measurement.value} | {unit.measurement.unit_name} |\n'
+        )
+    return result
