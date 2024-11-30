@@ -30,6 +30,7 @@ def test_from_json():
     json += '  "uuid": "abcdefgh",'
     json += '  "root": "/tmp",'
     json += '  "codebase": {'
+    json += '    "totals": {},'
     json += '    "tree": {'
     json += '       "./": {'
     json += '         "entries": [],'
@@ -85,6 +86,9 @@ def test_single_file():
     result = ReportReader.from_json(json)
 
     assert result.uuid == report.uuid
+
+    assert len(result.codebase.totals) == 1
+    assert result.codebase.totals['Python'].loc == 20
 
     result_entries = result.codebase.tree["./"].entries
     result_measurements = result.codebase.files

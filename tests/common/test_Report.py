@@ -21,6 +21,8 @@ def test_empty_measurements_collection():
     json += f'  "uuid": "{report.uuid}",\n'
     json += '  "root": "/",\n'
     json += '  "codebase": {\n'
+    json += '    "totals": {\n'
+    json += "    },\n"
     json += '    "tree": {\n'
     json += '      "./": {\n'
     json += '        "entries": [\n'
