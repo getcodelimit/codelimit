@@ -7,8 +7,8 @@ from rich.console import Console
 
 from codelimit.common.ScanResultTable import ScanResultTable
 from codelimit.common.ScanTotals import ScanTotals
-from codelimit.common.report import ReportUnit
 from codelimit.common.report.Report import Report
+from codelimit.common.report.ReportUnit import ReportUnit
 from codelimit.common.utils import format_measurement
 from codelimit.utils import read_cached_report
 
@@ -109,7 +109,7 @@ def _print_functions_text(root, units, report_units, full):
         )
 
 
-def _print_functions_markdown(root: str | None, report_units: list[ReportUnit]) -> str:
+def _print_functions_markdown(root: Path | None, report_units: list[ReportUnit]) -> str:
     result = ''
     result += '| **File** | **Line** | **Column** | **Length** | **Function** |\n'
     result += '| --- | ---: | ---: | ---: | --- |\n'

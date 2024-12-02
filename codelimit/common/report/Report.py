@@ -11,7 +11,7 @@ class Report:
     VERSION = version
 
     def __init__(self, codebase: Codebase):
-        self.version = self.VERSION
+        self.version: str | None = self.VERSION
         self.uuid = str(uuid4())
         self.codebase = codebase
 
