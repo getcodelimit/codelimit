@@ -34,8 +34,8 @@ def test_to_json():
     expected += '        "functions": 1,\n'
     expected += '        "hard_to_maintain": 0,\n'
     expected += '        "unmaintainable": 0\n'
-    expected += '      }\n'
-    expected += '    },\n'
+    expected += "      }\n"
+    expected += "    },\n"
     expected += '    "tree": {\n'
     expected += '      "./": {\n'
     expected += '        "entries": [\n'

@@ -53,7 +53,9 @@ class ReportWriter:
     def _codebase_to_json(self):
         json = ""
         json += self._open('"codebase": {')
-        json += self._collection([self._totals_to_json(), self._tree_to_json(), self._measurements_to_json()])
+        json += self._collection(
+            [self._totals_to_json(), self._tree_to_json(), self._measurements_to_json()]
+        )
         json += self._close("}")
         return json
 
@@ -75,7 +77,7 @@ class ReportWriter:
                 self._totals_lines_of_code_to_json(language_totals),
                 self._totals_functions_to_json(language_totals),
                 self._totals_hard_to_maintain_to_json(language_totals),
-                self._totals_unmaintainable_to_json(language_totals)
+                self._totals_unmaintainable_to_json(language_totals),
             ]
         )
         json += self._close("}")

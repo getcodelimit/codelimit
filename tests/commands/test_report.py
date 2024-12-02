@@ -13,24 +13,28 @@ def test_report_totals_markdown():
     python_totals.functions = 3
     python_totals.hard_to_maintain = 4
     python_totals.unmaintainable = 5
-    st = ScanTotals(
-        {
-            "Python": python_totals
-        }
-    )
+    st = ScanTotals({"Python": python_totals})
     result = _report_totals_markdown(st)
     assert result == (
-        '| **Language** | **Files** | **Lines of Code** | **Functions** | ⚠ | ✖ |\n'
-        '| --- | ---: | ---: | ---: | ---: | ---: |\n'
-        '| Python | 1 | 2 | 3 | 4 | 5 |\n'
-        '| | **1** | **2** | **3** | **4** | **5** |'
+        "| **Language** | **Files** | **Lines of Code** | **Functions** | ⚠ | ✖ |\n"
+        "| --- | ---: | ---: | ---: | ---: | ---: |\n"
+        "| Python | 1 | 2 | 3 | 4 | 5 |\n"
+        "| | **1** | **2** | **3** | **4** | **5** |"
     )
 
+
 def test_print_functions_markdown():
-    result = _print_functions_markdown(None, [ReportUnit('foo.py', Measurement('bar()', Location(1, 1), Location(30, 1), 30))])
+    result = _print_functions_markdown(
+        None,
+        [
+            ReportUnit(
+                "foo.py", Measurement("bar()", Location(1, 1), Location(30, 1), 30)
+            )
+        ],
+    )
 
     assert result == (
-        '| **File** | **Line** | **Column** | **Length** | **Function** |\n'
-        '| --- | ---: | ---: | ---: | --- |\n'
-        '| foo.py | 1 | 1 | 30 | bar() |\n'
+        "| **File** | **Line** | **Column** | **Length** | **Function** |\n"
+        "| --- | ---: | ---: | ---: | --- |\n"
+        "| foo.py | 1 | 1 | 30 | bar() |\n"
     )
