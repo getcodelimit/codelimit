@@ -88,7 +88,7 @@ def test_single_file():
     assert result.uuid == report.uuid
 
     assert len(result.codebase.totals) == 1
-    assert result.codebase.totals['Python'].loc == 20
+    assert result.codebase.totals["Python"].loc == 20
 
     result_entries = result.codebase.tree["./"].entries
     result_measurements = result.codebase.files

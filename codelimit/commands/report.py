@@ -7,8 +7,8 @@ from rich.console import Console
 
 from codelimit.common.ScanResultTable import ScanResultTable
 from codelimit.common.ScanTotals import ScanTotals
-from codelimit.common.report import ReportUnit
 from codelimit.common.report.Report import Report
+from codelimit.common.report.ReportUnit import ReportUnit
 from codelimit.common.utils import format_measurement
 from codelimit.utils import read_cached_report
 
@@ -16,8 +16,8 @@ REPORT_LENGTH = 10
 
 
 class ReportFormat(str, Enum):
-    text = 'text'
-    markdown = 'markdown'
+    text = "text"
+    markdown = "markdown"
 
 
 def report_command(path: Path, full: bool, totals: bool, fmt: ReportFormat):
@@ -38,25 +38,28 @@ def _report_totals_text(scan_totals: ScanTotals):
 
 
 def _report_totals_markdown(st: ScanTotals) -> str:
-    result = ''
-    result += '| **Language** | **Files** | **Lines of Code** | **Functions** | ⚠ | ✖ |\n'
-    result += '| --- | ---: | ---: | ---: | ---: | ---: |\n'
+    result = ""
+    result += (
+        "| **Language** | **Files** | **Lines of Code** | **Functions** | ⚠ | ✖ |\n"
+    )
+    result += "| --- | ---: | ---: | ---: | ---: | ---: |\n"
     for lt in st.languages_totals():
         result += (
-            f'| {lt.language} | '
-            f'{lt.files} | '
-            f'{lt.loc} | '
-            f'{lt.functions} | '
-            f'{lt.hard_to_maintain} | '
-            f'{lt.unmaintainable} |\n'
+            f"| {lt.language} | "
+            f"{lt.files} | "
+            f"{lt.loc} | "
+            f"{lt.functions} | "
+            f"{lt.hard_to_maintain} | "
+            f"{lt.unmaintainable} |\n"
         )
     result += (
-        f'| | '
-        f'**{st.total_files()}** | '
-        f'**{st.total_loc()}** | '
-        f'**{st.total_functions()}** | '
-        f'**{st.total_hard_to_maintain()}** | '
-        f'**{st.total_unmaintainable()}** |')
+        f"| | "
+        f"**{st.total_files()}** | "
+        f"**{st.total_loc()}** | "
+        f"**{st.total_functions()}** | "
+        f"**{st.total_hard_to_maintain()}** | "
+        f"**{st.total_unmaintainable()}** |"
+    )
     return result
 
 
@@ -109,14 +112,14 @@ def _print_functions_text(root, units, report_units, full):
         )
 
 
-def _print_functions_markdown(root: str | None, report_units: list[ReportUnit]) -> str:
-    result = ''
-    result += '| **File** | **Line** | **Column** | **Length** | **Function** |\n'
-    result += '| --- | ---: | ---: | ---: | --- |\n'
+def _print_functions_markdown(root: Path | None, report_units: list[ReportUnit]) -> str:
+    result = ""
+    result += "| **File** | **Line** | **Column** | **Length** | **Function** |\n"
+    result += "| --- | ---: | ---: | ---: | --- |\n"
     for unit in report_units:
         file_path = unit.file if root is None else root.joinpath(unit.file)
         result += (
-            f'| {str(file_path)} | {unit.measurement.start.line} | {unit.measurement.start.column} | '
-            f'{unit.measurement.value} | {unit.measurement.unit_name} |\n'
+            f"| {str(file_path)} | {unit.measurement.start.line} | {unit.measurement.start.column} | "
+            f"{unit.measurement.value} | {unit.measurement.unit_name} |\n"
         )
     return result
