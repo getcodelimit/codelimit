@@ -1,6 +1,6 @@
 {
   "version": "0.10.0",
-  "uuid": "e843b901-a3f3-4361-a27e-d8374bc32140",
+  "uuid": "d9eb7caa-6c2b-41d2-b167-1209ee2af73d",
   "root": "/github/workspace",
   "codebase": {
     "tree": {
@@ -10,7 +10,7 @@
           "docs/",
           "codelimit/"
         ],
-        "profile": [1623, 694, 0, 0]
+        "profile": [1631, 697, 0, 0]
       },
       "docs/javascripts/": {
         "entries": [
@@ -35,7 +35,7 @@
           "languages/",
           "commands/"
         ],
-        "profile": [1350, 694, 0, 0]
+        "profile": [1358, 697, 0, 0]
       },
       "codelimit/common/": {
         "entries": [
@@ -66,7 +66,7 @@
           "gsm/",
           "token_matching/"
         ],
-        "profile": [1111, 416, 0, 0]
+        "profile": [1117, 416, 0, 0]
       },
       "codelimit/common/report/": {
         "entries": [
@@ -76,7 +76,7 @@
           "Report.py",
           "ReportReader.py"
         ],
-        "profile": [184, 23, 0, 0]
+        "profile": [186, 23, 0, 0]
       },
       "codelimit/common/scope/": {
         "entries": [
@@ -173,7 +173,7 @@
           "upload.py",
           "scan.py"
         ],
-        "profile": [79, 129, 0, 0]
+        "profile": [79, 132, 0, 0]
       }
     },
     "files": {
@@ -510,17 +510,17 @@
         ]
       },
       "codelimit/__main__.py": {
-        "checksum": "a17ce28ae998c4c09946fb12a9af9050",
+        "checksum": "67efc47e24fa486a44bca59cdedd4980",
         "language": "Python",
-        "loc": 70,
-        "profile": [28, 21, 0, 0],
+        "loc": 72,
+        "profile": [30, 21, 0, 0],
         "measurements": [
           {"unit_name": "list_commands", "start": {"line": 18, "column": 5}, "end": {"line": 19, "column": 35}, "value": 2},
           {"unit_name": "check", "start": {"line": 27, "column": 1}, "end": {"line": 33, "column": 32}, "value": 7},
           {"unit_name": "scan", "start": {"line": 37, "column": 1}, "end": {"line": 42, "column": 23}, "value": 6},
-          {"unit_name": "report", "start": {"line": 46, "column": 1}, "end": {"line": 54, "column": 44}, "value": 9},
-          {"unit_name": "_version_callback", "start": {"line": 57, "column": 1}, "end": {"line": 60, "column": 27}, "value": 4},
-          {"unit_name": "main", "start": {"line": 64, "column": 1}, "end": {"line": 84, "column": 47}, "value": 21}
+          {"unit_name": "report", "start": {"line": 46, "column": 1}, "end": {"line": 56, "column": 44}, "value": 11},
+          {"unit_name": "_version_callback", "start": {"line": 59, "column": 1}, "end": {"line": 62, "column": 27}, "value": 4},
+          {"unit_name": "main", "start": {"line": 66, "column": 1}, "end": {"line": 86, "column": 47}, "value": 21}
         ]
       },
       "codelimit/common/Token.py": {
@@ -798,20 +798,20 @@
         ]
       },
       "codelimit/common/ScanTotals.py": {
-        "checksum": "acdbc42d2ef64ba64ab8f79bc359d0ce",
+        "checksum": "81e78c08d713627faa9393fb2560dfa0",
         "language": "Python",
-        "loc": 29,
-        "profile": [26, 0, 0, 0],
+        "loc": 33,
+        "profile": [30, 0, 0, 0],
         "measurements": [
-          {"unit_name": "__init__", "start": {"line": 6, "column": 5}, "end": {"line": 7, "column": 103}, "value": 2},
-          {"unit_name": "add", "start": {"line": 9, "column": 5}, "end": {"line": 12, "column": 58}, "value": 4},
-          {"unit_name": "languages", "start": {"line": 14, "column": 5}, "end": {"line": 15, "column": 45}, "value": 2},
-          {"unit_name": "languages_totals", "start": {"line": 17, "column": 5}, "end": {"line": 20, "column": 10}, "value": 4},
-          {"unit_name": "total_loc", "start": {"line": 22, "column": 5}, "end": {"line": 23, "column": 83}, "value": 2},
-          {"unit_name": "total_files", "start": {"line": 25, "column": 5}, "end": {"line": 26, "column": 85}, "value": 2},
-          {"unit_name": "total_functions", "start": {"line": 28, "column": 5}, "end": {"line": 29, "column": 89}, "value": 2},
-          {"unit_name": "total_hard_to_maintain", "start": {"line": 31, "column": 5}, "end": {"line": 34, "column": 10}, "value": 4},
-          {"unit_name": "total_unmaintainable", "start": {"line": 36, "column": 5}, "end": {"line": 39, "column": 10}, "value": 4}
+          {"unit_name": "__init__", "start": {"line": 6, "column": 5}, "end": {"line": 11, "column": 10}, "value": 6},
+          {"unit_name": "add", "start": {"line": 13, "column": 5}, "end": {"line": 16, "column": 58}, "value": 4},
+          {"unit_name": "languages", "start": {"line": 18, "column": 5}, "end": {"line": 19, "column": 45}, "value": 2},
+          {"unit_name": "languages_totals", "start": {"line": 21, "column": 5}, "end": {"line": 24, "column": 10}, "value": 4},
+          {"unit_name": "total_loc", "start": {"line": 26, "column": 5}, "end": {"line": 27, "column": 83}, "value": 2},
+          {"unit_name": "total_files", "start": {"line": 29, "column": 5}, "end": {"line": 30, "column": 85}, "value": 2},
+          {"unit_name": "total_functions", "start": {"line": 32, "column": 5}, "end": {"line": 33, "column": 89}, "value": 2},
+          {"unit_name": "total_hard_to_maintain", "start": {"line": 35, "column": 5}, "end": {"line": 38, "column": 10}, "value": 4},
+          {"unit_name": "total_unmaintainable", "start": {"line": 40, "column": 5}, "end": {"line": 43, "column": 10}, "value": 4}
         ]
       },
       "codelimit/common/report/ReportUnit.py": {
@@ -823,10 +823,10 @@
         ]
       },
       "codelimit/common/report/ReportWriter.py": {
-        "checksum": "37dab9c03827c25a1a8de81df11f0d50",
+        "checksum": "7cf0bd239093cba5601049902f80509f",
         "language": "Python",
-        "loc": 164,
-        "profile": [157, 0, 0, 0],
+        "loc": 166,
+        "profile": [159, 0, 0, 0],
         "measurements": [
           {"unit_name": "__init__", "start": {"line": 10, "column": 5}, "end": {"line": 16, "column": 23}, "value": 7},
           {"unit_name": "to_json", "start": {"line": 18, "column": 5}, "end": {"line": 31, "column": 20}, "value": 14},
@@ -834,27 +834,27 @@
           {"unit_name": "_close", "start": {"line": 38, "column": 5}, "end": {"line": 40, "column": 32}, "value": 3},
           {"unit_name": "_line", "start": {"line": 42, "column": 5}, "end": {"line": 46, "column": 24}, "value": 5},
           {"unit_name": "_collection", "start": {"line": 48, "column": 5}, "end": {"line": 51, "column": 77}, "value": 4},
-          {"unit_name": "_codebase_to_json", "start": {"line": 53, "column": 5}, "end": {"line": 58, "column": 20}, "value": 6},
-          {"unit_name": "_totals_to_json", "start": {"line": 60, "column": 5}, "end": {"line": 67, "column": 20}, "value": 8},
-          {"unit_name": "_totals_item_to_json", "start": {"line": 69, "column": 5}, "end": {"line": 82, "column": 20}, "value": 14},
-          {"unit_name": "_totals_files_to_json", "start": {"line": 84, "column": 5}, "end": {"line": 85, "column": 63}, "value": 2},
-          {"unit_name": "_totals_lines_of_code_to_json", "start": {"line": 87, "column": 5}, "end": {"line": 88, "column": 69}, "value": 2},
-          {"unit_name": "_totals_functions_to_json", "start": {"line": 90, "column": 5}, "end": {"line": 91, "column": 71}, "value": 2},
-          {"unit_name": "_totals_hard_to_maintain_to_json", "start": {"line": 93, "column": 5}, "end": {"line": 94, "column": 85}, "value": 2},
-          {"unit_name": "_totals_unmaintainable_to_json", "start": {"line": 96, "column": 5}, "end": {"line": 97, "column": 81}, "value": 2},
-          {"unit_name": "_tree_to_json", "start": {"line": 99, "column": 5}, "end": {"line": 106, "column": 20}, "value": 8},
-          {"unit_name": "_tree_item_to_json", "start": {"line": 108, "column": 5}, "end": {"line": 118, "column": 20}, "value": 11},
-          {"unit_name": "_tree_item_entries_to_json", "start": {"line": 120, "column": 5}, "end": {"line": 127, "column": 20}, "value": 8},
-          {"unit_name": "_tree_item_profile_to_json", "start": {"line": 129, "column": 5}, "end": {"line": 130, "column": 67}, "value": 2},
-          {"unit_name": "_measurements_to_json", "start": {"line": 132, "column": 5}, "end": {"line": 139, "column": 20}, "value": 8},
-          {"unit_name": "_file_to_json", "start": {"line": 141, "column": 5}, "end": {"line": 154, "column": 20}, "value": 14},
-          {"unit_name": "_file_checksum_to_json", "start": {"line": 156, "column": 5}, "end": {"line": 157, "column": 63}, "value": 2},
-          {"unit_name": "_file_language_to_json", "start": {"line": 159, "column": 5}, "end": {"line": 160, "column": 61}, "value": 2},
-          {"unit_name": "_file_loc_to_json", "start": {"line": 162, "column": 5}, "end": {"line": 163, "column": 49}, "value": 2},
-          {"unit_name": "_file_profile_to_json", "start": {"line": 165, "column": 5}, "end": {"line": 166, "column": 59}, "value": 2},
-          {"unit_name": "_file_measurements_to_json", "start": {"line": 168, "column": 5}, "end": {"line": 175, "column": 20}, "value": 8},
-          {"unit_name": "_measurement_to_json", "start": {"line": 177, "column": 5}, "end": {"line": 189, "column": 32}, "value": 13},
-          {"unit_name": "_source_folder_entry_to_json", "start": {"line": 191, "column": 5}, "end": {"line": 192, "column": 45}, "value": 2}
+          {"unit_name": "_codebase_to_json", "start": {"line": 53, "column": 5}, "end": {"line": 60, "column": 20}, "value": 8},
+          {"unit_name": "_totals_to_json", "start": {"line": 62, "column": 5}, "end": {"line": 69, "column": 20}, "value": 8},
+          {"unit_name": "_totals_item_to_json", "start": {"line": 71, "column": 5}, "end": {"line": 84, "column": 20}, "value": 14},
+          {"unit_name": "_totals_files_to_json", "start": {"line": 86, "column": 5}, "end": {"line": 87, "column": 63}, "value": 2},
+          {"unit_name": "_totals_lines_of_code_to_json", "start": {"line": 89, "column": 5}, "end": {"line": 90, "column": 69}, "value": 2},
+          {"unit_name": "_totals_functions_to_json", "start": {"line": 92, "column": 5}, "end": {"line": 93, "column": 71}, "value": 2},
+          {"unit_name": "_totals_hard_to_maintain_to_json", "start": {"line": 95, "column": 5}, "end": {"line": 96, "column": 85}, "value": 2},
+          {"unit_name": "_totals_unmaintainable_to_json", "start": {"line": 98, "column": 5}, "end": {"line": 99, "column": 81}, "value": 2},
+          {"unit_name": "_tree_to_json", "start": {"line": 101, "column": 5}, "end": {"line": 108, "column": 20}, "value": 8},
+          {"unit_name": "_tree_item_to_json", "start": {"line": 110, "column": 5}, "end": {"line": 120, "column": 20}, "value": 11},
+          {"unit_name": "_tree_item_entries_to_json", "start": {"line": 122, "column": 5}, "end": {"line": 129, "column": 20}, "value": 8},
+          {"unit_name": "_tree_item_profile_to_json", "start": {"line": 131, "column": 5}, "end": {"line": 132, "column": 67}, "value": 2},
+          {"unit_name": "_measurements_to_json", "start": {"line": 134, "column": 5}, "end": {"line": 141, "column": 20}, "value": 8},
+          {"unit_name": "_file_to_json", "start": {"line": 143, "column": 5}, "end": {"line": 156, "column": 20}, "value": 14},
+          {"unit_name": "_file_checksum_to_json", "start": {"line": 158, "column": 5}, "end": {"line": 159, "column": 63}, "value": 2},
+          {"unit_name": "_file_language_to_json", "start": {"line": 161, "column": 5}, "end": {"line": 162, "column": 61}, "value": 2},
+          {"unit_name": "_file_loc_to_json", "start": {"line": 164, "column": 5}, "end": {"line": 165, "column": 49}, "value": 2},
+          {"unit_name": "_file_profile_to_json", "start": {"line": 167, "column": 5}, "end": {"line": 168, "column": 59}, "value": 2},
+          {"unit_name": "_file_measurements_to_json", "start": {"line": 170, "column": 5}, "end": {"line": 177, "column": 20}, "value": 8},
+          {"unit_name": "_measurement_to_json", "start": {"line": 179, "column": 5}, "end": {"line": 191, "column": 32}, "value": 13},
+          {"unit_name": "_source_folder_entry_to_json", "start": {"line": 193, "column": 5}, "end": {"line": 194, "column": 45}, "value": 2}
         ]
       },
       "codelimit/common/report/__init__.py": {
@@ -1357,19 +1357,19 @@
         ]
       },
       "codelimit/commands/report.py": {
-        "checksum": "52c95c5e5e608f3399b0be3253466bda",
+        "checksum": "9700026148efab487469ada544509db8",
         "language": "Python",
-        "loc": 101,
-        "profile": [49, 37, 0, 0],
+        "loc": 104,
+        "profile": [49, 40, 0, 0],
         "measurements": [
           {"unit_name": "report_command", "start": {"line": 23, "column": 1}, "end": {"line": 32, "column": 47}, "value": 10},
           {"unit_name": "_report_totals_text", "start": {"line": 35, "column": 1}, "end": {"line": 37, "column": 17}, "value": 3},
-          {"unit_name": "_report_totals_markdown", "start": {"line": 40, "column": 1}, "end": {"line": 60, "column": 18}, "value": 21},
-          {"unit_name": "_report_units", "start": {"line": 63, "column": 1}, "end": {"line": 78, "column": 63}, "value": 16},
-          {"unit_name": "get_root", "start": {"line": 81, "column": 1}, "end": {"line": 88, "column": 31}, "value": 8},
-          {"unit_name": "read_report", "start": {"line": 91, "column": 1}, "end": {"line": 96, "column": 18}, "value": 6},
-          {"unit_name": "_print_functions_text", "start": {"line": 99, "column": 1}, "end": {"line": 109, "column": 10}, "value": 11},
-          {"unit_name": "_print_functions_markdown", "start": {"line": 112, "column": 1}, "end": {"line": 122, "column": 18}, "value": 11}
+          {"unit_name": "_report_totals_markdown", "start": {"line": 40, "column": 1}, "end": {"line": 63, "column": 18}, "value": 24},
+          {"unit_name": "_report_units", "start": {"line": 66, "column": 1}, "end": {"line": 81, "column": 63}, "value": 16},
+          {"unit_name": "get_root", "start": {"line": 84, "column": 1}, "end": {"line": 91, "column": 31}, "value": 8},
+          {"unit_name": "read_report", "start": {"line": 94, "column": 1}, "end": {"line": 99, "column": 18}, "value": 6},
+          {"unit_name": "_print_functions_text", "start": {"line": 102, "column": 1}, "end": {"line": 112, "column": 10}, "value": 11},
+          {"unit_name": "_print_functions_markdown", "start": {"line": 115, "column": 1}, "end": {"line": 125, "column": 18}, "value": 11}
         ]
       },
       "codelimit/commands/check.py": {
