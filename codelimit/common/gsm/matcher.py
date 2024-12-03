@@ -1,4 +1,3 @@
-import copy
 from dataclasses import dataclass
 from typing import TypeVar
 
@@ -20,16 +19,10 @@ def match(expression: Expression, sequence: list) -> Pattern | None:
     dfa = nfa_to_dfa(nfa)
     pattern = Pattern(0, dfa)
     for item in sequence:
-        next_state = None
-        for transition in pattern.state.transition:
-            if transition[0].accept(item):
-                pattern.tokens.append(item)
-                next_state = transition[1]
+        next_state = pattern.consume(item)
         if not next_state:
             return None
-        else:
-            pattern.state = next_state
-    if pattern.state in dfa.accepting:
+    if pattern.is_accepting():
         return pattern
     else:
         return None
@@ -67,7 +60,7 @@ def find_all(expression: Expression, sequence: list) -> list[Pattern]:
     dfa = nfa_to_dfa(expression_to_nfa(expression))
     fs = FindState([], [], [])
     for idx, item in enumerate(sequence):
-        fs.active_patterns.append(Pattern(idx, copy.deepcopy(dfa)))
+        fs.active_patterns.append(Pattern(idx, dfa))
         fs.next_state_patterns = []
         for pattern in fs.active_patterns:
             if fs.matches and pattern.start < fs.matches[-1].end:
@@ -76,12 +69,8 @@ def find_all(expression: Expression, sequence: list) -> list[Pattern]:
                 pattern.end = idx
                 fs.matches.append(pattern)
                 continue
-            for transition in pattern.state.transition:
-                if transition[0].accept(item):
-                    pattern.tokens.append(item)
-                    pattern.state = transition[1]
-                    fs.next_state_patterns.append(pattern)
-                    break
+            if pattern.consume(item):
+                fs.next_state_patterns.append(pattern)
             else:
                 if pattern.is_accepting():
                     pattern.end = idx

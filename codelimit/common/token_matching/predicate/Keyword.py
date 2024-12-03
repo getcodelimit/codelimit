@@ -20,3 +20,6 @@ class Keyword(TokenPredicate):
 
     def __hash__(self):
         return hash(self.keyword)
+
+    def __str__(self):
+        return f'<Keyword {self.keyword}>'

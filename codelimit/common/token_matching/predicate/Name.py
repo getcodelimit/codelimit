@@ -14,3 +14,6 @@ class Name(TokenPredicate):
 
     def __hash__(self):
         return hash("Name")
+
+    def __str__(self):
+        return "<Name>"

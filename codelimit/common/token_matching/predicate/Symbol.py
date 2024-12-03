@@ -20,3 +20,6 @@ class Symbol(TokenPredicate):
 
     def __hash__(self):
         return hash(self.symbol)
+
+    def __str__(self):
+        return f'<Symbol {self.symbol}>'

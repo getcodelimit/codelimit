@@ -41,3 +41,6 @@ class Balanced(TokenPredicate):
 
     def __hash__(self):
         return hash((self.left, self.right, self.depth))
+
+    def __str__(self):
+        return f"<Balanced {self.left} {self.right} {id(self)}>"
