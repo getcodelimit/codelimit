@@ -1,20 +1,20 @@
 {
   "version": "0.11.0",
-  "uuid": "8affb141-deff-4d75-9dc5-6222153d3f19",
+  "uuid": "cbbac2e8-5532-4b30-add6-233c3eec5c99",
   "root": "/github/workspace",
   "codebase": {
     "totals": {
       "Python": {
         "files": 81,
-        "lines_of_code": 2583,
-        "functions": 309,
+        "lines_of_code": 2593,
+        "functions": 310,
         "hard_to_maintain": 0,
         "unmaintainable": 0
       },
       "JavaScript": {
         "files": 1,
         "lines_of_code": 1,
-        "functions": 273,
+        "functions": 256,
         "hard_to_maintain": 0,
         "unmaintainable": 0
       }
@@ -26,19 +26,19 @@
           "docs/",
           "codelimit/"
         ],
-        "profile": [1664, 675, 0, 0]
+        "profile": [1657, 675, 0, 0]
       },
       "docs/javascripts/": {
         "entries": [
           "asciinema-player.min.js"
         ],
-        "profile": [273, 0, 0, 0]
+        "profile": [256, 0, 0, 0]
       },
       "docs/": {
         "entries": [
           "javascripts/"
         ],
-        "profile": [273, 0, 0, 0]
+        "profile": [256, 0, 0, 0]
       },
       "codelimit/": {
         "entries": [
@@ -51,7 +51,7 @@
           "languages/",
           "commands/"
         ],
-        "profile": [1391, 675, 0, 0]
+        "profile": [1401, 675, 0, 0]
       },
       "codelimit/common/": {
         "entries": [
@@ -189,7 +189,7 @@
           "upload.py",
           "scan.py"
         ],
-        "profile": [79, 132, 0, 0]
+        "profile": [89, 132, 0, 0]
       }
     },
     "files": {
@@ -205,7 +205,7 @@
         "checksum": "b9d31eb19ca419cce31cd3bbc5682f4d",
         "language": "JavaScript",
         "loc": 1,
-        "profile": [273, 0, 0, 0],
+        "profile": [256, 0, 0, 0],
         "measurements": [
           {"unit_name": "c", "start": {"line": 1, "column": 257}, "end": {"line": 1, "column": 449}, "value": 1},
           {"unit_name": "D", "start": {"line": 1, "column": 449}, "end": {"line": 1, "column": 640}, "value": 1},
@@ -371,36 +371,17 @@
           {"unit_name": "p", "start": {"line": 1, "column": 135014}, "end": {"line": 1, "column": 135040}, "value": 1},
           {"unit_name": "S", "start": {"line": 1, "column": 135040}, "end": {"line": 1, "column": 135111}, "value": 1},
           {"unit_name": "L", "start": {"line": 1, "column": 135111}, "end": {"line": 1, "column": 135175}, "value": 1},
-          {"unit_name": "cols", "start": {"line": 1, "column": 138794}, "end": {"line": 1, "column": 138812}, "value": 1},
-          {"unit_name": "rows", "start": {"line": 1, "column": 138817}, "end": {"line": 1, "column": 138835}, "value": 1},
-          {"unit_name": "scale", "start": {"line": 1, "column": 138840}, "end": {"line": 1, "column": 138866}, "value": 1},
-          {"unit_name": "blink", "start": {"line": 1, "column": 138871}, "end": {"line": 1, "column": 138894}, "value": 1},
-          {"unit_name": "lines", "start": {"line": 1, "column": 138899}, "end": {"line": 1, "column": 138922}, "value": 1},
-          {"unit_name": "cursor", "start": {"line": 1, "column": 138927}, "end": {"line": 1, "column": 138952}, "value": 1},
-          {"unit_name": "cursorHold", "start": {"line": 1, "column": 138957}, "end": {"line": 1, "column": 138990}, "value": 1},
-          {"unit_name": "fontFamily", "start": {"line": 1, "column": 138995}, "end": {"line": 1, "column": 139036}, "value": 1},
-          {"unit_name": "lineHeight", "start": {"line": 1, "column": 139041}, "end": {"line": 1, "column": 139082}, "value": 1},
-          {"unit_name": "ref", "start": {"line": 1, "column": 139083}, "end": {"line": 1, "column": 139120}, "value": 1},
-          {"unit_name": "when", "start": {"line": 1, "column": 139143}, "end": {"line": 1, "column": 139172}, "value": 1},
-          {"unit_name": "children", "start": {"line": 1, "column": 139177}, "end": {"line": 1, "column": 139594}, "value": 1},
-          {"unit_name": "duration", "start": {"line": 1, "column": 139205}, "end": {"line": 1, "column": 139227}, "value": 1},
-          {"unit_name": "currentTime", "start": {"line": 1, "column": 139232}, "end": {"line": 1, "column": 139267}, "value": 1},
-          {"unit_name": "remainingTime", "start": {"line": 1, "column": 139272}, "end": {"line": 1, "column": 139311}, "value": 1},
-          {"unit_name": "progress", "start": {"line": 1, "column": 139316}, "end": {"line": 1, "column": 139345}, "value": 1},
-          {"unit_name": "isPlaying", "start": {"line": 1, "column": 139360}, "end": {"line": 1, "column": 139401}, "value": 1},
-          {"unit_name": "isPausable", "start": {"line": 1, "column": 139406}, "end": {"line": 1, "column": 139439}, "value": 1},
-          {"unit_name": "isSeekable", "start": {"line": 1, "column": 139444}, "end": {"line": 1, "column": 139477}, "value": 1},
-          {"unit_name": "ref", "start": {"line": 1, "column": 139554}, "end": {"line": 1, "column": 139591}, "value": 1},
-          {"unit_name": "children", "start": {"line": 1, "column": 139617}, "end": {"line": 1, "column": 140018}, "value": 1},
-          {"unit_name": "when", "start": {"line": 1, "column": 139644}, "end": {"line": 1, "column": 139677}, "value": 1},
-          {"unit_name": "children", "start": {"line": 1, "column": 139682}, "end": {"line": 1, "column": 139729}, "value": 1},
-          {"unit_name": "when", "start": {"line": 1, "column": 139741}, "end": {"line": 1, "column": 139777}, "value": 1},
-          {"unit_name": "children", "start": {"line": 1, "column": 139782}, "end": {"line": 1, "column": 139809}, "value": 1},
-          {"unit_name": "when", "start": {"line": 1, "column": 139821}, "end": {"line": 1, "column": 139857}, "value": 1},
-          {"unit_name": "children", "start": {"line": 1, "column": 139862}, "end": {"line": 1, "column": 139934}, "value": 1},
-          {"unit_name": "fontFamily", "start": {"line": 1, "column": 139890}, "end": {"line": 1, "column": 139931}, "value": 1},
-          {"unit_name": "when", "start": {"line": 1, "column": 139946}, "end": {"line": 1, "column": 139982}, "value": 1},
-          {"unit_name": "children", "start": {"line": 1, "column": 139987}, "end": {"line": 1, "column": 140014}, "value": 1},
+          {"unit_name": "ref", "start": {"line": 1, "column": 139554}, "end": {"line": 1, "column": 158710}, "value": 1},
+          {"unit_name": "children", "start": {"line": 1, "column": 139617}, "end": {"line": 1, "column": 158707}, "value": 1},
+          {"unit_name": "when", "start": {"line": 1, "column": 139644}, "end": {"line": 1, "column": 148172}, "value": 1},
+          {"unit_name": "children", "start": {"line": 1, "column": 139682}, "end": {"line": 1, "column": 147893}, "value": 1},
+          {"unit_name": "when", "start": {"line": 1, "column": 139741}, "end": {"line": 1, "column": 146924}, "value": 1},
+          {"unit_name": "children", "start": {"line": 1, "column": 139782}, "end": {"line": 1, "column": 146224}, "value": 1},
+          {"unit_name": "when", "start": {"line": 1, "column": 139821}, "end": {"line": 1, "column": 144519}, "value": 1},
+          {"unit_name": "children", "start": {"line": 1, "column": 139862}, "end": {"line": 1, "column": 143191}, "value": 1},
+          {"unit_name": "fontFamily", "start": {"line": 1, "column": 139890}, "end": {"line": 1, "column": 142540}, "value": 1},
+          {"unit_name": "when", "start": {"line": 1, "column": 139946}, "end": {"line": 1, "column": 141465}, "value": 1},
+          {"unit_name": "children", "start": {"line": 1, "column": 139987}, "end": {"line": 1, "column": 140738}, "value": 1},
           {"unit_name": "log", "start": {"line": 1, "column": 140696}, "end": {"line": 1, "column": 140703}, "value": 1},
           {"unit_name": "debug", "start": {"line": 1, "column": 140703}, "end": {"line": 1, "column": 140712}, "value": 1},
           {"unit_name": "info", "start": {"line": 1, "column": 140712}, "end": {"line": 1, "column": 140720}, "value": 1},
@@ -475,6 +456,8 @@
           {"unit_name": "z", "start": {"line": 1, "column": 138116}, "end": {"line": 1, "column": 138237}, "value": 1},
           {"unit_name": "P", "start": {"line": 1, "column": 138238}, "end": {"line": 1, "column": 138343}, "value": 1},
           {"unit_name": "gA", "start": {"line": 1, "column": 138344}, "end": {"line": 1, "column": 138383}, "value": 1},
+          {"unit_name": "BA", "start": {"line": 1, "column": 138449}, "end": {"line": 1, "column": 140645}, "value": 1},
+          {"unit_name": "E", "start": {"line": 1, "column": 140142}, "end": {"line": 1, "column": 140495}, "value": 1},
           {"unit_name": "r", "start": {"line": 1, "column": 146412}, "end": {"line": 1, "column": 146664}, "value": 1},
           {"unit_name": "a", "start": {"line": 1, "column": 146665}, "end": {"line": 1, "column": 146687}, "value": 1},
           {"unit_name": "e", "start": {"line": 1, "column": 148000}, "end": {"line": 1, "column": 148058}, "value": 1},
@@ -1395,13 +1378,14 @@
         ]
       },
       "codelimit/commands/check.py": {
-        "checksum": "6f2de3aa565efee19ebe6270f8c8a4b4",
+        "checksum": "bae44ea89f434e51cd53e78483db1952",
         "language": "Python",
-        "loc": 51,
-        "profile": [0, 42, 0, 0],
+        "loc": 61,
+        "profile": [10, 42, 0, 0],
         "measurements": [
           {"unit_name": "check_command", "start": {"line": 14, "column": 1}, "end": {"line": 36, "column": 37}, "value": 23},
-          {"unit_name": "check_file", "start": {"line": 39, "column": 1}, "end": {"line": 57, "column": 42}, "value": 19}
+          {"unit_name": "_handle_file_path", "start": {"line": 39, "column": 1}, "end": {"line": 48, "column": 35}, "value": 10},
+          {"unit_name": "check_file", "start": {"line": 51, "column": 1}, "end": {"line": 69, "column": 42}, "value": 19}
         ]
       },
       "codelimit/commands/__init__.py": {
