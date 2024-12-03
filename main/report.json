@@ -1,8 +1,24 @@
 {
-  "version": "0.10.0",
-  "uuid": "d9eb7caa-6c2b-41d2-b167-1209ee2af73d",
+  "version": "0.11.0",
+  "uuid": "8affb141-deff-4d75-9dc5-6222153d3f19",
   "root": "/github/workspace",
   "codebase": {
+    "totals": {
+      "Python": {
+        "files": 81,
+        "lines_of_code": 2583,
+        "functions": 309,
+        "hard_to_maintain": 0,
+        "unmaintainable": 0
+      },
+      "JavaScript": {
+        "files": 1,
+        "lines_of_code": 1,
+        "functions": 273,
+        "hard_to_maintain": 0,
+        "unmaintainable": 0
+      }
+    },
     "tree": {
       "./": {
         "entries": [
@@ -10,7 +26,7 @@
           "docs/",
           "codelimit/"
         ],
-        "profile": [1631, 697, 0, 0]
+        "profile": [1664, 675, 0, 0]
       },
       "docs/javascripts/": {
         "entries": [
@@ -35,7 +51,7 @@
           "languages/",
           "commands/"
         ],
-        "profile": [1358, 697, 0, 0]
+        "profile": [1391, 675, 0, 0]
       },
       "codelimit/common/": {
         "entries": [
@@ -66,7 +82,7 @@
           "gsm/",
           "token_matching/"
         ],
-        "profile": [1117, 416, 0, 0]
+        "profile": [1150, 394, 0, 0]
       },
       "codelimit/common/report/": {
         "entries": [
@@ -98,7 +114,7 @@
           "operator/",
           "predicate/"
         ],
-        "profile": [213, 108, 0, 0]
+        "profile": [236, 86, 0, 0]
       },
       "codelimit/common/gsm/automata/": {
         "entries": [
@@ -136,7 +152,7 @@
           "__init__.py",
           "predicate/"
         ],
-        "profile": [116, 0, 0, 0]
+        "profile": [126, 0, 0, 0]
       },
       "codelimit/common/token_matching/predicate/": {
         "entries": [
@@ -150,7 +166,7 @@
           "Symbol.py",
           "Balanced.py"
         ],
-        "profile": [116, 0, 0, 0]
+        "profile": [126, 0, 0, 0]
       },
       "codelimit/languages/": {
         "entries": [
@@ -502,7 +518,7 @@
         ]
       },
       "codelimit/version.py": {
-        "checksum": "777e0e73316aaea160d6c6c76c65836c",
+        "checksum": "21fa686bbfb695c87e0bce66ed604625",
         "language": "Python",
         "loc": 1,
         "profile": [0, 0, 0, 0],
@@ -952,17 +968,17 @@
         ]
       },
       "codelimit/common/gsm/matcher.py": {
-        "checksum": "51373867d5d5dd6f5eff744fa87b4a17",
+        "checksum": "ed51f6b904b2fa2190694649dfb586c9",
         "language": "Python",
-        "loc": 102,
-        "profile": [18, 66, 0, 0],
+        "loc": 91,
+        "profile": [30, 44, 0, 0],
         "measurements": [
-          {"unit_name": "match", "start": {"line": 18, "column": 1}, "end": {"line": 35, "column": 20}, "value": 18},
-          {"unit_name": "starts_with", "start": {"line": 38, "column": 1}, "end": {"line": 56, "column": 20}, "value": 19},
-          {"unit_name": "find_all", "start": {"line": 66, "column": 1}, "end": {"line": 94, "column": 22}, "value": 29},
-          {"unit_name": "nfa_match", "start": {"line": 97, "column": 1}, "end": {"line": 110, "column": 42}, "value": 14},
-          {"unit_name": "render_nfa", "start": {"line": 113, "column": 1}, "end": {"line": 114, "column": 51}, "value": 2},
-          {"unit_name": "render_dfa", "start": {"line": 117, "column": 1}, "end": {"line": 118, "column": 63}, "value": 2}
+          {"unit_name": "match", "start": {"line": 17, "column": 1}, "end": {"line": 28, "column": 20}, "value": 12},
+          {"unit_name": "starts_with", "start": {"line": 31, "column": 1}, "end": {"line": 49, "column": 20}, "value": 19},
+          {"unit_name": "find_all", "start": {"line": 59, "column": 1}, "end": {"line": 83, "column": 22}, "value": 25},
+          {"unit_name": "nfa_match", "start": {"line": 86, "column": 1}, "end": {"line": 99, "column": 42}, "value": 14},
+          {"unit_name": "render_nfa", "start": {"line": 102, "column": 1}, "end": {"line": 103, "column": 51}, "value": 2},
+          {"unit_name": "render_dfa", "start": {"line": 106, "column": 1}, "end": {"line": 107, "column": 63}, "value": 2}
         ]
       },
       "codelimit/common/gsm/__init__.py": {
@@ -974,14 +990,15 @@
         ]
       },
       "codelimit/common/gsm/Pattern.py": {
-        "checksum": "a8df1dd727987ab12fe73628cb76bfd1",
+        "checksum": "4f25680a457473a341b3496012aa957e",
         "language": "Python",
-        "loc": 12,
-        "profile": [10, 0, 0, 0],
+        "loc": 26,
+        "profile": [21, 0, 0, 0],
         "measurements": [
-          {"unit_name": "__init__", "start": {"line": 5, "column": 5}, "end": {"line": 10, "column": 31}, "value": 6},
-          {"unit_name": "is_accepting", "start": {"line": 12, "column": 5}, "end": {"line": 13, "column": 54}, "value": 2},
-          {"unit_name": "token_string", "start": {"line": 15, "column": 5}, "end": {"line": 16, "column": 56}, "value": 2}
+          {"unit_name": "__init__", "start": {"line": 9, "column": 5}, "end": {"line": 15, "column": 54}, "value": 7},
+          {"unit_name": "consume", "start": {"line": 17, "column": 5}, "end": {"line": 26, "column": 34}, "value": 10},
+          {"unit_name": "is_accepting", "start": {"line": 28, "column": 5}, "end": {"line": 29, "column": 54}, "value": 2},
+          {"unit_name": "token_string", "start": {"line": 31, "column": 5}, "end": {"line": 32, "column": 56}, "value": 2}
         ]
       },
       "codelimit/common/gsm/Expression.py": {
@@ -1178,26 +1195,28 @@
         ]
       },
       "codelimit/common/token_matching/predicate/Name.py": {
-        "checksum": "c3ff36288adf49ed4a54862b323a7ed1",
+        "checksum": "6492797abf13428b44a4bbefbc9a5131",
         "language": "Python",
-        "loc": 12,
-        "profile": [9, 0, 0, 0],
+        "loc": 14,
+        "profile": [11, 0, 0, 0],
         "measurements": [
           {"unit_name": "accept", "start": {"line": 6, "column": 5}, "end": {"line": 10, "column": 21}, "value": 5},
           {"unit_name": "__eq__", "start": {"line": 12, "column": 5}, "end": {"line": 13, "column": 39}, "value": 2},
-          {"unit_name": "__hash__", "start": {"line": 15, "column": 5}, "end": {"line": 16, "column": 28}, "value": 2}
+          {"unit_name": "__hash__", "start": {"line": 15, "column": 5}, "end": {"line": 16, "column": 28}, "value": 2},
+          {"unit_name": "__str__", "start": {"line": 18, "column": 5}, "end": {"line": 19, "column": 24}, "value": 2}
         ]
       },
       "codelimit/common/token_matching/predicate/Keyword.py": {
-        "checksum": "6ed7e2a6baa9e82b06d65c7c23b504d5",
+        "checksum": "a2e6f39983fd57c272f034bb84b3f302",
         "language": "Python",
-        "loc": 17,
-        "profile": [14, 0, 0, 0],
+        "loc": 19,
+        "profile": [16, 0, 0, 0],
         "measurements": [
           {"unit_name": "__init__", "start": {"line": 6, "column": 5}, "end": {"line": 8, "column": 31}, "value": 3},
           {"unit_name": "accept", "start": {"line": 10, "column": 5}, "end": {"line": 14, "column": 21}, "value": 5},
           {"unit_name": "__eq__", "start": {"line": 16, "column": 5}, "end": {"line": 19, "column": 45}, "value": 4},
-          {"unit_name": "__hash__", "start": {"line": 21, "column": 5}, "end": {"line": 22, "column": 34}, "value": 2}
+          {"unit_name": "__hash__", "start": {"line": 21, "column": 5}, "end": {"line": 22, "column": 34}, "value": 2},
+          {"unit_name": "__str__", "start": {"line": 24, "column": 5}, "end": {"line": 25, "column": 43}, "value": 2}
         ]
       },
       "codelimit/common/token_matching/predicate/Operator.py": {
@@ -1233,40 +1252,43 @@
         ]
       },
       "codelimit/common/token_matching/predicate/TokenValue.py": {
-        "checksum": "5a9a426a106157f5795c7272ffa9f7a8",
+        "checksum": "4b6dc117186b70c0da969227282797c1",
         "language": "Python",
-        "loc": 17,
-        "profile": [14, 0, 0, 0],
+        "loc": 19,
+        "profile": [16, 0, 0, 0],
         "measurements": [
           {"unit_name": "__init__", "start": {"line": 6, "column": 5}, "end": {"line": 8, "column": 27}, "value": 3},
           {"unit_name": "accept", "start": {"line": 10, "column": 5}, "end": {"line": 14, "column": 21}, "value": 5},
           {"unit_name": "__eq__", "start": {"line": 16, "column": 5}, "end": {"line": 19, "column": 41}, "value": 4},
-          {"unit_name": "__hash__", "start": {"line": 21, "column": 5}, "end": {"line": 22, "column": 32}, "value": 2}
+          {"unit_name": "__hash__", "start": {"line": 21, "column": 5}, "end": {"line": 22, "column": 32}, "value": 2},
+          {"unit_name": "__str__", "start": {"line": 25, "column": 5}, "end": {"line": 26, "column": 44}, "value": 2}
         ]
       },
       "codelimit/common/token_matching/predicate/Symbol.py": {
-        "checksum": "6986112866c81111377c2ac1c658ada5",
+        "checksum": "abb0359204dcd845b6a20791423c0be3",
         "language": "Python",
-        "loc": 17,
-        "profile": [14, 0, 0, 0],
+        "loc": 19,
+        "profile": [16, 0, 0, 0],
         "measurements": [
           {"unit_name": "__init__", "start": {"line": 6, "column": 5}, "end": {"line": 8, "column": 29}, "value": 3},
           {"unit_name": "accept", "start": {"line": 10, "column": 5}, "end": {"line": 14, "column": 21}, "value": 5},
           {"unit_name": "__eq__", "start": {"line": 16, "column": 5}, "end": {"line": 19, "column": 43}, "value": 4},
-          {"unit_name": "__hash__", "start": {"line": 21, "column": 5}, "end": {"line": 22, "column": 33}, "value": 2}
+          {"unit_name": "__hash__", "start": {"line": 21, "column": 5}, "end": {"line": 22, "column": 33}, "value": 2},
+          {"unit_name": "__str__", "start": {"line": 24, "column": 5}, "end": {"line": 25, "column": 41}, "value": 2}
         ]
       },
       "codelimit/common/token_matching/predicate/Balanced.py": {
-        "checksum": "81ac7bc27418aa2b7d3a71fd63c78649",
+        "checksum": "6e001246c7d204f6abaf4f5944b36227",
         "language": "Python",
-        "loc": 37,
-        "profile": [33, 0, 0, 0],
+        "loc": 39,
+        "profile": [35, 0, 0, 0],
         "measurements": [
           {"unit_name": "__init__", "start": {"line": 7, "column": 5}, "end": {"line": 11, "column": 23}, "value": 5},
           {"unit_name": "reset", "start": {"line": 13, "column": 5}, "end": {"line": 17, "column": 23}, "value": 5},
           {"unit_name": "accept", "start": {"line": 19, "column": 5}, "end": {"line": 31, "column": 34}, "value": 13},
           {"unit_name": "__eq__", "start": {"line": 33, "column": 5}, "end": {"line": 40, "column": 10}, "value": 8},
-          {"unit_name": "__hash__", "start": {"line": 42, "column": 5}, "end": {"line": 43, "column": 57}, "value": 2}
+          {"unit_name": "__hash__", "start": {"line": 42, "column": 5}, "end": {"line": 43, "column": 57}, "value": 2},
+          {"unit_name": "__str__", "start": {"line": 45, "column": 5}, "end": {"line": 46, "column": 65}, "value": 2}
         ]
       },
       "codelimit/languages/Python.py": {
