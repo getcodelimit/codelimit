@@ -1,6 +1,22 @@
 # CHANGELOG
 
 
+## v0.11.1 (2024-12-03)
+
+### Bug Fixes
+
+- 🐛 Handle ignores similar for scan and check commands
+  ([`5e98a84`](https://github.com/getcodelimit/codelimit/commit/5e98a8454614b21333b9dae8591954bcb8171980))
+
+- 🩹 Fix Markdown report
+  ([`a3552b1`](https://github.com/getcodelimit/codelimit/commit/a3552b1c1f8905c0328c4b74e61235240e98dc2e))
+
+### Performance Improvements
+
+- ⚡️ Store predicates in pattern to prevent deepcopy DFA
+  ([`df200f0`](https://github.com/getcodelimit/codelimit/commit/df200f059839987060ed6af1784114998cf09f39))
+
+
 ## v0.11.0 (2024-12-02)
 
 ### Features
