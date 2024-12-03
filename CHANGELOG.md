@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v0.11.2 (2024-12-03)
+
+### Bug Fixes
+
+- 🐛 Fix markdown output
+  ([`63808f6`](https://github.com/getcodelimit/codelimit/commit/63808f653dd08c48425327127b09ebde20171d7b))
+
+
 ## v0.11.1 (2024-12-03)
 
 ### Bug Fixes
