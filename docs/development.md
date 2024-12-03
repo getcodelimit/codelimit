@@ -15,6 +15,12 @@ poetry run codelimit scan ~/projects/fastapi
 
 ## Local installation using pipx
 
+To install the development repository locally run:
+
+```shell
+pipx install .
+```
+
 To install the `main` branch locally run:
 
 ```shell
