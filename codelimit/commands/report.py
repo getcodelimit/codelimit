@@ -52,14 +52,15 @@ def _report_totals_markdown(st: ScanTotals) -> str:
             f"{lt.hard_to_maintain} | "
             f"{lt.unmaintainable} |\n"
         )
-    result += (
-        f"| | "
-        f"**{st.total_files()}** | "
-        f"**{st.total_loc()}** | "
-        f"**{st.total_functions()}** | "
-        f"**{st.total_hard_to_maintain()}** | "
-        f"**{st.total_unmaintainable()}** |"
-    )
+    if len(st.languages_totals()) > 1:
+        result += (
+            f"| **Totals** | "
+            f"**{st.total_files()}** | "
+            f"**{st.total_loc()}** | "
+            f"**{st.total_functions()}** | "
+            f"**{st.total_hard_to_maintain()}** | "
+            f"**{st.total_unmaintainable()}** |"
+        )
     return result
 
 
