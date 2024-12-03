@@ -27,14 +27,9 @@ def report_command(path: Path, full: bool, totals: bool, fmt: ReportFormat):
         if fmt == ReportFormat.markdown:
             print(_report_totals_markdown(scan_totals))
         else:
-            _report_totals_text(scan_totals)
+            print(ScanResultTable(scan_totals))
     else:
         _report_units(report, path, full, fmt)
-
-
-def _report_totals_text(scan_totals: ScanTotals):
-    table = ScanResultTable(scan_totals)
-    print(table)
 
 
 def _report_totals_markdown(st: ScanTotals) -> str:
@@ -77,7 +72,7 @@ def _report_units(report: Report, path: Path, full: bool, fmt):
         report_units = units[0:REPORT_LENGTH]
     root = get_root(path)
     if fmt == ReportFormat.markdown:
-        _print_functions_markdown(root, report_units)
+        print(_print_functions_markdown(root, report_units))
     else:
         _print_functions_text(root, units, report_units, full)
 
