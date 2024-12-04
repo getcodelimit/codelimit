@@ -1,13 +1,13 @@
 {
-  "version": "0.11.1",
-  "uuid": "37033e7c-cc50-428b-a092-3a283df5adab",
+  "version": "0.11.2",
+  "uuid": "47c8c9c2-2bff-438b-b5d1-2705ba536f2d",
   "root": "/github/workspace",
   "codebase": {
     "totals": {
       "Python": {
         "files": 81,
-        "lines_of_code": 2591,
-        "functions": 309,
+        "lines_of_code": 2604,
+        "functions": 311,
         "hard_to_maintain": 0,
         "unmaintainable": 0
       },
@@ -26,7 +26,7 @@
           "docs/",
           "codelimit/"
         ],
-        "profile": [1654, 676, 0, 0]
+        "profile": [1665, 677, 0, 0]
       },
       "docs/javascripts/": {
         "entries": [
@@ -51,7 +51,7 @@
           "languages/",
           "commands/"
         ],
-        "profile": [1398, 676, 0, 0]
+        "profile": [1409, 677, 0, 0]
       },
       "codelimit/common/": {
         "entries": [
@@ -82,7 +82,7 @@
           "gsm/",
           "token_matching/"
         ],
-        "profile": [1150, 394, 0, 0]
+        "profile": [1153, 391, 0, 0]
       },
       "codelimit/common/report/": {
         "entries": [
@@ -92,7 +92,7 @@
           "Report.py",
           "ReportReader.py"
         ],
-        "profile": [186, 23, 0, 0]
+        "profile": [189, 20, 0, 0]
       },
       "codelimit/common/scope/": {
         "entries": [
@@ -189,7 +189,7 @@
           "upload.py",
           "scan.py"
         ],
-        "profile": [86, 133, 0, 0]
+        "profile": [92, 137, 0, 0]
       }
     },
     "files": {
@@ -466,14 +466,15 @@
         ]
       },
       "codelimit/utils.py": {
-        "checksum": "f5c2eb143960f25bdf1dc6bbc2ff6ecf",
+        "checksum": "8b6f79e8c6ca448cad82da1a2a0fa44d",
         "language": "Python",
-        "loc": 50,
-        "profile": [21, 21, 0, 0],
+        "loc": 52,
+        "profile": [23, 21, 0, 0],
         "measurements": [
-          {"unit_name": "read_cached_report", "start": {"line": 13, "column": 1}, "end": {"line": 19, "column": 20}, "value": 7},
-          {"unit_name": "upload_report", "start": {"line": 22, "column": 1}, "end": {"line": 35, "column": 33}, "value": 14},
-          {"unit_name": "api_post_report", "start": {"line": 38, "column": 1}, "end": {"line": 58, "column": 18}, "value": 21}
+          {"unit_name": "make_report_path", "start": {"line": 13, "column": 1}, "end": {"line": 14, "column": 82}, "value": 2},
+          {"unit_name": "read_cached_report", "start": {"line": 17, "column": 1}, "end": {"line": 23, "column": 20}, "value": 7},
+          {"unit_name": "upload_report", "start": {"line": 26, "column": 1}, "end": {"line": 39, "column": 33}, "value": 14},
+          {"unit_name": "api_post_report", "start": {"line": 42, "column": 1}, "end": {"line": 62, "column": 18}, "value": 21}
         ]
       },
       "codelimit/github_auth.py": {
@@ -501,7 +502,7 @@
         ]
       },
       "codelimit/version.py": {
-        "checksum": "c4438ecdfb3183549573bb0724b86cbb",
+        "checksum": "7c1c802940fd01df7c1bd4512701d7b7",
         "language": "Python",
         "loc": 1,
         "profile": [0, 0, 0, 0],
@@ -509,17 +510,17 @@
         ]
       },
       "codelimit/__main__.py": {
-        "checksum": "67efc47e24fa486a44bca59cdedd4980",
+        "checksum": "a16969e7609ef2fba0fdb004f64baf00",
         "language": "Python",
-        "loc": 72,
+        "loc": 70,
         "profile": [30, 21, 0, 0],
         "measurements": [
-          {"unit_name": "list_commands", "start": {"line": 18, "column": 5}, "end": {"line": 19, "column": 35}, "value": 2},
-          {"unit_name": "check", "start": {"line": 27, "column": 1}, "end": {"line": 33, "column": 32}, "value": 7},
-          {"unit_name": "scan", "start": {"line": 37, "column": 1}, "end": {"line": 42, "column": 23}, "value": 6},
-          {"unit_name": "report", "start": {"line": 46, "column": 1}, "end": {"line": 56, "column": 44}, "value": 11},
-          {"unit_name": "_version_callback", "start": {"line": 59, "column": 1}, "end": {"line": 62, "column": 27}, "value": 4},
-          {"unit_name": "main", "start": {"line": 66, "column": 1}, "end": {"line": 86, "column": 47}, "value": 21}
+          {"unit_name": "list_commands", "start": {"line": 17, "column": 5}, "end": {"line": 18, "column": 35}, "value": 2},
+          {"unit_name": "check", "start": {"line": 28, "column": 1}, "end": {"line": 34, "column": 32}, "value": 7},
+          {"unit_name": "scan", "start": {"line": 38, "column": 1}, "end": {"line": 43, "column": 23}, "value": 6},
+          {"unit_name": "report", "start": {"line": 47, "column": 1}, "end": {"line": 57, "column": 44}, "value": 11},
+          {"unit_name": "_version_callback", "start": {"line": 60, "column": 1}, "end": {"line": 63, "column": 27}, "value": 4},
+          {"unit_name": "main", "start": {"line": 67, "column": 1}, "end": {"line": 87, "column": 47}, "value": 21}
         ]
       },
       "codelimit/common/Token.py": {
@@ -878,12 +879,13 @@
         ]
       },
       "codelimit/common/report/ReportReader.py": {
-        "checksum": "f02fad034603208e974c52431dba5d31",
+        "checksum": "44cf82c6b31c28755ccf9ca6fa93cf68",
         "language": "Python",
-        "loc": 32,
-        "profile": [0, 23, 0, 0],
+        "loc": 33,
+        "profile": [3, 20, 0, 0],
         "measurements": [
-          {"unit_name": "from_json", "start": {"line": 13, "column": 5}, "end": {"line": 35, "column": 22}, "value": 23}
+          {"unit_name": "get_report_version", "start": {"line": 13, "column": 5}, "end": {"line": 15, "column": 56}, "value": 3},
+          {"unit_name": "from_json", "start": {"line": 18, "column": 5}, "end": {"line": 37, "column": 22}, "value": 20}
         ]
       },
       "codelimit/common/scope/scope_utils.py": {
@@ -1362,18 +1364,18 @@
         ]
       },
       "codelimit/commands/report.py": {
-        "checksum": "306c82533c957c81c5db63722db4917f",
+        "checksum": "899258a0e61bc9a8e50a1ba05ada4556",
         "language": "Python",
-        "loc": 102,
-        "profile": [46, 41, 0, 0],
+        "loc": 109,
+        "profile": [52, 41, 0, 0],
         "measurements": [
-          {"unit_name": "report_command", "start": {"line": 23, "column": 1}, "end": {"line": 32, "column": 47}, "value": 10},
-          {"unit_name": "_report_totals_markdown", "start": {"line": 35, "column": 1}, "end": {"line": 59, "column": 18}, "value": 25},
-          {"unit_name": "_report_units", "start": {"line": 62, "column": 1}, "end": {"line": 77, "column": 63}, "value": 16},
-          {"unit_name": "get_root", "start": {"line": 80, "column": 1}, "end": {"line": 87, "column": 31}, "value": 8},
-          {"unit_name": "read_report", "start": {"line": 90, "column": 1}, "end": {"line": 95, "column": 18}, "value": 6},
-          {"unit_name": "_print_functions_text", "start": {"line": 98, "column": 1}, "end": {"line": 108, "column": 10}, "value": 11},
-          {"unit_name": "_print_functions_markdown", "start": {"line": 111, "column": 1}, "end": {"line": 121, "column": 18}, "value": 11}
+          {"unit_name": "report_command", "start": {"line": 24, "column": 1}, "end": {"line": 33, "column": 47}, "value": 10},
+          {"unit_name": "_report_totals_markdown", "start": {"line": 36, "column": 1}, "end": {"line": 60, "column": 18}, "value": 25},
+          {"unit_name": "_report_units", "start": {"line": 63, "column": 1}, "end": {"line": 78, "column": 63}, "value": 16},
+          {"unit_name": "get_root", "start": {"line": 81, "column": 1}, "end": {"line": 88, "column": 31}, "value": 8},
+          {"unit_name": "read_report", "start": {"line": 91, "column": 1}, "end": {"line": 101, "column": 47}, "value": 11},
+          {"unit_name": "_print_functions_text", "start": {"line": 104, "column": 1}, "end": {"line": 114, "column": 10}, "value": 11},
+          {"unit_name": "_print_functions_markdown", "start": {"line": 117, "column": 1}, "end": {"line": 128, "column": 18}, "value": 12}
         ]
       },
       "codelimit/commands/check.py": {
@@ -1396,12 +1398,12 @@
         ]
       },
       "codelimit/commands/upload.py": {
-        "checksum": "b8e36d80fa55debdcf09a2de0708fd75",
+        "checksum": "5757ca55e6bc9eb789504c9040627bcc",
         "language": "Python",
-        "loc": 31,
-        "profile": [0, 26, 0, 0],
+        "loc": 36,
+        "profile": [0, 30, 0, 0],
         "measurements": [
-          {"unit_name": "upload_command", "start": {"line": 10, "column": 1}, "end": {"line": 35, "column": 39}, "value": 26}
+          {"unit_name": "upload_command", "start": {"line": 11, "column": 1}, "end": {"line": 40, "column": 39}, "value": 30}
         ]
       },
       "codelimit/commands/scan.py": {
