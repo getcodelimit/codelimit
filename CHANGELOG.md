@@ -1,6 +1,19 @@
 # CHANGELOG
 
 
+## v0.11.3 (2024-12-04)
+
+### Bug Fixes
+
+- 🐛 Fix markdown formatting
+  ([`e1e57f9`](https://github.com/getcodelimit/codelimit/commit/e1e57f9bc146df79265961319a7e9ae1229eb5a5))
+
+### Chores
+
+- 🚧 Improve markdown report, remove GH App commands
+  ([`48656f2`](https://github.com/getcodelimit/codelimit/commit/48656f24e3a1e386323f4ff68da75f09eea5eaa1))
+
+
 ## v0.11.2 (2024-12-03)
 
 ### Bug Fixes
