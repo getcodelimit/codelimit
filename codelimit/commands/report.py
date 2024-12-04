@@ -8,9 +8,10 @@ from rich.console import Console
 from codelimit.common.ScanResultTable import ScanResultTable
 from codelimit.common.ScanTotals import ScanTotals
 from codelimit.common.report.Report import Report
+from codelimit.common.report.ReportReader import ReportReader
 from codelimit.common.report.ReportUnit import ReportUnit
 from codelimit.common.utils import format_measurement
-from codelimit.utils import read_cached_report
+from codelimit.utils import make_report_path
 
 REPORT_LENGTH = 10
 
@@ -88,11 +89,16 @@ def get_root(path: Path) -> Path | None:
 
 
 def read_report(path: Path) -> Report:
-    report = read_cached_report(path)
-    if not report:
-        print("[red]No cached report found in current folder[/red]")
+    report_path = make_report_path(path)
+    if not report_path.exists():
+        print("[red]No cached report found, run scan first[/red]")
         raise typer.Exit(code=1)
-    return report
+    report_data = report_path.read_text()
+    report_version = ReportReader.get_report_version(report_data)
+    if report_version != Report.VERSION:
+        print("[red]Report version mismatch, run scan first[/red]")
+        raise typer.Exit(code=1)
+    return ReportReader.from_json(report_data)
 
 
 def _print_functions_text(root, units, report_units, full):
@@ -114,8 +120,9 @@ def _print_functions_markdown(root: Path | None, report_units: list[ReportUnit])
     result += "| --- | ---: | ---: | ---: | --- |\n"
     for unit in report_units:
         file_path = unit.file if root is None else root.joinpath(unit.file)
+        type = '✖' if unit.measurement.value > 60 else '⚠'
         result += (
             f"| {str(file_path)} | {unit.measurement.start.line} | {unit.measurement.start.column} | "
-            f"{unit.measurement.value} | {unit.measurement.unit_name} |\n"
+            f"{unit.measurement.value} | {type} {unit.measurement.unit_name} |\n"
         )
     return result

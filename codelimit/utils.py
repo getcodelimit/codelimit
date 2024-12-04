@@ -10,6 +10,10 @@ from codelimit.common.report.ReportReader import ReportReader
 from codelimit.common.report.ReportWriter import ReportWriter
 
 
+def make_report_path(root: Path) -> Path:
+    return root.joinpath(".codelimit_cache").resolve().joinpath("codelimit.json")
+
+
 def read_cached_report(path: Path) -> Optional[Report]:
     cache_dir = path.joinpath(".codelimit_cache").resolve()
     report_path = cache_dir.joinpath("codelimit.json").resolve()
@@ -20,7 +24,7 @@ def read_cached_report(path: Path) -> Optional[Report]:
 
 
 def upload_report(
-    report: Report, repository: str, branch: str, url: str, token: str
+        report: Report, repository: str, branch: str, url: str, token: str
 ) -> None:
     result = api_post_report(report, branch, repository, url, token)
     if result.ok:
@@ -40,9 +44,9 @@ def api_post_report(report, branch, repository, url, token):
         f'{{{{"repository": "{repository}", "branch": "{branch}", "report":{{}}}}}}'
     )
     with Progress(
-        SpinnerColumn(),
-        TextColumn("[progress.description]{task.description}"),
-        transient=True,
+            SpinnerColumn(),
+            TextColumn("[progress.description]{task.description}"),
+            transient=True,
     ) as progress:
         progress.add_task(description=f"Uploading report to {url}", total=None)
         result = requests.post(

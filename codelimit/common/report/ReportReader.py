@@ -10,13 +10,15 @@ from codelimit.common.report.Report import Report
 
 class ReportReader:
     @staticmethod
+    def get_report_version(json: str) -> str:
+        d = loads(json)
+        return d["version"] if "version" in d else None
+
+    @staticmethod
     def from_json(json: str) -> Optional[Report]:
         d = loads(json)
         codebase = Codebase(d["root"])
         report = Report(codebase)
-        report.version = d["version"] if "version" in d else None
-        if report.version != Report.VERSION:
-            return None
         report.uuid = d["uuid"]
         for k, v in d["codebase"]["files"].items():
             measurements: list[Measurement] = []

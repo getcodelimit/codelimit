@@ -2,13 +2,14 @@ from pathlib import Path
 
 import typer
 
+from codelimit.common.report.Report import Report
 from codelimit.common.report.ReportReader import ReportReader
 from codelimit.github_auth import get_github_token
-from codelimit.utils import read_cached_report, upload_report
+from codelimit.utils import read_cached_report, upload_report, make_report_path
 
 
 def upload_command(
-    repository: str, branch: str, report_file: Path, token: str, url: str
+        repository: str, branch: str, report_file: Path, token: str, url: str
 ):
     if report_file:
         report = ReportReader.from_json(report_file.read_text())
@@ -16,12 +17,16 @@ def upload_command(
             print("[red]Could not read report file[/red]")
             raise typer.Exit(code=1)
     else:
-        cached_report = read_cached_report(Path("."))
-        if not cached_report:
-            print("[red]No cached report found in current folder[/red]")
+        report_path = make_report_path(Path("."))
+        if not report_path.exists():
+            print("[red]No cached report found, run scan first[/red]")
             raise typer.Exit(code=1)
-        else:
-            report = cached_report
+        report_data = report_path.read_text()
+        report_version = ReportReader.get_report_version(report_data)
+        if report_version != Report.VERSION:
+            print("[red]Report version mismatch, run scan first[/red]")
+            raise typer.Exit(code=1)
+        report = ReportReader.from_json(report_data)
     if not token:
         token = get_github_token()
         if not token:

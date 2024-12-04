@@ -48,6 +48,28 @@ def test_from_json():
     assert result.codebase.root == "/tmp"
 
 
+def test_version():
+    json = ""
+    json += "{"
+    json += f'  "version": "{Report.VERSION}",'
+    json += '  "uuid": "a417ac45-973e-44f8-aa98-f6a29844caf1",'
+    json += '  "root": "/",'
+    json += '  "codebase": {'
+    json += '    "tree": {'
+    json += '       "./": {'
+    json += '         "entries": [],'
+    json += '         "profile": [0, 0, 0, 0]'
+    json += "       }"
+    json += "    },"
+    json += '    "files": {}'
+    json += "  }"
+    json += "}"
+
+    result = ReportReader.get_report_version(json)
+
+    assert result == Report.VERSION
+
+
 def test_no_version():
     json = ""
     json += "{"
@@ -64,7 +86,7 @@ def test_no_version():
     json += "  }"
     json += "}"
 
-    result = ReportReader.from_json(json)
+    result = ReportReader.get_report_version(json)
 
     assert result is None
 

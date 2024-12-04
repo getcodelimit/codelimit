@@ -53,7 +53,7 @@ def test_print_functions_markdown():
         None,
         [
             ReportUnit(
-                "foo.py", Measurement("bar()", Location(1, 1), Location(30, 1), 30)
+                "foo.py", Measurement("bar()", Location(1, 1), Location(30, 1), 31)
             )
         ],
     )
@@ -61,5 +61,5 @@ def test_print_functions_markdown():
     assert result == (
         "| **File** | **Line** | **Column** | **Length** | **Function** |\n"
         "| --- | ---: | ---: | ---: | --- |\n"
-        "| foo.py | 1 | 1 | 30 | bar() |\n"
+        "| foo.py | 1 | 1 | 31 | ⚠ bar() |\n"
     )
