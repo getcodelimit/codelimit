@@ -4,6 +4,7 @@ from pathlib import Path
 import typer
 from rich import print
 from rich.console import Console
+from rich.text import Text
 
 from codelimit.common.ScanResultTable import ScanResultTable
 from codelimit.common.ScanTotals import ScanTotals
@@ -22,15 +23,16 @@ class ReportFormat(str, Enum):
 
 
 def report_command(path: Path, full: bool, totals: bool, fmt: ReportFormat):
+    stdout = Console()
     report = read_report(path)
     if totals:
         scan_totals = ScanTotals(report.codebase.totals)
         if fmt == ReportFormat.markdown:
-            print(_report_totals_markdown(scan_totals))
+            stdout.print(_report_totals_markdown(scan_totals), soft_wrap=True)
         else:
-            print(ScanResultTable(scan_totals))
+            stdout.print(ScanResultTable(scan_totals), soft_wrap=True)
     else:
-        _report_units(report, path, full, fmt)
+        _report_functions(report, path, full, fmt, stdout)
 
 
 def _report_totals_markdown(st: ScanTotals) -> str:
@@ -60,10 +62,10 @@ def _report_totals_markdown(st: ScanTotals) -> str:
     return result
 
 
-def _report_units(report: Report, path: Path, full: bool, fmt):
+def _report_functions(report: Report, path: Path, full: bool, fmt, console: Console):
     units = report.all_report_units_sorted_by_length_asc(30)
     if len(units) == 0:
-        print(
+        console.print(
             "[bold]Refactoring not necessary, :sparkles: happy coding! :sparkles:[/bold]"
         )
         return
@@ -73,9 +75,9 @@ def _report_units(report: Report, path: Path, full: bool, fmt):
         report_units = units[0:REPORT_LENGTH]
     root = get_root(path)
     if fmt == ReportFormat.markdown:
-        print(_print_functions_markdown(root, report_units))
+        console.print(_report_functions_markdown(root, report_units), soft_wrap=True)
     else:
-        _print_functions_text(root, units, report_units, full)
+        console.print(_report_functions_text(root, units, report_units, full), soft_wrap=True)
 
 
 def get_root(path: Path) -> Path | None:
@@ -101,20 +103,17 @@ def read_report(path: Path) -> Report:
     return ReportReader.from_json(report_data)
 
 
-def _print_functions_text(root, units, report_units, full):
-    stdout = Console()
+def _report_functions_text(root, units, report_units, full) -> Text:
+    result = Text()
     for unit in report_units:
         file_path = unit.file if root is None else root.joinpath(unit.file)
-        stdout.print(
-            format_measurement(str(file_path), unit.measurement), soft_wrap=True
-        )
+        result.append(format_measurement(str(file_path), unit.measurement).append("\n"))
     if not full and len(units) > REPORT_LENGTH:
-        print(
-            f"[bold]{len(units) - REPORT_LENGTH} more rows, use --full option to get all rows[/bold]"
-        )
+        result.append(f"[bold]{len(units) - REPORT_LENGTH} more rows, use --full option to get all rows[/bold]\n")
+    return result
 
 
-def _print_functions_markdown(root: Path | None, report_units: list[ReportUnit]) -> str:
+def _report_functions_markdown(root: Path | None, report_units: list[ReportUnit]) -> str:
     result = ""
     result += "| **File** | **Line** | **Column** | **Length** | **Function** |\n"
     result += "| --- | ---: | ---: | ---: | --- |\n"

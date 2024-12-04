@@ -1,4 +1,4 @@
-from codelimit.commands.report import _report_totals_markdown, _print_functions_markdown
+from codelimit.commands.report import _report_totals_markdown, _report_functions_markdown
 from codelimit.common.LanguageTotals import LanguageTotals
 from codelimit.common.Location import Location
 from codelimit.common.Measurement import Measurement
@@ -49,7 +49,7 @@ def test_report_totals_markdown_two_languages():
 
 
 def test_print_functions_markdown():
-    result = _print_functions_markdown(
+    result = _report_functions_markdown(
         None,
         [
             ReportUnit(
