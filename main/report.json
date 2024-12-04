@@ -1,12 +1,12 @@
 {
   "version": "0.11.2",
-  "uuid": "47c8c9c2-2bff-438b-b5d1-2705ba536f2d",
+  "uuid": "727bb57a-b434-4c33-b957-adf8d6051dc0",
   "root": "/github/workspace",
   "codebase": {
     "totals": {
       "Python": {
         "files": 81,
-        "lines_of_code": 2604,
+        "lines_of_code": 2603,
         "functions": 311,
         "hard_to_maintain": 0,
         "unmaintainable": 0
@@ -26,7 +26,7 @@
           "docs/",
           "codelimit/"
         ],
-        "profile": [1665, 677, 0, 0]
+        "profile": [1663, 677, 0, 0]
       },
       "docs/javascripts/": {
         "entries": [
@@ -51,7 +51,7 @@
           "languages/",
           "commands/"
         ],
-        "profile": [1409, 677, 0, 0]
+        "profile": [1407, 677, 0, 0]
       },
       "codelimit/common/": {
         "entries": [
@@ -189,7 +189,7 @@
           "upload.py",
           "scan.py"
         ],
-        "profile": [92, 137, 0, 0]
+        "profile": [90, 137, 0, 0]
       }
     },
     "files": {
@@ -1364,18 +1364,18 @@
         ]
       },
       "codelimit/commands/report.py": {
-        "checksum": "899258a0e61bc9a8e50a1ba05ada4556",
+        "checksum": "ca26b1189279a4a4af82b2b970bf92bd",
         "language": "Python",
-        "loc": 109,
-        "profile": [52, 41, 0, 0],
+        "loc": 108,
+        "profile": [50, 41, 0, 0],
         "measurements": [
-          {"unit_name": "report_command", "start": {"line": 24, "column": 1}, "end": {"line": 33, "column": 47}, "value": 10},
-          {"unit_name": "_report_totals_markdown", "start": {"line": 36, "column": 1}, "end": {"line": 60, "column": 18}, "value": 25},
-          {"unit_name": "_report_units", "start": {"line": 63, "column": 1}, "end": {"line": 78, "column": 63}, "value": 16},
-          {"unit_name": "get_root", "start": {"line": 81, "column": 1}, "end": {"line": 88, "column": 31}, "value": 8},
-          {"unit_name": "read_report", "start": {"line": 91, "column": 1}, "end": {"line": 101, "column": 47}, "value": 11},
-          {"unit_name": "_print_functions_text", "start": {"line": 104, "column": 1}, "end": {"line": 114, "column": 10}, "value": 11},
-          {"unit_name": "_print_functions_markdown", "start": {"line": 117, "column": 1}, "end": {"line": 128, "column": 18}, "value": 12}
+          {"unit_name": "report_command", "start": {"line": 25, "column": 1}, "end": {"line": 35, "column": 59}, "value": 11},
+          {"unit_name": "_report_totals_markdown", "start": {"line": 38, "column": 1}, "end": {"line": 62, "column": 18}, "value": 25},
+          {"unit_name": "_report_functions", "start": {"line": 65, "column": 1}, "end": {"line": 80, "column": 95}, "value": 16},
+          {"unit_name": "get_root", "start": {"line": 83, "column": 1}, "end": {"line": 90, "column": 31}, "value": 8},
+          {"unit_name": "read_report", "start": {"line": 93, "column": 1}, "end": {"line": 103, "column": 47}, "value": 11},
+          {"unit_name": "_report_functions_text", "start": {"line": 106, "column": 1}, "end": {"line": 113, "column": 18}, "value": 8},
+          {"unit_name": "_report_functions_markdown", "start": {"line": 116, "column": 1}, "end": {"line": 127, "column": 18}, "value": 12}
         ]
       },
       "codelimit/commands/check.py": {
