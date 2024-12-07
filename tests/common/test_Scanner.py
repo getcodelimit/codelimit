@@ -7,8 +7,7 @@ from pathspec import PathSpec
 from codelimit.common.Configuration import Configuration
 from codelimit.common.Scanner import (
     scan_codebase,
-    is_excluded,
-    is_excluded_by_gitignore,
+    is_excluded
 )
 from codelimit.common.source_utils import get_location_range
 
@@ -88,30 +87,29 @@ def test_skip_hidden_files():
 
 
 def test_is_excluded():
-    assert is_excluded(Path("venv/foo/bar.py"))
-    assert not is_excluded(Path("foo/bar.py"))
+    excludes_spec = PathSpec.from_lines("gitignore", Configuration.excludes)
 
-    Configuration.excludes = ["output"]
+    assert is_excluded(Path("venv/foo/bar.py"), excludes_spec)
+    assert not is_excluded(Path("foo/bar.py"), excludes_spec)
 
-    assert is_excluded(Path("output/foo/bar.py"))
-    assert not is_excluded(Path("venv/foo/bar.py"))
-    assert not is_excluded(Path("foo/bar.py"))
+    excludes_spec = PathSpec.from_lines("gitignore", ["output"])
 
-    Configuration.excludes = ["foo/bar/*"]
+    assert is_excluded(Path("output/foo/bar.py"), excludes_spec)
+    assert not is_excluded(Path("venv/foo/bar.py"), excludes_spec)
+    assert not is_excluded(Path("foo/bar.py"), excludes_spec)
 
-    assert is_excluded(Path("foo/bar/foobar.py"))
+    excludes_spec = PathSpec.from_lines("gitignore", ["foo/bar/*"])
 
+    assert is_excluded(Path("foo/bar/foobar.py"), excludes_spec)
 
-def test_is_excluded_by_gitignore():
-    Configuration.excludes = ["site/"]
-    gitignore = PathSpec.from_lines("gitwildmatch", ["site/"])
+    excludes_spec = PathSpec.from_lines("gitignore", ["site/"])
 
-    assert is_excluded_by_gitignore(
-        Path("site/assets/javascripts/lunr/wordcut.js"), gitignore
+    assert is_excluded(
+        Path("site/assets/javascripts/lunr/wordcut.js"), excludes_spec
     )
 
-    gitignore = PathSpec.from_lines("gitwildmatch", ["!site/"])
+    excludes_spec = PathSpec.from_lines("gitignore", ["!site/"])
 
-    assert not is_excluded_by_gitignore(
-        Path("site/assets/javascripts/lunr/wordcut.js"), gitignore
+    assert not is_excluded(
+        Path("site/assets/javascripts/lunr/wordcut.js"), excludes_spec
     )

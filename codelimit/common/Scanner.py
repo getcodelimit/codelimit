@@ -1,4 +1,3 @@
-import fnmatch
 import locale
 import os
 from datetime import datetime
@@ -41,7 +40,6 @@ def scan_codebase(path: Path, cached_report: Union[Report, None] = None) -> Code
     print_header(cached_report, path)
     scan_totals = ScanTotals()
     with Live(refresh_per_second=2) as live:
-
         def add_file_entry(entry: SourceFileEntry):
             scan_totals.add(entry)
             table = ScanResultTable(scan_totals)
@@ -81,20 +79,22 @@ def print_refactor_candidates(scan_totals: ScanTotals):
 
 
 def _scan_folder(
-    codebase: Codebase,
-    folder: Path,
-    cached_report: Union[Report, None] = None,
-    add_file_entry: Union[Callable[[SourceFileEntry], None], None] = None,
+        codebase: Codebase,
+        folder: Path,
+        cached_report: Union[Report, None] = None,
+        add_file_entry: Union[Callable[[SourceFileEntry], None], None] = None,
 ):
-    gitignore = _read_gitignore(folder)
+    excludes = Configuration.excludes.copy()
+    gitignore_excludes = _read_gitignore(folder)
+    if gitignore_excludes:
+        excludes.extend(gitignore_excludes)
+    excludes_spec = PathSpec.from_lines("gitignore", excludes)
     for root, dirs, files in os.walk(folder.absolute()):
         files = [f for f in files if not f[0] == "."]
         dirs[:] = [d for d in dirs if not d[0] == "."]
         for file in files:
             rel_path = Path(os.path.join(root, file)).relative_to(folder.absolute())
-            if is_excluded(rel_path) or (
-                gitignore is not None and is_excluded_by_gitignore(rel_path, gitignore)
-            ):
+            if is_excluded(rel_path, excludes_spec):
                 continue
             try:
                 lexer = get_lexer_for_filename(rel_path)
@@ -112,11 +112,11 @@ def _scan_folder(
 
 
 def _scan_file(
-    codebase: Codebase,
-    lexer: Lexer,
-    root: Path,
-    path: str,
-    cached_report: Union[Report, None] = None,
+        codebase: Codebase,
+        lexer: Lexer,
+        root: Path,
+        path: str,
+        cached_report: Union[Report, None] = None,
 ) -> SourceFileEntry:
     checksum = calculate_checksum(path)
     rel_path = relpath(path, root)
@@ -178,25 +178,12 @@ def scan_file(tokens: list[Token], language: Language) -> list[Measurement]:
     return measurements
 
 
-def is_excluded(path: Path):
-    for exclude in Configuration.excludes:
-        exclude_parts = exclude.split(os.sep)
-        if len(exclude_parts) == 1:
-            for part in path.parts:
-                if fnmatch.fnmatch(part, exclude):
-                    return True
-        else:
-            if fnmatch.fnmatch(str(path), exclude):
-                return True
-    return False
-
-
-def _read_gitignore(path: Path) -> PathSpec | None:
+def _read_gitignore(path: Path) -> list[str] | None:
     gitignore_path = path.joinpath(".gitignore")
     if gitignore_path.exists():
-        return PathSpec.from_lines("gitignore", gitignore_path.read_text().splitlines())
+        return gitignore_path.read_text().splitlines()
     return None
 
 
-def is_excluded_by_gitignore(path: Path, gitignore: PathSpec):
-    return gitignore.match_file(path)
+def is_excluded(path: Path, spec: PathSpec):
+    return spec.match_file(path)
