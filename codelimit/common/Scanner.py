@@ -67,12 +67,14 @@ def print_header(cached_report, path):
 def print_refactor_candidates(scan_totals: ScanTotals):
     total_hard_to_maintain = scan_totals.total_hard_to_maintain()
     if total_hard_to_maintain > 0:
+        text = "functions are" if total_hard_to_maintain > 1 else "function is"
         print(
-            f"  [dark_orange]\u26A0[/dark_orange] {total_hard_to_maintain} functions are hard-to-maintain."
+            f"  [dark_orange]\u26A0[/dark_orange] {total_hard_to_maintain} {text} hard-to-maintain."
         )
     total_unmaintainable = scan_totals.total_unmaintainable()
     if total_unmaintainable > 0:
-        print(f"  [red]\u2716[/red] {total_unmaintainable} functions need refactoring.")
+        text = "functions need" if total_unmaintainable > 1 else "function needs"
+        print(f"  [red]\u2716[/red] {total_unmaintainable} {text} refactoring.")
     if total_hard_to_maintain == 0 and total_unmaintainable == 0:
         print(
             "  [bold]Refactoring not necessary, :glowing_star: happy coding! :glowing_star:[/bold]"
