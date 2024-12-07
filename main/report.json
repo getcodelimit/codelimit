@@ -1,12 +1,12 @@
 {
   "version": "0.11.3",
-  "uuid": "5b2cf976-8a97-4207-9f36-24873f401f94",
+  "uuid": "f19e1b68-4603-4e1e-9351-8b23e4c675ed",
   "root": "/github/workspace",
   "codebase": {
     "totals": {
       "Python": {
         "files": 81,
-        "lines_of_code": 2608,
+        "lines_of_code": 2609,
         "functions": 311,
         "hard_to_maintain": 0,
         "unmaintainable": 0
@@ -26,7 +26,7 @@
           "docs/",
           "codelimit/"
         ],
-        "profile": [1673, 672, 0, 0]
+        "profile": [1674, 672, 0, 0]
       },
       "docs/javascripts/": {
         "entries": [
@@ -51,7 +51,7 @@
           "languages/",
           "commands/"
         ],
-        "profile": [1417, 672, 0, 0]
+        "profile": [1418, 672, 0, 0]
       },
       "codelimit/common/": {
         "entries": [
@@ -82,7 +82,7 @@
           "report/",
           "gsm/"
         ],
-        "profile": [1153, 391, 0, 0]
+        "profile": [1154, 391, 0, 0]
       },
       "codelimit/common/token_matching/": {
         "entries": [
@@ -135,7 +135,7 @@
           "operator/",
           "predicate/"
         ],
-        "profile": [236, 86, 0, 0]
+        "profile": [237, 86, 0, 0]
       },
       "codelimit/common/gsm/automata/": {
         "entries": [
@@ -1031,7 +1031,7 @@
         ]
       },
       "codelimit/common/report/ReportReader.py": {
-        "checksum": "44cf82c6b31c28755ccf9ca6fa93cf68",
+        "checksum": "a7cc733cd8ba3f4f59df2d9d50d42763",
         "language": "Python",
         "loc": 33,
         "profile": [3, 20, 0, 0],
@@ -1085,15 +1085,15 @@
         ]
       },
       "codelimit/common/gsm/Pattern.py": {
-        "checksum": "4f25680a457473a341b3496012aa957e",
+        "checksum": "7bf6d1bd5e286c7035879ccec61ad3c9",
         "language": "Python",
-        "loc": 26,
-        "profile": [21, 0, 0, 0],
+        "loc": 27,
+        "profile": [22, 0, 0, 0],
         "measurements": [
           {"unit_name": "__init__", "start": {"line": 9, "column": 5}, "end": {"line": 15, "column": 54}, "value": 7},
-          {"unit_name": "consume", "start": {"line": 17, "column": 5}, "end": {"line": 26, "column": 34}, "value": 10},
-          {"unit_name": "is_accepting", "start": {"line": 28, "column": 5}, "end": {"line": 29, "column": 54}, "value": 2},
-          {"unit_name": "token_string", "start": {"line": 31, "column": 5}, "end": {"line": 32, "column": 56}, "value": 2}
+          {"unit_name": "consume", "start": {"line": 17, "column": 5}, "end": {"line": 27, "column": 20}, "value": 11},
+          {"unit_name": "is_accepting", "start": {"line": 29, "column": 5}, "end": {"line": 30, "column": 54}, "value": 2},
+          {"unit_name": "token_string", "start": {"line": 32, "column": 5}, "end": {"line": 33, "column": 56}, "value": 2}
         ]
       },
       "codelimit/common/gsm/__init__.py": {
