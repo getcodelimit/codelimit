@@ -27,10 +27,15 @@ cli = typer.Typer(cls=OrderCommands, no_args_is_help=True, add_completion=False)
 @cli.command(help="Check file(s)")
 def check(
         paths: Annotated[List[Path], typer.Argument(exists=True)],
+        exclude: Annotated[
+            Optional[list[str]], typer.Option(help="Glob patterns for exclusion")
+        ] = None,
         quiet: Annotated[
             bool, typer.Option("--quiet", help="No output when successful")
         ] = False,
 ):
+    if exclude:
+        Configuration.excludes.extend(exclude)
     check_command(paths, quiet)
 
 
@@ -38,8 +43,13 @@ def check(
 def scan(
         path: Annotated[
             Path, typer.Argument(exists=True, file_okay=False, help="Codebase root")
-        ] = Path(".")
+        ] = Path("."),
+        exclude: Annotated[
+            Optional[list[str]], typer.Option(help="Glob patterns for exclusion")
+        ] = None
 ):
+    if exclude:
+        Configuration.excludes.extend(exclude)
     scan_command(path)
 
 
@@ -68,9 +78,6 @@ def main(
         verbose: Annotated[
             Optional[bool], typer.Option("--verbose", "-v", help="Verbose output")
         ] = False,
-        exclude: Annotated[
-            Optional[list[str]], typer.Option(help="Glob patterns for exclusion")
-        ] = None,
         version: Annotated[
             Optional[bool],
             typer.Option(
@@ -83,8 +90,6 @@ def main(
         Configuration.verbose = True
     if version:
         raise typer.Exit()
-    if exclude:
-        Configuration.excludes.extend(exclude)
 
 
 if __name__ == "__main__":
