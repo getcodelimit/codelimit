@@ -1,6 +1,19 @@
 # CHANGELOG
 
 
+## v0.12.1 (2024-12-07)
+
+### Bug Fixes
+
+- 🐛 Do not build on Ubuntu 24, yet
+  ([`d70b8b3`](https://github.com/getcodelimit/codelimit/commit/d70b8b3ad64132bd07c090b9fc09219e007ec6a0))
+
+### Continuous Integration
+
+- 💚 Do not build on Ubuntu 24, yet
+  ([`6a71989`](https://github.com/getcodelimit/codelimit/commit/6a71989ab87f9b3ac479e0f660f2edcdce790f12))
+
+
 ## v0.12.0 (2024-12-07)
 
 ### Chores
