@@ -1,6 +1,25 @@
 # CHANGELOG
 
 
+## v0.12.0 (2024-12-07)
+
+### Chores
+
+- 🚨 Fix MyPy issues
+  ([`79997a3`](https://github.com/getcodelimit/codelimit/commit/79997a3b09c45801a8a788acc440e2bcbea5baf3))
+
+### Features
+
+- ✨ Include pathspec library ([#49](https://github.com/getcodelimit/codelimit/pull/49),
+  [`5239051`](https://github.com/getcodelimit/codelimit/commit/52390511ae8a4dba7bd1820cf639a2f2fb080e94))
+
+Co-authored-by: robvanderleek <robvanderleek@users.noreply.github.com>
+
+- ✨ Move excludes option to check and scan commands
+  ([#47](https://github.com/getcodelimit/codelimit/pull/47),
+  [`d5ea049`](https://github.com/getcodelimit/codelimit/commit/d5ea049f37327d8b1c3c5de0829a2d97e89b5347))
+
+
 ## v0.11.3 (2024-12-04)
 
 ### Bug Fixes
