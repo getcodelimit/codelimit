@@ -10,12 +10,12 @@ from codelimit.common.report.Report import Report
 
 class ReportReader:
     @staticmethod
-    def get_report_version(json: str) -> str:
+    def get_report_version(json: str) -> Optional[str]:
         d = loads(json)
         return d["version"] if "version" in d else None
 
     @staticmethod
-    def from_json(json: str) -> Optional[Report]:
+    def from_json(json: str) -> Report:
         d = loads(json)
         codebase = Codebase(d["root"])
         report = Report(codebase)

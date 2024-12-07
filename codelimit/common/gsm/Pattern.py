@@ -24,6 +24,7 @@ class Pattern:
                 self.tokens.append(item)
                 self.state = transition[1]
                 return self.state
+        return None
 
     def is_accepting(self):
         return self.automata.is_accepting(self.state)
