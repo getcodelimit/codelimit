@@ -2,10 +2,12 @@ import os
 from pathlib import Path
 
 import typer
+from pathspec import PathSpec
 from pygments.lexers import get_lexer_for_filename
 from pygments.util import ClassNotFound
 
 from codelimit.common.CheckResult import CheckResult
+from codelimit.common.Configuration import Configuration
 from codelimit.common.Scanner import is_excluded, scan_file
 from codelimit.common.lexer_utils import lex
 from codelimit.languages import Languages
@@ -13,9 +15,10 @@ from codelimit.languages import Languages
 
 def check_command(paths: list[Path], quiet: bool):
     check_result = CheckResult()
+    excludes_spec = PathSpec.from_lines("gitignore", Configuration.excludes)
     for path in paths:
         if path.is_file():
-            _handle_file_path(path, check_result)
+            _handle_file_path(path, check_result, excludes_spec)
         elif path.is_dir():
             for root, dirs, files in os.walk(path.absolute()):
                 files = [f for f in files if not f[0] == "."]
@@ -23,25 +26,25 @@ def check_command(paths: list[Path], quiet: bool):
                 for file in files:
                     abs_path = Path(os.path.join(root, file))
                     rel_path = abs_path.relative_to(path.absolute())
-                    if is_excluded(rel_path):
+                    if is_excluded(rel_path, excludes_spec):
                         continue
                     check_file(abs_path, check_result)
     exit_code = 1 if check_result.unmaintainable > 0 else 0
     if (
-            not quiet
-            or check_result.hard_to_maintain > 0
-            or check_result.unmaintainable > 0
+        not quiet
+        or check_result.hard_to_maintain > 0
+        or check_result.unmaintainable > 0
     ):
         check_result.report()
     raise typer.Exit(code=exit_code)
 
 
-def _handle_file_path(path: Path, check_result: CheckResult):
+def _handle_file_path(path: Path, check_result: CheckResult, excludes_spec: PathSpec):
     if not path.is_absolute():
         abs_path = path.absolute().resolve()
         try:
             rel_path = abs_path.relative_to(Path.cwd())
-            if is_excluded(rel_path):
+            if is_excluded(rel_path, excludes_spec):
                 return
         except ValueError:
             pass

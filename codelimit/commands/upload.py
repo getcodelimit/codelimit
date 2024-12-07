@@ -5,11 +5,11 @@ import typer
 from codelimit.common.report.Report import Report
 from codelimit.common.report.ReportReader import ReportReader
 from codelimit.github_auth import get_github_token
-from codelimit.utils import read_cached_report, upload_report, make_report_path
+from codelimit.utils import upload_report, make_report_path
 
 
 def upload_command(
-        repository: str, branch: str, report_file: Path, token: str, url: str
+    repository: str, branch: str, report_file: Path, token: str, url: str
 ):
     if report_file:
         report = ReportReader.from_json(report_file.read_text())

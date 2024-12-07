@@ -77,7 +77,9 @@ def _report_functions(report: Report, path: Path, full: bool, fmt, console: Cons
     if fmt == ReportFormat.markdown:
         console.print(_report_functions_markdown(root, report_units), soft_wrap=True)
     else:
-        console.print(_report_functions_text(root, units, report_units, full), soft_wrap=True)
+        console.print(
+            _report_functions_text(root, units, report_units, full), soft_wrap=True
+        )
 
 
 def get_root(path: Path) -> Path | None:
@@ -109,17 +111,21 @@ def _report_functions_text(root, units, report_units, full) -> Text:
         file_path = unit.file if root is None else root.joinpath(unit.file)
         result.append(format_measurement(str(file_path), unit.measurement).append("\n"))
     if not full and len(units) > REPORT_LENGTH:
-        result.append(f"[bold]{len(units) - REPORT_LENGTH} more rows, use --full option to get all rows[/bold]\n")
+        result.append(
+            f"[bold]{len(units) - REPORT_LENGTH} more rows, use --full option to get all rows[/bold]\n"
+        )
     return result
 
 
-def _report_functions_markdown(root: Path | None, report_units: list[ReportUnit]) -> str:
+def _report_functions_markdown(
+    root: Path | None, report_units: list[ReportUnit]
+) -> str:
     result = ""
     result += "| **File** | **Line** | **Column** | **Length** | **Function** |\n"
     result += "| --- | ---: | ---: | ---: | --- |\n"
     for unit in report_units:
         file_path = unit.file if root is None else root.joinpath(unit.file)
-        type = '✖' if unit.measurement.value > 60 else '⚠'
+        type = "✖" if unit.measurement.value > 60 else "⚠"
         result += (
             f"| {str(file_path)} | {unit.measurement.start.line} | {unit.measurement.start.column} | "
             f"{unit.measurement.value} | {type} {unit.measurement.unit_name} |\n"

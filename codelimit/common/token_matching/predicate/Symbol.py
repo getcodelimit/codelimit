@@ -22,4 +22,4 @@ class Symbol(TokenPredicate):
         return hash(self.symbol)
 
     def __str__(self):
-        return f'<Symbol {self.symbol}>'
+        return f"<Symbol {self.symbol}>"
