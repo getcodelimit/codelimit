@@ -5,10 +5,7 @@ from pathlib import Path
 from pathspec import PathSpec
 
 from codelimit.common.Configuration import Configuration
-from codelimit.common.Scanner import (
-    scan_codebase,
-    is_excluded
-)
+from codelimit.common.Scanner import scan_codebase, is_excluded
 from codelimit.common.source_utils import get_location_range
 
 
@@ -104,9 +101,7 @@ def test_is_excluded():
 
     excludes_spec = PathSpec.from_lines("gitignore", ["site/"])
 
-    assert is_excluded(
-        Path("site/assets/javascripts/lunr/wordcut.js"), excludes_spec
-    )
+    assert is_excluded(Path("site/assets/javascripts/lunr/wordcut.js"), excludes_spec)
 
     excludes_spec = PathSpec.from_lines("gitignore", ["!site/"])
 

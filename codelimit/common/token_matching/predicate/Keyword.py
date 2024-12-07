@@ -22,4 +22,4 @@ class Keyword(TokenPredicate):
         return hash(self.keyword)
 
     def __str__(self):
-        return f'<Keyword {self.keyword}>'
+        return f"<Keyword {self.keyword}>"

@@ -1,4 +1,7 @@
-from codelimit.commands.report import _report_totals_markdown, _report_functions_markdown
+from codelimit.commands.report import (
+    _report_totals_markdown,
+    _report_functions_markdown,
+)
 from codelimit.common.LanguageTotals import LanguageTotals
 from codelimit.common.Location import Location
 from codelimit.common.Measurement import Measurement

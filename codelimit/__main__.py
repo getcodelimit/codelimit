@@ -26,13 +26,13 @@ cli = typer.Typer(cls=OrderCommands, no_args_is_help=True, add_completion=False)
 
 @cli.command(help="Check file(s)")
 def check(
-        paths: Annotated[List[Path], typer.Argument(exists=True)],
-        exclude: Annotated[
-            Optional[list[str]], typer.Option(help="Glob patterns for exclusion")
-        ] = None,
-        quiet: Annotated[
-            bool, typer.Option("--quiet", help="No output when successful")
-        ] = False,
+    paths: Annotated[List[Path], typer.Argument(exists=True)],
+    exclude: Annotated[
+        Optional[list[str]], typer.Option(help="Glob patterns for exclusion")
+    ] = None,
+    quiet: Annotated[
+        bool, typer.Option("--quiet", help="No output when successful")
+    ] = False,
 ):
     if exclude:
         Configuration.excludes.extend(exclude)
@@ -41,12 +41,12 @@ def check(
 
 @cli.command(help="Scan a codebase")
 def scan(
-        path: Annotated[
-            Path, typer.Argument(exists=True, file_okay=False, help="Codebase root")
-        ] = Path("."),
-        exclude: Annotated[
-            Optional[list[str]], typer.Option(help="Glob patterns for exclusion")
-        ] = None
+    path: Annotated[
+        Path, typer.Argument(exists=True, file_okay=False, help="Codebase root")
+    ] = Path("."),
+    exclude: Annotated[
+        Optional[list[str]], typer.Option(help="Glob patterns for exclusion")
+    ] = None,
 ):
     if exclude:
         Configuration.excludes.extend(exclude)
@@ -55,14 +55,14 @@ def scan(
 
 @cli.command(help="Show report for codebase")
 def report(
-        path: Annotated[
-            Path, typer.Argument(exists=True, file_okay=False, help="Codebase root")
-        ] = Path("."),
-        full: Annotated[bool, typer.Option("--full", help="Show full report")] = False,
-        totals: Annotated[bool, typer.Option("--totals", help="Only show totals")] = False,
-        fmt: Annotated[
-            ReportFormat, typer.Option("--format", help="Output format")
-        ] = ReportFormat.text,
+    path: Annotated[
+        Path, typer.Argument(exists=True, file_okay=False, help="Codebase root")
+    ] = Path("."),
+    full: Annotated[bool, typer.Option("--full", help="Show full report")] = False,
+    totals: Annotated[bool, typer.Option("--totals", help="Only show totals")] = False,
+    fmt: Annotated[
+        ReportFormat, typer.Option("--format", help="Output format")
+    ] = ReportFormat.text,
 ):
     report_command(path, full, totals, fmt)
 
@@ -75,15 +75,15 @@ def _version_callback(show: bool):
 
 @cli.callback()
 def main(
-        verbose: Annotated[
-            Optional[bool], typer.Option("--verbose", "-v", help="Verbose output")
-        ] = False,
-        version: Annotated[
-            Optional[bool],
-            typer.Option(
-                "--version", "-V", help="Show version", callback=_version_callback
-            ),
-        ] = None,
+    verbose: Annotated[
+        Optional[bool], typer.Option("--verbose", "-v", help="Verbose output")
+    ] = False,
+    version: Annotated[
+        Optional[bool],
+        typer.Option(
+            "--version", "-V", help="Show version", callback=_version_callback
+        ),
+    ] = None,
 ):
     """Code Limit: Your refactoring alarm."""
     if verbose:

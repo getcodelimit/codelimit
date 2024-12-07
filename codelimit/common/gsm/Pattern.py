@@ -17,7 +17,7 @@ class Pattern:
     def consume(self, item) -> State | None:
         for transition in self.state.transition:
             predicate_id = id(transition[0])
-            if not predicate_id in self.predicate_map:
+            if predicate_id not in self.predicate_map:
                 self.predicate_map[predicate_id] = deepcopy(transition[0])
             predicate = self.predicate_map[predicate_id]
             if predicate.accept(item):

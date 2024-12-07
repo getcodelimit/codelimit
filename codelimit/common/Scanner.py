@@ -40,6 +40,7 @@ def scan_codebase(path: Path, cached_report: Union[Report, None] = None) -> Code
     print_header(cached_report, path)
     scan_totals = ScanTotals()
     with Live(refresh_per_second=2) as live:
+
         def add_file_entry(entry: SourceFileEntry):
             scan_totals.add(entry)
             table = ScanResultTable(scan_totals)
@@ -79,10 +80,10 @@ def print_refactor_candidates(scan_totals: ScanTotals):
 
 
 def _scan_folder(
-        codebase: Codebase,
-        folder: Path,
-        cached_report: Union[Report, None] = None,
-        add_file_entry: Union[Callable[[SourceFileEntry], None], None] = None,
+    codebase: Codebase,
+    folder: Path,
+    cached_report: Union[Report, None] = None,
+    add_file_entry: Union[Callable[[SourceFileEntry], None], None] = None,
 ):
     excludes = Configuration.excludes.copy()
     gitignore_excludes = _read_gitignore(folder)
@@ -112,11 +113,11 @@ def _scan_folder(
 
 
 def _scan_file(
-        codebase: Codebase,
-        lexer: Lexer,
-        root: Path,
-        path: str,
-        cached_report: Union[Report, None] = None,
+    codebase: Codebase,
+    lexer: Lexer,
+    root: Path,
+    path: str,
+    cached_report: Union[Report, None] = None,
 ) -> SourceFileEntry:
     checksum = calculate_checksum(path)
     rel_path = relpath(path, root)
