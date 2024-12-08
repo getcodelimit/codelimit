@@ -36,6 +36,7 @@ def check(
 ):
     if exclude:
         Configuration.excludes.extend(exclude)
+    Configuration.load(Path('.'))
     check_command(paths, quiet)
 
 
@@ -50,6 +51,7 @@ def scan(
 ):
     if exclude:
         Configuration.excludes.extend(exclude)
+    Configuration.load(path)
     scan_command(path)
 
 
@@ -64,6 +66,7 @@ def report(
         ReportFormat, typer.Option("--format", help="Output format")
     ] = ReportFormat.text,
 ):
+    Configuration.load(path)
     report_command(path, full, totals, fmt)
 
 
@@ -86,6 +89,7 @@ def main(
     ] = None,
 ):
     """Code Limit: Your refactoring alarm."""
+
     if verbose:
         Configuration.verbose = True
     if version:

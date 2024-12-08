@@ -28,33 +28,33 @@
 Code Limit is a tool for developers with one goal: _it tells the developer when
 it’s time to refactor_.
 
-Check out the [documentation](https://codelimit-docs.vercel.app) and start
+Check out the [documentation](https://getcodelimit.github.io) and start
 using Code Limit today to keep your code maintainable.
 
 ## Quickstart
 
 Depending on your development workflow, Code Limit can run in many different
 ways (e.g.: pre-commit hook, GitHub Action, standalone, etc.). See the
-[Quickstart documentation](https://codelimit-docs.vercel.app/quickstart/) for
+[Quickstart documentation](https://getcodelimit.github.io/quickstart/) for
 examples.
 
 ## Standalone usage
 
 Code Limit can run as a standalone program to check and inspect a codebase, see
-the [Standalone Usage documentation](https://codelimit-docs.vercel.app/usage/)
-to get started.
+the [Standalone Usage documentation](https://getcodelimit.github.io/usage/) to
+get started.
 
 ## Configuration
 
 Code Limit aims to be zero-configuration. However, sometimes the exception
 proves the rule. Check out the [Configuration
-documentation](https://codelimit-docs.vercel.app/configuration/) for all
+documentation](https://getcodelimit.github.io/configuration/) for all
 configuration options.
 
 ## Development
 
 See the [Development
-documentation](https://codelimit-docs.vercel.app/development) if you want to
+documentation](https://getcodelimit.github.io/development) if you want to
 extend or contribute to Code Limit.
 
 ## Feedback, suggestions and bug reports

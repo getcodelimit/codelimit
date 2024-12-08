@@ -1,31 +1,20 @@
-class Configuration:
-    excludes = [
-        ".bzr",
-        ".direnv",
-        ".eggs",
-        ".git",
-        ".git-rewrite",
-        ".hg",
-        ".ipynb_checkpoints",
-        ".mypy_cache",
-        ".nox",
-        ".pants.d",
-        ".pytest_cache",
-        ".pytype",
-        ".ruff_cache",
-        ".svn",
-        ".tox",
-        ".venv",
-        ".vscode",
-        "__pypackages__",
-        "_build",
-        "buck-out",
-        "build",
-        "dist",
-        "node_modules",
-        "venv",
-        "test",
-        "tests",
-    ]
+from pathlib import Path
 
+import yaml
+
+
+class Configuration:
+    excludes: list[str] = []
     verbose = False
+
+    @classmethod
+    def load(cls, root: Path):
+        config_path = root.joinpath(".codelimit.yml")
+        if not config_path.exists():
+            return
+        with open(config_path) as f:
+            d = yaml.load(f, Loader=yaml.FullLoader)
+        if "excludes" in d:
+            cls.excludes.extend(d["excludes"])
+        if "verbose" in d:
+            cls.verbose = d["verbose"]

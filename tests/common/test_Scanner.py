@@ -5,7 +5,7 @@ from pathlib import Path
 from pathspec import PathSpec
 
 from codelimit.common.Configuration import Configuration
-from codelimit.common.Scanner import scan_codebase, is_excluded
+from codelimit.common.Scanner import scan_codebase, is_excluded, DEFAULT_EXCLUDES
 from codelimit.common.source_utils import get_location_range
 
 
@@ -84,7 +84,7 @@ def test_skip_hidden_files():
 
 
 def test_is_excluded():
-    excludes_spec = PathSpec.from_lines("gitignore", Configuration.excludes)
+    excludes_spec = PathSpec.from_lines("gitignore", DEFAULT_EXCLUDES)
 
     assert is_excluded(Path("venv/foo/bar.py"), excludes_spec)
     assert not is_excluded(Path("foo/bar.py"), excludes_spec)
