@@ -81,7 +81,7 @@ jobs:
               poetry run pyinstaller \
                 -n codelimit --onefile -c codelimit/__main__.py
             OUT_FILE_NAME: dist/codelimit.exe
-          - os: ubuntu-latest
+          - os: ubuntu-22.04
             TARGET: linux
             CMD_BUILD: |
               poetry run pyinstaller \
