@@ -4,7 +4,6 @@ from pathlib import Path
 
 from pathspec import PathSpec
 
-from codelimit.common.Configuration import Configuration
 from codelimit.common.Scanner import scan_codebase, is_excluded, DEFAULT_EXCLUDES
 from codelimit.common.source_utils import get_location_range
 
