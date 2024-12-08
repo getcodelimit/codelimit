@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v0.13.0 (2024-12-08)
+
+### Features
+
+- ✨ Introduce configuration file ([#51](https://github.com/getcodelimit/codelimit/pull/51),
+  [`0dc5f69`](https://github.com/getcodelimit/codelimit/commit/0dc5f69cfef46e1dc44685979086b8fa1c8c9909))
+
+
 ## v0.12.1 (2024-12-07)
 
 ### Bug Fixes
