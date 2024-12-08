@@ -40,7 +40,6 @@ def scan_codebase(path: Path, cached_report: Union[Report, None] = None) -> Code
     print_header(cached_report, path)
     scan_totals = ScanTotals()
     with Live(refresh_per_second=2) as live:
-
         def add_file_entry(entry: SourceFileEntry):
             scan_totals.add(entry)
             table = ScanResultTable(scan_totals)
@@ -82,12 +81,13 @@ def print_refactor_candidates(scan_totals: ScanTotals):
 
 
 def _scan_folder(
-    codebase: Codebase,
-    folder: Path,
-    cached_report: Union[Report, None] = None,
-    add_file_entry: Union[Callable[[SourceFileEntry], None], None] = None,
+        codebase: Codebase,
+        folder: Path,
+        cached_report: Union[Report, None] = None,
+        add_file_entry: Union[Callable[[SourceFileEntry], None], None] = None,
 ):
-    excludes = Configuration.excludes.copy()
+    excludes = DEFAULT_EXCLUDES.copy()
+    excludes.extend(Configuration.excludes)
     gitignore_excludes = _read_gitignore(folder)
     if gitignore_excludes:
         excludes.extend(gitignore_excludes)
@@ -115,11 +115,11 @@ def _scan_folder(
 
 
 def _scan_file(
-    codebase: Codebase,
-    lexer: Lexer,
-    root: Path,
-    path: str,
-    cached_report: Union[Report, None] = None,
+        codebase: Codebase,
+        lexer: Lexer,
+        root: Path,
+        path: str,
+        cached_report: Union[Report, None] = None,
 ) -> SourceFileEntry:
     checksum = calculate_checksum(path)
     rel_path = relpath(path, root)
@@ -190,3 +190,33 @@ def _read_gitignore(path: Path) -> list[str] | None:
 
 def is_excluded(path: Path, spec: PathSpec):
     return spec.match_file(path)
+
+
+DEFAULT_EXCLUDES = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".git-rewrite",
+    ".hg",
+    ".ipynb_checkpoints",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pytest_cache",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    ".vscode",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "venv",
+    "test",
+    "tests",
+]
