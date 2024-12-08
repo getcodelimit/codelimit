@@ -24,7 +24,7 @@ jobs:
         run: poetry install --no-interaction --no-root
 
       - name: 'Lint code with Ruff'
-        run: poetry ruff check .
+        run: poetry run ruff check .
 
       - name: 'Type cheking with MyPy'
         run: poetry run mypy codelimit/
