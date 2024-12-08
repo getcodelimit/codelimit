@@ -1,6 +1,6 @@
 from pathlib import Path
 
-import yaml
+from yaml import load, FullLoader
 
 
 class Configuration:
@@ -13,7 +13,7 @@ class Configuration:
         if not config_path.exists():
             return
         with open(config_path) as f:
-            d = yaml.load(f, Loader=yaml.FullLoader)
+            d = load(f, Loader=FullLoader)
         if "excludes" in d:
             cls.excludes.extend(d["excludes"])
         if "verbose" in d:

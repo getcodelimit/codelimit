@@ -12,27 +12,35 @@ jobs:
     steps:
       - name: 'Checkout sources'
         uses: actions/checkout@v3
+
       - name: 'Set up Python'
         uses: actions/setup-python@v4
         with:
           python-version: 3.12
+
       - name: 'Set up Poetry'
         uses: snok/install-poetry@v1
+
       - name: 'Install dependencies'
         run: poetry install --no-interaction --no-root
+
       - name: 'Run unit-tests with coverage'
         run: poetry run pytest --cov --cov-report=xml
+
       - name: 'Run codelimit'
         run: |
           poetry run codelimit scan .
+
       - name: 'Build and run codelimit binary'
         run: |
           poetry run pyinstaller -n codelimit -F codelimit/__main__.py
           ./dist/codelimit scan .
+
       - name: 'Run Code Limit action'
         uses: getcodelimit/codelimit-action@main
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           upload: true
+
       - name: 'Upload coverage reports to Codecov'
         uses: codecov/codecov-action@v3
