@@ -3,6 +3,5 @@
 dist/
 site/
 main.spec
-codelimit.json
 .coverage
 coverage.xml

@@ -112,13 +112,13 @@ def _report_functions_text(root, units, report_units, full) -> Text:
         result.append(format_measurement(str(file_path), unit.measurement).append("\n"))
     if not full and len(units) > REPORT_LENGTH:
         result.append(
-            f"[bold]{len(units) - REPORT_LENGTH} more rows, use --full option to get all rows[/bold]\n"
+            f"{len(units) - REPORT_LENGTH} more rows, use --full option to get all rows\n", style="bold"
         )
     return result
 
 
 def _report_functions_markdown(
-    root: Path | None, report_units: list[ReportUnit]
+        root: Path | None, report_units: list[ReportUnit]
 ) -> str:
     result = ""
     result += "| **File** | **Line** | **Column** | **Length** | **Function** |\n"
