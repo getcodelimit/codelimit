@@ -12,12 +12,11 @@ from sh import git
 
 from codelimit.common.ScanResultTable import ScanResultTable
 from codelimit.common.ScanTotals import ScanTotals
-from codelimit.common.Scanner import scan_folder
+from codelimit.common.Scanner import scan_path
 from codelimit.common.report.Report import Report
 from codelimit.common.report.ReportReader import ReportReader
 from codelimit.common.report.ReportWriter import ReportWriter
 
-examples_dir = Path(os.path.abspath(__file__)).parent.parent.joinpath('examples')
 console = Console()
 
 
@@ -33,20 +32,17 @@ def fail(text: str):
     console.print(f'[red]⨯[/red] {text}', soft_wrap=True)
 
 
-def load_report(owner: str, name: str, tag: str) -> Report | None:
-    report_dir = examples_dir.joinpath(f'{owner}_{name}_{tag}')
-    report_file = report_dir.joinpath('codelimit.json')
+def load_report(path: Path) -> Report | None:
+    report_file = path.joinpath('codelimit.json')
     if report_file.exists():
         return ReportReader.from_json(report_file.read_text())
     else:
         return None
 
 
-def save_report(owner: str, name: str, tag: str, report: Report) -> Path:
+def save_report(path: Path, report: Report) -> Path:
     report_json = ReportWriter(report).to_json()
-    report_dir = examples_dir.joinpath(f'{owner}_{name}_{tag}')
-    os.makedirs(report_dir, exist_ok=True)
-    report_file = report_dir.joinpath('codelimit.json')
+    report_file = path.joinpath('codelimit.json')
     report_file.write_text(report_json)
     return report_file
 
@@ -60,7 +56,7 @@ def scan_repo(owner: str, name: str, tag: str) -> Report:
     spinner.succeed('Repository cloned')
     spinner = Halo(text='Scanning codebase', spinner='dots')
     spinner.start()
-    codebase = scan_folder(Path(tmp_dir).joinpath(name))
+    codebase = scan_path(Path(tmp_dir).joinpath(name))
     spinner.succeed('Codebase scanned')
     shutil.rmtree(tmp_dir)
     codebase.aggregate()
@@ -78,30 +74,30 @@ def compare_reports(r1: Report, r2: Report) -> bool:
     return True
 
 
-if __name__ == '__main__':
-    exit_code = 0
-    repos = [
-        ('getcodelimit', 'battlesnake-challenge', '20241209'),
-        ('spring-projects', 'spring-boot', 'v3.4.0'),
-    ]
-    for repo in repos:
-        info(f'Scanning {repo[0]}/{repo[1]}@{repo[2]}')
-        old_report = load_report(repo[0], repo[1], repo[2])
+def run() -> int:
+    result = 0
+    examples_dir = Path(os.path.abspath(__file__)).parent.parent.joinpath('examples')
+    report_dirs = [d for d in examples_dir.iterdir() if d.is_dir()]
+    for report_dir in report_dirs:
+        repo_parts = report_dir.name.split('_')
+        info(f'Scanning {repo_parts[0]}/{repo_parts[1]}@{repo_parts[2]}')
+        old_report = load_report(report_dir)
         if old_report:
             success('Existing report loaded')
-        new_report = scan_repo(repo[0], repo[1], repo[2])
-        if old_report:
-            if compare_reports(old_report, new_report):
-                success('No changes detected')
-            else:
-                print('Existing report:')
-                console.print(ScanResultTable(ScanTotals(old_report.codebase.totals)), soft_wrap=True)
-                print()
-                print('Current report:')
-                console.print(ScanResultTable(ScanTotals(new_report.codebase.totals)), soft_wrap=True)
-                fail('Changes detected')
-                exit_code = 1
+        new_report = scan_repo(repo_parts[0], repo_parts[1], repo_parts[2])
+        if compare_reports(old_report, new_report):
+            success('No changes detected')
         else:
-            new_report_file = save_report(repo[0], repo[1], repo[2], new_report)
-            success(f'Report written to {new_report_file}')
+            print('Existing report:')
+            console.print(ScanResultTable(ScanTotals(old_report.codebase.totals)), soft_wrap=True)
+            print()
+            print('Current report:')
+            console.print(ScanResultTable(ScanTotals(new_report.codebase.totals)), soft_wrap=True)
+            fail('Changes detected')
+            result = 1
+    return result
+
+
+if __name__ == '__main__':
+    exit_code = run()
     exit(exit_code)
