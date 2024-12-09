@@ -1,4 +1,5 @@
-name: 'analyze'
+name: 'regression'
+
 on:
   push:
     branches:
@@ -6,12 +7,13 @@ on:
   pull_request:
     branches:
       - main
+
 jobs:
   analyze:
     runs-on: self-hosted
     steps:
       - name: 'Checkout sources'
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: 'Set up Python'
         uses: actions/setup-python@v4
@@ -24,8 +26,5 @@ jobs:
       - name: 'Install dependencies'
         run: poetry install --no-interaction --no-root
 
-      - name: 'Checkout pl-snakebattle'
-        run: git clone https://github.com/getcodelimit/pl-battlesnake.git
-
-      - name: 'Run codelimit'
-        run: poetry run codelimit scan pl-battlesnake
+      - name: 'Run regression runner'
+        run: poetry run ./tests/regression.py
