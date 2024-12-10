@@ -1,7 +1,6 @@
 .DS_Store
 .build/
 dist/
-site/
 main.spec
 .coverage
 coverage.xml
