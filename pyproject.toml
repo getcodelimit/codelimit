@@ -41,8 +41,6 @@ pyinstaller = {version = "^6.0", python = ">=3.8,<3.14"}
 pytest-cov = "^4.0.0"
 pytest = "^7.2.1"
 poethepoet = "^0.21.1"
-mkdocs-material = "^9.5.10"
-mkdocs-glightbox = "^0.3.7"
 types-pyyaml = "^6.0.12.20240917"
 mypy = "^1.13.0"
 black = "^24.10.0"
