@@ -1,0 +1,30 @@
+name: 'regression'
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  analyze:
+    runs-on: self-hosted
+    steps:
+      - name: 'Checkout sources'
+        uses: actions/checkout@v3
+
+      - name: 'Set up Python'
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.12
+
+      - name: 'Set up Poetry'
+        uses: snok/install-poetry@v1
+
+      - name: 'Install dependencies'
+        run: poetry install --no-interaction --no-root
+
+      - name: 'Run regression runner'
+        run: poetry run poe regression

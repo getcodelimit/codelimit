@@ -26,6 +26,10 @@ addopts = "--tb=short"
 help = "Create a binary executable using pyinstaller"
 cmd = "pyinstaller --workpath .build --specpath dist -n codelimit codelimit/__main__.py"
 
+[tool.poe.tasks.regression]
+help = "Regression test runner"
+cmd = "python tests/regression.py"
+
 [tool.mypy]
 ignore_missing_imports = true
 
@@ -45,6 +49,7 @@ types-pyyaml = "^6.0.12.20240917"
 mypy = "^1.13.0"
 black = "^24.10.0"
 ruff = "^0.8.2"
+sh = "^2.1.0"
 
 [build-system]
 requires = ["poetry-core"]

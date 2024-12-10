@@ -2,6 +2,5 @@
 .build/
 dist/
 main.spec
-codelimit.json
 .coverage
 coverage.xml

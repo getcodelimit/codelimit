@@ -36,7 +36,6 @@ locale.setlocale(locale.LC_ALL, "")
 
 
 def scan_codebase(path: Path, cached_report: Union[Report, None] = None) -> Codebase:
-    codebase = Codebase(str(path.resolve().absolute()))
     print_header(cached_report, path)
     scan_totals = ScanTotals()
     with Live(refresh_per_second=2) as live:
@@ -45,7 +44,7 @@ def scan_codebase(path: Path, cached_report: Union[Report, None] = None) -> Code
             table = ScanResultTable(scan_totals)
             live.update(table)
 
-        _scan_folder(codebase, path, cached_report, add_file_entry)
+        codebase = scan_path(path, cached_report, add_file_entry)
         live.stop()
         live.refresh()
     print()
@@ -80,23 +79,16 @@ def print_refactor_candidates(scan_totals: ScanTotals):
         )
 
 
-def _scan_folder(
-        codebase: Codebase,
-        folder: Path,
-        cached_report: Union[Report, None] = None,
-        add_file_entry: Union[Callable[[SourceFileEntry], None], None] = None,
-):
-    excludes = DEFAULT_EXCLUDES.copy()
-    excludes.extend(Configuration.excludes)
-    gitignore_excludes = _read_gitignore(folder)
-    if gitignore_excludes:
-        excludes.extend(gitignore_excludes)
-    excludes_spec = PathSpec.from_lines("gitignore", excludes)
-    for root, dirs, files in os.walk(folder.absolute()):
+def scan_path(path: Path, cached_report: Union[Report, None] = None,
+              add_file_entry_callback: Union[Callable[[SourceFileEntry], None], None] = None,
+              ) -> Codebase:
+    result = Codebase(str(path.resolve().absolute()))
+    excludes_spec = _generate_exclude_spec(path)
+    for root, dirs, files in os.walk(path.absolute()):
         files = [f for f in files if not f[0] == "."]
         dirs[:] = [d for d in dirs if not d[0] == "."]
         for file in files:
-            rel_path = Path(os.path.join(root, file)).relative_to(folder.absolute())
+            rel_path = Path(os.path.join(root, file)).relative_to(path.absolute())
             if is_excluded(rel_path, excludes_spec):
                 continue
             try:
@@ -106,12 +98,13 @@ def _scan_folder(
                 languages = Languages.by_name.keys()
                 if lexer_name in languages:
                     file_entry = _scan_file(
-                        codebase, lexer, folder, file_path, cached_report
+                        result, lexer, path, file_path, cached_report
                     )
-                    if add_file_entry:
-                        add_file_entry(file_entry)
+                    if add_file_entry_callback:
+                        add_file_entry_callback(file_entry)
             except ClassNotFound:
                 pass
+    return result
 
 
 def _scan_file(
@@ -179,6 +172,15 @@ def scan_file(tokens: list[Token], language: Language) -> list[Measurement]:
                 Measurement(scope.header.name, start_location, end_location, length)
             )
     return measurements
+
+
+def _generate_exclude_spec(root: Path) -> PathSpec:
+    excludes = DEFAULT_EXCLUDES.copy()
+    excludes.extend(Configuration.excludes)
+    gitignore_excludes = _read_gitignore(root)
+    if gitignore_excludes:
+        excludes.extend(gitignore_excludes)
+    return PathSpec.from_lines("gitignore", excludes)
 
 
 def _read_gitignore(path: Path) -> list[str] | None:
