@@ -1,14 +1,14 @@
 {
   "version": "0.13.0",
-  "uuid": "80c594cb-926e-492e-b42e-7635ea3a096d",
+  "uuid": "f8b2c3c9-4746-4a7f-9143-8610e17b6f1e",
   "root": "/github/workspace",
   "codebase": {
     "totals": {
       "Python": {
         "files": 81,
-        "lines_of_code": 2628,
-        "functions": 311,
-        "hard_to_maintain": 1,
+        "lines_of_code": 2638,
+        "functions": 313,
+        "hard_to_maintain": 0,
         "unmaintainable": 0
       }
     },
@@ -18,7 +18,7 @@
           "main.py",
           "codelimit/"
         ],
-        "profile": [1426, 646, 32, 0]
+        "profile": [1441, 672, 0, 0]
       },
       "codelimit/": {
         "entries": [
@@ -31,7 +31,7 @@
           "languages/",
           "commands/"
         ],
-        "profile": [1426, 646, 32, 0]
+        "profile": [1441, 672, 0, 0]
       },
       "codelimit/common/": {
         "entries": [
@@ -62,7 +62,7 @@
           "report/",
           "gsm/"
         ],
-        "profile": [1155, 362, 32, 0]
+        "profile": [1170, 388, 0, 0]
       },
       "codelimit/common/token_matching/": {
         "entries": [
@@ -282,13 +282,14 @@
         ]
       },
       "codelimit/common/LanguageTotals.py": {
-        "checksum": "229dcc0344988d1888090d72a7e53b7c",
+        "checksum": "f37b95b9c9aaa9d758586cc4a7b3f5f6",
         "language": "Python",
-        "loc": 17,
-        "profile": [14, 0, 0, 0],
+        "loc": 27,
+        "profile": [23, 0, 0, 0],
         "measurements": [
-          {"unit_name": "__init__", "start": {"line": 6, "column": 5}, "end": {"line": 12, "column": 32}, "value": 7},
-          {"unit_name": "add", "start": {"line": 14, "column": 5}, "end": {"line": 20, "column": 42}, "value": 7}
+          {"unit_name": "__init__", "start": {"line": 8, "column": 5}, "end": {"line": 14, "column": 32}, "value": 7},
+          {"unit_name": "add", "start": {"line": 16, "column": 5}, "end": {"line": 22, "column": 42}, "value": 7},
+          {"unit_name": "is_equal", "start": {"line": 24, "column": 5}, "end": {"line": 32, "column": 10}, "value": 9}
         ]
       },
       "codelimit/common/source_utils.py": {
@@ -370,21 +371,22 @@
         ]
       },
       "codelimit/common/Scanner.py": {
-        "checksum": "5fcfb2709db3ff9cf1647ddc99d9ba40",
+        "checksum": "6be7377d9c2e1ffa678e30b3ae8d06d1",
         "language": "Python",
         "loc": 198,
-        "profile": [46, 61, 32, 0],
+        "profile": [52, 87, 0, 0],
         "measurements": [
-          {"unit_name": "scan_codebase", "start": {"line": 38, "column": 1}, "end": {"line": 53, "column": 20}, "value": 12},
-          {"unit_name": "add_file_entry", "start": {"line": 43, "column": 9}, "end": {"line": 46, "column": 31}, "value": 4},
-          {"unit_name": "print_header", "start": {"line": 56, "column": 1}, "end": {"line": 63, "column": 82}, "value": 8},
-          {"unit_name": "print_refactor_candidates", "start": {"line": 66, "column": 1}, "end": {"line": 80, "column": 10}, "value": 15},
-          {"unit_name": "_scan_folder", "start": {"line": 83, "column": 1}, "end": {"line": 114, "column": 21}, "value": 32},
-          {"unit_name": "_scan_file", "start": {"line": 117, "column": 1}, "end": {"line": 144, "column": 17}, "value": 28},
-          {"unit_name": "_analyze_file", "start": {"line": 147, "column": 1}, "end": {"line": 162, "column": 17}, "value": 16},
-          {"unit_name": "scan_file", "start": {"line": 165, "column": 1}, "end": {"line": 181, "column": 24}, "value": 17},
-          {"unit_name": "_read_gitignore", "start": {"line": 184, "column": 1}, "end": {"line": 188, "column": 16}, "value": 5},
-          {"unit_name": "is_excluded", "start": {"line": 191, "column": 1}, "end": {"line": 192, "column": 33}, "value": 2}
+          {"unit_name": "scan_codebase", "start": {"line": 38, "column": 1}, "end": {"line": 52, "column": 20}, "value": 11},
+          {"unit_name": "add_file_entry", "start": {"line": 42, "column": 9}, "end": {"line": 45, "column": 31}, "value": 4},
+          {"unit_name": "print_header", "start": {"line": 55, "column": 1}, "end": {"line": 62, "column": 82}, "value": 8},
+          {"unit_name": "print_refactor_candidates", "start": {"line": 65, "column": 1}, "end": {"line": 79, "column": 10}, "value": 15},
+          {"unit_name": "scan_path", "start": {"line": 82, "column": 1}, "end": {"line": 107, "column": 18}, "value": 26},
+          {"unit_name": "_scan_file", "start": {"line": 110, "column": 1}, "end": {"line": 137, "column": 17}, "value": 28},
+          {"unit_name": "_analyze_file", "start": {"line": 140, "column": 1}, "end": {"line": 155, "column": 17}, "value": 16},
+          {"unit_name": "scan_file", "start": {"line": 158, "column": 1}, "end": {"line": 174, "column": 24}, "value": 17},
+          {"unit_name": "_generate_exclude_spec", "start": {"line": 177, "column": 1}, "end": {"line": 183, "column": 54}, "value": 7},
+          {"unit_name": "_read_gitignore", "start": {"line": 186, "column": 1}, "end": {"line": 190, "column": 16}, "value": 5},
+          {"unit_name": "is_excluded", "start": {"line": 193, "column": 1}, "end": {"line": 194, "column": 33}, "value": 2}
         ]
       },
       "codelimit/common/__init__.py": {
@@ -1089,7 +1091,7 @@
         ]
       },
       "codelimit/commands/report.py": {
-        "checksum": "23a1a19ac7ee7b83b8e40198922feb55",
+        "checksum": "ed1cb3cd6fc8c97eb583670b71a6ad04",
         "language": "Python",
         "loc": 114,
         "profile": [54, 43, 0, 0],
