@@ -6,7 +6,6 @@ import shutil
 import tempfile
 from pathlib import Path
 
-from halo import Halo
 from rich.console import Console
 from sh import git
 
@@ -50,14 +49,12 @@ def save_report(path: Path, report: Report) -> Path:
 def scan_repo(owner: str, name: str, tag: str) -> Report:
     tmp_dir = tempfile.mkdtemp()
     os.chdir(tmp_dir)
-    spinner = Halo(text='Cloning repository', spinner='dots')
-    spinner.start()
+    info('Cloning repository...')
     git('clone', '--depth', '1', '--branch', tag, f'https://github.com/{owner}/{name}.git')
-    spinner.succeed('Repository cloned')
-    spinner = Halo(text='Scanning codebase', spinner='dots')
-    spinner.start()
+    success('Repository cloned')
+    info('Scanning codebase...')
     codebase = scan_path(Path(tmp_dir).joinpath(name))
-    spinner.succeed('Codebase scanned')
+    success('Codebase scanned')
     shutil.rmtree(tmp_dir)
     codebase.aggregate()
     return Report(codebase)

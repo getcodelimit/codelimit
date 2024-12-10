@@ -18,7 +18,6 @@ aiohttp = "^3.9.0"
 pyyaml = "^6.0.1"
 rich = "^13.7.1"
 pathspec = "^0.12.1"
-halo = "^0.0.31"
 
 [tool.pytest.ini_options]
 addopts = "--tb=short"
