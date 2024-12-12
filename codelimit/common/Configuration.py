@@ -2,10 +2,13 @@ from pathlib import Path
 
 from yaml import load, FullLoader
 
+from codelimit.common.GithubRepository import GithubRepository
+
 
 class Configuration:
     excludes: list[str] = []
     verbose = False
+    repository: GithubRepository | None = None
 
     @classmethod
     def load(cls, root: Path):

@@ -6,29 +6,17 @@ import shutil
 import tempfile
 from pathlib import Path
 
-from rich.console import Console
 from sh import git
 
+from codelimit.common.GithubRepository import GithubRepository
 from codelimit.common.ScanResultTable import ScanResultTable
 from codelimit.common.ScanTotals import ScanTotals
 from codelimit.common.Scanner import scan_path
+from codelimit.common.console import console
 from codelimit.common.report.Report import Report
 from codelimit.common.report.ReportReader import ReportReader
 from codelimit.common.report.ReportWriter import ReportWriter
-
-console = Console()
-
-
-def info(text: str):
-    console.print(f'[bold]ℹ︎[/bold] {text}', soft_wrap=True)
-
-
-def success(text: str):
-    console.print(f'[green]✔[/green] {text}', soft_wrap=True)
-
-
-def fail(text: str):
-    console.print(f'[red]⨯[/red] {text}', soft_wrap=True)
+from codelimit.utils import info, success, fail
 
 
 def load_report(path: Path) -> Report | None:
@@ -46,14 +34,14 @@ def save_report(path: Path, report: Report) -> Path:
     return report_file
 
 
-def scan_repo(owner: str, name: str, tag: str) -> Report:
+def scan_repo(repo: GithubRepository) -> Report:
     tmp_dir = tempfile.mkdtemp()
     os.chdir(tmp_dir)
     info('Cloning repository...')
-    git('clone', '--depth', '1', '--branch', tag, f'https://github.com/{owner}/{name}.git')
+    git('clone', '--depth', '1', '--branch', repo.tag, f'https://github.com/{repo.owner}/{repo.name}.git')
     success('Repository cloned')
     info('Scanning codebase...')
-    codebase = scan_path(Path(tmp_dir).joinpath(name))
+    codebase = scan_path(Path(tmp_dir).joinpath(repo.name))
     success('Codebase scanned')
     shutil.rmtree(tmp_dir)
     codebase.aggregate()
@@ -77,11 +65,12 @@ def run() -> int:
     report_dirs = [d for d in examples_dir.iterdir() if d.is_dir()]
     for report_dir in report_dirs:
         repo_parts = report_dir.name.split('_')
-        info(f'Scanning {repo_parts[0]}/{repo_parts[1]}@{repo_parts[2]}')
+        repo = GithubRepository(repo_parts[0], repo_parts[1], tag=repo_parts[2])
+        info(f'Scanning {repo}')
         old_report = load_report(report_dir)
         if old_report:
             success('Existing report loaded')
-        new_report = scan_repo(repo_parts[0], repo_parts[1], repo_parts[2])
+        new_report = scan_repo(repo)
         if compare_reports(old_report, new_report):
             success('No changes detected')
         else:
