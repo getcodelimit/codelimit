@@ -12,7 +12,7 @@ from codelimit.commands.report import report_command, ReportFormat
 from codelimit.commands.scan import scan_command
 from codelimit.common.Configuration import Configuration
 from codelimit.common.utils import configure_github_repository
-from codelimit.utils import success
+from codelimit.utils import success, fail
 from codelimit.version import version
 
 
@@ -82,6 +82,9 @@ def badge(
 ):
     Configuration.load(path)
     configure_github_repository(path)
+    if not Configuration.repository:
+        fail("Could not determine repository information.")
+        raise typer.Exit(1)
     owner = Configuration.repository.owner
     name = Configuration.repository.name
     branch = Configuration.repository.branch
