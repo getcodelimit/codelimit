@@ -15,7 +15,7 @@ from codelimit.languages import Languages
 
 def check_command(paths: list[Path], quiet: bool):
     check_result = CheckResult()
-    excludes_spec = PathSpec.from_lines("gitignore", Configuration.excludes)
+    excludes_spec = PathSpec.from_lines("gitignore", Configuration.exclude)
     for path in paths:
         if path.is_file():
             _handle_file_path(path, check_result, excludes_spec)

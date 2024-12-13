@@ -125,7 +125,7 @@ def _report_functions_markdown(
     result += "| --- | ---: | ---: | ---: | --- |\n"
     for unit in report_units:
         file_path = unit.file if root is None else root.joinpath(unit.file)
-        type = "✖" if unit.measurement.value > 60 else "⚠"
+        type = "\u274C" if unit.measurement.value > 60 else "\u26A0"
         result += (
             f"| {str(file_path)} | {unit.measurement.start.line} | {unit.measurement.start.column} | "
             f"{unit.measurement.value} | {type} {unit.measurement.unit_name} |\n"

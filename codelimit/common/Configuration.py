@@ -2,10 +2,13 @@ from pathlib import Path
 
 from yaml import load, FullLoader
 
+from codelimit.common.GithubRepository import GithubRepository
+
 
 class Configuration:
-    excludes: list[str] = []
+    exclude: list[str] = []
     verbose = False
+    repository: GithubRepository | None = None
 
     @classmethod
     def load(cls, root: Path):
@@ -14,7 +17,7 @@ class Configuration:
             return
         with open(config_path) as f:
             d = load(f, Loader=FullLoader)
-        if "excludes" in d:
-            cls.excludes.extend(d["excludes"])
+        if "exclude" in d:
+            cls.exclude.extend(d["exclude"])
         if "verbose" in d:
             cls.verbose = d["verbose"]

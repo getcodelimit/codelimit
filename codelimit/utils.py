@@ -5,9 +5,22 @@ import requests  # type: ignore
 import typer
 from rich.progress import Progress, SpinnerColumn, TextColumn
 
+from codelimit.common.console import console
 from codelimit.common.report.Report import Report
 from codelimit.common.report.ReportReader import ReportReader
 from codelimit.common.report.ReportWriter import ReportWriter
+
+
+def info(text: str):
+    console.print(f'[bold]ℹ︎[/bold] {text}', soft_wrap=True)
+
+
+def success(text: str):
+    console.print(f'[green]✔[/green] {text}', soft_wrap=True)
+
+
+def fail(text: str):
+    console.print(f'[red]⨯[/red] {text}', soft_wrap=True)
 
 
 def make_report_path(root: Path) -> Path:
@@ -24,7 +37,7 @@ def read_cached_report(path: Path) -> Optional[Report]:
 
 
 def upload_report(
-    report: Report, repository: str, branch: str, url: str, token: str
+        report: Report, repository: str, branch: str, url: str, token: str
 ) -> None:
     result = api_post_report(report, branch, repository, url, token)
     if result.ok:
@@ -44,9 +57,9 @@ def api_post_report(report, branch, repository, url, token):
         f'{{{{"repository": "{repository}", "branch": "{branch}", "report":{{}}}}}}'
     )
     with Progress(
-        SpinnerColumn(),
-        TextColumn("[progress.description]{task.description}"),
-        transient=True,
+            SpinnerColumn(),
+            TextColumn("[progress.description]{task.description}"),
+            transient=True,
     ) as progress:
         progress.add_task(description=f"Uploading report to {url}", total=None)
         result = requests.post(

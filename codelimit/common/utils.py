@@ -2,12 +2,16 @@ import hashlib
 import os
 import sys
 from math import ceil
+from pathlib import Path
 from typing import Union, Any
 
 from rich.style import Style
 from rich.text import Text
+from sh import git, ErrorReturnCode
 
+from codelimit.common.Configuration import Configuration
 from codelimit.common.Measurement import Measurement
+from codelimit.common.GithubRepository import GithubRepository
 from codelimit.common.gsm.Expression import Expression
 from codelimit.common.gsm.operator.Operator import Operator
 from codelimit.common.token_matching.predicate.TokenValue import TokenValue
@@ -66,7 +70,7 @@ def render_quality_profile(profile: list[int]) -> Text:
 def path_has_extension(path: str, suffixes: Union[str, list[str]]):
     dot_index = path.rfind(".")
     if dot_index >= 0:
-        suffix = path[dot_index + 1 :]
+        suffix = path[dot_index + 1:]
         if isinstance(suffixes, list):
             return suffix in suffixes
         else:
@@ -199,3 +203,32 @@ def replace_string_literal_with_predicate(expression: Expression) -> Expression:
                 )
             )
         ]
+
+
+def _get_git_branch(path: Path) -> str | None:
+    try:
+        out = git('rev-parse', '--abbrev-ref', 'HEAD', _cwd=path)
+        return out.strip()
+    except ErrorReturnCode:
+        return None
+
+
+def _get_remote_url(path: Path) -> str | None:
+    try:
+        out = git('config', '--get', 'remote.origin.url', _cwd=path)
+        return out.strip()
+    except ErrorReturnCode:
+        return None
+
+
+def configure_github_repository(path: Path):
+    branch = _get_git_branch(path)
+    url = _get_remote_url(path)
+    if not url or not branch:
+        return
+    if url.startswith('git@github.com:') and url.endswith('.git'):
+        [owner, name] = url[15:-4].split('/')
+        Configuration.repository = GithubRepository(owner, name, branch=branch)
+    elif url.startswith('https://github.com/') and url.endswith('.git'):
+        [owner, name] = url[19:-4].split('/')
+        Configuration.repository = GithubRepository(owner, name, branch=branch)
