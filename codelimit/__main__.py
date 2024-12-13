@@ -12,7 +12,7 @@ from codelimit.commands.report import report_command, ReportFormat
 from codelimit.commands.scan import scan_command
 from codelimit.common.Configuration import Configuration
 from codelimit.common.utils import configure_github_repository
-from codelimit.utils import success, info
+from codelimit.utils import success
 from codelimit.version import version
 
 
