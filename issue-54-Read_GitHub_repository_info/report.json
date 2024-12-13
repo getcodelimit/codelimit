@@ -1,12 +1,12 @@
 {
   "version": "0.13.0",
-  "uuid": "51756722-5366-468a-afb9-3bc7e16022e7",
+  "uuid": "5649f687-5355-4f14-8fd9-10798075dded",
   "root": "/github/workspace",
   "codebase": {
     "totals": {
       "Python": {
         "files": 83,
-        "lines_of_code": 2714,
+        "lines_of_code": 2717,
         "functions": 322,
         "hard_to_maintain": 0,
         "unmaintainable": 0
@@ -18,7 +18,7 @@
           "main.py",
           "codelimit/"
         ],
-        "profile": [1513, 656, 0, 0]
+        "profile": [1498, 674, 0, 0]
       },
       "codelimit/": {
         "entries": [
@@ -31,7 +31,7 @@
           "languages/",
           "commands/"
         ],
-        "profile": [1513, 656, 0, 0]
+        "profile": [1498, 674, 0, 0]
       },
       "codelimit/common/": {
         "entries": [
@@ -208,18 +208,18 @@
         ]
       },
       "codelimit/__main__.py": {
-        "checksum": "ea1bdd58a9c1f6561d6e7457831eaedc",
+        "checksum": "e7b849a76f7f755e28ff55874293358a",
         "language": "Python",
-        "loc": 98,
-        "profile": [59, 16, 0, 0],
+        "loc": 101,
+        "profile": [44, 34, 0, 0],
         "measurements": [
           {"unit_name": "list_commands", "start": {"line": 20, "column": 5}, "end": {"line": 21, "column": 35}, "value": 2},
           {"unit_name": "check", "start": {"line": 31, "column": 1}, "end": {"line": 43, "column": 32}, "value": 13},
           {"unit_name": "scan", "start": {"line": 47, "column": 1}, "end": {"line": 59, "column": 23}, "value": 13},
           {"unit_name": "report", "start": {"line": 63, "column": 1}, "end": {"line": 74, "column": 44}, "value": 12},
-          {"unit_name": "badge", "start": {"line": 78, "column": 1}, "end": {"line": 92, "column": 51}, "value": 15},
-          {"unit_name": "_version_callback", "start": {"line": 95, "column": 1}, "end": {"line": 98, "column": 27}, "value": 4},
-          {"unit_name": "main", "start": {"line": 102, "column": 1}, "end": {"line": 118, "column": 27}, "value": 16}
+          {"unit_name": "badge", "start": {"line": 78, "column": 1}, "end": {"line": 95, "column": 51}, "value": 18},
+          {"unit_name": "_version_callback", "start": {"line": 98, "column": 1}, "end": {"line": 101, "column": 27}, "value": 4},
+          {"unit_name": "main", "start": {"line": 105, "column": 1}, "end": {"line": 121, "column": 27}, "value": 16}
         ]
       },
       "codelimit/utils.py": {
