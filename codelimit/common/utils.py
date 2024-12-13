@@ -224,6 +224,8 @@ def _get_remote_url(path: Path) -> str | None:
 def configure_github_repository(path: Path):
     branch = _get_git_branch(path)
     url = _get_remote_url(path)
+    if not url or not branch:
+        return
     if url.startswith('git@github.com:') and url.endswith('.git'):
         [owner, name] = url[15:-4].split('/')
         Configuration.repository = GithubRepository(owner, name, branch=branch)

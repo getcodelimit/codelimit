@@ -38,7 +38,7 @@ def check(
         ] = False,
 ):
     if exclude:
-        Configuration.excludes.extend(exclude)
+        Configuration.exclude.extend(exclude)
     Configuration.load(Path('.'))
     check_command(paths, quiet)
 
@@ -53,7 +53,7 @@ def scan(
         ] = None,
 ):
     if exclude:
-        Configuration.excludes.extend(exclude)
+        Configuration.exclude.extend(exclude)
     Configuration.load(path)
     configure_github_repository(path)
     scan_command(path)
@@ -86,7 +86,7 @@ def badge(
     name = Configuration.repository.name
     branch = Configuration.repository.branch
     badge_markdown = (f'[![CodeLimit](https://github.com/{owner}/{name}/blob/_codelimit_reports/{branch}/badge.svg)]('
-                      f'https://github.com/{owner}/{name}/blob/_codelimit_reports/{branch}/codelimit.md))')
+                      f'https://github.com/{owner}/{name}/blob/_codelimit_reports/{branch}/codelimit.md)')
     print(f'{badge_markdown}\n')
     pyperclip.copy(badge_markdown)
     success("Badge Markdown copied to clipboard!")

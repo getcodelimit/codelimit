@@ -136,10 +136,16 @@ def _scan_file(
     codebase.add_file(entry)
     return entry
 
+def _read_file(path: Path):
+    try:
+        with open(path) as f:
+            return f.read()
+    except UnicodeDecodeError:
+        with open(path, encoding="latin-1") as f:
+            return f.read()
 
 def _analyze_file(path, rel_path, checksum, lexer):
-    with open(path) as f:
-        code = f.read()
+    code = _read_file(path)
     all_tokens = lex(lexer, code, False)
     code_tokens = filter_tokens(all_tokens)
     file_loc = count_lines(code_tokens)
@@ -176,7 +182,7 @@ def scan_file(tokens: list[Token], language: Language) -> list[Measurement]:
 
 def _generate_exclude_spec(root: Path) -> PathSpec:
     excludes = DEFAULT_EXCLUDES.copy()
-    excludes.extend(Configuration.excludes)
+    excludes.extend(Configuration.exclude)
     gitignore_excludes = _read_gitignore(root)
     if gitignore_excludes:
         excludes.extend(gitignore_excludes)
