@@ -1,6 +1,22 @@
 # CHANGELOG
 
 
+## v0.14.0 (2024-12-13)
+
+### Documentation
+
+- 📝 Moved documentation to own repo
+  ([`d7d16a3`](https://github.com/getcodelimit/codelimit/commit/d7d16a3a71360c490d2e894a447f4743915a13ff))
+
+### Features
+
+- ✨ Read GitHub repository info ([#55](https://github.com/getcodelimit/codelimit/pull/55),
+  [`735406e`](https://github.com/getcodelimit/codelimit/commit/735406ee1aab3f94845a07070cfba163540c96b1))
+
+- ✨ Setup regression test ([#53](https://github.com/getcodelimit/codelimit/pull/53),
+  [`2854406`](https://github.com/getcodelimit/codelimit/commit/285440614fc77113e66bb9997259dcc225cd4a87))
+
+
 ## v0.13.0 (2024-12-08)
 
 ### Features
