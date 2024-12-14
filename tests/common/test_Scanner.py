@@ -86,6 +86,7 @@ def test_is_excluded():
     excludes_spec = PathSpec.from_lines("gitignore", DEFAULT_EXCLUDES)
 
     assert is_excluded(Path("venv/foo/bar.py"), excludes_spec)
+    assert is_excluded(Path("tests/test_utils.py"), excludes_spec)
     assert not is_excluded(Path("foo/bar.py"), excludes_spec)
 
     excludes_spec = PathSpec.from_lines("gitignore", ["output"])
