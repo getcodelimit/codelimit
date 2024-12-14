@@ -1,12 +1,12 @@
 {
-  "version": "0.13.0",
-  "uuid": "49030a56-b920-4008-9608-9b9dcde116c9",
+  "version": "0.14.0",
+  "uuid": "21ae5ddc-f6d9-4369-84e9-a93aa96511b7",
   "root": "/github/workspace",
   "codebase": {
     "totals": {
       "Python": {
         "files": 83,
-        "lines_of_code": 2717,
+        "lines_of_code": 2716,
         "functions": 322,
         "hard_to_maintain": 0,
         "unmaintainable": 0
@@ -238,7 +238,7 @@
         ]
       },
       "codelimit/version.py": {
-        "checksum": "211a705b5f7699e23d3591303fd8d05d",
+        "checksum": "c1652ad019738ee9c62266728becb78d",
         "language": "Python",
         "loc": 1,
         "profile": [0, 0, 0, 0],
@@ -386,7 +386,7 @@
         ]
       },
       "codelimit/common/Scanner.py": {
-        "checksum": "3f8c95a52bb7129612fbf1f56f7071ed",
+        "checksum": "e57e6f748066c12de0ecbc8396300e44",
         "language": "Python",
         "loc": 204,
         "profile": [74, 71, 0, 0],
@@ -400,7 +400,7 @@
           {"unit_name": "_read_file", "start": {"line": 139, "column": 1}, "end": {"line": 145, "column": 28}, "value": 7},
           {"unit_name": "_analyze_file", "start": {"line": 147, "column": 1}, "end": {"line": 161, "column": 17}, "value": 15},
           {"unit_name": "scan_file", "start": {"line": 164, "column": 1}, "end": {"line": 180, "column": 24}, "value": 17},
-          {"unit_name": "_generate_exclude_spec", "start": {"line": 183, "column": 1}, "end": {"line": 189, "column": 54}, "value": 7},
+          {"unit_name": "generate_exclude_spec", "start": {"line": 183, "column": 1}, "end": {"line": 189, "column": 54}, "value": 7},
           {"unit_name": "_read_gitignore", "start": {"line": 192, "column": 1}, "end": {"line": 196, "column": 16}, "value": 5},
           {"unit_name": "is_excluded", "start": {"line": 199, "column": 1}, "end": {"line": 200, "column": 33}, "value": 2}
         ]
@@ -1151,14 +1151,14 @@
         ]
       },
       "codelimit/commands/check.py": {
-        "checksum": "438c4dd1167dfada514e9f1cd36906a3",
+        "checksum": "395753bc09b05d8b46b2693e24c33c80",
         "language": "Python",
-        "loc": 64,
+        "loc": 63,
         "profile": [10, 43, 0, 0],
         "measurements": [
-          {"unit_name": "check_command", "start": {"line": 16, "column": 1}, "end": {"line": 39, "column": 37}, "value": 24},
-          {"unit_name": "_handle_file_path", "start": {"line": 42, "column": 1}, "end": {"line": 51, "column": 35}, "value": 10},
-          {"unit_name": "check_file", "start": {"line": 54, "column": 1}, "end": {"line": 72, "column": 42}, "value": 19}
+          {"unit_name": "check_command", "start": {"line": 15, "column": 1}, "end": {"line": 38, "column": 37}, "value": 24},
+          {"unit_name": "_handle_file_path", "start": {"line": 41, "column": 1}, "end": {"line": 50, "column": 35}, "value": 10},
+          {"unit_name": "check_file", "start": {"line": 53, "column": 1}, "end": {"line": 71, "column": 42}, "value": 19}
         ]
       }
     }
