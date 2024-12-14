@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v0.14.1 (2024-12-14)
+
+### Bug Fixes
+
+- 🐛 Fix check command ([#56](https://github.com/getcodelimit/codelimit/pull/56),
+  [`fead1ab`](https://github.com/getcodelimit/codelimit/commit/fead1ab24793ab6c162ef0a42c01cf6619fc6ccb))
+
+
 ## v0.14.0 (2024-12-13)
 
 ### Documentation
