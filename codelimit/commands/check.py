@@ -7,15 +7,14 @@ from pygments.lexers import get_lexer_for_filename
 from pygments.util import ClassNotFound
 
 from codelimit.common.CheckResult import CheckResult
-from codelimit.common.Configuration import Configuration
-from codelimit.common.Scanner import is_excluded, scan_file
+from codelimit.common.Scanner import is_excluded, scan_file, generate_exclude_spec
 from codelimit.common.lexer_utils import lex
 from codelimit.languages import Languages
 
 
 def check_command(paths: list[Path], quiet: bool):
     check_result = CheckResult()
-    excludes_spec = PathSpec.from_lines("gitignore", Configuration.exclude)
+    excludes_spec = generate_exclude_spec(Path.cwd())
     for path in paths:
         if path.is_file():
             _handle_file_path(path, check_result, excludes_spec)
@@ -25,7 +24,7 @@ def check_command(paths: list[Path], quiet: bool):
                 dirs[:] = [d for d in dirs if not d[0] == "."]
                 for file in files:
                     abs_path = Path(os.path.join(root, file))
-                    rel_path = abs_path.relative_to(path.absolute())
+                    rel_path = abs_path.relative_to(Path.cwd())
                     if is_excluded(rel_path, excludes_spec):
                         continue
                     check_file(abs_path, check_result)

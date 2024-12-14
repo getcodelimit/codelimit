@@ -83,7 +83,7 @@ def scan_path(path: Path, cached_report: Union[Report, None] = None,
               add_file_entry_callback: Union[Callable[[SourceFileEntry], None], None] = None,
               ) -> Codebase:
     result = Codebase(str(path.resolve().absolute()))
-    excludes_spec = _generate_exclude_spec(path)
+    excludes_spec = generate_exclude_spec(path)
     for root, dirs, files in os.walk(path.absolute()):
         files = [f for f in files if not f[0] == "."]
         dirs[:] = [d for d in dirs if not d[0] == "."]
@@ -180,7 +180,7 @@ def scan_file(tokens: list[Token], language: Language) -> list[Measurement]:
     return measurements
 
 
-def _generate_exclude_spec(root: Path) -> PathSpec:
+def generate_exclude_spec(root: Path) -> PathSpec:
     excludes = DEFAULT_EXCLUDES.copy()
     excludes.extend(Configuration.exclude)
     gitignore_excludes = _read_gitignore(root)
