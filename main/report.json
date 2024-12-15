@@ -1,6 +1,6 @@
 {
-  "version": "0.14.0",
-  "uuid": "21ae5ddc-f6d9-4369-84e9-a93aa96511b7",
+  "version": "0.14.1",
+  "uuid": "b7a66426-b9c0-434b-8421-db473a076f17",
   "root": "/github/workspace",
   "codebase": {
     "totals": {
@@ -238,7 +238,7 @@
         ]
       },
       "codelimit/version.py": {
-        "checksum": "c1652ad019738ee9c62266728becb78d",
+        "checksum": "8853e08d8666f1dcf361fbc8dd8d6e6f",
         "language": "Python",
         "loc": 1,
         "profile": [0, 0, 0, 0],
@@ -437,7 +437,7 @@
         ]
       },
       "codelimit/common/utils.py": {
-        "checksum": "f015bd3896ec5890bef26e6f3e3a5087",
+        "checksum": "d80d861a6d42a4799f07432c24779847",
         "language": "Python",
         "loc": 195,
         "profile": [103, 78, 0, 0],
