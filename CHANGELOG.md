@@ -1,6 +1,15 @@
 # CHANGELOG
 
 
+## v0.14.2 (2024-12-15)
+
+### Bug Fixes
+
+- 🐛 Import Error when running from nox in woodpecker...
+  ([#58](https://github.com/getcodelimit/codelimit/pull/58),
+  [`dc29c75`](https://github.com/getcodelimit/codelimit/commit/dc29c75ad2bd345d539a9837dbde068135a3deee))
+
+
 ## v0.14.1 (2024-12-14)
 
 ### Bug Fixes
