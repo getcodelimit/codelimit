@@ -5,13 +5,13 @@ from math import ceil
 from pathlib import Path
 from typing import Union, Any
 
+import sh
 from rich.style import Style
 from rich.text import Text
-from sh import git, ErrorReturnCode
 
 from codelimit.common.Configuration import Configuration
-from codelimit.common.Measurement import Measurement
 from codelimit.common.GithubRepository import GithubRepository
+from codelimit.common.Measurement import Measurement
 from codelimit.common.gsm.Expression import Expression
 from codelimit.common.gsm.operator.Operator import Operator
 from codelimit.common.token_matching.predicate.TokenValue import TokenValue
@@ -207,17 +207,17 @@ def replace_string_literal_with_predicate(expression: Expression) -> Expression:
 
 def _get_git_branch(path: Path) -> str | None:
     try:
-        out = git('rev-parse', '--abbrev-ref', 'HEAD', _cwd=path)
+        out = sh.git('rev-parse', '--abbrev-ref', 'HEAD', _cwd=path)
         return out.strip()
-    except ErrorReturnCode:
+    except sh.ErrorReturnCode | sh.CommandNotFound:
         return None
 
 
 def _get_remote_url(path: Path) -> str | None:
     try:
-        out = git('config', '--get', 'remote.origin.url', _cwd=path)
+        out = sh.git('config', '--get', 'remote.origin.url', _cwd=path)
         return out.strip()
-    except ErrorReturnCode:
+    except sh.ErrorReturnCode | sh.CommandNotFound:
         return None
 
 
