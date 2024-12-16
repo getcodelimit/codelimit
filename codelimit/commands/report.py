@@ -38,7 +38,7 @@ def report_command(path: Path, full: bool, totals: bool, fmt: ReportFormat):
 def _report_totals_markdown(st: ScanTotals) -> str:
     result = ""
     result += (
-        "| **Language** | **Files** | **Lines of Code** | **Functions** | ⚠ | ✖ |\n"
+        "| **Language** | **Files** | **Lines of Code** | **Functions** | ⚠ | \u274C |\n"
     )
     result += "| --- | ---: | ---: | ---: | ---: | ---: |\n"
     for lt in st.languages_totals():
