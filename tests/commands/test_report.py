@@ -20,7 +20,7 @@ def test_report_totals_markdown_one_language():
     result = _report_totals_markdown(st)
 
     assert result == (
-        "| **Language** | **Files** | **Lines of Code** | **Functions** | ⚠ | ✖ |\n"
+        "| **Language** | **Files** | **Lines of Code** | **Functions** | \u26A0 | \u274C |\n"
         "| --- | ---: | ---: | ---: | ---: | ---: |\n"
         "| Python | 1 | 2 | 3 | 4 | 5 |\n"
     )
@@ -43,7 +43,7 @@ def test_report_totals_markdown_two_languages():
     result = _report_totals_markdown(st)
 
     assert result == (
-        "| **Language** | **Files** | **Lines of Code** | **Functions** | ⚠ | ✖ |\n"
+        "| **Language** | **Files** | **Lines of Code** | **Functions** | \u26A0 | \u274C |\n"
         "| --- | ---: | ---: | ---: | ---: | ---: |\n"
         "| Python | 1 | 2 | 3 | 4 | 5 |\n"
         "| TypeScript | 1 | 2 | 3 | 4 | 5 |\n"
