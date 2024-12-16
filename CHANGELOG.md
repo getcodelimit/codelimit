@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v0.14.3 (2024-12-16)
+
+### Bug Fixes
+
+- 🐛 Fix for git dubious ownership messages
+  ([`545f0fc`](https://github.com/getcodelimit/codelimit/commit/545f0fc090f20c1cf0d490c34876cb444add8862))
+
+
 ## v0.14.2 (2024-12-15)
 
 ### Bug Fixes
