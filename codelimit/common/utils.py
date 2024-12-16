@@ -207,7 +207,7 @@ def replace_string_literal_with_predicate(expression: Expression) -> Expression:
 
 def _get_git_branch(path: Path) -> str | None:
     try:
-        out = sh.git('rev-parse', '--abbrev-ref', 'HEAD', _cwd=path)
+        out = sh.git('-c', f'safe.directory={path.resolve()}', 'rev-parse', '--abbrev-ref', 'HEAD', _cwd=path)
         return out.strip()
     except sh.ErrorReturnCode | sh.CommandNotFound:
         return None
@@ -215,7 +215,7 @@ def _get_git_branch(path: Path) -> str | None:
 
 def _get_remote_url(path: Path) -> str | None:
     try:
-        out = sh.git('config', '--get', 'remote.origin.url', _cwd=path)
+        out = sh.git('-c', f'safe.directory={path.resolve()}', 'config', '--get', 'remote.origin.url', _cwd=path)
         return out.strip()
     except sh.ErrorReturnCode | sh.CommandNotFound:
         return None
