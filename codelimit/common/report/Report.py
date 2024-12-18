@@ -2,6 +2,7 @@ from math import floor, ceil
 from uuid import uuid4
 
 from codelimit.common.Codebase import Codebase
+from codelimit.common.GithubRepository import GithubRepository
 from codelimit.common.report.ReportUnit import ReportUnit
 from codelimit.common.utils import make_profile
 from codelimit.version import version
@@ -10,9 +11,10 @@ from codelimit.version import version
 class Report:
     VERSION = version
 
-    def __init__(self, codebase: Codebase):
+    def __init__(self, codebase: Codebase, repository: GithubRepository | None = None):
         self.version: str | None = self.VERSION
         self.uuid = str(uuid4())
+        self.repository = repository
         self.codebase = codebase
 
     def get_average(self):

@@ -6,11 +6,11 @@ from rich import print
 from rich.console import Console
 from rich.text import Text
 
+from codelimit.commands.report.format_markdown import report_functions_markdown, report_totals_markdown
 from codelimit.common.ScanResultTable import ScanResultTable
 from codelimit.common.ScanTotals import ScanTotals
 from codelimit.common.report.Report import Report
 from codelimit.common.report.ReportReader import ReportReader
-from codelimit.common.report.ReportUnit import ReportUnit
 from codelimit.common.utils import format_measurement
 from codelimit.utils import make_report_path
 
@@ -28,38 +28,11 @@ def report_command(path: Path, full: bool, totals: bool, fmt: ReportFormat):
     if totals:
         scan_totals = ScanTotals(report.codebase.totals)
         if fmt == ReportFormat.markdown:
-            stdout.print(_report_totals_markdown(scan_totals), soft_wrap=True)
+            stdout.print(report_totals_markdown(scan_totals), soft_wrap=True)
         else:
             stdout.print(ScanResultTable(scan_totals), soft_wrap=True)
     else:
         _report_functions(report, path, full, fmt, stdout)
-
-
-def _report_totals_markdown(st: ScanTotals) -> str:
-    result = ""
-    result += (
-        "| **Language** | **Files** | **Lines of Code** | **Functions** | \u26A0 | \u274C |\n"
-    )
-    result += "| --- | ---: | ---: | ---: | ---: | ---: |\n"
-    for lt in st.languages_totals():
-        result += (
-            f"| {lt.language} | "
-            f"{lt.files} | "
-            f"{lt.loc} | "
-            f"{lt.functions} | "
-            f"{lt.hard_to_maintain} | "
-            f"{lt.unmaintainable} |\n"
-        )
-    if len(st.languages_totals()) > 1:
-        result += (
-            f"| **Totals** | "
-            f"**{st.total_files()}** | "
-            f"**{st.total_loc()}** | "
-            f"**{st.total_functions()}** | "
-            f"**{st.total_hard_to_maintain()}** | "
-            f"**{st.total_unmaintainable()}** |"
-        )
-    return result
 
 
 def _report_functions(report: Report, path: Path, full: bool, fmt, console: Console):
@@ -75,7 +48,7 @@ def _report_functions(report: Report, path: Path, full: bool, fmt, console: Cons
         report_units = units[0:REPORT_LENGTH]
     root = get_root(path)
     if fmt == ReportFormat.markdown:
-        console.print(_report_functions_markdown(root, report_units), soft_wrap=True)
+        console.print(report_functions_markdown(root, report_units, report.repository), soft_wrap=True)
     else:
         console.print(
             _report_functions_text(root, units, report_units, full), soft_wrap=True
@@ -113,21 +86,5 @@ def _report_functions_text(root, units, report_units, full) -> Text:
     if not full and len(units) > REPORT_LENGTH:
         result.append(
             f"{len(units) - REPORT_LENGTH} more rows, use --full option to get all rows\n", style="bold"
-        )
-    return result
-
-
-def _report_functions_markdown(
-        root: Path | None, report_units: list[ReportUnit]
-) -> str:
-    result = ""
-    result += "| **File** | **Line** | **Column** | **Length** | **Function** |\n"
-    result += "| --- | ---: | ---: | ---: | --- |\n"
-    for unit in report_units:
-        file_path = unit.file if root is None else root.joinpath(unit.file)
-        type = "\u274C" if unit.measurement.value > 60 else "\u26A0"
-        result += (
-            f"| {str(file_path)} | {unit.measurement.start.line} | {unit.measurement.start.column} | "
-            f"{unit.measurement.value} | {type} {unit.measurement.unit_name} |\n"
         )
     return result

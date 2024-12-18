@@ -2,6 +2,7 @@ from json import loads
 from typing import Optional
 
 from codelimit.common.Codebase import Codebase
+from codelimit.common.GithubRepository import GithubRepository
 from codelimit.common.Location import Location
 from codelimit.common.Measurement import Measurement
 from codelimit.common.SourceFileEntry import SourceFileEntry
@@ -18,7 +19,11 @@ class ReportReader:
     def from_json(json: str) -> Report:
         d = loads(json)
         codebase = Codebase(d["root"])
-        report = Report(codebase)
+        if 'repository' in d:
+            repository = GithubRepository(**d["repository"])
+            report = Report(codebase, repository)
+        else:
+            report = Report(codebase)
         report.uuid = d["uuid"]
         for k, v in d["codebase"]["files"].items():
             measurements: list[Measurement] = []

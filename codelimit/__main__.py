@@ -8,7 +8,7 @@ from rich import print
 from typer.core import TyperGroup
 
 from codelimit.commands.check import check_command
-from codelimit.commands.report import report_command, ReportFormat
+from codelimit.commands.report.report import ReportFormat, report_command
 from codelimit.commands.scan import scan_command
 from codelimit.common.Configuration import Configuration
 from codelimit.common.utils import configure_github_repository

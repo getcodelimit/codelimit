@@ -19,14 +19,13 @@ class ReportWriter:
         self.level = 0
         json = ""
         json += self._open("{")
-        json += self._collection(
-            [
-                self._line(f'"version": "{self.report.version}"'),
-                self._line(f'"uuid": "{self.report.uuid}"'),
-                self._line(f'"root": "{self.report.codebase.root}"'),
-                self._codebase_to_json(),
-            ]
-        )
+        content: [str] = [self._line(f'"version": "{self.report.version}"'),
+                          self._line(f'"uuid": "{self.report.uuid}"'),
+                          self._line(f'"root": "{self.report.codebase.root}"')]
+        if self.report.repository:
+            content.append(self._repository_to_json())
+        content.append(self._codebase_to_json())
+        json += self._collection(content)
         json += self._close("}")
         return json
 
@@ -50,7 +49,16 @@ class ReportWriter:
         json = separator.join([i.rstrip() for i in items])
         return json + "\n" if self.pretty_print and len(items) > 0 else json
 
-    def _codebase_to_json(self):
+    def _repository_to_json(self):
+        json = ""
+        json += self._open('"repository": {')
+        json += self._collection([self._line(f'"owner": "{self.report.repository.owner}"'),
+                                  self._line(f'"name": "{self.report.repository.name}"'),
+                                  self._line(f'"branch": "{self.report.repository.branch}"')])
+        json += self._close("}")
+        return json
+
+    def _codebase_to_json(self) -> str:
         json = ""
         json += self._open('"codebase": {')
         json += self._collection(

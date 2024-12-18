@@ -1,4 +1,5 @@
 from codelimit.common.Codebase import Codebase
+from codelimit.common.GithubRepository import GithubRepository
 from codelimit.common.Location import Location
 from codelimit.common.Measurement import Measurement
 from codelimit.common.SourceFileEntry import SourceFileEntry
@@ -145,6 +146,35 @@ def test_profile():
     result = ReportReader.from_json(json)
 
     assert result.codebase.tree["./"].profile == [0, 20, 0, 0]
+
+def test_repository():
+    codebase = Codebase("/")
+    codebase.add_file(
+        SourceFileEntry(
+            "foo.py",
+            "abcd1234",
+            "Python",
+            20,
+            [Measurement("bar()", Location(10, 1), Location(30, 1), 20)],
+        )
+    )
+    report = Report(codebase)
+
+    json = ReportWriter(report).to_json()
+    result = ReportReader.from_json(json)
+
+    assert result.repository is None
+
+    report = Report(codebase, GithubRepository("getcodelimit", "codelimit", branch="main"))
+
+    json = ReportWriter(report).to_json()
+    result = ReportReader.from_json(json)
+
+    assert result.repository is not None
+    assert result.repository.owner == "getcodelimit"
+    assert result.repository.name == "codelimit"
+    assert result.repository.branch == "main"
+
 
 
 def test_multiple_files():

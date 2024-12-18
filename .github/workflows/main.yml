@@ -36,11 +36,8 @@ jobs:
           poetry run pyinstaller -n codelimit -F codelimit/__main__.py
           ./dist/codelimit scan .
 
-      - name: 'Run Code Limit action'
+      - name: 'Run CodeLimit action'
         uses: getcodelimit/codelimit-action@main
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          upload: true
 
       - name: 'Upload coverage reports to Codecov'
         uses: codecov/codecov-action@v3

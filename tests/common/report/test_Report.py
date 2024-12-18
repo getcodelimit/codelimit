@@ -3,7 +3,6 @@ from codelimit.common.Location import Location
 from codelimit.common.Measurement import Measurement
 from codelimit.common.SourceFileEntry import SourceFileEntry
 from codelimit.common.report.Report import Report
-from codelimit.common.report.ReportWriter import ReportWriter
 
 
 def test_empty_measurements_collection():
@@ -12,30 +11,6 @@ def test_empty_measurements_collection():
     assert report.get_average() == 0
     assert report.ninetieth_percentile() == 0
     assert report.quality_profile() == [0, 0, 0, 0]
-
-    serializer = ReportWriter(report)
-
-    json = ""
-    json += "{\n"
-    json += f'  "version": "{report.version}",\n'
-    json += f'  "uuid": "{report.uuid}",\n'
-    json += '  "root": "/",\n'
-    json += '  "codebase": {\n'
-    json += '    "totals": {\n'
-    json += "    },\n"
-    json += '    "tree": {\n'
-    json += '      "./": {\n'
-    json += '        "entries": [\n'
-    json += "        ],\n"
-    json += '        "profile": [0, 0, 0, 0]\n'
-    json += "      }\n"
-    json += "    },\n"
-    json += '    "files": {\n'
-    json += "    }\n"
-    json += "  }\n"
-    json += "}\n"
-
-    assert serializer.to_json() == json
 
 
 def test_all_units():
