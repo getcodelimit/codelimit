@@ -229,6 +229,9 @@ def configure_github_repository(path: Path):
     if url.startswith('git@github.com:') and url.endswith('.git'):
         [owner, name] = url[15:-4].split('/')
         Configuration.repository = GithubRepository(owner, name, branch=branch)
-    elif url.startswith('https://github.com/') and url.endswith('.git'):
-        [owner, name] = url[19:-4].split('/')
+    elif url.startswith('https://github.com/'):
+        if url.endswith('.git'):
+            [owner, name] = url[19:-4].split('/')
+        else:
+            [owner, name] = url[19:].split('/')
         Configuration.repository = GithubRepository(owner, name, branch=branch)
