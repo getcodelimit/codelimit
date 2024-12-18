@@ -1,7 +1,15 @@
 # CHANGELOG
 
 
+## v0.15.1 (2024-12-18)
+
+
 ## v0.15.0 (2024-12-18)
+
+### Bug Fixes
+
+- 🐛 Support GHA origin urls
+  ([`42ca221`](https://github.com/getcodelimit/codelimit/commit/42ca221c0abacc449efc825064f7d985f03173ca))
 
 ### Continuous Integration
 
