@@ -1,6 +1,19 @@
 # CHANGELOG
 
 
+## v0.15.0 (2024-12-18)
+
+### Continuous Integration
+
+- 💚 Fix tests
+  ([`788eb0a`](https://github.com/getcodelimit/codelimit/commit/788eb0a12f3bdd2666148477fbe067d45aeed613))
+
+### Features
+
+- ✨ Link to functions
+  ([`b4a9e0d`](https://github.com/getcodelimit/codelimit/commit/b4a9e0d3c0b6331383127230e6c4e133185faf78))
+
+
 ## v0.14.3 (2024-12-16)
 
 ### Bug Fixes
