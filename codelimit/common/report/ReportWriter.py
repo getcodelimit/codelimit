@@ -1,5 +1,3 @@
-from typing import List
-
 from codelimit.common.CodebseEntry import CodebaseEntry
 from codelimit.common.LanguageTotals import LanguageTotals
 from codelimit.common.Measurement import Measurement
