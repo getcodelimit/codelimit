@@ -13,6 +13,11 @@ def test_empty_measurements_collection():
     assert report.quality_profile() == [0, 0, 0, 0]
 
 
+def test_quality_profile_percentage():
+    report = Report(Codebase("/"))
+    assert report.quality_profile_percentage() == (100, 0, 0, 0)
+
+
 def test_all_units():
     codebase = Codebase("/")
     codebase.add_file(
