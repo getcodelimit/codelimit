@@ -62,12 +62,13 @@ def findings(
         path: Annotated[
             Path, typer.Argument(exists=True, file_okay=False, help="Codebase root")
         ] = Path("."),
+        full: Annotated[bool, typer.Option("--full", help="Show full findings")] = False,
         fmt: Annotated[
             ReportFormat, typer.Option("--format", help="Output format")
         ] = ReportFormat.text,
 ):
     Configuration.load(path)
-    findings_command(path, fmt)
+    findings_command(path, full, fmt)
 
 
 @cli.command(help="Check file(s)")

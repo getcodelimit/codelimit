@@ -59,5 +59,5 @@ def print_findings(report: Report, console: Console, full: bool = False):
         console.print(format_measurement(function.file, function.measurement))
     if not full and total_findings > 10:
         console.print(
-            f"{total_findings - 10} more rows, use --findings option to get all rows\n", style="bold"
+            f"{total_findings - 10} more rows, use --full option to get all rows\n", style="bold"
         )

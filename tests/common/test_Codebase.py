@@ -21,13 +21,14 @@ def test_codebase_entry_single_file():
     writer = ReportWriter(report, False)
 
     assert (
-        writer.to_json()
-        == f'{{"version": "{report.version}", "uuid": "{report.uuid}", '
-        '"root": "/", "codebase": {"totals": {"Python": {"files": 1, "lines_of_code": '
-        '20, "functions": 0, "hard_to_maintain": 0, "unmaintainable": 0}}, "tree": '
-        '{"./": {"entries": ["foo.py"], "profile": [0, 0, 0, 0]}}, "files": '
-        '{"foo.py": {"checksum": "abcd1234", "language": "Python", "loc": 20, '
-        '"profile": [0, 0, 0, 0], "measurements": []}}}}'
+            writer.to_json()
+            == f'{{"version": "{report.version}", "uuid": "{report.uuid}", '
+               f'"timestamp": "{report.timestamp}", '
+               '"root": "/", "codebase": {"totals": {"Python": {"files": 1, "lines_of_code": '
+               '20, "functions": 0, "hard_to_maintain": 0, "unmaintainable": 0}}, "tree": '
+               '{"./": {"entries": ["foo.py"], "profile": [0, 0, 0, 0]}}, "files": '
+               '{"foo.py": {"checksum": "abcd1234", "language": "Python", "loc": 20, '
+               '"profile": [0, 0, 0, 0], "measurements": []}}}}'
     )
 
 
@@ -38,14 +39,15 @@ def test_codebase_entry_single_folder_single_file():
     writer = ReportWriter(report, False)
 
     assert (
-        writer.to_json()
-        == f'{{"version": "{report.version}", "uuid": "{report.uuid}", '
-        '"root": "/", "codebase": {"totals": {"Python": {"files": 1, "lines_of_code": '
-        '20, "functions": 0, "hard_to_maintain": 0, "unmaintainable": 0}}, "tree": '
-        '{"./": {"entries": ["foo/"], "profile": [0, 0, 0, 0]}, "foo/": {"entries": '
-        '["bar.py"], "profile": [0, 0, 0, 0]}}, "files": {"foo/bar.py": {"checksum": '
-        '"abcd1234", "language": "Python", "loc": 20, "profile": [0, 0, 0, 0], '
-        '"measurements": []}}}}'
+            writer.to_json()
+            == f'{{"version": "{report.version}", "uuid": "{report.uuid}", '
+               f'"timestamp": "{report.timestamp}", '
+               '"root": "/", "codebase": {"totals": {"Python": {"files": 1, "lines_of_code": '
+               '20, "functions": 0, "hard_to_maintain": 0, "unmaintainable": 0}}, "tree": '
+               '{"./": {"entries": ["foo/"], "profile": [0, 0, 0, 0]}, "foo/": {"entries": '
+               '["bar.py"], "profile": [0, 0, 0, 0]}}, "files": {"foo/bar.py": {"checksum": '
+               '"abcd1234", "language": "Python", "loc": 20, "profile": [0, 0, 0, 0], '
+               '"measurements": []}}}}'
     )
 
 

@@ -21,6 +21,7 @@ class ReportWriter:
         json += self._open("{")
         content: [str] = [self._line(f'"version": "{self.report.version}"'),
                           self._line(f'"uuid": "{self.report.uuid}"'),
+                          self._line(f'"timestamp": "{self.report.timestamp}"'),
                           self._line(f'"root": "{self.report.codebase.root}"')]
         if self.report.repository:
             content.append(self._repository_to_json())

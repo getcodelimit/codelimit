@@ -1,3 +1,4 @@
+from datetime import datetime, timezone
 from math import floor, ceil
 from uuid import uuid4
 
@@ -14,6 +15,7 @@ class Report:
     def __init__(self, codebase: Codebase, repository: GithubRepository | None = None):
         self.version: str | None = self.VERSION
         self.uuid = str(uuid4())
+        self.timestamp = datetime.now(timezone.utc).isoformat(timespec='seconds')
         self.repository = repository
         self.codebase = codebase
 
