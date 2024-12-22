@@ -21,9 +21,7 @@ from codelimit.common.SourceFileEntry import SourceFileEntry
 from codelimit.common.Token import Token
 from codelimit.common.lexer_utils import lex
 from codelimit.common.report.Report import Report
-from codelimit.common.scope.Scope import count_lines
 from codelimit.common.scope.scope_utils import build_scopes, unfold_scopes
-from codelimit.common.source_utils import filter_tokens
 from codelimit.common.utils import (
     calculate_checksum,
 )
@@ -116,14 +114,13 @@ def _read_file(path: Path):
 def _analyze_file(path, rel_path, checksum, lexer):
     code = _read_file(path)
     all_tokens = lex(lexer, code, False)
-    code_tokens = filter_tokens(all_tokens)
-    file_loc = count_lines(code_tokens)
     language_name = lexer.__class__.name
     language = Languages.by_name[language_name]
     if language:
         measurements = scan_file(all_tokens, language)
     else:
         measurements = []
+    file_loc = sum([m.value for m in measurements])
     entry = SourceFileEntry(
         rel_path, checksum, lexer.__class__.name, file_loc, measurements
     )

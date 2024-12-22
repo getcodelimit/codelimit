@@ -17,8 +17,8 @@ class SummaryTable(Table):
         unmaintainable_text = Text(f"{unmaintainable:n}%")
         if unmaintainable > 0:
             unmaintainable_text.style = "red"
-        elif hard_to_maintain > 20:
+        if hard_to_maintain > 20:
             hard_to_maintain_text.style = "dark_orange"
-        else:
+        if unmaintainable == 0 and hard_to_maintain < 20:
             easy_verbose_text.style = "green"
         self.add_row(easy_verbose_text, hard_to_maintain_text, unmaintainable_text)

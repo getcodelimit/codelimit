@@ -9,7 +9,7 @@ from codelimit.utils import read_report
 
 def findings_command(path: Path, fmt: ReportFormat):
     stdout = Console(soft_wrap=True)
-    report = read_report(path)
+    report = read_report(path, stdout)
     if fmt == ReportFormat.markdown:
         format_markdown.print_findings(report, stdout, True)
     else:

@@ -3,6 +3,7 @@ from typing import Optional
 
 import requests  # type: ignore
 import typer
+from rich.console import Console
 from rich.progress import Progress, SpinnerColumn, TextColumn
 
 from codelimit.common.console import console
@@ -36,15 +37,15 @@ def read_cached_report(path: Path) -> Optional[Report]:
         return None
 
 
-def read_report(path: Path) -> Report:
+def read_report(path: Path, console: Console) -> Report:
     report_path = make_report_path(path)
     if not report_path.exists():
-        print("[red]No cached report found, run scan first[/red]")
+        console.print("[red]No cached report found, run scan first[/red]")
         raise typer.Exit(code=1)
     report_data = report_path.read_text()
     report_version = ReportReader.get_report_version(report_data)
     if report_version != Report.VERSION:
-        print("[red]Report version mismatch, run scan first[/red]")
+        console.print("[red]Report version mismatch, run scan first[/red]")
         raise typer.Exit(code=1)
     return ReportReader.from_json(report_data)
 

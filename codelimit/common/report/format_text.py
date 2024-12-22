@@ -2,9 +2,9 @@ from math import ceil
 
 from rich.console import Console
 
-from codelimit.common.SummaryTable import SummaryTable
 from codelimit.common.ScanResultTable import ScanResultTable
 from codelimit.common.ScanTotals import ScanTotals
+from codelimit.common.SummaryTable import SummaryTable
 from codelimit.common.report.Report import Report
 from codelimit.common.utils import format_measurement
 
@@ -40,14 +40,14 @@ def print_summary(report: Report, console: Console):
     easy, verbose, hard_to_maintain, unmaintainable = report.quality_profile_percentage()
     if unmaintainable > 0:
         console.print(f":stop_sign: {unmaintainable}% of lines of code are unmaintainable, refactoring necessary.",
-                      justify="center")
+                      highlight=False, justify="center")
     elif hard_to_maintain > 20:
         console.print(f":warning: {hard_to_maintain}% of the functions are hard to maintain, refactoring necessary.",
-                      justify="center")
+                      highlight=False, justify="center")
     else:
         console.print(
             f":white_check_mark: {easy + verbose}% of lines of code are maintainable, no refactoring necessary.",
-            justify="center")
+            highlight=False, justify="center")
 
 
 def print_findings(report: Report, console: Console, full: bool = False):
