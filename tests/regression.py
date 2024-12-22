@@ -67,20 +67,23 @@ def run() -> int:
         repo_parts = report_dir.name.split('_')
         repo = GithubRepository(repo_parts[0], repo_parts[1], tag=repo_parts[2])
         info(f'Scanning {repo}')
+        new_report = scan_repo(repo)
         old_report = load_report(report_dir)
         if old_report:
             success('Existing report loaded')
-        new_report = scan_repo(repo)
-        if compare_reports(old_report, new_report):
-            success('No changes detected')
+            if compare_reports(old_report, new_report):
+                success('No changes detected')
+            else:
+                print('Existing report:')
+                console.print(ScanResultTable(ScanTotals(old_report.codebase.totals)), soft_wrap=True)
+                print()
+                print('Current report:')
+                console.print(ScanResultTable(ScanTotals(new_report.codebase.totals)), soft_wrap=True)
+                fail('Changes detected')
+                result = 1
         else:
-            print('Existing report:')
-            console.print(ScanResultTable(ScanTotals(old_report.codebase.totals)), soft_wrap=True)
-            print()
-            print('Current report:')
-            console.print(ScanResultTable(ScanTotals(new_report.codebase.totals)), soft_wrap=True)
-            fail('Changes detected')
-            result = 1
+            save_report(report_dir, new_report)
+            success('New report saved')
     return result
 
 

@@ -1,19 +1,20 @@
 {
-  "version": "0.13.0",
-  "uuid": "0608c551-d2c2-4ceb-bde7-209c254b9826",
-  "root": "/private/var/folders/t2/s_70szzn7qn22cp4d2nmrjbc0000gn/T/tmpegttzdoq/battlesnake-challenge",
+  "version": "0.15.1",
+  "uuid": "074bbbb9-8a8b-4213-868f-a7e518936794",
+  "timestamp": "2024-12-22T21:19:49+00:00",
+  "root": "/private/var/folders/t2/s_70szzn7qn22cp4d2nmrjbc0000gn/T/tmp268r_z1z/battlesnake-challenge",
   "codebase": {
     "totals": {
       "Python": {
         "files": 1,
-        "lines_of_code": 91,
+        "lines_of_code": 81,
         "functions": 13,
         "hard_to_maintain": 0,
         "unmaintainable": 0
       },
       "Java": {
         "files": 1,
-        "lines_of_code": 217,
+        "lines_of_code": 169,
         "functions": 19,
         "hard_to_maintain": 0,
         "unmaintainable": 0
@@ -27,7 +28,7 @@
       },
       "JavaScript": {
         "files": 1,
-        "lines_of_code": 92,
+        "lines_of_code": 85,
         "functions": 9,
         "hard_to_maintain": 0,
         "unmaintainable": 0
@@ -86,7 +87,7 @@
       "python/snake.py": {
         "checksum": "a13856efeb57941dce9ee56e64825761",
         "language": "Python",
-        "loc": 91,
+        "loc": 81,
         "profile": [81, 0, 0, 0],
         "measurements": [
           {"unit_name": "do_GET", "start": {"line": 8, "column": 5}, "end": {"line": 9, "column": 35}, "value": 2},
@@ -107,7 +108,7 @@
       "java/Snake.java": {
         "checksum": "1e1e0c05b9dc5dda9b0f1107462e97c9",
         "language": "Java",
-        "loc": 217,
+        "loc": 169,
         "profile": [130, 39, 0, 0],
         "measurements": [
           {"unit_name": "getField", "start": {"line": 18, "column": 20}, "end": {"line": 21, "column": 6}, "value": 4},
@@ -143,7 +144,7 @@
       "javascript/snake.js": {
         "checksum": "9ab69b846197b00b0b75350a48bfd731",
         "language": "JavaScript",
-        "loc": 92,
+        "loc": 85,
         "profile": [69, 16, 0, 0],
         "measurements": [
           {"unit_name": "requestHandler", "start": {"line": 3, "column": 1}, "end": {"line": 15, "column": 2}, "value": 13},
