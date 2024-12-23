@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v0.16.0 (2024-12-23)
+
+### Features
+
+- ✨ Improve report ([#61](https://github.com/getcodelimit/codelimit/pull/61),
+  [`7199730`](https://github.com/getcodelimit/codelimit/commit/71997308ea0c25fa88b52f4afdbdfdc960cfdea7))
+
+
 ## v0.15.1 (2024-12-18)
 
 
