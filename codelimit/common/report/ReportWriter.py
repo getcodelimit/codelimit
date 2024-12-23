@@ -19,9 +19,12 @@ class ReportWriter:
         self.level = 0
         json = ""
         json += self._open("{")
-        content: [str] = [self._line(f'"version": "{self.report.version}"'),
-                          self._line(f'"uuid": "{self.report.uuid}"'),
-                          self._line(f'"root": "{self.report.codebase.root}"')]
+        content: list[str] = [
+            self._line(f'"version": "{self.report.version}"'),
+            self._line(f'"uuid": "{self.report.uuid}"'),
+            self._line(f'"timestamp": "{self.report.timestamp}"'),
+            self._line(f'"root": "{self.report.codebase.root}"')
+        ]
         if self.report.repository:
             content.append(self._repository_to_json())
         content.append(self._codebase_to_json())

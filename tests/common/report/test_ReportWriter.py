@@ -13,6 +13,7 @@ def test_to_json():
     json += "{\n"
     json += f'  "version": "{report.version}",\n'
     json += f'  "uuid": "{report.uuid}",\n'
+    json += f'  "timestamp": "{report.timestamp}",\n'
     json += '  "root": "/",\n'
     json += '  "codebase": {\n'
     json += '    "totals": {\n'
@@ -42,6 +43,7 @@ def test_to_json_with_repository():
     json += "{\n"
     json += f'  "version": "{report.version}",\n'
     json += f'  "uuid": "{report.uuid}",\n'
+    json += f'  "timestamp": "{report.timestamp}",\n'
     json += '  "root": "/",\n'
     json += '  "repository": {\n'
     json += '    "owner": "getcodelimit",\n'

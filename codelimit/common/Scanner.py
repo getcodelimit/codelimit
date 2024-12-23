@@ -1,6 +1,5 @@
 import locale
 import os
-from datetime import datetime
 from os.path import relpath
 from pathlib import Path
 from typing import Union, Callable
@@ -9,7 +8,6 @@ from pathspec import PathSpec
 from pygments.lexer import Lexer
 from pygments.lexers import get_lexer_for_filename
 from pygments.util import ClassNotFound
-from rich import print
 from rich.live import Live
 
 from codelimit.common.Codebase import Codebase
@@ -23,20 +21,16 @@ from codelimit.common.SourceFileEntry import SourceFileEntry
 from codelimit.common.Token import Token
 from codelimit.common.lexer_utils import lex
 from codelimit.common.report.Report import Report
-from codelimit.common.scope.Scope import count_lines
 from codelimit.common.scope.scope_utils import build_scopes, unfold_scopes
-from codelimit.common.source_utils import filter_tokens
 from codelimit.common.utils import (
     calculate_checksum,
 )
 from codelimit.languages import Languages
-from codelimit.version import version
 
 locale.setlocale(locale.LC_ALL, "")
 
 
 def scan_codebase(path: Path, cached_report: Union[Report, None] = None) -> Codebase:
-    print_header(cached_report, path)
     scan_totals = ScanTotals()
     with Live(refresh_per_second=2) as live:
         def add_file_entry(entry: SourceFileEntry):
@@ -47,36 +41,7 @@ def scan_codebase(path: Path, cached_report: Union[Report, None] = None) -> Code
         codebase = scan_path(path, cached_report, add_file_entry)
         live.stop()
         live.refresh()
-    print()
-    print_refactor_candidates(scan_totals)
     return codebase
-
-
-def print_header(cached_report, path):
-    print(f"  [bold]Code Limit[/bold]: {version}")
-    print(
-        f"  [bold]Scan date[/bold]: {datetime.now().isoformat(sep=' ', timespec='seconds')}"
-    )
-    print(f"  [bold]Scan root[/bold]: {path.resolve().absolute()}")
-    if cached_report:
-        print("  [bold]Found cached report, only analyzing changed files[/bold]")
-
-
-def print_refactor_candidates(scan_totals: ScanTotals):
-    total_hard_to_maintain = scan_totals.total_hard_to_maintain()
-    if total_hard_to_maintain > 0:
-        text = "functions are" if total_hard_to_maintain > 1 else "function is"
-        print(
-            f"  [dark_orange]\u26A0[/dark_orange] {total_hard_to_maintain} {text} hard-to-maintain."
-        )
-    total_unmaintainable = scan_totals.total_unmaintainable()
-    if total_unmaintainable > 0:
-        text = "functions need" if total_unmaintainable > 1 else "function needs"
-        print(f"  [red]\u2716[/red] {total_unmaintainable} {text} refactoring.")
-    if total_hard_to_maintain == 0 and total_unmaintainable == 0:
-        print(
-            "  [bold]Refactoring not necessary, :glowing_star: happy coding! :glowing_star:[/bold]"
-        )
 
 
 def scan_path(path: Path, cached_report: Union[Report, None] = None,
@@ -136,6 +101,7 @@ def _scan_file(
     codebase.add_file(entry)
     return entry
 
+
 def _read_file(path: Path):
     try:
         with open(path) as f:
@@ -144,17 +110,17 @@ def _read_file(path: Path):
         with open(path, encoding="latin-1") as f:
             return f.read()
 
+
 def _analyze_file(path, rel_path, checksum, lexer):
     code = _read_file(path)
     all_tokens = lex(lexer, code, False)
-    code_tokens = filter_tokens(all_tokens)
-    file_loc = count_lines(code_tokens)
     language_name = lexer.__class__.name
     language = Languages.by_name[language_name]
     if language:
         measurements = scan_file(all_tokens, language)
     else:
         measurements = []
+    file_loc = sum([m.value for m in measurements])
     entry = SourceFileEntry(
         rel_path, checksum, lexer.__class__.name, file_loc, measurements
     )

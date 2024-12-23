@@ -1,3 +1,4 @@
+from datetime import datetime, timezone
 from math import floor, ceil
 from uuid import uuid4
 
@@ -14,6 +15,7 @@ class Report:
     def __init__(self, codebase: Codebase, repository: GithubRepository | None = None):
         self.version: str | None = self.VERSION
         self.uuid = str(uuid4())
+        self.timestamp = datetime.now(timezone.utc).isoformat(timespec='seconds')
         self.repository = repository
         self.codebase = codebase
 
@@ -43,3 +45,12 @@ class Report:
 
     def quality_profile(self):
         return make_profile(self.codebase.all_measurements())
+
+    def quality_profile_percentage(self):
+        profile = self.quality_profile()
+        total = sum(profile)
+        unmaintainable = ceil((profile[3] / total) * 100) if total > 0 else 0
+        hard_to_maintain = ceil((profile[2] / total) * 100) if total > 0 else 0
+        verbose = ceil((profile[1] / total) * 100) if total > 0 else 0
+        easy = 100 - unmaintainable - hard_to_maintain - verbose
+        return easy, verbose, hard_to_maintain, unmaintainable

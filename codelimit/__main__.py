@@ -8,7 +8,8 @@ from rich import print
 from typer.core import TyperGroup
 
 from codelimit.commands.check import check_command
-from codelimit.commands.report.report import ReportFormat, report_command
+from codelimit.commands.findings import findings_command
+from codelimit.commands.report import ReportFormat, report_command
 from codelimit.commands.scan import scan_command
 from codelimit.common.Configuration import Configuration
 from codelimit.common.utils import configure_github_repository
@@ -25,22 +26,6 @@ cli = typer.Typer(cls=OrderCommands, no_args_is_help=True, add_completion=False)
 
 
 # cli.add_typer(app.app, name="app", help="Code Limit GitHub App commands")
-
-
-@cli.command(help="Check file(s)")
-def check(
-        paths: Annotated[List[Path], typer.Argument(exists=True)],
-        exclude: Annotated[
-            Optional[list[str]], typer.Option(help="Glob patterns for exclusion")
-        ] = None,
-        quiet: Annotated[
-            bool, typer.Option("--quiet", help="No output when successful")
-        ] = False,
-):
-    if exclude:
-        Configuration.exclude.extend(exclude)
-    Configuration.load(Path('.'))
-    check_command(paths, quiet)
 
 
 @cli.command(help="Scan a codebase")
@@ -64,14 +49,42 @@ def report(
         path: Annotated[
             Path, typer.Argument(exists=True, file_okay=False, help="Codebase root")
         ] = Path("."),
-        full: Annotated[bool, typer.Option("--full", help="Show full report")] = False,
-        totals: Annotated[bool, typer.Option("--totals", help="Only show totals")] = False,
         fmt: Annotated[
             ReportFormat, typer.Option("--format", help="Output format")
         ] = ReportFormat.text,
 ):
     Configuration.load(path)
-    report_command(path, full, totals, fmt)
+    report_command(path, fmt)
+
+
+@cli.command(help="Show findings for codebase")
+def findings(
+        path: Annotated[
+            Path, typer.Argument(exists=True, file_okay=False, help="Codebase root")
+        ] = Path("."),
+        full: Annotated[bool, typer.Option("--full", help="Show full findings")] = False,
+        fmt: Annotated[
+            ReportFormat, typer.Option("--format", help="Output format")
+        ] = ReportFormat.text,
+):
+    Configuration.load(path)
+    findings_command(path, full, fmt)
+
+
+@cli.command(help="Check file(s)")
+def check(
+        paths: Annotated[List[Path], typer.Argument(exists=True)],
+        exclude: Annotated[
+            Optional[list[str]], typer.Option(help="Glob patterns for exclusion")
+        ] = None,
+        quiet: Annotated[
+            bool, typer.Option("--quiet", help="No output when successful")
+        ] = False,
+):
+    if exclude:
+        Configuration.exclude.extend(exclude)
+    Configuration.load(Path('.'))
+    check_command(paths, quiet)
 
 
 @cli.command(help="Generate badge Markdown")

@@ -25,6 +25,7 @@ def test_to_json():
     expected += "{\n"
     expected += '  "version": "' + report.version + '",\n'
     expected += '  "uuid": "' + report.uuid + '",\n'
+    expected += '  "timestamp": "' + report.timestamp + '",\n'
     expected += '  "root": "/",\n'
     expected += '  "codebase": {\n'
     expected += '    "totals": {\n'
@@ -90,6 +91,7 @@ def test_to_json_multiple():
 
     expected = (
         f'{{"version": "{report.version}", "uuid": "{report.uuid}", '
+        f'"timestamp": "{report.timestamp}", '
         '"root": "/", "codebase": {"totals": {"Python": {"files": 2, "lines_of_code": '
         '40, "functions": 2, "hard_to_maintain": 0, "unmaintainable": 0}}, "tree": '
         '{"./": {"entries": ["foo.py", "bar.py"], "profile": [20, 0, 0, 0]}}, '
