@@ -1,6 +1,7 @@
 {
-  "version": "0.15.1",
-  "uuid": "cb988c31-1b55-4ee2-a464-edd004b9ceb7",
+  "version": "0.16.0",
+  "uuid": "924d231e-12dd-431c-9d21-7f914d349e90",
+  "timestamp": "2024-12-26T13:09:49+00:00",
   "root": "/github/workspace",
   "repository": {
     "owner": "getcodelimit",
@@ -11,8 +12,8 @@
     "totals": {
       "Python": {
         "files": 88,
-        "lines_of_code": 2239,
-        "functions": 333,
+        "lines_of_code": 2263,
+        "functions": 335,
         "hard_to_maintain": 0,
         "unmaintainable": 0
       }
@@ -23,7 +24,7 @@
           "main.py",
           "codelimit/"
         ],
-        "profile": [1554, 685, 0, 0]
+        "profile": [1556, 707, 0, 0]
       },
       "codelimit/": {
         "entries": [
@@ -36,7 +37,7 @@
           "languages/",
           "commands/"
         ],
-        "profile": [1554, 685, 0, 0]
+        "profile": [1556, 707, 0, 0]
       },
       "codelimit/common/": {
         "entries": [
@@ -70,7 +71,7 @@
           "report/",
           "gsm/"
         ],
-        "profile": [1310, 409, 0, 0]
+        "profile": [1327, 409, 0, 0]
       },
       "codelimit/common/token_matching/": {
         "entries": [
@@ -218,19 +219,19 @@
         ]
       },
       "codelimit/__main__.py": {
-        "checksum": "d79c8d881832873b1f64d81007a93213",
+        "checksum": "33698c341678cceb543b62ca52ae0508",
         "language": "Python",
-        "loc": 87,
-        "profile": [53, 34, 0, 0],
+        "loc": 94,
+        "profile": [38, 56, 0, 0],
         "measurements": [
           {"unit_name": "list_commands", "start": {"line": 21, "column": 5}, "end": {"line": 22, "column": 35}, "value": 2},
-          {"unit_name": "scan", "start": {"line": 32, "column": 1}, "end": {"line": 44, "column": 23}, "value": 13},
-          {"unit_name": "report", "start": {"line": 48, "column": 1}, "end": {"line": 57, "column": 30}, "value": 10},
-          {"unit_name": "findings", "start": {"line": 61, "column": 1}, "end": {"line": 71, "column": 38}, "value": 11},
-          {"unit_name": "check", "start": {"line": 75, "column": 1}, "end": {"line": 87, "column": 32}, "value": 13},
-          {"unit_name": "badge", "start": {"line": 91, "column": 1}, "end": {"line": 108, "column": 51}, "value": 18},
-          {"unit_name": "_version_callback", "start": {"line": 111, "column": 1}, "end": {"line": 114, "column": 27}, "value": 4},
-          {"unit_name": "main", "start": {"line": 118, "column": 1}, "end": {"line": 134, "column": 27}, "value": 16}
+          {"unit_name": "scan", "start": {"line": 32, "column": 1}, "end": {"line": 50, "column": 23}, "value": 19},
+          {"unit_name": "report", "start": {"line": 54, "column": 1}, "end": {"line": 63, "column": 30}, "value": 10},
+          {"unit_name": "findings", "start": {"line": 67, "column": 1}, "end": {"line": 77, "column": 38}, "value": 11},
+          {"unit_name": "check", "start": {"line": 81, "column": 1}, "end": {"line": 99, "column": 32}, "value": 19},
+          {"unit_name": "badge", "start": {"line": 103, "column": 1}, "end": {"line": 120, "column": 51}, "value": 18},
+          {"unit_name": "_version_callback", "start": {"line": 123, "column": 1}, "end": {"line": 126, "column": 27}, "value": 4},
+          {"unit_name": "main", "start": {"line": 130, "column": 1}, "end": {"line": 141, "column": 27}, "value": 11}
         ]
       },
       "codelimit/utils.py": {
@@ -250,7 +251,7 @@
         ]
       },
       "codelimit/version.py": {
-        "checksum": "f0cf168ab3ee46ecd343c6cebd3a19ae",
+        "checksum": "c4bae9cd949768f82ea1d9f988515846",
         "language": "Python",
         "loc": 0,
         "profile": [0, 0, 0, 0],
@@ -407,21 +408,22 @@
         ]
       },
       "codelimit/common/Scanner.py": {
-        "checksum": "70eba38bb31f5b2905d84c920a8d1f40",
+        "checksum": "d9086a9177dea3278924a358ef608f1f",
         "language": "Python",
-        "loc": 118,
-        "profile": [47, 71, 0, 0],
+        "loc": 126,
+        "profile": [55, 71, 0, 0],
         "measurements": [
-          {"unit_name": "scan_codebase", "start": {"line": 33, "column": 1}, "end": {"line": 44, "column": 20}, "value": 8},
-          {"unit_name": "add_file_entry", "start": {"line": 36, "column": 9}, "end": {"line": 39, "column": 31}, "value": 4},
-          {"unit_name": "scan_path", "start": {"line": 47, "column": 1}, "end": {"line": 72, "column": 18}, "value": 26},
-          {"unit_name": "_scan_file", "start": {"line": 75, "column": 1}, "end": {"line": 102, "column": 17}, "value": 28},
-          {"unit_name": "_read_file", "start": {"line": 105, "column": 1}, "end": {"line": 111, "column": 28}, "value": 7},
-          {"unit_name": "_analyze_file", "start": {"line": 114, "column": 1}, "end": {"line": 127, "column": 17}, "value": 14},
-          {"unit_name": "scan_file", "start": {"line": 130, "column": 1}, "end": {"line": 146, "column": 24}, "value": 17},
-          {"unit_name": "generate_exclude_spec", "start": {"line": 149, "column": 1}, "end": {"line": 155, "column": 54}, "value": 7},
-          {"unit_name": "_read_gitignore", "start": {"line": 158, "column": 1}, "end": {"line": 162, "column": 16}, "value": 5},
-          {"unit_name": "is_excluded", "start": {"line": 165, "column": 1}, "end": {"line": 166, "column": 33}, "value": 2}
+          {"unit_name": "scan_codebase", "start": {"line": 35, "column": 1}, "end": {"line": 53, "column": 20}, "value": 13},
+          {"unit_name": "add_file_entry", "start": {"line": 38, "column": 9}, "end": {"line": 39, "column": 35}, "value": 2},
+          {"unit_name": "add_file_entry", "start": {"line": 45, "column": 13}, "end": {"line": 48, "column": 35}, "value": 4},
+          {"unit_name": "scan_path", "start": {"line": 56, "column": 1}, "end": {"line": 81, "column": 18}, "value": 26},
+          {"unit_name": "_scan_file", "start": {"line": 84, "column": 1}, "end": {"line": 111, "column": 17}, "value": 28},
+          {"unit_name": "_read_file", "start": {"line": 114, "column": 1}, "end": {"line": 120, "column": 28}, "value": 7},
+          {"unit_name": "_analyze_file", "start": {"line": 123, "column": 1}, "end": {"line": 137, "column": 17}, "value": 15},
+          {"unit_name": "scan_file", "start": {"line": 140, "column": 1}, "end": {"line": 156, "column": 24}, "value": 17},
+          {"unit_name": "generate_exclude_spec", "start": {"line": 159, "column": 1}, "end": {"line": 165, "column": 54}, "value": 7},
+          {"unit_name": "_read_gitignore", "start": {"line": 168, "column": 1}, "end": {"line": 172, "column": 16}, "value": 5},
+          {"unit_name": "is_excluded", "start": {"line": 175, "column": 1}, "end": {"line": 176, "column": 33}, "value": 2}
         ]
       },
       "codelimit/common/__init__.py": {
@@ -433,12 +435,13 @@
         ]
       },
       "codelimit/common/Configuration.py": {
-        "checksum": "0270ec300d32fbd43db2bf7b4643451d",
+        "checksum": "3ba919bc9f88b3a3b57e7b9791284fe7",
         "language": "Python",
-        "loc": 10,
-        "profile": [10, 0, 0, 0],
+        "loc": 19,
+        "profile": [19, 0, 0, 0],
         "measurements": [
-          {"unit_name": "load", "start": {"line": 14, "column": 5}, "end": {"line": 23, "column": 39}, "value": 10}
+          {"unit_name": "load", "start": {"line": 16, "column": 5}, "end": {"line": 25, "column": 39}, "value": 10},
+          {"unit_name": "setup_logging", "start": {"line": 28, "column": 1}, "end": {"line": 36, "column": 45}, "value": 9}
         ]
       },
       "codelimit/common/SourceFileEntry.py": {
@@ -456,7 +459,7 @@
         ]
       },
       "codelimit/common/utils.py": {
-        "checksum": "c88a48dcdae0e3f81f04ed4dfb562f13",
+        "checksum": "720a231a3fb6c5a425ad187c918e6d42",
         "language": "Python",
         "loc": 184,
         "profile": [106, 78, 0, 0],
