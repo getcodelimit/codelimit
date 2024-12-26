@@ -1,4 +1,5 @@
 import locale
+import logging
 import os
 from os.path import relpath
 from pathlib import Path
@@ -9,6 +10,7 @@ from pygments.lexer import Lexer
 from pygments.lexers import get_lexer_for_filename
 from pygments.util import ClassNotFound
 from rich.live import Live
+from rich import print
 
 from codelimit.common.Codebase import Codebase
 from codelimit.common.Configuration import Configuration
@@ -32,15 +34,22 @@ locale.setlocale(locale.LC_ALL, "")
 
 def scan_codebase(path: Path, cached_report: Union[Report, None] = None) -> Codebase:
     scan_totals = ScanTotals()
-    with Live(refresh_per_second=2) as live:
+    if Configuration.verbose:
         def add_file_entry(entry: SourceFileEntry):
             scan_totals.add(entry)
-            table = ScanResultTable(scan_totals)
-            live.update(table)
 
         codebase = scan_path(path, cached_report, add_file_entry)
-        live.stop()
-        live.refresh()
+        print(ScanResultTable(scan_totals))
+    else:
+        with Live(refresh_per_second=2) as live:
+            def add_file_entry(entry: SourceFileEntry):
+                scan_totals.add(entry)
+                table = ScanResultTable(scan_totals)
+                live.update(table)
+
+            codebase = scan_path(path, cached_report, add_file_entry)
+            live.stop()
+            live.refresh()
     return codebase
 
 
@@ -112,6 +121,7 @@ def _read_file(path: Path):
 
 
 def _analyze_file(path, rel_path, checksum, lexer):
+    logging.info(f"Analyzing {rel_path}")
     code = _read_file(path)
     all_tokens = lex(lexer, code, False)
     language_name = lexer.__class__.name

@@ -1,3 +1,5 @@
+import logging
+import sys
 from pathlib import Path
 
 from yaml import load, FullLoader
@@ -21,3 +23,14 @@ class Configuration:
             cls.exclude.extend(d["exclude"])
         if "verbose" in d:
             cls.verbose = d["verbose"]
+
+
+def setup_logging():
+    root_logger = logging.getLogger()
+    if Configuration.verbose:
+        root_logger.setLevel(logging.INFO)
+    else:
+        root_logger.setLevel(logging.WARNING)
+    root_log_handler = logging.StreamHandler(sys.stdout)
+    root_log_handler.setFormatter(logging.Formatter('[%(asctime)s] %(levelname)s: %(message)s'))
+    root_logger.addHandler(root_log_handler)

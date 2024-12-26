@@ -11,7 +11,7 @@ from codelimit.commands.check import check_command
 from codelimit.commands.findings import findings_command
 from codelimit.commands.report import ReportFormat, report_command
 from codelimit.commands.scan import scan_command
-from codelimit.common.Configuration import Configuration
+from codelimit.common.Configuration import Configuration, setup_logging
 from codelimit.common.utils import configure_github_repository
 from codelimit.utils import success, fail
 from codelimit.version import version
@@ -36,10 +36,16 @@ def scan(
         exclude: Annotated[
             Optional[list[str]], typer.Option(help="Glob patterns for exclusion")
         ] = None,
+        verbose: Annotated[
+            Optional[bool], typer.Option("--verbose", "-v", help="Verbose output")
+        ] = False,
 ):
     if exclude:
         Configuration.exclude.extend(exclude)
+    if verbose:
+        Configuration.verbose = True
     Configuration.load(path)
+    setup_logging()
     configure_github_repository(path)
     scan_command(path)
 
@@ -80,10 +86,16 @@ def check(
         quiet: Annotated[
             bool, typer.Option("--quiet", help="No output when successful")
         ] = False,
+        verbose: Annotated[
+            Optional[bool], typer.Option("--verbose", "-v", help="Verbose output")
+        ] = False,
 ):
     if exclude:
         Configuration.exclude.extend(exclude)
+    if verbose:
+        Configuration.verbose = True
     Configuration.load(Path('.'))
+    setup_logging()
     check_command(paths, quiet)
 
 
@@ -116,9 +128,6 @@ def _version_callback(show: bool):
 
 @cli.callback()
 def main(
-        verbose: Annotated[
-            Optional[bool], typer.Option("--verbose", "-v", help="Verbose output")
-        ] = False,
         version: Annotated[
             Optional[bool],
             typer.Option(
@@ -128,8 +137,6 @@ def main(
 ):
     """Code Limit: Your refactoring alarm."""
 
-    if verbose:
-        Configuration.verbose = True
     if version:
         raise typer.Exit()
 
