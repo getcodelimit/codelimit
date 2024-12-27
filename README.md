@@ -41,7 +41,7 @@ examples.
 ## Standalone usage
 
 Code Limit can run as a standalone program to check and inspect a codebase, see
-the [Standalone Usage documentation](https://getcodelimit.github.io/usage/) to
+the [Standalone Usage documentation](https://getcodelimit.github.io/getting-started/standalone-usage/) to
 get started.
 
 ## Configuration
