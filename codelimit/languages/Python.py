@@ -26,8 +26,8 @@ class Python(Language):
         result = []
         reverse_headers = headers[::-1]
         for header in reverse_headers:
-            header_line_nr = header.token_range.tokens[-1].location.line
-            header_indentation = header.token_range.tokens[0].location.column
+            header_line_nr = tokens[header.token_range.end].location.line
+            header_indentation = tokens[header.token_range.start].location.column
             block_line_indices = []
             for idx, line in enumerate(lines[::-1]):
                 line_index = (len(lines) - 1) - idx
@@ -43,7 +43,9 @@ class Python(Language):
                 scope_tokens = []
                 for index in block_line_indices[::-1]:
                     scope_tokens.extend(lines[index])
-                result.append(TokenRange(scope_tokens))
+                start = tokens.index(scope_tokens[0])
+                end = tokens.index(scope_tokens[-1]) + 1
+                result.append(TokenRange(start, end))
                 lines = delete_indices(lines, block_line_indices)
         return result[::-1]
 
