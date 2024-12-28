@@ -30,3 +30,11 @@ class TokenRange:
         start_overlap = self.start <= other.start <= self.end
         end_overlap = self.start <= other.end <= self.end
         return start_overlap or end_overlap
+
+
+def sort_token_ranges(token_ranges: list[TokenRange], tokens: list[Token], reverse=False) -> list[TokenRange]:
+    return sorted(
+        token_ranges,
+        reverse=reverse,
+        key=lambda tr: (tokens[tr.start].location.line, tokens[tr.start].location.column),
+    )

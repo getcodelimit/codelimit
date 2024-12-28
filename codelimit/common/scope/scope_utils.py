@@ -2,16 +2,13 @@ from typing import Optional
 
 from codelimit.common.Language import Language
 from codelimit.common.Token import Token
-from codelimit.common.TokenRange import TokenRange
+from codelimit.common.TokenRange import TokenRange, sort_token_ranges
 from codelimit.common.gsm.Expression import Expression
 from codelimit.common.gsm.matcher import find_all, starts_with
-from codelimit.common.scope.Header import Header
+from codelimit.common.scope.Header import Header, sort_headers
 from codelimit.common.scope.Scope import Scope
 from codelimit.common.source_utils import filter_tokens, filter_nocl_comment_tokens
-from codelimit.common.token_utils import (
-    sort_token_ranges,
-    get_balanced_symbol_token_indices,
-)
+from codelimit.common.token_utils import get_balanced_symbol_token_indices
 from codelimit.common.utils import delete_indices
 
 
@@ -20,7 +17,7 @@ def build_scopes(tokens: list[Token], language: Language) -> list[Scope]:
     nocl_comment_tokens = filter_nocl_comment_tokens(tokens)
     headers = language.extract_headers(code_tokens)
     blocks = language.extract_blocks(code_tokens, headers)
-    scopes = _build_scopes_from_headers_and_blocks(headers, blocks)
+    scopes = _build_scopes_from_headers_and_blocks(headers, blocks, code_tokens)
     filtered_scopes = _filter_nocl_scopes(scopes, code_tokens, nocl_comment_tokens)
     if language.allow_nested_functions:
         return fold_scopes(filtered_scopes)
@@ -65,10 +62,10 @@ def filter_scopes_nested_functions(scopes: list[Scope]) -> list[Scope]:
 
 
 def _build_scopes_from_headers_and_blocks(
-        headers: list[Header], blocks: list[TokenRange]
+        headers: list[Header], blocks: list[TokenRange], tokens: list[Token]
 ) -> list[Scope]:
     result: list[Scope] = []
-    reverse_headers = headers[::-1]
+    reverse_headers = sort_headers(headers, tokens, reverse=True)
     for header in reverse_headers:
         scope_blocks_indices = _find_scope_blocks_indices(header.token_range, blocks)
         if len(scope_blocks_indices) > 0:

@@ -1,11 +1,10 @@
 from pygments.lexers import CLexer
 
-from codelimit.common.TokenRange import TokenRange
+from codelimit.common.TokenRange import TokenRange, sort_token_ranges
 from codelimit.common.lexer_utils import lex
 from codelimit.common.source_utils import get_token_range
 from codelimit.common.token_utils import (
     get_balanced_symbol_token_indices,
-    sort_token_ranges,
     get_balanced_symbol_token_ranges,
 )
 

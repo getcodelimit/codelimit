@@ -39,10 +39,3 @@ def sort_tokens(tokens: list[Token]) -> list[Token]:
     result = sorted(tokens, key=lambda t: t.location.column)
     result = sorted(result, key=lambda t: t.location.line)
     return result
-
-
-def sort_token_ranges(token_ranges: list[TokenRange], tokens: list[Token]) -> list[TokenRange]:
-    return sorted(
-        token_ranges,
-        key=lambda tr: (tokens[tr.start].location.line, tokens[tr.start].location.column),
-    )

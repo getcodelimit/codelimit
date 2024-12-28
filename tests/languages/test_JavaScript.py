@@ -1,5 +1,5 @@
 from codelimit.languages import Languages
-from tests.conftest import assert_units
+from tests.conftest import assert_units, print_units
 
 
 def test_simple_function():
@@ -43,3 +43,32 @@ def test_nested_functions():
         Languages.JavaScript,
         {"sayHelloWorld": 4, "sayHello": 3, "sayWorld": 3},
     )
+
+
+def test_top_level_anonymous_functions_are_skipped():
+    code = """
+    function sayHelloWorld() {
+        console.log('Hello World');
+    }
+
+    foo.on('sayHelloWorld', function () {
+        console.log('Hello World');
+    });
+    """
+
+    assert_units(code, Languages.JavaScript, {"sayHelloWorld": 3})
+
+def test_nested_anonymous_functions_are_skipped():
+    code = """
+    const say = () => {
+        function helloWorld() {
+            console.log('Hello World');
+        }
+
+        foo.on('helloWorld', function () {
+            console.log('Hello World');
+        });
+    }
+    """
+
+    assert_units(code, Languages.JavaScript, {"say": 5, "helloWorld": 3})
