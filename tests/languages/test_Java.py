@@ -1,5 +1,5 @@
 from codelimit.languages import Languages
-from tests.conftest import assert_units, print_units
+from tests.conftest import assert_units
 
 
 def test_simple_main_function():
@@ -75,7 +75,6 @@ def test_anonymous_class():
     }
     """
 
-    print_units(code, Languages.Java)
     assert_units(code, Languages.Java, {"Foo": 6, "preVisitDirectory": 6})
 
 
@@ -95,7 +94,6 @@ def test_record_class():
     }
     """
 
-    print_units(code, Languages.Java)
     assert_units(code, Languages.Java, {"main": 4})
 
 

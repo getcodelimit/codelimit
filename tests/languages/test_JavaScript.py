@@ -1,5 +1,5 @@
 from codelimit.languages import Languages
-from tests.conftest import assert_units, print_units
+from tests.conftest import assert_units
 
 
 def test_simple_function():
