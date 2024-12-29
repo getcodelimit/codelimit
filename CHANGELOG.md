@@ -1,6 +1,19 @@
 # CHANGELOG
 
 
+## v0.17.0 (2024-12-29)
+
+### Bug Fixes
+
+- 🐛 Verbose flag for scan and check. Fix catch clause
+  ([`7f653db`](https://github.com/getcodelimit/codelimit/commit/7f653dbe58a57ea9c1b62f06a3be732ffcb98f05))
+
+### Features
+
+- ✨ Improve performance ([#65](https://github.com/getcodelimit/codelimit/pull/65),
+  [`89e08ef`](https://github.com/getcodelimit/codelimit/commit/89e08efd6e4de6b0b780bee80159e693878357c7))
+
+
 ## v0.16.0 (2024-12-23)
 
 ### Features
