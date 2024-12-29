@@ -1,7 +1,7 @@
 {
   "version": "0.16.0",
-  "uuid": "d2e906e4-5aac-4b90-b367-e2fec6bd7e3e",
-  "timestamp": "2024-12-27T22:04:26+00:00",
+  "uuid": "0e62473c-8e5e-4242-9666-01d0d0c6d407",
+  "timestamp": "2024-12-29T16:59:45+00:00",
   "root": "/github/workspace",
   "repository": {
     "owner": "getcodelimit",
@@ -11,9 +11,9 @@
   "codebase": {
     "totals": {
       "Python": {
-        "files": 88,
-        "lines_of_code": 2263,
-        "functions": 335,
+        "files": 89,
+        "lines_of_code": 2272,
+        "functions": 339,
         "hard_to_maintain": 0,
         "unmaintainable": 0
       }
@@ -24,7 +24,7 @@
           "main.py",
           "codelimit/"
         ],
-        "profile": [1556, 707, 0, 0]
+        "profile": [1596, 676, 0, 0]
       },
       "codelimit/": {
         "entries": [
@@ -37,7 +37,7 @@
           "languages/",
           "commands/"
         ],
-        "profile": [1556, 707, 0, 0]
+        "profile": [1596, 676, 0, 0]
       },
       "codelimit/common/": {
         "entries": [
@@ -71,17 +71,18 @@
           "report/",
           "gsm/"
         ],
-        "profile": [1327, 409, 0, 0]
+        "profile": [1357, 376, 0, 0]
       },
       "codelimit/common/token_matching/": {
         "entries": [
           "__init__.py",
           "predicate/"
         ],
-        "profile": [126, 0, 0, 0]
+        "profile": [137, 0, 0, 0]
       },
       "codelimit/common/token_matching/predicate/": {
         "entries": [
+          "Not.py",
           "Balanced.py",
           "Keyword.py",
           "TokenValue.py",
@@ -92,7 +93,7 @@
           "Operator.py",
           "TokenPredicate.py"
         ],
-        "profile": [126, 0, 0, 0]
+        "profile": [137, 0, 0, 0]
       },
       "codelimit/common/scope/": {
         "entries": [
@@ -101,7 +102,7 @@
           "scope_utils.py",
           "Scope.py"
         ],
-        "profile": [131, 17, 0, 0]
+        "profile": [149, 0, 0, 0]
       },
       "codelimit/common/report/": {
         "entries": [
@@ -170,7 +171,7 @@
           "__init__.py",
           "JavaScript.py"
         ],
-        "profile": [52, 90, 0, 0]
+        "profile": [62, 92, 0, 0]
       },
       "codelimit/commands/": {
         "entries": [
@@ -259,20 +260,20 @@
         ]
       },
       "codelimit/common/TokenRange.py": {
-        "checksum": "eb46ddd0c1ff83cc6cd801bb5e7f0ccb",
+        "checksum": "028cd445773f669f8dd16948217ccd16",
         "language": "Python",
-        "loc": 26,
-        "profile": [26, 0, 0, 0],
+        "loc": 25,
+        "profile": [25, 0, 0, 0],
         "measurements": [
-          {"unit_name": "__init__", "start": {"line": 7, "column": 5}, "end": {"line": 8, "column": 29}, "value": 2},
-          {"unit_name": "__str__", "start": {"line": 10, "column": 5}, "end": {"line": 11, "column": 74}, "value": 2},
-          {"unit_name": "__repr__", "start": {"line": 13, "column": 5}, "end": {"line": 14, "column": 30}, "value": 2},
-          {"unit_name": "__getitem__", "start": {"line": 16, "column": 5}, "end": {"line": 17, "column": 45}, "value": 2},
-          {"unit_name": "token_string", "start": {"line": 19, "column": 5}, "end": {"line": 20, "column": 56}, "value": 2},
-          {"unit_name": "lt", "start": {"line": 22, "column": 5}, "end": {"line": 23, "column": 69}, "value": 2},
-          {"unit_name": "gt", "start": {"line": 25, "column": 5}, "end": {"line": 26, "column": 30}, "value": 2},
-          {"unit_name": "contains", "start": {"line": 28, "column": 5}, "end": {"line": 31, "column": 49}, "value": 4},
-          {"unit_name": "overlaps", "start": {"line": 33, "column": 5}, "end": {"line": 40, "column": 44}, "value": 8}
+          {"unit_name": "__init__", "start": {"line": 7, "column": 5}, "end": {"line": 9, "column": 23}, "value": 3},
+          {"unit_name": "__str__", "start": {"line": 11, "column": 5}, "end": {"line": 12, "column": 45}, "value": 2},
+          {"unit_name": "__repr__", "start": {"line": 14, "column": 5}, "end": {"line": 15, "column": 30}, "value": 2},
+          {"unit_name": "token_string", "start": {"line": 17, "column": 5}, "end": {"line": 18, "column": 72}, "value": 2},
+          {"unit_name": "lt", "start": {"line": 20, "column": 5}, "end": {"line": 21, "column": 40}, "value": 2},
+          {"unit_name": "gt", "start": {"line": 23, "column": 5}, "end": {"line": 24, "column": 30}, "value": 2},
+          {"unit_name": "contains", "start": {"line": 26, "column": 5}, "end": {"line": 27, "column": 65}, "value": 2},
+          {"unit_name": "overlaps", "start": {"line": 29, "column": 5}, "end": {"line": 32, "column": 44}, "value": 4},
+          {"unit_name": "sort_token_ranges", "start": {"line": 35, "column": 1}, "end": {"line": 40, "column": 6}, "value": 6}
         ]
       },
       "codelimit/common/GithubRepository.py": {
@@ -323,17 +324,17 @@
       "codelimit/common/source_utils.py": {
         "checksum": "7535320588599048f1831853bc283c11",
         "language": "Python",
-        "loc": 56,
-        "profile": [56, 0, 0, 0],
+        "loc": 54,
+        "profile": [54, 0, 0, 0],
         "measurements": [
           {"unit_name": "get_newline_indices", "start": {"line": 5, "column": 1}, "end": {"line": 10, "column": 18}, "value": 6},
           {"unit_name": "index_to_location", "start": {"line": 13, "column": 1}, "end": {"line": 26, "column": 34}, "value": 14},
           {"unit_name": "location_to_index", "start": {"line": 29, "column": 1}, "end": {"line": 35, "column": 18}, "value": 7},
           {"unit_name": "get_token_range", "start": {"line": 38, "column": 1}, "end": {"line": 41, "column": 58}, "value": 4},
           {"unit_name": "get_location_range", "start": {"line": 44, "column": 1}, "end": {"line": 47, "column": 39}, "value": 4},
-          {"unit_name": "filter_tokens", "start": {"line": 50, "column": 1}, "end": {"line": 61, "column": 47}, "value": 5},
+          {"unit_name": "filter_tokens", "start": {"line": 50, "column": 1}, "end": {"line": 61, "column": 47}, "value": 4},
           {"unit_name": "predicate", "start": {"line": 53, "column": 5}, "end": {"line": 59, "column": 31}, "value": 7},
-          {"unit_name": "filter_nocl_comment_tokens", "start": {"line": 64, "column": 1}, "end": {"line": 72, "column": 47}, "value": 3},
+          {"unit_name": "filter_nocl_comment_tokens", "start": {"line": 64, "column": 1}, "end": {"line": 72, "column": 47}, "value": 2},
           {"unit_name": "predicate", "start": {"line": 65, "column": 5}, "end": {"line": 70, "column": 25}, "value": 6}
         ]
       },
@@ -408,22 +409,22 @@
         ]
       },
       "codelimit/common/Scanner.py": {
-        "checksum": "d9086a9177dea3278924a358ef608f1f",
+        "checksum": "0efdc0104a020776667e75d27737f7fa",
         "language": "Python",
-        "loc": 126,
-        "profile": [55, 71, 0, 0],
+        "loc": 125,
+        "profile": [53, 72, 0, 0],
         "measurements": [
-          {"unit_name": "scan_codebase", "start": {"line": 35, "column": 1}, "end": {"line": 53, "column": 20}, "value": 13},
-          {"unit_name": "add_file_entry", "start": {"line": 38, "column": 9}, "end": {"line": 39, "column": 35}, "value": 2},
-          {"unit_name": "add_file_entry", "start": {"line": 45, "column": 13}, "end": {"line": 48, "column": 35}, "value": 4},
-          {"unit_name": "scan_path", "start": {"line": 56, "column": 1}, "end": {"line": 81, "column": 18}, "value": 26},
-          {"unit_name": "_scan_file", "start": {"line": 84, "column": 1}, "end": {"line": 111, "column": 17}, "value": 28},
-          {"unit_name": "_read_file", "start": {"line": 114, "column": 1}, "end": {"line": 120, "column": 28}, "value": 7},
-          {"unit_name": "_analyze_file", "start": {"line": 123, "column": 1}, "end": {"line": 137, "column": 17}, "value": 15},
-          {"unit_name": "scan_file", "start": {"line": 140, "column": 1}, "end": {"line": 156, "column": 24}, "value": 17},
-          {"unit_name": "generate_exclude_spec", "start": {"line": 159, "column": 1}, "end": {"line": 165, "column": 54}, "value": 7},
-          {"unit_name": "_read_gitignore", "start": {"line": 168, "column": 1}, "end": {"line": 172, "column": 16}, "value": 5},
-          {"unit_name": "is_excluded", "start": {"line": 175, "column": 1}, "end": {"line": 176, "column": 33}, "value": 2}
+          {"unit_name": "scan_codebase", "start": {"line": 36, "column": 1}, "end": {"line": 54, "column": 20}, "value": 11},
+          {"unit_name": "add_file_entry", "start": {"line": 39, "column": 9}, "end": {"line": 40, "column": 35}, "value": 2},
+          {"unit_name": "add_file_entry", "start": {"line": 46, "column": 13}, "end": {"line": 49, "column": 35}, "value": 4},
+          {"unit_name": "scan_path", "start": {"line": 57, "column": 1}, "end": {"line": 82, "column": 18}, "value": 26},
+          {"unit_name": "_scan_file", "start": {"line": 85, "column": 1}, "end": {"line": 112, "column": 17}, "value": 28},
+          {"unit_name": "_read_file", "start": {"line": 115, "column": 1}, "end": {"line": 121, "column": 28}, "value": 7},
+          {"unit_name": "_analyze_file", "start": {"line": 124, "column": 1}, "end": {"line": 138, "column": 17}, "value": 15},
+          {"unit_name": "scan_file", "start": {"line": 141, "column": 1}, "end": {"line": 158, "column": 24}, "value": 18},
+          {"unit_name": "generate_exclude_spec", "start": {"line": 161, "column": 1}, "end": {"line": 167, "column": 54}, "value": 7},
+          {"unit_name": "_read_gitignore", "start": {"line": 170, "column": 1}, "end": {"line": 174, "column": 16}, "value": 5},
+          {"unit_name": "is_excluded", "start": {"line": 177, "column": 1}, "end": {"line": 178, "column": 33}, "value": 2}
         ]
       },
       "codelimit/common/__init__.py": {
@@ -461,8 +462,8 @@
       "codelimit/common/utils.py": {
         "checksum": "720a231a3fb6c5a425ad187c918e6d42",
         "language": "Python",
-        "loc": 184,
-        "profile": [106, 78, 0, 0],
+        "loc": 183,
+        "profile": [105, 78, 0, 0],
         "measurements": [
           {"unit_name": "make_profile", "start": {"line": 20, "column": 1}, "end": {"line": 31, "column": 18}, "value": 12},
           {"unit_name": "make_count_profile", "start": {"line": 34, "column": 1}, "end": {"line": 45, "column": 18}, "value": 12},
@@ -473,7 +474,7 @@
           {"unit_name": "get_basename", "start": {"line": 90, "column": 1}, "end": {"line": 92, "column": 21}, "value": 3},
           {"unit_name": "calculate_checksum", "start": {"line": 95, "column": 1}, "end": {"line": 98, "column": 51}, "value": 4},
           {"unit_name": "delete_indices", "start": {"line": 101, "column": 1}, "end": {"line": 102, "column": 67}, "value": 2},
-          {"unit_name": "clear_screen", "start": {"line": 105, "column": 1}, "end": {"line": 117, "column": 45}, "value": 8},
+          {"unit_name": "clear_screen", "start": {"line": 105, "column": 1}, "end": {"line": 117, "column": 45}, "value": 7},
           {"unit_name": "isatty", "start": {"line": 106, "column": 5}, "end": {"line": 110, "column": 25}, "value": 5},
           {"unit_name": "get_style_for_measurement", "start": {"line": 120, "column": 1}, "end": {"line": 128, "column": 36}, "value": 9},
           {"unit_name": "get_emoji_for_measurement", "start": {"line": 131, "column": 1}, "end": {"line": 137, "column": 24}, "value": 7},
@@ -538,13 +539,13 @@
       "codelimit/common/Codebase.py": {
         "checksum": "b3eaa5ecd53f594349842705456cda8c",
         "language": "Python",
-        "loc": 54,
-        "profile": [54, 0, 0, 0],
+        "loc": 53,
+        "profile": [53, 0, 0, 0],
         "measurements": [
           {"unit_name": "__init__", "start": {"line": 9, "column": 5}, "end": {"line": 13, "column": 52}, "value": 5},
           {"unit_name": "add_file", "start": {"line": 15, "column": 5}, "end": {"line": 24, "column": 31}, "value": 10},
           {"unit_name": "add_folder", "start": {"line": 26, "column": 5}, "end": {"line": 33, "column": 57}, "value": 8},
-          {"unit_name": "aggregate", "start": {"line": 35, "column": 5}, "end": {"line": 52, "column": 31}, "value": 3},
+          {"unit_name": "aggregate", "start": {"line": 35, "column": 5}, "end": {"line": 52, "column": 31}, "value": 2},
           {"unit_name": "aggregate_folder", "start": {"line": 36, "column": 9}, "end": {"line": 50, "column": 34}, "value": 14},
           {"unit_name": "all_files", "start": {"line": 54, "column": 5}, "end": {"line": 55, "column": 39}, "value": 2},
           {"unit_name": "all_measurements", "start": {"line": 57, "column": 5}, "end": {"line": 61, "column": 22}, "value": 5},
@@ -561,15 +562,14 @@
         ]
       },
       "codelimit/common/token_utils.py": {
-        "checksum": "20bd69d90476b0be368d8f627907b8f6",
+        "checksum": "3fbb4619b43c8213a7929462d367e83f",
         "language": "Python",
-        "loc": 40,
-        "profile": [23, 17, 0, 0],
+        "loc": 31,
+        "profile": [31, 0, 0, 0],
         "measurements": [
           {"unit_name": "get_balanced_symbol_token_indices", "start": {"line": 7, "column": 1}, "end": {"line": 20, "column": 18}, "value": 14},
-          {"unit_name": "get_balanced_symbol_token_ranges", "start": {"line": 23, "column": 1}, "end": {"line": 39, "column": 18}, "value": 17},
-          {"unit_name": "sort_tokens", "start": {"line": 42, "column": 1}, "end": {"line": 45, "column": 18}, "value": 4},
-          {"unit_name": "sort_token_ranges", "start": {"line": 48, "column": 1}, "end": {"line": 52, "column": 6}, "value": 5}
+          {"unit_name": "get_balanced_symbol_token_ranges", "start": {"line": 23, "column": 1}, "end": {"line": 35, "column": 18}, "value": 13},
+          {"unit_name": "sort_tokens", "start": {"line": 38, "column": 1}, "end": {"line": 41, "column": 18}, "value": 4}
         ]
       },
       "codelimit/common/SourceFile.py": {
@@ -587,6 +587,18 @@
         "loc": 0,
         "profile": [0, 0, 0, 0],
         "measurements": [
+        ]
+      },
+      "codelimit/common/token_matching/predicate/Not.py": {
+        "checksum": "69d62170d6c42807b3f221bef8ab3d86",
+        "language": "Python",
+        "loc": 11,
+        "profile": [11, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "__init__", "start": {"line": 7, "column": 5}, "end": {"line": 9, "column": 91}, "value": 3},
+          {"unit_name": "accept", "start": {"line": 11, "column": 5}, "end": {"line": 12, "column": 48}, "value": 2},
+          {"unit_name": "__eq__", "start": {"line": 14, "column": 5}, "end": {"line": 17, "column": 49}, "value": 4},
+          {"unit_name": "__hash__", "start": {"line": 19, "column": 5}, "end": {"line": 20, "column": 36}, "value": 2}
         ]
       },
       "codelimit/common/token_matching/predicate/Balanced.py": {
@@ -698,11 +710,12 @@
         ]
       },
       "codelimit/common/scope/Header.py": {
-        "checksum": "494d906861a481aac87a279cccb22a65",
+        "checksum": "5828e97e15a80bfc6cb407dfefb44263",
         "language": "Python",
-        "loc": 0,
-        "profile": [0, 0, 0, 0],
+        "loc": 6,
+        "profile": [6, 0, 0, 0],
         "measurements": [
+          {"unit_name": "sort_headers", "start": {"line": 13, "column": 1}, "end": {"line": 18, "column": 6}, "value": 6}
         ]
       },
       "codelimit/common/scope/__init__.py": {
@@ -714,39 +727,38 @@
         ]
       },
       "codelimit/common/scope/scope_utils.py": {
-        "checksum": "cca1e2ab8e397771a90840715b92787c",
+        "checksum": "1a1b6018fd5386b9b6e08f5394206c28",
         "language": "Python",
-        "loc": 121,
-        "profile": [104, 17, 0, 0],
+        "loc": 133,
+        "profile": [133, 0, 0, 0],
         "measurements": [
-          {"unit_name": "build_scopes", "start": {"line": 19, "column": 1}, "end": {"line": 29, "column": 63}, "value": 11},
-          {"unit_name": "fold_scopes", "start": {"line": 32, "column": 1}, "end": {"line": 43, "column": 18}, "value": 12},
-          {"unit_name": "unfold_scopes", "start": {"line": 46, "column": 1}, "end": {"line": 51, "column": 18}, "value": 6},
-          {"unit_name": "filter_scopes_nested_functions", "start": {"line": 54, "column": 1}, "end": {"line": 65, "column": 18}, "value": 12},
-          {"unit_name": "_build_scopes_from_headers_and_blocks", "start": {"line": 68, "column": 1}, "end": {"line": 84, "column": 18}, "value": 17},
-          {"unit_name": "_find_scope_blocks_indices", "start": {"line": 87, "column": 1}, "end": {"line": 96, "column": 14}, "value": 10},
-          {"unit_name": "_get_nearest_block", "start": {"line": 99, "column": 1}, "end": {"line": 111, "column": 18}, "value": 13},
-          {"unit_name": "_filter_nocl_scopes", "start": {"line": 114, "column": 1}, "end": {"line": 130, "column": 6}, "value": 10},
-          {"unit_name": "get_scope_header_lines", "start": {"line": 119, "column": 5}, "end": {"line": 124, "column": 22}, "value": 6},
-          {"unit_name": "has_name_prefix", "start": {"line": 133, "column": 1}, "end": {"line": 134, "column": 67}, "value": 2},
-          {"unit_name": "has_curly_suffix", "start": {"line": 137, "column": 1}, "end": {"line": 138, "column": 72}, "value": 2},
-          {"unit_name": "get_headers", "start": {"line": 141, "column": 1}, "end": {"line": 153, "column": 18}, "value": 12},
-          {"unit_name": "get_blocks", "start": {"line": 156, "column": 1}, "end": {"line": 163, "column": 43}, "value": 8}
+          {"unit_name": "build_scopes", "start": {"line": 15, "column": 1}, "end": {"line": 25, "column": 63}, "value": 11},
+          {"unit_name": "fold_scopes", "start": {"line": 28, "column": 1}, "end": {"line": 39, "column": 18}, "value": 12},
+          {"unit_name": "unfold_scopes", "start": {"line": 42, "column": 1}, "end": {"line": 47, "column": 18}, "value": 6},
+          {"unit_name": "filter_scopes_nested_functions", "start": {"line": 50, "column": 1}, "end": {"line": 61, "column": 18}, "value": 12},
+          {"unit_name": "_build_scopes_from_headers_and_blocks", "start": {"line": 64, "column": 1}, "end": {"line": 77, "column": 18}, "value": 14},
+          {"unit_name": "_find_scope_blocks_indices", "start": {"line": 80, "column": 1}, "end": {"line": 89, "column": 14}, "value": 10},
+          {"unit_name": "_get_nearest_block", "start": {"line": 92, "column": 1}, "end": {"line": 104, "column": 18}, "value": 13},
+          {"unit_name": "_filter_nocl_scopes", "start": {"line": 107, "column": 1}, "end": {"line": 125, "column": 6}, "value": 9},
+          {"unit_name": "get_scope_header_lines", "start": {"line": 112, "column": 5}, "end": {"line": 119, "column": 22}, "value": 8},
+          {"unit_name": "has_name_prefix", "start": {"line": 128, "column": 1}, "end": {"line": 129, "column": 67}, "value": 2},
+          {"unit_name": "has_curly_suffix", "start": {"line": 132, "column": 1}, "end": {"line": 133, "column": 72}, "value": 2},
+          {"unit_name": "get_headers", "start": {"line": 136, "column": 1}, "end": {"line": 148, "column": 18}, "value": 12},
+          {"unit_name": "get_blocks", "start": {"line": 151, "column": 1}, "end": {"line": 158, "column": 51}, "value": 8},
+          {"unit_name": "count_lines", "start": {"line": 161, "column": 1}, "end": {"line": 162, "column": 77}, "value": 2},
+          {"unit_name": "_scope_tokens", "start": {"line": 165, "column": 1}, "end": {"line": 176, "column": 18}, "value": 12}
         ]
       },
       "codelimit/common/scope/Scope.py": {
-        "checksum": "b707995412c5a4e9e0cba414f35fbf3a",
+        "checksum": "587f58a17d7acc8fd5d55b5cf2b74979",
         "language": "Python",
-        "loc": 27,
-        "profile": [27, 0, 0, 0],
+        "loc": 10,
+        "profile": [10, 0, 0, 0],
         "measurements": [
-          {"unit_name": "__init__", "start": {"line": 9, "column": 5}, "end": {"line": 12, "column": 40}, "value": 4},
-          {"unit_name": "__str__", "start": {"line": 14, "column": 5}, "end": {"line": 17, "column": 10}, "value": 4},
-          {"unit_name": "__repr__", "start": {"line": 19, "column": 5}, "end": {"line": 20, "column": 30}, "value": 2},
-          {"unit_name": "__len__", "start": {"line": 22, "column": 5}, "end": {"line": 23, "column": 42}, "value": 2},
-          {"unit_name": "tokens", "start": {"line": 25, "column": 5}, "end": {"line": 33, "column": 10}, "value": 9},
-          {"unit_name": "contains", "start": {"line": 35, "column": 5}, "end": {"line": 38, "column": 81}, "value": 4},
-          {"unit_name": "count_lines", "start": {"line": 41, "column": 1}, "end": {"line": 42, "column": 55}, "value": 2}
+          {"unit_name": "__init__", "start": {"line": 8, "column": 5}, "end": {"line": 11, "column": 40}, "value": 4},
+          {"unit_name": "__str__", "start": {"line": 13, "column": 5}, "end": {"line": 14, "column": 70}, "value": 2},
+          {"unit_name": "__repr__", "start": {"line": 16, "column": 5}, "end": {"line": 17, "column": 30}, "value": 2},
+          {"unit_name": "contains", "start": {"line": 19, "column": 5}, "end": {"line": 20, "column": 115}, "value": 2}
         ]
       },
       "codelimit/common/report/format_text.py": {
@@ -1094,14 +1106,15 @@
         ]
       },
       "codelimit/languages/Java.py": {
-        "checksum": "47b906f31398139854ebd95f041a242b",
+        "checksum": "47252927199a8d3a949c7cef4bc807ac",
         "language": "Python",
-        "loc": 8,
-        "profile": [8, 0, 0, 0],
+        "loc": 18,
+        "profile": [18, 0, 0, 0],
         "measurements": [
-          {"unit_name": "__init__", "start": {"line": 13, "column": 5}, "end": {"line": 14, "column": 33}, "value": 2},
-          {"unit_name": "extract_headers", "start": {"line": 16, "column": 5}, "end": {"line": 19, "column": 10}, "value": 4},
-          {"unit_name": "extract_blocks", "start": {"line": 21, "column": 5}, "end": {"line": 22, "column": 44}, "value": 2}
+          {"unit_name": "__init__", "start": {"line": 16, "column": 5}, "end": {"line": 17, "column": 33}, "value": 2},
+          {"unit_name": "extract_headers", "start": {"line": 19, "column": 5}, "end": {"line": 23, "column": 47}, "value": 5},
+          {"unit_name": "extract_blocks", "start": {"line": 25, "column": 5}, "end": {"line": 26, "column": 44}, "value": 2},
+          {"unit_name": "filter_headers", "start": {"line": 29, "column": 1}, "end": {"line": 37, "column": 18}, "value": 9}
         ]
       },
       "codelimit/languages/TypeScript.py": {
@@ -1116,16 +1129,16 @@
         ]
       },
       "codelimit/languages/Python.py": {
-        "checksum": "5a05d154c431c613b2dcc3b804ed2185",
+        "checksum": "9ab173463f6715b71e757040e388f439",
         "language": "Python",
-        "loc": 68,
-        "profile": [16, 52, 0, 0],
+        "loc": 70,
+        "profile": [16, 54, 0, 0],
         "measurements": [
           {"unit_name": "__init__", "start": {"line": 14, "column": 5}, "end": {"line": 15, "column": 35}, "value": 2},
           {"unit_name": "extract_headers", "start": {"line": 17, "column": 5}, "end": {"line": 20, "column": 10}, "value": 4},
-          {"unit_name": "extract_blocks", "start": {"line": 22, "column": 5}, "end": {"line": 48, "column": 28}, "value": 27},
-          {"unit_name": "_get_token_lines", "start": {"line": 51, "column": 1}, "end": {"line": 75, "column": 18}, "value": 25},
-          {"unit_name": "_get_indentation", "start": {"line": 78, "column": 1}, "end": {"line": 87, "column": 16}, "value": 10}
+          {"unit_name": "extract_blocks", "start": {"line": 22, "column": 5}, "end": {"line": 50, "column": 28}, "value": 29},
+          {"unit_name": "_get_token_lines", "start": {"line": 53, "column": 1}, "end": {"line": 77, "column": 18}, "value": 25},
+          {"unit_name": "_get_indentation", "start": {"line": 80, "column": 1}, "end": {"line": 89, "column": 16}, "value": 10}
         ]
       },
       "codelimit/languages/Cpp.py": {
