@@ -5,7 +5,9 @@ import os
 import shutil
 import tempfile
 from pathlib import Path
+from typing import Annotated
 
+import typer
 from sh import git
 
 from codelimit.common.GithubRepository import GithubRepository
@@ -59,34 +61,48 @@ def compare_reports(r1: Report, r2: Report) -> bool:
     return True
 
 
-def run() -> int:
-    result = 0
-    examples_dir = Path(os.path.abspath(__file__)).parent.parent.joinpath('examples')
-    report_dirs = [d for d in examples_dir.iterdir() if d.is_dir()]
-    for report_dir in report_dirs:
-        repo_parts = report_dir.name.split('_')
-        repo = GithubRepository(repo_parts[0], repo_parts[1], tag=repo_parts[2])
-        info(f'Scanning {repo}')
-        new_report = scan_repo(repo)
-        old_report = load_report(report_dir)
-        if old_report:
-            success('Existing report loaded')
-            if compare_reports(old_report, new_report):
-                success('No changes detected')
-            else:
-                print('Existing report:')
-                console.print(ScanResultTable(ScanTotals(old_report.codebase.totals)), soft_wrap=True)
-                print()
-                print('Current report:')
-                console.print(ScanResultTable(ScanTotals(new_report.codebase.totals)), soft_wrap=True)
-                fail('Changes detected')
-                result = 1
+def run_repo(report_dir: Path) -> bool:
+    result = True
+    repo_parts = report_dir.name.split('_')
+    repo = GithubRepository(repo_parts[0], repo_parts[1], tag=repo_parts[2])
+    info(f'Scanning {repo}')
+    new_report = scan_repo(repo)
+    old_report = load_report(report_dir)
+    if old_report:
+        success('Existing report loaded')
+        if compare_reports(old_report, new_report):
+            success('No changes detected')
         else:
+            print('Existing report:')
+            console.print(ScanResultTable(ScanTotals(old_report.codebase.totals)), soft_wrap=True)
+            print()
+            print('New report:')
+            console.print(ScanResultTable(ScanTotals(new_report.codebase.totals)), soft_wrap=True)
+            fail('Changes detected')
             save_report(report_dir, new_report)
             success('New report saved')
+            result = False
+    else:
+        save_report(report_dir, new_report)
+        success('New report saved')
     return result
 
 
+def run_regression(example_dir: Annotated[
+    Path, typer.Argument(exists=True, file_okay=False,
+                         help="Example directory (e.g. examples/spring-projects_spring-boot_v3.4.0)")
+] = None):
+    exit_code = 0
+    if example_dir:
+        exit_code = 1 if not run_repo(example_dir.resolve()) else 0
+    else:
+        examples_dir = Path(os.path.abspath(__file__)).parent.parent.joinpath('examples')
+        report_dirs = [d for d in examples_dir.iterdir() if d.is_dir()]
+        for report_dir in report_dirs:
+            if not run_repo(report_dir):
+                exit_code = 1
+    raise typer.Exit(code=exit_code)
+
+
 if __name__ == '__main__':
-    exit_code = run()
-    exit(exit_code)
+    typer.run(run_regression)
