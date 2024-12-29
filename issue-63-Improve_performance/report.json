@@ -1,7 +1,7 @@
 {
   "version": "0.16.0",
-  "uuid": "c2836288-3949-4153-862e-30bd4e5ed76d",
-  "timestamp": "2024-12-28T11:29:40+00:00",
+  "uuid": "73f28ce8-412f-459f-93a8-4351f5eca4a9",
+  "timestamp": "2024-12-29T12:56:43+00:00",
   "root": "/github/workspace",
   "repository": {
     "owner": "getcodelimit",
@@ -11,9 +11,9 @@
   "codebase": {
     "totals": {
       "Python": {
-        "files": 88,
-        "lines_of_code": 2251,
-        "functions": 334,
+        "files": 89,
+        "lines_of_code": 2272,
+        "functions": 339,
         "hard_to_maintain": 0,
         "unmaintainable": 0
       }
@@ -24,7 +24,7 @@
           "main.py",
           "codelimit/"
         ],
-        "profile": [1575, 676, 0, 0]
+        "profile": [1596, 676, 0, 0]
       },
       "codelimit/": {
         "entries": [
@@ -37,7 +37,7 @@
           "languages/",
           "commands/"
         ],
-        "profile": [1575, 676, 0, 0]
+        "profile": [1596, 676, 0, 0]
       },
       "codelimit/common/": {
         "entries": [
@@ -71,17 +71,18 @@
           "report/",
           "gsm/"
         ],
-        "profile": [1346, 376, 0, 0]
+        "profile": [1357, 376, 0, 0]
       },
       "codelimit/common/token_matching/": {
         "entries": [
           "__init__.py",
           "predicate/"
         ],
-        "profile": [126, 0, 0, 0]
+        "profile": [137, 0, 0, 0]
       },
       "codelimit/common/token_matching/predicate/": {
         "entries": [
+          "Not.py",
           "Balanced.py",
           "Keyword.py",
           "TokenValue.py",
@@ -92,7 +93,7 @@
           "Operator.py",
           "TokenPredicate.py"
         ],
-        "profile": [126, 0, 0, 0]
+        "profile": [137, 0, 0, 0]
       },
       "codelimit/common/scope/": {
         "entries": [
@@ -170,7 +171,7 @@
           "__init__.py",
           "JavaScript.py"
         ],
-        "profile": [52, 92, 0, 0]
+        "profile": [62, 92, 0, 0]
       },
       "codelimit/commands/": {
         "entries": [
@@ -586,6 +587,18 @@
         "loc": 0,
         "profile": [0, 0, 0, 0],
         "measurements": [
+        ]
+      },
+      "codelimit/common/token_matching/predicate/Not.py": {
+        "checksum": "69d62170d6c42807b3f221bef8ab3d86",
+        "language": "Python",
+        "loc": 11,
+        "profile": [11, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "__init__", "start": {"line": 7, "column": 5}, "end": {"line": 9, "column": 91}, "value": 3},
+          {"unit_name": "accept", "start": {"line": 11, "column": 5}, "end": {"line": 12, "column": 48}, "value": 2},
+          {"unit_name": "__eq__", "start": {"line": 14, "column": 5}, "end": {"line": 17, "column": 49}, "value": 4},
+          {"unit_name": "__hash__", "start": {"line": 19, "column": 5}, "end": {"line": 20, "column": 36}, "value": 2}
         ]
       },
       "codelimit/common/token_matching/predicate/Balanced.py": {
@@ -1093,14 +1106,15 @@
         ]
       },
       "codelimit/languages/Java.py": {
-        "checksum": "47b906f31398139854ebd95f041a242b",
+        "checksum": "47252927199a8d3a949c7cef4bc807ac",
         "language": "Python",
-        "loc": 8,
-        "profile": [8, 0, 0, 0],
+        "loc": 18,
+        "profile": [18, 0, 0, 0],
         "measurements": [
-          {"unit_name": "__init__", "start": {"line": 13, "column": 5}, "end": {"line": 14, "column": 33}, "value": 2},
-          {"unit_name": "extract_headers", "start": {"line": 16, "column": 5}, "end": {"line": 19, "column": 10}, "value": 4},
-          {"unit_name": "extract_blocks", "start": {"line": 21, "column": 5}, "end": {"line": 22, "column": 44}, "value": 2}
+          {"unit_name": "__init__", "start": {"line": 16, "column": 5}, "end": {"line": 17, "column": 33}, "value": 2},
+          {"unit_name": "extract_headers", "start": {"line": 19, "column": 5}, "end": {"line": 23, "column": 47}, "value": 5},
+          {"unit_name": "extract_blocks", "start": {"line": 25, "column": 5}, "end": {"line": 26, "column": 44}, "value": 2},
+          {"unit_name": "filter_headers", "start": {"line": 29, "column": 1}, "end": {"line": 37, "column": 18}, "value": 9}
         ]
       },
       "codelimit/languages/TypeScript.py": {
