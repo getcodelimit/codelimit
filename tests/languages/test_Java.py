@@ -77,3 +77,36 @@ def test_anonymous_class():
 
     print_units(code, Languages.Java)
     assert_units(code, Languages.Java, {"Foo": 6, "preVisitDirectory": 6})
+
+
+def test_record_class():
+    code = """
+    public record Person(String name, int age) {
+        public Person {
+            if (age < 0) {
+                throw new IllegalArgumentException("Age must be non-negative");
+            }
+        }
+        
+        public static void main(String[] args) {
+            Person p = new Person("Alice", 30);
+            System.out.println(p);
+        }
+    }
+    """
+
+    print_units(code, Languages.Java)
+    assert_units(code, Languages.Java, {"main": 4})
+
+
+def test_method_with_anonymous_class():
+    code = """
+    class Foo {
+        private void foo() {
+            return new Bar() {
+            };
+        }
+    }
+    """
+
+    assert_units(code, Languages.Java, {"foo": 4})
