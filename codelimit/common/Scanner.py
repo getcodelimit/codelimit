@@ -23,7 +23,8 @@ from codelimit.common.SourceFileEntry import SourceFileEntry
 from codelimit.common.Token import Token
 from codelimit.common.lexer_utils import lex
 from codelimit.common.report.Report import Report
-from codelimit.common.scope.scope_utils import build_scopes, unfold_scopes
+from codelimit.common.scope.scope_utils import build_scopes, unfold_scopes, count_lines
+from codelimit.common.source_utils import filter_tokens
 from codelimit.common.utils import (
     calculate_checksum,
 )
@@ -141,11 +142,12 @@ def scan_file(tokens: list[Token], language: Language) -> list[Measurement]:
     scopes = build_scopes(tokens, language)
     scopes = unfold_scopes(scopes)
     measurements: list[Measurement] = []
+    code_tokens = filter_tokens(tokens)
     if scopes:
         for scope in scopes:
-            length = len(scope)
-            start_location = scope.header.token_range[0].location
-            last_token = scope.block.tokens[-1]
+            length = count_lines(scope, code_tokens)
+            start_location = code_tokens[scope.header.token_range.start].location
+            last_token = code_tokens[scope.block.end - 1]
             end_location = Location(
                 last_token.location.line,
                 last_token.location.column + len(last_token.value),

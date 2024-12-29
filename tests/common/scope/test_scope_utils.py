@@ -5,7 +5,7 @@ from codelimit.common.TokenRange import TokenRange
 from codelimit.common.lexer_utils import lex
 from codelimit.common.scope.Header import Header
 from codelimit.common.scope.Scope import Scope
-from codelimit.common.scope.scope_utils import _find_scope_blocks_indices, fold_scopes
+from codelimit.common.scope.scope_utils import _find_scope_blocks_indices, fold_scopes, count_lines
 from codelimit.languages.Python import Python
 
 
@@ -39,18 +39,18 @@ def test_fold_scopes():
     tokens = lex(JavascriptLexer(), code)
 
     outer_scope = Scope(
-        Header("foo", TokenRange(tokens[0:4])), TokenRange(tokens[4:16])
+        Header("foo", TokenRange(0,4)), TokenRange(4,16)
     )
     inner_scope = Scope(
-        Header("bar", TokenRange(tokens[5:9])), TokenRange(tokens[9:11])
+        Header("bar", TokenRange(5,9)), TokenRange(9,11)
     )
     next_scope = Scope(
-        Header("foobar", TokenRange(tokens[16:20])), TokenRange(tokens[20:])
+        Header("foobar", TokenRange(16, 20)), TokenRange(20, 22)
     )
 
     result = fold_scopes([outer_scope, inner_scope, next_scope])
 
     assert len(result) == 2
-    assert len(result[0]) == 3
-    assert len(result[0].children[0]) == 2
-    assert len(result[1]) == 2
+    assert count_lines(result[0], tokens) == 3
+    assert count_lines(result[0].children[0], tokens) == 2
+    assert count_lines(result[1], tokens) == 2

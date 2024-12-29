@@ -1,11 +1,10 @@
 from pygments.lexers import CLexer
 
-from codelimit.common.TokenRange import TokenRange
+from codelimit.common.TokenRange import TokenRange, sort_token_ranges
 from codelimit.common.lexer_utils import lex
 from codelimit.common.source_utils import get_token_range
 from codelimit.common.token_utils import (
     get_balanced_symbol_token_indices,
-    sort_token_ranges,
     get_balanced_symbol_token_ranges,
 )
 
@@ -42,8 +41,8 @@ def test_get_balanced_symbol_token_ranges():
     result = get_balanced_symbol_token_ranges(tokens, "{", "}")
 
     assert len(result) == 2
-    assert result[0].token_string() == "{ }"
-    assert result[1].token_string() == "{ while ( 1 ) }"
+    assert result[0].token_string(tokens) == "{ }"
+    assert result[1].token_string(tokens) == "{ while ( 1 ) { } }"
 
 
 def test_get_token_range():
@@ -62,19 +61,15 @@ def test_sort_token_ranges():
     code += "}\n"
     tokens = lex(CLexer(), code)
 
-    token_ranges: list[TokenRange] = []
-    token_ranges.append(TokenRange(tokens[2:4]))
-    token_ranges.append(TokenRange(tokens[4:7]))
-    token_ranges.append(TokenRange(tokens[1:8]))
-    token_ranges.append(TokenRange(tokens[0:]))
+    token_ranges: list[TokenRange] = [TokenRange(2, 4), TokenRange(4, 7), TokenRange(1, 8), TokenRange(0, 9)]
 
-    result = sort_token_ranges(token_ranges)
+    result = sort_token_ranges(token_ranges, tokens)
 
-    assert result[0].tokens[0].location.line == 1
-    assert result[0].tokens[0].location.column == 1
-    assert result[1].tokens[0].location.line == 1
-    assert result[1].tokens[0].location.column == 3
-    assert result[2].tokens[0].location.line == 1
-    assert result[2].tokens[0].location.column == 5
-    assert result[3].tokens[0].location.line == 2
-    assert result[3].tokens[0].location.column == 5
+    assert tokens[result[0].start].location.line == 1
+    assert tokens[result[0].start].location.column == 1
+    assert tokens[result[1].start].location.line == 1
+    assert tokens[result[1].start].location.column == 3
+    assert tokens[result[2].start].location.line == 1
+    assert tokens[result[2].start].location.column == 5
+    assert tokens[result[3].start].location.line == 2
+    assert tokens[result[3].start].location.column == 5
