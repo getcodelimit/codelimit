@@ -23,6 +23,7 @@ def match(expression: Expression, sequence: list) -> Pattern | None:
         if not next_state:
             return None
     if pattern.is_accepting():
+        pattern.end = len(pattern.tokens)
         return pattern
     else:
         return None
@@ -32,21 +33,14 @@ def starts_with(expression: Expression, sequence: list) -> Pattern | None:
     nfa = expression_to_nfa(expression)
     dfa = nfa_to_dfa(nfa)
     pattern = Pattern(0, dfa)
-    for idx, item in enumerate(sequence):
-        next_state = None
-        for transition in pattern.state.transition:
-            if transition[0].accept(item):
-                pattern.tokens.append(item)
-                next_state = transition[1]
+    for item in sequence:
+        next_state = pattern.consume(item)
         if not next_state:
-            break
-        else:
-            pattern.state = next_state
-    if pattern.state in dfa.accepting:
-        pattern.end = len(pattern.tokens)
-        return pattern
-    else:
-        return None
+            return None
+        if pattern.is_accepting():
+            pattern.end = len(pattern.tokens)
+            return pattern
+    return None
 
 
 @dataclass

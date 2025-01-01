@@ -20,7 +20,7 @@ def print_totals(report, console):
 def print_summary(report: Report, console: Console):
     console.print("### Summary")
     easy, verbose, hard_to_maintain, unmaintainable = report.quality_profile_percentage()
-    console.print("| **Easy / Verbose** | **Hard-to-maintain \u26A0** | **Unmaintainable \u274C** |")
+    console.print("| **Easy / Verbose** | **Hard-to-maintain \u26A0** | **Unmaintainable \u26CC** |")
     console.print("| ---: | ---: | ---: |")
     console.print(f"| {easy + verbose}% | {hard_to_maintain}% | {unmaintainable}% |")
     console.print("")
@@ -36,15 +36,15 @@ def print_summary(report: Report, console: Console):
 
 def _print_totals(st: ScanTotals, console: Console):
     console.print(
-        "| **Language** | **Files** | **Lines of Code** | **Functions** | **\u26A0** | **\u274C** |"
+        "| **Language** | **Files** | **Functions** | **Lines of Code** | **\u26A0** | **\u26CC** |"
     )
     console.print("| --- | ---: | ---: | ---: | ---: | ---: |")
     for lt in st.languages_totals():
         console.print(
             f"| {lt.language} | "
             f"{lt.files} | "
-            f"{lt.loc} | "
             f"{lt.functions} | "
+            f"{lt.loc} | "
             f"{lt.hard_to_maintain} | "
             f"{lt.unmaintainable} |"
         )
@@ -52,8 +52,8 @@ def _print_totals(st: ScanTotals, console: Console):
         console.print(
             f"| **Totals** | "
             f"**{st.total_files()}** | "
-            f"**{st.total_loc()}** | "
             f"**{st.total_functions()}** | "
+            f"**{st.total_loc()}** | "
             f"**{st.total_hard_to_maintain()}** | "
             f"**{st.total_unmaintainable()}** |"
         )

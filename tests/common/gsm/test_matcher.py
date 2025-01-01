@@ -1,5 +1,7 @@
 from textwrap import dedent
 
+import pytest
+
 from codelimit.common.gsm.Expression import expression_to_nfa, nfa_to_dfa
 from codelimit.common.gsm.automata.State import State
 from codelimit.common.gsm.matcher import match, nfa_match, find_all, starts_with
@@ -215,3 +217,30 @@ def test_starts_with():
     pattern = starts_with(expr, text)
 
     assert pattern is None
+
+
+class Not(Predicate[str]):
+    def __init__(self, value: str):
+        self.value = value
+
+    def accept(self, item: str) -> bool:
+        return self.value != item
+
+    def __str__(self):
+        return f"[^{self.value}]"
+
+    def __eq__(self, other: object) -> bool:
+        if not isinstance(other, Not):
+            return False
+        return self.value == other.value
+
+    def __hash__(self):
+        return hash(self.value)
+
+
+def test_starts_with_overlapping_predicates():
+    expr = [ZeroOrMore(Not("c")), "b"]
+    text = ["a", "a", "b", "b"]
+
+    with pytest.raises(ValueError):
+        starts_with(expr, text)

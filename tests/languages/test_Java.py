@@ -1,5 +1,5 @@
 from codelimit.languages import Languages
-from tests.conftest import assert_units
+from tests.conftest import assert_units, print_units
 
 
 def test_simple_main_function():
@@ -74,6 +74,7 @@ def test_anonymous_class():
         }
     }
     """
+    print_units(code, Languages.Java)
 
     assert_units(code, Languages.Java, {"Foo": 6, "preVisitDirectory": 6})
 
@@ -108,3 +109,34 @@ def test_method_with_anonymous_class():
     """
 
     assert_units(code, Languages.Java, {"foo": 4})
+
+
+def test_abstract_methods():
+    code = """
+    public abstract class Foo {
+        abstract void foo();
+        abstract void bar();
+        
+        public void foobar() {
+            System.out.println("baz");
+        }
+    }
+    """
+
+    assert_units(code, Languages.Java, {'foobar': 3})
+
+
+def test_abstract_methods_with_inner_class():
+    code = """
+    public abstract class Foo {
+        abstract void foo() throws Exception;
+
+        class Bar {
+            public void foobar() {
+                System.out.println("baz");
+            }
+        }
+    }
+    """
+
+    assert_units(code, Languages.Java, {'foobar': 3})
