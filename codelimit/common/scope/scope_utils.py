@@ -149,7 +149,7 @@ def get_headers(
 
 
 def get_blocks(
-        tokens: list[Token], open: str, close: str, extract_nested: object = True
+        tokens: list[Token], open: str, close: str, extract_nested: bool = True
 ) -> list[TokenRange]:
     balanced_tokens = get_balanced_symbol_token_indices(
         tokens, open, close, extract_nested
