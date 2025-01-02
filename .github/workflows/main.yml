@@ -29,15 +29,17 @@ jobs:
 
       - name: 'Run codelimit'
         run: |
+          echo "Scan codebase"
           poetry run codelimit scan .
+          echo "Generate report"
+          poetry run codelimit report .
+          echo "Generate findings"
+          poetry run codelimit findings .
 
       - name: 'Build and run codelimit binary'
         run: |
           poetry run pyinstaller -n codelimit -F codelimit/__main__.py
           ./dist/codelimit scan .
-
-      - name: 'Run CodeLimit action'
-        uses: getcodelimit/codelimit-action@main
 
       - name: 'Upload coverage reports to Codecov'
         uses: codecov/codecov-action@v3
