@@ -1,7 +1,7 @@
 {
-  "version": "0.16.0",
-  "uuid": "0e62473c-8e5e-4242-9666-01d0d0c6d407",
-  "timestamp": "2024-12-29T16:59:45+00:00",
+  "version": "0.17.0",
+  "uuid": "48b7751d-aeb3-4145-abae-0f3dd897bb7f",
+  "timestamp": "2025-01-02T12:29:06+00:00",
   "root": "/github/workspace",
   "repository": {
     "owner": "getcodelimit",
@@ -11,9 +11,9 @@
   "codebase": {
     "totals": {
       "Python": {
-        "files": 89,
-        "lines_of_code": 2272,
-        "functions": 339,
+        "files": 90,
+        "lines_of_code": 2287,
+        "functions": 343,
         "hard_to_maintain": 0,
         "unmaintainable": 0
       }
@@ -24,7 +24,7 @@
           "main.py",
           "codelimit/"
         ],
-        "profile": [1596, 676, 0, 0]
+        "profile": [1630, 657, 0, 0]
       },
       "codelimit/": {
         "entries": [
@@ -37,7 +37,7 @@
           "languages/",
           "commands/"
         ],
-        "profile": [1596, 676, 0, 0]
+        "profile": [1630, 657, 0, 0]
       },
       "codelimit/common/": {
         "entries": [
@@ -71,29 +71,30 @@
           "report/",
           "gsm/"
         ],
-        "profile": [1357, 376, 0, 0]
+        "profile": [1385, 357, 0, 0]
       },
       "codelimit/common/token_matching/": {
         "entries": [
           "__init__.py",
           "predicate/"
         ],
-        "profile": [137, 0, 0, 0]
+        "profile": [149, 0, 0, 0]
       },
       "codelimit/common/token_matching/predicate/": {
         "entries": [
+          "And.py",
           "Not.py",
           "Balanced.py",
           "Keyword.py",
           "TokenValue.py",
           "Name.py",
           "__init__.py",
-          "Choice.py",
+          "Or.py",
           "Symbol.py",
           "Operator.py",
           "TokenPredicate.py"
         ],
-        "profile": [137, 0, 0, 0]
+        "profile": [149, 0, 0, 0]
       },
       "codelimit/common/scope/": {
         "entries": [
@@ -128,7 +129,7 @@
           "operator/",
           "predicate/"
         ],
-        "profile": [237, 86, 0, 0]
+        "profile": [253, 67, 0, 0]
       },
       "codelimit/common/gsm/automata/": {
         "entries": [
@@ -171,7 +172,7 @@
           "__init__.py",
           "JavaScript.py"
         ],
-        "profile": [62, 92, 0, 0]
+        "profile": [68, 92, 0, 0]
       },
       "codelimit/commands/": {
         "entries": [
@@ -252,7 +253,7 @@
         ]
       },
       "codelimit/version.py": {
-        "checksum": "c4bae9cd949768f82ea1d9f988515846",
+        "checksum": "80ceb9ec203ddf2a8613bff793146be4",
         "language": "Python",
         "loc": 0,
         "profile": [0, 0, 0, 0],
@@ -516,7 +517,7 @@
         ]
       },
       "codelimit/common/ScanResultTable.py": {
-        "checksum": "1c5193b6358e38acd9becab6ad726d41",
+        "checksum": "df8056abac207e9b4a0f583769df6a77",
         "language": "Python",
         "loc": 30,
         "profile": [10, 20, 0, 0],
@@ -587,6 +588,18 @@
         "loc": 0,
         "profile": [0, 0, 0, 0],
         "measurements": [
+        ]
+      },
+      "codelimit/common/token_matching/predicate/And.py": {
+        "checksum": "4521d573b29b0c751804a8e4eeabe79a",
+        "language": "Python",
+        "loc": 12,
+        "profile": [12, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "__init__", "start": {"line": 7, "column": 5}, "end": {"line": 10, "column": 87}, "value": 4},
+          {"unit_name": "accept", "start": {"line": 12, "column": 5}, "end": {"line": 13, "column": 68}, "value": 2},
+          {"unit_name": "__eq__", "start": {"line": 15, "column": 5}, "end": {"line": 18, "column": 69}, "value": 4},
+          {"unit_name": "__hash__", "start": {"line": 20, "column": 5}, "end": {"line": 21, "column": 45}, "value": 2}
         ]
       },
       "codelimit/common/token_matching/predicate/Not.py": {
@@ -661,8 +674,8 @@
         "measurements": [
         ]
       },
-      "codelimit/common/token_matching/predicate/Choice.py": {
-        "checksum": "8d6ee2adf3a3d3921842b993de7db175",
+      "codelimit/common/token_matching/predicate/Or.py": {
+        "checksum": "d31f4f4c01b81167b64301bfb7cae005",
         "language": "Python",
         "loc": 12,
         "profile": [12, 0, 0, 0],
@@ -727,7 +740,7 @@
         ]
       },
       "codelimit/common/scope/scope_utils.py": {
-        "checksum": "1a1b6018fd5386b9b6e08f5394206c28",
+        "checksum": "cfc4c202929348dd437c07e8f3c7b1d7",
         "language": "Python",
         "loc": 133,
         "profile": [133, 0, 0, 0],
@@ -834,7 +847,7 @@
         ]
       },
       "codelimit/common/report/format_markdown.py": {
-        "checksum": "e7e4f80f921f3f1ffc61a12a284da760",
+        "checksum": "dbf4658ccca006c12b4150b7dd147fbf",
         "language": "Python",
         "loc": 81,
         "profile": [58, 23, 0, 0],
@@ -875,17 +888,17 @@
         ]
       },
       "codelimit/common/gsm/matcher.py": {
-        "checksum": "ed51f6b904b2fa2190694649dfb586c9",
+        "checksum": "df1a41a699c4556d66beda7ac264842b",
         "language": "Python",
-        "loc": 74,
-        "profile": [30, 44, 0, 0],
+        "loc": 68,
+        "profile": [43, 25, 0, 0],
         "measurements": [
-          {"unit_name": "match", "start": {"line": 17, "column": 1}, "end": {"line": 28, "column": 20}, "value": 12},
-          {"unit_name": "starts_with", "start": {"line": 31, "column": 1}, "end": {"line": 49, "column": 20}, "value": 19},
-          {"unit_name": "find_all", "start": {"line": 59, "column": 1}, "end": {"line": 83, "column": 22}, "value": 25},
-          {"unit_name": "nfa_match", "start": {"line": 86, "column": 1}, "end": {"line": 99, "column": 42}, "value": 14},
-          {"unit_name": "render_nfa", "start": {"line": 102, "column": 1}, "end": {"line": 103, "column": 51}, "value": 2},
-          {"unit_name": "render_dfa", "start": {"line": 106, "column": 1}, "end": {"line": 107, "column": 63}, "value": 2}
+          {"unit_name": "match", "start": {"line": 17, "column": 1}, "end": {"line": 29, "column": 20}, "value": 13},
+          {"unit_name": "starts_with", "start": {"line": 32, "column": 1}, "end": {"line": 43, "column": 16}, "value": 12},
+          {"unit_name": "find_all", "start": {"line": 53, "column": 1}, "end": {"line": 77, "column": 22}, "value": 25},
+          {"unit_name": "nfa_match", "start": {"line": 80, "column": 1}, "end": {"line": 93, "column": 42}, "value": 14},
+          {"unit_name": "render_nfa", "start": {"line": 96, "column": 1}, "end": {"line": 97, "column": 51}, "value": 2},
+          {"unit_name": "render_dfa", "start": {"line": 100, "column": 1}, "end": {"line": 101, "column": 63}, "value": 2}
         ]
       },
       "codelimit/common/gsm/Expression.py": {
@@ -903,15 +916,15 @@
         ]
       },
       "codelimit/common/gsm/Pattern.py": {
-        "checksum": "1981a691c6478675068a567cff45510d",
+        "checksum": "42bf98042af68f39b67614c743e21460",
         "language": "Python",
-        "loc": 22,
-        "profile": [22, 0, 0, 0],
+        "loc": 25,
+        "profile": [25, 0, 0, 0],
         "measurements": [
           {"unit_name": "__init__", "start": {"line": 9, "column": 5}, "end": {"line": 15, "column": 54}, "value": 7},
-          {"unit_name": "consume", "start": {"line": 17, "column": 5}, "end": {"line": 27, "column": 20}, "value": 11},
-          {"unit_name": "is_accepting", "start": {"line": 29, "column": 5}, "end": {"line": 30, "column": 54}, "value": 2},
-          {"unit_name": "token_string", "start": {"line": 32, "column": 5}, "end": {"line": 33, "column": 56}, "value": 2}
+          {"unit_name": "consume", "start": {"line": 17, "column": 5}, "end": {"line": 30, "column": 56}, "value": 14},
+          {"unit_name": "is_accepting", "start": {"line": 32, "column": 5}, "end": {"line": 33, "column": 54}, "value": 2},
+          {"unit_name": "token_string", "start": {"line": 35, "column": 5}, "end": {"line": 36, "column": 56}, "value": 2}
         ]
       },
       "codelimit/common/gsm/__init__.py": {
@@ -1106,19 +1119,19 @@
         ]
       },
       "codelimit/languages/Java.py": {
-        "checksum": "47252927199a8d3a949c7cef4bc807ac",
+        "checksum": "736b7ac89c51d0c0d5328cba7d65c3b2",
         "language": "Python",
-        "loc": 18,
-        "profile": [18, 0, 0, 0],
+        "loc": 24,
+        "profile": [24, 0, 0, 0],
         "measurements": [
-          {"unit_name": "__init__", "start": {"line": 16, "column": 5}, "end": {"line": 17, "column": 33}, "value": 2},
-          {"unit_name": "extract_headers", "start": {"line": 19, "column": 5}, "end": {"line": 23, "column": 47}, "value": 5},
-          {"unit_name": "extract_blocks", "start": {"line": 25, "column": 5}, "end": {"line": 26, "column": 44}, "value": 2},
-          {"unit_name": "filter_headers", "start": {"line": 29, "column": 1}, "end": {"line": 37, "column": 18}, "value": 9}
+          {"unit_name": "__init__", "start": {"line": 21, "column": 5}, "end": {"line": 22, "column": 33}, "value": 2},
+          {"unit_name": "extract_headers", "start": {"line": 24, "column": 5}, "end": {"line": 34, "column": 47}, "value": 11},
+          {"unit_name": "extract_blocks", "start": {"line": 36, "column": 5}, "end": {"line": 37, "column": 44}, "value": 2},
+          {"unit_name": "filter_headers", "start": {"line": 40, "column": 1}, "end": {"line": 48, "column": 18}, "value": 9}
         ]
       },
       "codelimit/languages/TypeScript.py": {
-        "checksum": "39f4aa3470aad78800f3fae15bd65cbe",
+        "checksum": "d3f305a4f9ac6e71cdb83006d0a02977",
         "language": "Python",
         "loc": 25,
         "profile": [6, 19, 0, 0],
