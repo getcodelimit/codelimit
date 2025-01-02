@@ -33,6 +33,8 @@ jobs:
           poetry run codelimit scan .
           echo "Generate report"
           poetry run codelimit report .
+          echo "Generate report in Markdown"
+          poetry run codelimit report --format markdown .
           echo "Generate findings"
           poetry run codelimit findings .
 
