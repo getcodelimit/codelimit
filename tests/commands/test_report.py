@@ -20,9 +20,9 @@ def test_report_totals_markdown_one_language():
     format_markdown._print_totals(st, console)
 
     assert console.export_text() == (
-        "| **Language** | **Files** | **Lines of Code** | **Functions** | **\u26A0** | **\u274C** |\n"
+        "| **Language** | **Files** | **Functions** | **Lines of Code** | **\u26A0** | **\u26CC** |\n"
         "| --- | ---: | ---: | ---: | ---: | ---: |\n"
-        "| Python | 1 | 2 | 3 | 4 | 5 |\n"
+        "| Python | 1 | 3 | 2 | 4 | 5 |\n"
     )
 
 
@@ -44,11 +44,11 @@ def test_report_totals_markdown_two_languages():
     format_markdown._print_totals(st, console)
 
     assert console.export_text() == (
-        "| **Language** | **Files** | **Lines of Code** | **Functions** | **\u26A0** | **\u274C** |\n"
+        "| **Language** | **Files** | **Functions** | **Lines of Code** | **\u26A0** | **\u26CC** |\n"
         "| --- | ---: | ---: | ---: | ---: | ---: |\n"
-        "| Python | 1 | 2 | 3 | 4 | 5 |\n"
-        "| TypeScript | 1 | 2 | 3 | 4 | 5 |\n"
-        "| **Totals** | **2** | **4** | **6** | **8** | **10** |\n"
+        "| Python | 1 | 3 | 2 | 4 | 5 |\n"
+        "| TypeScript | 1 | 3 | 2 | 4 | 5 |\n"
+        "| **Totals** | **2** | **6** | **4** | **8** | **10** |\n"
     )
 
 

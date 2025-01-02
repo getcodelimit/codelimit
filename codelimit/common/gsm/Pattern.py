@@ -15,16 +15,19 @@ class Pattern:
         self.predicate_map: dict[int, Predicate] = {}
 
     def consume(self, item) -> State | None:
+        found_transition = False
         for transition in self.state.transition:
             predicate_id = id(transition[0])
             if predicate_id not in self.predicate_map:
                 self.predicate_map[predicate_id] = deepcopy(transition[0])
             predicate = self.predicate_map[predicate_id]
             if predicate.accept(item):
+                if found_transition:
+                    raise ValueError("Multiple transitions found!")
+                found_transition = True
                 self.tokens.append(item)
                 self.state = transition[1]
-                return self.state
-        return None
+        return self.state if found_transition else None
 
     def is_accepting(self):
         return self.automata.is_accepting(self.state)
