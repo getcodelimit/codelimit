@@ -88,7 +88,11 @@ def run_repo(report_dir: Path) -> bool:
     return result
 
 
-def run_regression(example_dir: Annotated[
+cli = typer.Typer(no_args_is_help=True, add_completion=False)
+
+
+@cli.command(help="Run regression tests")
+def run(example_dir: Annotated[
     Path, typer.Argument(exists=True, file_okay=False,
                          help="Example directory (e.g. examples/spring-projects_spring-boot_v3.4.0)")
 ] = None):
@@ -104,5 +108,17 @@ def run_regression(example_dir: Annotated[
     raise typer.Exit(code=exit_code)
 
 
+@cli.command(help="Add a repository")
+def add(repo: str, tag: str):
+    [owner, name] = repo.split('/')
+    report_dir = Path(os.path.abspath(__file__)).parent.parent.joinpath('examples').joinpath(f'{owner}_{name}_{tag}')
+    if report_dir.exists():
+        fail('Repository already exists')
+    else:
+        report_dir.mkdir()
+        run_repo(report_dir)
+        success('Example added')
+
+
 if __name__ == '__main__':
-    typer.run(run_regression)
+    cli()
