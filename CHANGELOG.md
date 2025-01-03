@@ -1,6 +1,27 @@
 # CHANGELOG
 
 
+## v0.17.1 (2025-01-03)
+
+### Bug Fixes
+
+- 🐛 Fix Java parsing bug ([#67](https://github.com/getcodelimit/codelimit/pull/67),
+  [`dd2b8f7`](https://github.com/getcodelimit/codelimit/commit/dd2b8f732458cc2b8971076e23fdfcf8ba324bf4))
+
+### Continuous Integration
+
+- 👷 Generate in Markdown
+  ([`8bfac04`](https://github.com/getcodelimit/codelimit/commit/8bfac048dd81172dd4f5ad347f94b54489a976be))
+
+- 👷 Separate workflows
+  ([`2a131c5`](https://github.com/getcodelimit/codelimit/commit/2a131c5326f5d4e7612421f76ac32cbc33ed3f0b))
+
+### Testing
+
+- ✅ Add junit to regression test set
+  ([`2f7bb27`](https://github.com/getcodelimit/codelimit/commit/2f7bb27be0790bcfdf610c46bb05fd2f067ce5ba))
+
+
 ## v0.17.0 (2024-12-29)
 
 ### Bug Fixes
