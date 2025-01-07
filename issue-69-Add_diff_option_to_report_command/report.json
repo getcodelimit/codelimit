@@ -1,7 +1,7 @@
 {
   "version": "0.17.1",
-  "uuid": "f9a4f57e-fc0f-4a53-9dc3-14026fff76ef",
-  "timestamp": "2025-01-07T12:28:13+00:00",
+  "uuid": "c7e1229e-d448-40b6-8c1e-377524237317",
+  "timestamp": "2025-01-07T12:36:18+00:00",
   "root": "/github/workspace",
   "repository": {
     "owner": "getcodelimit",
@@ -12,7 +12,7 @@
     "totals": {
       "Python": {
         "files": 92,
-        "lines_of_code": 2392,
+        "lines_of_code": 2401,
         "functions": 356,
         "hard_to_maintain": 1,
         "unmaintainable": 0
@@ -24,7 +24,7 @@
           "main.py",
           "codelimit/"
         ],
-        "profile": [1689, 657, 46, 0]
+        "profile": [1680, 675, 46, 0]
       },
       "codelimit/": {
         "entries": [
@@ -37,7 +37,7 @@
           "languages/",
           "commands/"
         ],
-        "profile": [1689, 657, 46, 0]
+        "profile": [1680, 675, 46, 0]
       },
       "codelimit/common/": {
         "entries": [
@@ -73,7 +73,7 @@
           "report/",
           "gsm/"
         ],
-        "profile": [1441, 357, 46, 0]
+        "profile": [1432, 375, 46, 0]
       },
       "codelimit/common/token_matching/": {
         "entries": [
@@ -492,10 +492,10 @@
         ]
       },
       "codelimit/common/utils.py": {
-        "checksum": "3dfc680f3b8f173c25f71f296613f391",
+        "checksum": "c03a9af89819db9b2478aeeaee78a269",
         "language": "Python",
-        "loc": 187,
-        "profile": [109, 78, 0, 0],
+        "loc": 196,
+        "profile": [100, 96, 0, 0],
         "measurements": [
           {"unit_name": "make_profile", "start": {"line": 20, "column": 1}, "end": {"line": 31, "column": 18}, "value": 12},
           {"unit_name": "make_count_profile", "start": {"line": 34, "column": 1}, "end": {"line": 45, "column": 18}, "value": 12},
@@ -513,9 +513,9 @@
           {"unit_name": "format_measurement", "start": {"line": 140, "column": 1}, "end": {"line": 159, "column": 18}, "value": 20},
           {"unit_name": "format_unit", "start": {"line": 162, "column": 1}, "end": {"line": 177, "column": 18}, "value": 16},
           {"unit_name": "replace_string_literal_with_predicate", "start": {"line": 180, "column": 1}, "end": {"line": 205, "column": 10}, "value": 26},
-          {"unit_name": "_get_git_branch", "start": {"line": 208, "column": 1}, "end": {"line": 216, "column": 20}, "value": 9},
-          {"unit_name": "_get_remote_url", "start": {"line": 219, "column": 1}, "end": {"line": 224, "column": 20}, "value": 6},
-          {"unit_name": "configure_github_repository", "start": {"line": 227, "column": 1}, "end": {"line": 241, "column": 80}, "value": 15}
+          {"unit_name": "_get_git_branch", "start": {"line": 208, "column": 1}, "end": {"line": 225, "column": 20}, "value": 18},
+          {"unit_name": "_get_remote_url", "start": {"line": 228, "column": 1}, "end": {"line": 233, "column": 20}, "value": 6},
+          {"unit_name": "configure_github_repository", "start": {"line": 236, "column": 1}, "end": {"line": 250, "column": 80}, "value": 15}
         ]
       },
       "codelimit/common/SourceFolder.py": {
