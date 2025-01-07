@@ -17,7 +17,7 @@ def test_report_totals_markdown_one_language():
     python_totals.unmaintainable = 5
     st = ScanTotals({"Python": python_totals})
     console = Console(record=True, soft_wrap=True)
-    format_markdown._print_totals(st, console)
+    format_markdown._print_totals(console, st)
 
     assert console.export_text() == (
         "| **Language** | **Files** | **Functions** | **Lines of Code** | **\u26A0** | **\u26CC** |\n"
@@ -41,7 +41,7 @@ def test_report_totals_markdown_two_languages():
     ts_totals.unmaintainable = 5
     st = ScanTotals({"Python": python_totals, "TypeScript": ts_totals})
     console = Console(record=True, soft_wrap=True)
-    format_markdown._print_totals(st, console)
+    format_markdown._print_totals(console, st)
 
     assert console.export_text() == (
         "| **Language** | **Files** | **Functions** | **Lines of Code** | **\u26A0** | **\u26CC** |\n"

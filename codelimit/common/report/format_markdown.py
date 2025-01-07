@@ -1,23 +1,70 @@
 from rich.console import Console
 
 from codelimit.common.GithubRepository import GithubRepository
+from codelimit.common.LanguageTotalsDelta import LanguageTotalsDelta
 from codelimit.common.ScanTotals import ScanTotals
+from codelimit.common.ScanTotalsDelta import ScanTotalsDelta
 from codelimit.common.report.Report import Report
 from codelimit.common.report.ReportUnit import ReportUnit
 
 
-def print_report(report: Report, console: Console):
-    print_totals(report, console)
-    print_summary(report, console)
+def print_report(console: Console, report: Report, diff_report: Report | None = None):
+    print_totals(console, report, diff_report)
+    print_summary(console, report)
 
 
-def print_totals(report, console):
+def print_totals(console: Console, report: Report, diff_report: Report | None = None):
     console.print("### Overview")
-    _print_totals(ScanTotals(report.codebase.totals), console)
+    scan_totals = ScanTotals(report.codebase.totals)
+    if diff_report:
+        _print_totals(console, scan_totals, ScanTotals(diff_report.codebase.totals))
+    else:
+        _print_totals(console, scan_totals)
     console.print("")
 
 
-def print_summary(report: Report, console: Console):
+def _print_totals(console: Console, scan_totals_current: ScanTotals, scan_totals_previous: ScanTotals | None = None):
+    console.print(
+        "| **Language** | **Files** | **Functions** | **Lines of Code** | **\u26A0** | **\u26CC** |"
+    )
+    console.print("| --- | ---: | ---: | ---: | ---: | ---: |")
+    for language_totals in scan_totals_current.languages_totals():
+        if scan_totals_previous:
+            language_totals_previous = scan_totals_previous.language_total(language_totals.language)
+            ltd = LanguageTotalsDelta(language_totals, language_totals_previous)
+            console.print(
+                language_totals.language,
+                f"| {ltd.files()} | ",
+                f"{ltd.functions()} | ",
+                f"{ltd.loc()} | ",
+                f"{ltd.hard_to_maintain()} | ",
+                f"{ltd.unmaintainable()} |"
+            )
+        else:
+            console.print(
+                f"| {language_totals.language} | "
+                f"{language_totals.files} | "
+                f"{language_totals.functions} | "
+                f"{language_totals.loc} | "
+                f"{language_totals.hard_to_maintain} | "
+                f"{language_totals.unmaintainable} |"
+            )
+    if len(scan_totals_current.languages_totals()) > 1:
+        if scan_totals_previous:
+            st = ScanTotalsDelta(scan_totals_current, scan_totals_previous)
+        else:
+            st = scan_totals_current
+        console.print(
+            f"| **Totals** | "
+            f"**{st.total_files()}** | "
+            f"**{st.total_functions()}** | "
+            f"**{st.total_loc()}** | "
+            f"**{st.total_hard_to_maintain()}** | "
+            f"**{st.total_unmaintainable()}** |"
+        )
+
+
+def print_summary(console: Console, report: Report):
     console.print("### Summary")
     easy, verbose, hard_to_maintain, unmaintainable = report.quality_profile_percentage()
     console.print("| **Easy / Verbose** | **Hard-to-maintain \u26A0** | **Unmaintainable \u26CC** |")
@@ -32,31 +79,6 @@ def print_summary(report: Report, console: Console):
         console.print(
             f":white_check_mark: {easy + verbose}% of the functions are maintainable, no refactoring necessary.")
     console.print("")
-
-
-def _print_totals(st: ScanTotals, console: Console):
-    console.print(
-        "| **Language** | **Files** | **Functions** | **Lines of Code** | **\u26A0** | **\u26CC** |"
-    )
-    console.print("| --- | ---: | ---: | ---: | ---: | ---: |")
-    for lt in st.languages_totals():
-        console.print(
-            f"| {lt.language} | "
-            f"{lt.files} | "
-            f"{lt.functions} | "
-            f"{lt.loc} | "
-            f"{lt.hard_to_maintain} | "
-            f"{lt.unmaintainable} |"
-        )
-    if len(st.languages_totals()) > 1:
-        console.print(
-            f"| **Totals** | "
-            f"**{st.total_files()}** | "
-            f"**{st.total_functions()}** | "
-            f"**{st.total_loc()}** | "
-            f"**{st.total_hard_to_maintain()}** | "
-            f"**{st.total_unmaintainable()}** |"
-        )
 
 
 def print_findings(report: Report, console: Console, full: bool = False):

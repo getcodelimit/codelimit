@@ -4,7 +4,7 @@ from codelimit.common.SourceFileEntry import SourceFileEntry
 
 class ScanTotals:
     def __init__(
-        self, language_totals: dict[str, LanguageTotals] | None = None
+            self, language_totals: dict[str, LanguageTotals] | None = None
     ) -> None:
         self._languages_totals: dict[str, LanguageTotals] = (
             language_totals if language_totals else {}
@@ -18,19 +18,22 @@ class ScanTotals:
     def languages(self):
         return self._languages_totals.keys()
 
+    def language_total(self, language: str) -> LanguageTotals | None:
+        return self._languages_totals.get(language)
+
     def languages_totals(self) -> list[LanguageTotals]:
         return sorted(
             self._languages_totals.values(), key=lambda x: x.loc, reverse=True
         )
-
-    def total_loc(self) -> int:
-        return sum([language.loc for language in self._languages_totals.values()])
 
     def total_files(self) -> int:
         return sum([language.files for language in self._languages_totals.values()])
 
     def total_functions(self) -> int:
         return sum([language.functions for language in self._languages_totals.values()])
+
+    def total_loc(self) -> int:
+        return sum([language.loc for language in self._languages_totals.values()])
 
     def total_hard_to_maintain(self) -> int:
         return sum(

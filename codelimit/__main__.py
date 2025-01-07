@@ -55,12 +55,15 @@ def report(
         path: Annotated[
             Path, typer.Argument(exists=True, file_okay=False, help="Codebase root")
         ] = Path("."),
+        diff: Annotated[
+            Optional[Path], typer.Option(exists=True, dir_okay=False, help="Report to compare with")
+        ] = None,
         fmt: Annotated[
             ReportFormat, typer.Option("--format", help="Output format")
         ] = ReportFormat.text,
 ):
     Configuration.load(path)
-    report_command(path, fmt)
+    report_command(path, fmt, diff)
 
 
 @cli.command(help="Show findings for codebase")
