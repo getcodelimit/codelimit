@@ -51,17 +51,24 @@ def _print_totals(console: Console, scan_totals_current: ScanTotals, scan_totals
             )
     if len(scan_totals_current.languages_totals()) > 1:
         if scan_totals_previous:
-            st = ScanTotalsDelta(scan_totals_current, scan_totals_previous)
+            std = ScanTotalsDelta(scan_totals_current, scan_totals_previous)
+            console.print(
+                f"| **Totals** | "
+                f"**{std.total_files()}** | "
+                f"**{std.total_functions()}** | "
+                f"**{std.total_loc()}** | "
+                f"**{std.total_hard_to_maintain()}** | "
+                f"**{std.total_unmaintainable()}** |"
+            )
         else:
-            st = scan_totals_current
-        console.print(
-            f"| **Totals** | "
-            f"**{st.total_files()}** | "
-            f"**{st.total_functions()}** | "
-            f"**{st.total_loc()}** | "
-            f"**{st.total_hard_to_maintain()}** | "
-            f"**{st.total_unmaintainable()}** |"
-        )
+            console.print(
+                f"| **Totals** | "
+                f"**{scan_totals_current.total_files()}** | "
+                f"**{scan_totals_current.total_functions()}** | "
+                f"**{scan_totals_current.total_loc()}** | "
+                f"**{scan_totals_current.total_hard_to_maintain()}** | "
+                f"**{scan_totals_current.total_unmaintainable()}** |"
+            )
 
 
 def print_summary(console: Console, report: Report):
