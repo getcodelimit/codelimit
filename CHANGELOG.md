@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v0.18.1 (2025-01-07)
+
+### Bug Fixes
+
+- 🐛 Fix nocl exclusions
+  ([`4c0de1b`](https://github.com/getcodelimit/codelimit/commit/4c0de1bf6b70ab733a1678271d4210d02e4d9e18))
+
+
 ## v0.18.0 (2025-01-07)
 
 ### Continuous Integration
