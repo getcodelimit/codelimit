@@ -206,17 +206,12 @@ def replace_string_literal_with_predicate(expression: Expression) -> Expression:
 
 
 def _get_git_branch(path: Path) -> str | None:
-    print('get_git_branch')
     ref = os.getenv('GITHUB_REF')
-    print('GITHUB_REF')
-    print(ref)
     if ref and ref.startswith('refs/heads/'):
         return ref[11:]
     ref = os.getenv('GITHUB_HEAD_REF')
-    print('GITHUB_HEAD_REF')
-    print(ref)
-    if ref and ref.startswith('refs/heads/'):
-        return ref[11:]
+    if ref:
+        return ref
     try:
         out = sh.git('-c', f'safe.directory={path.resolve()}', 'rev-parse', '--abbrev-ref', 'HEAD', _cwd=path)
         print(out)
