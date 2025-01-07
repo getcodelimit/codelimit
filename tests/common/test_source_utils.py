@@ -1,4 +1,5 @@
 from pygments.lexers import PythonLexer
+from pygments.lexers import CppLexer
 
 from codelimit.common.Location import Location
 from codelimit.common.lexer_utils import lex
@@ -111,6 +112,19 @@ def test_filter_nocl_comments():
     code += "def foo(): # nocl\n"
     code += "  pass\n"
     tokens = lex(PythonLexer(), code, False)
+
+    result = filter_nocl_comment_tokens(tokens)
+
+    assert len(result) == 1
+    assert result[0].location.line == 1
+
+    code = ""
+    code += "// nocl\n"
+    code += "void\n"
+    code += "foo(Bar bar) {\n"
+    code += "  bar.foo();\n"
+    code += "}\n"
+    tokens = lex(CppLexer(), code, False)
 
     result = filter_nocl_comment_tokens(tokens)
 

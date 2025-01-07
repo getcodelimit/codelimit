@@ -65,7 +65,11 @@ def filter_nocl_comment_tokens(tokens: list[Token]):
     def predicate(token: Token):
         if token.is_comment():
             value = token.value.lower()
-            return value.startswith("#nocl") or value.startswith("# nocl")
+            if value.startswith("#") or value.startswith(";"):
+                value = value[1:].strip()
+            elif value.startswith("//") or value.startswith("/*"):
+                value = value[2:].strip()
+            return value.startswith("nocl")
         else:
             return False
 

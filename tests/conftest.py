@@ -17,8 +17,8 @@ def assert_units(code: str, language: Language, units: dict[str, int]):
     scopes = unfold_scopes(scopes)
     assert len(scopes) == len(units)
     for idx, scope in enumerate(scopes):
-        assert scope.header.name in units
-        assert count_lines(scope, code_tokens) == units[scope.header.name]
+        assert scope.header.name() in units
+        assert count_lines(scope, code_tokens) == units[scope.header.name()]
 
 
 def print_units(code: str, language: Language):

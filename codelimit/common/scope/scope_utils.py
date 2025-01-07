@@ -18,7 +18,7 @@ def build_scopes(tokens: list[Token], language: Language) -> list[Scope]:
     headers = language.extract_headers(code_tokens)
     blocks = language.extract_blocks(code_tokens, headers)
     scopes = _build_scopes_from_headers_and_blocks(headers, blocks, code_tokens)
-    filtered_scopes = _filter_nocl_scopes(scopes, code_tokens, nocl_comment_tokens)
+    filtered_scopes = _filter_nocl_scopes(scopes, nocl_comment_tokens)
     if language.allow_nested_functions:
         return fold_scopes(filtered_scopes)
     else:
@@ -105,24 +105,10 @@ def _get_nearest_block(
 
 
 def _filter_nocl_scopes(
-        scopes: list[Scope], tokens: list[Token], nocl_comment_tokens: list[Token]
+        scopes: list[Scope], nocl_comment_tokens: list[Token]
 ) -> list[Scope]:
     nocl_comment_lines = [t.location.line for t in nocl_comment_tokens]
-
-    def get_scope_header_lines(scope: Scope) -> set[int]:
-        header_token_range = scope.header.token_range
-        header_tokens = tokens[header_token_range.start:header_token_range.end]
-        result = set([t.location.line for t in header_tokens])
-        first_line = header_tokens[0].location.line
-        if first_line > 0:
-            result.add(first_line - 1)
-        return result
-
-    return [
-        s
-        for s in scopes
-        if len(get_scope_header_lines(s).intersection(nocl_comment_lines)) == 0
-    ]
+    return [s for s in scopes if s.header.name_token.location.line not in nocl_comment_lines]
 
 
 def has_name_prefix(tokens: list[Token], index: int) -> bool:
@@ -144,7 +130,7 @@ def get_headers(
     for pattern in patterns:
         name_token = next(t for t in pattern.tokens if t.is_name())
         if name_token:
-            result.append(Header(name_token.value, TokenRange(pattern.start, pattern.end)))
+            result.append(Header(name_token, TokenRange(pattern.start, pattern.end)))
     return result
 
 

@@ -147,9 +147,9 @@ def test_header_type_hints():
 
 def test_skip_function_with_nocl_comment_in_header():
     code = """
-    def bar(
+    def bar( # NOCL
         bar: Bar
-    ) -> JSONResponse: # nocl
+    ) -> JSONResponse:
         bar = foo
     
     def foo(
@@ -160,24 +160,6 @@ def test_skip_function_with_nocl_comment_in_header():
     """
 
     assert_units(code, Languages.Python, {"foo": 5})
-
-
-def test_skip_function_with_nocl_comment_before_header():
-    code = """
-    def bar(
-        bar: Bar
-    ) -> JSONResponse:
-        bar = foo
-    
-    # NOCL
-    def foo(
-        foo: Foo
-    ) -> None:
-        foo = bar
-        bar = foo
-    """
-
-    assert_units(code, Languages.Python, {"bar": 4})
 
 
 def test_function_with_type_hints():

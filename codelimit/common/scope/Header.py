@@ -6,8 +6,11 @@ from codelimit.common.TokenRange import TokenRange
 
 @dataclass
 class Header:
-    name: str
+    name_token: Token
     token_range: TokenRange
+
+    def name(self) -> str:
+        return self.name_token.value
 
 
 def sort_headers(headers: list[Header], tokens: list[Token], reverse=False) -> list[Header]:

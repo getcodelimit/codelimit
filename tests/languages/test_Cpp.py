@@ -72,3 +72,21 @@ def test_namespace():
     """
 
     assert_units(code, Languages.Cpp, {"sayHello": 3})
+
+
+def test_skip_function_with_nocl_comment():
+    code = """
+    void foo(Bar bar) {
+        bar.foo();
+    }
+    """
+
+    assert_units(code, Languages.Cpp, {"foo": 3})
+
+    code = """
+    void foo(Bar bar) { // nocl
+        bar.foo();
+    }
+    """
+
+    assert_units(code, Languages.Cpp, {})

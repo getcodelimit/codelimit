@@ -9,8 +9,8 @@ from pathspec import PathSpec
 from pygments.lexer import Lexer
 from pygments.lexers import get_lexer_for_filename
 from pygments.util import ClassNotFound
-from rich.live import Live
 from rich import print
+from rich.live import Live
 
 from codelimit.common.Codebase import Codebase
 from codelimit.common.Configuration import Configuration
@@ -153,7 +153,7 @@ def scan_file(tokens: list[Token], language: Language) -> list[Measurement]:
                 last_token.location.column + len(last_token.value),
             )
             measurements.append(
-                Measurement(scope.header.name, start_location, end_location, length)
+                Measurement(scope.header.name(), start_location, end_location, length)
             )
     return measurements
 
