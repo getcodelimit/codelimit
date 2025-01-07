@@ -1,7 +1,7 @@
 {
-  "version": "0.17.1",
-  "uuid": "e72600f7-7e28-4022-b863-32c2c4f05f75",
-  "timestamp": "2025-01-07T14:46:42+00:00",
+  "version": "0.18.0",
+  "uuid": "04953b7a-ad57-4239-b511-829938539aa7",
+  "timestamp": "2025-01-07T21:08:16+00:00",
   "root": "/github/workspace",
   "repository": {
     "owner": "getcodelimit",
@@ -12,7 +12,7 @@
     "totals": {
       "Python": {
         "files": 92,
-        "lines_of_code": 2395,
+        "lines_of_code": 2389,
         "functions": 356,
         "hard_to_maintain": 1,
         "unmaintainable": 0
@@ -24,7 +24,7 @@
           "main.py",
           "codelimit/"
         ],
-        "profile": [1692, 657, 46, 0]
+        "profile": [1686, 657, 46, 0]
       },
       "codelimit/": {
         "entries": [
@@ -37,7 +37,7 @@
           "languages/",
           "commands/"
         ],
-        "profile": [1692, 657, 46, 0]
+        "profile": [1686, 657, 46, 0]
       },
       "codelimit/common/": {
         "entries": [
@@ -73,7 +73,7 @@
           "report/",
           "gsm/"
         ],
-        "profile": [1444, 357, 46, 0]
+        "profile": [1438, 357, 46, 0]
       },
       "codelimit/common/token_matching/": {
         "entries": [
@@ -105,7 +105,7 @@
           "scope_utils.py",
           "Scope.py"
         ],
-        "profile": [149, 0, 0, 0]
+        "profile": [139, 0, 0, 0]
       },
       "codelimit/common/report/": {
         "entries": [
@@ -255,7 +255,7 @@
         ]
       },
       "codelimit/version.py": {
-        "checksum": "5e4c1c61246fa486a1e7834e941b3690",
+        "checksum": "112508f21d5512105691190798b72636",
         "language": "Python",
         "loc": 0,
         "profile": [0, 0, 0, 0],
@@ -339,10 +339,10 @@
         ]
       },
       "codelimit/common/source_utils.py": {
-        "checksum": "7535320588599048f1831853bc283c11",
+        "checksum": "2743ce1e8c1337e88bac135185266a4a",
         "language": "Python",
-        "loc": 54,
-        "profile": [54, 0, 0, 0],
+        "loc": 58,
+        "profile": [58, 0, 0, 0],
         "measurements": [
           {"unit_name": "get_newline_indices", "start": {"line": 5, "column": 1}, "end": {"line": 10, "column": 18}, "value": 6},
           {"unit_name": "index_to_location", "start": {"line": 13, "column": 1}, "end": {"line": 26, "column": 34}, "value": 14},
@@ -351,8 +351,8 @@
           {"unit_name": "get_location_range", "start": {"line": 44, "column": 1}, "end": {"line": 47, "column": 39}, "value": 4},
           {"unit_name": "filter_tokens", "start": {"line": 50, "column": 1}, "end": {"line": 61, "column": 47}, "value": 4},
           {"unit_name": "predicate", "start": {"line": 53, "column": 5}, "end": {"line": 59, "column": 31}, "value": 7},
-          {"unit_name": "filter_nocl_comment_tokens", "start": {"line": 64, "column": 1}, "end": {"line": 72, "column": 47}, "value": 2},
-          {"unit_name": "predicate", "start": {"line": 65, "column": 5}, "end": {"line": 70, "column": 25}, "value": 6}
+          {"unit_name": "filter_nocl_comment_tokens", "start": {"line": 64, "column": 1}, "end": {"line": 76, "column": 47}, "value": 2},
+          {"unit_name": "predicate", "start": {"line": 65, "column": 5}, "end": {"line": 74, "column": 25}, "value": 10}
         ]
       },
       "codelimit/common/Language.py": {
@@ -427,7 +427,7 @@
         ]
       },
       "codelimit/common/Scanner.py": {
-        "checksum": "0efdc0104a020776667e75d27737f7fa",
+        "checksum": "e3595392a120aac71021e1befed47311",
         "language": "Python",
         "loc": 125,
         "profile": [53, 72, 0, 0],
@@ -754,12 +754,13 @@
         ]
       },
       "codelimit/common/scope/Header.py": {
-        "checksum": "5828e97e15a80bfc6cb407dfefb44263",
+        "checksum": "de395f40e7d77d8985344f0bb89f1019",
         "language": "Python",
-        "loc": 6,
-        "profile": [6, 0, 0, 0],
+        "loc": 8,
+        "profile": [8, 0, 0, 0],
         "measurements": [
-          {"unit_name": "sort_headers", "start": {"line": 13, "column": 1}, "end": {"line": 18, "column": 6}, "value": 6}
+          {"unit_name": "name", "start": {"line": 12, "column": 5}, "end": {"line": 13, "column": 37}, "value": 2},
+          {"unit_name": "sort_headers", "start": {"line": 16, "column": 1}, "end": {"line": 21, "column": 6}, "value": 6}
         ]
       },
       "codelimit/common/scope/__init__.py": {
@@ -771,10 +772,10 @@
         ]
       },
       "codelimit/common/scope/scope_utils.py": {
-        "checksum": "cfc4c202929348dd437c07e8f3c7b1d7",
+        "checksum": "f569f33f134cf16b887c9d22dbacd667",
         "language": "Python",
-        "loc": 133,
-        "profile": [133, 0, 0, 0],
+        "loc": 121,
+        "profile": [121, 0, 0, 0],
         "measurements": [
           {"unit_name": "build_scopes", "start": {"line": 15, "column": 1}, "end": {"line": 25, "column": 63}, "value": 11},
           {"unit_name": "fold_scopes", "start": {"line": 28, "column": 1}, "end": {"line": 39, "column": 18}, "value": 12},
@@ -783,14 +784,13 @@
           {"unit_name": "_build_scopes_from_headers_and_blocks", "start": {"line": 64, "column": 1}, "end": {"line": 77, "column": 18}, "value": 14},
           {"unit_name": "_find_scope_blocks_indices", "start": {"line": 80, "column": 1}, "end": {"line": 89, "column": 14}, "value": 10},
           {"unit_name": "_get_nearest_block", "start": {"line": 92, "column": 1}, "end": {"line": 104, "column": 18}, "value": 13},
-          {"unit_name": "_filter_nocl_scopes", "start": {"line": 107, "column": 1}, "end": {"line": 125, "column": 6}, "value": 9},
-          {"unit_name": "get_scope_header_lines", "start": {"line": 112, "column": 5}, "end": {"line": 119, "column": 22}, "value": 8},
-          {"unit_name": "has_name_prefix", "start": {"line": 128, "column": 1}, "end": {"line": 129, "column": 67}, "value": 2},
-          {"unit_name": "has_curly_suffix", "start": {"line": 132, "column": 1}, "end": {"line": 133, "column": 72}, "value": 2},
-          {"unit_name": "get_headers", "start": {"line": 136, "column": 1}, "end": {"line": 148, "column": 18}, "value": 12},
-          {"unit_name": "get_blocks", "start": {"line": 151, "column": 1}, "end": {"line": 158, "column": 51}, "value": 8},
-          {"unit_name": "count_lines", "start": {"line": 161, "column": 1}, "end": {"line": 162, "column": 77}, "value": 2},
-          {"unit_name": "_scope_tokens", "start": {"line": 165, "column": 1}, "end": {"line": 176, "column": 18}, "value": 12}
+          {"unit_name": "_filter_nocl_scopes", "start": {"line": 107, "column": 1}, "end": {"line": 111, "column": 94}, "value": 5},
+          {"unit_name": "has_name_prefix", "start": {"line": 114, "column": 1}, "end": {"line": 115, "column": 67}, "value": 2},
+          {"unit_name": "has_curly_suffix", "start": {"line": 118, "column": 1}, "end": {"line": 119, "column": 72}, "value": 2},
+          {"unit_name": "get_headers", "start": {"line": 122, "column": 1}, "end": {"line": 134, "column": 18}, "value": 12},
+          {"unit_name": "get_blocks", "start": {"line": 137, "column": 1}, "end": {"line": 144, "column": 51}, "value": 8},
+          {"unit_name": "count_lines", "start": {"line": 147, "column": 1}, "end": {"line": 148, "column": 77}, "value": 2},
+          {"unit_name": "_scope_tokens", "start": {"line": 151, "column": 1}, "end": {"line": 162, "column": 18}, "value": 12}
         ]
       },
       "codelimit/common/scope/Scope.py": {
