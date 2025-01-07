@@ -1,7 +1,7 @@
 {
   "version": "0.17.1",
-  "uuid": "f0be7731-e8a1-4ad6-8216-4545c00b3cf4",
-  "timestamp": "2025-01-07T09:35:56+00:00",
+  "uuid": "caf1454e-694c-474f-afdc-72c96a365f28",
+  "timestamp": "2025-01-07T11:53:47+00:00",
   "root": "/github/workspace",
   "repository": {
     "owner": "getcodelimit",
@@ -12,7 +12,7 @@
     "totals": {
       "Python": {
         "files": 92,
-        "lines_of_code": 2381,
+        "lines_of_code": 2388,
         "functions": 356,
         "hard_to_maintain": 1,
         "unmaintainable": 0
@@ -24,7 +24,7 @@
           "main.py",
           "codelimit/"
         ],
-        "profile": [1685, 657, 39, 0]
+        "profile": [1685, 657, 46, 0]
       },
       "codelimit/": {
         "entries": [
@@ -37,7 +37,7 @@
           "languages/",
           "commands/"
         ],
-        "profile": [1685, 657, 39, 0]
+        "profile": [1685, 657, 46, 0]
       },
       "codelimit/common/": {
         "entries": [
@@ -73,7 +73,7 @@
           "report/",
           "gsm/"
         ],
-        "profile": [1437, 357, 39, 0]
+        "profile": [1437, 357, 46, 0]
       },
       "codelimit/common/token_matching/": {
         "entries": [
@@ -118,7 +118,7 @@
           "__init__.py",
           "ReportUnit.py"
         ],
-        "profile": [301, 40, 39, 0]
+        "profile": [301, 40, 46, 0]
       },
       "codelimit/common/gsm/": {
         "entries": [
@@ -280,7 +280,7 @@
         ]
       },
       "codelimit/common/ScanTotalsDelta.py": {
-        "checksum": "c12fd7cca9aa563baf944da52d46bd9c",
+        "checksum": "bf08ca2355ed77c28a5ff95d7e68b3bd",
         "language": "Python",
         "loc": 23,
         "profile": [23, 0, 0, 0],
@@ -548,7 +548,7 @@
         ]
       },
       "codelimit/common/ScanResultTable.py": {
-        "checksum": "350b972dc5189df9aface90c1361e1b2",
+        "checksum": "9354d9177c9f84f6aa0053e1e8f497ad",
         "language": "Python",
         "loc": 43,
         "profile": [0, 43, 0, 0],
@@ -878,18 +878,18 @@
         ]
       },
       "codelimit/common/report/format_markdown.py": {
-        "checksum": "e3bbecc06343b97eddb91f8a4fd98a68",
+        "checksum": "038d782d3f25ce00ba1b27263284402c",
         "language": "Python",
-        "loc": 101,
-        "profile": [62, 0, 39, 0],
+        "loc": 108,
+        "profile": [62, 0, 46, 0],
         "measurements": [
           {"unit_name": "print_report", "start": {"line": 11, "column": 1}, "end": {"line": 13, "column": 35}, "value": 3},
           {"unit_name": "print_totals", "start": {"line": 16, "column": 1}, "end": {"line": 23, "column": 22}, "value": 8},
-          {"unit_name": "_print_totals", "start": {"line": 26, "column": 1}, "end": {"line": 64, "column": 10}, "value": 39},
-          {"unit_name": "print_summary", "start": {"line": 67, "column": 1}, "end": {"line": 81, "column": 22}, "value": 15},
-          {"unit_name": "print_findings", "start": {"line": 84, "column": 1}, "end": {"line": 95, "column": 72}, "value": 12},
-          {"unit_name": "_print_findings_without_repository", "start": {"line": 98, "column": 1}, "end": {"line": 107, "column": 10}, "value": 10},
-          {"unit_name": "_print_findings_with_repository", "start": {"line": 110, "column": 1}, "end": {"line": 123, "column": 10}, "value": 14}
+          {"unit_name": "_print_totals", "start": {"line": 26, "column": 1}, "end": {"line": 71, "column": 14}, "value": 46},
+          {"unit_name": "print_summary", "start": {"line": 74, "column": 1}, "end": {"line": 88, "column": 22}, "value": 15},
+          {"unit_name": "print_findings", "start": {"line": 91, "column": 1}, "end": {"line": 102, "column": 72}, "value": 12},
+          {"unit_name": "_print_findings_without_repository", "start": {"line": 105, "column": 1}, "end": {"line": 114, "column": 10}, "value": 10},
+          {"unit_name": "_print_findings_with_repository", "start": {"line": 117, "column": 1}, "end": {"line": 130, "column": 10}, "value": 14}
         ]
       },
       "codelimit/common/report/ReportReader.py": {
