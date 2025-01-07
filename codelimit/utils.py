@@ -37,8 +37,7 @@ def read_cached_report(path: Path) -> Optional[Report]:
         return None
 
 
-def read_report(path: Path, console: Console) -> Report:
-    report_path = make_report_path(path)
+def read_report(report_path: Path, console: Console) -> Report:
     if not report_path.exists():
         console.print("[red]No cached report found, run scan first[/red]")
         raise typer.Exit(code=1)

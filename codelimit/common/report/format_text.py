@@ -9,14 +9,18 @@ from codelimit.common.report.Report import Report
 from codelimit.common.utils import format_measurement
 
 
-def print_report(report: Report, console: Console):
-    print_totals(report, console)
-    print_summary(report, console)
+def print_report(console: Console, report: Report, diff_report: Report | None = None):
+    print_totals(console, report, diff_report)
+    print_summary(console, report)
 
 
-def print_totals(report: Report, console: Console):
+def print_totals(console: Console, report: Report, diff_report: Report | None = None):
     print_totals_header(console)
-    console.print(ScanResultTable(ScanTotals(report.codebase.totals)))
+    scan_totals = ScanTotals(report.codebase.totals)
+    if diff_report:
+        console.print(ScanResultTable(scan_totals, ScanTotals(diff_report.codebase.totals)))
+    else:
+        console.print(ScanResultTable(scan_totals))
 
 
 def print_totals_header(console: Console):
@@ -34,7 +38,7 @@ def make_profile(report: Report) -> str:
     return result
 
 
-def print_summary(report: Report, console: Console):
+def print_summary(console: Console, report: Report):
     console.print('[u][b]Summary[/b][/u]', justify="center")
     console.print(SummaryTable(report))
     easy, verbose, hard_to_maintain, unmaintainable = report.quality_profile_percentage()
@@ -50,7 +54,7 @@ def print_summary(report: Report, console: Console):
             highlight=False, justify="center")
 
 
-def print_findings(report: Report, console: Console, full: bool = False):
+def print_findings(console: Console, report: Report, full: bool = False):
     functions = report.all_report_units_sorted_by_length_asc(30)
     total_findings = len(functions)
     if not full and total_findings > 10:
