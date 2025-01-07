@@ -208,6 +208,15 @@ def replace_string_literal_with_predicate(expression: Expression) -> Expression:
 def _get_git_branch(path: Path) -> str | None:
     print(path.resolve())
     try:
+        out = sh.git('--version')
+        print('result')
+        print(out)
+        out = sh.git('rev-parse', 'HEAD', _cwd=path)
+        print('result')
+        print(out)
+        out = sh.git('-c', f'safe.directory={path.resolve()}', 'rev-parse', '--abbrev-ref=strict', 'HEAD', _cwd=path)
+        print('result')
+        print(out)
         out = sh.git('-c', f'safe.directory={path.resolve()}', 'rev-parse', '--abbrev-ref', 'HEAD', _cwd=path)
         print('result')
         print(out)
