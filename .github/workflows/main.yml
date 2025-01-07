@@ -37,6 +37,8 @@ jobs:
           poetry run codelimit report --format markdown .
           echo "Generate findings"
           poetry run codelimit findings .
+          echo "Generate findings (Markdown)"
+          poetry run codelimit findings --format markdown .
 
       - name: 'Build and run codelimit binary'
         run: |
