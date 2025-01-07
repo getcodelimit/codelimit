@@ -1,6 +1,19 @@
 # CHANGELOG
 
 
+## v0.18.0 (2025-01-07)
+
+### Continuous Integration
+
+- 💚 Actually run regression tests
+  ([`bab8e26`](https://github.com/getcodelimit/codelimit/commit/bab8e26fd51815663d84943bb8f8d7eb0c52ff1a))
+
+### Features
+
+- ✨ Add diff option to report command ([#70](https://github.com/getcodelimit/codelimit/pull/70),
+  [`8d2d784`](https://github.com/getcodelimit/codelimit/commit/8d2d78435a851756f5e1edaf587aa4f57ac4487d))
+
+
 ## v0.17.1 (2025-01-03)
 
 ### Bug Fixes
