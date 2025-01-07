@@ -212,8 +212,8 @@ def _get_git_branch(path: Path) -> str | None:
     print(ref)
     if ref and ref.startswith('refs/heads/'):
         return ref[11:]
-    ref = os.getenv('GITHUB_BASE_REF')
-    print('GITHUB_BASE_REF')
+    ref = os.getenv('GITHUB_HEAD_REF')
+    print('GITHUB_HEAD_REF')
     print(ref)
     if ref and ref.startswith('refs/heads/'):
         return ref[11:]
