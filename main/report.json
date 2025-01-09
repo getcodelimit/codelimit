@@ -1,7 +1,7 @@
 {
-  "version": "0.18.0",
-  "uuid": "04953b7a-ad57-4239-b511-829938539aa7",
-  "timestamp": "2025-01-07T21:08:16+00:00",
+  "version": "0.18.1",
+  "uuid": "41daa2f2-49a2-450d-972f-e1597b8e8230",
+  "timestamp": "2025-01-09T16:42:54+00:00",
   "root": "/github/workspace",
   "repository": {
     "owner": "getcodelimit",
