@@ -18,6 +18,14 @@ def test_quality_profile_percentage():
     assert report.quality_profile_percentage() == (100, 0, 0, 0)
 
 
+def test_quality_profile_percentage_rounding():
+    report = Report(Codebase("/"))
+    report.quality_profile = lambda: [2530, 2883, 1395, 0]
+    assert report.quality_profile_percentage() == (36, 43, 21, 0)
+
+    report.quality_profile = lambda: [630, 300, 70, 0]
+    assert report.quality_profile_percentage() == (63, 30, 7, 0)
+
 def test_all_units():
     codebase = Codebase("/")
     codebase.add_file(

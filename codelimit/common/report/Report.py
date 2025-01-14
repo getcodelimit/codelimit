@@ -43,14 +43,14 @@ class Report:
         result = sorted(result, key=lambda unit: unit.measurement.value, reverse=True)
         return result
 
-    def quality_profile(self):
+    def quality_profile(self) -> list[int]:
         return make_profile(self.codebase.all_measurements())
 
     def quality_profile_percentage(self):
         profile = self.quality_profile()
         total = sum(profile)
-        unmaintainable = ceil((profile[3] / total) * 100) if total > 0 else 0
-        hard_to_maintain = ceil((profile[2] / total) * 100) if total > 0 else 0
-        verbose = ceil((profile[1] / total) * 100) if total > 0 else 0
+        unmaintainable = ceil((profile[3] / total) * 100 - 0.001) if total > 0 else 0
+        hard_to_maintain = ceil((profile[2] / total) * 100 - 0.001) if total > 0 else 0
+        verbose = ceil((profile[1] / total) * 100 - 0.001) if total > 0 else 0
         easy = 100 - unmaintainable - hard_to_maintain - verbose
         return easy, verbose, hard_to_maintain, unmaintainable
