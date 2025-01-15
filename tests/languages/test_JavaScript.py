@@ -72,3 +72,17 @@ def test_nested_anonymous_functions_are_skipped():
     """
 
     assert_units(code, Languages.JavaScript, {"say": 5, "helloWorld": 3})
+
+
+def test_skip_function_with_nocl_comment_in_header():
+    code = """
+    const bar = () => { // nocl
+        console.log('Hello World from bar');
+    }
+
+    const foo = () => {
+        console.log('Hello World from foo');
+    }
+    """
+
+    assert_units(code, Languages.JavaScript, {"foo": 3})

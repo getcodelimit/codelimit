@@ -19,7 +19,7 @@ class CodebaseEntry(ABC):
         pass
 
     @property
-    def profile(self):
+    def profile(self) -> list[int]:
         return None
 
     @property
