@@ -1,0 +1,2160 @@
+{
+  "version": "0.18.1",
+  "uuid": "5aae13b7-887c-419c-a501-fbaf1bdc6ebc",
+  "timestamp": "2025-01-16T09:25:52+00:00",
+  "root": "/private/var/folders/t2/s_70szzn7qn22cp4d2nmrjbc0000gn/T/tmpz2qbk_j7/sample-programs",
+  "codebase": {
+    "totals": {
+      "TypeScript": {
+        "files": 23,
+        "lines_of_code": 217,
+        "functions": 18,
+        "hard_to_maintain": 0,
+        "unmaintainable": 0
+      },
+      "C++": {
+        "files": 29,
+        "lines_of_code": 1475,
+        "functions": 71,
+        "hard_to_maintain": 14,
+        "unmaintainable": 0
+      },
+      "JavaScript": {
+        "files": 32,
+        "lines_of_code": 639,
+        "functions": 54,
+        "hard_to_maintain": 3,
+        "unmaintainable": 0
+      },
+      "Java": {
+        "files": 26,
+        "lines_of_code": 844,
+        "functions": 63,
+        "hard_to_maintain": 4,
+        "unmaintainable": 0
+      },
+      "C": {
+        "files": 26,
+        "lines_of_code": 1248,
+        "functions": 88,
+        "hard_to_maintain": 11,
+        "unmaintainable": 0
+      },
+      "Python": {
+        "files": 40,
+        "lines_of_code": 871,
+        "functions": 125,
+        "hard_to_maintain": 1,
+        "unmaintainable": 0
+      }
+    },
+    "tree": {
+      "./": {
+        "entries": [
+          "archive/",
+          "scripts/"
+        ],
+        "profile": [2162, 1886, 1246, 0]
+      },
+      "archive/t/typescript/": {
+        "entries": [
+          "capitalize.ts",
+          "palindromic-number.ts",
+          "fibonacci.ts",
+          "selection-sort.ts",
+          "duplicate-character-counter.ts",
+          "longest-word.ts",
+          "hello-world.ts",
+          "factorial.ts",
+          "linear-search.ts",
+          "file-input-output.ts",
+          "even-odd.ts",
+          "transpose-matrix.ts",
+          "fizz-buzz.ts",
+          "rot13.ts",
+          "baklava.ts",
+          "roman-numeral.ts",
+          "merge-sort.ts",
+          "quick-sort.ts",
+          "binary-search.ts",
+          "insertion-sort.ts",
+          "prime-number.ts",
+          "reverse-string.ts",
+          "bubble-sort.ts"
+        ],
+        "profile": [122, 95, 0, 0]
+      },
+      "archive/t/": {
+        "entries": [
+          "typescript/"
+        ],
+        "profile": [122, 95, 0, 0]
+      },
+      "archive/": {
+        "entries": [
+          "t/",
+          "h/",
+          "m/",
+          "j/",
+          "c/",
+          "p/"
+        ],
+        "profile": [2096, 1815, 1210, 0]
+      },
+      "archive/h/hack/": {
+        "entries": [
+          "hello-world.hh",
+          "baklava.hh"
+        ],
+        "profile": [0, 0, 0, 0]
+      },
+      "archive/h/": {
+        "entries": [
+          "hack/"
+        ],
+        "profile": [0, 0, 0, 0]
+      },
+      "archive/m/mojiscript/": {
+        "entries": [
+          "baklava.mjs",
+          "hello-world.mjs"
+        ],
+        "profile": [0, 0, 0, 0]
+      },
+      "archive/m/": {
+        "entries": [
+          "mojiscript/"
+        ],
+        "profile": [0, 0, 0, 0]
+      },
+      "archive/j/java/": {
+        "entries": [
+          "InsertionSort.java",
+          "JobSequencing.java",
+          "FileInputOutput.java",
+          "PrimeNumber.java",
+          "Fibonacci.java",
+          "QuickSort.java",
+          "FizzBuzz.java",
+          "Quine.java",
+          "DepthFirstSearch.java",
+          "ConvexHull.java",
+          "ReverseString.java",
+          "LinearSearch.java",
+          "Capitalize.java",
+          "MergeSort.java",
+          "Baklava.java",
+          "HelloWorld.java",
+          "Factorial.java",
+          "Rot13.java",
+          "PalindromicNumber.java",
+          "LongestCommonSubsequence.java",
+          "LongestWord.java",
+          "BinarySearch.java",
+          "BubbleSort.java",
+          "SelectionSort.java",
+          "DuplicateCharacterCounter.java",
+          "EvenOdd.java"
+        ],
+        "profile": [298, 400, 146, 0]
+      },
+      "archive/j/": {
+        "entries": [
+          "java/",
+          "javascript/"
+        ],
+        "profile": [640, 600, 243, 0]
+      },
+      "archive/j/javascript/": {
+        "entries": [
+          "roman-numeral.js",
+          "sleep-sort.js",
+          "convex-hull.js",
+          "merge-sort.js",
+          "quick-sort.js",
+          "fizz-buzz.js",
+          "rot13.js",
+          "longest-palindromic-substring.js",
+          "baklava.js",
+          "josephus-problem.js",
+          "dijkstra.js",
+          "reverse-string.js",
+          "bubble-sort.js",
+          "binary-search.js",
+          "insertion-sort.js",
+          "prime-number.js",
+          "job-sequencing.js",
+          "longest-word.js",
+          "capitalize.js",
+          "palindromic-number.js",
+          "fibonacci.js",
+          "quine.js",
+          "selection-sort.js",
+          "longest-common-subsequence.js",
+          "even-odd.js",
+          "transpose-matrix.js",
+          "hello-world.js",
+          "factorial.js",
+          "linear-search.js",
+          "file-input-output.js"
+        ],
+        "profile": [342, 200, 97, 0]
+      },
+      "archive/c/c-plus-plus/": {
+        "entries": [
+          "dijkstra.cpp",
+          "remove-all-whitespace.cpp",
+          "factorial.cpp",
+          "merge-sort.cpp",
+          "capitalize.cpp",
+          "longest-common-subsequence.cpp",
+          "even-odd.cpp",
+          "fibonacci.cpp",
+          "file-input-output.cpp",
+          "prime-number.cpp",
+          "rot13.cpp",
+          "selection-sort.cpp",
+          "bubble-sort.cpp",
+          "fraction-math.cpp",
+          "longest-word.cpp",
+          "reverse-string.cpp",
+          "hello-world.cpp",
+          "insertion-sort.cpp",
+          "binary-search.cpp",
+          "quick-sort.cpp",
+          "baklava.cpp",
+          "duplicate-character-counter.cpp",
+          "depth-first-search.cpp",
+          "palindromic-number.cpp",
+          "fizz-buzz.cpp",
+          "roman-numeral.cpp",
+          "linear-search.cpp"
+        ],
+        "profile": [269, 635, 571, 0]
+      },
+      "archive/c/": {
+        "entries": [
+          "c-plus-plus/",
+          "c/"
+        ],
+        "profile": [749, 1007, 967, 0]
+      },
+      "archive/c/c/": {
+        "entries": [
+          "hello-world.c",
+          "duplicate-character-counter.c",
+          "prime-number.c",
+          "quick-sort.c",
+          "longest-common-subsequence.c",
+          "rot13.c",
+          "capitalize.c",
+          "selection-sort.c",
+          "insertion-sort.c",
+          "even-odd.c",
+          "palindromic-number.c",
+          "fizz-buzz.c",
+          "quine.c",
+          "reverse-string.c",
+          "fibonacci.c",
+          "bubble-sort.c",
+          "baklava.c",
+          "merge-sort.c",
+          "factorial.c",
+          "longest-word.c",
+          "roman-numeral.c",
+          "binary-search.c",
+          "remove-all-whitespace.c",
+          "convex-hull.c",
+          "minimum-spanning-tree.c",
+          "file-input-output.c"
+        ],
+        "profile": [480, 372, 396, 0]
+      },
+      "archive/p/python/": {
+        "entries": [
+          "file_input_output.py",
+          "maximum_subarray.py",
+          "prime_number.py",
+          "dijkstra.py",
+          "fizz_buzz.py",
+          "job_sequencing.py",
+          "binary_search.py",
+          "hello_world.py",
+          "quick_sort.py",
+          "sleep_sort.py",
+          "convex_hull.py",
+          "merge_sort.py",
+          "reverse_string.py",
+          "fraction_math.py",
+          "even_odd.py",
+          "longest_common_subsequence.py",
+          "depth_first_search.py",
+          "minimum_spanning_tree.py",
+          "insertion_sort.py",
+          "roman_numeral.py",
+          "rot13.py",
+          "bubble_sort.py",
+          "baklava.py",
+          "josephus_problem.py",
+          "selection_sort.py",
+          "linear_search.py",
+          "remove_all_whitespace.py",
+          "transpose_matrix.py",
+          "longest_word.py",
+          "duplicate_character_counter.py",
+          "factorial.py",
+          "maximum_array_rotation.py",
+          "palindromic_number.py",
+          "quine.py",
+          "fibonacci.py",
+          "longest_palindromic_substring.py",
+          "capitalize.py"
+        ],
+        "profile": [585, 113, 0, 0]
+      },
+      "archive/p/": {
+        "entries": [
+          "python/"
+        ],
+        "profile": [585, 113, 0, 0]
+      },
+      "scripts/": {
+        "entries": [
+          "run_tests.py",
+          "get_codeql_languages.py",
+          "build_codeql_language.py"
+        ],
+        "profile": [66, 71, 36, 0]
+      }
+    },
+    "files": {
+      "archive/t/typescript/capitalize.ts": {
+        "checksum": "53ac909e0b122e27606118934ea0b762",
+        "language": "TypeScript",
+        "loc": 0,
+        "profile": [0, 0, 0, 0],
+        "measurements": [
+        ]
+      },
+      "archive/t/typescript/palindromic-number.ts": {
+        "checksum": "3fa09e777c7f31f99e7a7d4dd5b888f1",
+        "language": "TypeScript",
+        "loc": 5,
+        "profile": [5, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "isPalindrome", "start": {"line": 1, "column": 10}, "end": {"line": 5, "column": 2}, "value": 5}
+        ]
+      },
+      "archive/t/typescript/fibonacci.ts": {
+        "checksum": "03a03dfb5550e3467edef0862804a4a9",
+        "language": "TypeScript",
+        "loc": 12,
+        "profile": [12, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "fibonacci", "start": {"line": 1, "column": 10}, "end": {"line": 15, "column": 2}, "value": 12}
+        ]
+      },
+      "archive/t/typescript/selection-sort.ts": {
+        "checksum": "7e793c0df276542bbf59a03a37e5dace",
+        "language": "TypeScript",
+        "loc": 20,
+        "profile": [3, 17, 0, 0],
+        "measurements": [
+          {"unit_name": "selectionSort", "start": {"line": 1, "column": 10}, "end": {"line": 21, "column": 2}, "value": 17},
+          {"unit_name": "displayUsage", "start": {"line": 23, "column": 10}, "end": {"line": 25, "column": 2}, "value": 3}
+        ]
+      },
+      "archive/t/typescript/duplicate-character-counter.ts": {
+        "checksum": "ccd63643e8e33e17d182b67c219abe1f",
+        "language": "TypeScript",
+        "loc": 0,
+        "profile": [0, 0, 0, 0],
+        "measurements": [
+        ]
+      },
+      "archive/t/typescript/longest-word.ts": {
+        "checksum": "cb0954212a6be9b92c1f2beefaecf297",
+        "language": "TypeScript",
+        "loc": 0,
+        "profile": [0, 0, 0, 0],
+        "measurements": [
+        ]
+      },
+      "archive/t/typescript/hello-world.ts": {
+        "checksum": "320a0100e41d8b976da3044952299ed1",
+        "language": "TypeScript",
+        "loc": 0,
+        "profile": [0, 0, 0, 0],
+        "measurements": [
+        ]
+      },
+      "archive/t/typescript/factorial.ts": {
+        "checksum": "efe94ea9a4ee56fb092bd70f27e884f8",
+        "language": "TypeScript",
+        "loc": 0,
+        "profile": [0, 0, 0, 0],
+        "measurements": [
+        ]
+      },
+      "archive/t/typescript/linear-search.ts": {
+        "checksum": "f1378e7f0c952aea7883d904c75c9577",
+        "language": "TypeScript",
+        "loc": 0,
+        "profile": [0, 0, 0, 0],
+        "measurements": [
+        ]
+      },
+      "archive/t/typescript/file-input-output.ts": {
+        "checksum": "7b267527c4790ce008d86e61228c0368",
+        "language": "TypeScript",
+        "loc": 0,
+        "profile": [0, 0, 0, 0],
+        "measurements": [
+        ]
+      },
+      "archive/t/typescript/even-odd.ts": {
+        "checksum": "fbd1e03850cd784a9a870db03ef0cd24",
+        "language": "TypeScript",
+        "loc": 0,
+        "profile": [0, 0, 0, 0],
+        "measurements": [
+        ]
+      },
+      "archive/t/typescript/transpose-matrix.ts": {
+        "checksum": "5077f6530ffce9468f0c3f2ba260ccbd",
+        "language": "TypeScript",
+        "loc": 0,
+        "profile": [0, 0, 0, 0],
+        "measurements": [
+        ]
+      },
+      "archive/t/typescript/fizz-buzz.ts": {
+        "checksum": "93c4440677ebb189c6214da3b149d3dc",
+        "language": "TypeScript",
+        "loc": 0,
+        "profile": [0, 0, 0, 0],
+        "measurements": [
+        ]
+      },
+      "archive/t/typescript/rot13.ts": {
+        "checksum": "fc4028db2dcaabdc14257fc4574fe4e3",
+        "language": "TypeScript",
+        "loc": 15,
+        "profile": [15, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "rot13", "start": {"line": 1, "column": 10}, "end": {"line": 19, "column": 2}, "value": 15}
+        ]
+      },
+      "archive/t/typescript/baklava.ts": {
+        "checksum": "4a4bd7f3105ebe5b0b0cc36276079ae3",
+        "language": "TypeScript",
+        "loc": 0,
+        "profile": [0, 0, 0, 0],
+        "measurements": [
+        ]
+      },
+      "archive/t/typescript/roman-numeral.ts": {
+        "checksum": "62195dfcabca0e1137aac6d9aee8774d",
+        "language": "TypeScript",
+        "loc": 26,
+        "profile": [0, 26, 0, 0],
+        "measurements": [
+          {"unit_name": "romanNumeralConversion", "start": {"line": 13, "column": 10}, "end": {"line": 57, "column": 2}, "value": 26}
+        ]
+      },
+      "archive/t/typescript/merge-sort.ts": {
+        "checksum": "ae30d5e9dee6dd562343832e580648f9",
+        "language": "TypeScript",
+        "loc": 47,
+        "profile": [27, 20, 0, 0],
+        "measurements": [
+          {"unit_name": "DisplayErrorMessage", "start": {"line": 2, "column": 10}, "end": {"line": 7, "column": 2}, "value": 6},
+          {"unit_name": "VerifyUserInput", "start": {"line": 13, "column": 10}, "end": {"line": 28, "column": 2}, "value": 13},
+          {"unit_name": "Merge", "start": {"line": 37, "column": 10}, "end": {"line": 59, "column": 2}, "value": 20},
+          {"unit_name": "MergeSort", "start": {"line": 69, "column": 10}, "end": {"line": 76, "column": 2}, "value": 8}
+        ]
+      },
+      "archive/t/typescript/quick-sort.ts": {
+        "checksum": "53e3342eb176b6c6a60402382f88c708",
+        "language": "TypeScript",
+        "loc": 16,
+        "profile": [0, 16, 0, 0],
+        "measurements": [
+          {"unit_name": "quickSort", "start": {"line": 1, "column": 10}, "end": {"line": 19, "column": 2}, "value": 16}
+        ]
+      },
+      "archive/t/typescript/binary-search.ts": {
+        "checksum": "e96b24c83adc6d3ec6e03e61fb22c7e0",
+        "language": "TypeScript",
+        "loc": 0,
+        "profile": [0, 0, 0, 0],
+        "measurements": [
+        ]
+      },
+      "archive/t/typescript/insertion-sort.ts": {
+        "checksum": "45cc7346b5ef4fd58ea9deaa8ee84271",
+        "language": "TypeScript",
+        "loc": 13,
+        "profile": [13, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "insertionSort", "start": {"line": 1, "column": 10}, "end": {"line": 17, "column": 2}, "value": 13}
+        ]
+      },
+      "archive/t/typescript/prime-number.ts": {
+        "checksum": "a86b5e4aaed469b5b851f854c503e849",
+        "language": "TypeScript",
+        "loc": 27,
+        "profile": [11, 16, 0, 0],
+        "measurements": [
+          {"unit_name": "isPrime", "start": {"line": 1, "column": 10}, "end": {"line": 11, "column": 2}, "value": 11},
+          {"unit_name": "main", "start": {"line": 13, "column": 10}, "end": {"line": 31, "column": 2}, "value": 16}
+        ]
+      },
+      "archive/t/typescript/reverse-string.ts": {
+        "checksum": "8a7ef9045b4a854a717a341e7315c54d",
+        "language": "TypeScript",
+        "loc": 0,
+        "profile": [0, 0, 0, 0],
+        "measurements": [
+        ]
+      },
+      "archive/t/typescript/bubble-sort.ts": {
+        "checksum": "8e33a718fff3d546eec2b57e92cbdc2c",
+        "language": "TypeScript",
+        "loc": 36,
+        "profile": [36, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "DisplayErrorMessage", "start": {"line": 1, "column": 10}, "end": {"line": 6, "column": 2}, "value": 6},
+          {"unit_name": "VerifyUserInput", "start": {"line": 12, "column": 10}, "end": {"line": 27, "column": 2}, "value": 13},
+          {"unit_name": "Swap", "start": {"line": 36, "column": 10}, "end": {"line": 40, "column": 2}, "value": 4},
+          {"unit_name": "BubbleSort", "start": {"line": 46, "column": 10}, "end": {"line": 58, "column": 2}, "value": 13}
+        ]
+      },
+      "archive/h/hack/hello-world.hh": {
+        "checksum": "5dcc5193843373d6fcf01a45f593f567",
+        "language": "C++",
+        "loc": 0,
+        "profile": [0, 0, 0, 0],
+        "measurements": [
+        ]
+      },
+      "archive/h/hack/baklava.hh": {
+        "checksum": "50b716e784c46c26e416f866f3662be4",
+        "language": "C++",
+        "loc": 0,
+        "profile": [0, 0, 0, 0],
+        "measurements": [
+        ]
+      },
+      "archive/m/mojiscript/baklava.mjs": {
+        "checksum": "1b0fb9b18d9b2d794ac4b4b87e50c419",
+        "language": "JavaScript",
+        "loc": 0,
+        "profile": [0, 0, 0, 0],
+        "measurements": [
+        ]
+      },
+      "archive/m/mojiscript/hello-world.mjs": {
+        "checksum": "984fcd0d453b4b6a1114dcb0512080d8",
+        "language": "JavaScript",
+        "loc": 0,
+        "profile": [0, 0, 0, 0],
+        "measurements": [
+        ]
+      },
+      "archive/j/java/InsertionSort.java": {
+        "checksum": "3137392aa250e031756ed99e81c10ad1",
+        "language": "Java",
+        "loc": 41,
+        "profile": [14, 27, 0, 0],
+        "measurements": [
+          {"unit_name": "main", "start": {"line": 5, "column": 24}, "end": {"line": 40, "column": 6}, "value": 27},
+          {"unit_name": "insertionSort", "start": {"line": 42, "column": 24}, "end": {"line": 57, "column": 6}, "value": 14}
+        ]
+      },
+      "archive/j/java/JobSequencing.java": {
+        "checksum": "3cb10a871f3ab97efdd3ba328c620d21",
+        "language": "Java",
+        "loc": 62,
+        "profile": [29, 33, 0, 0],
+        "measurements": [
+          {"unit_name": "Job", "start": {"line": 12, "column": 16}, "end": {"line": 15, "column": 10}, "value": 4},
+          {"unit_name": "createJobList", "start": {"line": 18, "column": 30}, "end": {"line": 25, "column": 6}, "value": 7},
+          {"unit_name": "compare", "start": {"line": 29, "column": 20}, "end": {"line": 38, "column": 10}, "value": 9},
+          {"unit_name": "getMaxProfit", "start": {"line": 41, "column": 24}, "end": {"line": 61, "column": 6}, "value": 17},
+          {"unit_name": "converStringToList", "start": {"line": 63, "column": 34}, "end": {"line": 71, "column": 6}, "value": 9},
+          {"unit_name": "main", "start": {"line": 73, "column": 24}, "end": {"line": 93, "column": 6}, "value": 16}
+        ]
+      },
+      "archive/j/java/FileInputOutput.java": {
+        "checksum": "9759bb828bd2e07eb302d1299df85ec0",
+        "language": "Java",
+        "loc": 35,
+        "profile": [18, 17, 0, 0],
+        "measurements": [
+          {"unit_name": "main", "start": {"line": 10, "column": 24}, "end": {"line": 14, "column": 6}, "value": 5},
+          {"unit_name": "readFile", "start": {"line": 16, "column": 24}, "end": {"line": 38, "column": 6}, "value": 17},
+          {"unit_name": "writeToFile", "start": {"line": 40, "column": 24}, "end": {"line": 55, "column": 6}, "value": 13}
+        ]
+      },
+      "archive/j/java/PrimeNumber.java": {
+        "checksum": "7ea867f1c2f5dd68a42e8dec24d2a41e",
+        "language": "Java",
+        "loc": 27,
+        "profile": [27, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "isPrime", "start": {"line": 6, "column": 27}, "end": {"line": 19, "column": 6}, "value": 13},
+          {"unit_name": "main", "start": {"line": 21, "column": 24}, "end": {"line": 38, "column": 6}, "value": 14}
+        ]
+      },
+      "archive/j/java/Fibonacci.java": {
+        "checksum": "063924aeaf3566bf9479c103234e88ce",
+        "language": "Java",
+        "loc": 17,
+        "profile": [0, 17, 0, 0],
+        "measurements": [
+          {"unit_name": "main", "start": {"line": 3, "column": 24}, "end": {"line": 19, "column": 6}, "value": 17}
+        ]
+      },
+      "archive/j/java/QuickSort.java": {
+        "checksum": "59e551d60177019b126d2bdf98cd8126",
+        "language": "Java",
+        "loc": 56,
+        "profile": [7, 16, 33, 0],
+        "measurements": [
+          {"unit_name": "main", "start": {"line": 5, "column": 24}, "end": {"line": 37, "column": 6}, "value": 33},
+          {"unit_name": "partition", "start": {"line": 39, "column": 23}, "end": {"line": 54, "column": 6}, "value": 16},
+          {"unit_name": "sort", "start": {"line": 56, "column": 24}, "end": {"line": 62, "column": 6}, "value": 7}
+        ]
+      },
+      "archive/j/java/FizzBuzz.java": {
+        "checksum": "2f751a0a9a8db17b10cdb7986f0e977d",
+        "language": "Java",
+        "loc": 15,
+        "profile": [15, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "main", "start": {"line": 2, "column": 24}, "end": {"line": 16, "column": 6}, "value": 15}
+        ]
+      },
+      "archive/j/java/Quine.java": {
+        "checksum": "d36471d89c591f683f79ed56d411aaa2",
+        "language": "Java",
+        "loc": 1,
+        "profile": [1, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "main", "start": {"line": 1, "column": 39}, "end": {"line": 1, "column": 330}, "value": 1}
+        ]
+      },
+      "archive/j/java/DepthFirstSearch.java": {
+        "checksum": "0f555f6f1128091be236d10bb195404e",
+        "language": "Java",
+        "loc": 68,
+        "profile": [19, 49, 0, 0],
+        "measurements": [
+          {"unit_name": "main", "start": {"line": 7, "column": 24}, "end": {"line": 33, "column": 6}, "value": 26},
+          {"unit_name": "handleError", "start": {"line": 35, "column": 25}, "end": {"line": 40, "column": 6}, "value": 6},
+          {"unit_name": "DFSGraph", "start": {"line": 48, "column": 16}, "end": {"line": 52, "column": 10}, "value": 5},
+          {"unit_name": "getNextNodeIndex", "start": {"line": 54, "column": 20}, "end": {"line": 61, "column": 10}, "value": 8},
+          {"unit_name": "depthFirstSearch", "start": {"line": 63, "column": 24}, "end": {"line": 89, "column": 10}, "value": 23}
+        ]
+      },
+      "archive/j/java/ConvexHull.java": {
+        "checksum": "f4d00a43db0d695b5f47519af028ab42",
+        "language": "Java",
+        "loc": 56,
+        "profile": [10, 0, 46, 0],
+        "measurements": [
+          {"unit_name": "main", "start": {"line": 4, "column": 24}, "end": {"line": 49, "column": 6}, "value": 46},
+          {"unit_name": "isCounterClockwise", "start": {"line": 51, "column": 27}, "end": {"line": 53, "column": 6}, "value": 3},
+          {"unit_name": "Point", "start": {"line": 60, "column": 12}, "end": {"line": 63, "column": 6}, "value": 4},
+          {"unit_name": "toString", "start": {"line": 65, "column": 19}, "end": {"line": 67, "column": 6}, "value": 3}
+        ]
+      },
+      "archive/j/java/ReverseString.java": {
+        "checksum": "9ca1e1aecd357d6f777f105224160f54",
+        "language": "Java",
+        "loc": 7,
+        "profile": [7, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "main", "start": {"line": 2, "column": 24}, "end": {"line": 8, "column": 6}, "value": 7}
+        ]
+      },
+      "archive/j/java/LinearSearch.java": {
+        "checksum": "f5aaa66bd10ea827f54fc21b2cb8e659",
+        "language": "Java",
+        "loc": 31,
+        "profile": [10, 21, 0, 0],
+        "measurements": [
+          {"unit_name": "main", "start": {"line": 5, "column": 24}, "end": {"line": 25, "column": 6}, "value": 21},
+          {"unit_name": "linearSearch", "start": {"line": 27, "column": 28}, "end": {"line": 36, "column": 6}, "value": 10}
+        ]
+      },
+      "archive/j/java/Capitalize.java": {
+        "checksum": "04de4e1372df2ccd1f9bec70f5a9faab",
+        "language": "Java",
+        "loc": 20,
+        "profile": [20, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "isLetter", "start": {"line": 3, "column": 27}, "end": {"line": 5, "column": 6}, "value": 3},
+          {"unit_name": "isUpperCase", "start": {"line": 7, "column": 27}, "end": {"line": 9, "column": 6}, "value": 3},
+          {"unit_name": "main", "start": {"line": 11, "column": 24}, "end": {"line": 26, "column": 6}, "value": 14}
+        ]
+      },
+      "archive/j/java/MergeSort.java": {
+        "checksum": "4a747199eb13df5cb396b1c4ac028cee",
+        "language": "Java",
+        "loc": 68,
+        "profile": [8, 26, 34, 0],
+        "measurements": [
+          {"unit_name": "main", "start": {"line": 5, "column": 24}, "end": {"line": 51, "column": 6}, "value": 34},
+          {"unit_name": "mergeSort", "start": {"line": 53, "column": 24}, "end": {"line": 68, "column": 6}, "value": 8},
+          {"unit_name": "mergeList", "start": {"line": 70, "column": 24}, "end": {"line": 104, "column": 6}, "value": 26}
+        ]
+      },
+      "archive/j/java/Baklava.java": {
+        "checksum": "d1997165755d2a508fdd82eb20ba5b15",
+        "language": "Java",
+        "loc": 19,
+        "profile": [19, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "up", "start": {"line": 2, "column": 24}, "end": {"line": 5, "column": 6}, "value": 4},
+          {"unit_name": "down", "start": {"line": 7, "column": 24}, "end": {"line": 10, "column": 6}, "value": 4},
+          {"unit_name": "printRow", "start": {"line": 12, "column": 24}, "end": {"line": 18, "column": 6}, "value": 7},
+          {"unit_name": "main", "start": {"line": 20, "column": 24}, "end": {"line": 23, "column": 6}, "value": 4}
+        ]
+      },
+      "archive/j/java/HelloWorld.java": {
+        "checksum": "9baaf89ab9de8c75ccbfd7602f8fe686",
+        "language": "Java",
+        "loc": 3,
+        "profile": [3, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "main", "start": {"line": 2, "column": 24}, "end": {"line": 4, "column": 6}, "value": 3}
+        ]
+      },
+      "archive/j/java/Factorial.java": {
+        "checksum": "dc64648e7f831c102d79ba43f3e387a1",
+        "language": "Java",
+        "loc": 22,
+        "profile": [5, 17, 0, 0],
+        "measurements": [
+          {"unit_name": "fact", "start": {"line": 2, "column": 24}, "end": {"line": 6, "column": 6}, "value": 5},
+          {"unit_name": "main", "start": {"line": 8, "column": 24}, "end": {"line": 24, "column": 6}, "value": 17}
+        ]
+      },
+      "archive/j/java/Rot13.java": {
+        "checksum": "fdc6f7f146130912838438e48c6a5723",
+        "language": "Java",
+        "loc": 27,
+        "profile": [0, 27, 0, 0],
+        "measurements": [
+          {"unit_name": "main", "start": {"line": 2, "column": 24}, "end": {"line": 28, "column": 6}, "value": 27}
+        ]
+      },
+      "archive/j/java/PalindromicNumber.java": {
+        "checksum": "32a3819617d8ec4ec6ee9537f0e6a7ea",
+        "language": "Java",
+        "loc": 21,
+        "profile": [21, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "main", "start": {"line": 3, "column": 24}, "end": {"line": 16, "column": 6}, "value": 13},
+          {"unit_name": "isPalindromic", "start": {"line": 18, "column": 27}, "end": {"line": 25, "column": 6}, "value": 8}
+        ]
+      },
+      "archive/j/java/LongestCommonSubsequence.java": {
+        "checksum": "ad0585e5c598101ded539a6dec072884",
+        "language": "Java",
+        "loc": 58,
+        "profile": [9, 16, 33, 0],
+        "measurements": [
+          {"unit_name": "split_strings", "start": {"line": 5, "column": 30}, "end": {"line": 24, "column": 6}, "value": 16},
+          {"unit_name": "longest_common_subsequence", "start": {"line": 26, "column": 17}, "end": {"line": 65, "column": 6}, "value": 33},
+          {"unit_name": "main", "start": {"line": 67, "column": 24}, "end": {"line": 78, "column": 6}, "value": 9}
+        ]
+      },
+      "archive/j/java/LongestWord.java": {
+        "checksum": "7be86a20debf78680fb795b87274b4f9",
+        "language": "Java",
+        "loc": 20,
+        "profile": [3, 17, 0, 0],
+        "measurements": [
+          {"unit_name": "error", "start": {"line": 4, "column": 24}, "end": {"line": 6, "column": 6}, "value": 3},
+          {"unit_name": "main", "start": {"line": 8, "column": 24}, "end": {"line": 24, "column": 6}, "value": 17}
+        ]
+      },
+      "archive/j/java/BinarySearch.java": {
+        "checksum": "fb8e79eb4e7a2c5146ace8f8c6159deb",
+        "language": "Java",
+        "loc": 39,
+        "profile": [0, 39, 0, 0],
+        "measurements": [
+          {"unit_name": "binarySearch", "start": {"line": 4, "column": 24}, "end": {"line": 20, "column": 6}, "value": 17},
+          {"unit_name": "main", "start": {"line": 22, "column": 24}, "end": {"line": 43, "column": 6}, "value": 22}
+        ]
+      },
+      "archive/j/java/BubbleSort.java": {
+        "checksum": "7b34d345a0d9f01f879c2e971567f867",
+        "language": "Java",
+        "loc": 40,
+        "profile": [13, 27, 0, 0],
+        "measurements": [
+          {"unit_name": "main", "start": {"line": 5, "column": 24}, "end": {"line": 32, "column": 6}, "value": 27},
+          {"unit_name": "sort", "start": {"line": 34, "column": 39}, "end": {"line": 46, "column": 6}, "value": 13}
+        ]
+      },
+      "archive/j/java/SelectionSort.java": {
+        "checksum": "1f45030f8fc30e004046422dcaac795e",
+        "language": "Java",
+        "loc": 39,
+        "profile": [12, 27, 0, 0],
+        "measurements": [
+          {"unit_name": "main", "start": {"line": 5, "column": 24}, "end": {"line": 32, "column": 6}, "value": 27},
+          {"unit_name": "sort", "start": {"line": 34, "column": 39}, "end": {"line": 45, "column": 6}, "value": 12}
+        ]
+      },
+      "archive/j/java/DuplicateCharacterCounter.java": {
+        "checksum": "6e94cf183b971e44b0eb27e531c27ee0",
+        "language": "Java",
+        "loc": 27,
+        "profile": [3, 24, 0, 0],
+        "measurements": [
+          {"unit_name": "error", "start": {"line": 4, "column": 24}, "end": {"line": 6, "column": 6}, "value": 3},
+          {"unit_name": "main", "start": {"line": 8, "column": 24}, "end": {"line": 31, "column": 6}, "value": 24}
+        ]
+      },
+      "archive/j/java/EvenOdd.java": {
+        "checksum": "d4592b0e0e1730ded8c54bb11e2a7dc0",
+        "language": "Java",
+        "loc": 25,
+        "profile": [25, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "verifyNumber", "start": {"line": 2, "column": 24}, "end": {"line": 10, "column": 6}, "value": 9},
+          {"unit_name": "ErrorAndExit", "start": {"line": 12, "column": 24}, "end": {"line": 15, "column": 6}, "value": 4},
+          {"unit_name": "main", "start": {"line": 17, "column": 24}, "end": {"line": 28, "column": 6}, "value": 12}
+        ]
+      },
+      "archive/j/javascript/roman-numeral.js": {
+        "checksum": "d7596ef180d890b608d7ff398feb3811",
+        "language": "JavaScript",
+        "loc": 25,
+        "profile": [0, 25, 0, 0],
+        "measurements": [
+          {"unit_name": "romanNumeralConversion", "start": {"line": 14, "column": 1}, "end": {"line": 59, "column": 2}, "value": 25}
+        ]
+      },
+      "archive/j/javascript/sleep-sort.js": {
+        "checksum": "afec243224e7c87ec99cc2e47a83c37c",
+        "language": "JavaScript",
+        "loc": 28,
+        "profile": [28, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "sleepSort", "start": {"line": 1, "column": 1}, "end": {"line": 20, "column": 2}, "value": 10},
+          {"unit_name": "sleepSortHelper", "start": {"line": 4, "column": 3}, "end": {"line": 11, "column": 4}, "value": 8},
+          {"unit_name": "sortNumbers", "start": {"line": 25, "column": 1}, "end": {"line": 35, "column": 2}, "value": 10}
+        ]
+      },
+      "archive/j/javascript/convex-hull.js": {
+        "checksum": "6012176a1efe2db21d2143c3bc7bb07a",
+        "language": "JavaScript",
+        "loc": 60,
+        "profile": [5, 22, 33, 0],
+        "measurements": [
+          {"unit_name": "convexHull", "start": {"line": 7, "column": 1}, "end": {"line": 49, "column": 2}, "value": 33},
+          {"unit_name": "orientation", "start": {"line": 8, "column": 2}, "end": {"line": 12, "column": 3}, "value": 5},
+          {"unit_name": "main", "start": {"line": 57, "column": 1}, "end": {"line": 81, "column": 2}, "value": 22}
+        ]
+      },
+      "archive/j/javascript/merge-sort.js": {
+        "checksum": "92b306f3b5049bf71fed1dbe203186d1",
+        "language": "JavaScript",
+        "loc": 43,
+        "profile": [26, 17, 0, 0],
+        "measurements": [
+          {"unit_name": "mergeSort", "start": {"line": 1, "column": 1}, "end": {"line": 11, "column": 2}, "value": 11},
+          {"unit_name": "merge", "start": {"line": 13, "column": 1}, "end": {"line": 27, "column": 2}, "value": 15},
+          {"unit_name": "main", "start": {"line": 29, "column": 1}, "end": {"line": 45, "column": 2}, "value": 17}
+        ]
+      },
+      "archive/j/javascript/quick-sort.js": {
+        "checksum": "08ad4b0ba49dea00e02c43bb15e5953d",
+        "language": "JavaScript",
+        "loc": 45,
+        "profile": [12, 33, 0, 0],
+        "measurements": [
+          {"unit_name": "quickSort", "start": {"line": 7, "column": 1}, "end": {"line": 13, "column": 2}, "value": 7},
+          {"unit_name": "partition", "start": {"line": 15, "column": 1}, "end": {"line": 30, "column": 2}, "value": 16},
+          {"unit_name": "swap", "start": {"line": 32, "column": 1}, "end": {"line": 36, "column": 2}, "value": 5},
+          {"unit_name": "main", "start": {"line": 38, "column": 1}, "end": {"line": 71, "column": 2}, "value": 17}
+        ]
+      },
+      "archive/j/javascript/fizz-buzz.js": {
+        "checksum": "2515785cc8cde86e8fc14de68da6e8cd",
+        "language": "JavaScript",
+        "loc": 14,
+        "profile": [14, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "fizzbuzz", "start": {"line": 1, "column": 1}, "end": {"line": 14, "column": 4}, "value": 14}
+        ]
+      },
+      "archive/j/javascript/rot13.js": {
+        "checksum": "94af7b8bb4e7b8f6cce007ce977f6209",
+        "language": "JavaScript",
+        "loc": 27,
+        "profile": [27, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "rotateChar", "start": {"line": 4, "column": 1}, "end": {"line": 14, "column": 2}, "value": 11},
+          {"unit_name": "rotate13", "start": {"line": 16, "column": 1}, "end": {"line": 20, "column": 2}, "value": 5},
+          {"unit_name": "exit", "start": {"line": 22, "column": 1}, "end": {"line": 25, "column": 2}, "value": 4},
+          {"unit_name": "main", "start": {"line": 27, "column": 1}, "end": {"line": 33, "column": 2}, "value": 7}
+        ]
+      },
+      "archive/j/javascript/longest-palindromic-substring.js": {
+        "checksum": "43607668332353b84e0fa9a81da8f625",
+        "language": "JavaScript",
+        "loc": 15,
+        "profile": [15, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "getLongestPalindromic", "start": {"line": 3, "column": 1}, "end": {"line": 21, "column": 2}, "value": 15}
+        ]
+      },
+      "archive/j/javascript/baklava.js": {
+        "checksum": "4a4bd7f3105ebe5b0b0cc36276079ae3",
+        "language": "JavaScript",
+        "loc": 0,
+        "profile": [0, 0, 0, 0],
+        "measurements": [
+        ]
+      },
+      "archive/j/javascript/josephus-problem.js": {
+        "checksum": "e1b1a933d3ee5b6b2f88e2721cb30849",
+        "language": "JavaScript",
+        "loc": 4,
+        "profile": [4, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "josephus", "start": {"line": 1, "column": 1}, "end": {"line": 4, "column": 2}, "value": 4}
+        ]
+      },
+      "archive/j/javascript/dijkstra.js": {
+        "checksum": "e67ddadf706c979bc52451ec67f73942",
+        "language": "JavaScript",
+        "loc": 53,
+        "profile": [0, 21, 32, 0],
+        "measurements": [
+          {"unit_name": "main", "start": {"line": 1, "column": 1}, "end": {"line": 85, "column": 2}, "value": 32},
+          {"unit_name": "dijkstra", "start": {"line": 47, "column": 5}, "end": {"line": 82, "column": 6}, "value": 21}
+        ]
+      },
+      "archive/j/javascript/reverse-string.js": {
+        "checksum": "e86dfc94bad139d08a4a2baad4436145",
+        "language": "JavaScript",
+        "loc": 0,
+        "profile": [0, 0, 0, 0],
+        "measurements": [
+        ]
+      },
+      "archive/j/javascript/bubble-sort.js": {
+        "checksum": "5fa4b78b1ab08ff382ea39c8170fccd4",
+        "language": "JavaScript",
+        "loc": 33,
+        "profile": [13, 20, 0, 0],
+        "measurements": [
+          {"unit_name": "bubblesort", "start": {"line": 7, "column": 1}, "end": {"line": 29, "column": 2}, "value": 13},
+          {"unit_name": "main", "start": {"line": 37, "column": 1}, "end": {"line": 76, "column": 2}, "value": 20}
+        ]
+      },
+      "archive/j/javascript/binary-search.js": {
+        "checksum": "42e8ebaed50948f185d2a93ca3b74829",
+        "language": "JavaScript",
+        "loc": 13,
+        "profile": [13, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "binarySearch", "start": {"line": 4, "column": 1}, "end": {"line": 19, "column": 2}, "value": 13}
+        ]
+      },
+      "archive/j/javascript/insertion-sort.js": {
+        "checksum": "aca52ee24e39ff77b452000f51229c90",
+        "language": "JavaScript",
+        "loc": 32,
+        "profile": [32, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "insertionSort", "start": {"line": 1, "column": 1}, "end": {"line": 12, "column": 2}, "value": 12},
+          {"unit_name": "sanitizeArray", "start": {"line": 14, "column": 1}, "end": {"line": 20, "column": 3}, "value": 7},
+          {"unit_name": "exit", "start": {"line": 22, "column": 2}, "end": {"line": 26, "column": 3}, "value": 5},
+          {"unit_name": "main", "start": {"line": 28, "column": 1}, "end": {"line": 35, "column": 2}, "value": 8}
+        ]
+      },
+      "archive/j/javascript/prime-number.js": {
+        "checksum": "3ae8167728ff7c5da0c918ce0b5136d8",
+        "language": "JavaScript",
+        "loc": 10,
+        "profile": [10, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "isPrime", "start": {"line": 1, "column": 1}, "end": {"line": 11, "column": 4}, "value": 10}
+        ]
+      },
+      "archive/j/javascript/job-sequencing.js": {
+        "checksum": "a8e33c35480ef38bd6353d3c049778a6",
+        "language": "JavaScript",
+        "loc": 62,
+        "profile": [39, 23, 0, 0],
+        "measurements": [
+          {"unit_name": "createJobs", "start": {"line": 13, "column": 1}, "end": {"line": 19, "column": 2}, "value": 7},
+          {"unit_name": "findMaxDeadline", "start": {"line": 33, "column": 1}, "end": {"line": 39, "column": 2}, "value": 7},
+          {"unit_name": "findMaxProfit", "start": {"line": 42, "column": 1}, "end": {"line": 64, "column": 2}, "value": 23},
+          {"unit_name": "checkValidity", "start": {"line": 70, "column": 1}, "end": {"line": 76, "column": 2}, "value": 7},
+          {"unit_name": "exit", "start": {"line": 79, "column": 1}, "end": {"line": 82, "column": 2}, "value": 4},
+          {"unit_name": "main", "start": {"line": 85, "column": 1}, "end": {"line": 98, "column": 2}, "value": 14}
+        ]
+      },
+      "archive/j/javascript/longest-word.js": {
+        "checksum": "5461039517049e53aae5b9f38e2cc37a",
+        "language": "JavaScript",
+        "loc": 0,
+        "profile": [0, 0, 0, 0],
+        "measurements": [
+        ]
+      },
+      "archive/j/javascript/capitalize.js": {
+        "checksum": "4ba0875592a0b6365a7356309bd209cc",
+        "language": "JavaScript",
+        "loc": 11,
+        "profile": [11, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "capitalize", "start": {"line": 1, "column": 1}, "end": {"line": 3, "column": 2}, "value": 3},
+          {"unit_name": "main", "start": {"line": 5, "column": 1}, "end": {"line": 12, "column": 2}, "value": 8}
+        ]
+      },
+      "archive/j/javascript/palindromic-number.js": {
+        "checksum": "06c166adf2b150bfbd0226a3e4f8955c",
+        "language": "JavaScript",
+        "loc": 15,
+        "profile": [15, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "isPalindromic", "start": {"line": 1, "column": 1}, "end": {"line": 18, "column": 2}, "value": 15}
+        ]
+      },
+      "archive/j/javascript/fibonacci.js": {
+        "checksum": "bcbeeef006cf6d768ebd680883012dbf",
+        "language": "JavaScript",
+        "loc": 12,
+        "profile": [12, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "fibonacci", "start": {"line": 1, "column": 1}, "end": {"line": 12, "column": 2}, "value": 12}
+        ]
+      },
+      "archive/j/javascript/quine.js": {
+        "checksum": "14f04f30624ac6e7c669d77d0c0c98c2",
+        "language": "JavaScript",
+        "loc": 0,
+        "profile": [0, 0, 0, 0],
+        "measurements": [
+        ]
+      },
+      "archive/j/javascript/selection-sort.js": {
+        "checksum": "a0894a2ac8a62d11af04946af56908b0",
+        "language": "JavaScript",
+        "loc": 28,
+        "profile": [12, 16, 0, 0],
+        "measurements": [
+          {"unit_name": "selectionSort", "start": {"line": 1, "column": 1}, "end": {"line": 21, "column": 2}, "value": 16},
+          {"unit_name": "exit", "start": {"line": 23, "column": 1}, "end": {"line": 26, "column": 2}, "value": 4},
+          {"unit_name": "main", "start": {"line": 28, "column": 1}, "end": {"line": 35, "column": 2}, "value": 8}
+        ]
+      },
+      "archive/j/javascript/longest-common-subsequence.js": {
+        "checksum": "3138db9e683c3019e3c0f758af521548",
+        "language": "JavaScript",
+        "loc": 32,
+        "profile": [0, 0, 32, 0],
+        "measurements": [
+          {"unit_name": "lcs", "start": {"line": 8, "column": 1}, "end": {"line": 48, "column": 2}, "value": 32}
+        ]
+      },
+      "archive/j/javascript/even-odd.js": {
+        "checksum": "3c3a5fbb908602ef84f872724b68c693",
+        "language": "JavaScript",
+        "loc": 0,
+        "profile": [0, 0, 0, 0],
+        "measurements": [
+        ]
+      },
+      "archive/j/javascript/transpose-matrix.js": {
+        "checksum": "ed61c6d1c3a9ff7b04c3e9dda2de931e",
+        "language": "JavaScript",
+        "loc": 0,
+        "profile": [0, 0, 0, 0],
+        "measurements": [
+        ]
+      },
+      "archive/j/javascript/hello-world.js": {
+        "checksum": "4088308bf51b8ebf9fec2f1966e35db9",
+        "language": "JavaScript",
+        "loc": 0,
+        "profile": [0, 0, 0, 0],
+        "measurements": [
+        ]
+      },
+      "archive/j/javascript/factorial.js": {
+        "checksum": "0c7f2983ab44a3de795be53e258e943c",
+        "language": "JavaScript",
+        "loc": 32,
+        "profile": [9, 23, 0, 0],
+        "measurements": [
+          {"unit_name": "factorial", "start": {"line": 6, "column": 1}, "end": {"line": 14, "column": 2}, "value": 9},
+          {"unit_name": "main", "start": {"line": 21, "column": 1}, "end": {"line": 55, "column": 2}, "value": 23}
+        ]
+      },
+      "archive/j/javascript/linear-search.js": {
+        "checksum": "16db0d767be5e5568a1467cc95db2818",
+        "language": "JavaScript",
+        "loc": 34,
+        "profile": [34, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "LinSearch", "start": {"line": 1, "column": 1}, "end": {"line": 14, "column": 2}, "value": 14},
+          {"unit_name": "sanitizeArray", "start": {"line": 16, "column": 1}, "end": {"line": 22, "column": 3}, "value": 7},
+          {"unit_name": "exit", "start": {"line": 24, "column": 1}, "end": {"line": 28, "column": 3}, "value": 5},
+          {"unit_name": "main", "start": {"line": 30, "column": 1}, "end": {"line": 37, "column": 2}, "value": 8}
+        ]
+      },
+      "archive/j/javascript/file-input-output.js": {
+        "checksum": "a7a8996e43ded88e1a386687ae478cd8",
+        "language": "JavaScript",
+        "loc": 11,
+        "profile": [11, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "writeFile", "start": {"line": 12, "column": 1}, "end": {"line": 14, "column": 2}, "value": 3},
+          {"unit_name": "readFile", "start": {"line": 16, "column": 1}, "end": {"line": 20, "column": 2}, "value": 4},
+          {"unit_name": "printString", "start": {"line": 22, "column": 1}, "end": {"line": 25, "column": 2}, "value": 4}
+        ]
+      },
+      "archive/c/c-plus-plus/dijkstra.cpp": {
+        "checksum": "a13debbf0ff15e104c1141e7fb0639bd",
+        "language": "C++",
+        "loc": 125,
+        "profile": [5, 53, 67, 0],
+        "measurements": [
+          {"unit_name": "handle_error", "start": {"line": 10, "column": 6}, "end": {"line": 14, "column": 2}, "value": 5},
+          {"unit_name": "check", "start": {"line": 16, "column": 5}, "end": {"line": 47, "column": 2}, "value": 28},
+          {"unit_name": "convert", "start": {"line": 49, "column": 13}, "end": {"line": 83, "column": 2}, "value": 32},
+          {"unit_name": "dijkstra", "start": {"line": 85, "column": 13}, "end": {"line": 109, "column": 2}, "value": 25},
+          {"unit_name": "main", "start": {"line": 111, "column": 5}, "end": {"line": 148, "column": 2}, "value": 35}
+        ]
+      },
+      "archive/c/c-plus-plus/remove-all-whitespace.cpp": {
+        "checksum": "0c92ecc014c0c9dd87bfe917050b3b1e",
+        "language": "C++",
+        "loc": 19,
+        "profile": [0, 19, 0, 0],
+        "measurements": [
+          {"unit_name": "main", "start": {"line": 6, "column": 5}, "end": {"line": 34, "column": 2}, "value": 19}
+        ]
+      },
+      "archive/c/c-plus-plus/factorial.cpp": {
+        "checksum": "9fe696d29117d122a2d3af8cdf5a1a96",
+        "language": "C++",
+        "loc": 26,
+        "profile": [0, 26, 0, 0],
+        "measurements": [
+          {"unit_name": "main", "start": {"line": 5, "column": 5}, "end": {"line": 31, "column": 2}, "value": 26}
+        ]
+      },
+      "archive/c/c-plus-plus/merge-sort.cpp": {
+        "checksum": "cabc7bff9211c25c88ea13441ae7ac6d",
+        "language": "C++",
+        "loc": 132,
+        "profile": [15, 75, 42, 0],
+        "measurements": [
+          {"unit_name": "handle_error", "start": {"line": 6, "column": 6}, "end": {"line": 10, "column": 2}, "value": 5},
+          {"unit_name": "check", "start": {"line": 12, "column": 5}, "end": {"line": 43, "column": 2}, "value": 28},
+          {"unit_name": "convert", "start": {"line": 45, "column": 13}, "end": {"line": 73, "column": 2}, "value": 26},
+          {"unit_name": "merge", "start": {"line": 75, "column": 6}, "end": {"line": 123, "column": 2}, "value": 42},
+          {"unit_name": "mergesort", "start": {"line": 125, "column": 6}, "end": {"line": 135, "column": 2}, "value": 10},
+          {"unit_name": "main", "start": {"line": 137, "column": 5}, "end": {"line": 163, "column": 2}, "value": 21}
+        ]
+      },
+      "archive/c/c-plus-plus/capitalize.cpp": {
+        "checksum": "4e4f86082b04d8009eff4ca8194772c6",
+        "language": "C++",
+        "loc": 15,
+        "profile": [15, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "main", "start": {"line": 4, "column": 5}, "end": {"line": 19, "column": 2}, "value": 15}
+        ]
+      },
+      "archive/c/c-plus-plus/longest-common-subsequence.cpp": {
+        "checksum": "b2e39771aa0cc6143878996ab967c2a3",
+        "language": "C++",
+        "loc": 86,
+        "profile": [14, 21, 51, 0],
+        "measurements": [
+          {"unit_name": "splitStrings", "start": {"line": 7, "column": 16}, "end": {"line": 31, "column": 2}, "value": 21},
+          {"unit_name": "longest_common_subsequence", "start": {"line": 33, "column": 6}, "end": {"line": 88, "column": 2}, "value": 51},
+          {"unit_name": "main", "start": {"line": 90, "column": 5}, "end": {"line": 106, "column": 2}, "value": 14}
+        ]
+      },
+      "archive/c/c-plus-plus/even-odd.cpp": {
+        "checksum": "9088bd80883ca3ef9d7de1a03044ccb8",
+        "language": "C++",
+        "loc": 20,
+        "profile": [0, 20, 0, 0],
+        "measurements": [
+          {"unit_name": "main", "start": {"line": 7, "column": 5}, "end": {"line": 27, "column": 2}, "value": 20}
+        ]
+      },
+      "archive/c/c-plus-plus/fibonacci.cpp": {
+        "checksum": "61f02e4e5f73b16ff43ae835393bc070",
+        "language": "C++",
+        "loc": 25,
+        "profile": [0, 25, 0, 0],
+        "measurements": [
+          {"unit_name": "main", "start": {"line": 5, "column": 5}, "end": {"line": 31, "column": 2}, "value": 25}
+        ]
+      },
+      "archive/c/c-plus-plus/file-input-output.cpp": {
+        "checksum": "92bfa47f5e99f719d4c900b2396385c0",
+        "language": "C++",
+        "loc": 34,
+        "profile": [18, 16, 0, 0],
+        "measurements": [
+          {"unit_name": "write_file", "start": {"line": 5, "column": 6}, "end": {"line": 21, "column": 2}, "value": 13},
+          {"unit_name": "read_file", "start": {"line": 23, "column": 6}, "end": {"line": 42, "column": 2}, "value": 16},
+          {"unit_name": "main", "start": {"line": 44, "column": 5}, "end": {"line": 48, "column": 2}, "value": 5}
+        ]
+      },
+      "archive/c/c-plus-plus/prime-number.cpp": {
+        "checksum": "0cee836925cd48b08b0332b68ee9a360",
+        "language": "C++",
+        "loc": 32,
+        "profile": [0, 0, 32, 0],
+        "measurements": [
+          {"unit_name": "main", "start": {"line": 7, "column": 5}, "end": {"line": 39, "column": 2}, "value": 32}
+        ]
+      },
+      "archive/c/c-plus-plus/rot13.cpp": {
+        "checksum": "15e7bb006d2191f9fad5089ff5a4fa2a",
+        "language": "C++",
+        "loc": 21,
+        "profile": [21, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "rot13", "start": {"line": 6, "column": 6}, "end": {"line": 16, "column": 2}, "value": 11},
+          {"unit_name": "main", "start": {"line": 18, "column": 5}, "end": {"line": 28, "column": 2}, "value": 10}
+        ]
+      },
+      "archive/c/c-plus-plus/selection-sort.cpp": {
+        "checksum": "928b8764d18fe93a4dabefb069716589",
+        "language": "C++",
+        "loc": 97,
+        "profile": [11, 54, 32, 0],
+        "measurements": [
+          {"unit_name": "swap", "start": {"line": 6, "column": 6}, "end": {"line": 11, "column": 2}, "value": 6},
+          {"unit_name": "handle_error", "start": {"line": 13, "column": 6}, "end": {"line": 17, "column": 2}, "value": 5},
+          {"unit_name": "check", "start": {"line": 19, "column": 5}, "end": {"line": 50, "column": 2}, "value": 28},
+          {"unit_name": "convert", "start": {"line": 52, "column": 13}, "end": {"line": 80, "column": 2}, "value": 26},
+          {"unit_name": "main", "start": {"line": 82, "column": 5}, "end": {"line": 119, "column": 2}, "value": 32}
+        ]
+      },
+      "archive/c/c-plus-plus/bubble-sort.cpp": {
+        "checksum": "ced496b60ad73ef8c9c6eac9ad4b158a",
+        "language": "C++",
+        "loc": 85,
+        "profile": [18, 21, 46, 0],
+        "measurements": [
+          {"unit_name": "swap", "start": {"line": 5, "column": 6}, "end": {"line": 10, "column": 2}, "value": 6},
+          {"unit_name": "bubbleSort", "start": {"line": 12, "column": 6}, "end": {"line": 35, "column": 2}, "value": 21},
+          {"unit_name": "print", "start": {"line": 37, "column": 6}, "end": {"line": 48, "column": 2}, "value": 12},
+          {"unit_name": "main", "start": {"line": 50, "column": 5}, "end": {"line": 101, "column": 2}, "value": 46}
+        ]
+      },
+      "archive/c/c-plus-plus/fraction-math.cpp": {
+        "checksum": "17c3272dfef8118acbe9cd36bc92e326",
+        "language": "C++",
+        "loc": 109,
+        "profile": [50, 0, 59, 0],
+        "measurements": [
+          {"unit_name": "gcd", "start": {"line": 5, "column": 5}, "end": {"line": 19, "column": 2}, "value": 15},
+          {"unit_name": "Fraction", "start": {"line": 28, "column": 5}, "end": {"line": 41, "column": 6}, "value": 14},
+          {"unit_name": "getnumerator", "start": {"line": 50, "column": 9}, "end": {"line": 53, "column": 6}, "value": 4},
+          {"unit_name": "getdenometor", "start": {"line": 55, "column": 9}, "end": {"line": 58, "column": 6}, "value": 4},
+          {"unit_name": "fromstr", "start": {"line": 249, "column": 10}, "end": {"line": 261, "column": 2}, "value": 13},
+          {"unit_name": "main", "start": {"line": 263, "column": 5}, "end": {"line": 324, "column": 2}, "value": 59}
+        ]
+      },
+      "archive/c/c-plus-plus/longest-word.cpp": {
+        "checksum": "6dea24d860d2630364f5f4ad8b8057eb",
+        "language": "C++",
+        "loc": 30,
+        "profile": [5, 25, 0, 0],
+        "measurements": [
+          {"unit_name": "handle_error", "start": {"line": 8, "column": 5}, "end": {"line": 12, "column": 2}, "value": 5},
+          {"unit_name": "main", "start": {"line": 14, "column": 5}, "end": {"line": 42, "column": 2}, "value": 25}
+        ]
+      },
+      "archive/c/c-plus-plus/reverse-string.cpp": {
+        "checksum": "38fe78ef2252803b982ccdb1ec58f06d",
+        "language": "C++",
+        "loc": 8,
+        "profile": [8, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "main", "start": {"line": 5, "column": 5}, "end": {"line": 14, "column": 2}, "value": 8}
+        ]
+      },
+      "archive/c/c-plus-plus/hello-world.cpp": {
+        "checksum": "1d5aed2a64a07935b9a99ccc7e62fe2b",
+        "language": "C++",
+        "loc": 5,
+        "profile": [5, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "main", "start": {"line": 4, "column": 5}, "end": {"line": 8, "column": 2}, "value": 5}
+        ]
+      },
+      "archive/c/c-plus-plus/insertion-sort.cpp": {
+        "checksum": "5265f537135b5d6197706ed66cc71592",
+        "language": "C++",
+        "loc": 61,
+        "profile": [0, 17, 44, 0],
+        "measurements": [
+          {"unit_name": "insertSort", "start": {"line": 6, "column": 6}, "end": {"line": 22, "column": 2}, "value": 17},
+          {"unit_name": "main", "start": {"line": 24, "column": 5}, "end": {"line": 74, "column": 2}, "value": 44}
+        ]
+      },
+      "archive/c/c-plus-plus/binary-search.cpp": {
+        "checksum": "2ff1a106abd785e73f67ad46b7df51fe",
+        "language": "C++",
+        "loc": 103,
+        "profile": [5, 58, 40, 0],
+        "measurements": [
+          {"unit_name": "handle_error", "start": {"line": 6, "column": 6}, "end": {"line": 10, "column": 2}, "value": 5},
+          {"unit_name": "check", "start": {"line": 12, "column": 5}, "end": {"line": 43, "column": 2}, "value": 28},
+          {"unit_name": "convert", "start": {"line": 45, "column": 13}, "end": {"line": 76, "column": 2}, "value": 30},
+          {"unit_name": "main", "start": {"line": 78, "column": 5}, "end": {"line": 123, "column": 2}, "value": 40}
+        ]
+      },
+      "archive/c/c-plus-plus/quick-sort.cpp": {
+        "checksum": "3eb8006ac2bf4fd76afd9b2226c1d9fa",
+        "language": "C++",
+        "loc": 115,
+        "profile": [15, 100, 0, 0],
+        "measurements": [
+          {"unit_name": "handle_error", "start": {"line": 6, "column": 6}, "end": {"line": 10, "column": 2}, "value": 5},
+          {"unit_name": "check", "start": {"line": 12, "column": 5}, "end": {"line": 40, "column": 2}, "value": 28},
+          {"unit_name": "convert", "start": {"line": 42, "column": 13}, "end": {"line": 67, "column": 2}, "value": 26},
+          {"unit_name": "partition1", "start": {"line": 69, "column": 5}, "end": {"line": 93, "column": 2}, "value": 25},
+          {"unit_name": "quick_sort", "start": {"line": 95, "column": 6}, "end": {"line": 104, "column": 2}, "value": 10},
+          {"unit_name": "main", "start": {"line": 106, "column": 5}, "end": {"line": 126, "column": 2}, "value": 21}
+        ]
+      },
+      "archive/c/c-plus-plus/baklava.cpp": {
+        "checksum": "deb0f6b2aa12b71346e082aea0d48401",
+        "language": "C++",
+        "loc": 26,
+        "profile": [0, 26, 0, 0],
+        "measurements": [
+          {"unit_name": "main", "start": {"line": 5, "column": 5}, "end": {"line": 30, "column": 2}, "value": 26}
+        ]
+      },
+      "archive/c/c-plus-plus/duplicate-character-counter.cpp": {
+        "checksum": "30e9377ddc9cba59b857a718839581c0",
+        "language": "C++",
+        "loc": 42,
+        "profile": [5, 0, 37, 0],
+        "measurements": [
+          {"unit_name": "handle_error", "start": {"line": 6, "column": 5}, "end": {"line": 10, "column": 2}, "value": 5},
+          {"unit_name": "main", "start": {"line": 11, "column": 5}, "end": {"line": 51, "column": 2}, "value": 37}
+        ]
+      },
+      "archive/c/c-plus-plus/depth-first-search.cpp": {
+        "checksum": "8a150b0bbc39db9e1d817e1b4ee64b55",
+        "language": "C++",
+        "loc": 103,
+        "profile": [16, 54, 33, 0],
+        "measurements": [
+          {"unit_name": "handle_error", "start": {"line": 8, "column": 6}, "end": {"line": 12, "column": 2}, "value": 5},
+          {"unit_name": "check", "start": {"line": 14, "column": 5}, "end": {"line": 45, "column": 2}, "value": 28},
+          {"unit_name": "convert", "start": {"line": 47, "column": 13}, "end": {"line": 75, "column": 2}, "value": 26},
+          {"unit_name": "dfs", "start": {"line": 77, "column": 6}, "end": {"line": 91, "column": 2}, "value": 11},
+          {"unit_name": "main", "start": {"line": 93, "column": 5}, "end": {"line": 128, "column": 2}, "value": 33}
+        ]
+      },
+      "archive/c/c-plus-plus/palindromic-number.cpp": {
+        "checksum": "0c58fc5e316516ad5f97a8611e3c9953",
+        "language": "C++",
+        "loc": 49,
+        "profile": [24, 25, 0, 0],
+        "measurements": [
+          {"unit_name": "palindromic_number", "start": {"line": 8, "column": 6}, "end": {"line": 33, "column": 2}, "value": 25},
+          {"unit_name": "is_int", "start": {"line": 35, "column": 5}, "end": {"line": 49, "column": 2}, "value": 14},
+          {"unit_name": "main", "start": {"line": 51, "column": 5}, "end": {"line": 60, "column": 2}, "value": 10}
+        ]
+      },
+      "archive/c/c-plus-plus/fizz-buzz.cpp": {
+        "checksum": "fd2de3f858590dea37ff548d39b8befa",
+        "language": "C++",
+        "loc": 15,
+        "profile": [15, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "main", "start": {"line": 3, "column": 5}, "end": {"line": 17, "column": 2}, "value": 15}
+        ]
+      },
+      "archive/c/c-plus-plus/roman-numeral.cpp": {
+        "checksum": "7ad20ce13b9e28fc1836d2a0e80bf1e7",
+        "language": "C++",
+        "loc": 44,
+        "profile": [4, 0, 40, 0],
+        "measurements": [
+          {"unit_name": "is_roman", "start": {"line": 6, "column": 6}, "end": {"line": 9, "column": 2}, "value": 4},
+          {"unit_name": "main", "start": {"line": 11, "column": 5}, "end": {"line": 56, "column": 2}, "value": 40}
+        ]
+      },
+      "archive/c/c-plus-plus/linear-search.cpp": {
+        "checksum": "9e05d1950fa909bb87d2d9b0ea6143be",
+        "language": "C++",
+        "loc": 48,
+        "profile": [0, 0, 48, 0],
+        "measurements": [
+          {"unit_name": "main", "start": {"line": 7, "column": 5}, "end": {"line": 56, "column": 2}, "value": 48}
+        ]
+      },
+      "archive/c/c/hello-world.c": {
+        "checksum": "7fd9593b5c5ec9be9505e5eb325312a9",
+        "language": "C",
+        "loc": 5,
+        "profile": [5, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "main", "start": {"line": 3, "column": 5}, "end": {"line": 7, "column": 2}, "value": 5}
+        ]
+      },
+      "archive/c/c/duplicate-character-counter.c": {
+        "checksum": "8a609a49dd51baee73a9d25ff2ba74b5",
+        "language": "C",
+        "loc": 33,
+        "profile": [5, 28, 0, 0],
+        "measurements": [
+          {"unit_name": "handle_error", "start": {"line": 6, "column": 5}, "end": {"line": 10, "column": 2}, "value": 5},
+          {"unit_name": "main", "start": {"line": 12, "column": 5}, "end": {"line": 45, "column": 2}, "value": 28}
+        ]
+      },
+      "archive/c/c/prime-number.c": {
+        "checksum": "e69ca8436c882b7ffb44c512f808d5e0",
+        "language": "C",
+        "loc": 36,
+        "profile": [19, 17, 0, 0],
+        "measurements": [
+          {"unit_name": "prime_number", "start": {"line": 4, "column": 6}, "end": {"line": 21, "column": 2}, "value": 17},
+          {"unit_name": "is_int", "start": {"line": 23, "column": 5}, "end": {"line": 32, "column": 2}, "value": 10},
+          {"unit_name": "main", "start": {"line": 34, "column": 5}, "end": {"line": 42, "column": 2}, "value": 9}
+        ]
+      },
+      "archive/c/c/quick-sort.c": {
+        "checksum": "a100230ca00d4f3bfc63be9d363df0b6",
+        "language": "C",
+        "loc": 80,
+        "profile": [51, 29, 0, 0],
+        "measurements": [
+          {"unit_name": "get_val", "start": {"line": 5, "column": 11}, "end": {"line": 16, "column": 2}, "value": 12},
+          {"unit_name": "swap", "start": {"line": 19, "column": 6}, "end": {"line": 24, "column": 2}, "value": 6},
+          {"unit_name": "partition", "start": {"line": 26, "column": 5}, "end": {"line": 41, "column": 2}, "value": 15},
+          {"unit_name": "quickSort", "start": {"line": 43, "column": 6}, "end": {"line": 51, "column": 2}, "value": 9},
+          {"unit_name": "print", "start": {"line": 53, "column": 6}, "end": {"line": 62, "column": 2}, "value": 9},
+          {"unit_name": "main", "start": {"line": 64, "column": 5}, "end": {"line": 95, "column": 2}, "value": 29}
+        ]
+      },
+      "archive/c/c/longest-common-subsequence.c": {
+        "checksum": "4510eafa44b79585642e24c6a899a5db",
+        "language": "C",
+        "loc": 74,
+        "profile": [31, 0, 43, 0],
+        "measurements": [
+          {"unit_name": "get_val", "start": {"line": 9, "column": 11}, "end": {"line": 20, "column": 2}, "value": 12},
+          {"unit_name": "max", "start": {"line": 22, "column": 5}, "end": {"line": 24, "column": 2}, "value": 3},
+          {"unit_name": "lcs", "start": {"line": 26, "column": 5}, "end": {"line": 32, "column": 2}, "value": 7},
+          {"unit_name": "find", "start": {"line": 34, "column": 6}, "end": {"line": 42, "column": 2}, "value": 9},
+          {"unit_name": "main", "start": {"line": 44, "column": 5}, "end": {"line": 88, "column": 2}, "value": 43}
+        ]
+      },
+      "archive/c/c/rot13.c": {
+        "checksum": "ca1ca86ce64eb9fe5eba62394d6fc96c",
+        "language": "C",
+        "loc": 19,
+        "profile": [19, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "rot13", "start": {"line": 5, "column": 6}, "end": {"line": 14, "column": 2}, "value": 10},
+          {"unit_name": "main", "start": {"line": 16, "column": 5}, "end": {"line": 25, "column": 2}, "value": 9}
+        ]
+      },
+      "archive/c/c/capitalize.c": {
+        "checksum": "f095759d6ad04726c9057cb80a6c1cfa",
+        "language": "C",
+        "loc": 20,
+        "profile": [20, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "captialize", "start": {"line": 5, "column": 7}, "end": {"line": 14, "column": 2}, "value": 10},
+          {"unit_name": "main", "start": {"line": 16, "column": 5}, "end": {"line": 26, "column": 2}, "value": 10}
+        ]
+      },
+      "archive/c/c/selection-sort.c": {
+        "checksum": "ea2b120877b7def1d762b9fd8c13028b",
+        "language": "C",
+        "loc": 81,
+        "profile": [30, 17, 34, 0],
+        "measurements": [
+          {"unit_name": "parse_list", "start": {"line": 11, "column": 8}, "end": {"line": 58, "column": 2}, "value": 34},
+          {"unit_name": "printArray", "start": {"line": 61, "column": 6}, "end": {"line": 70, "column": 2}, "value": 8},
+          {"unit_name": "errorMsg", "start": {"line": 73, "column": 6}, "end": {"line": 76, "column": 2}, "value": 4},
+          {"unit_name": "main", "start": {"line": 79, "column": 5}, "end": {"line": 99, "column": 2}, "value": 17},
+          {"unit_name": "swap", "start": {"line": 101, "column": 6}, "end": {"line": 106, "column": 2}, "value": 6},
+          {"unit_name": "selectionSort", "start": {"line": 108, "column": 6}, "end": {"line": 124, "column": 2}, "value": 12}
+        ]
+      },
+      "archive/c/c/insertion-sort.c": {
+        "checksum": "81bcc56d75767c32e77ac8996f1b12ef",
+        "language": "C",
+        "loc": 75,
+        "profile": [24, 17, 34, 0],
+        "measurements": [
+          {"unit_name": "parse_list", "start": {"line": 8, "column": 8}, "end": {"line": 55, "column": 2}, "value": 34},
+          {"unit_name": "print_array", "start": {"line": 58, "column": 6}, "end": {"line": 67, "column": 2}, "value": 8},
+          {"unit_name": "error_message", "start": {"line": 70, "column": 6}, "end": {"line": 73, "column": 2}, "value": 4},
+          {"unit_name": "main", "start": {"line": 75, "column": 5}, "end": {"line": 95, "column": 2}, "value": 17},
+          {"unit_name": "insertion_sort", "start": {"line": 97, "column": 6}, "end": {"line": 110, "column": 2}, "value": 12}
+        ]
+      },
+      "archive/c/c/even-odd.c": {
+        "checksum": "e04976cfd7ddac75729c04b23f148129",
+        "language": "C",
+        "loc": 15,
+        "profile": [15, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "main", "start": {"line": 5, "column": 5}, "end": {"line": 20, "column": 2}, "value": 15}
+        ]
+      },
+      "archive/c/c/palindromic-number.c": {
+        "checksum": "3259e3e2990af4966bbf82815f4fc7a0",
+        "language": "C",
+        "loc": 49,
+        "profile": [24, 25, 0, 0],
+        "measurements": [
+          {"unit_name": "palindromic_number", "start": {"line": 6, "column": 6}, "end": {"line": 32, "column": 2}, "value": 25},
+          {"unit_name": "is_int", "start": {"line": 34, "column": 5}, "end": {"line": 48, "column": 2}, "value": 14},
+          {"unit_name": "main", "start": {"line": 50, "column": 5}, "end": {"line": 60, "column": 2}, "value": 10}
+        ]
+      },
+      "archive/c/c/fizz-buzz.c": {
+        "checksum": "73938bb9f08a3f9c08ea58c26253f9f2",
+        "language": "C",
+        "loc": 15,
+        "profile": [15, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "main", "start": {"line": 3, "column": 5}, "end": {"line": 17, "column": 2}, "value": 15}
+        ]
+      },
+      "archive/c/c/quine.c": {
+        "checksum": "26e11c0f1cdda63450e78a518019fcef",
+        "language": "C",
+        "loc": 1,
+        "profile": [1, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "main", "start": {"line": 2, "column": 5}, "end": {"line": 2, "column": 163}, "value": 1}
+        ]
+      },
+      "archive/c/c/reverse-string.c": {
+        "checksum": "cc2b1048669b94fae5908653b7f196f9",
+        "language": "C",
+        "loc": 14,
+        "profile": [14, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "main", "start": {"line": 4, "column": 5}, "end": {"line": 25, "column": 2}, "value": 14}
+        ]
+      },
+      "archive/c/c/fibonacci.c": {
+        "checksum": "a1982c83a5f0ec26a57c14d508f7549e",
+        "language": "C",
+        "loc": 32,
+        "profile": [12, 20, 0, 0],
+        "measurements": [
+          {"unit_name": "fibonacci", "start": {"line": 12, "column": 6}, "end": {"line": 24, "column": 2}, "value": 12},
+          {"unit_name": "main", "start": {"line": 26, "column": 5}, "end": {"line": 49, "column": 2}, "value": 20}
+        ]
+      },
+      "archive/c/c/bubble-sort.c": {
+        "checksum": "25a87269ba10c0025eddce7b500ccf68",
+        "language": "C",
+        "loc": 88,
+        "profile": [19, 35, 34, 0],
+        "measurements": [
+          {"unit_name": "parse_list", "start": {"line": 7, "column": 8}, "end": {"line": 54, "column": 2}, "value": 34},
+          {"unit_name": "swap_elements", "start": {"line": 56, "column": 6}, "end": {"line": 63, "column": 2}, "value": 7},
+          {"unit_name": "bubble_sort", "start": {"line": 65, "column": 5}, "end": {"line": 86, "column": 2}, "value": 18},
+          {"unit_name": "print_array", "start": {"line": 88, "column": 6}, "end": {"line": 97, "column": 2}, "value": 8},
+          {"unit_name": "usage", "start": {"line": 99, "column": 6}, "end": {"line": 102, "column": 2}, "value": 4},
+          {"unit_name": "main", "start": {"line": 104, "column": 5}, "end": {"line": 124, "column": 2}, "value": 17}
+        ]
+      },
+      "archive/c/c/baklava.c": {
+        "checksum": "2108ea20bdafe32879d2f5eeafc5b760",
+        "language": "C",
+        "loc": 16,
+        "profile": [0, 16, 0, 0],
+        "measurements": [
+          {"unit_name": "main", "start": {"line": 3, "column": 5}, "end": {"line": 22, "column": 2}, "value": 16}
+        ]
+      },
+      "archive/c/c/merge-sort.c": {
+        "checksum": "39f01a933f5c515f1dededeed6bff185",
+        "language": "C",
+        "loc": 88,
+        "profile": [21, 33, 34, 0],
+        "measurements": [
+          {"unit_name": "parse_list", "start": {"line": 11, "column": 8}, "end": {"line": 58, "column": 2}, "value": 34},
+          {"unit_name": "print_array", "start": {"line": 61, "column": 6}, "end": {"line": 70, "column": 2}, "value": 8},
+          {"unit_name": "usage", "start": {"line": 73, "column": 6}, "end": {"line": 76, "column": 2}, "value": 4},
+          {"unit_name": "main", "start": {"line": 78, "column": 5}, "end": {"line": 98, "column": 2}, "value": 17},
+          {"unit_name": "merge_sort", "start": {"line": 100, "column": 6}, "end": {"line": 110, "column": 2}, "value": 9},
+          {"unit_name": "merge_array", "start": {"line": 112, "column": 6}, "end": {"line": 136, "column": 2}, "value": 16}
+        ]
+      },
+      "archive/c/c/factorial.c": {
+        "checksum": "048523dfda4d4e713ef612e0440bf800",
+        "language": "C",
+        "loc": 42,
+        "profile": [7, 0, 35, 0],
+        "measurements": [
+          {"unit_name": "main", "start": {"line": 9, "column": 5}, "end": {"line": 54, "column": 2}, "value": 35},
+          {"unit_name": "uint64_overflow", "start": {"line": 61, "column": 5}, "end": {"line": 69, "column": 2}, "value": 7}
+        ]
+      },
+      "archive/c/c/longest-word.c": {
+        "checksum": "2c86a67833efc696fbb4e92a4812915b",
+        "language": "C",
+        "loc": 24,
+        "profile": [4, 20, 0, 0],
+        "measurements": [
+          {"unit_name": "error", "start": {"line": 5, "column": 6}, "end": {"line": 8, "column": 2}, "value": 4},
+          {"unit_name": "main", "start": {"line": 9, "column": 5}, "end": {"line": 31, "column": 2}, "value": 20}
+        ]
+      },
+      "archive/c/c/roman-numeral.c": {
+        "checksum": "114754248b03e62b3684a1eaab60a963",
+        "language": "C",
+        "loc": 33,
+        "profile": [0, 0, 33, 0],
+        "measurements": [
+          {"unit_name": "main", "start": {"line": 7, "column": 5}, "end": {"line": 41, "column": 2}, "value": 33}
+        ]
+      },
+      "archive/c/c/binary-search.c": {
+        "checksum": "d22f58cc972b650bd3fcd4c72ca9a20a",
+        "language": "C",
+        "loc": 99,
+        "profile": [30, 34, 35, 0],
+        "measurements": [
+          {"unit_name": "main", "start": {"line": 15, "column": 5}, "end": {"line": 42, "column": 2}, "value": 18},
+          {"unit_name": "binarySearch", "start": {"line": 45, "column": 5}, "end": {"line": 64, "column": 2}, "value": 16},
+          {"unit_name": "parseInput", "start": {"line": 67, "column": 5}, "end": {"line": 106, "column": 2}, "value": 35},
+          {"unit_name": "freeMemory", "start": {"line": 109, "column": 6}, "end": {"line": 111, "column": 2}, "value": 3},
+          {"unit_name": "printErrorAndExit", "start": {"line": 114, "column": 6}, "end": {"line": 120, "column": 2}, "value": 7},
+          {"unit_name": "isSorted", "start": {"line": 123, "column": 5}, "end": {"line": 130, "column": 2}, "value": 8},
+          {"unit_name": "isValidNumber", "start": {"line": 133, "column": 5}, "end": {"line": 137, "column": 2}, "value": 5},
+          {"unit_name": "trimWhitespace", "start": {"line": 140, "column": 7}, "end": {"line": 148, "column": 2}, "value": 7}
+        ]
+      },
+      "archive/c/c/remove-all-whitespace.c": {
+        "checksum": "301a6f55ecf2245e7abc7d0886f8bfbf",
+        "language": "C",
+        "loc": 17,
+        "profile": [0, 17, 0, 0],
+        "measurements": [
+          {"unit_name": "main", "start": {"line": 5, "column": 5}, "end": {"line": 30, "column": 2}, "value": 17}
+        ]
+      },
+      "archive/c/c/convex-hull.c": {
+        "checksum": "52f389eb1030ab7d15ce1109fc382358",
+        "language": "C",
+        "loc": 137,
+        "profile": [40, 23, 74, 0],
+        "measurements": [
+          {"unit_name": "printUsageAndExit", "start": {"line": 12, "column": 6}, "end": {"line": 15, "column": 2}, "value": 4},
+          {"unit_name": "compare", "start": {"line": 17, "column": 5}, "end": {"line": 25, "column": 2}, "value": 8},
+          {"unit_name": "orientation", "start": {"line": 27, "column": 5}, "end": {"line": 30, "column": 2}, "value": 4},
+          {"unit_name": "convexHull", "start": {"line": 32, "column": 6}, "end": {"line": 60, "column": 2}, "value": 23},
+          {"unit_name": "isInteger", "start": {"line": 63, "column": 6}, "end": {"line": 67, "column": 2}, "value": 5},
+          {"unit_name": "trimWhitespace", "start": {"line": 70, "column": 7}, "end": {"line": 78, "column": 2}, "value": 7},
+          {"unit_name": "parseInput", "start": {"line": 81, "column": 5}, "end": {"line": 128, "column": 2}, "value": 41},
+          {"unit_name": "parseCoordinates", "start": {"line": 130, "column": 6}, "end": {"line": 168, "column": 2}, "value": 33},
+          {"unit_name": "main", "start": {"line": 170, "column": 5}, "end": {"line": 184, "column": 2}, "value": 12}
+        ]
+      },
+      "archive/c/c/minimum-spanning-tree.c": {
+        "checksum": "766ccdeb8153397bed4cd5425573dc50",
+        "language": "C",
+        "loc": 111,
+        "profile": [48, 23, 40, 0],
+        "measurements": [
+          {"unit_name": "get_val", "start": {"line": 10, "column": 11}, "end": {"line": 21, "column": 2}, "value": 12},
+          {"unit_name": "createGraph", "start": {"line": 28, "column": 15}, "end": {"line": 34, "column": 2}, "value": 7},
+          {"unit_name": "find", "start": {"line": 41, "column": 5}, "end": {"line": 45, "column": 2}, "value": 5},
+          {"unit_name": "Union", "start": {"line": 47, "column": 6}, "end": {"line": 56, "column": 2}, "value": 10},
+          {"unit_name": "myComp", "start": {"line": 58, "column": 5}, "end": {"line": 62, "column": 2}, "value": 5},
+          {"unit_name": "KruskalMST", "start": {"line": 64, "column": 6}, "end": {"line": 87, "column": 2}, "value": 23},
+          {"unit_name": "floorSqrt", "start": {"line": 89, "column": 5}, "end": {"line": 97, "column": 2}, "value": 9},
+          {"unit_name": "main", "start": {"line": 99, "column": 5}, "end": {"line": 140, "column": 2}, "value": 40}
+        ]
+      },
+      "archive/c/c/file-input-output.c": {
+        "checksum": "3f70f342221b0d305a4df46ffb93a263",
+        "language": "C",
+        "loc": 44,
+        "profile": [26, 18, 0, 0],
+        "measurements": [
+          {"unit_name": "write_file", "start": {"line": 6, "column": 5}, "end": {"line": 21, "column": 2}, "value": 13},
+          {"unit_name": "read_file", "start": {"line": 23, "column": 5}, "end": {"line": 44, "column": 2}, "value": 18},
+          {"unit_name": "main", "start": {"line": 46, "column": 5}, "end": {"line": 61, "column": 2}, "value": 13}
+        ]
+      },
+      "archive/p/python/file_input_output.py": {
+        "checksum": "2df5c61204736ba9d66167365cbe1d47",
+        "language": "Python",
+        "loc": 16,
+        "profile": [16, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "write_file", "start": {"line": 1, "column": 1}, "end": {"line": 8, "column": 15}, "value": 8},
+          {"unit_name": "read_file", "start": {"line": 11, "column": 1}, "end": {"line": 18, "column": 15}, "value": 8}
+        ]
+      },
+      "archive/p/python/maximum_subarray.py": {
+        "checksum": "be997d6ebf9ef505257307ddbf6fdf00",
+        "language": "Python",
+        "loc": 17,
+        "profile": [17, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "error_handling", "start": {"line": 5, "column": 1}, "end": {"line": 11, "column": 16}, "value": 7},
+          {"unit_name": "maximum_subarray", "start": {"line": 14, "column": 1}, "end": {"line": 23, "column": 22}, "value": 10}
+        ]
+      },
+      "archive/p/python/prime_number.py": {
+        "checksum": "e01512979f10e2a1200563cf843bcf5d",
+        "language": "Python",
+        "loc": 15,
+        "profile": [15, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "is_prime", "start": {"line": 5, "column": 1}, "end": {"line": 8, "column": 79}, "value": 4},
+          {"unit_name": "exit_with_error", "start": {"line": 11, "column": 1}, "end": {"line": 13, "column": 16}, "value": 3},
+          {"unit_name": "main", "start": {"line": 16, "column": 1}, "end": {"line": 23, "column": 26}, "value": 8}
+        ]
+      },
+      "archive/p/python/dijkstra.py": {
+        "checksum": "7bd940eae8e93dc7debb5642f2a65fe3",
+        "language": "Python",
+        "loc": 61,
+        "profile": [44, 17, 0, 0],
+        "measurements": [
+          {"unit_name": "usage", "start": {"line": 4, "column": 1}, "end": {"line": 6, "column": 16}, "value": 3},
+          {"unit_name": "parse_int_list", "start": {"line": 8, "column": 1}, "end": {"line": 9, "column": 50}, "value": 2},
+          {"unit_name": "validate_inputs", "start": {"line": 11, "column": 1}, "end": {"line": 28, "column": 16}, "value": 10},
+          {"unit_name": "__init__", "start": {"line": 31, "column": 5}, "end": {"line": 33, "column": 55}, "value": 3},
+          {"unit_name": "add_node", "start": {"line": 35, "column": 5}, "end": {"line": 36, "column": 34}, "value": 2},
+          {"unit_name": "create_graph", "start": {"line": 38, "column": 1}, "end": {"line": 48, "column": 17}, "value": 9},
+          {"unit_name": "dijkstra", "start": {"line": 50, "column": 1}, "end": {"line": 84, "column": 24}, "value": 17},
+          {"unit_name": "main", "start": {"line": 86, "column": 1}, "end": {"line": 108, "column": 23}, "value": 15}
+        ]
+      },
+      "archive/p/python/fizz_buzz.py": {
+        "checksum": "67e1b6522f9f5d3e690aa17b93edfa35",
+        "language": "Python",
+        "loc": 0,
+        "profile": [0, 0, 0, 0],
+        "measurements": [
+        ]
+      },
+      "archive/p/python/job_sequencing.py": {
+        "checksum": "6642af177f7d8e3350df8ab04554a883",
+        "language": "Python",
+        "loc": 37,
+        "profile": [37, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "__init__", "start": {"line": 5, "column": 5}, "end": {"line": 7, "column": 33}, "value": 3},
+          {"unit_name": "__eq__", "start": {"line": 9, "column": 5}, "end": {"line": 10, "column": 47}, "value": 2},
+          {"unit_name": "__gt__", "start": {"line": 12, "column": 5}, "end": {"line": 13, "column": 42}, "value": 2},
+          {"unit_name": "__lt__", "start": {"line": 15, "column": 5}, "end": {"line": 16, "column": 42}, "value": 2},
+          {"unit_name": "input_list", "start": {"line": 19, "column": 1}, "end": {"line": 20, "column": 64}, "value": 2},
+          {"unit_name": "max_profit", "start": {"line": 23, "column": 1}, "end": {"line": 24, "column": 74}, "value": 2},
+          {"unit_name": "iterate_job_sequence", "start": {"line": 27, "column": 1}, "end": {"line": 37, "column": 53}, "value": 11},
+          {"unit_name": "exit_with_error", "start": {"line": 40, "column": 1}, "end": {"line": 42, "column": 16}, "value": 3},
+          {"unit_name": "main", "start": {"line": 45, "column": 1}, "end": {"line": 55, "column": 26}, "value": 10}
+        ]
+      },
+      "archive/p/python/binary_search.py": {
+        "checksum": "7f132cd88829da2a1fe75084d7c8222c",
+        "language": "Python",
+        "loc": 20,
+        "profile": [20, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "binary_search", "start": {"line": 4, "column": 1}, "end": {"line": 15, "column": 14}, "value": 12},
+          {"unit_name": "input_list", "start": {"line": 18, "column": 1}, "end": {"line": 22, "column": 28}, "value": 5},
+          {"unit_name": "exit_with_error", "start": {"line": 25, "column": 1}, "end": {"line": 27, "column": 16}, "value": 3}
+        ]
+      },
+      "archive/p/python/hello_world.py": {
+        "checksum": "bfd3647900b1e2fd15fd675573afa11c",
+        "language": "Python",
+        "loc": 0,
+        "profile": [0, 0, 0, 0],
+        "measurements": [
+        ]
+      },
+      "archive/p/python/quick_sort.py": {
+        "checksum": "f8cced249f562a74f1f108a7281f331f",
+        "language": "Python",
+        "loc": 19,
+        "profile": [19, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "quick_sort", "start": {"line": 4, "column": 1}, "end": {"line": 10, "column": 33}, "value": 6},
+          {"unit_name": "input_list", "start": {"line": 13, "column": 1}, "end": {"line": 14, "column": 64}, "value": 2},
+          {"unit_name": "exit_with_error", "start": {"line": 17, "column": 1}, "end": {"line": 19, "column": 16}, "value": 3},
+          {"unit_name": "main", "start": {"line": 22, "column": 1}, "end": {"line": 29, "column": 26}, "value": 8}
+        ]
+      },
+      "archive/p/python/sleep_sort.py": {
+        "checksum": "77548a1d65a387d783576138b0a20bbf",
+        "language": "Python",
+        "loc": 22,
+        "profile": [22, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "arg_to_list", "start": {"line": 6, "column": 1}, "end": {"line": 7, "column": 62}, "value": 2},
+          {"unit_name": "sleep_sort", "start": {"line": 10, "column": 1}, "end": {"line": 12, "column": 21}, "value": 3},
+          {"unit_name": "error_and_exit", "start": {"line": 15, "column": 1}, "end": {"line": 17, "column": 15}, "value": 3},
+          {"unit_name": "main", "start": {"line": 20, "column": 1}, "end": {"line": 37, "column": 18}, "value": 14}
+        ]
+      },
+      "archive/p/python/convex_hull.py": {
+        "checksum": "955aa0c7e83cc2863e0b3b1815bc589b",
+        "language": "Python",
+        "loc": 47,
+        "profile": [47, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "dist", "start": {"line": 7, "column": 1}, "end": {"line": 10, "column": 50}, "value": 4},
+          {"unit_name": "farthest", "start": {"line": 13, "column": 1}, "end": {"line": 17, "column": 19}, "value": 5},
+          {"unit_name": "orient", "start": {"line": 20, "column": 1}, "end": {"line": 30, "column": 17}, "value": 11},
+          {"unit_name": "next_hurdle", "start": {"line": 33, "column": 1}, "end": {"line": 47, "column": 30}, "value": 15},
+          {"unit_name": "foo", "start": {"line": 50, "column": 1}, "end": {"line": 61, "column": 22}, "value": 12}
+        ]
+      },
+      "archive/p/python/merge_sort.py": {
+        "checksum": "72a9107d9085459270cccfd7db4225a3",
+        "language": "Python",
+        "loc": 30,
+        "profile": [30, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "merge_sort", "start": {"line": 4, "column": 1}, "end": {"line": 12, "column": 29}, "value": 3},
+          {"unit_name": "sort", "start": {"line": 5, "column": 5}, "end": {"line": 10, "column": 58}, "value": 6},
+          {"unit_name": "merge", "start": {"line": 15, "column": 1}, "end": {"line": 22, "column": 39}, "value": 8},
+          {"unit_name": "input_list", "start": {"line": 25, "column": 1}, "end": {"line": 26, "column": 64}, "value": 2},
+          {"unit_name": "exit_with_error", "start": {"line": 29, "column": 1}, "end": {"line": 31, "column": 16}, "value": 3},
+          {"unit_name": "main", "start": {"line": 34, "column": 1}, "end": {"line": 41, "column": 26}, "value": 8}
+        ]
+      },
+      "archive/p/python/reverse_string.py": {
+        "checksum": "ce90e103a02a2dea04d913b5d36f4cfa",
+        "language": "Python",
+        "loc": 0,
+        "profile": [0, 0, 0, 0],
+        "measurements": [
+        ]
+      },
+      "archive/p/python/fraction_math.py": {
+        "checksum": "e54325ad29cbb0b01ed486c5a2186afb",
+        "language": "Python",
+        "loc": 17,
+        "profile": [0, 17, 0, 0],
+        "measurements": [
+          {"unit_name": "main", "start": {"line": 19, "column": 1}, "end": {"line": 35, "column": 50}, "value": 17}
+        ]
+      },
+      "archive/p/python/even_odd.py": {
+        "checksum": "1f80192b818ce6ea9acc492668928bd7",
+        "language": "Python",
+        "loc": 11,
+        "profile": [11, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "even_odd", "start": {"line": 4, "column": 1}, "end": {"line": 5, "column": 43}, "value": 2},
+          {"unit_name": "exit_with_error", "start": {"line": 8, "column": 1}, "end": {"line": 10, "column": 16}, "value": 3},
+          {"unit_name": "main", "start": {"line": 13, "column": 1}, "end": {"line": 18, "column": 26}, "value": 6}
+        ]
+      },
+      "archive/p/python/longest_common_subsequence.py": {
+        "checksum": "6bdffb88e7f03ccb44c676ecdae68831",
+        "language": "Python",
+        "loc": 21,
+        "profile": [21, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "input_list", "start": {"line": 4, "column": 1}, "end": {"line": 5, "column": 64}, "value": 2},
+          {"unit_name": "longest", "start": {"line": 8, "column": 1}, "end": {"line": 9, "column": 43}, "value": 2},
+          {"unit_name": "lcs", "start": {"line": 12, "column": 1}, "end": {"line": 18, "column": 59}, "value": 7},
+          {"unit_name": "exit_with_error", "start": {"line": 21, "column": 1}, "end": {"line": 23, "column": 16}, "value": 3},
+          {"unit_name": "main", "start": {"line": 26, "column": 1}, "end": {"line": 32, "column": 26}, "value": 7}
+        ]
+      },
+      "archive/p/python/depth_first_search.py": {
+        "checksum": "8490ca7931749b51ad1f7993b669931f",
+        "language": "Python",
+        "loc": 42,
+        "profile": [42, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "get_input", "start": {"line": 4, "column": 1}, "end": {"line": 22, "column": 39}, "value": 14},
+          {"unit_name": "__init__", "start": {"line": 25, "column": 5}, "end": {"line": 27, "column": 28}, "value": 3},
+          {"unit_name": "create_tree", "start": {"line": 29, "column": 1}, "end": {"line": 39, "column": 16}, "value": 11},
+          {"unit_name": "depth_first_search", "start": {"line": 41, "column": 1}, "end": {"line": 47, "column": 17}, "value": 7},
+          {"unit_name": "main", "start": {"line": 49, "column": 1}, "end": {"line": 55, "column": 23}, "value": 7}
+        ]
+      },
+      "archive/p/python/minimum_spanning_tree.py": {
+        "checksum": "187d854d904039ec10d81f8d7badd6d1",
+        "language": "Python",
+        "loc": 90,
+        "profile": [49, 41, 0, 0],
+        "measurements": [
+          {"unit_name": "prims_algorithm", "start": {"line": 6, "column": 1}, "end": {"line": 23, "column": 93}, "value": 18},
+          {"unit_name": "_validate_arguments", "start": {"line": 26, "column": 1}, "end": {"line": 48, "column": 19}, "value": 23},
+          {"unit_name": "log", "start": {"line": 51, "column": 1}, "end": {"line": 52, "column": 41}, "value": 2},
+          {"unit_name": "main", "start": {"line": 55, "column": 1}, "end": {"line": 58, "column": 13}, "value": 4},
+          {"unit_name": "test", "start": {"line": 61, "column": 1}, "end": {"line": 66, "column": 19}, "value": 6},
+          {"unit_name": "_test_case_1", "start": {"line": 69, "column": 1}, "end": {"line": 75, "column": 13}, "value": 7},
+          {"unit_name": "_test_case_2", "start": {"line": 78, "column": 1}, "end": {"line": 84, "column": 13}, "value": 7},
+          {"unit_name": "_test_case_3", "start": {"line": 87, "column": 1}, "end": {"line": 93, "column": 13}, "value": 7},
+          {"unit_name": "_test_case_4", "start": {"line": 96, "column": 1}, "end": {"line": 103, "column": 13}, "value": 8},
+          {"unit_name": "_test_case_5", "start": {"line": 106, "column": 1}, "end": {"line": 113, "column": 13}, "value": 8}
+        ]
+      },
+      "archive/p/python/insertion_sort.py": {
+        "checksum": "0b0a889d692fbe9a48f9f0429a6dbba3",
+        "language": "Python",
+        "loc": 22,
+        "profile": [22, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "insertion_sort", "start": {"line": 5, "column": 1}, "end": {"line": 9, "column": 18}, "value": 5},
+          {"unit_name": "insert", "start": {"line": 12, "column": 1}, "end": {"line": 15, "column": 30}, "value": 4},
+          {"unit_name": "input_list", "start": {"line": 18, "column": 1}, "end": {"line": 19, "column": 64}, "value": 2},
+          {"unit_name": "exit_with_error", "start": {"line": 22, "column": 1}, "end": {"line": 24, "column": 16}, "value": 3},
+          {"unit_name": "main", "start": {"line": 27, "column": 1}, "end": {"line": 34, "column": 26}, "value": 8}
+        ]
+      },
+      "archive/p/python/roman_numeral.py": {
+        "checksum": "5c044370838b9c4070ddc3c698165f84",
+        "language": "Python",
+        "loc": 38,
+        "profile": [21, 17, 0, 0],
+        "measurements": [
+          {"unit_name": "value", "start": {"line": 5, "column": 1}, "end": {"line": 14, "column": 9}, "value": 10},
+          {"unit_name": "roman_to_decimal", "start": {"line": 17, "column": 1}, "end": {"line": 48, "column": 15}, "value": 17},
+          {"unit_name": "exit_with_error", "start": {"line": 51, "column": 1}, "end": {"line": 53, "column": 16}, "value": 3},
+          {"unit_name": "main", "start": {"line": 56, "column": 1}, "end": {"line": 64, "column": 67}, "value": 8}
+        ]
+      },
+      "archive/p/python/rot13.py": {
+        "checksum": "7ffcf19833e16c4fecf619153e823c06",
+        "language": "Python",
+        "loc": 22,
+        "profile": [22, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "rot_13", "start": {"line": 5, "column": 1}, "end": {"line": 6, "column": 54}, "value": 2},
+          {"unit_name": "encrypt_char", "start": {"line": 9, "column": 1}, "end": {"line": 17, "column": 27}, "value": 9},
+          {"unit_name": "exit_with_error", "start": {"line": 20, "column": 1}, "end": {"line": 22, "column": 16}, "value": 3},
+          {"unit_name": "main", "start": {"line": 25, "column": 1}, "end": {"line": 32, "column": 26}, "value": 8}
+        ]
+      },
+      "archive/p/python/bubble_sort.py": {
+        "checksum": "5a630a04a27054447555d9dec5dd499c",
+        "language": "Python",
+        "loc": 24,
+        "profile": [24, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "bubble_sort", "start": {"line": 5, "column": 1}, "end": {"line": 15, "column": 60}, "value": 2},
+          {"unit_name": "pass_list", "start": {"line": 6, "column": 5}, "end": {"line": 14, "column": 40}, "value": 9},
+          {"unit_name": "input_list", "start": {"line": 18, "column": 1}, "end": {"line": 19, "column": 64}, "value": 2},
+          {"unit_name": "exit_with_error", "start": {"line": 22, "column": 1}, "end": {"line": 24, "column": 16}, "value": 3},
+          {"unit_name": "main", "start": {"line": 27, "column": 1}, "end": {"line": 34, "column": 26}, "value": 8}
+        ]
+      },
+      "archive/p/python/baklava.py": {
+        "checksum": "e026cb523f33e738cd784573481b34b4",
+        "language": "Python",
+        "loc": 0,
+        "profile": [0, 0, 0, 0],
+        "measurements": [
+        ]
+      },
+      "archive/p/python/josephus_problem.py": {
+        "checksum": "60387ce74ed574d035ee98458820b84a",
+        "language": "Python",
+        "loc": 5,
+        "profile": [5, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "josephus", "start": {"line": 3, "column": 1}, "end": {"line": 7, "column": 46}, "value": 5}
+        ]
+      },
+      "archive/p/python/selection_sort.py": {
+        "checksum": "929ae9a131dd70aef3c8c958aaf96afa",
+        "language": "Python",
+        "loc": 21,
+        "profile": [21, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "selection_sort", "start": {"line": 4, "column": 1}, "end": {"line": 11, "column": 41}, "value": 8},
+          {"unit_name": "input_list", "start": {"line": 14, "column": 1}, "end": {"line": 15, "column": 64}, "value": 2},
+          {"unit_name": "exit_with_error", "start": {"line": 18, "column": 1}, "end": {"line": 20, "column": 16}, "value": 3},
+          {"unit_name": "main", "start": {"line": 23, "column": 1}, "end": {"line": 30, "column": 26}, "value": 8}
+        ]
+      },
+      "archive/p/python/linear_search.py": {
+        "checksum": "c50aa815d7bc4d5b1fd36f22ded7d9c0",
+        "language": "Python",
+        "loc": 7,
+        "profile": [7, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "sysarg_to_list", "start": {"line": 4, "column": 1}, "end": {"line": 5, "column": 62}, "value": 2},
+          {"unit_name": "linear_search", "start": {"line": 8, "column": 1}, "end": {"line": 12, "column": 17}, "value": 5}
+        ]
+      },
+      "archive/p/python/remove_all_whitespace.py": {
+        "checksum": "3587e7c4e8e36dd0cc9c7b546c8fd048",
+        "language": "Python",
+        "loc": 0,
+        "profile": [0, 0, 0, 0],
+        "measurements": [
+        ]
+      },
+      "archive/p/python/transpose_matrix.py": {
+        "checksum": "d62561f19bb97dfa33e8cdc74012d3bf",
+        "language": "Python",
+        "loc": 0,
+        "profile": [0, 0, 0, 0],
+        "measurements": [
+        ]
+      },
+      "archive/p/python/longest_word.py": {
+        "checksum": "db8b1290bb7d284fc9bd46e6bb1fbc29",
+        "language": "Python",
+        "loc": 0,
+        "profile": [0, 0, 0, 0],
+        "measurements": [
+        ]
+      },
+      "archive/p/python/duplicate_character_counter.py": {
+        "checksum": "b0e0cda43ae27aabae3e50f113c7532b",
+        "language": "Python",
+        "loc": 0,
+        "profile": [0, 0, 0, 0],
+        "measurements": [
+        ]
+      },
+      "archive/p/python/factorial.py": {
+        "checksum": "7720df796aa2c1745b13224ed14f701f",
+        "language": "Python",
+        "loc": 19,
+        "profile": [19, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "factorial", "start": {"line": 4, "column": 1}, "end": {"line": 7, "column": 32}, "value": 4},
+          {"unit_name": "exit_with_error", "start": {"line": 10, "column": 1}, "end": {"line": 13, "column": 16}, "value": 4},
+          {"unit_name": "main", "start": {"line": 16, "column": 1}, "end": {"line": 26, "column": 26}, "value": 11}
+        ]
+      },
+      "archive/p/python/maximum_array_rotation.py": {
+        "checksum": "3caaad82a40849ddb95dd26f83c4971e",
+        "language": "Python",
+        "loc": 10,
+        "profile": [10, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "findMax", "start": {"line": 3, "column": 1}, "end": {"line": 12, "column": 18}, "value": 10}
+        ]
+      },
+      "archive/p/python/palindromic_number.py": {
+        "checksum": "34665a05904fa1f3489df24db263eeb6",
+        "language": "Python",
+        "loc": 21,
+        "profile": [21, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "palindromic_number", "start": {"line": 4, "column": 1}, "end": {"line": 20, "column": 60}, "value": 15},
+          {"unit_name": "main", "start": {"line": 23, "column": 1}, "end": {"line": 28, "column": 20}, "value": 6}
+        ]
+      },
+      "archive/p/python/quine.py": {
+        "checksum": "492b5898c3a1b822ac4e6d3fb5167c23",
+        "language": "Python",
+        "loc": 0,
+        "profile": [0, 0, 0, 0],
+        "measurements": [
+        ]
+      },
+      "archive/p/python/fibonacci.py": {
+        "checksum": "cb68569147703104b989e35b2d244857",
+        "language": "Python",
+        "loc": 20,
+        "profile": [20, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "fibonacci", "start": {"line": 4, "column": 1}, "end": {"line": 7, "column": 35}, "value": 4},
+          {"unit_name": "fibs", "start": {"line": 10, "column": 1}, "end": {"line": 19, "column": 21}, "value": 10},
+          {"unit_name": "main", "start": {"line": 22, "column": 1}, "end": {"line": 27, "column": 20}, "value": 6}
+        ]
+      },
+      "archive/p/python/longest_palindromic_substring.py": {
+        "checksum": "0b550f013c2dde248815f5cb16446258",
+        "language": "Python",
+        "loc": 21,
+        "profile": [0, 21, 0, 0],
+        "measurements": [
+          {"unit_name": "longestPalindrome", "start": {"line": 5, "column": 1}, "end": {"line": 30, "column": 19}, "value": 21}
+        ]
+      },
+      "archive/p/python/capitalize.py": {
+        "checksum": "3c3346cc54e828802006ab52a2c331db",
+        "language": "Python",
+        "loc": 3,
+        "profile": [3, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "capitalize", "start": {"line": 4, "column": 1}, "end": {"line": 6, "column": 49}, "value": 3}
+        ]
+      },
+      "scripts/run_tests.py": {
+        "checksum": "64d44820fe172d3b9a138d7def6abd08",
+        "language": "Python",
+        "loc": 114,
+        "profile": [43, 71, 0, 0],
+        "measurements": [
+          {"unit_name": "remove_deleted_file_changes", "start": {"line": 22, "column": 1}, "end": {"line": 23, "column": 73}, "value": 2},
+          {"unit_name": "should_run_everything", "start": {"line": 26, "column": 1}, "end": {"line": 27, "column": 77}, "value": 2},
+          {"unit_name": "run_everything", "start": {"line": 30, "column": 1}, "end": {"line": 38, "column": 24}, "value": 9},
+          {"unit_name": "should_run_languages", "start": {"line": 41, "column": 1}, "end": {"line": 42, "column": 70}, "value": 2},
+          {"unit_name": "run_languages", "start": {"line": 45, "column": 1}, "end": {"line": 58, "column": 24}, "value": 13},
+          {"unit_name": "should_run_sample_programs", "start": {"line": 61, "column": 1}, "end": {"line": 62, "column": 67}, "value": 2},
+          {"unit_name": "run_sample_programs", "start": {"line": 65, "column": 1}, "end": {"line": 100, "column": 24}, "value": 30},
+          {"unit_name": "_get_languages", "start": {"line": 103, "column": 1}, "end": {"line": 113, "column": 6}, "value": 11},
+          {"unit_name": "_do_batches", "start": {"line": 116, "column": 1}, "end": {"line": 144, "column": 60}, "value": 22},
+          {"unit_name": "_display_batch", "start": {"line": 147, "column": 1}, "end": {"line": 148, "column": 80}, "value": 2},
+          {"unit_name": "main", "start": {"line": 151, "column": 1}, "end": {"line": 173, "column": 16}, "value": 19}
+        ]
+      },
+      "scripts/get_codeql_languages.py": {
+        "checksum": "76c075ee4c1d52c6707501b90ad92a15",
+        "language": "Python",
+        "loc": 36,
+        "profile": [0, 0, 36, 0],
+        "measurements": [
+          {"unit_name": "main", "start": {"line": 41, "column": 1}, "end": {"line": 77, "column": 39}, "value": 36}
+        ]
+      },
+      "scripts/build_codeql_language.py": {
+        "checksum": "a04b69c90c91757e5bbe3374d19e6c66",
+        "language": "Python",
+        "loc": 23,
+        "profile": [23, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "main", "start": {"line": 7, "column": 1}, "end": {"line": 17, "column": 61}, "value": 11},
+          {"unit_name": "build_c", "start": {"line": 20, "column": 1}, "end": {"line": 21, "column": 47}, "value": 2},
+          {"unit_name": "build_cpp", "start": {"line": 24, "column": 1}, "end": {"line": 25, "column": 47}, "value": 2},
+          {"unit_name": "build_c_sharp", "start": {"line": 28, "column": 1}, "end": {"line": 29, "column": 60}, "value": 2},
+          {"unit_name": "build_java", "start": {"line": 32, "column": 1}, "end": {"line": 33, "column": 32}, "value": 2},
+          {"unit_name": "build_kotlin", "start": {"line": 36, "column": 1}, "end": {"line": 37, "column": 80}, "value": 2},
+          {"unit_name": "build_swift", "start": {"line": 40, "column": 1}, "end": {"line": 41, "column": 50}, "value": 2}
+        ]
+      }
+    }
+  }
+}

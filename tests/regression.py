@@ -108,8 +108,12 @@ def run(example_dir: Annotated[
     raise typer.Exit(code=exit_code)
 
 
-@cli.command(help="Add a repository")
-def add(repo: str, tag: str):
+@cli.command()
+def add(repo: Annotated[str, typer.Argument(help="Repository (e.g. spring-projects/spring-boot)", show_default=False)],
+        tag: Annotated[str, typer.Argument(show_default=False)]):
+    """
+    Add a repository.
+    """
     [owner, name] = repo.split('/')
     report_dir = Path(os.path.abspath(__file__)).parent.parent.joinpath('examples').joinpath(f'{owner}_{name}_{tag}')
     if report_dir.exists():
