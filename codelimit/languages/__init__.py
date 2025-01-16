@@ -13,12 +13,3 @@ class Languages:
     JavaScript = JavaScript()
     Python = Python()
     TypeScript = TypeScript()
-
-    by_name = {
-        C.name: C,
-        Cpp.name: Cpp,
-        Java.name: Java,
-        JavaScript.name: JavaScript,
-        Python.name: Python,
-        TypeScript.name: TypeScript,
-    }
