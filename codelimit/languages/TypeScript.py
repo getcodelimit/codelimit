@@ -14,8 +14,10 @@ from codelimit.common.token_matching.predicate.Symbol import Symbol
 
 
 class TypeScript(Language):
+    name = "TypeScript"
+
     def __init__(self):
-        super().__init__("TypeScript")
+        super().__init__(self.name)
 
     def extract_headers(self, tokens: list[Token]) -> list[Header]:
         functions = get_headers(

@@ -28,6 +28,7 @@ from codelimit.common.source_utils import filter_tokens
 from codelimit.common.utils import (
     calculate_checksum,
 )
+from codelimit.languages import Languages
 
 locale.setlocale(locale.LC_ALL, "")
 
@@ -69,7 +70,7 @@ def scan_path(path: Path, cached_report: Union[Report, None] = None,
                 lexer = get_lexer_for_filename(rel_path)
                 lexer_name = lexer.__class__.name
                 file_path = os.path.join(root, file)
-                languages = Language.by_name.keys()
+                languages = Languages.by_name.keys()
                 if lexer_name in languages:
                     file_entry = _scan_file(
                         result, lexer, path, file_path, cached_report
@@ -125,7 +126,7 @@ def _analyze_file(path, rel_path, checksum, lexer):
     code = _read_file(path)
     all_tokens = lex(lexer, code, False)
     language_name = lexer.__class__.name
-    language = Language.by_name[language_name]
+    language = Languages.by_name[language_name]
     if language:
         measurements = scan_file(all_tokens, language)
     else:

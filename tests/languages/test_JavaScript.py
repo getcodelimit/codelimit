@@ -1,5 +1,5 @@
-from codelimit.languages import Languages
-from tests.conftest import assert_units
+from codelimit.languages import JavaScript
+from tests.conftest import assert_functions
 
 
 def test_simple_function():
@@ -9,7 +9,7 @@ def test_simple_function():
     }
     """
 
-    assert_units(code, Languages.JavaScript, {"foo": 3})
+    assert_functions(code, JavaScript(), {"foo": 3})
 
 
 def test_arrow_function():
@@ -19,7 +19,7 @@ def test_arrow_function():
     }
     """
 
-    assert_units(code, Languages.JavaScript, {"sayHello": 3})
+    assert_functions(code, JavaScript(), {"sayHello": 3})
 
 
 def test_nested_functions():
@@ -38,9 +38,9 @@ def test_nested_functions():
     sayHelloWorld();
     """
 
-    assert_units(
+    assert_functions(
         code,
-        Languages.JavaScript,
+        JavaScript(),
         {"sayHelloWorld": 4, "sayHello": 3, "sayWorld": 3},
     )
 
@@ -56,7 +56,8 @@ def test_top_level_anonymous_functions_are_skipped():
     });
     """
 
-    assert_units(code, Languages.JavaScript, {"sayHelloWorld": 3})
+    assert_functions(code, JavaScript(), {"sayHelloWorld": 3})
+
 
 def test_nested_anonymous_functions_are_skipped():
     code = """
@@ -71,4 +72,4 @@ def test_nested_anonymous_functions_are_skipped():
     }
     """
 
-    assert_units(code, Languages.JavaScript, {"say": 5, "helloWorld": 3})
+    assert_functions(code, JavaScript(), {"say": 5, "helloWorld": 3})
