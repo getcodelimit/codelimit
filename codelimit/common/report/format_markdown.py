@@ -126,5 +126,6 @@ def _print_findings_with_repository(report_units: list[ReportUnit],
         link = (f'https://github.com/{owner}/{name}/blob/{branch}/{unit.file}#L{unit.measurement.start.line}-L'
                 f'{unit.measurement.end.line}')
         console.print(
-            f"| {violation_type} \[{unit.measurement.unit_name}]({link}) | {unit.measurement.value} | {unit.file} |"
+            f"| {violation_type} " + '\[' + unit.measurement.unit_name + ']' + f"({link}) | {unit.measurement.value} "
+                                                                               f"| {unit.file} |"
         )

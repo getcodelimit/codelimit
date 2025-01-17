@@ -19,6 +19,6 @@ class Languages:
 
     by_name: dict[str, Language] = {}
     for subclass in Language.__subclasses__():
-        language = subclass()
+        language = subclass() # type: ignore
         by_name[language.name] = language
 

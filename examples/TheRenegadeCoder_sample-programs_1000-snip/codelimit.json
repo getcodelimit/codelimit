@@ -1,8 +1,8 @@
 {
   "version": "0.18.1",
-  "uuid": "5aae13b7-887c-419c-a501-fbaf1bdc6ebc",
-  "timestamp": "2025-01-16T09:25:52+00:00",
-  "root": "/private/var/folders/t2/s_70szzn7qn22cp4d2nmrjbc0000gn/T/tmpz2qbk_j7/sample-programs",
+  "uuid": "e0fa1097-1ec6-468e-b5fc-595e48a412f4",
+  "timestamp": "2025-01-17T21:59:44+00:00",
+  "root": "/private/var/folders/t2/s_70szzn7qn22cp4d2nmrjbc0000gn/T/tmpqjz0jke_/sample-programs",
   "codebase": {
     "totals": {
       "TypeScript": {
@@ -33,6 +33,13 @@
         "hard_to_maintain": 4,
         "unmaintainable": 0
       },
+      "C#": {
+        "files": 29,
+        "lines_of_code": 849,
+        "functions": 71,
+        "hard_to_maintain": 0,
+        "unmaintainable": 1
+      },
       "C": {
         "files": 26,
         "lines_of_code": 1248,
@@ -54,7 +61,7 @@
           "archive/",
           "scripts/"
         ],
-        "profile": [2162, 1886, 1246, 0]
+        "profile": [2588, 2243, 1246, 66]
       },
       "archive/t/typescript/": {
         "entries": [
@@ -99,7 +106,7 @@
           "c/",
           "p/"
         ],
-        "profile": [2096, 1815, 1210, 0]
+        "profile": [2522, 2172, 1210, 66]
       },
       "archive/h/hack/": {
         "entries": [
@@ -200,6 +207,48 @@
         ],
         "profile": [342, 200, 97, 0]
       },
+      "archive/c/c-sharp/": {
+        "entries": [
+          "LongestWord.cs",
+          "QuickSort.cs",
+          "FizzBuzz.cs",
+          "Baklava.cs",
+          "Rot13.cs",
+          "RemoveAllWhitespace.cs",
+          "JosephusProblem.cs",
+          "SelectionSort.cs",
+          "LinearSearch.cs",
+          "InsertionSort.cs",
+          "ReverseString.cs",
+          "SleepSort.cs",
+          "LongestCommonSubsequence.cs",
+          "HelloWorld.cs",
+          "PrimeNumber.cs",
+          "JobSequencing.cs",
+          "MergeSort.cs",
+          "Quine.cs",
+          "Fibonacci.cs",
+          "BubbleSort.cs",
+          "BinarySearch.cs",
+          "DuplicateCharacterCounter.cs",
+          "Capitalize.cs",
+          "EvenOdd.cs",
+          "RomanNumeral.cs",
+          "FractionMath.cs",
+          "FileInputOutput.cs",
+          "LongestPalindromicSubstring.cs",
+          "Factorial.cs"
+        ],
+        "profile": [426, 357, 0, 66]
+      },
+      "archive/c/": {
+        "entries": [
+          "c-sharp/",
+          "c-plus-plus/",
+          "c/"
+        ],
+        "profile": [1175, 1364, 967, 66]
+      },
       "archive/c/c-plus-plus/": {
         "entries": [
           "dijkstra.cpp",
@@ -231,13 +280,6 @@
           "linear-search.cpp"
         ],
         "profile": [269, 635, 571, 0]
-      },
-      "archive/c/": {
-        "entries": [
-          "c-plus-plus/",
-          "c/"
-        ],
-        "profile": [749, 1007, 967, 0]
       },
       "archive/c/c/": {
         "entries": [
@@ -1125,6 +1167,309 @@
           {"unit_name": "writeFile", "start": {"line": 12, "column": 1}, "end": {"line": 14, "column": 2}, "value": 3},
           {"unit_name": "readFile", "start": {"line": 16, "column": 1}, "end": {"line": 20, "column": 2}, "value": 4},
           {"unit_name": "printString", "start": {"line": 22, "column": 1}, "end": {"line": 25, "column": 2}, "value": 4}
+        ]
+      },
+      "archive/c/c-sharp/LongestWord.cs": {
+        "checksum": "6b2a4ac40a91bd74c2ed644a85006702",
+        "language": "C#",
+        "loc": 11,
+        "profile": [11, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "Main", "start": {"line": 6, "column": 24}, "end": {"line": 24, "column": 6}, "value": 11}
+        ]
+      },
+      "archive/c/c-sharp/QuickSort.cs": {
+        "checksum": "afbda702f51f573168b7ecfd4ab00cbd",
+        "language": "C#",
+        "loc": 33,
+        "profile": [16, 17, 0, 0],
+        "measurements": [
+          {"unit_name": "Sort", "start": {"line": 7, "column": 29}, "end": {"line": 18, "column": 6}, "value": 11},
+          {"unit_name": "ErrorAndExit", "start": {"line": 20, "column": 24}, "end": {"line": 24, "column": 6}, "value": 5},
+          {"unit_name": "Main", "start": {"line": 26, "column": 24}, "end": {"line": 42, "column": 6}, "value": 17}
+        ]
+      },
+      "archive/c/c-sharp/FizzBuzz.cs": {
+        "checksum": "216fd4ec5593e0ce766935619b26fda6",
+        "language": "C#",
+        "loc": 25,
+        "profile": [8, 17, 0, 0],
+        "measurements": [
+          {"unit_name": "FizzBuzz", "start": {"line": 5, "column": 30}, "end": {"line": 21, "column": 10}, "value": 17},
+          {"unit_name": "Main", "start": {"line": 23, "column": 29}, "end": {"line": 30, "column": 10}, "value": 8}
+        ]
+      },
+      "archive/c/c-sharp/Baklava.cs": {
+        "checksum": "fbc9ebc9734a3076519dc1e18b170afa",
+        "language": "C#",
+        "loc": 11,
+        "profile": [11, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "Main", "start": {"line": 6, "column": 17}, "end": {"line": 19, "column": 6}, "value": 11}
+        ]
+      },
+      "archive/c/c-sharp/Rot13.cs": {
+        "checksum": "aca5d2355a2fe3fcf34da389f1110a72",
+        "language": "C#",
+        "loc": 32,
+        "profile": [32, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "Encrypt", "start": {"line": 15, "column": 28}, "end": {"line": 28, "column": 10}, "value": 12},
+          {"unit_name": "ExitWithError", "start": {"line": 30, "column": 28}, "end": {"line": 34, "column": 10}, "value": 5},
+          {"unit_name": "Main", "start": {"line": 36, "column": 28}, "end": {"line": 50, "column": 10}, "value": 15}
+        ]
+      },
+      "archive/c/c-sharp/RemoveAllWhitespace.cs": {
+        "checksum": "697f556df1e6fd21790e7b8d59fb55a9",
+        "language": "C#",
+        "loc": 21,
+        "profile": [21, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "ExitWithError", "start": {"line": 7, "column": 24}, "end": {"line": 11, "column": 6}, "value": 5},
+          {"unit_name": "RemoveAllWhitespace", "start": {"line": 13, "column": 24}, "end": {"line": 21, "column": 6}, "value": 9},
+          {"unit_name": "Main", "start": {"line": 23, "column": 17}, "end": {"line": 29, "column": 6}, "value": 7}
+        ]
+      },
+      "archive/c/c-sharp/JosephusProblem.cs": {
+        "checksum": "c4ecb4fbde17ebfdd3506e0b896eb853",
+        "language": "C#",
+        "loc": 24,
+        "profile": [24, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "Main", "start": {"line": 9, "column": 21}, "end": {"line": 26, "column": 10}, "value": 15},
+          {"unit_name": "FindJosephusPosition", "start": {"line": 28, "column": 20}, "end": {"line": 38, "column": 10}, "value": 9}
+        ]
+      },
+      "archive/c/c-sharp/SelectionSort.cs": {
+        "checksum": "063c2736caee2714105aaca22bc905b4",
+        "language": "C#",
+        "loc": 31,
+        "profile": [14, 17, 0, 0],
+        "measurements": [
+          {"unit_name": "Selection", "start": {"line": 7, "column": 36}, "end": {"line": 15, "column": 6}, "value": 9},
+          {"unit_name": "ErrorAndExit", "start": {"line": 17, "column": 24}, "end": {"line": 21, "column": 6}, "value": 5},
+          {"unit_name": "Main", "start": {"line": 23, "column": 24}, "end": {"line": 39, "column": 6}, "value": 17}
+        ]
+      },
+      "archive/c/c-sharp/LinearSearch.cs": {
+        "checksum": "8a88ab3dc22ea8b641e264745592fa27",
+        "language": "C#",
+        "loc": 29,
+        "profile": [29, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "Search", "start": {"line": 7, "column": 24}, "end": {"line": 17, "column": 6}, "value": 11},
+          {"unit_name": "ErrorAndExit", "start": {"line": 19, "column": 24}, "end": {"line": 23, "column": 6}, "value": 5},
+          {"unit_name": "Main", "start": {"line": 25, "column": 24}, "end": {"line": 37, "column": 6}, "value": 13}
+        ]
+      },
+      "archive/c/c-sharp/InsertionSort.cs": {
+        "checksum": "9be7114c7e476a06e2023f2e8fe2af79",
+        "language": "C#",
+        "loc": 37,
+        "profile": [20, 17, 0, 0],
+        "measurements": [
+          {"unit_name": "Insertion", "start": {"line": 7, "column": 29}, "end": {"line": 13, "column": 6}, "value": 7},
+          {"unit_name": "Insert", "start": {"line": 15, "column": 29}, "end": {"line": 22, "column": 6}, "value": 8},
+          {"unit_name": "ErrorAndExit", "start": {"line": 24, "column": 24}, "end": {"line": 28, "column": 6}, "value": 5},
+          {"unit_name": "Main", "start": {"line": 30, "column": 24}, "end": {"line": 46, "column": 6}, "value": 17}
+        ]
+      },
+      "archive/c/c-sharp/ReverseString.cs": {
+        "checksum": "1def91d277dddc3b8eba5993ed4e2f66",
+        "language": "C#",
+        "loc": 13,
+        "profile": [13, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "Reverse", "start": {"line": 7, "column": 30}, "end": {"line": 12, "column": 10}, "value": 6},
+          {"unit_name": "Main", "start": {"line": 14, "column": 28}, "end": {"line": 20, "column": 10}, "value": 7}
+        ]
+      },
+      "archive/c/c-sharp/SleepSort.cs": {
+        "checksum": "253dc4826051c6bcdf8ea20f14f61f18",
+        "language": "C#",
+        "loc": 25,
+        "profile": [5, 20, 0, 0],
+        "measurements": [
+          {"unit_name": "ErrorAndExit", "start": {"line": 8, "column": 24}, "end": {"line": 12, "column": 6}, "value": 5},
+          {"unit_name": "Main", "start": {"line": 14, "column": 24}, "end": {"line": 36, "column": 6}, "value": 20}
+        ]
+      },
+      "archive/c/c-sharp/LongestCommonSubsequence.cs": {
+        "checksum": "d475685b9b021cb103182ef6fa76ece6",
+        "language": "C#",
+        "loc": 23,
+        "profile": [23, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "LCS", "start": {"line": 9, "column": 44}, "end": {"line": 18, "column": 10}, "value": 8},
+          {"unit_name": "Main", "start": {"line": 23, "column": 28}, "end": {"line": 37, "column": 10}, "value": 15}
+        ]
+      },
+      "archive/c/c-sharp/HelloWorld.cs": {
+        "checksum": "a6f9560b27afd4ffa6cc0ea4eefcce70",
+        "language": "C#",
+        "loc": 4,
+        "profile": [4, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "Main", "start": {"line": 5, "column": 21}, "end": {"line": 8, "column": 10}, "value": 4}
+        ]
+      },
+      "archive/c/c-sharp/PrimeNumber.cs": {
+        "checksum": "467de4c534f30cdcafe06ce0df12cf30",
+        "language": "C#",
+        "loc": 32,
+        "profile": [13, 19, 0, 0],
+        "measurements": [
+          {"unit_name": "IsPrime", "start": {"line": 8, "column": 28}, "end": {"line": 22, "column": 10}, "value": 13},
+          {"unit_name": "Main", "start": {"line": 24, "column": 28}, "end": {"line": 42, "column": 10}, "value": 19}
+        ]
+      },
+      "archive/c/c-sharp/JobSequencing.cs": {
+        "checksum": "0bf4e9eed47febfbd03425fee0f8d292",
+        "language": "C#",
+        "loc": 43,
+        "profile": [5, 38, 0, 0],
+        "measurements": [
+          {"unit_name": "Job", "start": {"line": 12, "column": 12}, "end": {"line": 16, "column": 6}, "value": 5},
+          {"unit_name": "Main", "start": {"line": 21, "column": 17}, "end": {"line": 51, "column": 6}, "value": 18},
+          {"unit_name": "GetMaxProfitJobSequence", "start": {"line": 54, "column": 29}, "end": {"line": 85, "column": 6}, "value": 20}
+        ]
+      },
+      "archive/c/c-sharp/MergeSort.cs": {
+        "checksum": "3ad95112093140b80766eccb7996bdac",
+        "language": "C#",
+        "loc": 51,
+        "profile": [18, 33, 0, 0],
+        "measurements": [
+          {"unit_name": "Sort", "start": {"line": 8, "column": 35}, "end": {"line": 20, "column": 6}, "value": 13},
+          {"unit_name": "Merge", "start": {"line": 22, "column": 29}, "end": {"line": 37, "column": 6}, "value": 16},
+          {"unit_name": "ErrorAndExit", "start": {"line": 39, "column": 24}, "end": {"line": 43, "column": 6}, "value": 5},
+          {"unit_name": "Main", "start": {"line": 45, "column": 24}, "end": {"line": 61, "column": 6}, "value": 17}
+        ]
+      },
+      "archive/c/c-sharp/Quine.cs": {
+        "checksum": "cd19d1608d4e8826d6414f1de6fe1e7a",
+        "language": "C#",
+        "loc": 1,
+        "profile": [1, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "Main", "start": {"line": 1, "column": 27}, "end": {"line": 1, "column": 194}, "value": 1}
+        ]
+      },
+      "archive/c/c-sharp/Fibonacci.cs": {
+        "checksum": "cb8fb19ae19fba2a16c1cc7357093bec",
+        "language": "C#",
+        "loc": 22,
+        "profile": [0, 22, 0, 0],
+        "measurements": [
+          {"unit_name": "Main", "start": {"line": 7, "column": 28}, "end": {"line": 28, "column": 10}, "value": 22}
+        ]
+      },
+      "archive/c/c-sharp/BubbleSort.cs": {
+        "checksum": "59a149aa622d07067f6875af50029366",
+        "language": "C#",
+        "loc": 51,
+        "profile": [17, 34, 0, 0],
+        "measurements": [
+          {"unit_name": "BubbleSort", "start": {"line": 7, "column": 29}, "end": {"line": 18, "column": 6}, "value": 12},
+          {"unit_name": "PassList", "start": {"line": 20, "column": 29}, "end": {"line": 36, "column": 6}, "value": 17},
+          {"unit_name": "ErrorAndExit", "start": {"line": 38, "column": 24}, "end": {"line": 42, "column": 6}, "value": 5},
+          {"unit_name": "Main", "start": {"line": 44, "column": 24}, "end": {"line": 60, "column": 6}, "value": 17}
+        ]
+      },
+      "archive/c/c-sharp/BinarySearch.cs": {
+        "checksum": "51b6e4a3306aed06962f0a27d560c914",
+        "language": "C#",
+        "loc": 47,
+        "profile": [9, 38, 0, 0],
+        "measurements": [
+          {"unit_name": "Search", "start": {"line": 7, "column": 24}, "end": {"line": 28, "column": 6}, "value": 18},
+          {"unit_name": "if", "start": {"line": 18, "column": 18}, "end": {"line": 21, "column": 14}, "value": 4},
+          {"unit_name": "ErrorAndExit", "start": {"line": 30, "column": 24}, "end": {"line": 34, "column": 6}, "value": 5},
+          {"unit_name": "Main", "start": {"line": 36, "column": 24}, "end": {"line": 57, "column": 6}, "value": 20}
+        ]
+      },
+      "archive/c/c-sharp/DuplicateCharacterCounter.cs": {
+        "checksum": "bebcab9263ea744cdbe7856b145d8f6a",
+        "language": "C#",
+        "loc": 27,
+        "profile": [0, 27, 0, 0],
+        "measurements": [
+          {"unit_name": "Main", "start": {"line": 6, "column": 24}, "end": {"line": 38, "column": 6}, "value": 27}
+        ]
+      },
+      "archive/c/c-sharp/Capitalize.cs": {
+        "checksum": "1e8897d54588dc9d0e21726e9a41cb11",
+        "language": "C#",
+        "loc": 11,
+        "profile": [11, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "Main", "start": {"line": 8, "column": 21}, "end": {"line": 18, "column": 10}, "value": 11}
+        ]
+      },
+      "archive/c/c-sharp/EvenOdd.cs": {
+        "checksum": "fac6179595a37eeca66e525a3f4a7e81",
+        "language": "C#",
+        "loc": 14,
+        "profile": [14, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "Main", "start": {"line": 7, "column": 28}, "end": {"line": 20, "column": 10}, "value": 14}
+        ]
+      },
+      "archive/c/c-sharp/RomanNumeral.cs": {
+        "checksum": "93c003bc1aab90c1204b43adad4f89cc",
+        "language": "C#",
+        "loc": 30,
+        "profile": [13, 17, 0, 0],
+        "measurements": [
+          {"unit_name": "RomanToDecimal", "start": {"line": 19, "column": 28}, "end": {"line": 33, "column": 10}, "value": 13},
+          {"unit_name": "Main", "start": {"line": 35, "column": 28}, "end": {"line": 51, "column": 10}, "value": 17}
+        ]
+      },
+      "archive/c/c-sharp/FractionMath.cs": {
+        "checksum": "0540769e6e1445605d1be0313b0ed14a",
+        "language": "C#",
+        "loc": 112,
+        "profile": [46, 0, 0, 66],
+        "measurements": [
+          {"unit_name": "FractionMath", "start": {"line": 10, "column": 16}, "end": {"line": 19, "column": 10}, "value": 9},
+          {"unit_name": "GCD", "start": {"line": 24, "column": 21}, "end": {"line": 33, "column": 10}, "value": 10},
+          {"unit_name": "Simplify", "start": {"line": 35, "column": 22}, "end": {"line": 46, "column": 10}, "value": 11},
+          {"unit_name": "ToString", "start": {"line": 48, "column": 32}, "end": {"line": 52, "column": 10}, "value": 5},
+          {"unit_name": "Parse", "start": {"line": 54, "column": 36}, "end": {"line": 66, "column": 10}, "value": 11},
+          {"unit_name": "Main", "start": {"line": 126, "column": 28}, "end": {"line": 194, "column": 10}, "value": 66}
+        ]
+      },
+      "archive/c/c-sharp/FileInputOutput.cs": {
+        "checksum": "b274b1157fcad20351ef612dc8c2b6a7",
+        "language": "C#",
+        "loc": 5,
+        "profile": [5, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "Main", "start": {"line": 14, "column": 28}, "end": {"line": 18, "column": 10}, "value": 5}
+        ]
+      },
+      "archive/c/c-sharp/LongestPalindromicSubstring.cs": {
+        "checksum": "140d089fde3f7a1bcef679fdf4c0f0fb",
+        "language": "C#",
+        "loc": 54,
+        "profile": [33, 21, 0, 0],
+        "measurements": [
+          {"unit_name": "Main", "start": {"line": 8, "column": 28}, "end": {"line": 12, "column": 10}, "value": 5},
+          {"unit_name": "LongestPalindrome", "start": {"line": 14, "column": 30}, "end": {"line": 37, "column": 10}, "value": 21},
+          {"unit_name": "ExpandAroundCenter", "start": {"line": 39, "column": 28}, "end": {"line": 47, "column": 10}, "value": 9},
+          {"unit_name": "ContainsPalindrome", "start": {"line": 49, "column": 29}, "end": {"line": 62, "column": 10}, "value": 13},
+          {"unit_name": "Reverse", "start": {"line": 64, "column": 31}, "end": {"line": 69, "column": 10}, "value": 6}
+        ]
+      },
+      "archive/c/c-sharp/Factorial.cs": {
+        "checksum": "5d62f74dc37f768692cb53dd13d8a62e",
+        "language": "C#",
+        "loc": 30,
+        "profile": [10, 20, 0, 0],
+        "measurements": [
+          {"unit_name": "Fact", "start": {"line": 8, "column": 34}, "end": {"line": 13, "column": 10}, "value": 6},
+          {"unit_name": "Main", "start": {"line": 15, "column": 28}, "end": {"line": 37, "column": 10}, "value": 20},
+          {"unit_name": "if", "start": {"line": 25, "column": 22}, "end": {"line": 28, "column": 18}, "value": 4}
         ]
       },
       "archive/c/c-plus-plus/dijkstra.cpp": {
