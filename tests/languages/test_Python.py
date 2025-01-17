@@ -1,7 +1,8 @@
 from pygments.lexers import PythonLexer
 
 from codelimit.common.lexer_utils import lex
-from codelimit.languages.Python import _get_indentation, _get_token_lines, Python
+from codelimit.languages import Languages
+from codelimit.languages.Python import _get_indentation, _get_token_lines
 from tests.conftest import assert_functions
 
 
@@ -11,7 +12,7 @@ def test_simple_function():
         pass
     """
 
-    assert_functions(code, Python(), {"foo": 2})
+    assert_functions(code, Languages.Python, {"foo": 2})
 
 
 def test_simple_function_larger_block():
@@ -21,7 +22,7 @@ def test_simple_function_larger_block():
         spam = eggs
     """
 
-    assert_functions(code, Python(), {"foo": 3})
+    assert_functions(code, Languages.Python, {"foo": 3})
 
 
 def test_two_functions():
@@ -33,7 +34,7 @@ def test_two_functions():
         foo()
     """
 
-    assert_functions(code, Python(), {"foo": 2, "bar": 2})
+    assert_functions(code, Languages.Python, {"foo": 2, "bar": 2})
 
 
 def test_return_type():
@@ -44,7 +45,7 @@ def test_return_type():
         bar = foo
     """
 
-    assert_functions(code, Python(), {"bar": 4})
+    assert_functions(code, Languages.Python, {"bar": 4})
 
 
 def test_two_functions_with_return_types():
@@ -60,7 +61,7 @@ def test_two_functions_with_return_types():
         foo = bar
     """
 
-    assert_functions(code, Python(), {"bar": 4, "foo": 4})
+    assert_functions(code, Languages.Python, {"bar": 4, "foo": 4})
 
 
 def test_get_indentation():
@@ -77,7 +78,7 @@ def test_get_indentation():
 def test_no_functions():
     code = ""
 
-    assert_functions(code, Python(), {})
+    assert_functions(code, Languages.Python, {})
 
 
 def test_trailing_global_code():
@@ -90,7 +91,7 @@ def test_trailing_global_code():
     ]
     """
 
-    assert_functions(code, Python(), {"foo": 2})
+    assert_functions(code, Languages.Python, {"foo": 2})
 
 
 def test_get_headers_multi_header_with_comment():
@@ -103,7 +104,7 @@ def test_get_headers_multi_header_with_comment():
         foo()
     """
 
-    assert_functions(code, Python(), {"foo": 2, "bar": 2})
+    assert_functions(code, Languages.Python, {"foo": 2, "bar": 2})
 
 
 def test_do_not_count_comment_lines():
@@ -114,7 +115,7 @@ def test_do_not_count_comment_lines():
         # This is also a comment
     """
 
-    assert_functions(code, Python(), {"foo": 2})
+    assert_functions(code, Languages.Python, {"foo": 2})
 
 
 def test_header_with_defaults():
@@ -130,7 +131,7 @@ def test_header_with_defaults():
         pass
     """
 
-    assert_functions(code, Python(), {"foo": 9})
+    assert_functions(code, Languages.Python, {"foo": 9})
 
 
 def test_header_type_hints():
@@ -141,7 +142,7 @@ def test_header_type_hints():
         pass
     """
 
-    assert_functions(code, Python(), {"foo": 4})
+    assert_functions(code, Languages.Python, {"foo": 4})
 
 
 def test_skip_function_with_nocl_comment_in_header():
@@ -158,7 +159,7 @@ def test_skip_function_with_nocl_comment_in_header():
         bar = foo
     """
 
-    assert_functions(code, Python(), {"foo": 5})
+    assert_functions(code, Languages.Python, {"foo": 5})
 
 
 def test_function_with_type_hints():
@@ -170,7 +171,7 @@ def test_function_with_type_hints():
         foo = bar
     """
 
-    assert_functions(code, Python(), {"foo": 5})
+    assert_functions(code, Languages.Python, {"foo": 5})
 
 
 def test_line_continuation():
@@ -181,7 +182,7 @@ def test_line_continuation():
     "world")
     """
 
-    assert_functions(code, Python(), {"say_hello": 4})
+    assert_functions(code, Languages.Python, {"say_hello": 4})
 
 
 def test_if_statement():
@@ -194,7 +195,7 @@ def test_if_statement():
             bar = foo
     """
 
-    assert_functions(code, Python(), {"foo": 6})
+    assert_functions(code, Languages.Python, {"foo": 6})
 
 
 def test_get_token_lines():

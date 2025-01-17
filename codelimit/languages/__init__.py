@@ -9,7 +9,16 @@ from codelimit.languages.TypeScript import TypeScript
 
 
 class Languages:
+    C = C()
+    Cpp = Cpp()
+    CSharp = CSharp()
+    Java = Java()
+    JavaScript = JavaScript()
+    Python = Python()
+    TypeScript = TypeScript()
+
     by_name: dict[str, Language] = {}
     for subclass in Language.__subclasses__():
         language = subclass()
         by_name[language.name] = language
+

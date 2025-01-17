@@ -1,4 +1,4 @@
-from codelimit.languages import Java
+from codelimit.languages import Languages
 from tests.conftest import assert_functions
 
 
@@ -11,7 +11,7 @@ def test_simple_main_function():
         }
     """
 
-    assert_functions(code, Java(), {"main": 3})
+    assert_functions(code, Languages.Java, {"main": 3})
 
 
 def test_function_with_throws():
@@ -23,7 +23,7 @@ def test_function_with_throws():
         }
     """
 
-    assert_functions(code, Java(), {"foo": 3})
+    assert_functions(code, Languages.Java, {"foo": 3})
 
 
 def test_two_functions():
@@ -38,7 +38,7 @@ def test_two_functions():
         }
     """
 
-    assert_functions(code, Java(), {"one": 3, "two": 3})
+    assert_functions(code, Languages.Java, {"one": 3, "two": 3})
 
 
 def test_nested_class():
@@ -55,7 +55,7 @@ def test_nested_class():
     }
     """
 
-    assert_functions(code, Java(), {"Foo": 3, "foobar": 3})
+    assert_functions(code, Languages.Java, {"Foo": 3, "foobar": 3})
 
 
 def test_anonymous_class():
@@ -75,7 +75,7 @@ def test_anonymous_class():
     }
     """
 
-    assert_functions(code, Java(), {"Foo": 6, "preVisitDirectory": 6})
+    assert_functions(code, Languages.Java, {"Foo": 6, "preVisitDirectory": 6})
 
 
 def test_record_class():
@@ -94,7 +94,7 @@ def test_record_class():
     }
     """
 
-    assert_functions(code, Java(), {"main": 4})
+    assert_functions(code, Languages.Java, {"main": 4})
 
 
 def test_method_with_anonymous_class():
@@ -107,7 +107,7 @@ def test_method_with_anonymous_class():
     }
     """
 
-    assert_functions(code, Java(), {"foo": 4})
+    assert_functions(code, Languages.Java, {"foo": 4})
 
 
 def test_abstract_methods():
@@ -122,7 +122,7 @@ def test_abstract_methods():
     }
     """
 
-    assert_functions(code, Java(), {'foobar': 3})
+    assert_functions(code, Languages.Java, {'foobar': 3})
 
 
 def test_abstract_methods_with_inner_class():
@@ -138,4 +138,4 @@ def test_abstract_methods_with_inner_class():
     }
     """
 
-    assert_functions(code, Java(), {'foobar': 3})
+    assert_functions(code, Languages.Java, {'foobar': 3})

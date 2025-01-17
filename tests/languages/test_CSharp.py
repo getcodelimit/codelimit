@@ -1,5 +1,5 @@
-from codelimit.languages import CSharp
-from tests.conftest import assert_functions, print_scopes
+from codelimit.languages import Languages
+from tests.conftest import assert_functions
 
 
 def test_hello_world():
@@ -16,7 +16,7 @@ def test_hello_world():
     }
     """
 
-    assert_functions(code, CSharp(), {"Main": 4})
+    assert_functions(code, Languages.CSharp, {"Main": 4})
 
 
 def test_longest_word():
@@ -28,4 +28,4 @@ def test_longest_word():
     }
     """
 
-    assert_functions(code, CSharp(), {"bar": 3})
+    assert_functions(code, Languages.CSharp, {"bar": 3})

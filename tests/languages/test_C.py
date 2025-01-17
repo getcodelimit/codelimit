@@ -1,4 +1,4 @@
-from codelimit.languages import C
+from codelimit.languages import Languages
 from tests.conftest import assert_functions
 
 
@@ -9,7 +9,7 @@ def test_simple_main_function():
         }
     """
 
-    assert_functions(code, C(), {"main": 3})
+    assert_functions(code, Languages.C, {"main": 3})
 
 
 def test_main_function_with_include():
@@ -21,7 +21,7 @@ def test_main_function_with_include():
         }
     """
 
-    assert_functions(code, C(), {"main": 4})
+    assert_functions(code, Languages.C, {"main": 4})
 
 
 def test_simple_function():
@@ -32,7 +32,7 @@ def test_simple_function():
         }
     """
 
-    assert_functions(code, C(), {"bar": 3})
+    assert_functions(code, Languages.C, {"bar": 3})
 
 
 def test_multiple_functions():
@@ -46,13 +46,13 @@ def test_multiple_functions():
         }
     """
 
-    assert_functions(code, C(), {"bar": 3, "foo": 3})
+    assert_functions(code, Languages.C, {"bar": 3, "foo": 3})
 
 
 def test_no_functions():
     code = ""
 
-    assert_functions(code, C(), {})
+    assert_functions(code, Languages.C, {})
 
 
 def test_iteration_macro_is_not_a_function():
@@ -64,7 +64,7 @@ def test_iteration_macro_is_not_a_function():
         }
     """
 
-    assert_functions(code, C(), {"foo": 5})
+    assert_functions(code, Languages.C, {"foo": 5})
 
 
 def test_formatting():
@@ -78,7 +78,7 @@ def test_formatting():
         }
     """
 
-    assert_functions(code, C(), {"nfs_register_sysctl": 7})
+    assert_functions(code, Languages.C, {"nfs_register_sysctl": 7})
 
 
 def test_nested_header_but_no_body_inside_parent():
@@ -92,4 +92,4 @@ def test_nested_header_but_no_body_inside_parent():
         };
     """
 
-    assert_functions(code, C(), {"foo": 5})
+    assert_functions(code, Languages.C, {"foo": 5})
