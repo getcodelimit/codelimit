@@ -1,4 +1,6 @@
+import pytest
 from pygments.lexers import PythonLexer
+from pygments.lexers import CSharpLexer
 
 from codelimit.common.gsm.matcher import find_all
 from codelimit.common.gsm.operator.OneOrMore import OneOrMore
@@ -6,6 +8,7 @@ from codelimit.common.lexer_utils import lex
 from codelimit.common.token_matching.predicate.Balanced import Balanced
 from codelimit.common.token_matching.predicate.Keyword import Keyword
 from codelimit.common.token_matching.predicate.Name import Name
+from codelimit.common.token_matching.predicate.Symbol import Symbol
 from codelimit.common.token_matching.predicate.TokenValue import TokenValue
 
 
@@ -68,5 +71,15 @@ def test_ignore_incomplete_match():
     tokens = lex(PythonLexer(), code)
 
     result = find_all([Keyword("def"), Name(), OneOrMore(Balanced("(", ")"))], tokens)
+
+    assert len(result) == 1
+
+
+@pytest.mark.skip
+def test_predicate_follows_operator():
+    code = "Split(new[] {' '})"
+    tokens = lex(CSharpLexer(), code)
+
+    result = find_all([Name(), OneOrMore(Balanced("(", ")")), Symbol('{')], tokens)
 
     assert len(result) == 1

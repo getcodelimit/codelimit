@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from abc import ABC, abstractmethod
 
 from codelimit.common.Token import Token
@@ -17,6 +19,6 @@ class Language(ABC):
 
     @abstractmethod
     def extract_blocks(
-        self, tokens: list[Token], headers: list[Header]
+            self, tokens: list[Token], headers: list[Header]
     ) -> list[TokenRange]:
         pass

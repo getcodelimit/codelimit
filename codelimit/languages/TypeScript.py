@@ -6,10 +6,10 @@ from codelimit.common.gsm.operator.Optional import Optional
 from codelimit.common.scope.Header import Header
 from codelimit.common.scope.scope_utils import get_blocks, get_headers
 from codelimit.common.token_matching.predicate.Balanced import Balanced
-from codelimit.common.token_matching.predicate.Or import Or
 from codelimit.common.token_matching.predicate.Keyword import Keyword
 from codelimit.common.token_matching.predicate.Name import Name
 from codelimit.common.token_matching.predicate.Operator import Operator
+from codelimit.common.token_matching.predicate.Or import Or
 from codelimit.common.token_matching.predicate.Symbol import Symbol
 
 
@@ -38,6 +38,6 @@ class TypeScript(Language):
         return functions + arrow_functions
 
     def extract_blocks(
-        self, tokens: list[Token], headers: list[Header]
+            self, tokens: list[Token], headers: list[Header]
     ) -> list[TokenRange]:
         return get_blocks(tokens, "{", "}")

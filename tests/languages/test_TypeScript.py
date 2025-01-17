@@ -1,5 +1,5 @@
 from codelimit.languages import Languages
-from tests.conftest import assert_units
+from tests.conftest import assert_functions
 
 
 def test_simple_function():
@@ -9,7 +9,7 @@ def test_simple_function():
     }
     """
 
-    assert_units(code, Languages.TypeScript, {"foo": 3})
+    assert_functions(code, Languages.TypeScript, {"foo": 3})
 
 
 def test_arrow_function():
@@ -19,7 +19,7 @@ def test_arrow_function():
     }
     """
 
-    assert_units(code, Languages.TypeScript, {"sayHello": 3})
+    assert_functions(code, Languages.TypeScript, {"sayHello": 3})
 
 
 def test_nested_functions():
@@ -33,4 +33,4 @@ def test_nested_functions():
     }
     """
 
-    assert_units(code, Languages.TypeScript, {"Outer": 3, "sayHello": 3})
+    assert_functions(code, Languages.TypeScript, {"Outer": 3, "sayHello": 3})

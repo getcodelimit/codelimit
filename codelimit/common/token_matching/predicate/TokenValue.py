@@ -22,4 +22,4 @@ class TokenValue(TokenPredicate):
         return hash(self.value)
 
     def __str__(self):
-        return f"<TokenValue {self.value}>"
+        return self.value

@@ -17,6 +17,6 @@ class Cpp(Language):
         return get_headers(tokens, [Name(), OneOrMore(Balanced("(", ")"))], Symbol("{"))
 
     def extract_blocks(
-        self, tokens: list[Token], headers: list[Header]
+            self, tokens: list[Token], headers: list[Header]
     ) -> list[TokenRange]:
         return get_blocks(tokens, "{", "}")

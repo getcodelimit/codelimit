@@ -1,5 +1,5 @@
 from codelimit.languages import Languages
-from tests.conftest import assert_units
+from tests.conftest import assert_functions
 
 
 def test_simple_main_function():
@@ -14,7 +14,7 @@ def test_simple_main_function():
     }
     """
 
-    assert_units(code, Languages.Cpp, {"main": 4})
+    assert_functions(code, Languages.Cpp, {"main": 4})
 
 
 def test_simple_class_function():
@@ -37,7 +37,7 @@ def test_simple_class_function():
     }
     """
 
-    assert_units(code, Languages.Cpp, {"sayHello": 3, "main": 5})
+    assert_functions(code, Languages.Cpp, {"sayHello": 3, "main": 5})
 
 
 def test_function():
@@ -50,7 +50,7 @@ def test_function():
     }
     """
 
-    assert_units(code, Languages.Cpp, {"makeInscribedOctagon": 5})
+    assert_functions(code, Languages.Cpp, {"makeInscribedOctagon": 5})
 
 
 def test_namespace():
@@ -71,7 +71,7 @@ def test_namespace():
     }
     """
 
-    assert_units(code, Languages.Cpp, {"sayHello": 3})
+    assert_functions(code, Languages.Cpp, {"sayHello": 3})
 
 
 def test_skip_function_with_nocl_comment():
@@ -81,7 +81,7 @@ def test_skip_function_with_nocl_comment():
     }
     """
 
-    assert_units(code, Languages.Cpp, {"foo": 3})
+    assert_functions(code, Languages.Cpp, {"foo": 3})
 
     code = """
     void foo(Bar bar) { // nocl
@@ -89,4 +89,4 @@ def test_skip_function_with_nocl_comment():
     }
     """
 
-    assert_units(code, Languages.Cpp, {})
+    assert_functions(code, Languages.Cpp, {})
