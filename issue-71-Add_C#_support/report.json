@@ -1,7 +1,7 @@
 {
   "version": "0.18.1",
-  "uuid": "d4bcb348-44d2-40c9-9647-146bd6d604c6",
-  "timestamp": "2025-01-17T07:56:20+00:00",
+  "uuid": "bf6181b1-8e0b-4ab9-a335-1aa7e754051d",
+  "timestamp": "2025-01-17T21:17:09+00:00",
   "root": "/github/workspace",
   "repository": {
     "owner": "getcodelimit",
@@ -11,9 +11,9 @@
   "codebase": {
     "totals": {
       "Python": {
-        "files": 92,
-        "lines_of_code": 2390,
-        "functions": 356,
+        "files": 93,
+        "lines_of_code": 2395,
+        "functions": 359,
         "hard_to_maintain": 1,
         "unmaintainable": 0
       }
@@ -24,7 +24,7 @@
           "main.py",
           "codelimit/"
         ],
-        "profile": [1687, 657, 46, 0]
+        "profile": [1692, 657, 46, 0]
       },
       "codelimit/": {
         "entries": [
@@ -37,7 +37,7 @@
           "languages/",
           "commands/"
         ],
-        "profile": [1687, 657, 46, 0]
+        "profile": [1692, 657, 46, 0]
       },
       "codelimit/common/": {
         "entries": [
@@ -73,7 +73,7 @@
           "report/",
           "gsm/"
         ],
-        "profile": [1439, 357, 46, 0]
+        "profile": [1438, 357, 46, 0]
       },
       "codelimit/common/token_matching/": {
         "entries": [
@@ -172,9 +172,10 @@
           "Python.py",
           "Cpp.py",
           "__init__.py",
+          "CSharp.py",
           "JavaScript.py"
         ],
-        "profile": [68, 92, 0, 0]
+        "profile": [74, 92, 0, 0]
       },
       "codelimit/commands/": {
         "entries": [
@@ -356,14 +357,14 @@
         ]
       },
       "codelimit/common/Language.py": {
-        "checksum": "b19b2ade66c5fc07d3c3c47c0fd123cc",
+        "checksum": "f709b0c4fc93b48e86c97e653c9ad3a4",
         "language": "Python",
-        "loc": 10,
-        "profile": [10, 0, 0, 0],
+        "loc": 9,
+        "profile": [9, 0, 0, 0],
         "measurements": [
-          {"unit_name": "__init__", "start": {"line": 12, "column": 5}, "end": {"line": 15, "column": 38}, "value": 4},
-          {"unit_name": "extract_headers", "start": {"line": 18, "column": 5}, "end": {"line": 19, "column": 13}, "value": 2},
-          {"unit_name": "extract_blocks", "start": {"line": 22, "column": 5}, "end": {"line": 25, "column": 13}, "value": 4}
+          {"unit_name": "__init__", "start": {"line": 12, "column": 5}, "end": {"line": 14, "column": 61}, "value": 3},
+          {"unit_name": "extract_headers", "start": {"line": 17, "column": 5}, "end": {"line": 18, "column": 13}, "value": 2},
+          {"unit_name": "extract_blocks", "start": {"line": 21, "column": 5}, "end": {"line": 24, "column": 13}, "value": 4}
         ]
       },
       "codelimit/common/ScanTotals.py": {
@@ -427,22 +428,22 @@
         ]
       },
       "codelimit/common/Scanner.py": {
-        "checksum": "f62df2d91fe0f9136cd21f16148bc7e0",
+        "checksum": "e3595392a120aac71021e1befed47311",
         "language": "Python",
         "loc": 125,
         "profile": [53, 72, 0, 0],
         "measurements": [
-          {"unit_name": "scan_codebase", "start": {"line": 35, "column": 1}, "end": {"line": 53, "column": 20}, "value": 11},
-          {"unit_name": "add_file_entry", "start": {"line": 38, "column": 9}, "end": {"line": 39, "column": 35}, "value": 2},
-          {"unit_name": "add_file_entry", "start": {"line": 45, "column": 13}, "end": {"line": 48, "column": 35}, "value": 4},
-          {"unit_name": "scan_path", "start": {"line": 56, "column": 1}, "end": {"line": 81, "column": 18}, "value": 26},
-          {"unit_name": "_scan_file", "start": {"line": 84, "column": 1}, "end": {"line": 111, "column": 17}, "value": 28},
-          {"unit_name": "_read_file", "start": {"line": 114, "column": 1}, "end": {"line": 120, "column": 28}, "value": 7},
-          {"unit_name": "_analyze_file", "start": {"line": 123, "column": 1}, "end": {"line": 137, "column": 17}, "value": 15},
-          {"unit_name": "scan_file", "start": {"line": 140, "column": 1}, "end": {"line": 157, "column": 24}, "value": 18},
-          {"unit_name": "generate_exclude_spec", "start": {"line": 160, "column": 1}, "end": {"line": 166, "column": 54}, "value": 7},
-          {"unit_name": "_read_gitignore", "start": {"line": 169, "column": 1}, "end": {"line": 173, "column": 16}, "value": 5},
-          {"unit_name": "is_excluded", "start": {"line": 176, "column": 1}, "end": {"line": 177, "column": 33}, "value": 2}
+          {"unit_name": "scan_codebase", "start": {"line": 36, "column": 1}, "end": {"line": 54, "column": 20}, "value": 11},
+          {"unit_name": "add_file_entry", "start": {"line": 39, "column": 9}, "end": {"line": 40, "column": 35}, "value": 2},
+          {"unit_name": "add_file_entry", "start": {"line": 46, "column": 13}, "end": {"line": 49, "column": 35}, "value": 4},
+          {"unit_name": "scan_path", "start": {"line": 57, "column": 1}, "end": {"line": 82, "column": 18}, "value": 26},
+          {"unit_name": "_scan_file", "start": {"line": 85, "column": 1}, "end": {"line": 112, "column": 17}, "value": 28},
+          {"unit_name": "_read_file", "start": {"line": 115, "column": 1}, "end": {"line": 121, "column": 28}, "value": 7},
+          {"unit_name": "_analyze_file", "start": {"line": 124, "column": 1}, "end": {"line": 138, "column": 17}, "value": 15},
+          {"unit_name": "scan_file", "start": {"line": 141, "column": 1}, "end": {"line": 158, "column": 24}, "value": 18},
+          {"unit_name": "generate_exclude_spec", "start": {"line": 161, "column": 1}, "end": {"line": 167, "column": 54}, "value": 7},
+          {"unit_name": "_read_gitignore", "start": {"line": 170, "column": 1}, "end": {"line": 174, "column": 16}, "value": 5},
+          {"unit_name": "is_excluded", "start": {"line": 177, "column": 1}, "end": {"line": 178, "column": 33}, "value": 2}
         ]
       },
       "codelimit/common/__init__.py": {
@@ -673,7 +674,7 @@
         ]
       },
       "codelimit/common/token_matching/predicate/TokenValue.py": {
-        "checksum": "659e961398f8b5085aaec7830067244c",
+        "checksum": "74dfb79c0ef9d5ce64a56f9809ce0abd",
         "language": "Python",
         "loc": 16,
         "profile": [16, 0, 0, 0],
@@ -682,7 +683,7 @@
           {"unit_name": "accept", "start": {"line": 10, "column": 5}, "end": {"line": 14, "column": 21}, "value": 5},
           {"unit_name": "__eq__", "start": {"line": 16, "column": 5}, "end": {"line": 19, "column": 41}, "value": 4},
           {"unit_name": "__hash__", "start": {"line": 21, "column": 5}, "end": {"line": 22, "column": 32}, "value": 2},
-          {"unit_name": "__str__", "start": {"line": 24, "column": 5}, "end": {"line": 25, "column": 44}, "value": 2}
+          {"unit_name": "__str__", "start": {"line": 24, "column": 5}, "end": {"line": 25, "column": 26}, "value": 2}
         ]
       },
       "codelimit/common/token_matching/predicate/Name.py": {
@@ -1162,14 +1163,14 @@
         ]
       },
       "codelimit/languages/TypeScript.py": {
-        "checksum": "d3f305a4f9ac6e71cdb83006d0a02977",
+        "checksum": "8938c88c57d2a9794fa544869066a2ab",
         "language": "Python",
         "loc": 25,
         "profile": [6, 19, 0, 0],
         "measurements": [
-          {"unit_name": "__init__", "start": {"line": 17, "column": 5}, "end": {"line": 18, "column": 39}, "value": 2},
-          {"unit_name": "extract_headers", "start": {"line": 20, "column": 5}, "end": {"line": 38, "column": 43}, "value": 19},
-          {"unit_name": "extract_blocks", "start": {"line": 40, "column": 5}, "end": {"line": 43, "column": 44}, "value": 4}
+          {"unit_name": "__init__", "start": {"line": 19, "column": 5}, "end": {"line": 20, "column": 36}, "value": 2},
+          {"unit_name": "extract_headers", "start": {"line": 22, "column": 5}, "end": {"line": 40, "column": 43}, "value": 19},
+          {"unit_name": "extract_blocks", "start": {"line": 42, "column": 5}, "end": {"line": 45, "column": 44}, "value": 4}
         ]
       },
       "codelimit/languages/Python.py": {
@@ -1197,11 +1198,22 @@
         ]
       },
       "codelimit/languages/__init__.py": {
-        "checksum": "e1c2c6cf7fdccfcd72cda82252622dfa",
+        "checksum": "65264be6a7888c02e513200330d4da8d",
         "language": "Python",
         "loc": 0,
         "profile": [0, 0, 0, 0],
         "measurements": [
+        ]
+      },
+      "codelimit/languages/CSharp.py": {
+        "checksum": "bf9d33e869557a6a4dc42d443d83777c",
+        "language": "Python",
+        "loc": 6,
+        "profile": [6, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "__init__", "start": {"line": 13, "column": 5}, "end": {"line": 14, "column": 31}, "value": 2},
+          {"unit_name": "extract_headers", "start": {"line": 16, "column": 5}, "end": {"line": 17, "column": 89}, "value": 2},
+          {"unit_name": "extract_blocks", "start": {"line": 19, "column": 5}, "end": {"line": 20, "column": 44}, "value": 2}
         ]
       },
       "codelimit/languages/JavaScript.py": {
@@ -1272,7 +1284,7 @@
         ]
       },
       "codelimit/commands/check.py": {
-        "checksum": "30ddaf14d506bd5560906576cc0d6a50",
+        "checksum": "b3af9ae889f560152140fd56ce8fe503",
         "language": "Python",
         "loc": 53,
         "profile": [10, 43, 0, 0],
