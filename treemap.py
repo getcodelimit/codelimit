@@ -38,22 +38,23 @@ def render_treemap():
         json = f.read()
     codebase = ReportReader.from_json(json).codebase
     ids, names, parents, values = walk_tree(codebase.tree, './')
+    colors = ['A'] * len(ids)
     fig = px.treemap(
         ids=ids,
         names=names,
         parents=parents,
         values=values,
-        color=values,
-        color_continuous_scale='Bluered',
-        # color_discrete_map=
-        # maxdepth=3
-        # names=["Eve", "Cain", "Seth", "Enos", "Noam", "Abel", "Awan", "Enoch", "Azura"],
-        # parents=["", "Eve", "Eve", "Seth", "Seth", "Eve", "Eve", "Awan", "Eve"]
+        color=colors,
+        branchvalues="total",
+        # color_continuous_scale='Bluered',
+        color_discrete_map={
+            'A': '#dddddd'
+        },
+        # maxdepth=2
     )
     fig.update_traces(root_color="lightgrey")
     fig.update_layout(
-        margin=dict(t=50, l=25, r=25, b=25),
-        # uniformtext=dict(minsize=9, mode='show'),
+        margin=dict(t=50, l=25, r=25, b=25)
     )
     fig.show()
 
