@@ -1,4 +1,4 @@
-name: 'code-style'
+name: code-style
 
 on:
   pull_request:
@@ -9,22 +9,17 @@ jobs:
   code_style:
     runs-on: ubuntu-latest
     steps:
-      - name: 'Checkout sources'
+      - name: Checkout sources
         uses: actions/checkout@v4
 
-      - name: 'Set up Python'
-        uses: actions/setup-python@v4
-        with:
-          python-version: 3.12
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
 
-      - name: 'Set up Poetry'
-        uses: snok/install-poetry@v1
+      - name: Install dependencies
+        run: uv sync --locked --dev
 
-      - name: 'Install dependencies'
-        run: poetry install --no-interaction --no-root
+      - name: Lint code with Ruff
+        run: uv run ruff check .
 
-      - name: 'Lint code with Ruff'
-        run: poetry run ruff check .
-
-      - name: 'Type cheking with MyPy'
-        run: poetry run mypy codelimit/
+      - name: Type cheking with MyPy
+        run: uv run mypy codelimit/

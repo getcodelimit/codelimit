@@ -1,5 +1,7 @@
 name: release
+
 on: [workflow_dispatch]
+
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -13,53 +15,59 @@ jobs:
     outputs:
       version: ${{ steps.release.outputs.version }}
     steps:
-    - name: 'Checkout sources'
-      uses: actions/checkout@v3
+    - name: Checkout sources
+      uses: actions/checkout@v4
       with:
         fetch-depth: 0
-    - name: 'Set up Python'
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.10'
-    - name: 'Set up Poetry'
-      uses: snok/install-poetry@v1
-    - name: 'Install dependencies'
-      run: poetry install --no-interaction --no-root
-    - name: 'Python Semantic Release'
+
+    - name: Install uv
+      uses: astral-sh/setup-uv@v5
+
+    - name: Install dependencies
+      run: uv sync --locked --dev
+
+    - name: Python Semantic Release
       id: release
       uses: relekang/python-semantic-release@master
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-    - name: 'Update checkout'
+
+    - name: Update checkout
       run: |
         git pull
       if: steps.release.outputs.released == 'true'
-    - name: 'Build distribution'
-      run: poetry build
-    - name: 'Publish to PyPI'
+
+    - name: Build distribution
+      run: uv build
+
+    - name: Publish to PyPI
       uses: pypa/gh-action-pypi-publish@release/v1
       if: steps.release.outputs.released == 'true'
-    - name: 'Update files'
+
+    - name: Update files
       uses: MathieuSoysal/file-updater-for-release@v1.0.1
       with:
         files: README.md
         prefix: 'rev: '
         with-checkout: false
         version: ${{ steps.release.outputs.version }}
-    - name: 'Commit GitHub Action distribution'
+
+    - name: Commit GitHub Action distribution
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git add README.md
         git commit -m 'Update files' || true
-    - name: 'Push changes'
+
+    - name: Push changes
       uses: ad-m/github-push-action@master
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         branch: ${{ github.ref }}
         force: true
+
   release_binaries:
-    name: 'Release binaries'
+    name: Release binaries
     needs: release
     defaults:
       run:
@@ -71,40 +79,40 @@ jobs:
           - os: macos-latest
             TARGET: macos
             CMD_BUILD: |
-              poetry run pyinstaller \
+              uv run pyinstaller \
                 -n codelimit -F codelimit/__main__.py
               mv dist/codelimit dist/codelimit-macos
             OUT_FILE_NAME: dist/codelimit-macos
           - os: windows-latest
             TARGET: windows
             CMD_BUILD: |
-              poetry run pyinstaller \
+              uv run pyinstaller \
                 -n codelimit --onefile -c codelimit/__main__.py
             OUT_FILE_NAME: dist/codelimit.exe
           - os: ubuntu-22.04
             TARGET: linux
             CMD_BUILD: |
-              poetry run pyinstaller \
+              uv run pyinstaller \
                 -n codelimit -F codelimit/__main__.py
               mv dist/codelimit dist/codelimit-linux
             OUT_FILE_NAME: dist/codelimit-linux
     steps:
-    - name: 'Checkout sources'
-      uses: actions/checkout@v3
+    - name: Checkout sources
+      uses: actions/checkout@v4
       with:
         fetch-depth: 0
         ref: main
-    - name: 'Set up Python'
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.10'
-    - name: 'Install Poetry'
-      uses: snok/install-poetry@v1
-    - name: 'Install dependencies'
-      run: poetry install --no-interaction --no-root
-    - name: 'Build codelimit with pyinstaller for ${{matrix.TARGET}}'
+
+    - name: Install uv
+      uses: astral-sh/setup-uv@v5
+
+    - name: Install dependencies
+      run: uv sync --locked --dev
+
+    - name: Build codelimit with pyinstaller for ${{matrix.TARGET}}
       run: ${{matrix.CMD_BUILD}}
-    - name: 'Release'
+
+    - name: Release
       uses: softprops/action-gh-release@v1
       with:
         tag_name: ${{ format('v{0}', needs.release.outputs.version) }}

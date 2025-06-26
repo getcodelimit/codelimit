@@ -10,40 +10,35 @@ jobs:
   ci:
     runs-on: ubuntu-latest
     steps:
-      - name: 'Checkout sources'
-        uses: actions/checkout@v3
+      - name: Checkout sources
+        uses: actions/checkout@v4
 
-      - name: 'Set up Python'
-        uses: actions/setup-python@v4
-        with:
-          python-version: 3.12
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
 
-      - name: 'Set up Poetry'
-        uses: snok/install-poetry@v1
+      - name: Install dependencies
+        run: uv sync --locked --dev
 
-      - name: 'Install dependencies'
-        run: poetry install --no-interaction --no-root
+      - name: Run unit-tests with coverage
+        run: uv run pytest --cov --cov-report=xml
 
-      - name: 'Run unit-tests with coverage'
-        run: poetry run pytest --cov --cov-report=xml
-
-      - name: 'Run codelimit'
+      - name: Run codelimit
         run: |
           echo "Scan codebase"
-          poetry run codelimit scan .
+          uv run codelimit scan .
           echo "Generate report"
-          poetry run codelimit report .
+          uv run codelimit report .
           echo "Generate report in Markdown"
-          poetry run codelimit report --format markdown .
+          uv run codelimit report --format markdown .
           echo "Generate findings"
-          poetry run codelimit findings .
+          uv run codelimit findings .
           echo "Generate findings (Markdown)"
-          poetry run codelimit findings --format markdown .
+          uv run codelimit findings --format markdown .
 
-      - name: 'Build and run codelimit binary'
+      - name: Build and run codelimit binary
         run: |
-          poetry run pyinstaller -n codelimit -F codelimit/__main__.py
+          uv run pyinstaller -n codelimit -F codelimit/__main__.py
           ./dist/codelimit scan .
 
-      - name: 'Upload coverage reports to Codecov'
+      - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v3

@@ -53,7 +53,6 @@ ignore_missing_imports = true
 
 [tool.semantic_release]
 branch = "main"
-version_toml = [ "pyproject.toml:tool.poetry.version" ]
 version_variables = [ "codelimit/version.py:version" ]
 upload_to_repository = false
 upload_to_release = false
