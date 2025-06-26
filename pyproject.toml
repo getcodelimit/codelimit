@@ -1,25 +1,41 @@
-[tool.poetry]
+[project]
 name = "codelimit"
 version = "0.18.1"
 description = ""
-authors = ["Rob van der Leek <robvanderleek@gmail.com>"]
-license = "GPL-3.0-or-later"
+authors = [{ name = "Rob van der Leek", email = "robvanderleek@gmail.com" }]
+requires-python = ">=3.10,<3.14"
 readme = "README.md"
+license = "GPL-3.0-or-later"
+dependencies = [
+    "pygments>=2.13.0,<3",
+    "requests>=2.28.2,<3",
+    "typer>=0.15.3",
+    "aiohttp>=3.9.0,<4",
+    "pyyaml>=6.0.1,<7",
+    "rich>=13.7.1,<14",
+    "pathspec>=0.12.1,<0.13",
+    "pyperclip>=1.9.0,<2",
+    "sh>=2.1.0,<3",
+]
 
-[tool.poetry.scripts]
+[project.scripts]
 codelimit = "codelimit.__main__:cli"
 
-[tool.poetry.dependencies]
-python = ">=3.10,<3.14"
-pygments = "^2.13.0"
-requests = "^2.28.2"
-typer = "^0.9.0"
-aiohttp = "^3.9.0"
-pyyaml = "^6.0.1"
-rich = "^13.7.1"
-pathspec = "^0.12.1"
-pyperclip = "^1.9.0"
-sh = "^2.1.0"
+[dependency-groups]
+dev = [
+    "pyinstaller~=6.0 ; python_version >= '3.8' and python_version < '3.14'",
+    "pytest-cov>=4.0.0,<5",
+    "pytest>=7.2.1,<8",
+    "poethepoet>=0.21.1,<0.22",
+    "types-pyyaml>=6.0.12.20240917,<7",
+    "mypy>=1.13.0,<2",
+    "black>=24.10.0,<25",
+    "ruff>=0.8.2,<0.9",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
 [tool.pytest.ini_options]
 addopts = "--tb=short"
@@ -41,17 +57,3 @@ version_toml = [ "pyproject.toml:tool.poetry.version" ]
 version_variables = [ "codelimit/version.py:version" ]
 upload_to_repository = false
 upload_to_release = false
-
-[tool.poetry.group.dev.dependencies]
-pyinstaller = {version = "^6.0", python = ">=3.8,<3.14"}
-pytest-cov = "^4.0.0"
-pytest = "^7.2.1"
-poethepoet = "^0.21.1"
-types-pyyaml = "^6.0.12.20240917"
-mypy = "^1.13.0"
-black = "^24.10.0"
-ruff = "^0.8.2"
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
