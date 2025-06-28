@@ -33,38 +33,27 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Update checkout
-      run: |
-        git pull
       if: steps.release.outputs.released == 'true'
+      run: git pull
+
+    - name: Update lock file
+      if: steps.release.outputs.released == 'true'
+      run: uv lock
 
     - name: Build distribution
+      if: steps.release.outputs.released == 'true'
       run: uv build
 
     - name: Publish to PyPI
-      uses: pypa/gh-action-pypi-publish@release/v1
       if: steps.release.outputs.released == 'true'
+      uses: pypa/gh-action-pypi-publish@release/v1
 
-    - name: Update files
-      uses: MathieuSoysal/file-updater-for-release@v1.0.1
+    - name: Commit changes
+      if: steps.release.outputs.released == 'true'
+      uses: stefanzweifel/git-auto-commit-action@v5
       with:
-        files: README.md
-        prefix: 'rev: '
-        with-checkout: false
-        version: ${{ steps.release.outputs.version }}
-
-    - name: Commit GitHub Action distribution
-      run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        git add README.md
-        git commit -m 'Update files' || true
-
-    - name: Push changes
-      uses: ad-m/github-push-action@master
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        branch: ${{ github.ref }}
-        force: true
+        commit_message: Build by GitHub Actions
+        file_pattern: uv.lock
 
   release_binaries:
     name: Release binaries
