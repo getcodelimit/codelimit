@@ -1,6 +1,17 @@
 # CHANGELOG
 
 
+## v0.19.1 (2025-06-28)
+
+### Bug Fixes
+
+- 🐛 Fix release workflow
+  ([`1403391`](https://github.com/getcodelimit/codelimit/commit/1403391b6f3428039670e63e7133f297dff344fd))
+
+- 🐛 Update lock file
+  ([`db599b5`](https://github.com/getcodelimit/codelimit/commit/db599b5fde6dafe0f9fb60251a1b879f5a56610a))
+
+
 ## v0.19.0 (2025-06-28)
 
 ### Bug Fixes
