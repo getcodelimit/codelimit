@@ -1,6 +1,23 @@
 # CHANGELOG
 
 
+## v0.19.2 (2025-06-28)
+
+### Bug Fixes
+
+- 🐛 Fix release workflow
+  ([`78474ab`](https://github.com/getcodelimit/codelimit/commit/78474ab7f4c0068739b033992ff203f67a5c0e93))
+
+- 🐛 Fix release workflow
+  ([`7573881`](https://github.com/getcodelimit/codelimit/commit/75738813fa90091f5fd9b949499ffd7d847ffcce))
+
+- 🐛 Fix release workflow
+  ([`e81ccb6`](https://github.com/getcodelimit/codelimit/commit/e81ccb6ba11d920005a0596f2c8d7fb69bd01305))
+
+- 🐛 Fix release workflow
+  ([`cf3e397`](https://github.com/getcodelimit/codelimit/commit/cf3e397449aa348e16826d73a62d97920a23585c))
+
+
 ## v0.19.1 (2025-06-28)
 
 ### Bug Fixes
