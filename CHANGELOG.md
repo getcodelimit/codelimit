@@ -1,6 +1,48 @@
 # CHANGELOG
 
 
+## v0.19.0 (2025-06-28)
+
+### Bug Fixes
+
+- 🐛 Fix release
+  ([`f7f9ba8`](https://github.com/getcodelimit/codelimit/commit/f7f9ba84ded07588558ef1b814939e7aec7d5df5))
+
+- 🐛 Fix rounding errors
+  ([`5ee3993`](https://github.com/getcodelimit/codelimit/commit/5ee399339302271ae5fea9b7bf91b8412a412b90))
+
+- 🐛 Fix Typer/Click bug, migrated from Poetry to uv
+  ([`12de14c`](https://github.com/getcodelimit/codelimit/commit/12de14cc5e8f6ad98a72709fa3c7d0d4e923d5f2))
+
+### Build System
+
+- 📌 Fix PSR GHA
+  ([`bed4c54`](https://github.com/getcodelimit/codelimit/commit/bed4c54c8d26e6e74554e8a08dcf62e6bec0cd86))
+
+### Chores
+
+- 🚧 Back to correct version
+  ([`e8513a4`](https://github.com/getcodelimit/codelimit/commit/e8513a43fe1a1c56dc73498393812cfa512760e2))
+
+- 🚧 Revert release changes
+  ([`b6788fd`](https://github.com/getcodelimit/codelimit/commit/b6788fdc3dd6661c33d96eec63f826f1aafba10b))
+
+### Continuous Integration
+
+- 💚 Migrate from Poetry to uv
+  ([`eb448e5`](https://github.com/getcodelimit/codelimit/commit/eb448e5c25b84250c9984ffdeee3a949eab8d676))
+
+### Features
+
+- ✨ Add C# support ([#75](https://github.com/getcodelimit/codelimit/pull/75),
+  [`765ce4c`](https://github.com/getcodelimit/codelimit/commit/765ce4c86d93ef4474ab2bee7cf5657471faed3f))
+
+### Testing
+
+- ✅ Add new regression repo
+  ([`b3a63f6`](https://github.com/getcodelimit/codelimit/commit/b3a63f61ecc9450d9c53ceae93c26246a5e44ee6))
+
+
 ## v0.18.1 (2025-01-07)
 
 ### Bug Fixes
