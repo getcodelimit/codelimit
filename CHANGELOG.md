@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v0.19.6 (2025-06-28)
+
+### Bug Fixes
+
+- 🐛 Eat. My. Shorts.
+  ([`7d44e63`](https://github.com/getcodelimit/codelimit/commit/7d44e63b9bf10cf43fce820f41d498f5719569cb))
+
+
 ## v0.19.5 (2025-06-28)
 
 ### Bug Fixes
