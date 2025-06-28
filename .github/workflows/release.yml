@@ -55,6 +55,7 @@ jobs:
       if: steps.release.outputs.released == 'true'
       uses: pypa/gh-action-pypi-publish@release/v1
 
+
   release_binaries:
     name: Release binaries
     needs: release
