@@ -1,6 +1,6 @@
 [project]
 name = "codelimit"
-version = "0.19.3"
+version = "0.19.4"
 description = ""
 authors = [{ name = "Rob van der Leek", email = "robvanderleek@gmail.com" }]
 requires-python = ">=3.10,<3.14"
