@@ -6,9 +6,6 @@ jobs:
   release:
     runs-on: ubuntu-latest
     concurrency: release
-    environment:
-      name: pypi
-      url: https://pypi.org/p/codelimit
     permissions:
       id-token: write
       contents: write
@@ -32,29 +29,35 @@ jobs:
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Update checkout
-      if: steps.release.outputs.released == 'true'
-      run: git pull
+  release_pypi:
+    runs-on: ubuntu-latest
+    needs: release
+    environment:
+      name: pypi
+      url: https://pypi.org/p/codelimit
+    permissions:
+      contents: write
+    steps:
+    - name: Checkout sources
+      uses: actions/checkout@v4
 
-    - name: Update lock file
-      if: steps.release.outputs.released == 'true'
-      run: uv lock
+    - name: Install uv
+      uses: astral-sh/setup-uv@v5
+
+    - name: Install dependencies
+      run: uv sync --dev
 
     - name: Commit changes
-      if: steps.release.outputs.released == 'true'
       uses: stefanzweifel/git-auto-commit-action@v6
       with:
         commit_message: Build by GitHub Actions
         file_pattern: uv.lock
 
     - name: Build distribution
-      if: steps.release.outputs.released == 'true'
       run: uv build
 
     - name: Publish to PyPI
-      if: steps.release.outputs.released == 'true'
       uses: pypa/gh-action-pypi-publish@release/v1
-
 
   release_binaries:
     name: Release binaries
