@@ -28,7 +28,7 @@ jobs:
 
     - name: Python Semantic Release
       id: release
-      uses: relekang/python-semantic-release@master
+      uses: relekang/python-semantic-release@v9.21.0
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
 
