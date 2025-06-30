@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v0.19.7 (2025-06-30)
+
+### Bug Fixes
+
+- 🐛 Fix release
+  ([`b90cc65`](https://github.com/getcodelimit/codelimit/commit/b90cc659350608be59e53dc789d399f860f890e0))
+
+
 ## v0.19.6 (2025-06-28)
 
 ### Bug Fixes
