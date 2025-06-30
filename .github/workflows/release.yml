@@ -63,7 +63,9 @@ jobs:
 
   release_binaries:
     name: Release binaries
-    needs: release_pypi
+    needs: 
+      - release
+      - release_pypi
     defaults:
       run:
         shell: bash
