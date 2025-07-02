@@ -1,6 +1,19 @@
 # CHANGELOG
 
 
+## v0.19.8 (2025-07-02)
+
+### Bug Fixes
+
+- 🐛 Add strict option for semantic release
+  ([`2873cb3`](https://github.com/getcodelimit/codelimit/commit/2873cb39f5c946cc94a89a02e96e611d4beac572))
+
+### Documentation
+
+- 📝 Update project documentation
+  ([`049c48b`](https://github.com/getcodelimit/codelimit/commit/049c48bf05ea11cd26f6ae856771f70e2e278d24))
+
+
 ## v0.19.7 (2025-06-30)
 
 ### Bug Fixes
