@@ -18,6 +18,11 @@ dependencies = [
     "sh>=2.1.0,<3",
 ]
 
+[project.urls]
+Changelog = "https://github.com/getcodelimit/codelimit/blob/master/CHANGELOG.md"
+Documentation = "https://getcodelimit.github.io"
+Source = "https://github.com/getcodelimit/codelimit"
+
 [project.scripts]
 codelimit = "codelimit.__main__:cli"
 
