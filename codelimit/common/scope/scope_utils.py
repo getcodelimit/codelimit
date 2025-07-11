@@ -120,10 +120,10 @@ def has_curly_suffix(tokens: list[Token], index):
 
 
 def get_headers(
-        tokens: list[Token], expression: Expression, followed_by: Expression = None
+        tokens: list[Token], expression: Expression, followed_by: Expression = None, nested: bool = False
 ) -> list[Header]:
     # expression = replace_string_literal_with_predicate(expression)
-    patterns = find_all(expression, tokens)
+    patterns = find_all(expression, tokens, nested=nested)
     if followed_by:
         patterns = [p for p in patterns if starts_with(followed_by, tokens[p.end:])]
     result = []

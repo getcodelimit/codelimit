@@ -1,6 +1,8 @@
 import subprocess
 import tempfile
+from typing import TypeVar
 
+from codelimit.common.TokenRange import TokenRange
 from codelimit.common.gsm.automata.Automata import Automata
 from codelimit.common.gsm.automata.State import State
 
@@ -57,4 +59,21 @@ def to_dot(automata: Automata):
     result += f'start -> {automata.start.id} [label = "start"]\n'
     result += state_transitions_to_dot(automata, automata.start)
     result += "}"
+    return result
+
+
+T = TypeVar("T", bound=TokenRange)
+
+
+def prune_nested(ranges: list[T]) -> list[T]:
+    sorted_ranges = sorted(ranges, key=lambda x: (x.start, -(x.end - x.start)))
+    result: list[T] = []
+    for r in sorted_ranges:
+        if not result:
+            result.append(r)
+        else:
+            last = result[-1]
+            if last.start <= r.start and last.end >= r.end:
+                continue
+            result.append(r)
     return result

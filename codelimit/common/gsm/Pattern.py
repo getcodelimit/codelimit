@@ -1,14 +1,14 @@
 from copy import deepcopy
 
+from codelimit.common.TokenRange import TokenRange
 from codelimit.common.gsm.automata.DFA import DFA
 from codelimit.common.gsm.automata.State import State
 from codelimit.common.gsm.predicate.Predicate import Predicate
 
 
-class Pattern:
-    def __init__(self, start: int, automata: DFA):
-        self.start = start
-        self.end = start
+class Pattern(TokenRange):
+    def __init__(self, automata: DFA, start: int = 0):
+        super().__init__(start, start)
         self.automata = automata
         self.state = automata.start
         self.tokens: list = []
@@ -32,5 +32,5 @@ class Pattern:
     def is_accepting(self):
         return self.automata.is_accepting(self.state)
 
-    def token_string(self):
-        return " ".join([t.value for t in self.tokens])
+    def __str__(self):
+        return f'Pattern(start={self.start}, end={self.end}, tokens=[{self.token_string(self.tokens)}])'
