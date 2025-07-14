@@ -1,14 +1,14 @@
 {
-  "version": "0.17.0",
-  "uuid": "b64ed88a-e4c8-42e8-baf6-99aaf1f2f771",
-  "timestamp": "2025-01-03T10:31:10+00:00",
-  "root": "/private/var/folders/t2/s_70szzn7qn22cp4d2nmrjbc0000gn/T/tmpmhwzv2tc/junit5",
+  "version": "0.19.8",
+  "uuid": "efb6b54e-152d-4083-8f03-5d14de75bead",
+  "timestamp": "2025-07-14T14:11:31+00:00",
+  "root": "/private/var/folders/t2/s_70szzn7qn22cp4d2nmrjbc0000gn/T/tmph0w58zcm/junit5",
   "codebase": {
     "totals": {
       "Java": {
         "files": 852,
-        "lines_of_code": 24614,
-        "functions": 4573,
+        "lines_of_code": 24630,
+        "functions": 4577,
         "hard_to_maintain": 24,
         "unmaintainable": 1
       },
@@ -46,7 +46,7 @@
           "junit-platform-launcher/",
           "junit-jupiter-engine/"
         ],
-        "profile": [20576, 3073, 937, 63]
+        "profile": [20592, 3073, 937, 63]
       },
       "junit-platform-engine/src/module/org.junit.platform.engine/": {
         "entries": [
@@ -2556,13 +2556,13 @@
           "testFixtures/",
           "main/"
         ],
-        "profile": [2624, 373, 102, 0]
+        "profile": [2628, 373, 102, 0]
       },
       "junit-platform-launcher/": {
         "entries": [
           "src/"
         ],
-        "profile": [2624, 373, 102, 0]
+        "profile": [2628, 373, 102, 0]
       },
       "junit-platform-launcher/src/testFixtures/java/org/junit/platform/launcher/core/": {
         "entries": [
@@ -2628,37 +2628,37 @@
           "tagexpression/",
           "listeners/"
         ],
-        "profile": [2603, 373, 102, 0]
+        "profile": [2607, 373, 102, 0]
       },
       "junit-platform-launcher/src/main/java/org/junit/platform/": {
         "entries": [
           "launcher/"
         ],
-        "profile": [2603, 373, 102, 0]
+        "profile": [2607, 373, 102, 0]
       },
       "junit-platform-launcher/src/main/java/org/junit/": {
         "entries": [
           "platform/"
         ],
-        "profile": [2603, 373, 102, 0]
+        "profile": [2607, 373, 102, 0]
       },
       "junit-platform-launcher/src/main/java/org/": {
         "entries": [
           "junit/"
         ],
-        "profile": [2603, 373, 102, 0]
+        "profile": [2607, 373, 102, 0]
       },
       "junit-platform-launcher/src/main/java/": {
         "entries": [
           "org/"
         ],
-        "profile": [2603, 373, 102, 0]
+        "profile": [2607, 373, 102, 0]
       },
       "junit-platform-launcher/src/main/": {
         "entries": [
           "java/"
         ],
-        "profile": [2603, 373, 102, 0]
+        "profile": [2607, 373, 102, 0]
       },
       "junit-platform-launcher/src/main/java/org/junit/platform/launcher/core/": {
         "entries": [
@@ -2770,13 +2770,13 @@
           "testFixtures/",
           "main/"
         ],
-        "profile": [3022, 708, 121, 0]
+        "profile": [3034, 708, 121, 0]
       },
       "junit-jupiter-engine/": {
         "entries": [
           "src/"
         ],
-        "profile": [3022, 708, 121, 0]
+        "profile": [3034, 708, 121, 0]
       },
       "junit-jupiter-engine/src/testFixtures/java/org/junit/jupiter/engine/discovery/": {
         "entries": [
@@ -2832,37 +2832,37 @@
           "execution/",
           "descriptor/"
         ],
-        "profile": [2996, 708, 121, 0]
+        "profile": [3008, 708, 121, 0]
       },
       "junit-jupiter-engine/src/main/java/org/junit/jupiter/": {
         "entries": [
           "engine/"
         ],
-        "profile": [2996, 708, 121, 0]
+        "profile": [3008, 708, 121, 0]
       },
       "junit-jupiter-engine/src/main/java/org/junit/": {
         "entries": [
           "jupiter/"
         ],
-        "profile": [2996, 708, 121, 0]
+        "profile": [3008, 708, 121, 0]
       },
       "junit-jupiter-engine/src/main/java/org/": {
         "entries": [
           "junit/"
         ],
-        "profile": [2996, 708, 121, 0]
+        "profile": [3008, 708, 121, 0]
       },
       "junit-jupiter-engine/src/main/java/": {
         "entries": [
           "org/"
         ],
-        "profile": [2996, 708, 121, 0]
+        "profile": [3008, 708, 121, 0]
       },
       "junit-jupiter-engine/src/main/": {
         "entries": [
           "java/"
         ],
-        "profile": [2996, 708, 121, 0]
+        "profile": [3008, 708, 121, 0]
       },
       "junit-jupiter-engine/src/main/java/org/junit/jupiter/engine/extension/": {
         "entries": [
@@ -2919,7 +2919,7 @@
           "ClassSelectorResolver.java",
           "predicates/"
         ],
-        "profile": [370, 115, 47, 0]
+        "profile": [382, 115, 47, 0]
       },
       "junit-jupiter-engine/src/main/java/org/junit/jupiter/engine/discovery/predicates/": {
         "entries": [
@@ -11777,11 +11777,12 @@
       "junit-platform-launcher/src/main/java/org/junit/platform/launcher/TestPlan.java": {
         "checksum": "fff261500a9edad8af2796e1556aefca",
         "language": "Java",
-        "loc": 96,
-        "profile": [80, 16, 0, 0],
+        "loc": 100,
+        "profile": [84, 16, 0, 0],
         "measurements": [
           {"unit_name": "from", "start": {"line": 88, "column": 25}, "end": {"line": 97, "column": 3}, "value": 10},
           {"unit_name": "TestPlan", "start": {"line": 100, "column": 12}, "end": {"line": 103, "column": 3}, "value": 4},
+          {"unit_name": "add", "start": {"line": 115, "column": 14}, "end": {"line": 118, "column": 3}, "value": 4},
           {"unit_name": "addInternal", "start": {"line": 121, "column": 14}, "end": {"line": 142, "column": 3}, "value": 16},
           {"unit_name": "getRoots", "start": {"line": 149, "column": 29}, "end": {"line": 151, "column": 3}, "value": 3},
           {"unit_name": "getParent", "start": {"line": 159, "column": 34}, "end": {"line": 162, "column": 3}, "value": 4},
@@ -13456,8 +13457,8 @@
       "junit-jupiter-engine/src/main/java/org/junit/jupiter/engine/discovery/MethodSelectorResolver.java": {
         "checksum": "4aeab93d52046a78f2694bc8e419bf50",
         "language": "Java",
-        "loc": 134,
-        "profile": [70, 64, 0, 0],
+        "loc": 146,
+        "profile": [82, 64, 0, 0],
         "measurements": [
           {"unit_name": "MethodSelectorResolver", "start": {"line": 69, "column": 2}, "end": {"line": 71, "column": 3}, "value": 3},
           {"unit_name": "resolve", "start": {"line": 74, "column": 20}, "end": {"line": 76, "column": 3}, "value": 3},
@@ -13466,8 +13467,11 @@
           {"unit_name": "resolve", "start": {"line": 113, "column": 20}, "end": {"line": 136, "column": 3}, "value": 22},
           {"unit_name": "resolve", "start": {"line": 139, "column": 20}, "end": {"line": 152, "column": 3}, "value": 14},
           {"unit_name": "expansionCallback", "start": {"line": 154, "column": 53}, "end": {"line": 162, "column": 3}, "value": 9},
+          {"unit_name": "TEST", "start": {"line": 166, "column": 3}, "end": {"line": 172, "column": 4}, "value": 3},
           {"unit_name": "createTestDescriptor", "start": {"line": 168, "column": 29}, "end": {"line": 171, "column": 5}, "value": 4},
+          {"unit_name": "TEST_FACTORY", "start": {"line": 174, "column": 3}, "end": {"line": 182, "column": 4}, "value": 5},
           {"unit_name": "createTestDescriptor", "start": {"line": 178, "column": 29}, "end": {"line": 181, "column": 5}, "value": 4},
+          {"unit_name": "TEST_TEMPLATE", "start": {"line": 184, "column": 3}, "end": {"line": 191, "column": 4}, "value": 4},
           {"unit_name": "createTestDescriptor", "start": {"line": 187, "column": 29}, "end": {"line": 190, "column": 5}, "value": 4},
           {"unit_name": "MethodType", "start": {"line": 197, "column": 3}, "end": {"line": 201, "column": 4}, "value": 5},
           {"unit_name": "resolve", "start": {"line": 203, "column": 36}, "end": {"line": 211, "column": 4}, "value": 9},
