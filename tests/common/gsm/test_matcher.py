@@ -150,6 +150,20 @@ def test_find_all():
     assert matches[1].end == 5
 
 
+def test_find_all_nested_should_prioritize_longest_match():
+    expr = [OneOrMore("a")]
+    text = ["a", "a", "b", "b", "a", "b", "b", "a", "a"]
+
+    matches = find_all(expr, text, nested=True)
+
+    assert len(matches) == 3
+    assert matches[0].start == 0
+    assert matches[0].end == 2
+    assert matches[1].start == 4
+    assert matches[1].end == 5
+    assert matches[2].start == 7
+    assert matches[2].end == 9
+
 def test_single_item():
     expr = ["a"]
     text = ["a", "a", "b", "a"]

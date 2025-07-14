@@ -39,3 +39,7 @@ def sort_tokens(tokens: list[Token]) -> list[Token]:
     result = sorted(tokens, key=lambda t: t.location.column)
     result = sorted(result, key=lambda t: t.location.line)
     return result
+
+
+def token_string(tokens: list[Token], token_range: TokenRange) -> str:
+    return " ".join([t.value for t in tokens[token_range.start:token_range.end]])

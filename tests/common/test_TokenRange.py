@@ -2,13 +2,14 @@ from pygments.lexers import CLexer
 
 from codelimit.common.TokenRange import TokenRange
 from codelimit.common.lexer_utils import lex
+from codelimit.common.token_utils import token_string
 
 
 def test_token_string():
     tokens = lex(CLexer(), "int main() { { return 0; } }")
     token_range = TokenRange(5, 10)
 
-    assert token_range.token_string(tokens) == "{ return 0 ; }"
+    assert token_string(tokens, token_range) == "{ return 0 ; }"
 
 
 def test_contains():

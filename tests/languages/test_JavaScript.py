@@ -73,3 +73,17 @@ def test_nested_anonymous_functions_are_skipped():
     """
 
     assert_functions(code, Languages.JavaScript, {"say": 5, "helloWorld": 3})
+
+
+def test_nested_in_anonymous_function():
+    code = """
+    return this.each(function() {
+        function stopQueue( elem, data, index ) {
+            var hooks = data[ index ];
+            jQuery.removeData( elem, index, true );
+            hooks.stop( gotoEnd );
+        }
+    });
+    """
+
+    assert_functions(code, Languages.JavaScript, {"stopQueue": 5})

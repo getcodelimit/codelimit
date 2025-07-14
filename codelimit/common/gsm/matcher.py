@@ -57,21 +57,18 @@ def find_all(expression: Expression, sequence: list, nested: bool = False) -> li
         fs.active_patterns.append(Pattern(dfa, idx))
         fs.next_state_patterns = []
         for pattern in fs.active_patterns:
-            if len(pattern.state.transition) == 0 and pattern.is_accepting():
-                pattern.end = idx
-                fs.matches.append(pattern)
-                continue
             if pattern.consume(item):
                 fs.next_state_patterns.append(pattern)
-            else:
-                if pattern.is_accepting():
-                    pattern.end = idx
+            elif pattern.is_accepting():
+                pattern.end = idx
+                if not fs.matches or fs.matches[-1].end < pattern.end:
                     fs.matches.append(pattern)
         fs.active_patterns = fs.next_state_patterns
     for pattern in fs.active_patterns:
         if pattern.is_accepting():
             pattern.end = len(sequence)
-            fs.matches.append(pattern)
+            if not fs.matches or fs.matches[-1].end < pattern.end:
+                fs.matches.append(pattern)
     if nested:
         return fs.matches
     else:

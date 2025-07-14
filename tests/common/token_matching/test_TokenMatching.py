@@ -20,8 +20,8 @@ def test_match_keyword():
     result = find_all(Keyword("def"), tokens)
 
     assert len(result) == 2
-    assert result[0].token_string(tokens) == "def"
-    assert result[1].token_string(tokens) == "def"
+    assert result[0].token_string() == "def"
+    assert result[1].token_string() == "def"
 
 
 def test_match_name():
@@ -31,8 +31,8 @@ def test_match_name():
     result = find_all(Name(), tokens)
 
     assert len(result) == 2
-    assert result[0].token_string(tokens) == "foo"
-    assert result[1].token_string(tokens) == "bar"
+    assert result[0].token_string() == "foo"
+    assert result[1].token_string() == "bar"
 
 
 def test_match_function_header():
@@ -42,8 +42,8 @@ def test_match_function_header():
     result = find_all([Keyword("def"), Name()], tokens)
 
     assert len(result) == 2
-    assert result[0].token_string(tokens) == "def foo"
-    assert result[1].token_string(tokens) == "def bar"
+    assert result[0].token_string() == "def foo"
+    assert result[1].token_string() == "def bar"
 
 
 def test_reset_pattern():
@@ -52,7 +52,7 @@ def test_reset_pattern():
 
     result = find_all([Name(), Balanced("(", ")")], tokens)
 
-    assert len(result) == 1
+    assert len(result) == 0
 
 
 def test_string_pattern():
@@ -83,14 +83,31 @@ def test_nested_pattern():
     result = find_all([Name(), OneOrMore(Balanced("(", ")"))], tokens)
 
     assert len(result) == 1
-    assert result[0].token_string(tokens) == "foo ( Bar ( ) bar )"
+    assert result[0].token_string() == "foo ( Bar ( ) bar )"
 
 
-@pytest.mark.skip
-def test_predicate_follows_operator():
-    code = "Split(new[] {' '})"
-    tokens = lex(CSharpLexer(), code)
+def test_incomplete_pattern():
+    code = "void foo(Bar bar"
+    tokens = lex(CppLexer(), code)
 
-    result = find_all([Name(), OneOrMore(Balanced("(", ")")), Symbol('{')], tokens)
+    result = find_all([Name(), OneOrMore(Balanced("(", ")"))], tokens)
+
+    assert len(result) == 0
+
+
+def test_incomplete_outer_pattern():
+    code = "void foo(Bar () bar"
+    tokens = lex(CppLexer(), code)
+
+    result = find_all([Name(), OneOrMore(Balanced("(", ")"))], tokens)
 
     assert len(result) == 1
+    assert result[0].token_string() == "Bar ( )"
+
+
+def test_predicate_follows_operator():
+    code = "Split(new[] {' '}) {"
+    tokens = lex(CSharpLexer(), code)
+
+    with pytest.raises(ValueError):
+        find_all([Name(), OneOrMore(Balanced("(", ")")), Symbol('{')], tokens)

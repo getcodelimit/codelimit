@@ -5,7 +5,7 @@ from codelimit.common.lexer_utils import lex
 from codelimit.common.source_utils import get_token_range
 from codelimit.common.token_utils import (
     get_balanced_symbol_token_indices,
-    get_balanced_symbol_token_ranges,
+    get_balanced_symbol_token_ranges, token_string,
 )
 
 
@@ -41,8 +41,8 @@ def test_get_balanced_symbol_token_ranges():
     result = get_balanced_symbol_token_ranges(tokens, "{", "}")
 
     assert len(result) == 2
-    assert result[0].token_string(tokens) == "{ }"
-    assert result[1].token_string(tokens) == "{ while ( 1 ) { } }"
+    assert token_string(tokens, result[0]) == "{ }"
+    assert token_string(tokens, result[1]) == "{ while ( 1 ) { } }"
 
 
 def test_get_token_range():
