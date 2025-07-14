@@ -1,6 +1,15 @@
 # CHANGELOG
 
 
+## v0.19.9 (2025-07-14)
+
+### Bug Fixes
+
+- 🐛 Fix parse issue with function types in C++
+  ([#78](https://github.com/getcodelimit/codelimit/pull/78),
+  [`7130cc6`](https://github.com/getcodelimit/codelimit/commit/7130cc638899e6d032c7e0fb35d40a4729d933a2))
+
+
 ## v0.19.8 (2025-07-02)
 
 ### Bug Fixes
