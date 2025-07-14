@@ -1,6 +1,7 @@
 import pytest
-from pygments.lexers import PythonLexer
 from pygments.lexers import CSharpLexer
+from pygments.lexers import CppLexer
+from pygments.lexers import PythonLexer
 
 from codelimit.common.gsm.matcher import find_all
 from codelimit.common.gsm.operator.OneOrMore import OneOrMore
@@ -51,7 +52,7 @@ def test_reset_pattern():
 
     result = find_all([Name(), Balanced("(", ")")], tokens)
 
-    assert len(result) == 1
+    assert len(result) == 0
 
 
 def test_string_pattern():
@@ -75,11 +76,38 @@ def test_ignore_incomplete_match():
     assert len(result) == 1
 
 
-@pytest.mark.skip
-def test_predicate_follows_operator():
-    code = "Split(new[] {' '})"
-    tokens = lex(CSharpLexer(), code)
+def test_nested_pattern():
+    code = "void foo(Bar () bar) {"
+    tokens = lex(CppLexer(), code)
 
-    result = find_all([Name(), OneOrMore(Balanced("(", ")")), Symbol('{')], tokens)
+    result = find_all([Name(), OneOrMore(Balanced("(", ")"))], tokens)
 
     assert len(result) == 1
+    assert result[0].token_string() == "foo ( Bar ( ) bar )"
+
+
+def test_incomplete_pattern():
+    code = "void foo(Bar bar"
+    tokens = lex(CppLexer(), code)
+
+    result = find_all([Name(), OneOrMore(Balanced("(", ")"))], tokens)
+
+    assert len(result) == 0
+
+
+def test_incomplete_outer_pattern():
+    code = "void foo(Bar () bar"
+    tokens = lex(CppLexer(), code)
+
+    result = find_all([Name(), OneOrMore(Balanced("(", ")"))], tokens)
+
+    assert len(result) == 1
+    assert result[0].token_string() == "Bar ( )"
+
+
+def test_predicate_follows_operator():
+    code = "Split(new[] {' '}) {"
+    tokens = lex(CSharpLexer(), code)
+
+    with pytest.raises(ValueError):
+        find_all([Name(), OneOrMore(Balanced("(", ")")), Symbol('{')], tokens)

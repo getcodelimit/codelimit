@@ -9,7 +9,7 @@ from codelimit.common.gsm.Expression import (
 )
 from codelimit.common.gsm.Pattern import Pattern
 from codelimit.common.gsm.operator.Operator import Operator
-from codelimit.common.gsm.utils import render_automata
+from codelimit.common.gsm.utils import render_automata, prune_nested
 
 T = TypeVar("T")
 
@@ -17,7 +17,7 @@ T = TypeVar("T")
 def match(expression: Expression, sequence: list) -> Pattern | None:
     nfa = expression_to_nfa(expression)
     dfa = nfa_to_dfa(nfa)
-    pattern = Pattern(0, dfa)
+    pattern = Pattern(dfa)
     for item in sequence:
         next_state = pattern.consume(item)
         if not next_state:
@@ -32,7 +32,7 @@ def match(expression: Expression, sequence: list) -> Pattern | None:
 def starts_with(expression: Expression, sequence: list) -> Pattern | None:
     nfa = expression_to_nfa(expression)
     dfa = nfa_to_dfa(nfa)
-    pattern = Pattern(0, dfa)
+    pattern = Pattern(dfa)
     for item in sequence:
         next_state = pattern.consume(item)
         if not next_state:
@@ -50,31 +50,29 @@ class FindState:
     next_state_patterns: list[Pattern]
 
 
-def find_all(expression: Expression, sequence: list) -> list[Pattern]:
+def find_all(expression: Expression, sequence: list, nested: bool = False) -> list[Pattern]:
     dfa = nfa_to_dfa(expression_to_nfa(expression))
     fs = FindState([], [], [])
     for idx, item in enumerate(sequence):
-        fs.active_patterns.append(Pattern(idx, dfa))
+        fs.active_patterns.append(Pattern(dfa, idx))
         fs.next_state_patterns = []
         for pattern in fs.active_patterns:
-            if fs.matches and pattern.start < fs.matches[-1].end:
-                continue
-            if len(pattern.state.transition) == 0 and pattern.is_accepting():
-                pattern.end = idx
-                fs.matches.append(pattern)
-                continue
             if pattern.consume(item):
                 fs.next_state_patterns.append(pattern)
-            else:
-                if pattern.is_accepting():
-                    pattern.end = idx
+            elif pattern.is_accepting():
+                pattern.end = idx
+                if not fs.matches or fs.matches[-1].end < pattern.end:
                     fs.matches.append(pattern)
         fs.active_patterns = fs.next_state_patterns
     for pattern in fs.active_patterns:
         if pattern.is_accepting():
             pattern.end = len(sequence)
-            fs.matches.append(pattern)
-    return fs.matches
+            if not fs.matches or fs.matches[-1].end < pattern.end:
+                fs.matches.append(pattern)
+    if nested:
+        return fs.matches
+    else:
+        return prune_nested(fs.matches)
 
 
 def nfa_match(expression: Expression, sequence: list):

@@ -23,7 +23,7 @@ class JavaScript(Language):
         functions = get_headers(
             tokens,
             [Optional(Keyword("function")), Name(), OneOrMore(Balanced("(", ")"))],
-            Symbol("{"),
+            Symbol("{"), nested=True
         )
         arrow_functions = get_headers(
             tokens,
@@ -35,11 +35,11 @@ class JavaScript(Language):
                 OneOrMore(Balanced("(", ")")),
                 Symbol("=>"),
             ],
-            Symbol("{"),
+            Symbol("{"), nested=True,
         )
         return functions + arrow_functions
 
     def extract_blocks(
-        self, tokens: list[Token], headers: list[Header]
+            self, tokens: list[Token], headers: list[Header]
     ) -> list[TokenRange]:
         return get_blocks(tokens, "{", "}")

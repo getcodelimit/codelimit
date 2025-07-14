@@ -30,7 +30,7 @@ class Java(Language):
                     [Keyword('throws'), ZeroOrMore(And(Not(';'), Not('{'))), Symbol("{")]
                 )
             ]
-        )
+            , nested=True)
         return filter_headers(headers, tokens)
 
     def extract_blocks(self, tokens: list, headers: list) -> list:

@@ -14,9 +14,6 @@ class TokenRange:
     def __repr__(self):
         return self.__str__()
 
-    def token_string(self, tokens: list[Token]):
-        return " ".join([t.value for t in tokens[self.start:self.end]])
-
     def lt(self, other: TokenRange):
         return self.start < other.start
 

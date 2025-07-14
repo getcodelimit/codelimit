@@ -214,7 +214,6 @@ def _get_git_branch(path: Path) -> str | None:
         return ref
     try:
         out = sh.git('-c', f'safe.directory={path.resolve()}', 'rev-parse', '--abbrev-ref', 'HEAD', _cwd=path)
-        print(out)
         return out.strip()
     except (sh.ErrorReturnCode, sh.CommandNotFound):
         return None
