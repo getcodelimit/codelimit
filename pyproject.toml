@@ -1,7 +1,7 @@
 [project]
 name = "codelimit"
 version = "0.19.9"
-description = ""
+description = "Your Refactoring Alarm"
 authors = [{ name = "Rob van der Leek", email = "robvanderleek@gmail.com" }]
 requires-python = ">=3.10,<3.14"
 readme = "README.md"
