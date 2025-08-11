@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v0.20.1 (2025-08-11)
+
+### Bug Fixes
+
+- 🐛 Fix release workflow
+  ([`d3689c4`](https://github.com/getcodelimit/codelimit/commit/d3689c4083eec2baa41d02eaaf1cadef115f68e5))
+
+
 ## v0.20.0 (2025-08-11)
 
 ### Bug Fixes
