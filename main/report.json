@@ -1,7 +1,7 @@
 {
-  "version": "0.20.0",
-  "uuid": "1af10f76-2fc3-458a-b129-e669a1cdc57c",
-  "timestamp": "2025-08-11T13:55:51+00:00",
+  "version": "0.20.1",
+  "uuid": "b43555ed-d819-43f0-9b50-3b326ff94534",
+  "timestamp": "2025-08-11T14:18:13+00:00",
   "root": "/github/workspace",
   "repository": {
     "owner": "getcodelimit",
@@ -12,7 +12,7 @@
     "totals": {
       "Python": {
         "files": 92,
-        "lines_of_code": 2412,
+        "lines_of_code": 2414,
         "functions": 361,
         "hard_to_maintain": 1,
         "unmaintainable": 0
@@ -23,7 +23,7 @@
         "entries": [
           "codelimit/"
         ],
-        "profile": [1708, 658, 46, 0]
+        "profile": [1708, 660, 46, 0]
       },
       "codelimit/": {
         "entries": [
@@ -36,7 +36,7 @@
           "commands/",
           "languages/"
         ],
-        "profile": [1708, 658, 46, 0]
+        "profile": [1708, 660, 46, 0]
       },
       "codelimit/common/": {
         "entries": [
@@ -72,7 +72,7 @@
           "report/",
           "token_matching/"
         ],
-        "profile": [1454, 355, 46, 0]
+        "profile": [1454, 357, 46, 0]
       },
       "codelimit/common/gsm/": {
         "entries": [
@@ -207,7 +207,7 @@
         ]
       },
       "codelimit/version.py": {
-        "checksum": "550155f97ecc38f5830e5c9281786f60",
+        "checksum": "2db4327e443d524918d9c83078be81ad",
         "language": "Python",
         "loc": 0,
         "profile": [0, 0, 0, 0],
@@ -586,15 +586,15 @@
         ]
       },
       "codelimit/common/CheckResult.py": {
-        "checksum": "99b6f1679ba669619edb72154036b594",
+        "checksum": "6a03db434f51594cb162e01234e8785a",
         "language": "Python",
-        "loc": 31,
-        "profile": [10, 21, 0, 0],
+        "loc": 33,
+        "profile": [10, 23, 0, 0],
         "measurements": [
           {"unit_name": "__init__", "start": {"line": 13, "column": 5}, "end": {"line": 16, "column": 32}, "value": 4},
           {"unit_name": "add", "start": {"line": 18, "column": 5}, "end": {"line": 21, "column": 78}, "value": 4},
           {"unit_name": "__len__", "start": {"line": 23, "column": 5}, "end": {"line": 24, "column": 35}, "value": 2},
-          {"unit_name": "report", "start": {"line": 26, "column": 5}, "end": {"line": 46, "column": 14}, "value": 21}
+          {"unit_name": "report", "start": {"line": 26, "column": 5}, "end": {"line": 48, "column": 14}, "value": 23}
         ]
       },
       "codelimit/common/__init__.py": {
