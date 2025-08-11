@@ -34,9 +34,11 @@ class CheckResult:
                     file_path = str(file)
                 stdout.print(format_measurement(file_path, m), soft_wrap=True)
         if self.hard_to_maintain > 0 or self.unmaintainable > 0:
+            file_list_len = len(self.file_list)
+            need_refactoring = self.hard_to_maintain + self.unmaintainable
             rich.print(
-                f"{len(self.file_list)} files checked, "
-                f"{self.hard_to_maintain + self.unmaintainable} functions need "
+                f"{len(self.file_list)} {'file' if file_list_len == 1 else 'files'} checked, "
+                f"{need_refactoring} {'function needs' if need_refactoring == 1 else 'functions need'} "
                 f"refactoring."
             )
         else:
