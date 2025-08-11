@@ -24,7 +24,10 @@ def check_command(paths: list[Path], quiet: bool):
                 dirs[:] = [d for d in dirs if not d[0] == "."]
                 for file in files:
                     abs_path = Path(os.path.join(root, file))
-                    rel_path = abs_path.relative_to(Path.cwd())
+                    if abs_path.is_relative_to(Path.cwd()):
+                        rel_path = abs_path.relative_to(Path.cwd())
+                    else:
+                        rel_path = abs_path
                     if is_excluded(rel_path, excludes_spec):
                         continue
                     check_file(abs_path, check_result)
