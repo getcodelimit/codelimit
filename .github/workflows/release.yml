@@ -29,9 +29,31 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         strict: true
 
-  release_pypi:
+  update_repo:
     runs-on: ubuntu-latest
     needs: release
+    concurrency: release
+    permissions:
+      contents: write
+    steps:
+    - name: Checkout sources
+      uses: actions/checkout@v4
+      with:
+        ref: main
+        fetch-depth: 0
+
+    - name: Install uv
+      uses: astral-sh/setup-uv@v5
+
+    - name: Update lock file
+      run: uv lock
+
+    - name: Push changes
+      uses: stefanzweifel/git-auto-commit-action@v6
+
+  release_pypi:
+    runs-on: ubuntu-latest
+    needs: update_repo
     environment:
       name: pypi
       url: https://pypi.org/p/codelimit
@@ -48,7 +70,7 @@ jobs:
       uses: astral-sh/setup-uv@v5
 
     - name: Install dependencies
-      run: uv sync --dev
+      run: uv sync --locked --dev
 
     - name: Commit changes
       uses: stefanzweifel/git-auto-commit-action@v6
@@ -64,7 +86,7 @@ jobs:
 
   release_dockerhub:
     runs-on: ubuntu-latest
-    needs: release
+    needs: update_repo
 
     steps:
     - name: Checkout sources
@@ -97,6 +119,7 @@ jobs:
     name: Release binaries
     needs: 
       - release
+      - update_repo
       - release_pypi
     defaults:
       run:
