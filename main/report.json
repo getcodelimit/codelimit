@@ -1,7 +1,7 @@
 {
-  "version": "0.19.9",
-  "uuid": "b28c4c9f-4fe8-4a6e-a35d-e1489ad8dce7",
-  "timestamp": "2025-08-11T13:44:39+00:00",
+  "version": "0.20.0",
+  "uuid": "1af10f76-2fc3-458a-b129-e669a1cdc57c",
+  "timestamp": "2025-08-11T13:55:51+00:00",
   "root": "/github/workspace",
   "repository": {
     "owner": "getcodelimit",
@@ -207,7 +207,7 @@
         ]
       },
       "codelimit/version.py": {
-        "checksum": "dc74ce0be2d12d9cc6a116856bec57e1",
+        "checksum": "550155f97ecc38f5830e5c9281786f60",
         "language": "Python",
         "loc": 0,
         "profile": [0, 0, 0, 0],
