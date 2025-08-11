@@ -1,6 +1,33 @@
 # CHANGELOG
 
 
+## v0.20.0 (2025-08-11)
+
+### Bug Fixes
+
+- 🐛 Fix
+  ([`6954191`](https://github.com/getcodelimit/codelimit/commit/6954191ca7edccb138ca1a96635b029b6517ad8a))
+
+- 🐛 Fix click issue
+  ([`c2acfdd`](https://github.com/getcodelimit/codelimit/commit/c2acfddd3f09c12464afa4ef3fddd8258641d75f))
+
+- 🐛 Fix path error
+  ([`7e96bc2`](https://github.com/getcodelimit/codelimit/commit/7e96bc201216038886191dde2f417f38330b6ad6))
+
+- 🩹 Small changes
+  ([`ec5f0da`](https://github.com/getcodelimit/codelimit/commit/ec5f0da7c43f3ebd4a9812d81f4ef25ba75f138d))
+
+### Chores
+
+- 🚧 Test workflow
+  ([`247358a`](https://github.com/getcodelimit/codelimit/commit/247358abd8258c507c53e92ed7ff92b0952d1cbd))
+
+### Features
+
+- ✨ Build Docker image
+  ([`c0d57c7`](https://github.com/getcodelimit/codelimit/commit/c0d57c74eff90665b360aae09eaef294b935b6f3))
+
+
 ## v0.19.9 (2025-07-14)
 
 ### Bug Fixes
