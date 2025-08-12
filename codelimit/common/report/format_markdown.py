@@ -114,18 +114,18 @@ def _print_findings_without_repository(report_units: list[ReportUnit], console: 
         )
 
 
+def _format_link(owner: str, name: str, branch: str, unit: ReportUnit) -> str:
+    return (f'https://github.com/{owner}/{name}/blob/{branch}/{unit.file}#L{unit.measurement.start.line}-L'
+            f'{unit.measurement.end.line}')
+
+
 def _print_findings_with_repository(report_units: list[ReportUnit],
                                     repository: GithubRepository, console: Console):
     console.print("| **Function** | **Length** | **File** |")
     console.print("| --- | ---: | --- |")
     for unit in report_units:
         violation_type = "\u274C" if unit.measurement.value > 60 else "\u26A0"
-        owner = repository.owner
-        name = repository.name
-        branch = repository.branch
-        link = (f'https://github.com/{owner}/{name}/blob/{branch}/{unit.file}#L{unit.measurement.start.line}-L'
-                f'{unit.measurement.end.line}')
-        console.print(
-            f"| {violation_type} " + '[' + unit.measurement.unit_name + ']' + f"({link}) | {unit.measurement.value} "
-                                                                               f"| {unit.file} |"
+        link = _format_link(repository.owner, repository.name, repository.branch, unit)
+        print(
+            f'| {violation_type} [{unit.measurement.unit_name}]({link}) | {unit.measurement.value} | {unit.file} |'
         )
