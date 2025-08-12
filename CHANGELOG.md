@@ -1,6 +1,17 @@
 # CHANGELOG
 
 
+## v0.20.2 (2025-08-12)
+
+### Bug Fixes
+
+- 🐛 Fix markdown findings
+  ([`5a88baa`](https://github.com/getcodelimit/codelimit/commit/5a88baa6079cc4c798c1d61656c838f890ecbf7c))
+
+- 🩹 Improve output
+  ([`a9248cc`](https://github.com/getcodelimit/codelimit/commit/a9248cce9ce96433ccf38f5431e3919121f1bf34))
+
+
 ## v0.20.1 (2025-08-11)
 
 ### Bug Fixes
