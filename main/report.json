@@ -1,7 +1,7 @@
 {
   "version": "0.20.1",
-  "uuid": "b43555ed-d819-43f0-9b50-3b326ff94534",
-  "timestamp": "2025-08-11T14:18:13+00:00",
+  "uuid": "966e9ed3-e389-4158-9206-6bf4d9e33ccc",
+  "timestamp": "2025-08-12T07:21:39+00:00",
   "root": "/github/workspace",
   "repository": {
     "owner": "getcodelimit",
@@ -12,8 +12,8 @@
     "totals": {
       "Python": {
         "files": 92,
-        "lines_of_code": 2414,
-        "functions": 361,
+        "lines_of_code": 2412,
+        "functions": 362,
         "hard_to_maintain": 1,
         "unmaintainable": 0
       }
@@ -23,7 +23,7 @@
         "entries": [
           "codelimit/"
         ],
-        "profile": [1708, 660, 46, 0]
+        "profile": [1706, 660, 46, 0]
       },
       "codelimit/": {
         "entries": [
@@ -36,7 +36,7 @@
           "commands/",
           "languages/"
         ],
-        "profile": [1708, 660, 46, 0]
+        "profile": [1706, 660, 46, 0]
       },
       "codelimit/common/": {
         "entries": [
@@ -72,7 +72,7 @@
           "report/",
           "token_matching/"
         ],
-        "profile": [1454, 357, 46, 0]
+        "profile": [1452, 357, 46, 0]
       },
       "codelimit/common/gsm/": {
         "entries": [
@@ -138,7 +138,7 @@
           "ReportUnit.py",
           "__init__.py"
         ],
-        "profile": [302, 40, 46, 0]
+        "profile": [300, 40, 46, 0]
       },
       "codelimit/common/token_matching/": {
         "entries": [
@@ -890,10 +890,10 @@
         ]
       },
       "codelimit/common/report/format_markdown.py": {
-        "checksum": "dd791ef58be8a90948b9fb4fbc0498c0",
+        "checksum": "01501dc0d616b0275e027c1a48b671ed",
         "language": "Python",
-        "loc": 109,
-        "profile": [63, 0, 46, 0],
+        "loc": 107,
+        "profile": [61, 0, 46, 0],
         "measurements": [
           {"unit_name": "print_report", "start": {"line": 11, "column": 1}, "end": {"line": 13, "column": 35}, "value": 3},
           {"unit_name": "print_totals", "start": {"line": 16, "column": 1}, "end": {"line": 23, "column": 22}, "value": 8},
@@ -901,7 +901,8 @@
           {"unit_name": "print_summary", "start": {"line": 74, "column": 1}, "end": {"line": 88, "column": 22}, "value": 15},
           {"unit_name": "print_findings", "start": {"line": 91, "column": 1}, "end": {"line": 102, "column": 72}, "value": 12},
           {"unit_name": "_print_findings_without_repository", "start": {"line": 105, "column": 1}, "end": {"line": 114, "column": 10}, "value": 10},
-          {"unit_name": "_print_findings_with_repository", "start": {"line": 117, "column": 1}, "end": {"line": 131, "column": 10}, "value": 15}
+          {"unit_name": "_format_link", "start": {"line": 117, "column": 1}, "end": {"line": 119, "column": 44}, "value": 3},
+          {"unit_name": "_print_findings_with_repository", "start": {"line": 122, "column": 1}, "end": {"line": 131, "column": 10}, "value": 10}
         ]
       },
       "codelimit/common/report/ReportWriter.py": {
