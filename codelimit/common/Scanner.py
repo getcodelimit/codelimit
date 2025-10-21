@@ -5,13 +5,6 @@ from os.path import relpath
 from pathlib import Path
 from typing import Union, Callable
 
-from pathspec import PathSpec
-from pygments.lexer import Lexer
-from pygments.lexers import get_lexer_for_filename
-from pygments.util import ClassNotFound
-from rich import print
-from rich.live import Live
-
 from codelimit.common.Codebase import Codebase
 from codelimit.common.Configuration import Configuration
 from codelimit.common.Language import Language
@@ -29,6 +22,12 @@ from codelimit.common.utils import (
     calculate_checksum,
 )
 from codelimit.languages import Languages
+from pathspec import PathSpec
+from pygments.lexer import Lexer
+from pygments.lexers import get_lexer_for_filename
+from pygments.util import ClassNotFound
+from rich import print
+from rich.live import Live
 
 locale.setlocale(locale.LC_ALL, "")
 
@@ -205,4 +204,6 @@ DEFAULT_EXCLUDES = [
     "venv",
     "test",
     "tests",
+    "acceptancetests",
+    "integrationtests"
 ]

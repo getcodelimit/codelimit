@@ -3,7 +3,7 @@ name = "codelimit"
 version = "0.20.2"
 description = "Your Refactoring Alarm"
 authors = [{ name = "Rob van der Leek", email = "robvanderleek@gmail.com" }]
-requires-python = ">=3.10,<3.14"
+requires-python = ">=3.10,<3.15"
 readme = "README.md"
 license = "GPL-3.0-or-later"
 dependencies = [
@@ -14,7 +14,7 @@ dependencies = [
     "pyperclip>=1.9.0,<2",
     "pyyaml>=6.0.1,<7",
     "requests>=2.28.2,<3",
-    "rich>=13.7.1,<14",
+    "rich>=14.2.0",
     "sh>=2.1.0,<3",
     "typer>=0.16.0",
 ]
@@ -29,7 +29,6 @@ codelimit = "codelimit.__main__:cli"
 
 [dependency-groups]
 dev = [
-    "pyinstaller~=6.0 ; python_version >= '3.8' and python_version < '3.14'",
     "pytest-cov>=4.0.0,<5",
     "pytest>=7.2.1,<8",
     "poethepoet>=0.21.1,<0.22",
@@ -37,7 +36,7 @@ dev = [
     "mypy>=1.13.0,<2",
     "black>=24.10.0,<25",
     "ruff>=0.8.2,<0.9",
-    "python-semantic-release>=9.21.0",
+    "pyinstaller>=6.16.0",
 ]
 
 [build-system]

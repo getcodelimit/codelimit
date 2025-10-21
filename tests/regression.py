@@ -64,7 +64,7 @@ def compare_reports(r1: Report, r2: Report) -> bool:
 def run_repo(report_dir: Path) -> bool:
     result = True
     repo_parts = report_dir.name.split('_')
-    repo = GithubRepository(repo_parts[0], repo_parts[1], tag=repo_parts[2])
+    repo = GithubRepository(repo_parts[0], repo_parts[1], repo_parts[2], tag=repo_parts[2])
     info(f'Scanning {repo}')
     new_report = scan_repo(repo)
     old_report = load_report(report_dir)
