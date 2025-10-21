@@ -5,7 +5,7 @@ from dataclasses import dataclass
 class GithubRepository:
     owner: str
     name: str
-    branch: str | None = None
+    branch: str
     tag: str | None = None
 
     def __str__(self) -> str:
