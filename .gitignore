@@ -4,3 +4,4 @@ dist/
 main.spec
 .coverage
 coverage.xml
+.python-version
