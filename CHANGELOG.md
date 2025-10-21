@@ -1,6 +1,19 @@
 # CHANGELOG
 
 
+## v0.21.0 (2025-10-21)
+
+### Bug Fixes
+
+- 🐛 Fix entrypoint
+  ([`e07dd1b`](https://github.com/getcodelimit/codelimit/commit/e07dd1bf3305fb095de83e90f571326171b79895))
+
+### Features
+
+- ✨ Python 3.14 support ([#80](https://github.com/getcodelimit/codelimit/pull/80),
+  [`bfb8009`](https://github.com/getcodelimit/codelimit/commit/bfb80099d963475c2d36333ed7ea893437167971))
+
+
 ## v0.20.2 (2025-08-12)
 
 ### Bug Fixes
