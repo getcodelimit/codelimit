@@ -12,7 +12,7 @@ jobs:
       version: ${{ steps.release.outputs.version }}
     steps:
     - name: Checkout sources
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
       with:
         fetch-depth: 0
 
@@ -37,7 +37,7 @@ jobs:
       contents: write
     steps:
     - name: Checkout sources
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
       with:
         ref: main
         fetch-depth: 0
@@ -62,7 +62,7 @@ jobs:
       contents: write
     steps:
     - name: Checkout sources
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
       with:
         ref: main
 
@@ -90,7 +90,7 @@ jobs:
 
     steps:
     - name: Checkout sources
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
       with:
         ref: main
 
@@ -150,7 +150,7 @@ jobs:
             OUT_FILE_NAME: dist/codelimit-linux
     steps:
     - name: Checkout sources
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
       with:
         ref: main
 
