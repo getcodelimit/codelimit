@@ -49,7 +49,7 @@ jobs:
       run: uv lock
 
     - name: Push changes
-      uses: stefanzweifel/git-auto-commit-action@v6
+      uses: stefanzweifel/git-auto-commit-action@v7
 
   release_pypi:
     runs-on: ubuntu-latest
@@ -73,7 +73,7 @@ jobs:
       run: uv sync --locked --dev
 
     - name: Commit changes
-      uses: stefanzweifel/git-auto-commit-action@v6
+      uses: stefanzweifel/git-auto-commit-action@v7
       with:
         commit_message: Build by GitHub Actions
         file_pattern: uv.lock
