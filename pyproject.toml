@@ -3,7 +3,7 @@ name = "codelimit"
 version = "0.21.0"
 description = "Your Refactoring Alarm"
 authors = [{ name = "Rob van der Leek", email = "robvanderleek@gmail.com" }]
-requires-python = ">=3.10,<3.15"
+requires-python = ">=3.10,<3.16"
 readme = "README.md"
 license = "GPL-3.0-or-later"
 dependencies = [
