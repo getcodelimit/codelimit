@@ -5,6 +5,7 @@ from codelimit.languages.Cpp import Cpp
 from codelimit.languages.Java import Java
 from codelimit.languages.JavaScript import JavaScript
 from codelimit.languages.Python import Python
+from codelimit.languages.Rust import Rust
 from codelimit.languages.TypeScript import TypeScript
 
 
@@ -15,6 +16,7 @@ class Languages:
     Java = Java()
     JavaScript = JavaScript()
     Python = Python()
+    Rust = Rust()
     TypeScript = TypeScript()
 
     by_name: dict[str, Language] = {}
