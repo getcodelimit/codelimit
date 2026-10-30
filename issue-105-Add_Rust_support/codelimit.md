@@ -3,7 +3,7 @@
 ### Overview
 | **Language** | **Files** | **Functions** | **Lines of Code** | **⚠** | **⛌** |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| Python | 93 | 365 | 2425 | 1 | 0 |
+| Python | 93 | 366 | 2445 | 1 | 0 |
 
 ### Summary
 | **Easy / Verbose** | **Hard-to-maintain ⚠** | **Unmaintainable ⛌** |
