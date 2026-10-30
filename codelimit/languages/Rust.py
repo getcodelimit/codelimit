@@ -1,6 +1,7 @@
 from codelimit.common.Language import Language
 from codelimit.common.Token import Token
 from codelimit.common.TokenRange import TokenRange
+from codelimit.common.gsm.operator.OneOrMore import OneOrMore
 from codelimit.common.gsm.operator.ZeroOrMore import ZeroOrMore
 from codelimit.common.scope.Header import Header
 from codelimit.common.scope.scope_utils import (
@@ -8,6 +9,7 @@ from codelimit.common.scope.scope_utils import (
     get_headers,
 )
 from codelimit.common.token_matching.predicate.And import And
+from codelimit.common.token_matching.predicate.Balanced import Balanced
 from codelimit.common.token_matching.predicate.Keyword import Keyword
 from codelimit.common.token_matching.predicate.Name import Name
 from codelimit.common.token_matching.predicate.Not import Not
@@ -21,8 +23,13 @@ class Rust(Language):
     def extract_headers(self, tokens: list[Token]) -> list[Header]:
         return get_headers(
             tokens,
-            [Keyword("fn"), Name()],
-            [ZeroOrMore(And(Not(";"), Not("{"))), Symbol("{")],
+            [
+                Keyword("fn"),
+                Name(),
+                ZeroOrMore(Balanced("<", ">")),
+                OneOrMore(Balanced("(", ")")),
+            ],
+            [ZeroOrMore(Not("{")), Symbol("{")],
             nested=True,
         )
 

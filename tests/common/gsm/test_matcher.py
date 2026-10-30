@@ -256,5 +256,6 @@ def test_starts_with_overlapping_predicates():
     expr = [ZeroOrMore(Not("c")), "b"]
     text = ["a", "a", "b", "b"]
 
-    with pytest.raises(ValueError):
-        starts_with(expr, text)
+    pattern = starts_with(expr, text)
+
+    assert pattern is None # ZeroOrMore(Not("c")) will consume all tokens

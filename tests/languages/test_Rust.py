@@ -127,3 +127,30 @@ def test_skip_function_with_nocl_comment():
     """
 
     assert_functions(code, Languages.Rust, {"foo": 3})
+
+
+def test_nested_semi_colon_in_headers():
+    code = """
+        fn digest(input: [u8; 32]) {
+            42;
+        }
+    """
+
+    assert_functions(code, Languages.Rust, {"digest": 3})
+
+
+def test_me():
+    code = """
+        fn map<U, F: FnOnce(T)>(self, f: F) -> Selection<U> {
+            match self {
+                Selection::Select(name, inner) => {
+                    Selection::Select(name, f(inner))
+                }
+                Selection::Negate(name, inner) => {
+                    Selection::Negate(name, f(inner))
+                }
+            }
+        }
+    """
+
+    assert_functions(code, Languages.Rust, {"map": 10})

@@ -1,16 +1,16 @@
 {
   "version": "0.21.0",
-  "uuid": "0ad509cf-f508-45f3-9589-bf2f7c842440",
-  "timestamp": "2026-10-13T11:37:02+00:00",
-  "root": "/private/var/folders/t2/s_70szzn7qn22cp4d2nmrjbc0000gn/T/tmp3w2r39za/ripgrep",
+  "uuid": "30cceac6-b8e3-43d5-bd0a-f9fbb747e93b",
+  "timestamp": "2026-10-30T09:54:05+00:00",
+  "root": "/private/var/folders/t2/s_70szzn7qn22cp4d2nmrjbc0000gn/T/tmpnmjsfzst/ripgrep",
   "codebase": {
     "totals": {
       "Rust": {
         "files": 85,
-        "lines_of_code": 25171,
-        "functions": 2697,
-        "hard_to_maintain": 113,
-        "unmaintainable": 23
+        "lines_of_code": 25941,
+        "functions": 2708,
+        "hard_to_maintain": 116,
+        "unmaintainable": 28
       }
     },
     "tree": {
@@ -20,7 +20,7 @@
           "crates/",
           "fuzz/"
         ],
-        "profile": [11942, 6864, 4491, 1874]
+        "profile": [11966, 6864, 4628, 2483]
       },
       "crates/searcher/examples/": {
         "entries": [
@@ -33,7 +33,7 @@
           "examples/",
           "src/"
         ],
-        "profile": [1538, 1163, 734, 148]
+        "profile": [1549, 1163, 791, 148]
       },
       "crates/": {
         "entries": [
@@ -48,7 +48,7 @@
           "grep/",
           "pcre2/"
         ],
-        "profile": [11923, 6839, 4491, 1874]
+        "profile": [11947, 6839, 4628, 2483]
       },
       "crates/searcher/src/": {
         "entries": [
@@ -60,7 +60,7 @@
           "lines.rs",
           "searcher/"
         ],
-        "profile": [1532, 1145, 734, 148]
+        "profile": [1543, 1145, 791, 148]
       },
       "crates/searcher/src/searcher/": {
         "entries": [
@@ -80,7 +80,7 @@
           "messages.rs",
           "flags/"
         ],
-        "profile": [4126, 1240, 1460, 449]
+        "profile": [4126, 1240, 1540, 758]
       },
       "crates/core/flags/": {
         "entries": [
@@ -93,7 +93,7 @@
           "complete/",
           "doc/"
         ],
-        "profile": [3911, 1045, 1234, 384]
+        "profile": [3911, 1045, 1314, 693]
       },
       "crates/core/flags/complete/": {
         "entries": [
@@ -148,7 +148,7 @@
           "examples/",
           "src/"
         ],
-        "profile": [1765, 797, 747, 589]
+        "profile": [1775, 797, 747, 589]
       },
       "crates/ignore/src/": {
         "entries": [
@@ -161,7 +161,7 @@
           "default_types.rs",
           "walk.rs"
         ],
-        "profile": [1759, 797, 704, 589]
+        "profile": [1769, 797, 704, 589]
       },
       "crates/printer/src/": {
         "entries": [
@@ -204,13 +204,13 @@
           "wtr.rs",
           "process.rs"
         ],
-        "profile": [485, 243, 77, 0]
+        "profile": [480, 243, 77, 0]
       },
       "crates/cli/": {
         "entries": [
           "src/"
         ],
-        "profile": [485, 243, 77, 0]
+        "profile": [480, 243, 77, 0]
       },
       "crates/regex/src/": {
         "entries": [
@@ -237,13 +237,13 @@
           "lib.rs",
           "interpolate.rs"
         ],
-        "profile": [476, 83, 148, 0]
+        "profile": [484, 83, 148, 300]
       },
       "crates/matcher/": {
         "entries": [
           "src/"
         ],
-        "profile": [476, 83, 148, 0]
+        "profile": [484, 83, 148, 300]
       },
       "crates/grep/examples/": {
         "entries": [
@@ -386,14 +386,16 @@
       "crates/searcher/src/sink.rs": {
         "checksum": "f02be0143c95e2bfc53b49a3a2dd9365",
         "language": "Rust",
-        "loc": 211,
-        "profile": [174, 37, 0, 0],
+        "loc": 279,
+        "profile": [185, 37, 57, 0],
         "measurements": [
+          {"unit_name": "error_message", "start": {"line": 21, "column": 5}, "end": {"line": 50, "column": 2}, "value": 11},
           {"unit_name": "error_io", "start": {"line": 27, "column": 5}, "end": {"line": 29, "column": 6}, "value": 3},
           {"unit_name": "error_config", "start": {"line": 35, "column": 5}, "end": {"line": 37, "column": 6}, "value": 3},
           {"unit_name": "error_message", "start": {"line": 43, "column": 5}, "end": {"line": 45, "column": 6}, "value": 3},
           {"unit_name": "error_io", "start": {"line": 47, "column": 5}, "end": {"line": 49, "column": 6}, "value": 3},
           {"unit_name": "error_message", "start": {"line": 55, "column": 5}, "end": {"line": 59, "column": 6}, "value": 5},
+          {"unit_name": "matched", "start": {"line": 124, "column": 5}, "end": {"line": 276, "column": 2}, "value": 57},
           {"unit_name": "context", "start": {"line": 143, "column": 5}, "end": {"line": 149, "column": 6}, "value": 7},
           {"unit_name": "context_break", "start": {"line": 167, "column": 5}, "end": {"line": 172, "column": 6}, "value": 6},
           {"unit_name": "binary_data", "start": {"line": 188, "column": 5}, "end": {"line": 194, "column": 6}, "value": 7},
@@ -1745,15 +1747,20 @@
       "crates/core/flags/mod.rs": {
         "checksum": "10ea9ff8b6c9ee35850298836d5c3a26",
         "language": "Rust",
-        "loc": 45,
-        "profile": [45, 0, 0, 0],
+        "loc": 434,
+        "profile": [45, 0, 80, 309],
         "measurements": [
           {"unit_name": "name_short", "start": {"line": 81, "column": 5}, "end": {"line": 83, "column": 6}, "value": 3},
+          {"unit_name": "name_long", "start": {"line": 89, "column": 5}, "end": {"line": 302, "column": 2}, "value": 43},
           {"unit_name": "aliases", "start": {"line": 96, "column": 5}, "end": {"line": 98, "column": 6}, "value": 3},
           {"unit_name": "name_negated", "start": {"line": 111, "column": 5}, "end": {"line": 113, "column": 6}, "value": 3},
           {"unit_name": "doc_variable", "start": {"line": 124, "column": 5}, "end": {"line": 126, "column": 6}, "value": 3},
+          {"unit_name": "doc_category", "start": {"line": 132, "column": 5}, "end": {"line": 266, "column": 2}, "value": 123},
+          {"unit_name": "doc_short", "start": {"line": 139, "column": 5}, "end": {"line": 248, "column": 2}, "value": 101},
+          {"unit_name": "doc_long", "start": {"line": 143, "column": 5}, "end": {"line": 233, "column": 2}, "value": 85},
           {"unit_name": "doc_choices", "start": {"line": 149, "column": 5}, "end": {"line": 151, "column": 6}, "value": 3},
           {"unit_name": "completion_type", "start": {"line": 153, "column": 5}, "end": {"line": 155, "column": 6}, "value": 3},
+          {"unit_name": "update", "start": {"line": 177, "column": 5}, "end": {"line": 215, "column": 2}, "value": 37},
           {"unit_name": "as_str", "start": {"line": 222, "column": 5}, "end": {"line": 232, "column": 6}, "value": 11},
           {"unit_name": "unwrap_switch", "start": {"line": 277, "column": 5}, "end": {"line": 284, "column": 6}, "value": 8},
           {"unit_name": "unwrap_value", "start": {"line": 294, "column": 5}, "end": {"line": 301, "column": 6}, "value": 8}
@@ -2396,8 +2403,8 @@
       "crates/ignore/src/walk.rs": {
         "checksum": "390efbff906227a09a93c5c5b0170d54",
         "language": "Rust",
-        "loc": 1572,
-        "profile": [711, 397, 189, 275],
+        "loc": 1582,
+        "profile": [721, 397, 189, 275],
         "measurements": [
           {"unit_name": "path", "start": {"line": 37, "column": 9}, "end": {"line": 39, "column": 6}, "value": 3},
           {"unit_name": "into_path", "start": {"line": 43, "column": 9}, "end": {"line": 45, "column": 6}, "value": 3},
@@ -2481,7 +2488,9 @@
           {"unit_name": "next", "start": {"line": 1234, "column": 5}, "end": {"line": 1259, "column": 6}, "value": 26},
           {"unit_name": "is_continue", "start": {"line": 1281, "column": 5}, "end": {"line": 1283, "column": 6}, "value": 3},
           {"unit_name": "is_quit", "start": {"line": 1285, "column": 5}, "end": {"line": 1287, "column": 6}, "value": 3},
+          {"unit_name": "build", "start": {"line": 1296, "column": 5}, "end": {"line": 1305, "column": 2}, "value": 5},
           {"unit_name": "build", "start": {"line": 1302, "column": 5}, "end": {"line": 1304, "column": 6}, "value": 3},
+          {"unit_name": "visit", "start": {"line": 1315, "column": 5}, "end": {"line": 1320, "column": 2}, "value": 5},
           {"unit_name": "build", "start": {"line": 1325, "column": 5}, "end": {"line": 1328, "column": 6}, "value": 4},
           {"unit_name": "visit", "start": {"line": 1339, "column": 5}, "end": {"line": 1341, "column": 6}, "value": 3},
           {"unit_name": "run", "start": {"line": 1369, "column": 9}, "end": {"line": 1374, "column": 6}, "value": 6},
@@ -3219,8 +3228,8 @@
       "crates/cli/src/process.rs": {
         "checksum": "3f47f844cb51250da52666f51d500057",
         "language": "Rust",
-        "loc": 131,
-        "profile": [96, 35, 0, 0],
+        "loc": 126,
+        "profile": [91, 35, 0, 0],
         "measurements": [
           {"unit_name": "io", "start": {"line": 23, "column": 16}, "end": {"line": 25, "column": 6}, "value": 3},
           {"unit_name": "stderr", "start": {"line": 28, "column": 16}, "end": {"line": 30, "column": 6}, "value": 3},
@@ -3235,7 +3244,6 @@
           {"unit_name": "close", "start": {"line": 218, "column": 9}, "end": {"line": 243, "column": 6}, "value": 16},
           {"unit_name": "drop", "start": {"line": 247, "column": 5}, "end": {"line": 251, "column": 6}, "value": 5},
           {"unit_name": "read", "start": {"line": 255, "column": 5}, "end": {"line": 267, "column": 6}, "value": 13},
-          {"unit_name": "r", "start": {"line": 280, "column": 5}, "end": {"line": 284, "column": 6}, "value": 5},
           {"unit_name": "sync", "start": {"line": 287, "column": 5}, "end": {"line": 289, "column": 6}, "value": 3},
           {"unit_name": "read_to_end", "start": {"line": 295, "column": 5}, "end": {"line": 307, "column": 6}, "value": 13},
           {"unit_name": "stderr_to_command_error", "start": {"line": 310, "column": 1}, "end": {"line": 316, "column": 2}, "value": 7}
@@ -3477,8 +3485,8 @@
       "crates/matcher/src/lib.rs": {
         "checksum": "6932abdfdd97db0e26b483afdb6df3d1",
         "language": "Rust",
-        "loc": 594,
-        "profile": [464, 59, 71, 0],
+        "loc": 902,
+        "profile": [472, 59, 71, 300],
         "measurements": [
           {"unit_name": "new", "start": {"line": 81, "column": 9}, "end": {"line": 84, "column": 6}, "value": 4},
           {"unit_name": "zero", "start": {"line": 88, "column": 9}, "end": {"line": 90, "column": 6}, "value": 3},
@@ -3507,6 +3515,8 @@
           {"unit_name": "remove", "start": {"line": 341, "column": 9}, "end": {"line": 345, "column": 6}, "value": 5},
           {"unit_name": "remove_all", "start": {"line": 349, "column": 9}, "end": {"line": 353, "column": 6}, "value": 5},
           {"unit_name": "contains", "start": {"line": 357, "column": 9}, "end": {"line": 361, "column": 6}, "value": 5},
+          {"unit_name": "len", "start": {"line": 382, "column": 5}, "end": {"line": 488, "column": 2}, "value": 8},
+          {"unit_name": "get", "start": {"line": 390, "column": 5}, "end": {"line": 476, "column": 2}, "value": 77},
           {"unit_name": "as_match", "start": {"line": 397, "column": 5}, "end": {"line": 399, "column": 6}, "value": 3},
           {"unit_name": "is_empty", "start": {"line": 407, "column": 5}, "end": {"line": 409, "column": 6}, "value": 3},
           {"unit_name": "interpolate", "start": {"line": 441, "column": 5}, "end": {"line": 460, "column": 6}, "value": 20},
@@ -3516,6 +3526,7 @@
           {"unit_name": "description", "start": {"line": 500, "column": 5}, "end": {"line": 502, "column": 6}, "value": 3},
           {"unit_name": "fmt", "start": {"line": 506, "column": 5}, "end": {"line": 508, "column": 6}, "value": 3},
           {"unit_name": "from", "start": {"line": 512, "column": 5}, "end": {"line": 514, "column": 6}, "value": 3},
+          {"unit_name": "new_captures", "start": {"line": 583, "column": 5}, "end": {"line": 1379, "column": 2}, "value": 223},
           {"unit_name": "capture_count", "start": {"line": 597, "column": 5}, "end": {"line": 599, "column": 6}, "value": 3},
           {"unit_name": "capture_index", "start": {"line": 611, "column": 5}, "end": {"line": 613, "column": 6}, "value": 3},
           {"unit_name": "find", "start": {"line": 621, "column": 5}, "end": {"line": 623, "column": 6}, "value": 3},

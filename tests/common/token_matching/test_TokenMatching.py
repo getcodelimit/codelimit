@@ -5,6 +5,7 @@ from pygments.lexers import PythonLexer
 
 from codelimit.common.gsm.matcher import find_all
 from codelimit.common.gsm.operator.OneOrMore import OneOrMore
+from codelimit.common.gsm.operator.ZeroOrMore import ZeroOrMore
 from codelimit.common.lexer_utils import lex
 from codelimit.common.token_matching.predicate.Balanced import Balanced
 from codelimit.common.token_matching.predicate.Keyword import Keyword
@@ -109,5 +110,16 @@ def test_predicate_follows_operator():
     code = "Split(new[] {' '}) {"
     tokens = lex(CSharpLexer(), code)
 
-    with pytest.raises(ValueError):
-        find_all([Name(), OneOrMore(Balanced("(", ")")), Symbol('{')], tokens)
+    result = find_all([Name(), OneOrMore(Balanced("(", ")")), Symbol('{')], tokens)
+
+    assert len(result) == 1
+    assert result[0].token_string() == "Split ( new [ ] { ' ' } ) {"
+
+def test_zero_or_more_followed_by_one_or_more():
+    code = "<()> ()"
+    tokens = lex(CppLexer(), code)
+
+    result = find_all([ZeroOrMore(Balanced("<", ">")), OneOrMore(Balanced("(", ")"))], tokens)
+
+    assert len(result) == 1
+    assert result[0].token_string() == "< ( ) > ( )"

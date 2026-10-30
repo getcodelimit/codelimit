@@ -51,7 +51,8 @@ uv run python tests/regression.py add <owner/repo> <tag>   # add a regression ex
   and a new language must be imported in `codelimit/languages/__init__.py`.
 - Brace languages use `scope_utils.get_blocks(tokens, "{", "}")`. Python uses indentation-based block detection.
 - `allow_nested_functions=False` drops nested scopes instead of folding them into their parent as children.
-- Functions preceded by a `# nocl` / `// nocl` comment are excluded (`source_utils.filter_nocl_comment_tokens`).
+- Functions with a `# nocl` / `// nocl` comment on their declaration line are excluded
+  (`source_utils.filter_nocl_comment_tokens`).
 
 ### Token pattern matching (`codelimit/common/gsm/`)
 
