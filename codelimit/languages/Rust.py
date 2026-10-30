@@ -1,19 +1,18 @@
-from codelimit.common.Language import Language
-from codelimit.common.Token import Token
-from codelimit.common.TokenRange import TokenRange
 from codelimit.common.gsm.operator.OneOrMore import OneOrMore
 from codelimit.common.gsm.operator.ZeroOrMore import ZeroOrMore
+from codelimit.common.Language import Language
 from codelimit.common.scope.Header import Header
 from codelimit.common.scope.scope_utils import (
     get_blocks,
     get_headers,
 )
-from codelimit.common.token_matching.predicate.And import And
+from codelimit.common.Token import Token
 from codelimit.common.token_matching.predicate.Balanced import Balanced
 from codelimit.common.token_matching.predicate.Keyword import Keyword
 from codelimit.common.token_matching.predicate.Name import Name
 from codelimit.common.token_matching.predicate.Not import Not
 from codelimit.common.token_matching.predicate.Symbol import Symbol
+from codelimit.common.TokenRange import TokenRange
 
 
 class Rust(Language):
