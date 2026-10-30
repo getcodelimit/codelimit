@@ -1,7 +1,7 @@
 {
   "version": "0.21.0",
-  "uuid": "9c90142e-1f2e-4448-a562-20527ee9b2df",
-  "timestamp": "2026-10-30T09:55:21+00:00",
+  "uuid": "ea726397-eaba-4ae3-a600-f82b016daac3",
+  "timestamp": "2026-10-30T10:55:37+00:00",
   "root": "/github/workspace",
   "repository": {
     "owner": "getcodelimit",
@@ -333,14 +333,14 @@
         ]
       },
       "codelimit/languages/Rust.py": {
-        "checksum": "8f491236f8f27059a5a6e909954b567b",
+        "checksum": "f4aac4a66569793dd6ada068ea9428a2",
         "language": "Python",
         "loc": 18,
         "profile": [18, 0, 0, 0],
         "measurements": [
-          {"unit_name": "__init__", "start": {"line": 20, "column": 5}, "end": {"line": 21, "column": 33}, "value": 2},
-          {"unit_name": "extract_headers", "start": {"line": 23, "column": 5}, "end": {"line": 34, "column": 10}, "value": 12},
-          {"unit_name": "extract_blocks", "start": {"line": 36, "column": 5}, "end": {"line": 39, "column": 44}, "value": 4}
+          {"unit_name": "__init__", "start": {"line": 19, "column": 5}, "end": {"line": 20, "column": 33}, "value": 2},
+          {"unit_name": "extract_headers", "start": {"line": 22, "column": 5}, "end": {"line": 33, "column": 10}, "value": 12},
+          {"unit_name": "extract_blocks", "start": {"line": 35, "column": 5}, "end": {"line": 38, "column": 44}, "value": 4}
         ]
       },
       "codelimit/languages/C.py": {
