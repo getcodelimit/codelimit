@@ -1,10 +1,8 @@
 from textwrap import dedent
 
-import pytest
-
-from codelimit.common.gsm.Expression import expression_to_nfa, nfa_to_dfa
 from codelimit.common.gsm.automata.State import State
-from codelimit.common.gsm.matcher import match, nfa_match, find_all, starts_with
+from codelimit.common.gsm.Expression import expression_to_nfa, nfa_to_dfa
+from codelimit.common.gsm.matcher import find_all, match, nfa_match, starts_with
 from codelimit.common.gsm.operator.OneOrMore import OneOrMore
 from codelimit.common.gsm.operator.Optional import Optional
 from codelimit.common.gsm.operator.Union import Union
@@ -164,6 +162,7 @@ def test_find_all_nested_should_prioritize_longest_match():
     assert matches[2].start == 7
     assert matches[2].end == 9
 
+
 def test_single_item():
     expr = ["a"]
     text = ["a", "a", "b", "a"]
@@ -256,5 +255,6 @@ def test_starts_with_overlapping_predicates():
     expr = [ZeroOrMore(Not("c")), "b"]
     text = ["a", "a", "b", "b"]
 
-    with pytest.raises(ValueError):
-        starts_with(expr, text)
+    pattern = starts_with(expr, text)
+
+    assert pattern is None  # ZeroOrMore(Not("c")) will consume all tokens

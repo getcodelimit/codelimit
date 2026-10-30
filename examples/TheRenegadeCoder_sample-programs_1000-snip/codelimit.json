@@ -1,10 +1,17 @@
 {
-  "version": "0.18.1",
-  "uuid": "e0fa1097-1ec6-468e-b5fc-595e48a412f4",
-  "timestamp": "2025-01-17T21:59:44+00:00",
-  "root": "/private/var/folders/t2/s_70szzn7qn22cp4d2nmrjbc0000gn/T/tmpqjz0jke_/sample-programs",
+  "version": "0.21.0",
+  "uuid": "9b413156-f2c1-47c1-8778-5c83529e0145",
+  "timestamp": "2026-10-13T12:23:26+00:00",
+  "root": "/private/var/folders/t2/s_70szzn7qn22cp4d2nmrjbc0000gn/T/tmpubu7cqxl/sample-programs",
   "codebase": {
     "totals": {
+      "Rust": {
+        "files": 37,
+        "lines_of_code": 1464,
+        "functions": 177,
+        "hard_to_maintain": 1,
+        "unmaintainable": 0
+      },
       "TypeScript": {
         "files": 23,
         "lines_of_code": 217,
@@ -61,7 +68,67 @@
           "archive/",
           "scripts/"
         ],
-        "profile": [2588, 2243, 1246, 66]
+        "profile": [3477, 2783, 1281, 66]
+      },
+      "archive/r/rust/": {
+        "entries": [
+          "remove-all-whitespace.rs",
+          "longest-palindromic-substring.rs",
+          "baklava.rs",
+          "josephus-problem.rs",
+          "rot13.rs",
+          "minimum-spanning-tree.rs",
+          "fizz-buzz.rs",
+          "sleep-sort.rs",
+          "convex-hull.rs",
+          "merge-sort.rs",
+          "quick-sort.rs",
+          "roman-numeral.rs",
+          "fraction-math.rs",
+          "prime-number.rs",
+          "job-sequencing.rs",
+          "binary-search.rs",
+          "insertion-sort.rs",
+          "reverse-string.rs",
+          "bubble-sort.rs",
+          "dijkstra.rs",
+          "maximum-subarray.rs",
+          "fibonacci.rs",
+          "selection-sort.rs",
+          "quine.rs",
+          "capitalize.rs",
+          "depth-first-search.rs",
+          "palindromic-number.rs",
+          "duplicate-character-counter.rs",
+          "longest-word.rs",
+          "maximum-array-rotation.rs",
+          "file-input-output.rs",
+          "hello-world.rs",
+          "linear-search.rs",
+          "factorial.rs",
+          "even-odd.rs",
+          "transpose-matrix.rs",
+          "longest-common-subsequence.rs"
+        ],
+        "profile": [889, 540, 35, 0]
+      },
+      "archive/r/": {
+        "entries": [
+          "rust/"
+        ],
+        "profile": [889, 540, 35, 0]
+      },
+      "archive/": {
+        "entries": [
+          "r/",
+          "t/",
+          "h/",
+          "m/",
+          "j/",
+          "c/",
+          "p/"
+        ],
+        "profile": [3411, 2712, 1245, 66]
       },
       "archive/t/typescript/": {
         "entries": [
@@ -96,17 +163,6 @@
           "typescript/"
         ],
         "profile": [122, 95, 0, 0]
-      },
-      "archive/": {
-        "entries": [
-          "t/",
-          "h/",
-          "m/",
-          "j/",
-          "c/",
-          "p/"
-        ],
-        "profile": [2522, 2172, 1210, 66]
       },
       "archive/h/hack/": {
         "entries": [
@@ -370,6 +426,479 @@
       }
     },
     "files": {
+      "archive/r/rust/remove-all-whitespace.rs": {
+        "checksum": "79382284f025739f8d4ff539b78fb1a4",
+        "language": "Rust",
+        "loc": 18,
+        "profile": [18, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "usage", "start": {"line": 4, "column": 1}, "end": {"line": 7, "column": 2}, "value": 4},
+          {"unit_name": "remove_all_whitespaces", "start": {"line": 8, "column": 1}, "end": {"line": 10, "column": 2}, "value": 3},
+          {"unit_name": "main", "start": {"line": 12, "column": 1}, "end": {"line": 28, "column": 2}, "value": 11}
+        ]
+      },
+      "archive/r/rust/longest-palindromic-substring.rs": {
+        "checksum": "74f0bbe74160b7e4a02d3e80dfac829f",
+        "language": "Rust",
+        "loc": 53,
+        "profile": [18, 0, 35, 0],
+        "measurements": [
+          {"unit_name": "usage", "start": {"line": 4, "column": 1}, "end": {"line": 7, "column": 2}, "value": 4},
+          {"unit_name": "longest_palindromic_substring", "start": {"line": 13, "column": 1}, "end": {"line": 62, "column": 2}, "value": 35},
+          {"unit_name": "main", "start": {"line": 64, "column": 1}, "end": {"line": 83, "column": 2}, "value": 14}
+        ]
+      },
+      "archive/r/rust/baklava.rs": {
+        "checksum": "6c093990eba7c07757fd6654e90af158",
+        "language": "Rust",
+        "loc": 6,
+        "profile": [6, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "main", "start": {"line": 1, "column": 1}, "end": {"line": 6, "column": 2}, "value": 6}
+        ]
+      },
+      "archive/r/rust/josephus-problem.rs": {
+        "checksum": "0bed8417d425167be00cd1914db1cbec",
+        "language": "Rust",
+        "loc": 26,
+        "profile": [26, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "usage", "start": {"line": 5, "column": 1}, "end": {"line": 8, "column": 2}, "value": 4},
+          {"unit_name": "parse_int", "start": {"line": 10, "column": 1}, "end": {"line": 12, "column": 2}, "value": 3},
+          {"unit_name": "josephus", "start": {"line": 22, "column": 1}, "end": {"line": 29, "column": 2}, "value": 7},
+          {"unit_name": "main", "start": {"line": 31, "column": 1}, "end": {"line": 48, "column": 2}, "value": 12}
+        ]
+      },
+      "archive/r/rust/rot13.rs": {
+        "checksum": "cb747578e9f22a12b9ad1527f1c83fbd",
+        "language": "Rust",
+        "loc": 37,
+        "profile": [14, 23, 0, 0],
+        "measurements": [
+          {"unit_name": "rot13", "start": {"line": 3, "column": 1}, "end": {"line": 30, "column": 2}, "value": 23},
+          {"unit_name": "main", "start": {"line": 32, "column": 1}, "end": {"line": 47, "column": 2}, "value": 14}
+        ]
+      },
+      "archive/r/rust/minimum-spanning-tree.rs": {
+        "checksum": "4527f00aff4cb0d12ab2693d1c8ab331",
+        "language": "Rust",
+        "loc": 83,
+        "profile": [26, 57, 0, 0],
+        "measurements": [
+          {"unit_name": "usage", "start": {"line": 6, "column": 1}, "end": {"line": 9, "column": 2}, "value": 4},
+          {"unit_name": "parse_int", "start": {"line": 11, "column": 1}, "end": {"line": 13, "column": 2}, "value": 3},
+          {"unit_name": "parse_int_list", "start": {"line": 15, "column": 1}, "end": {"line": 19, "column": 2}, "value": 5},
+          {"unit_name": "new", "start": {"line": 28, "column": 5}, "end": {"line": 30, "column": 6}, "value": 3},
+          {"unit_name": "add_child", "start": {"line": 32, "column": 5}, "end": {"line": 34, "column": 6}, "value": 3},
+          {"unit_name": "create_tree", "start": {"line": 39, "column": 1}, "end": {"line": 58, "column": 2}, "value": 16},
+          {"unit_name": "new", "start": {"line": 68, "column": 5}, "end": {"line": 70, "column": 6}, "value": 3},
+          {"unit_name": "prim_mst", "start": {"line": 75, "column": 1}, "end": {"line": 117, "column": 2}, "value": 25},
+          {"unit_name": "get_total_mst_weight", "start": {"line": 119, "column": 1}, "end": {"line": 123, "column": 2}, "value": 5},
+          {"unit_name": "main", "start": {"line": 125, "column": 1}, "end": {"line": 150, "column": 2}, "value": 16}
+        ]
+      },
+      "archive/r/rust/fizz-buzz.rs": {
+        "checksum": "08653c83dcb478ddb0a6ebe910ae6a2c",
+        "language": "Rust",
+        "loc": 13,
+        "profile": [13, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "main", "start": {"line": 1, "column": 1}, "end": {"line": 13, "column": 2}, "value": 13}
+        ]
+      },
+      "archive/r/rust/sleep-sort.rs": {
+        "checksum": "5f7d4507cf4fef2ddca3f02a2a5a44b5",
+        "language": "Rust",
+        "loc": 42,
+        "profile": [24, 18, 0, 0],
+        "measurements": [
+          {"unit_name": "usage", "start": {"line": 8, "column": 1}, "end": {"line": 11, "column": 2}, "value": 4},
+          {"unit_name": "parse_int", "start": {"line": 13, "column": 1}, "end": {"line": 15, "column": 2}, "value": 3},
+          {"unit_name": "parse_int_list", "start": {"line": 17, "column": 1}, "end": {"line": 21, "column": 2}, "value": 5},
+          {"unit_name": "sleep_sort", "start": {"line": 23, "column": 1}, "end": {"line": 45, "column": 2}, "value": 18},
+          {"unit_name": "main", "start": {"line": 47, "column": 1}, "end": {"line": 63, "column": 2}, "value": 12}
+        ]
+      },
+      "archive/r/rust/convex-hull.rs": {
+        "checksum": "a6cbafc06e9e2e27d74de22072683bff",
+        "language": "Rust",
+        "loc": 79,
+        "profile": [35, 44, 0, 0],
+        "measurements": [
+          {"unit_name": "usage", "start": {"line": 6, "column": 1}, "end": {"line": 12, "column": 2}, "value": 7},
+          {"unit_name": "parse_int", "start": {"line": 14, "column": 1}, "end": {"line": 16, "column": 2}, "value": 3},
+          {"unit_name": "parse_int_list", "start": {"line": 18, "column": 1}, "end": {"line": 22, "column": 2}, "value": 5},
+          {"unit_name": "new", "start": {"line": 31, "column": 5}, "end": {"line": 33, "column": 6}, "value": 3},
+          {"unit_name": "fmt", "start": {"line": 38, "column": 5}, "end": {"line": 40, "column": 6}, "value": 3},
+          {"unit_name": "form_points", "start": {"line": 43, "column": 1}, "end": {"line": 48, "column": 2}, "value": 6},
+          {"unit_name": "convex_hull", "start": {"line": 52, "column": 1}, "end": {"line": 88, "column": 2}, "value": 25},
+          {"unit_name": "orientation", "start": {"line": 95, "column": 1}, "end": {"line": 97, "column": 2}, "value": 3},
+          {"unit_name": "show_points", "start": {"line": 99, "column": 1}, "end": {"line": 103, "column": 2}, "value": 5},
+          {"unit_name": "main", "start": {"line": 105, "column": 1}, "end": {"line": 133, "column": 2}, "value": 19}
+        ]
+      },
+      "archive/r/rust/merge-sort.rs": {
+        "checksum": "537a59977d4119c69ec7c0a1b9817b3e",
+        "language": "Rust",
+        "loc": 56,
+        "profile": [35, 21, 0, 0],
+        "measurements": [
+          {"unit_name": "usage", "start": {"line": 5, "column": 1}, "end": {"line": 8, "column": 2}, "value": 4},
+          {"unit_name": "parse_int", "start": {"line": 10, "column": 1}, "end": {"line": 12, "column": 2}, "value": 3},
+          {"unit_name": "parse_int_list", "start": {"line": 14, "column": 1}, "end": {"line": 18, "column": 2}, "value": 5},
+          {"unit_name": "merge", "start": {"line": 20, "column": 1}, "end": {"line": 43, "column": 2}, "value": 21},
+          {"unit_name": "merge_sort", "start": {"line": 45, "column": 1}, "end": {"line": 58, "column": 2}, "value": 11},
+          {"unit_name": "main", "start": {"line": 60, "column": 1}, "end": {"line": 76, "column": 2}, "value": 12}
+        ]
+      },
+      "archive/r/rust/quick-sort.rs": {
+        "checksum": "0537f4e1742ca6137b86ac92a277a648",
+        "language": "Rust",
+        "loc": 30,
+        "profile": [14, 16, 0, 0],
+        "measurements": [
+          {"unit_name": "quicksort_recursive", "start": {"line": 1, "column": 1}, "end": {"line": 14, "column": 2}, "value": 14},
+          {"unit_name": "main", "start": {"line": 17, "column": 1}, "end": {"line": 36, "column": 2}, "value": 16}
+        ]
+      },
+      "archive/r/rust/roman-numeral.rs": {
+        "checksum": "73a40c926db5a1c2d5138bff40905464",
+        "language": "Rust",
+        "loc": 51,
+        "profile": [13, 38, 0, 0],
+        "measurements": [
+          {"unit_name": "main", "start": {"line": 3, "column": 1}, "end": {"line": 16, "column": 2}, "value": 13},
+          {"unit_name": "convert_char", "start": {"line": 18, "column": 1}, "end": {"line": 36, "column": 2}, "value": 19},
+          {"unit_name": "convert_roman_numeral", "start": {"line": 38, "column": 1}, "end": {"line": 57, "column": 2}, "value": 19}
+        ]
+      },
+      "archive/r/rust/fraction-math.rs": {
+        "checksum": "942ed00dd62850cc46486460809e1dcc",
+        "language": "Rust",
+        "loc": 108,
+        "profile": [76, 32, 0, 0],
+        "measurements": [
+          {"unit_name": "usage", "start": {"line": 8, "column": 1}, "end": {"line": 11, "column": 2}, "value": 4},
+          {"unit_name": "parse_int", "start": {"line": 13, "column": 1}, "end": {"line": 15, "column": 2}, "value": 3},
+          {"unit_name": "parse_fraction", "start": {"line": 17, "column": 1}, "end": {"line": 35, "column": 2}, "value": 14},
+          {"unit_name": "new", "start": {"line": 45, "column": 5}, "end": {"line": 47, "column": 6}, "value": 3},
+          {"unit_name": "compare", "start": {"line": 51, "column": 5}, "end": {"line": 53, "column": 6}, "value": 3},
+          {"unit_name": "fmt", "start": {"line": 58, "column": 5}, "end": {"line": 60, "column": 6}, "value": 3},
+          {"unit_name": "add", "start": {"line": 68, "column": 5}, "end": {"line": 73, "column": 6}, "value": 6},
+          {"unit_name": "sub", "start": {"line": 81, "column": 5}, "end": {"line": 86, "column": 6}, "value": 6},
+          {"unit_name": "mul", "start": {"line": 94, "column": 5}, "end": {"line": 96, "column": 6}, "value": 3},
+          {"unit_name": "div", "start": {"line": 104, "column": 5}, "end": {"line": 106, "column": 6}, "value": 3},
+          {"unit_name": "partial_cmp", "start": {"line": 111, "column": 5}, "end": {"line": 113, "column": 6}, "value": 3},
+          {"unit_name": "eq", "start": {"line": 118, "column": 5}, "end": {"line": 120, "column": 6}, "value": 3},
+          {"unit_name": "reduce", "start": {"line": 124, "column": 1}, "end": {"line": 140, "column": 2}, "value": 8},
+          {"unit_name": "gcd", "start": {"line": 143, "column": 1}, "end": {"line": 151, "column": 2}, "value": 8},
+          {"unit_name": "fmt", "start": {"line": 161, "column": 5}, "end": {"line": 166, "column": 6}, "value": 6},
+          {"unit_name": "fraction_math", "start": {"line": 170, "column": 1}, "end": {"line": 185, "column": 2}, "value": 16},
+          {"unit_name": "main", "start": {"line": 187, "column": 1}, "end": {"line": 210, "column": 2}, "value": 16}
+        ]
+      },
+      "archive/r/rust/prime-number.rs": {
+        "checksum": "e2cb8b50b799717dc083b335d91a05e3",
+        "language": "Rust",
+        "loc": 27,
+        "profile": [7, 20, 0, 0],
+        "measurements": [
+          {"unit_name": "usage", "start": {"line": 9, "column": 1}, "end": {"line": 12, "column": 2}, "value": 4},
+          {"unit_name": "parse_int", "start": {"line": 14, "column": 1}, "end": {"line": 16, "column": 2}, "value": 3},
+          {"unit_name": "main", "start": {"line": 18, "column": 1}, "end": {"line": 41, "column": 2}, "value": 20}
+        ]
+      },
+      "archive/r/rust/job-sequencing.rs": {
+        "checksum": "dbff59c469e13a3a3f8ca419362e01f6",
+        "language": "Rust",
+        "loc": 68,
+        "profile": [29, 39, 0, 0],
+        "measurements": [
+          {"unit_name": "usage", "start": {"line": 6, "column": 1}, "end": {"line": 9, "column": 2}, "value": 4},
+          {"unit_name": "parse_int", "start": {"line": 11, "column": 1}, "end": {"line": 13, "column": 2}, "value": 3},
+          {"unit_name": "parse_int_list", "start": {"line": 15, "column": 1}, "end": {"line": 19, "column": 2}, "value": 5},
+          {"unit_name": "new", "start": {"line": 29, "column": 5}, "end": {"line": 31, "column": 6}, "value": 3},
+          {"unit_name": "partial_cmp", "start": {"line": 35, "column": 5}, "end": {"line": 42, "column": 6}, "value": 6},
+          {"unit_name": "eq", "start": {"line": 46, "column": 5}, "end": {"line": 48, "column": 6}, "value": 3},
+          {"unit_name": "job_sequencing", "start": {"line": 53, "column": 1}, "end": {"line": 86, "column": 2}, "value": 23},
+          {"unit_name": "get_total_profit", "start": {"line": 88, "column": 1}, "end": {"line": 92, "column": 2}, "value": 5},
+          {"unit_name": "main", "start": {"line": 94, "column": 1}, "end": {"line": 119, "column": 2}, "value": 16}
+        ]
+      },
+      "archive/r/rust/binary-search.rs": {
+        "checksum": "c95ea077e8d285be9c03358bc5f014af",
+        "language": "Rust",
+        "loc": 52,
+        "profile": [16, 36, 0, 0],
+        "measurements": [
+          {"unit_name": "usage", "start": {"line": 5, "column": 1}, "end": {"line": 8, "column": 2}, "value": 4},
+          {"unit_name": "parse_int", "start": {"line": 10, "column": 1}, "end": {"line": 12, "column": 2}, "value": 3},
+          {"unit_name": "parse_int_list", "start": {"line": 14, "column": 1}, "end": {"line": 18, "column": 2}, "value": 5},
+          {"unit_name": "is_sorted", "start": {"line": 20, "column": 1}, "end": {"line": 23, "column": 2}, "value": 4},
+          {"unit_name": "binary_search", "start": {"line": 25, "column": 1}, "end": {"line": 49, "column": 2}, "value": 18},
+          {"unit_name": "main", "start": {"line": 51, "column": 1}, "end": {"line": 75, "column": 2}, "value": 18}
+        ]
+      },
+      "archive/r/rust/insertion-sort.rs": {
+        "checksum": "61629c091c5ab2b5cee4a75f5155228b",
+        "language": "Rust",
+        "loc": 35,
+        "profile": [35, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "usage", "start": {"line": 5, "column": 1}, "end": {"line": 8, "column": 2}, "value": 4},
+          {"unit_name": "parse_int", "start": {"line": 10, "column": 1}, "end": {"line": 12, "column": 2}, "value": 3},
+          {"unit_name": "parse_int_list", "start": {"line": 14, "column": 1}, "end": {"line": 18, "column": 2}, "value": 5},
+          {"unit_name": "insertion_sort", "start": {"line": 20, "column": 1}, "end": {"line": 30, "column": 2}, "value": 11},
+          {"unit_name": "main", "start": {"line": 32, "column": 1}, "end": {"line": 48, "column": 2}, "value": 12}
+        ]
+      },
+      "archive/r/rust/reverse-string.rs": {
+        "checksum": "bd2e0f16dd03d958b8c52876fe41ba3c",
+        "language": "Rust",
+        "loc": 7,
+        "profile": [7, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "main", "start": {"line": 3, "column": 1}, "end": {"line": 9, "column": 2}, "value": 7}
+        ]
+      },
+      "archive/r/rust/bubble-sort.rs": {
+        "checksum": "1bc7ce5db0a1d5dfea789492c6d9f413",
+        "language": "Rust",
+        "loc": 36,
+        "profile": [36, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "usage", "start": {"line": 5, "column": 1}, "end": {"line": 8, "column": 2}, "value": 4},
+          {"unit_name": "parse_int", "start": {"line": 10, "column": 1}, "end": {"line": 12, "column": 2}, "value": 3},
+          {"unit_name": "parse_int_list", "start": {"line": 14, "column": 1}, "end": {"line": 18, "column": 2}, "value": 5},
+          {"unit_name": "bubble_sort", "start": {"line": 20, "column": 1}, "end": {"line": 33, "column": 2}, "value": 12},
+          {"unit_name": "main", "start": {"line": 35, "column": 1}, "end": {"line": 52, "column": 2}, "value": 12}
+        ]
+      },
+      "archive/r/rust/dijkstra.rs": {
+        "checksum": "64aaa00f88a1f095169b0120770a77c0",
+        "language": "Rust",
+        "loc": 96,
+        "profile": [32, 64, 0, 0],
+        "measurements": [
+          {"unit_name": "usage", "start": {"line": 6, "column": 1}, "end": {"line": 12, "column": 2}, "value": 7},
+          {"unit_name": "parse_int", "start": {"line": 14, "column": 1}, "end": {"line": 16, "column": 2}, "value": 3},
+          {"unit_name": "parse_int_list", "start": {"line": 18, "column": 1}, "end": {"line": 22, "column": 2}, "value": 5},
+          {"unit_name": "new", "start": {"line": 31, "column": 5}, "end": {"line": 33, "column": 6}, "value": 3},
+          {"unit_name": "add_child", "start": {"line": 35, "column": 5}, "end": {"line": 37, "column": 6}, "value": 3},
+          {"unit_name": "create_tree", "start": {"line": 42, "column": 1}, "end": {"line": 61, "column": 2}, "value": 16},
+          {"unit_name": "validate_inputs", "start": {"line": 63, "column": 1}, "end": {"line": 74, "column": 2}, "value": 8},
+          {"unit_name": "new", "start": {"line": 83, "column": 5}, "end": {"line": 85, "column": 6}, "value": 3},
+          {"unit_name": "dijkstra", "start": {"line": 89, "column": 1}, "end": {"line": 127, "column": 2}, "value": 25},
+          {"unit_name": "main", "start": {"line": 129, "column": 1}, "end": {"line": 163, "column": 2}, "value": 23}
+        ]
+      },
+      "archive/r/rust/maximum-subarray.rs": {
+        "checksum": "e4f4018611a5f07302ef6c59e0bdf18f",
+        "language": "Rust",
+        "loc": 29,
+        "profile": [29, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "usage", "start": {"line": 6, "column": 1}, "end": {"line": 9, "column": 2}, "value": 4},
+          {"unit_name": "parse_int", "start": {"line": 11, "column": 1}, "end": {"line": 13, "column": 2}, "value": 3},
+          {"unit_name": "parse_int_list", "start": {"line": 15, "column": 1}, "end": {"line": 19, "column": 2}, "value": 5},
+          {"unit_name": "maximum_subarray", "start": {"line": 23, "column": 1}, "end": {"line": 32, "column": 2}, "value": 9},
+          {"unit_name": "main", "start": {"line": 34, "column": 1}, "end": {"line": 45, "column": 2}, "value": 8}
+        ]
+      },
+      "archive/r/rust/fibonacci.rs": {
+        "checksum": "86dedc04f112b5eb8f80f42203dee92f",
+        "language": "Rust",
+        "loc": 28,
+        "profile": [28, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "usage", "start": {"line": 7, "column": 1}, "end": {"line": 10, "column": 2}, "value": 4},
+          {"unit_name": "parse_int", "start": {"line": 12, "column": 1}, "end": {"line": 14, "column": 2}, "value": 3},
+          {"unit_name": "fibonacci", "start": {"line": 16, "column": 1}, "end": {"line": 28, "column": 2}, "value": 13},
+          {"unit_name": "main", "start": {"line": 30, "column": 1}, "end": {"line": 41, "column": 2}, "value": 8}
+        ]
+      },
+      "archive/r/rust/selection-sort.rs": {
+        "checksum": "84f4faa55d13b94fe29d1b487d40a8cd",
+        "language": "Rust",
+        "loc": 37,
+        "profile": [37, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "usage", "start": {"line": 5, "column": 1}, "end": {"line": 8, "column": 2}, "value": 4},
+          {"unit_name": "parse_int", "start": {"line": 10, "column": 1}, "end": {"line": 12, "column": 2}, "value": 3},
+          {"unit_name": "parse_int_list", "start": {"line": 14, "column": 1}, "end": {"line": 18, "column": 2}, "value": 5},
+          {"unit_name": "selection_sort", "start": {"line": 20, "column": 1}, "end": {"line": 34, "column": 2}, "value": 13},
+          {"unit_name": "main", "start": {"line": 36, "column": 1}, "end": {"line": 52, "column": 2}, "value": 12}
+        ]
+      },
+      "archive/r/rust/quine.rs": {
+        "checksum": "2c0f1e9a20460e0cc3d268c700c4ae6e",
+        "language": "Rust",
+        "loc": 1,
+        "profile": [1, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "main", "start": {"line": 1, "column": 1}, "end": {"line": 1, "column": 95}, "value": 1}
+        ]
+      },
+      "archive/r/rust/capitalize.rs": {
+        "checksum": "162072fa101b52970f07ec55e4cef8fd",
+        "language": "Rust",
+        "loc": 12,
+        "profile": [12, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "main", "start": {"line": 5, "column": 1}, "end": {"line": 23, "column": 2}, "value": 12}
+        ]
+      },
+      "archive/r/rust/depth-first-search.rs": {
+        "checksum": "652d0479fc32f415eacd05dcdb53c76f",
+        "language": "Rust",
+        "loc": 103,
+        "profile": [41, 62, 0, 0],
+        "measurements": [
+          {"unit_name": "usage", "start": {"line": 6, "column": 1}, "end": {"line": 14, "column": 2}, "value": 9},
+          {"unit_name": "parse_int", "start": {"line": 16, "column": 1}, "end": {"line": 18, "column": 2}, "value": 3},
+          {"unit_name": "parse_int_list", "start": {"line": 20, "column": 1}, "end": {"line": 24, "column": 2}, "value": 5},
+          {"unit_name": "new", "start": {"line": 33, "column": 5}, "end": {"line": 35, "column": 6}, "value": 3},
+          {"unit_name": "add_child", "start": {"line": 37, "column": 5}, "end": {"line": 39, "column": 6}, "value": 3},
+          {"unit_name": "new", "start": {"line": 49, "column": 5}, "end": {"line": 51, "column": 6}, "value": 3},
+          {"unit_name": "add_node", "start": {"line": 53, "column": 5}, "end": {"line": 55, "column": 6}, "value": 3},
+          {"unit_name": "get_node", "start": {"line": 57, "column": 5}, "end": {"line": 62, "column": 6}, "value": 6},
+          {"unit_name": "create_tree", "start": {"line": 65, "column": 1}, "end": {"line": 86, "column": 2}, "value": 17},
+          {"unit_name": "depth_first_search", "start": {"line": 88, "column": 1}, "end": {"line": 96, "column": 2}, "value": 6},
+          {"unit_name": "depth_first_search_rec", "start": {"line": 98, "column": 1}, "end": {"line": 131, "column": 2}, "value": 25},
+          {"unit_name": "main", "start": {"line": 133, "column": 1}, "end": {"line": 163, "column": 2}, "value": 20}
+        ]
+      },
+      "archive/r/rust/palindromic-number.rs": {
+        "checksum": "c394164cf0aa591517881fc07fc06eb5",
+        "language": "Rust",
+        "loc": 20,
+        "profile": [20, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "usage", "start": {"line": 6, "column": 1}, "end": {"line": 9, "column": 2}, "value": 4},
+          {"unit_name": "parse_int", "start": {"line": 11, "column": 1}, "end": {"line": 13, "column": 2}, "value": 3},
+          {"unit_name": "is_palindromic_number", "start": {"line": 15, "column": 1}, "end": {"line": 24, "column": 2}, "value": 5},
+          {"unit_name": "main", "start": {"line": 26, "column": 1}, "end": {"line": 37, "column": 2}, "value": 8}
+        ]
+      },
+      "archive/r/rust/duplicate-character-counter.rs": {
+        "checksum": "2f481d35ace88760b047ae4cbc7f17df",
+        "language": "Rust",
+        "loc": 37,
+        "profile": [37, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "usage", "start": {"line": 5, "column": 1}, "end": {"line": 8, "column": 2}, "value": 4},
+          {"unit_name": "duplicate_character_counter", "start": {"line": 10, "column": 1}, "end": {"line": 19, "column": 2}, "value": 7},
+          {"unit_name": "show_duplicate_character_counts", "start": {"line": 21, "column": 1}, "end": {"line": 39, "column": 2}, "value": 15},
+          {"unit_name": "main", "start": {"line": 41, "column": 1}, "end": {"line": 55, "column": 2}, "value": 11}
+        ]
+      },
+      "archive/r/rust/longest-word.rs": {
+        "checksum": "28abc8b708e4efbeaac019e3a22e2e45",
+        "language": "Rust",
+        "loc": 21,
+        "profile": [21, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "usage", "start": {"line": 4, "column": 1}, "end": {"line": 7, "column": 2}, "value": 4},
+          {"unit_name": "get_longest_word_len", "start": {"line": 9, "column": 1}, "end": {"line": 15, "column": 2}, "value": 7},
+          {"unit_name": "main", "start": {"line": 17, "column": 1}, "end": {"line": 30, "column": 2}, "value": 10}
+        ]
+      },
+      "archive/r/rust/maximum-array-rotation.rs": {
+        "checksum": "c5b366a8e986e61a45dfcb4913c441c0",
+        "language": "Rust",
+        "loc": 34,
+        "profile": [34, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "usage", "start": {"line": 6, "column": 1}, "end": {"line": 9, "column": 2}, "value": 4},
+          {"unit_name": "parse_int", "start": {"line": 11, "column": 1}, "end": {"line": 13, "column": 2}, "value": 3},
+          {"unit_name": "parse_int_list", "start": {"line": 15, "column": 1}, "end": {"line": 19, "column": 2}, "value": 5},
+          {"unit_name": "maximum_array_rotation", "start": {"line": 61, "column": 1}, "end": {"line": 80, "column": 2}, "value": 14},
+          {"unit_name": "main", "start": {"line": 82, "column": 1}, "end": {"line": 93, "column": 2}, "value": 8}
+        ]
+      },
+      "archive/r/rust/file-input-output.rs": {
+        "checksum": "bd7d2b75bbafa826e66d92b1f8100166",
+        "language": "Rust",
+        "loc": 23,
+        "profile": [23, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "write_file", "start": {"line": 5, "column": 1}, "end": {"line": 18, "column": 2}, "value": 10},
+          {"unit_name": "read_file", "start": {"line": 20, "column": 1}, "end": {"line": 30, "column": 2}, "value": 9},
+          {"unit_name": "main", "start": {"line": 32, "column": 1}, "end": {"line": 35, "column": 2}, "value": 4}
+        ]
+      },
+      "archive/r/rust/hello-world.rs": {
+        "checksum": "1e66dcb2ee23d02a90eacd12b9fd7791",
+        "language": "Rust",
+        "loc": 3,
+        "profile": [3, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "main", "start": {"line": 1, "column": 1}, "end": {"line": 3, "column": 2}, "value": 3}
+        ]
+      },
+      "archive/r/rust/linear-search.rs": {
+        "checksum": "643eca17eed9a531e73cee7ab49aa147",
+        "language": "Rust",
+        "loc": 33,
+        "profile": [17, 16, 0, 0],
+        "measurements": [
+          {"unit_name": "usage", "start": {"line": 5, "column": 1}, "end": {"line": 10, "column": 2}, "value": 6},
+          {"unit_name": "parse_int", "start": {"line": 12, "column": 1}, "end": {"line": 14, "column": 2}, "value": 3},
+          {"unit_name": "parse_int_list", "start": {"line": 16, "column": 1}, "end": {"line": 20, "column": 2}, "value": 5},
+          {"unit_name": "linear_search", "start": {"line": 22, "column": 1}, "end": {"line": 24, "column": 2}, "value": 3},
+          {"unit_name": "main", "start": {"line": 26, "column": 1}, "end": {"line": 47, "column": 2}, "value": 16}
+        ]
+      },
+      "archive/r/rust/factorial.rs": {
+        "checksum": "458d970da86b3fc357db5236b2c911bf",
+        "language": "Rust",
+        "loc": 21,
+        "profile": [21, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "usage", "start": {"line": 8, "column": 1}, "end": {"line": 11, "column": 2}, "value": 4},
+          {"unit_name": "parse_int", "start": {"line": 13, "column": 1}, "end": {"line": 15, "column": 2}, "value": 3},
+          {"unit_name": "main", "start": {"line": 17, "column": 1}, "end": {"line": 33, "column": 2}, "value": 14}
+        ]
+      },
+      "archive/r/rust/even-odd.rs": {
+        "checksum": "33f1caf9d2f04745057e330313fc1b82",
+        "language": "Rust",
+        "loc": 18,
+        "profile": [18, 0, 0, 0],
+        "measurements": [
+          {"unit_name": "usage", "start": {"line": 8, "column": 1}, "end": {"line": 11, "column": 2}, "value": 4},
+          {"unit_name": "parse_int", "start": {"line": 13, "column": 1}, "end": {"line": 15, "column": 2}, "value": 3},
+          {"unit_name": "main", "start": {"line": 17, "column": 1}, "end": {"line": 31, "column": 2}, "value": 11}
+        ]
+      },
+      "archive/r/rust/transpose-matrix.rs": {
+        "checksum": "d4eba59b3204bfbe3bff509b387ed5cd",
+        "language": "Rust",
+        "loc": 66,
+        "profile": [42, 24, 0, 0],
+        "measurements": [
+          {"unit_name": "usage", "start": {"line": 5, "column": 1}, "end": {"line": 8, "column": 2}, "value": 4},
+          {"unit_name": "parse_int", "start": {"line": 10, "column": 1}, "end": {"line": 12, "column": 2}, "value": 3},
+          {"unit_name": "parse_int_list", "start": {"line": 14, "column": 1}, "end": {"line": 18, "column": 2}, "value": 5},
+          {"unit_name": "convert_array_to_matrix", "start": {"line": 22, "column": 1}, "end": {"line": 34, "column": 2}, "value": 12},
+          {"unit_name": "transpose_matrix", "start": {"line": 36, "column": 1}, "end": {"line": 49, "column": 2}, "value": 11},
+          {"unit_name": "convert_matrix_to_array", "start": {"line": 51, "column": 1}, "end": {"line": 58, "column": 2}, "value": 7},
+          {"unit_name": "main", "start": {"line": 60, "column": 1}, "end": {"line": 97, "column": 2}, "value": 24}
+        ]
+      },
+      "archive/r/rust/longest-common-subsequence.rs": {
+        "checksum": "9cf52a31d2ef12945922e7e0231fba19",
+        "language": "Rust",
+        "loc": 55,
+        "profile": [25, 30, 0, 0],
+        "measurements": [
+          {"unit_name": "usage", "start": {"line": 5, "column": 1}, "end": {"line": 8, "column": 2}, "value": 4},
+          {"unit_name": "parse_int", "start": {"line": 10, "column": 1}, "end": {"line": 12, "column": 2}, "value": 3},
+          {"unit_name": "parse_int_list", "start": {"line": 14, "column": 1}, "end": {"line": 18, "column": 2}, "value": 5},
+          {"unit_name": "longest_common_subsequence", "start": {"line": 26, "column": 1}, "end": {"line": 62, "column": 2}, "value": 30},
+          {"unit_name": "main", "start": {"line": 64, "column": 1}, "end": {"line": 82, "column": 2}, "value": 13}
+        ]
+      },
       "archive/t/typescript/capitalize.ts": {
         "checksum": "53ac909e0b122e27606118934ea0b762",
         "language": "TypeScript",
